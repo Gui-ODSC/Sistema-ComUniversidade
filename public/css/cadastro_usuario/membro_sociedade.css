@@ -1,0 +1,160 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #708090;
+}
+
+.navbar-brand a:hover {
+    color: #708090;
+    cursor: pointer;
+}
+
+.navbar-brand {
+    color: #FFF;
+}
+
+.navbar-brand a{
+    color: #FFF;
+    text-decoration: none;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+
+h4 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.cadastro-container {
+    padding: 40px 20px 10px 20px;
+    background-color: #2F4F4F;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 30px;
+    width: 50%;
+    height: 60%;
+    border-radius: 20px;
+    font-size: larger;
+    color: #FFF;
+}
+
+/*ESTILIZAÇÃO DE CADA INPUT DO CADASTRO*/
+.cadastro-container input[name="nome"] {
+    display: inline-flex;
+    margin-top: 5px;
+    width: 60%;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.cadastro-container input[name="nascimento"] {
+    display: inline-flex;
+    margin-top: 5px;
+    width: 39%;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.cadastro-container input[name="sobrenome"] {
+    display: inline-flex;
+    margin-top: 5px;
+    width: 100%;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.cadastro-container input[name="email"] {
+    display: inline-flex;
+    margin-top: 5px;
+    width: 100%;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.cadastro-container input[name="senha"] {
+    display: inline-flex;
+    margin-top: 5px;
+    width: 100%;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.cadastro-container input[name="telefone"] {
+    display: inline-flex;
+    margin-top: 5px;
+    width: 50%;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.cadastro-container input[name="cidade"] {
+    display: inline-flex;
+    margin-top: 5px;
+    width: 49%;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.cadastro-container input[name="rua"] {
+    display: inline-flex;
+    margin-top: 5px;
+    width: 50%;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.cadastro-container input[name="numero_endereco"] {
+    display: inline-flex;
+    margin-top: 5px;
+    width: 49%;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.cadastro-container input[name="complemento"] {
+    display: inline-flex;
+    margin-top: 5px;
+    width: 50%;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.cadastro-container input[name="estado"] {
+    display: inline-flex;
+    margin-top: 5px;
+    width: 49%;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+
+.cadastro-container input::placeholder {
+    padding: 5px; 
+}
+
+.cadastro-container span, a{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    padding-top: 5px;
+}
+
+.cadastro-container button {
+    display: flex;
+    padding: 5px;
+    text-align: center;
+    justify-content: center;
+    border-radius: 10px;
+    width: 150px;
+    margin: auto;
+    font-size: x-large;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
