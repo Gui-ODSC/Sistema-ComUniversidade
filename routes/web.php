@@ -55,3 +55,16 @@ Route::prefix('extensao/ofertas')->group(function(){
         return view('ofertas_membro/sucesso_cadastro_oferta');
     })->name('sucesso_cadastro_oferta');
 });
+
+//Rota de telas do usuario para ofertas
+Route::prefix('extensao/demandas')->group(function(){
+    Route::get('/minhas_demandas', function(){
+        return view('demandas_membro/minhas_demandas');
+    })->name('minhas_demandas');
+    Route::get('/cadastrar_demandas', function(){
+        return view('demandas_membro/cadastrar_demandas');
+    })->name('cadastrar_demandas');
+    Route::get('/sucesso_cadastro_demanda', function(){
+        return view('demandas_membro/sucesso_cadastro_demanda');
+    })->name('sucesso_cadastro_demanda');
+});

@@ -1,0 +1,94 @@
+.cadastrar_demandas h1 {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.cadastrar_demandas {
+    text-align: center;
+}
+
+.cadastrar_demandas input[name="titulo_demanda"] {
+    display: inline-flex;
+    margin-top: 5px;
+    width: 60%;
+    border-radius: 7px;
+    padding: 5px;
+}
+
+.cadastrar_demandas input[name="publico_demanda"] {
+    display: inline-flex;
+    margin-top: 5px;
+    width: 39%;
+    border-radius: 7px;
+    padding: 5px;
+}
+
+.cadastrar_demandas textarea[name="texto_livre"] {
+    display: inline-flex;
+    margin-top: 5px;
+    width: 99.5%;
+    height: 170px;
+    border-radius: 7px;
+    padding: 5px;
+    word-wrap: break-word;
+    border: 2px solid black;
+}
+
+.cadastrar_demandas input[name="pessoas_impactadas"] {
+    display: inline-flex;
+    width: 33%;
+    border-radius: 7px;
+    padding: 5px;
+}
+
+.cadastrar_demandas input[name="tipo_acao"] {
+    display: inline-flex;
+    width: 33%;
+    border-radius: 7px;
+    padding: 5px;
+}
+
+.cadastrar_demandas input[name="prioridade"] {
+    display: inline-flex;
+    width: 33%;
+    border-radius: 7px;
+    padding: 5px;
+}
+
+.cadastrar_demandas input[name="area_conhecimento"] {
+    display: inline-flex;
+    margin-top: 5px;
+    width: 33%;
+    border-radius: 7px;
+    padding: 5px;
+}
+
+.cadastrar_demandas input[name="duracao"] {
+    display: inline-flex;
+    margin-top: 5px;
+    width: 33%;
+    border-radius: 7px;
+    padding: 5px;
+}
+
+.cadastrar_demandas input[name="setor_instituicao"] {
+    display: inline-flex;
+    margin-top: 5px;
+    width: 33%;
+    border-radius: 7px;
+    padding: 5px;
+}
+
+.cadastrar_demandas button {
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    background-color: #191970;
+    border: none;
+    color: #FFF;
+    font-weight: bold;
+    margin-top: 30px;
+    width: 250px;
+    height: 50px;
+}
