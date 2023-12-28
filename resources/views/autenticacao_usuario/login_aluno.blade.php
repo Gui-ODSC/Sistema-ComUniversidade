@@ -8,7 +8,7 @@
     <title>Login-Aluno</title>
 </head>
 <header>
-    <nav class="navbar bg-dark">
+    <nav class="navbar">
         <div class="container-fluid">
             <span class="navbar-brand mb-0 h1"><a href="/">Extensão Universitaria</a></span>
         </div>
@@ -16,13 +16,15 @@
 </header>
 <body>
     <div class="login-container">
-        <h1>Login Aluno</h1>
-        <label for="login">Login</label>
-        <input type="text" id="password" placeholder="Login">
-        <label for="password">Senha</label>
-        <input type="password" id="password" placeholder="Senha">
-        <span><a href="{{ route('recuperacao_senha') }}">Recuperar a Senha</a></span><br>
-        <button>Entrar</button>
+        <form action="{{ route('minhas_ofertas') }}">
+            <h1>Login Aluno</h1>
+            <label for="login">Login</label>
+            <input type="text" id="password" placeholder="Login">
+            <label for="password">Senha</label>
+            <input type="password" id="password" placeholder="Senha">
+            <span><a href="{{ route('recuperacao_senha') }}">Recuperar a Senha</a></span><br>
+            <button>Entrar</button>
+        </form>
     </div>
 </body>
 </html>

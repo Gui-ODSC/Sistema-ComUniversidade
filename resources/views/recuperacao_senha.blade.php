@@ -8,7 +8,7 @@
     <title>Recuperacao Senha</title>
 </head>
 <header>
-    <nav class="navbar bg-dark">
+    <nav class="navbar">
         <div class="container-fluid">
             <span class="navbar-brand mb-0 h1"><a href="/">Extensão Universitaria</a></span>
         </div>

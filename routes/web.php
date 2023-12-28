@@ -42,3 +42,16 @@ Route::prefix('cadastro')->group(function(){
 Route::get('/recuperacao_senha', function(){
     return view('recuperacao_senha');
 })->name('recuperacao_senha');
+
+//Rota de telas do usuario para ofertas
+Route::prefix('extensao/ofertas')->group(function(){
+    Route::get('/minhas_ofertas', function(){
+        return view('ofertas_membro/minhas_ofertas');
+    })->name('minhas_ofertas');
+    Route::get('/cadastrar_ofertas', function(){
+        return view('ofertas_membro/cadastrar_ofertas');
+    })->name('cadastrar_ofertas');
+    Route::get('/sucesso_cadastro_oferta', function(){
+        return view('ofertas_membro/sucesso_cadastro_oferta');
+    })->name('sucesso_cadastro_oferta');
+});
