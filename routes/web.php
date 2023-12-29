@@ -75,3 +75,10 @@ Route::prefix('extensao/disponivel')->group(function(){
         return view('demandas_ofertas_membro/demandas_ofertas');
     })->name('demandas_ofertas');
 });
+
+//Rota de telas do usuario para configuracoes
+Route::prefix('extensao/configuracoes')->group(function(){
+    Route::get('/configuracao_membro', function(){
+        return view('configuracao_membro/configuracoes');
+    })->name('configuracoes');
+});

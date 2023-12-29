@@ -20,7 +20,7 @@
         <a href="{{ route('minhas_ofertas') }}">Minhas Ofertas</a>
         <a href="{{ route('minhas_demandas') }}">Minhas Demandas</a>
         <a href="{{ route('demandas_ofertas') }}">Ofertas/Demandas</a>
-        <a href="#">Configurações</a>
+        <a href="{{ route('configuracoes') }}">Configurações</a>
         <a href="#">Perfil</a>
         <a href="#">Sair</a>
     </nav>

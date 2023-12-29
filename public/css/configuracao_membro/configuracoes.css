@@ -1,0 +1,21 @@
+.configuracoes h1 {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.configuracoes a{
+    display: block;
+    text-align: center;
+}
+
+.configuracoes button {
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    background-color: #191970;
+    border: none;
+    color: #FFF;
+    font-weight: bold;
+    width: 250px;
+}
