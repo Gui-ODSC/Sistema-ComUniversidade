@@ -68,3 +68,10 @@ Route::prefix('extensao/demandas')->group(function(){
         return view('demandas_membro/sucesso_cadastro_demanda');
     })->name('sucesso_cadastro_demanda');
 });
+
+//Rota de telas do usuario para demandas e ofertas
+Route::prefix('extensao/disponivel')->group(function(){
+    Route::get('/demandas_ofertas', function(){
+        return view('demandas_ofertas_membro/demandas_ofertas');
+    })->name('demandas_ofertas');
+});
