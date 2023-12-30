@@ -82,3 +82,10 @@ Route::prefix('extensao/configuracoes')->group(function(){
         return view('configuracao_membro/configuracoes');
     })->name('configuracoes');
 });
+
+//Rota de telas do usuario para perfil
+Route::prefix('extensao/perfil')->group(function(){
+    Route::get('/perfil_membro', function(){
+        return view('perfil_membro/perfil');
+    })->name('perfil');
+});

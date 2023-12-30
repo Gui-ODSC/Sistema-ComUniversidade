@@ -21,7 +21,7 @@
         <a href="{{ route('minhas_demandas') }}">Minhas Demandas</a>
         <a href="{{ route('demandas_ofertas') }}">Ofertas/Demandas</a>
         <a href="{{ route('configuracoes') }}">Configurações</a>
-        <a href="#">Perfil</a>
+        <a href="{{ route('perfil') }}">Perfil</a>
         <a href="#">Sair</a>
     </nav>
     <main class="cadastrar_demandas" id="conteudo">
