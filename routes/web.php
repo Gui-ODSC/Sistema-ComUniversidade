@@ -89,3 +89,10 @@ Route::prefix('extensao/perfil')->group(function(){
         return view('perfil_membro/perfil');
     })->name('perfil');
 });
+
+//Rota de telas do usuario para perfil
+Route::prefix('extensao/sair')->group(function(){
+    Route::get('/sair_membro', function(){
+        return view('sair_membro/sair');
+    })->name('sair');
+});

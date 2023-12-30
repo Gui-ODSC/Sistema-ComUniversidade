@@ -1,0 +1,43 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Garante que o conteúdo fique centralizado verticalmente na tela */
+    background-color: #212529;
+}
+
+.sair {
+    background-color: #708090;
+    width: 50%;
+    height: 30%;
+    text-align: center;
+    border-radius: 20px;
+    box-shadow: 5px 5px 100px #FFF;
+}
+
+.sair h1 {
+    padding: 20px;
+    margin-bottom: 40px;
+}
+
+.sair a {
+    font-size: 20px;
+    color: white;
+}
+
+.sair button {
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    background-color: #191970;
+    border: none;
+    color: #FFF;
+    font-weight: bold;
+    width: 90px;
+    cursor: pointer;
+}

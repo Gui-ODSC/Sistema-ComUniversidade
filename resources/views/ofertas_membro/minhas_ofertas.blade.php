@@ -22,7 +22,7 @@
         <a href="{{ route('demandas_ofertas') }}">Ofertas/Demandas</a>
         <a href="{{ route('configuracoes') }}">Configurações</a>
         <a href="{{ route('perfil') }}">Perfil</a>
-        <a href="#">Sair</a>
+        <a href="{{ route('sair') }}">Sair</a>
     </nav>
     <main class="minhas-ofertas" id="conteudo">
         <h1>Minhas Ofertas</h1>
