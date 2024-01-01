@@ -1,0 +1,20 @@
+.sobre-nos h1 {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.sessao {
+    background-color: rgba(125, 134, 143, 0.6);
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.sessao h4 {
+    font-weight: bold;
+}
+
+.sessao p {
+    padding-top: 10px;
+    text-align: justify;
+}

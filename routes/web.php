@@ -81,6 +81,21 @@ Route::prefix('extensao/configuracoes')->group(function(){
     Route::get('/configuracao_membro', function(){
         return view('configuracao_membro/configuracoes');
     })->name('configuracoes');
+    Route::get('/ajuda_sistema', function(){
+        return view('configuracao_membro/ajuda_sistema');
+    })->name('ajuda_sistema');
+    Route::get('/historico_demandas', function(){
+        return view('configuracao_membro/historico_demandas');
+    })->name('historico_demandas');
+    Route::get('/historico_ofertas', function(){
+        return view('configuracao_membro/historico_ofertas');
+    })->name('historico_ofertas');
+    Route::get('/enviar_feedback', function(){
+        return view('configuracao_membro/enviar_feedback');
+    })->name('enviar_feedback');
+    Route::get('/sobre_nos', function(){
+        return view('configuracao_membro/sobre_nos');
+    })->name('sobre_nos');
 });
 
 //Rota de telas do usuario para perfil
