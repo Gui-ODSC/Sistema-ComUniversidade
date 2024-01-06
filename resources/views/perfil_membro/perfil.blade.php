@@ -21,17 +21,17 @@
             </div>
             <h1>Perfil</h1>
             <div class="cadastro-container">
-                <input type="text" id="nome" name="nome" placeholder="Guilherme" required>
-                <input type="text" id="nascimento" name="nascimento" placeholder="15/03/2003" required>
-                <input type="text" id="sobrenome" name="sobrenome" placeholder="Oliveira de Sá Cabrera" required>
-                <input type="email" id="email" name="email" placeholder="gui@gmail.com" required>
-                <input type="password" id="senha" name="senha" placeholder="***********" required>
-                <input type="tel" id="telefone" name="telefone" pattern="[0-9]{10}" placeholder="(11) 94363-4828" required>
-                <input type="text" id="cidade" name="cidade" placeholder="Araranguá" required>
-                <input type="text" id="rua" name="rua" placeholder="Violetas" required>
-                <input type="number" id="numero_endereco" name="numero_endereco" placeholder="2087" required>
-                <input type="text" id="complemento" name="complemento" placeholder="Complemento">
-                <input type="text" id="estado" name="estado" placeholder="SC" required>
+                <input type="text" id="nome" name="nome" value="Guilherme" required>
+                <input type="text" id="nascimento" name="nascimento" value="15/03/2003" required>
+                <input type="text" id="sobrenome" name="sobrenome" value="Oliveira de Sá Cabrera" required>
+                <input type="email" id="email" name="email" value="gui@gmail.com" required>
+                <input type="password" id="senha" name="senha" value="***********" required>
+                <input type="tel" id="telefone" name="telefone" pattern="[0-9]{10}" value="(11) 94363-4828" required>
+                <input type="text" id="cidade" name="cidade" value="Araranguá" required>
+                <input type="text" id="rua" name="rua" value="Violetas" required>
+                <input type="number" id="numero_endereco" name="numero_endereco" value="2087" required>
+                <input type="text" id="complemento" name="complemento" value="Complemento">
+                <input type="text" id="estado" name="estado" value="SC" required>
             </div>
         <form>
     </main>

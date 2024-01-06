@@ -8,6 +8,14 @@
     text-align: center;
 }
 
+.cadastrar_ofertas input {
+    border: solid 2px black;
+}
+
+.cadastrar_ofertas input::placeholder {
+    font-weight: bold;
+}
+
 .cadastrar_ofertas input[name="titulo_oferta"] {
     display: inline-flex;
     margin-top: 5px;
@@ -33,6 +41,7 @@
     padding: 5px;
     word-wrap: break-word;
     border: 2px solid black;
+    font-weight: bold;
 }
 
 .cadastrar_ofertas input[name="area_conhecimento"] {

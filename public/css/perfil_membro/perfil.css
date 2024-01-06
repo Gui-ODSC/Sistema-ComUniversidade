@@ -47,6 +47,10 @@
     cursor: pointer;
 }
 
+.perfil input {
+    border: solid 2px black;
+}
+
 /*ESTILIZAÇÃO DE CADA INPUT DO CADASTRO*/
 .perfil input[name="nome"] {
     display: inline-flex;

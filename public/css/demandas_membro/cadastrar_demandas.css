@@ -8,12 +8,20 @@
     text-align: center;
 }
 
+.cadastrar_demandas input {
+    border: solid 2px black;
+}
+
+.cadastrar_demandas input::placeholder {
+    font-weight: bold;
+}
+
 .cadastrar_demandas input[name="titulo_demanda"] {
     display: inline-flex;
     margin-top: 5px;
     width: 60%;
     border-radius: 7px;
-    padding: 5px;
+    padding: 5px;   
 }
 
 .cadastrar_demandas input[name="publico_demanda"] {
@@ -33,6 +41,7 @@
     padding: 5px;
     word-wrap: break-word;
     border: 2px solid black;
+    font-weight: bold;
 }
 
 .cadastrar_demandas input[name="pessoas_impactadas"] {
