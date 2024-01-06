@@ -111,3 +111,16 @@ Route::prefix('extensao/sair')->group(function(){
         return view('sair_membro/sair');
     })->name('sair');
 });
+
+//Rota de notificação contato notificacao
+Route::prefix('extensao/contatos')->group(function(){
+    Route::get('/todos_contatos', function(){
+        return view('contatos_efetuados_membro/todos_contatos');
+    })->name('todos_contatos');
+    Route::get('/oferta_requisitada', function(){
+        return view('contatos_efetuados_membro/oferta_requisitada');
+    })->name('oferta_requisitada');
+    Route::get('/demanda_atendida', function(){
+        return view('contatos_efetuados_membro/demanda_atendida');
+    })->name('demanda_atendida');
+});
