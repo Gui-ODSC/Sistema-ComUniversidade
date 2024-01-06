@@ -14,7 +14,7 @@
     <header class="barra-navegacao">
         <a href="#" class="btn-abrir" onclick="abrirMenu()">&#9776; Abrir</a>
         <h1>Extensao Universitaria</h1>
-        <a href="{{ route('perfil') }}"><img src="{{ asset('img/perfil.png') }}" alt="imagem de perfil do usuario"></a>
+        <a href="{{ route('perfil') }}"><img src="{{ asset('img/icones/perfil.png') }}" alt="imagem de perfil do usuario"></a>
     </header>
     <nav class="menu-navegacao" id="menu_navegacao">
         <a href="#" onclick="fecharMenu()">&times; Fechar</a>
@@ -29,7 +29,7 @@
         <form action="{{ route('login_membro') }}">
             <button>Editar</button>
             <div id="container">
-                <img src="{{ asset('img/perfil_foto.jpeg') }}" alt="foto perfil" id="imagem">
+                <img src="{{ asset('img/foto_usuario_perfil/perfil_foto.jpeg') }}" alt="foto perfil" id="imagem">
                 <input type="file" id="arquivo" accept=".jpg, .jpeg, .png" onchange="mostrarImagem()">
             </div>
             <h1>Perfil</h1>

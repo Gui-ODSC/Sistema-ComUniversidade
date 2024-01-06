@@ -13,7 +13,7 @@
     <header class="barra-navegacao">
         <a href="#" class="btn-abrir" onclick="abrirMenu()">&#9776; Abrir</a>
         <h1>Extensao Universitaria</h1>
-        <a href="{{ route('perfil') }}"><img src="{{ asset('img/perfil.png') }}" alt="imagem de perfil do usuario"></a>
+        <a href="{{ route('perfil') }}"><img src="{{ asset('img/icones/perfil.png') }}" alt="imagem de perfil do usuario"></a>
     </header>
     <nav class="menu-navegacao" id="menu_navegacao">
         <a href="#" onclick="fecharMenu()">&times; Fechar</a>

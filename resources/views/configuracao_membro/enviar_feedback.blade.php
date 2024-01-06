@@ -13,7 +13,7 @@
     <header class="barra-navegacao">
         <a href="#" class="btn-abrir" onclick="abrirMenu()">&#9776; Abrir</a>
         <h1>Extensao Universitaria</h1>
-        <a href="{{ route('perfil') }}"><img src="{{ asset('img/perfil.png') }}" alt="imagem de perfil do usuario"></a>
+        <a href="{{ route('perfil') }}"><img src="{{ asset('img/icones/perfil.png') }}" alt="imagem de perfil do usuario"></a>
     </header>
     <nav class="menu-navegacao" id="menu_navegacao">
         <a href="#" onclick="fecharMenu()">&times; Fechar</a>
@@ -29,7 +29,7 @@
             <h1>Enviar Feedback</h1>
             <hr>
             <div class="session-img">
-                <a href="{{ route('perfil') }}"><img id='imagem-perfil' src="{{ asset('img/perfil_foto.jpeg') }}" alt="imagem de perfil do usuario"></a>
+                <a href="{{ route('perfil') }}"><img id='imagem-perfil' src="{{ asset('img/foto_usuario_perfil/perfil_foto.jpeg') }}" alt="imagem de perfil do usuario"></a>
                 <h5>Guilherme Oliveira</h5>
             </div>
             <hr>

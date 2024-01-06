@@ -13,7 +13,7 @@
     <header class="barra-navegacao">
         <a href="#" class="btn-abrir" onclick="abrirMenu()">&#9776; Abrir</a>
         <h1>Extensao Universitaria</h1>
-        <a href="{{ route('perfil') }}"><img src="{{ asset('img/perfil.png') }}" alt="imagem de perfil do usuario"></a>
+        <a href="{{ route('perfil') }}"><img src="{{ asset('img/icones/perfil.png') }}" alt="imagem de perfil do usuario"></a>
     </header>
     <nav class="menu-navegacao" id="menu_navegacao">
         <a href="#" onclick="fecharMenu()">&times; Fechar</a>
@@ -42,35 +42,35 @@
                     <td>Mark</td>
                     <td>Otto</td>
                     <td>Otto</td>
-                    <td id="fundo-detalhes"><a href="#"><img id="detalhes" src="{{ asset('img/detalhes.png') }}" alt="tres pontos para mais informação"></a></td>
+                    <td id="fundo-detalhes"><a href="#"><img id="detalhes" src="{{ asset('img/icones/detalhes.png') }}" alt="tres pontos para mais informação"></a></td>
                 </tr>
                 <tr>
                     <th scope="row">2</th>
                     <td>Jacob</td>
                     <td>Thornton</td>
                     <td>@fat</td>
-                    <td id="fundo-detalhes"><a href="#"><img id="detalhes" src="{{ asset('img/detalhes.png') }}" alt="tres pontos para mais informação"></a></td>
+                    <td id="fundo-detalhes"><a href="#"><img id="detalhes" src="{{ asset('img/icones/detalhes.png') }}" alt="tres pontos para mais informação"></a></td>
                 </tr>
                 <tr>
                     <th scope="row">2</th>
                     <td>Jacob</td>
                     <td>Thornton</td>
                     <td>@fat</td>
-                    <td id="fundo-detalhes"><a href="#"><img id="detalhes" src="{{ asset('img/detalhes.png') }}" alt="tres pontos para mais informação"></a></td>
+                    <td id="fundo-detalhes"><a href="#"><img id="detalhes" src="{{ asset('img/icones/detalhes.png') }}" alt="tres pontos para mais informação"></a></td>
                 </tr>
                 <tr>
                     <th scope="row">2</th>
                     <td>Jacob</td>
                     <td>Thornton</td>
                     <td>@fat</td>
-                    <td id="fundo-detalhes"><a href="#"><img id="detalhes" src="{{ asset('img/detalhes.png') }}" alt="tres pontos para mais informação"></a></td>
+                    <td id="fundo-detalhes"><a href="#"><img id="detalhes" src="{{ asset('img/icones/detalhes.png') }}" alt="tres pontos para mais informação"></a></td>
                 </tr>
                 <tr>
                     <th scope="row">2</th>
                     <td>Jacob</td>
                     <td>Thornton</td>
                     <td>@fat</td>
-                    <td id="fundo-detalhes"><a href="#"><img id="detalhes" src="{{ asset('img/detalhes.png') }}" alt="tres pontos para mais informação"></a></td>
+                    <td id="fundo-detalhes"><a href="#"><img id="detalhes" src="{{ asset('img/icones/detalhes.png') }}" alt="tres pontos para mais informação"></a></td>
                 </tr>
             </tbody>
         </table>
