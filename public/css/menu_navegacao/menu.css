@@ -70,3 +70,12 @@ main {
     text-decoration: none;
 }
 
+.menu-navegacao i {
+    padding: 10px;
+}
+
+#icones-menu {
+    width: 35px;
+    height: 35px; 
+}
+
