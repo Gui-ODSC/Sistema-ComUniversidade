@@ -16,7 +16,7 @@
 </header>
 <body>
     <div class="login-container">
-        <form action="{{ route('minhas_ofertas') }}">
+        <form action="{{ route('minhas_demandas') }}">
             <h1>Login Membro</h1>
             <label for="login">Login</label>
             <input type="text" id="password" placeholder="Login">

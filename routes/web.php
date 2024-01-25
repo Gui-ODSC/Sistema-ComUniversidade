@@ -20,98 +20,100 @@ Route::get('/', function(){
 //Rotas de Login específicas para cada tipo de usuário
 Route::prefix('/autenticacao')->group(function(){
     Route::get('/login_membro', function(){
-        return view('autenticacao_usuario/login_membro');
+        return view('autenticacaoUsuario/login_membro');
     })->name('login_membro');
     Route::get('/login_aluno', function(){
-        return view('autenticacao_usuario/login_aluno');
+        return view('autenticacaoUsuario/login_aluno');
     })->name('login_aluno');
     Route::get('/login_professor', function(){
-        return view('autenticacao_usuario/login_professor');
+        return view('autenticacaoUsuario/login_professor');
     })->name('login_professor');
 });
 
+
+//ROTAS REFERENTE AOS USUÁRIOS MEMBROS DO SISTEMA
 Route::prefix('membro')->group(function(){
 
-    //Rota de cadastro para membros da sociedade
-    Route::prefix('cadastro')->group(function(){
-        Route::get('/membro_sociedade', function(){
-            return view('cadastro_usuario/membro_sociedade');
-        })->name('cadastro_membro');
-    });
+    //Rota de cadastro para membros da sociedade FOI
+    Route::get('/cadastro', function(){
+        return view('usuarioMembro/cadastro/cadastro_membro');
+    })->name('cadastro_membro');
 
-    //Rota de Recuperação de Senha
+    //Rota de Recuperação de Senha FOI
     Route::get('/recuperacao_senha', function(){
         return view('recuperacao_senha');
     })->name('recuperacao_senha');
 
-    //Rota de telas do usuario para demandas
-    Route::prefix('extensao/demandas')->group(function(){
+    //Rota de telas do usuario membros para demandas FOI
+    Route::prefix('extensao/demanda')->group(function(){
         Route::get('/minhas_demandas', function(){
-            return view('demandas_membro/minhas_demandas');
+            return view('usuarioMembro/demanda/minhas_demandas');
         })->name('minhas_demandas');
         Route::get('/cadastrar_demandas', function(){
-            return view('demandas_membro/cadastrar_demandas');
+            return view('usuarioMembro/demanda/cadastrar_demandas');
         })->name('cadastrar_demandas');
         Route::get('/sucesso_cadastro_demanda', function(){
-            return view('demandas_membro/sucesso_cadastro_demanda');
+            return view('usuarioMembro/demanda/sucesso_cadastro_demanda');
         })->name('sucesso_cadastro_demanda');
     });
 
-    //Rota de telas do usuario para demandas e ofertas
-    Route::prefix('extensao/disponivel')->group(function(){
-        Route::get('/demandas_ofertas', function(){
-            return view('demandas_ofertas_membro/demandas_ofertas');
-        })->name('demandas_ofertas');
+    //Rota de telas do usuario Membro para Todas as Ofertas FOI
+    Route::prefix('extensao/')->group(function(){
+        Route::get('/todas_ofertas_disponiveis', function(){
+            return view('usuarioMembro/todas_ofertas/todas_ofertas_membro');
+        })->name('todas_ofertas');
     });
 
-    //Rota de telas do usuario para configuracoes
-    Route::prefix('extensao/configuracoes')->group(function(){
-        Route::get('/configuracao_membro', function(){
-            return view('configuracao_membro/configuracoes');
+    //Rota de telas do usuario para configuracoes FOI
+    Route::prefix('extensao/configuracoes_membro')->group(function(){
+        Route::get('/configuracao', function(){
+            return view('usuarioMembro/configuracao/configuracoes_membro');
         })->name('configuracoes');
         Route::get('/ajuda_sistema', function(){
-            return view('configuracao_membro/ajuda_sistema');
+            return view('usuarioMembro/configuracao/ajuda_sistema');
         })->name('ajuda_sistema');
         Route::get('/historico_demandas', function(){
-            return view('configuracao_membro/historico_demandas');
+            return view('usuarioMembro/configuracao/historico_demandas');
         })->name('historico_demandas');
         Route::get('/historico_ofertas', function(){
-            return view('configuracao_membro/historico_ofertas');
+            return view('usuarioMembro/configuracao/historico_ofertas');
         })->name('historico_ofertas');
         Route::get('/enviar_feedback', function(){
-            return view('configuracao_membro/enviar_feedback');
+            return view('usuarioMembro/configuracao/enviar_feedback');
         })->name('enviar_feedback');
         Route::get('/sobre_nos', function(){
-            return view('configuracao_membro/sobre_nos');
+            return view('usuarioMembro/configuracao/sobre_nos');
         })->name('sobre_nos');
     });
 
-    //Rota de telas do usuario para perfil
+    //Rota de telas do usuario para perfil FOI
     Route::prefix('extensao/perfil')->group(function(){
         Route::get('/perfil_membro', function(){
-            return view('perfil_membro/perfil');
+            return view('usuarioMembro/perfil/perfil_membro');
         })->name('perfil');
     });
 
-    //Rota de telas do usuario para sair
+    //Rota de telas do usuario para sair FOI
     Route::prefix('extensao/sair')->group(function(){
         Route::get('/sair_membro', function(){
-            return view('sair_membro/sair');
+            return view('usuarioMembro/sair/sair_membro');
         })->name('sair');
     });
 
-    //Rota de notificação contato notificacao
+    //Rota de Contatos Realizados pelo usuario membro FOI
     Route::prefix('extensao/contatos')->group(function(){
-        Route::get('/todos_contatos', function(){
-            return view('contatos_efetuados_membro/todos_contatos');
-        })->name('todos_contatos');
-        Route::get('/oferta_requisitada', function(){
-            return view('contatos_efetuados_membro/oferta_requisitada');
-        })->name('oferta_requisitada');
-        Route::get('/demanda_atendida', function(){
-            return view('contatos_efetuados_membro/demanda_atendida');
-        })->name('demanda_atendida');
+        Route::get('/contatos_realizados', function(){
+            return view('usuarioMembro/contatos_realizados/todos_contatos_realizados');
+        })->name('todos_contatos_realizados');
     });
+
+    //Rota de Contatos Recebidos pelo usuario membro FOI
+    Route::prefix('extensao/contatos')->group(function(){
+        Route::get('/contatos_recebidos', function(){
+            return view('usuarioMembro/contatos_recebidos/todos_contatos_recebidos');
+        })->name('todos_contatos_recebidos');
+    });
+
 });
 
 

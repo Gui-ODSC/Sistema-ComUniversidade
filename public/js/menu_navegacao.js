@@ -1,8 +1,8 @@
 
 
 function abrirMenu() {
-    document.getElementById('menu_navegacao').style.width = '300px';
-    document.getElementById('conteudo').style.marginLeft = '300px';
+    document.getElementById('menu_navegacao').style.width = '320px';
+    document.getElementById('conteudo').style.marginLeft = '320px';
 }
 
 function fecharMenu() {

@@ -16,7 +16,7 @@
 </header>
 <body>
     <div class="recuperacao-senha-container">
-        <form action="{{ route('inicial') }}">
+        <form action="{{ route('login_membro') }}">
             <h1>Recuperacao Senha</h1>
             <label for="email">Email</label>
             <input type="text" id="password" placeholder="Email" required>

@@ -59,7 +59,7 @@
                     </div>
                     <div id="icones-contato">
                         <a href=""><img src="{{ asset('img/icones/email.png') }}" alt="icone email" id="imagem-email"></a>
-                        <a href="{{ route('demanda_atendida') }}"><img src="{{ asset('img/icones/icone_plus.png') }}" alt="icone mais info" id="imagem-plus"></a>
+                        <a href="#"><img src="{{ asset('img/icones/icone_plus.png') }}" alt="icone mais info" id="imagem-plus"></a>
                     </div>
                 </div>
             </div>
@@ -83,7 +83,7 @@
                     </div>
                     <div id="icones-contato">
                         <a href=""><img src="{{ asset('img/icones/email.png') }}" alt="icone email" id="imagem-email"></a>
-                        <a href="{{ route('oferta_requisitada') }}"><img src="{{ asset('img/icones/icone_plus.png') }}" alt="icone mais info" id="imagem-plus"></a>
+                        <a href="#"><img src="{{ asset('img/icones/icone_plus.png') }}" alt="icone mais info" id="imagem-plus"></a>
                     </div>
                 </div>
             </div>
@@ -107,7 +107,7 @@
                     </div>
                     <div id="icones-contato">
                         <a href=""><img src="{{ asset('img/icones/email.png') }}" alt="icone email" id="imagem-email"></a>
-                        <a href="{{ route('demanda_atendida') }}"><img src="{{ asset('img/icones/icone_plus.png') }}" alt="icone mais info" id="imagem-plus"></a>
+                        <a href="#"><img src="{{ asset('img/icones/icone_plus.png') }}" alt="icone mais info" id="imagem-plus"></a>
                     </div>
                 </div>
             </div>
