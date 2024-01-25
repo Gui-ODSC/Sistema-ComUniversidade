@@ -16,7 +16,7 @@
 </header>
 <body>
     <div class="login-container">
-        <form action="{{ route('minhas_ofertas') }}"> 
+        <form action="#"> 
             <h1>Login Professor</h1>
             <label for="login">Login</label>
             <input type="text" id="password" placeholder="Login">
