@@ -105,7 +105,7 @@ Route::prefix('extensao/perfil')->group(function(){
     })->name('perfil');
 });
 
-//Rota de telas do usuario para perfil
+//Rota de telas do usuario para sair
 Route::prefix('extensao/sair')->group(function(){
     Route::get('/sair_membro', function(){
         return view('sair_membro/sair');

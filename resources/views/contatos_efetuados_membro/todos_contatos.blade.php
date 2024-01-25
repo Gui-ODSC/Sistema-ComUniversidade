@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{{ asset('css/menu_navegacao/menu.css') }}">
     <link rel="stylesheet" href="{{ asset('css/contatos_efetuados_membro/todos_contatos.css') }}">
     <script src="{{ asset('js/menu_navegacao.js') }}"></script>
+    <script src="{{ asset('js/contato_efetuado_membro/modal_contatos.js') }}"></script>
     <title>Minhas Demandas</title>
 </head>
 <body> 
@@ -34,7 +35,7 @@
                     </div>
                     <div id="icones-contato">
                         <a href=""><img src="{{ asset('img/icones/email.png') }}" alt="icone email" id="imagem-email"></a>
-                        <a href=""><img src="{{ asset('img/icones/icone_plus.png') }}" alt="icone mais info" id="imagem-plus"></a>
+                        <a onclick="openModal()"><img src="{{ asset('img/icones/icone_plus.png') }}" alt="icone mais info" id="imagem-plus"></a>
                     </div>
                 </div>
             </div>
@@ -58,7 +59,7 @@
                     </div>
                     <div id="icones-contato">
                         <a href=""><img src="{{ asset('img/icones/email.png') }}" alt="icone email" id="imagem-email"></a>
-                        <a href=""><img src="{{ asset('img/icones/icone_plus.png') }}" alt="icone mais info" id="imagem-plus"></a>
+                        <a href="{{ route('demanda_atendida') }}"><img src="{{ asset('img/icones/icone_plus.png') }}" alt="icone mais info" id="imagem-plus"></a>
                     </div>
                 </div>
             </div>
@@ -82,7 +83,7 @@
                     </div>
                     <div id="icones-contato">
                         <a href=""><img src="{{ asset('img/icones/email.png') }}" alt="icone email" id="imagem-email"></a>
-                        <a href=""><img src="{{ asset('img/icones/icone_plus.png') }}" alt="icone mais info" id="imagem-plus"></a>
+                        <a href="{{ route('oferta_requisitada') }}"><img src="{{ asset('img/icones/icone_plus.png') }}" alt="icone mais info" id="imagem-plus"></a>
                     </div>
                 </div>
             </div>
@@ -106,11 +107,20 @@
                     </div>
                     <div id="icones-contato">
                         <a href=""><img src="{{ asset('img/icones/email.png') }}" alt="icone email" id="imagem-email"></a>
-                        <a href=""><img src="{{ asset('img/icones/icone_plus.png') }}" alt="icone mais info" id="imagem-plus"></a>
+                        <a href="{{ route('demanda_atendida') }}"><img src="{{ asset('img/icones/icone_plus.png') }}" alt="icone mais info" id="imagem-plus"></a>
                     </div>
                 </div>
             </div>
         </div>
+
+
+        <!-- MODAL -->
+            <div class="clicar-fora-modal" id="clicar-fora-modal" onclick="closeModal()"></div>
+            <div class="caixa-modal" id="caixa-modal">
+                <p>Informações detalhadas aqui.</p>
+                <span onclick="closeModal()">Fechar [X]</span>
+            </div>
+        <!-- MODAL -->
     </main>
 </body>
 </html>
