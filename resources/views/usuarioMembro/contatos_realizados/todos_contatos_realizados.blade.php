@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/menu_navegacao/menu.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/contatos_efetuados_membro/todos_contatos.css') }}">
-    <script src="{{ asset('js/menu_navegacao.js') }}"></script>
-    <script src="{{ asset('js/contato_efetuado_membro/modal_contatos.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('css/usuarioMembro/contatos_realizados/todos_contatos_realizados.css') }}">
+    <script src="{{ asset('js/menu/menu_navegacao.js') }}"></script>
+    <script src="{{ asset('js/usuarioMembro/modal_contato.js') }}"></script>
     <title>Minhas Demandas</title>
 </head>
 <body> 
@@ -117,7 +117,7 @@
         <!-- MODAL -->
             <div class="clicar-fora-modal" id="clicar-fora-modal" onclick="closeModal()"></div>
             <div class="caixa-modal" id="caixa-modal">
-                <p>Informações detalhadas aqui.</p>
+                @include('usuarioMembro/contatos_realizados/visualizar_contatos_realizados')
                 <span onclick="closeModal()">Fechar [X]</span>
             </div>
         <!-- MODAL -->
