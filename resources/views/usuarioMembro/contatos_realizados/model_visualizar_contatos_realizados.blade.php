@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="{{ asset('css/menu_navegacao/menu.css') }}">
     <link rel="stylesheet" href="{{ asset('css/usuarioMembro/contatos_realizados/visualizar_contatos_realizados.css') }}">
     <script src="{{ asset('js/menu/menu_navegacao.js') }}"></script>
-    <script src="{{ asset('js/contato_efetuado_membro/modal.js') }}"></script>
     <title>Minhas Demandas</title>
 </head>
 <body>

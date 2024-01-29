@@ -49,12 +49,31 @@ Route::prefix('membro')->group(function(){
         Route::get('/minhas_demandas', function(){
             return view('usuarioMembro/demanda/minhas_demandas');
         })->name('minhas_demandas');
+
+        //CADASTRAR
         Route::get('/cadastrar_demandas', function(){
             return view('usuarioMembro/demanda/cadastrar_demandas');
         })->name('cadastrar_demandas');
         Route::get('/sucesso_cadastro_demanda', function(){
             return view('usuarioMembro/demanda/sucesso_cadastro_demanda');
         })->name('sucesso_cadastro_demanda');
+
+        //EDITAR
+        Route::get('/editar_demandas', function(){
+            return view('usuarioMembro/demanda/editar_demandas');
+        })->name('editar_demandas');
+        Route::get('/sucesso_edicao_demanda', function(){
+            return view('usuarioMembro/demanda/sucesso_edicao_demanda');
+        })->name('sucesso_edicao_demanda');
+
+        //DELETAR
+        Route::get('/cadastrar_demandas', function(){
+            return view('usuarioMembro/demanda/cadastrar_demandas');
+        })->name('cadastrar_demandas');
+        Route::get('/sucesso_cadastro_demanda', function(){
+            return view('usuarioMembro/demanda/sucesso_cadastro_demanda');
+        })->name('sucesso_cadastro_demanda');
+        
     });
 
     //Rota de telas do usuario Membro para Todas as Ofertas FOI

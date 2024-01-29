@@ -1,0 +1,27 @@
+h2 {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.div-botoes {
+    display: flex;
+    justify-content: center;
+}
+
+.div-botoes button {
+    padding: 10px;
+    border-radius: 10px;
+    margin: 0 10px; /* Adiciona margem entre os botões */
+    border: none;
+    color: #FFF;
+    font-weight: bold;
+}
+
+#botao-sim {
+    background-color: #0b401e;
+}
+
+#botao-nao {
+    background-color: #4f1111;
+}

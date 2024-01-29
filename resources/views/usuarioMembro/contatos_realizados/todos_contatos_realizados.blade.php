@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{{ asset('css/menu_navegacao/menu.css') }}">
     <link rel="stylesheet" href="{{ asset('css/usuarioMembro/contatos_realizados/todos_contatos_realizados.css') }}">
     <script src="{{ asset('js/menu/menu_navegacao.js') }}"></script>
-    <script src="{{ asset('js/usuarioMembro/modal_contato.js') }}"></script>
+    <script src="{{ asset('js/modal/modal_padrao.js') }}"></script>
     <title>Minhas Demandas</title>
 </head>
 <body> 
@@ -117,7 +117,7 @@
         <!-- MODAL -->
             <div class="clicar-fora-modal" id="clicar-fora-modal" onclick="closeModal()"></div>
             <div class="caixa-modal" id="caixa-modal">
-                @include('usuarioMembro/contatos_realizados/visualizar_contatos_realizados')
+                @include('usuarioMembro/contatos_realizados/model_visualizar_contatos_realizados')
                 <span onclick="closeModal()">Fechar [X]</span>
             </div>
         <!-- MODAL -->
