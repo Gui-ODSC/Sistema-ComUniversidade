@@ -1,19 +1,52 @@
-.minhas-demandas h1 {
+.matchings h1 {
     text-align: center;
     margin-top: 20px;
     margin-bottom: 30px;
-    color: #191970;
-    text-decoration: underline;
 }
 
-.minhas-demandas button {
-    padding: 10px;
+.header-demanda {
+    display: flex;
+    justify-content: space-between;
+}
+
+.container-info-demanda {
+    width: 100%;
+    height: 300px;
+    background-color: #343447;
     border-radius: 10px;
-    margin-bottom: 20px;
-    background-color: #191970;
-    border: none;
-    color: #FFF;
-    font-weight: bold;
+    color: white;
+    padding: 10px;
+}
+
+.container-info-demanda h2{
+    margin: 10px;   
+    margin-bottom: 30px;
+}
+
+.container-info-demanda hr{
+    width: 100%;    
+}
+
+.dados-detalhados-demanda {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .dados-detalhados-demanda h5 {
+    flex: 0 0 100%; /* Cada h5 ocupará 100% da largura até atingir a largura máxima permitida */
+    margin: 5px 0; /* Adiciona um espaçamento entre cada h5 */
+    box-sizing: border-box; /* Garante que a largura inclui a margem e o preenchimento */
+  }
+
+  @media (min-width: 600px) {
+    .dados-detalhados-demanda h5 {
+      flex: 0 0 calc(50% - 10px); /* Em telas maiores, cada h5 ocupará 50% da largura */
+    }
+  }
+
+#icones_status {
+    width: 35px;
+    height: 35px;
 }
 
 #icones_demanda {

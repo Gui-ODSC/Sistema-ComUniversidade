@@ -36,6 +36,11 @@ Route::prefix('membro')->group(function(){
         Route::get('/sucesso_edicao_demanda', function(){
             return view('usuarioMembro/demanda/sucesso_edicao_demanda');
         })->name('sucesso_edicao_demanda_membro');
+
+        //VISUALIZAR
+        Route::get('/visualizar_matching_demanda', function(){
+            return view('usuarioMembro/demanda/visualizar_matching_demandas');
+        })->name('visualizar_matching_demandas_membro');
         
     });
 

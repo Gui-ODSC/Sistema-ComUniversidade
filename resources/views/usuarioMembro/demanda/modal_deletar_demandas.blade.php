@@ -9,10 +9,12 @@
     <title>Minhas Demandas</title>
 </head>
 <body>
-    <h2>Deseja mesmo Excluir ?</h2>
-    <div class="div-botoes">
-        <a href="{{ route('minhas_demandas_membro') }}"><button id="botao-sim">Sim</button></a>
-        <a href="{{ route('minhas_demandas_membro') }}"><button id="botao-nao">Não</button></a>
+    <div class="modal-excluir">
+        <h2>Deseja mesmo Excluir ?</h2>
+        <div class="div-botoes">
+            <a href="{{ route('minhas_demandas_membro') }}"><button id="botao-sim">Sim</button></a>
+            <a href="{{ route('minhas_demandas_membro') }}"><button id="botao-nao">Não</button></a>
+        </div>
     </div>
 </body>
 </html>
