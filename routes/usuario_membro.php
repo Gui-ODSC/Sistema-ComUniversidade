@@ -35,13 +35,14 @@ Route::prefix('membro')->group(function(){
         })->name('editar_demandas_membro');
         Route::get('/sucesso_edicao_demanda', function(){
             return view('usuarioMembro/demanda/sucesso_edicao_demanda');
-        })->name('sucesso_edicao_demanda_membro');
+        })->name('sucesso_edicao_demanda_membro');    
+    });
 
-        //VISUALIZAR
+    //Rota de telas do usuario Membro para as telas de matching
+    Route::prefix('extensao/matching')->group(function(){
         Route::get('/visualizar_matching_demanda', function(){
-            return view('usuarioMembro/demanda/visualizar_matching_demandas');
+            return view('usuarioMembro/matching_demandas/visualizar_matching_demandas');
         })->name('visualizar_matching_demandas_membro');
-        
     });
 
     //Rota de telas do usuario Membro para Todas as Ofertas FOI

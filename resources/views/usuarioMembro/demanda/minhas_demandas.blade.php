@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{{ asset('css/menu_navegacao/menu.css') }}">
     <link rel="stylesheet" href="{{ asset('css/usuarioMembro/demanda/minhas_demandas.css') }}">
     <script src="{{ asset('js/menu/menu_navegacao.js') }}"></script>
-    <script src="{{ asset('js/modal/modal_padrao.js') }}"></script>
+    <script src="{{ asset('js/usuarioMembro/demanda/modal_deletar_demanda.js') }}"></script>
     <title>Minhas Demandas</title>
 </head>
 <body> 
@@ -34,7 +34,7 @@
                     <td>Otto</td>
                     <td>12/03/2022</td>
                     <td><a href="{{ route('editar_demandas_membro') }}"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/minhas_demandas/editar.png') }}" alt="tres pontos para mais informação"></a></td>
-                    <td><a onclick="openModal()"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/minhas_demandas/delete.png') }}" alt="tres pontos para mais informação"></a></td>
+                    <td><a onclick="openModalDeletar()"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/minhas_demandas/delete.png') }}" alt="tres pontos para mais informação"></a></td>
                     <td><a href="{{ route('visualizar_matching_demandas_membro') }}"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/minhas_demandas/ver.png') }}" alt="tres pontos para mais informação"></a></td>
                 </tr>
                 <tr>
@@ -43,7 +43,7 @@
                     <td>Thornton</td>
                     <td>25/07/2023</td>
                     <td><a href="{{ route('editar_demandas_membro') }}"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/minhas_demandas/editar.png') }}" alt="tres pontos para mais informação"></a></td>
-                    <td><a onclick="openModal()"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/minhas_demandas/delete.png') }}" alt="tres pontos para mais informação"></a></td>
+                    <td><a onclick="openModalDeletar()"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/minhas_demandas/delete.png') }}" alt="tres pontos para mais informação"></a></td>
                     <td><a href="{{ route('visualizar_matching_demandas_membro') }}"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/minhas_demandas/ver.png') }}" alt="tres pontos para mais informação"></a></td>
                 </tr>
                 <tr>
@@ -52,7 +52,7 @@
                     <td>Thornton</td>
                     <td>05/09/2024</td>
                     <td><a href="{{ route('editar_demandas_membro') }}"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/minhas_demandas/editar.png') }}" alt="tres pontos para mais informação"></a></td>
-                    <td><a onclick="openModal()"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/minhas_demandas/delete.png') }}" alt="tres pontos para mais informação"></a></td>
+                    <td><a onclick="openModalDeletar()"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/minhas_demandas/delete.png') }}" alt="tres pontos para mais informação"></a></td>
                     <td><a href="{{ route('visualizar_matching_demandas_membro') }}"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/minhas_demandas/ver.png') }}" alt="tres pontos para mais informação"></a></td>
                 </tr>
                 <tr>
@@ -61,7 +61,7 @@
                     <td>Thornton</td>
                     <td>18/01/2025</td>
                     <td><a href="{{ route('editar_demandas_membro') }}"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/minhas_demandas/editar.png') }}" alt="tres pontos para mais informação"></a></td>
-                    <td><a onclick="openModal()"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/minhas_demandas/delete.png') }}" alt="tres pontos para mais informação"></a></td>
+                    <td><a onclick="openModalDeletar()"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/minhas_demandas/delete.png') }}" alt="tres pontos para mais informação"></a></td>
                     <td><a href="{{ route('visualizar_matching_demandas_membro') }}"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/minhas_demandas/ver.png') }}" alt="tres pontos para mais informação"></a></td>
                 </tr>
                 <tr>
@@ -70,7 +70,7 @@
                     <td>Thornton</td>
                     <td>08/06/2022</td>
                     <td><a href="{{ route('editar_demandas_membro') }}"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/minhas_demandas/editar.png') }}" alt="tres pontos para mais informação"></a></td>
-                    <td><a onclick="openModal()"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/minhas_demandas/delete.png') }}" alt="tres pontos para mais informação"></a></td>
+                    <td><a onclick="openModalDeletar()"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/minhas_demandas/delete.png') }}" alt="tres pontos para mais informação"></a></td>
                     <td><a href="{{ route('visualizar_matching_demandas_membro') }}"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/minhas_demandas/ver.png') }}" alt="tres pontos para mais informação"></a></td>
                 </tr>
                 <tr>
@@ -79,7 +79,7 @@
                     <td>Otto</td>
                     <td>30/10/2023</td>
                     <td><a href="{{ route('editar_demandas_membro') }}"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/minhas_demandas/editar.png') }}" alt="tres pontos para mais informação"></a></td>
-                    <td><a onclick="openModal()"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/minhas_demandas/delete.png') }}" alt="tres pontos para mais informação"></a></td>
+                    <td><a onclick="openModalDeletar()"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/minhas_demandas/delete.png') }}" alt="tres pontos para mais informação"></a></td>
                     <td><a href="{{ route('visualizar_matching_demandas_membro') }}"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/minhas_demandas/ver.png') }}" alt="tres pontos para mais informação"></a></td>
                 </tr>
                 <tr>
@@ -88,15 +88,15 @@
                     <td>Otto</td>
                     <td>21/12/2024</td>
                     <td><a href="{{ route('editar_demandas_membro') }}"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/minhas_demandas/editar.png') }}" alt="tres pontos para mais informação"></a></td>
-                    <td><a onclick="openModal()"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/minhas_demandas/delete.png') }}" alt="tres pontos para mais informação"></a></td>
+                    <td><a onclick="openModalDeletar()"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/minhas_demandas/delete.png') }}" alt="tres pontos para mais informação"></a></td>
                     <td><a href="{{ route('visualizar_matching_demandas_membro') }}"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/minhas_demandas/ver.png') }}" alt="tres pontos para mais informação"></a></td>
                 </tr>
             </tbody>
         </table>
             <!-- MODAL -->
-            <div class="clicar-fora-modal" id="clicar-fora-modal" onclick="closeModal()"></div>
+            <div class="clicar-fora-modal" id="clicar-fora-modal" onclick="closeModalDeletar()"></div>
             <div class="caixa-modal" id="caixa-modal">
-                <span onclick="closeModal()" id="botao_fechar_model"><img src="{{ asset('img/usuarioMembro/minhas_demandas/fechar.png') }}" alt=""></span>
+                <span onclick="closeModalDeletar()" id="botao_fechar_model"><img src="{{ asset('img/usuarioMembro/minhas_demandas/fechar.png') }}" alt=""></span>
                 @include('usuarioMembro/demanda/modal_deletar_demandas')
             </div>
             <!-- MODAL -->
