@@ -29,15 +29,6 @@ Route::prefix('/autenticacao')->group(function(){
     })->name('login_professor');
 });
 
-//ROTAS USUARIOS MEMBRO
-include 'usuario_membro_routes.php';
-
-//ROTAS USUARIO PROFESSOR
-include 'usuario_professor_routes.php';
-
-//ROTAS USUARIO ALUNO
-include 'usuario_aluno_routes.php';
-
 
 
 
