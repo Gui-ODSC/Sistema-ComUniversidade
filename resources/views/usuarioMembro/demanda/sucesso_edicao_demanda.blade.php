@@ -9,7 +9,7 @@
 <body>
 <div class="sucesso-cadastro-demanda">
         <h1>Demanda Editada com Sucesso</h1>
-        <a href="{{ route('minhas_demandas') }}">Voltar para minhas demandas</a>
+        <a href="{{ route('minhas_demandas_membro') }}">Voltar para minhas demandas</a>
     </div>
 </body>
 </html>

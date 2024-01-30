@@ -13,7 +13,7 @@
     @include('menu')
     <main class="cadastrar_demandas" id="conteudo">
         <h1>Editar Demanda</h1>
-        <form action="{{ route('sucesso_edicao_demanda') }}">
+        <form action="{{ route('sucesso_edicao_demanda_membro') }}">
             <input type="text" name="titulo_demanda" value="Titulo" required>
             <input type="text" name="publico_demanda" value="Publico Alvo da Ação" required>
             <textarea type="text" name="texto_livre" value="Texto Livre" required></textarea>

@@ -16,13 +16,13 @@
 </header>
 <body>
     <div class="login-container">
-        <form action="{{ route('minhas_demandas') }}">
+        <form action="{{ route('minhas_demandas_membro') }}">
             <h1>Login Membro</h1>
             <label for="login">Login</label>
             <input type="text" id="password" placeholder="Login">
             <label for="password">Senha</label>
             <input type="password" id="password" placeholder="Senha">
-            <span><a href="{{ route('recuperacao_senha') }}">Recuperar a Senha</a></span><br>
+            <span><a href="{{ route('recuperacao_senha_membro') }}">Recuperar a Senha</a></span><br>
             <button>Entrar</button>
             <span><a href="{{ route('cadastro_membro') }}">Ainda não possui conta? Cadastre-se</a></span><br>
         </form>
