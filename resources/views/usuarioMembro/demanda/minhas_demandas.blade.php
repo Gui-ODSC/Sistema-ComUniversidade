@@ -93,13 +93,7 @@
                 </tr>
             </tbody>
         </table>
-            <!-- MODAL -->
-            <div class="clicar-fora-modal" id="clicar-fora-modal" onclick="closeModalDeletar()"></div>
-            <div class="caixa-modal" id="caixa-modal">
-                <span onclick="closeModalDeletar()" id="botao_fechar_model"><img src="{{ asset('img/usuarioMembro/minhas_demandas/fechar.png') }}" alt=""></span>
-                @include('usuarioMembro/demanda/modal_deletar_demandas')
-            </div>
-            <!-- MODAL -->
+        @include('usuarioMembro/demanda/modal_deletar_demandas')
     </main>
 </body>
 </html>
