@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{{ asset('css/usuarioMembro/matching_demandas/visualizar_matching_demandas.css') }}">
     <script src="{{ asset('js/menu/menu_navegacao.js') }}"></script>
     <script src="{{ asset('js/usuarioMembro/demanda/modal_deletar_demanda.js') }}"></script>
+    <script src="{{ asset('js/usuarioMembro/matching_demandas/modal_visualizar_oferta.js') }}"></script>
     <title>Matching Demanda</title>
 </head>
 <body> 
@@ -51,7 +52,7 @@
                     <td></td>
                     <td><img id="icones_status" src="{{ asset('img/usuarioMembro/visualizar_matching_demandas/olho_desmarcado.png') }}" alt="tres pontos para mais informação"></td>
                     <td><a onclick="openModalDeletar()"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/minhas_demandas/delete.png') }}" alt="tres pontos para mais informação"></a></td>
-                    <td><a href="#"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/visualizar_matching_demandas/pesquisa_contatos.png') }}" alt="tres pontos para mais informação"></a></td>
+                    <td><a onclick="openModalVisualizarOferta()"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/visualizar_matching_demandas/pesquisa_contatos.png') }}" alt="tres pontos para mais informação"></a></td>
                 </tr>
                 <tr>
                     <th scope="row">2</th>
@@ -60,7 +61,7 @@
                     <td></td>
                     <td><img id="icones_status" src="{{ asset('img/usuarioMembro/visualizar_matching_demandas/olho_marcado.png') }}" alt="tres pontos para mais informação"></td>
                     <td><a onclick="openModalDeletar()"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/minhas_demandas/delete.png') }}" alt="tres pontos para mais informação"></a></td>
-                    <td><a href="#"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/visualizar_matching_demandas/pesquisa_contatos.png') }}" alt="tres pontos para mais informação"></a></td>
+                    <td><a onclick="openModalVisualizarOferta()"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/visualizar_matching_demandas/pesquisa_contatos.png') }}" alt="tres pontos para mais informação"></a></td>
                 </tr>
                 <tr>
                     <th scope="row">3</th>
@@ -69,7 +70,7 @@
                     <td></td>
                     <td><img id="icones_status" src="{{ asset('img/usuarioMembro/visualizar_matching_demandas/olho_marcado.png') }}" alt="tres pontos para mais informação"></td>
                     <td><a onclick="openModalDeletar()"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/minhas_demandas/delete.png') }}" alt="tres pontos para mais informação"></a></td>
-                    <td><a href="#"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/visualizar_matching_demandas/pesquisa_contatos.png') }}" alt="tres pontos para mais informação"></a></td>
+                    <td><a onclick="openModalVisualizarOferta()"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/visualizar_matching_demandas/pesquisa_contatos.png') }}" alt="tres pontos para mais informação"></a></td>
                 </tr>
                 <tr>
                     <th scope="row">4</th>
@@ -78,7 +79,7 @@
                     <td></td>
                     <td><img id="icones_status" src="{{ asset('img/usuarioMembro/visualizar_matching_demandas/olho_desmarcado.png') }}" alt="tres pontos para mais informação"></td>
                     <td><a onclick="openModalDeletar()"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/minhas_demandas/delete.png') }}" alt="tres pontos para mais informação"></a></td>
-                    <td><a href="#"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/visualizar_matching_demandas/pesquisa_contatos.png') }}" alt="tres pontos para mais informação"></a></td>
+                    <td><a onclick="openModalVisualizarOferta()"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/visualizar_matching_demandas/pesquisa_contatos.png') }}" alt="tres pontos para mais informação"></a></td>
                 </tr>
                 <tr>
                     <th scope="row">5</th>
@@ -87,7 +88,7 @@
                     <td></td>
                     <td><img id="icones_status" src="{{ asset('img/usuarioMembro/visualizar_matching_demandas/olho_desmarcado.png') }}" alt="tres pontos para mais informação"></td>
                     <td><a onclick="openModalDeletar()"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/minhas_demandas/delete.png') }}" alt="tres pontos para mais informação"></a></td>
-                    <td><a href="#"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/visualizar_matching_demandas/pesquisa_contatos.png') }}" alt="tres pontos para mais informação"></a></td>
+                    <td><a onclick="openModalVisualizarOferta()"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/visualizar_matching_demandas/pesquisa_contatos.png') }}" alt="tres pontos para mais informação"></a></td>
                 </tr>
                 <tr>
                     <th scope="row">6</th>
@@ -96,7 +97,7 @@
                     <td></td>
                     <td><img id="icones_status" src="{{ asset('img/usuarioMembro/visualizar_matching_demandas/olho_desmarcado.png') }}" alt="tres pontos para mais informação"></td>
                     <td><a onclick="openModalDeletar()"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/minhas_demandas/delete.png') }}" alt="tres pontos para mais informação"></a></td>
-                    <td><a href="#"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/visualizar_matching_demandas/pesquisa_contatos.png') }}" alt="tres pontos para mais informação"></a></td>
+                    <td><a onclick="openModalVisualizarOferta()"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/visualizar_matching_demandas/pesquisa_contatos.png') }}" alt="tres pontos para mais informação"></a></td>
                 </tr>
                 <tr>
                     <th scope="row">7</th>
@@ -105,7 +106,7 @@
                     <td></td>
                     <td><img id="icones_status" src="{{ asset('img/usuarioMembro/visualizar_matching_demandas/olho_marcado.png') }}" alt="tres pontos para mais informação"></td>
                     <td><a onclick="openModalDeletar()"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/minhas_demandas/delete.png') }}" alt="tres pontos para mais informação"></a></td>
-                    <td><a href="#"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/visualizar_matching_demandas/pesquisa_contatos.png') }}" alt="tres pontos para mais informação"></a></td>
+                    <td><a onclick="openModalVisualizarOferta()"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/visualizar_matching_demandas/pesquisa_contatos.png') }}" alt="tres pontos para mais informação"></a></td>
                 </tr>
             </tbody>
         </table>
