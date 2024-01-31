@@ -11,7 +11,7 @@
 <body>
     <div class="clicar-fora-modal" id="clicar-fora-modal" onclick="closeModalDeletar()"></div>
     <div class="caixa-modal" id="caixa-modal">
-        <span onclick="closeModalDeletar()" id="botao_fechar_model"><img src="{{ asset('img/usuarioMembro/minhas_demandas/fechar.png') }}" alt=""></span>
+        <span onclick="closeModalDeletar()" id="botao_fechar_modal"><img src="{{ asset('img/usuarioMembro/minhas_demandas/fechar.png') }}" alt=""></span>
         <div class="modal-excluir">
             <h2>Deseja mesmo Excluir ?</h2>
             <div class="div-botoes">

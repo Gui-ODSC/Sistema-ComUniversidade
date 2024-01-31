@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('css/menu_navegacao/menu.css') }}">
     <link rel="stylesheet" href="{{ asset('css/usuarioMembro/matching_demandas/modal_contatar/modal_visualizar_oferta.css') }}">
+    <script src="{{ asset('js/usuarioMembro/matching_demandas/modal_contatar_oferta.js') }}"></script>
     <script src="{{ asset('js/menu/menu_navegacao.js') }}"></script>
     <title>Minhas Demandas</title>
 </head>
@@ -42,14 +43,17 @@
             </div>
             <div class="botoes-oferta">
                 <div>
-                    <button>Contatar<a href="#"><img id="icone-telefone" src="{{ asset('img/usuarioMembro/visualizar_matching_demandas/modal_contatar/telefone_contato.png') }}" alt=""></a></button>
+                    <a onclick="openModalContatarOferta()"><button>Contatar<img id="icone-telefone" src="{{ asset('img/usuarioMembro/visualizar_matching_demandas/modal_contatar/telefone_contato.png') }}" alt=""></button></a>
                 </div>
                 <div>
-                    <span onclick="closeModalVisualizarOferta()" id="botao-fechar-model"><button>Fechar</button></span>
+                    <span onclick="closeModalVisualizarOferta()" id="botao-fechar-modal"><button>Fechar</button></span>
                 </div>
             </div>
         </div>
     </div>
     <!-- MODAL -->
+    <!-- MODAL CONTATAR -->
+    @include('usuarioMembro/matching_demandas/modal_contatar/modal_contatar_oferta')
+    <!-- MODAL CONTATAR -->
 </body>
 </html>

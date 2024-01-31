@@ -57,7 +57,7 @@
     z-index: 900;
 }
 
-#botao_fechar_model {
+#botao_fechar_modal {
     position: absolute;
     top: 5px; /* Ajuste conforme necessário */
     right: 5px; /* Ajuste conforme necessário */
