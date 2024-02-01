@@ -1,44 +1,108 @@
-.demandas-ofertas h1 {
+.todas-ofertas h1 {
     text-align: center;
     margin-top: 20px;
     margin-bottom: 30px;
+    color: #191970;
 }
 
-.demandas-ofertas button {
-    padding: 10px;
+.todas-ofertas hr {
+    margin-bottom: 3px;
+}
+
+.caixa-pesquisa-oferta {
+    display: flex;
+    justify-content: end;
+    margin-bottom: 10px;
+}
+
+.caixa-pesquisa-oferta input {
+    border: solid 2px black;
     border-radius: 10px;
-    margin-bottom: 20px;
-    background-color: #191970;
-    border: none;
-    color: #FFF;
+    padding: 5px;
+    width: 300px;
+    margin-right: 0px;
+}
+
+#lupa {
+    margin:4px 5px 3px -30px;
+    cursor:pointer;
+    text-decoration: none;
+    color: black;
+}
+#lupa:after {
+    font-family:FontAwesome;
+    font-size:14px;
+    content:"\f002"
+}
+
+.secao-filtros {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    height: 80px;
+    border-radius: 10px;
+    border: solid 2px black;
+}
+
+#filtros img{
+    width: 20px;
+    margin-left: 9px;
+}
+
+#filtros button{
+    background-color: gray;
+    border: solid 2px black;
+    width: 200px;
+    height: 50px;
+    border-radius: 10px;
+    margin: 13px 0px 10px 8px;
     font-weight: bold;
 }
 
-#detalhes {
-    width:40px;
-    height:40px;
+#botao-buscar button{
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    width: 100px;
+    height: 50px;
+    border: solid 2px black;
+    background-color: #191970;
+    color: #FFF;
+    font-weight: bold;
+    margin: 13px 10px 0px 8px;
+}
+
+
+#icones_demanda {
+    width: 35px;
+    height: 35px;
     border-radius: 7px;
-    background-color: #708090;
+    background-color: black;
+    border: solid 2px grey;
     padding: 3px;
 }
 
-#fundo-detalhes {
-    background-color: black;
-}
-
 .table-personalizacao {
+    margin-top: 20px;
     text-align: center;
 }
 
+.table-personalizacao thead, tbody {
+    border: solid 2px black;
+}
+
 .table th:nth-child(2) {
-    width: 400px; /* Largura desejada da célula do título */
+    width: 600px; /* Largura desejada da célula do título */
 }
 
 .table th:nth-child(5) {
-    width: 80px; /* Largura desejada da célula do título */
+    width: 50px; /* Largura desejada da célula do título */
 }
 
 .table th:nth-child(6) {
-    width: 80px; /* Largura desejada da célula do título */
+    width: 50px; /* Largura desejada da célula do título */
 }
 
+#icones_demanda {
+    cursor: pointer;
+}
