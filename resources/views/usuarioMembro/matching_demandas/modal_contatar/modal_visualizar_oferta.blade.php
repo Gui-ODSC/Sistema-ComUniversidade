@@ -43,7 +43,11 @@
             </div>
             <div class="botoes-oferta">
                 <div>
-                    <a onclick="openModalContatarOferta()"><button>Contatar<img id="icone-telefone" src="{{ asset('img/usuarioMembro/visualizar_matching_demandas/modal_contatar/telefone_contato.png') }}" alt=""></button></a>
+                    <a onclick="openModalContatarOferta()">
+                        <button>Contatar
+                            <img id="icone-telefone" src="{{ asset('img/usuarioMembro/visualizar_matching_demandas/modal_contatar/telefone_contato.png') }}" alt="">
+                        </button>
+                    </a>
                 </div>
                 <div>
                     <span onclick="closeModalVisualizarOferta()" id="botao-fechar-modal"><button>Fechar</button></span>
