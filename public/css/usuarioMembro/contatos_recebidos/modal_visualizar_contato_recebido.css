@@ -1,0 +1,240 @@
+.dados-oferta {
+    width: 100%;
+    height: 200px;
+    background-color: #ADD8E6;
+    padding: 5px;
+    border-radius: 10px;
+    border: solid 2px black;
+}
+
+.dados-usuario-professor {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.informacao-professor {
+    width: 1700px;
+    height: 100px;
+    border-bottom: solid 1px black;
+}
+
+#foto-nome {
+    display: flex;
+}
+
+#foto-nome h2 {
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+#foto-nome img {
+    width: 60px;
+}
+
+#dados-professor {
+    margin-top: 0px;
+    height: 40px;
+}
+
+#dados-professor hr{
+    margin-top: 7px;
+    margin-bottom: 3px;
+    width: 75%;
+    color: black;
+}
+
+#dados-professor h6{
+    font-size: 15px;
+    display: inline;
+    padding-left: 15px;
+}
+
+.info-criador-interessado {
+    width: 100%;
+    height: 100px;
+    border-bottom: solid 1px black;
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+    align-items: start;
+}
+
+.info-criador-interessado h6{
+    padding: 5px;
+    font-weight: bold;
+    margin:0;
+}
+
+.informacao-email {
+    flex-direction: row;
+    text-align: center;
+    width: 900px;
+    height: 100px;
+    border-left: solid 1px black;
+    border-bottom: solid 1px black;
+}
+
+.informacao-email h6{
+    text-decoration: underline;
+    color: #194596;
+}
+
+.informacao-oferta {
+    height: 90px;
+    width: 100%;
+    margin-top: 5px;
+}
+
+.informacao-oferta #dados-demanda {
+    font-size: 15px;
+    display: block;
+    font-weight: bold;
+    margin-bottom: 3px;
+}
+
+#titulo-data-oferta {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 30px;
+}
+
+#titulo-data-oferta h2 {
+    font-size: 20px;
+    margin-top: 0px;
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+#titulo-data-oferta h6 {
+    margin-right: 10px;
+    margin-top: 0px;
+    font-weight: bold;
+}
+
+#dados-informacao-oferta {
+    display: flex;
+    margin-top: 0px;
+    margin-left: -15px;
+}
+
+#dados-informacao-oferta h6{
+    margin-top: 0px;
+    margin-left: 30px;
+}
+
+#dados-informacao-oferta img{
+    height: 20px;
+    width: 20px;
+    margin-right: 5px;
+    margin-top: -5px;
+}
+
+.descricao-oferta {
+    overflow: hidden; /* Esconde o texto que ultrapassar o tamanho da div */
+    text-overflow: ellipsis; /* Adiciona reticências (...) para indicar que o texto foi cortado */
+    overflow-y: auto;
+    margin-top: 2px;
+    height: 150px;
+    background-color: orange;
+    border-radius: 10px;
+    border: solid 2px black;
+    padding: 5px;
+}
+
+.descricao-oferta h6 {
+    font-weight: bold;
+    margin-left: 5px;
+    margin-top: 5px;
+}
+
+.descricao-oferta p {
+    margin-left: 5px;
+}
+
+.resposta-contato-recebido {
+    overflow: hidden; /* Esconde o texto que ultrapassar o tamanho da div */
+    text-overflow: ellipsis; /* Adiciona reticências (...) para indicar que o texto foi cortado */
+    overflow-y: auto;
+    margin-top: 2px;
+    height: 180px;
+    background-color: #ADD8E6;
+    border-radius: 10px;
+    border: solid 2px black;
+    padding: 5px;
+}
+
+.resposta-contato-recebido h6 {
+    padding: 0px;
+    font-weight: bold;
+}
+
+.resposta-contato-recebido textarea {
+    margin: -1px 5px;
+    border-radius: 10px;
+    padding: 7px;
+}
+
+.botoes-oferta {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3px;
+}
+
+.botoes-oferta  button{
+    font-weight: bold;
+    width: 120px;
+    height: 35px;
+    border: solid 2px black;
+    border-radius: 5px;
+}
+
+.botoes-oferta  button:disabled{
+    font-weight: bold;
+    width: 120px;
+    height: 35px;
+    border: solid 2px black;
+    border-radius: 5px;
+    opacity: 0.5;
+}
+
+#botao-interessado {
+    background-color: rgb(27, 93, 27);
+    color: #fff;
+}
+
+#botao-nao-interessado {
+    background-color: rgb(157, 72, 6);
+    color: #fff;
+    width: 170px;
+}
+
+
+/* MODAL */
+
+.modal-visualizar {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1300px;
+    height: 600px;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    border-radius: 20px;
+}
+
+.modal-visualizar img {
+    width: 50px; /* Ajuste a largura da imagem conforme necessário */
+}
+
+#botao-fechar-modal button{
+    background-color: red;
+    color: #fff;
+}
+    
