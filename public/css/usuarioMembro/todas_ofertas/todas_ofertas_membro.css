@@ -97,13 +97,27 @@
     height: 35px;
 }
 
+.table-rounded {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
 .table-personalizacao {
     margin-top: 20px;
     text-align: center;
 }
 
 .table-personalizacao thead, tbody {
-    border: solid 2px black;
+    border-radius: 10px;
+}
+
+.table-personalizacao thead th{
+    background-color: #376985;
+    color: #fff;
+}
+
+.table-personalizacao tbody td, th{
+    border-bottom: solid 1px rgb(116, 116, 116);
 }
 
 .table th:nth-child(2) {

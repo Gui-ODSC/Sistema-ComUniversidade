@@ -74,10 +74,10 @@
                 <a href="#"><button>Buscar</button></a>
             </div>
         </div>
-        <table class="table table-bordered table-rounded p-5 table-personalizacao">
+        <table class="table table-rounded p-5 table-personalizacao">
             <thead>
                 <tr>
-                    <th scope="col"></th>
+                    <th scope="col">Id</th>
                     <th scope="col">Título</th>
                     <th scope="col">Área de Conhecimento</th>
                     <th scope="col">Data Oferta</th>
