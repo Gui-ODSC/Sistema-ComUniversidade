@@ -11,13 +11,18 @@
 </head>
 <body>
     <!-- MODAL -->
-    <div class="modal-confirmar-desinteresse" id="modal-confirmar-desinteresse">
-        <h4>Confirme o envio da mensagem com a informação demostrando "Não interessado" no contato!</h4>
-        <div class="botoes">
-            <button onclick="openModalContatoRespondido()">Confirmar</button>
-            <button onclick="closeModalConfirmaDesinteresse()">Cancelar</button>
+    <div class="clicar-fora-confirmar-desinteresse" id="clicar-fora-confirmar-desinteresse"></div>
+        <div class="modal-confirmar-desinteresse" id="modal-confirmar-desinteresse">
+            <div class="secao-confirma-desinteresse">
+                <div class="texto-modal-confirma-desinteresse">
+                    <h4>Confirme o envio da mensagem com a informação demostrando <br>"<span id="font-vermelha">NÃO INTERESSADO</span>" no contato!</h4>
+                </div>
+                <div class="botoes-modal-confirma-desinteresse">
+                    <button onclick="openModalContatoRespondido()">Confirmar</button>
+                    <button onclick="closeModalConfirmaInteresse()">Cancelar</button>
+                </div>
+            </div>
         </div>
-    </div>
     <!-- MODAL -->
 
     <!-- MODAL CONTATO RESPONDIDO-->

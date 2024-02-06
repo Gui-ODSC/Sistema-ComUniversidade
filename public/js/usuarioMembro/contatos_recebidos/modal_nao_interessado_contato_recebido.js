@@ -5,6 +5,7 @@ function openModalConfirmaDesinteresse() {
     closeModalVisualizarContatoRecebido();
 
     document.getElementById('modal-confirmar-desinteresse').style.display = 'block';
+    document.getElementById('clicar-fora-confirmar-desinteresse').style.display = 'block';
 }
 
 function closeModalConfirmaDesinteresse() {
@@ -13,4 +14,5 @@ function closeModalConfirmaDesinteresse() {
     openModalVisualizarContatoRecebido();
 
     document.getElementById('modal-confirmar-desinteresse').style.display = 'none';
+    document.getElementById('clicar-fora-confirmar-desinteresse').style.display = 'none';
 }

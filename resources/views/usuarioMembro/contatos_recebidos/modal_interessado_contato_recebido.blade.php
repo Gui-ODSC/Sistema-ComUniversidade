@@ -13,17 +13,20 @@
     <!-- MODAL -->
     <div class="clicar-fora-confirmar-interesse" id="clicar-fora-confirmar-interesse"></div>
         <div class="modal-confirmar-interesse" id="modal-confirmar-interesse">
-            <h4>Confirme o envio da mensagem com a informação demostrando "Interesse" no contato!</h4>
-            <div class="botoes">
-                <button onclick="openModalContatoRespondido()">Confirmar</button>
-                <button onclick="closeModalConfirmaInteresse()">Cancelar</button>
+            <div class="secao-confirma-interesse">
+                <div class="texto-modal-confirma-interesse">
+                    <h4>Confirme o envio da mensagem com a informação demostrando "<span id="font-verde">INTERESSE</span>" no contato!</h4>
+                </div>
+                <div class="botoes-modal-confirma-interesse">
+                    <button onclick="openModalContatoRespondido()">Confirmar</button>
+                    <button onclick="closeModalConfirmaInteresse()">Cancelar</button>
+                </div>
             </div>
         </div>
         <!-- MODAL -->
-
+        
         <!-- MODAL CONTATO RESPONDIDO-->
         @include('usuarioMembro/contatos_recebidos/modal_contato_respondido')
         <!-- MODAL CONTATO RESPONDIDO -->
-
 </body>
 </html>
