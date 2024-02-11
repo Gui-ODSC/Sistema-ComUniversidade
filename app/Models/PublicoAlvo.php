@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class PublicoAlvo extends Model
 {
@@ -18,4 +19,14 @@ class PublicoAlvo extends Model
     protected $fillable = [
         'nome'
     ];
+
+    public function ofertaAcao():HasMany
+    {
+        return $this->hasMany(OfertaAcao::class, 'id_publico_alvo', 'id_publico_alvo');
+    }
+
+    public function demanda():HasMany
+    {
+        return $this->hasMany(Demanda::class, 'id_demanda', 'id_demanda');
+    }
 }

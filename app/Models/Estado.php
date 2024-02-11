@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Estado extends Model
 {
@@ -19,4 +20,8 @@ class Estado extends Model
         'nome'
     ];
 
+    public function cidade(): HasMany
+    {
+        return $this->hasMany(Cidade::class, 'id_estado', 'id_estado');
+    }
 }
