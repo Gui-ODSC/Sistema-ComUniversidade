@@ -17,6 +17,9 @@ class OfertaAcao extends Model
     protected $primaryKey = 'id_oferta_acao'; 
 
     protected $fillable = [
+        'id_oferta',
+        'id_tipo_acao',
+        'id_publico_alvo',
         'status_registro',
         'duracao',
         'regime'

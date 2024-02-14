@@ -17,6 +17,7 @@ class UsuarioAluno extends Model
     protected $primaryKey = 'id_usuario_aluno'; 
 
     protected $fillable = [
+        'id_usuario',
         'curso',
         'ra'
     ];

@@ -17,6 +17,7 @@ class OfertaConhecimento extends Model
     protected $primaryKey = 'id_oferta_conhecimento'; 
 
     protected $fillable = [
+        'id_oferta',
         'tempo_atuacao',
         'link_lattes',
         'link_linkedin'

@@ -18,6 +18,8 @@ class Endereco extends Model
     protected $primaryKey = 'id_endereco'; 
 
     protected $fillable = [
+        'id_bairro',
+        'rua',
         'numero',
         'complemento'
     ];

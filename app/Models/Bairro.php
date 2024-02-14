@@ -18,7 +18,8 @@ class Bairro extends Model
     protected $primaryKey = 'id_bairro'; 
 
     protected $fillable = [
-        'nome'
+        'id_cidade',
+        'nome',
     ];
 
     public function cidade():BelongsTo

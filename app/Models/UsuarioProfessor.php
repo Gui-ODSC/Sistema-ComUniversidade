@@ -18,6 +18,7 @@ class UsuarioProfessor extends Model
     protected $primaryKey = 'id_usuario_professor'; 
 
     protected $fillable = [
+        'id_usuario',
         'link_curriculo'
     ];
 

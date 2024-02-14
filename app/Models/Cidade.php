@@ -18,7 +18,8 @@ class Cidade extends Model
     protected $primaryKey = 'id_cidade'; 
 
     protected $fillable = [
-        'nome'
+        'id_estado',
+        'nome',
     ];
 
     public function estado():BelongsTo

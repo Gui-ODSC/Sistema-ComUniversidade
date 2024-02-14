@@ -17,6 +17,9 @@ class ContatoMensagem extends Model
     protected $primaryKey = 'id_contato_mensagem'; 
 
     protected $fillable = [
+        'id_contato',
+        'id_usuario_origem',
+        'id_usuario_destino',
         'mensagem'
     ];
 

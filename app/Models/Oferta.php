@@ -19,6 +19,8 @@ class Oferta extends Model
     protected $primaryKey = 'id_oferta'; 
 
     protected $fillable = [
+        'id_usuario_professor',
+        'id_area_conhecimento',
         'titulo',
         'descricao',
         'tipo'

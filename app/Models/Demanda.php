@@ -19,6 +19,9 @@ class Demanda extends Model
     protected $primaryKey = 'id_demanda'; 
 
     protected $fillable = [
+        'id_usuario',
+        'id_publico_alvo',
+        'id_area_conhecimento',
         'titulo',
         'descricao',
         'pessoas_afetadas',

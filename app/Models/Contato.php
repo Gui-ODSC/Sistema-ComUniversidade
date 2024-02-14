@@ -17,6 +17,12 @@ class Contato extends Model
 
     protected $primaryKey = 'id_contato'; 
 
+    protected $fillable = [
+        'id_usuario_origem',
+        'id_usuario_destino',
+        'id_oferta',
+        'id_demanda',
+    ];
 
     public function demanda():BelongsTo
     {

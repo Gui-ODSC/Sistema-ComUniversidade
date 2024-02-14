@@ -19,6 +19,7 @@ class Usuario extends Model
     protected $primaryKey = 'id_usuario'; 
 
     protected $fillable = [
+        'id_endereco',
         'nome',
         'sobrenome',
         'nascimento',
@@ -26,6 +27,7 @@ class Usuario extends Model
         'email_primario',
         'email_secundario',
         'senha',
+        'foto',
         'tipo'
     ];
 
