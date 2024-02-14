@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('OfertaConhecimento', function (Blueprint $table) {
             $table->id('id_oferta_conhecimento');
             $table->unsignedBigInteger('id_oferta');
-            $table->integer('tempo_atuacao')->unsigned;
+            $table->enum('tempo_atuacao', ['MENOS_1_ANO', 'MAIS_1_ANO', 'MAIS_3_ANOS', 'MAIS_5_ANOS']);
             $table->string('link_lattes');
             $table->string('link_linkedin');
             

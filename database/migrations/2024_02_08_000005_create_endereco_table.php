@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('Endereco', function (Blueprint $table) {
             $table->id('id_endereco');
             $table->unsignedBigInteger('id_bairro');
+            $table->string('rua');
             $table->integer('numero');
             $table->string('complemento');
             

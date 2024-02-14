@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('titulo');
             $table->string('descricao');
             $table->integer('pessoas_afetadas')->unsigned;
-            $table->enum('duracao', ['DIAS', 'SEMANAS', 'ANOS', 'INDEFINIDO']);
+            $table->enum('duracao', ['DIAS', 'SEMANAS', 'MESES', 'ANOS', 'INDEFINIDO']);
             $table->enum('nivel_prioridade', ['BAIXO', 'MEDIO', 'ALTO']);
             $table->string('instituicao_setor');
 

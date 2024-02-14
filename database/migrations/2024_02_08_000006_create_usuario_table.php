@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('email_primario')->unique;
             $table->string('email_secundario')->unique;
             $table->string('senha');
+            $table->string('foto');
             $table->enum('tipo', ['MEMBRO', 'ALUNO', 'PROFESSOR']);
             
             $table->foreign('id_endereco')->references('id_endereco')->on('Endereco')->onDelete('cascade');
