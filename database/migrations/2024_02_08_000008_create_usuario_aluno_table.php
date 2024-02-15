@@ -18,6 +18,7 @@ return new class extends Migration
             $table->integer('ra');
             
             $table->foreign('id_usuario')->references('id_usuario')->on('Usuario')->onDelete('cascade');
+            $table->unique(['id_usuario_aluno', 'id_usuario']);
             $table->timestamps();
         });
     }

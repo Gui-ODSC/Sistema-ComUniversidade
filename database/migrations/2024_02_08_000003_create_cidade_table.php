@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('nome');
 
             $table->foreign('id_estado')->references('id_estado')->on('Estado')->onDelete('cascade');
+            $table->unique(['id_estado', 'nome']);
             $table->timestamps();
         });
     }

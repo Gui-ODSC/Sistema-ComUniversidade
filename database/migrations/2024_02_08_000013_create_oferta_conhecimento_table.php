@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('link_linkedin');
             
             $table->foreign('id_oferta')->references('id_oferta')->on('Oferta')->onDelete('cascade');
+            $table->unique(['id_oferta_conhecimento', 'id_oferta']);
             $table->timestamps();
         });
     }

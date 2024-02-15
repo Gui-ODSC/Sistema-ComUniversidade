@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('AreaConhecimento', function (Blueprint $table) {
             $table->id('id_area_conhecimento');
             $table->string('nome');
+
+            $table->unique(['id_area_conhecimento', 'nome']);
             $table->timestamps();
         });
     }

@@ -23,6 +23,7 @@ return new class extends Migration
             $table->foreign('id_oferta')->references('id_oferta')->on('Oferta')->onDelete('cascade');
             $table->foreign('id_tipo_acao')->references('id_tipo_acao')->on('TipoAcao')->onDelete('cascade');
             $table->foreign('id_publico_alvo')->references('id_publico_alvo')->on('PublicoAlvo')->onDelete('cascade');
+            $table->unique(['id_oferta_acao', 'id_oferta']);
             $table->timestamps();
         });
     }

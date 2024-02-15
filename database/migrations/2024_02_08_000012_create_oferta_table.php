@@ -21,6 +21,7 @@ return new class extends Migration
 
             $table->foreign('id_usuario_professor')->references('id_usuario_professor')->on('UsuarioProfessor')->onDelete('cascade');
             $table->foreign('id_area_conhecimento')->references('id_area_conhecimento')->on('AreaConhecimento')->onDelete('cascade');
+            $table->unique(['id_usuario_professor', 'titulo']);
             $table->timestamps();
         });
     }

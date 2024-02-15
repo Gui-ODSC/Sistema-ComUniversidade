@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('PublicoAlvo', function (Blueprint $table) {
             $table->id('id_publico_alvo');
             $table->string('nome');
+
+            $table->unique(['id_publico_alvo', 'nome']);
             $table->timestamps();
         });
     }
