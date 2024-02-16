@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Estado;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class EstadoController extends Controller
 {
@@ -39,7 +40,12 @@ class EstadoController extends Controller
 
     public function create(Request $request)
     {
-        $validator = Validator::make($request->all(), $this->getValidationSchema());
+        $validator = Validator::make($request->all(), [
+            ...$this->getValidationSchema(),
+            'nome' => [
+                Rule::unique(Estado::class, 'nome')
+            ]
+        ]);
 
         if ($validator->fails()) {
 			return response($validator->errors())->setStatusCode(400);
@@ -59,7 +65,12 @@ class EstadoController extends Controller
 
     public function update($id_estado, Request $request)
     {
-        $validator = Validator::make($request->all(), $this->getValidationSchema());
+        $validator = Validator::make($request->all(), [
+            ...$this->getValidationSchema(),
+            'nome' => [
+                Rule::unique(Estado::class, 'nome')
+            ]
+        ]);
 
         if ($validator->fails()) {
 			return response($validator->errors())->setStatusCode(400);

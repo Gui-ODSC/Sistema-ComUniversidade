@@ -58,7 +58,15 @@ class ContatoController extends Controller
 
     public function create(Request $request)
     {
-        $validator = Validator::make($request->all(), $this->getValidationSchema());
+        $validator = Validator::make($request->all(), [
+            ...$this->getValidationSchema(),
+            'id_usuario_origem' => [
+                Rule::unique(Contato::class, 'id_usuario_origem')
+                    ->where('id_usuario_destino', $request->input('id_usuario_destino'))
+                    ->where('id_oferta', $request->input('id_oferta'))
+                    ->where('id_demanda', $request->input('id_demanda'))
+            ]
+        ]);
 
         if ($validator->fails()) {
 			return response($validator->errors())->setStatusCode(400);
@@ -81,7 +89,15 @@ class ContatoController extends Controller
 
     public function update($id_contato, Request $request)
     {
-        $validator = Validator::make($request->all(), $this->getValidationSchema());
+        $validator = Validator::make($request->all(), [
+            ...$this->getValidationSchema(),
+            'id_usuario_origem' => [
+                Rule::unique(Contato::class, 'id_usuario_origem')
+                    ->where('id_usuario_destino', $request->input('id_usuario_destino'))
+                    ->where('id_oferta', $request->input('id_oferta'))
+                    ->where('id_demanda', $request->input('id_demanda'))
+            ]
+        ]);
         
         if ($validator->fails()) {
 			return response($validator->errors())->setStatusCode(400);

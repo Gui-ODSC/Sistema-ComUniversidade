@@ -46,7 +46,13 @@ class UsuarioAlunoController extends Controller
 
     public function create(Request $request)
     {
-        $validator = Validator::make($request->all(), $this->getValidationSchema());
+        $validator = Validator::make($request->all(), [
+            ...$this->getValidationSchema(),
+            'id_usuario_aluno' => [
+                Rule::unique(UsuarioAluno::class, 'id_usuario_aluno')
+                    ->where('id_usuario', $request->input('id_usuario'))
+            ] 
+        ]);
 
         if ($validator->fails()) {
 			return response($validator->errors())->setStatusCode(400);
@@ -68,7 +74,13 @@ class UsuarioAlunoController extends Controller
 
     public function update($id_usuario_aluno, Request $request)
     {
-        $validator = Validator::make($request->all(), $this->getValidationSchema());
+        $validator = Validator::make($request->all(), [
+            ...$this->getValidationSchema(),
+            'id_usuario_aluno' => [
+                Rule::unique(UsuarioAluno::class, 'id_usuario_aluno')
+                    ->where('id_usuario', $request->input('id_usuario'))
+            ] 
+        ]);
 
         if ($validator->fails()) {
 			return response($validator->errors())->setStatusCode(400);

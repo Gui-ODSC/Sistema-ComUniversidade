@@ -74,7 +74,12 @@ class UsuarioController extends Controller
 
     public function create(Request $request)
     {
-        $validator = Validator::make($request->all(), $this->getValidationSchema());
+        $validator = Validator::make($request->all(), [
+            ...$this->getValidationSchema(),
+            'email_primario' => [
+                Rule::unique(Usuario::class, 'email_primario')
+            ] 
+        ]);
 
         if ($validator->fails()) {
 			return response($validator->errors())->setStatusCode(400);
@@ -103,7 +108,12 @@ class UsuarioController extends Controller
 
     public function update($id_usuario, Request $request)
     {
-        $validator = Validator::make($request->all(), $this->getValidationSchema());
+        $validator = Validator::make($request->all(), [
+            ...$this->getValidationSchema(),
+            'email_primario' => [
+                Rule::unique(Usuario::class, 'email_primario')
+            ] 
+        ]);
 
         if ($validator->fails()) {
 			return response($validator->errors())->setStatusCode(400);

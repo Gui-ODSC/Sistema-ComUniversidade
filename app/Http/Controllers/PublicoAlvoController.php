@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\PublicoAlvo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class PublicoAlvoController extends Controller
 {
@@ -39,7 +40,13 @@ class PublicoAlvoController extends Controller
 
     public function create(Request $request)
     {
-        $validator = Validator::make($request->all(), $this->getValidationSchema());
+        $validator = Validator::make($request->all(), [
+            ...$this->getValidationSchema(),
+            'id_publico_alvo' => [
+                Rule::unique(PublicoAlvo::class, 'id_publico_alvo')
+                    ->where('nome', $request->input('nome'))
+            ]
+        ]);
 
         if ($validator->fails()) {
 			return response($validator->errors())->setStatusCode(400);
@@ -59,7 +66,13 @@ class PublicoAlvoController extends Controller
 
     public function update($id_tipo_acao, Request $request)
     {
-        $validator = Validator::make($request->all(), $this->getValidationSchema());
+        $validator = Validator::make($request->all(), [
+            ...$this->getValidationSchema(),
+            'id_publico_alvo' => [
+                Rule::unique(PublicoAlvo::class, 'id_publico_alvo')
+                    ->where('nome', $request->input('nome'))
+            ]
+        ]);
 
         if ($validator->fails()) {
 			return response($validator->errors())->setStatusCode(400);

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\TipoAcao;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class TipoAcaoController extends Controller
 {
@@ -39,7 +40,13 @@ class TipoAcaoController extends Controller
 
     public function create(Request $request)
     {
-        $validator = Validator::make($request->all(), $this->getValidationSchema());
+        $validator = Validator::make($request->all(), [
+            ...$this->getValidationSchema(),
+            'id_tipo_acao' => [
+                Rule::unique(TipoAcao::class, 'id_tipo_acao')
+                    ->where('nome_modalidade', $request->input('nome_modalidade'))
+            ]
+        ]);
 
         if ($validator->fails()) {
 			return response($validator->errors())->setStatusCode(400);
@@ -59,7 +66,13 @@ class TipoAcaoController extends Controller
 
     public function update($id_tipo_acao, Request $request)
     {
-        $validator = Validator::make($request->all(), $this->getValidationSchema());
+        $validator = Validator::make($request->all(), [
+            ...$this->getValidationSchema(),
+            'id_tipo_acao' => [
+                Rule::unique(TipoAcao::class, 'id_tipo_acao')
+                    ->where('nome_modalidade', $request->input('nome_modalidade'))
+            ]
+        ]);
 
         if ($validator->fails()) {
 			return response($validator->errors())->setStatusCode(400);

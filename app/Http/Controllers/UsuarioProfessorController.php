@@ -45,7 +45,13 @@ class UsuarioProfessorController extends Controller
 
     public function create(Request $request)
     {
-        $validator = Validator::make($request->all(), $this->getValidationSchema());
+        $validator = Validator::make($request->all(), [
+            ...$this->getValidationSchema(),
+            'id_usuario_professor' => [
+                Rule::unique(UsuarioProfessor::class, 'id_usuario_professor')
+                    ->where('id_usuario', $request->input('id_usuario'))
+            ] 
+        ]);
 
         if ($validator->fails()) {
 			return response($validator->errors())->setStatusCode(400);

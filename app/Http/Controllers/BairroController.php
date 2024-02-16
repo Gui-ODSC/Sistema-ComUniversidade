@@ -46,7 +46,13 @@ class BairroController extends Controller
 
     public function create(Request $request)
     {
-        $validator = Validator::make($request->all(), $this->getValidationSchema());
+        $validator = Validator::make($request->all(), [
+            ...$this->getValidationSchema(),
+            'id_cidade' => [
+                Rule::unique(Bairro::class, 'id_cidade')
+                    ->where('nome', $request->input('nome'))
+            ] 
+        ]);
 
         if ($validator->fails()) {
 			return response($validator->errors())->setStatusCode(400);
@@ -67,7 +73,13 @@ class BairroController extends Controller
 
     public function update($id_bairro, Request $request)
     {
-        $validator = Validator::make($request->all(), $this->getValidationSchema());
+        $validator = Validator::make($request->all(), [
+            ...$this->getValidationSchema(),
+            'id_cidade' => [
+                Rule::unique(Bairro::class, 'id_cidade')
+                    ->where('nome', $request->input('nome'))
+            ] 
+        ]);
 
         if ($validator->fails()) {
 			return response($validator->errors())->setStatusCode(400);

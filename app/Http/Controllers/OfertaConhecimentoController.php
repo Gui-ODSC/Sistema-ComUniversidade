@@ -51,7 +51,13 @@ class OfertaConhecimentoController extends Controller
 
     public function create(Request $request)
     {
-        $validator = Validator::make($request->all(), $this->getValidationSchema());
+        $validator = Validator::make($request->all(), [
+            ...$this->getValidationSchema(),
+            'id_oferta_conhecimento' => [
+                Rule::unique(OfertaConhecimento::class, 'id_oferta_conhecimento')
+                    ->where('id_oferta', $request->input('id_oferta'))
+            ]
+        ]);
 
         if ($validator->fails()) {
 			return response($validator->errors())->setStatusCode(400);
@@ -74,7 +80,13 @@ class OfertaConhecimentoController extends Controller
 
     public function update($id_oferta_conhecimento, Request $request)
     {
-        $validator = Validator::make($request->all(), $this->getValidationSchema());
+        $validator = Validator::make($request->all(), [
+            ...$this->getValidationSchema(),
+            'id_oferta_conhecimento' => [
+                Rule::unique(OfertaConhecimento::class, 'id_oferta_conhecimento')
+                    ->where('id_oferta', $request->input('id_oferta'))
+            ]
+        ]);
 
         if ($validator->fails()) {
 			return response($validator->errors())->setStatusCode(400);

@@ -46,7 +46,13 @@ class CidadeController extends Controller
 
     public function create(Request $request)
     {
-        $validator = Validator::make($request->all(), $this->getValidationSchema());
+        $validator = Validator::make($request->all(), [
+            ...$this->getValidationSchema(),
+            'id_estado' => [
+                Rule::unique(Cidade::class, 'id_estado')
+                    ->where('nome', $request->input('nome'))
+            ] 
+        ]);
 
         if ($validator->fails()) {
 			return response($validator->errors())->setStatusCode(400);
@@ -67,7 +73,13 @@ class CidadeController extends Controller
 
     public function update($id_cidade, Request $request)
     {
-        $validator = Validator::make($request->all(), $this->getValidationSchema());
+        $validator = Validator::make($request->all(), [
+            ...$this->getValidationSchema(),
+            'id_estado' => [
+                Rule::unique(Cidade::class, 'id_estado')
+                    ->where('nome', $request->input('nome'))
+            ] 
+        ]);
 
         if ($validator->fails()) {
 			return response($validator->errors())->setStatusCode(400);

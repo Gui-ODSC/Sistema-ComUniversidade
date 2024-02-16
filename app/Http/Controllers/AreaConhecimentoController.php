@@ -6,6 +6,7 @@ use App\Models\AreaConhecimento;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class AreaConhecimentoController extends Controller
 {
@@ -40,7 +41,13 @@ class AreaConhecimentoController extends Controller
 
     public function create(Request $request)
     {
-        $validator = Validator::make($request->all(), $this->getValidationSchema());
+        $validator = Validator::make($request->all(), [
+            ...$this->getValidationSchema(),
+            'id_area_conhecimento' => [
+                Rule::unique(AreaConhecimento::class, 'id_area_conhecimento')
+                    ->where('nome', $request->input('nome'))
+            ]
+        ]);
 
         if ($validator->fails()) {
 			return response($validator->errors())->setStatusCode(400);
@@ -60,7 +67,13 @@ class AreaConhecimentoController extends Controller
 
     public function update($id_area_conhecimento, Request $request)
     {
-        $validator = Validator::make($request->all(), $this->getValidationSchema());
+        $validator = Validator::make($request->all(), [
+            ...$this->getValidationSchema(),
+            'id_area_conhecimento' => [
+                Rule::unique(AreaConhecimento::class, 'id_area_conhecimento')
+                    ->where('nome', $request->input('nome'))
+            ]
+        ]);
 
         if ($validator->fails()) {
 			return response($validator->errors())->setStatusCode(400);

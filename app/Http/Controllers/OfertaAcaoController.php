@@ -67,7 +67,13 @@ class OfertaAcaoController extends Controller
 
     public function create(Request $request)
     {
-        $validator = Validator::make($request->all(), $this->getValidationSchema());
+        $validator = Validator::make($request->all(), [
+            ...$this->getValidationSchema(),
+            'id_oferta_acao' => [
+                Rule::unique(OfertaAcao::class, 'id_oferta_acao')
+                    ->where('id_oferta', $request->input('id_oferta'))
+            ]
+        ]);
 
         if ($validator->fails()) {
 			return response($validator->errors())->setStatusCode(400);
@@ -92,7 +98,13 @@ class OfertaAcaoController extends Controller
 
     public function update($id_oferta_acao, Request $request)
     {
-        $validator = Validator::make($request->all(), $this->getValidationSchema());
+        $validator = Validator::make($request->all(), [
+            ...$this->getValidationSchema(),
+            'id_oferta_acao' => [
+                Rule::unique(OfertaAcao::class, 'id_oferta_acao')
+                    ->where('id_oferta', $request->input('id_oferta'))
+            ]
+        ]);
 
         if ($validator->fails()) {
 			return response($validator->errors())->setStatusCode(400);
