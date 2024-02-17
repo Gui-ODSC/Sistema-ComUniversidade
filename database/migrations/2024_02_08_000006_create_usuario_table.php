@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('email_secundario')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('senha');
-            $table->string('remember_token')->nullable();
+            $table->string('remember_token', 100)->nullable();
             $table->string('foto');
             $table->enum('tipo', ['MEMBRO', 'ALUNO', 'PROFESSOR']);
             
