@@ -18,10 +18,10 @@ return new class extends Migration
             $table->string('sobrenome');
             $table->date('nascimento');
             $table->string('telefone', 16);
-            $table->string('email_primario')->unique();
+            $table->string('email')->unique();
             $table->string('email_secundario')->nullable();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('senha');
+            $table->string('password');
             $table->string('remember_token', 100)->nullable();
             $table->string('foto');
             $table->enum('tipo', ['MEMBRO', 'ALUNO', 'PROFESSOR']);
