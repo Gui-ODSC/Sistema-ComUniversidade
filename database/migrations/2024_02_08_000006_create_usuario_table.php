@@ -20,7 +20,9 @@ return new class extends Migration
             $table->string('telefone', 16);
             $table->string('email_primario')->unique();
             $table->string('email_secundario')->nullable();
+            $table->timestamp('email_verified_at')->nullable();
             $table->string('senha');
+            $table->string('remember_token')->nullable();
             $table->string('foto');
             $table->enum('tipo', ['MEMBRO', 'ALUNO', 'PROFESSOR']);
             
