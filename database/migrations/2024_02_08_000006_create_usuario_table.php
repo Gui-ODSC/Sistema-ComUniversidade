@@ -19,11 +19,11 @@ return new class extends Migration
             $table->date('nascimento');
             $table->string('telefone', 16);
             $table->string('email')->unique();
-            $table->string('email_secundario')->nullable();
+            $table->string('email_secundario')->nullable()->default(null);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('remember_token', 100)->nullable();
-            $table->string('foto');
+            $table->string('foto')->nullable();
             $table->enum('tipo', ['MEMBRO', 'ALUNO', 'PROFESSOR']);
             
             $table->foreign('id_endereco')->references('id_endereco')->on('Endereco')->onDelete('cascade');

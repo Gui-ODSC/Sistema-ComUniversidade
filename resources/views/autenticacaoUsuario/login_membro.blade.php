@@ -16,15 +16,34 @@
 </header>
 <body>
     <div class="login-container">
-        <form action="{{ route('minhas_demandas_membro') }}">
+        <form method="POST" action="{{ route('login_store') }}">
+            @csrf
             <h1>Login Membro</h1>
-            <label for="login">Login</label>
-            <input type="text" id="password" placeholder="Login">
+            <label for="email">Login</label>
+            <input class="is-invalid" type="text" id="email" name="email" placeholder="Login" value={{ old('email')}}>
+            @error('email')
+                <div id="error-message-email" class="msg-erro">
+                    <p>{{ $message }}</p>
+                </div>
+                <script src="{{ asset('js/usuarioMembro/login_membro/mensagem_erro.js') }}"></script>
+            @enderror
             <label for="password">Senha</label>
-            <input type="password" id="password" placeholder="Senha">
+            <input type="password" id="password" name="password" placeholder="Senha">
+            @error('password')
+                <div id="error-message-password" class="msg-erro">
+                    <p>{{ $message }}</p>
+                </div>
+                <script src="{{ asset('js/usuarioMembro/login_membro/mensagem_erro.js') }}"></script>
+            @enderror
+            @error('message')
+            <div id="error-message-email" class="msg-erro">
+                <p>{{ $message }}</p>
+            </div>
+            <script src="{{ asset('js/usuarioMembro/login_membro/mensagem_erro.js') }}"></script>
+            @enderror
             <span><a href="{{ route('recuperacao_senha_membro') }}">Recuperar a Senha</a></span><br>
-            <button>Entrar</button>
-            <span><a href="{{ route('cadastro_membro') }}">Ainda não possui conta? Cadastre-se</a></span><br>
+            <button type="submit" >Entrar</button>
+            <span><a href="{{ route('cadastro_index') }}">Ainda não possui conta? Cadastre-se</a></span><br>
         </form>
     </div>
 </body>

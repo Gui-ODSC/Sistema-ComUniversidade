@@ -3,14 +3,16 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
-class Usuario extends Model
+class Usuario extends Authenticatable
 {
-    use HasFactory;
+    use HasApiTokens, HasFactory, Notifiable;
 
     public $timestamps = false;
 
@@ -24,16 +26,26 @@ class Usuario extends Model
         'sobrenome',
         'nascimento',
         'telefone',
-        'email_primario',
+        'email',
         'email_secundario',
-        'senha',
+        'password',
         'foto',
         'tipo'
     ];
 
-    public function endereco():BelongsTo
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+        'password' => 'hashed',
+    ];
+
+    public function endereco():HasOne
     {
-        return $this->belongsTo(Endereco::class, 'id_endereco', 'id_endereco');
+        return $this->HasOne(Endereco::class, 'id_endereco', 'id_endereco');
     }
 
     public function usuarioAluno():HasOne
