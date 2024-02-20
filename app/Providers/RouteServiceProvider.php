@@ -38,17 +38,17 @@ class RouteServiceProvider extends ServiceProvider
 
             //Route de usuarios membro 
             Route::middleware('web')
-                ->prefix('api')
+                ->prefix('web')
                 ->group(base_path('routes/usuario_membro.php'));
 
             //Route de usuarios professor
             Route::middleware('web')
-            ->prefix('api')
+            ->prefix('web')
             ->group(base_path('routes/usuario_professor.php'));
 
             //Route de usuarios aluno
             Route::middleware('web')
-            ->prefix('api')
+            ->prefix('web')
             ->group(base_path('routes/usuario_aluno.php'));
         });
     }
