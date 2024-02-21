@@ -5,6 +5,9 @@
 
 body {
     background-color: #708090;
+    font-family: "Manrope", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
 }
 
 header {
@@ -116,6 +119,7 @@ h4 {
     background-color: #FFF;
     overflow: hidden;
     cursor: pointer;
+    resize: none;
 }
 
 .cadastro-container input[id="rua"] {
@@ -137,12 +141,13 @@ h4 {
 .cadastro-container input[id="complemento"] {
     display: inline-flex;
     margin-top: 5px;
-    width: 50%;
+    width: 308.5px;
     border-radius: 10px;
     padding: 5px;
+    position: static;
 }
 
-.cadastro-container select[id="estado"] {
+.cadastro-container select[id="estado"], .estado, .cidade {
     display: inline-flex;
     height: 44px;
     margin-top: 5px;
@@ -219,18 +224,6 @@ h4 {
     box-shadow: black 10px;
 }
 
-/* .msg-erro {
-    margin-top: 3px;
-    min-height: 30px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    justify-content: center;
-    background: linear-gradient(90deg, rgba(201,39,12,1) 0%, rgba(255,199,0,1) 100%);
-    border-radius: 10px;
-    padding: 3px;
-} */
-
 .msg-erro {
     position: fixed;
     top: 0;
@@ -256,4 +249,24 @@ h4 {
     color: black;
     font-size: 17px;
     margin-bottom: 0px;
+}
+
+
+/* ESTILIZACAO AUTOCOMPLETE */
+
+.autoComplete_wrapper #autoCompleteBairro, #autoCompleteEstado, #autoCompleteCidade {
+    padding: 0px 10px;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    color: black;
+    font-family: "Manrope", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-weight: lighter;
+    font-size: 20px;
+}
+
+.autoComplete_wrapper #autoCompleteBairro::placeholder {
+    color: black;
 }

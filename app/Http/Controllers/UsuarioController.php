@@ -6,6 +6,8 @@ use App\Enums\TipoUsuarioEnum;
 use App\Models\Endereco;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\Enum;
@@ -22,38 +24,25 @@ class UsuarioController extends Controller
     private function getValidationSchema()
     {
         return [
-            'id_endereco' => [
-                'required',
-                Rule::exists(Endereco::class, 'id_endereco')
-            ],
             'nome' => 'required|string|max:255',
             'sobrenome' => 'required|string|max:255',
-            'nascimento' => 'required|date_format:d-m-y', //(20/01/2020)
-            'telefone' => 'required|regex:/^\(\d{2}\) \d{4}-\d{4}$/', //(XX) XXXX-XXXX
-            'email_primario' => [
+            'nascimento' => 'required|date_format:d/m/Y', //(20/01/2020)
+            'telefone' => 'required|string|regex:/^\(\d{2}\) \d{5}-\d{4}$/', //(XX) XXXX-XXXX
+            'email' => [
                 'required',
                 'email',
-                Rule::unique(Usuario::class, 'email_primario')
             ],
             'email_secundario' => [
-                'required',
+                'nullable',
                 'email',
-                Rule::unique(Usuario::class, 'email_secundario')
             ],
-            'senha' => [
+            'password' => [
                 'required',
                 'string',
                 'min:8',
-                'regex:/[A-Z]/',
-                'regex:/[a-z]/',
-                'regex:/[0-9]/',
-                'regex:/[@$!%*#?&]/',
+                'regex:/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/',
             ],
-            'foto' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'tipo' => [
-                'required',
-                new Enum(TipoUsuarioEnum::class)
-            ]
+            'foto' => 'nullable|string',
         ];
     }
 
@@ -72,46 +61,26 @@ class UsuarioController extends Controller
         return $this->usuarioModel::findOrFail($id_usuario);
     }
 
-    public function create(Request $request)
+    public function validarCamposUsuario(Request $request)
     {
+        
         $validator = Validator::make($request->all(), [
             ...$this->getValidationSchema(),
-            'email_primario' => [
-                Rule::unique(Usuario::class, 'email_primario')
+            'email' => [
+                Rule::unique(Usuario::class, 'email')
             ] 
-        ]);
+        ], $this->messageValidation());
 
-        if ($validator->fails()) {
-			return response($validator->errors())->setStatusCode(400);
-		}
-
-        $validatedData = $validator->validated();
-
-        $usuario = $this->usuarioModel::create([
-            'id_endereco' => $validatedData['id_endereco'],
-            'nome' => $validatedData['nome'],
-            'sobrenome' => $validatedData['sobrenome'],
-            'nascimento' => $validatedData['nascimento'],
-            'telefone' => $validatedData['telefone'],
-            'email_primario' => $validatedData['email_primario'],
-            'email_secundario' => $validatedData['email_secundario'],
-            'senha' => $validatedData['senha'],
-            'foto' => $validatedData['foto'],
-            'tipo' => $validatedData['tipo']
-        ]);
-
-        return response()->json([
-            'message' => 'Usuario Created successfull',
-            'data' => $usuario
-        ])->setStatusCode(201); 
+        return $validator;
+        
     }
 
     public function update($id_usuario, Request $request)
     {
         $validator = Validator::make($request->all(), [
             ...$this->getValidationSchema(),
-            'email_primario' => [
-                Rule::unique(Usuario::class, 'email_primario')
+            'email' => [
+                Rule::unique(Usuario::class, 'email')
             ] 
         ]);
 
@@ -127,13 +96,12 @@ class UsuarioController extends Controller
             'id_endereco' => $validatedData['id_endereco'],
             'nome' => $validatedData['nome'],
             'sobrenome' => $validatedData['sobrenome'],
-            'nascimento' => $validatedData['nascimento'],
+            'nascimento' => Carbon::createFromFormat('d-m-Y', $validatedData['nascimento'])->format('Y-m-d'),
             'telefone' => $validatedData['telefone'],
-            'email_primario' => $validatedData['email_primario'],
-            'email_secundario' => $validatedData['email_secundario'],
-            'senha' => $validatedData['senha'],
+            'email' => $validatedData['email'],
+            'email_secundario' => $validatedData['email_secundario'] ?? null,
+            'password' => Hash::make($validatedData['password']),
             'foto' => $validatedData['foto'],
-            'tipo' => $validatedData['tipo']
         ]);
 
         return response()->json([
@@ -152,5 +120,29 @@ class UsuarioController extends Controller
             'message' => 'Usuario deleted successfully'
         ])->setStatusCode(200);
 
+    }
+
+    protected function messageValidation()
+    {
+        return [
+            'nome.required' => 'Nome: Campo obrigatório.',
+            'nome.string' => 'Nome: Deve ser um texto.',
+            'nome.max' => 'Nome: Numero de caracteres ultrapassado',
+            'sobrenome.required' => 'Sobrenome: Campo obrigatório.',
+            'sobrenome.string' => 'Sobrenome: Deve ser uma texto.',
+            'sobrenome.max' => 'Sobrenome: número de caracteres ultrapassado',
+            'nascimento.required' => 'Data Nascimento: Campo obrigatório.',
+            'nascimento.date_format' => 'Data Nascimento: Deve seguir o formato dd/mm/aaaa.',
+            'telefone.required' => 'Telefone: Campo obrigatório.',
+            'telefone.regex' => 'Telefone: Deve seguir o formato (XX) XXXXX-XXXX.',
+            'email.required' => 'Email: Campo obrigatório.',
+            'email.unique' => 'Email: Esse email já está em uso',
+            'email.email' => 'Email: O e-mail deve ser um endereço de e-mail válido.',
+            'email_secundario.email' => 'Email-Secundario: O e-mail secundário deve ser um endereço de e-mail válido.',
+            'password.required' => 'Senha: Campo obrigatório.',
+            'password.string' => 'Senha: Deve ser um texto.',
+            'password.min' => 'Senha: Deve conter no mínimo 8 caracteres.',
+            'password.regex' => 'Senha: Deve conter pelo menos uma letra maiúscula, uma letra minúscula, um número e um caractere especial.',
+        ];
     }
 }

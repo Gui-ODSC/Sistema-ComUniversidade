@@ -23,7 +23,7 @@ class CadastroMembroController extends Controller
 {
     private $usuarioController;
     private $usuarioModel;
-
+    private $enderecoModel;
     private $enderecoController;
     private $cidadeController;
     private $estadoController;
@@ -36,10 +36,12 @@ class CadastroMembroController extends Controller
         EstadoController $estadoController,
         BairroController $bairroController,
         Usuario $usuarioModel,
+        Endereco $enderecoModel,
 
     ) {
         $this->usuarioController = $usuarioController;
         $this->usuarioModel = $usuarioModel;
+        $this->enderecoModel = $enderecoModel;
         $this->enderecoController = $enderecoController;
         $this->cidadeController = $cidadeController;
         $this->estadoController = $estadoController;
@@ -63,45 +65,49 @@ class CadastroMembroController extends Controller
 
     public function create(Request $request)
     {
-        $validarCamposEndereco = $this->enderecoController->create($request);
-        
+        $validarCamposEndereco = $this->enderecoController->validarCamposEndereco($request);
         $validarCamposUsuario = $this->usuarioController->validarCamposUsuario($request);
 
-        
-        if ($validarCamposEndereco instanceof \Illuminate\Support\MessageBag) {
+        // Verifica se a validação dos campos de endereço falhou
+        if ($validarCamposEndereco->fails()) {
             return back()->withErrors([
-                "message" => 'Campos Endereco Inválidos',
-                "dados" => $validarCamposEndereco->all(),
-                ...$this->listErrosEndereco($validarCamposEndereco)
+                "message" => 'Campos de Endereços Inválidos',
+                "dados" => $validarCamposEndereco->errors()->all(),
+                ...$this->listErrosEndereco($validarCamposEndereco->errors())
             ]);
-            /* return $validarCamposEndereco->all(); */
         }
-        
+
+        // Verifica se a validação dos campos do usuário falhou
         if ($validarCamposUsuario->fails()) {
-            /* return $validarCamposUsuario->errors()->all(); */
             return back()->withErrors([
                 "message" => 'Campo de dados pessoais inválidos',
                 "dados" => $validarCamposUsuario->errors()->all(),
                 ...$this->listErrosUsuario($validarCamposUsuario->errors())
             ]);
         }
-        
-        $validatedData = $validarCamposUsuario->validated();
+
+        // Se a validação passou, prosseguimos com a criação do endereço e do usuário
+        $validatedDataEndereco = $validarCamposEndereco->validated();
+        $validatedDataUsuario = $validarCamposUsuario->validated();
+
+        // Criação do endereço
+        $newEndereco = $this->enderecoModel::create($validatedDataEndereco);
+
+        // Criação do usuário com o ID do endereço recém-criado
         $this->usuarioModel::create([
-            'id_endereco' => $validarCamposEndereco->id_endereco,
-            'nome' => $validatedData['nome'],
-            'sobrenome' => $validatedData['sobrenome'],
-            'nascimento' => Carbon::createFromFormat('d/m/Y', $validatedData['nascimento'])->format('Y-m-d'),
-            'telefone' => $validatedData['telefone'],
-            'email' => $validatedData['email'],
-            'email_secundario' => $validatedData['email_secundario'] ?? null,
-            'password' => Hash::make($validatedData['password']),
-            'foto' => $validatedData['foto'] ?? null,
+            'id_endereco' => $newEndereco->id_endereco,
+            'nome' => $validatedDataUsuario['nome'],
+            'sobrenome' => $validatedDataUsuario['sobrenome'],
+            'nascimento' => Carbon::createFromFormat('d/m/Y', $validatedDataUsuario['nascimento'])->format('Y-m-d'),
+            'telefone' => $validatedDataUsuario['telefone'],
+            'email' => $validatedDataUsuario['email'],
+            'email_secundario' => $validatedDataUsuario['email_secundario'] ?? null,
+            'password' => Hash::make($validatedDataUsuario['password']),
+            'foto' => $validatedDataUsuario['foto'] ?? null,
             'tipo' => 'MEMBRO'
         ]);
 
         return redirect()->route('login_index');
-
     }
 
     private function listErrosUsuario($errors)

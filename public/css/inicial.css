@@ -5,6 +5,9 @@
 
 body {
     background-color: #708090;
+    font-family: "Manrope", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
 }
 
 h1 {

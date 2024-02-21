@@ -5,13 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/usuarioMembro/cadastro/cadastro_membro.css') }}">
-    <link rel="stylesheet" href="{{ asset('js/usuarioMembro/cadastro/digita_completa/opcoes.js')}}">
 
-    
+    {{-- InputMask --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.6/jquery.inputmask.min.js"></script>
 
-
+    {{-- Autocomplete.JS --}}
+    <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js/dist/js/autoComplete.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/css/autoComplete.02.min.css">
     <title>Cadastro de Membros</title>
 </head>
 <header>
@@ -36,7 +37,6 @@
                 </div>
                 <script src="{{ asset('js/usuarioMembro/login_membro/mensagem_erro.js') }}"></script>
             @endif
-
             {{-- NOME --}}
             @error('nome')
                 <input title="{{ $message }}" class="alert-danger" type="text" id="nome" name="nome" value="Guilherme" style="border: 1px solid red; background-color:rgb(235, 201, 206)" placeholder="Nome *" required>
@@ -88,19 +88,13 @@
             
             {{-- CIDADE --}}
             @error('cidade')
-                <select title="{{ $message }}" id="cidade" name="id_cidade" style="border: 1px solid red; background-color:rgb(235, 201, 206)" required>
-                    <option value="" disabled selected hidden>Selecione a cidade *</option>
-                    @foreach ($cidades as $cidade)
-                        <option selected value="{{ $cidade->id_cidade }}">{{ $cidade->nome }}</option>
-                    @endforeach
-                </select>
+                <div class="autoComplete_wrapper">  
+                    <input title="{{ $message }}" type="text" id="autoCompleteCidade" class="cidade alert-danger" name="nome_cidade" style="border: 1px solid red; background-color:rgb(235, 201, 206)" placeholder="Selecione um Cidade" required>
+                </div>
             @else
-                <select id="cidade" name="id_cidade" required>
-                    <option value="" disabled selected hidden>Selecione a cidade *</option>
-                    @foreach ($cidades as $cidade)
-                        <option selected value="{{ $cidade->id_cidade }}">{{ $cidade->nome }}</option>
-                    @endforeach
-                </select>
+                <div class="autoComplete_wrapper">  
+                    <input type="text" id="autoCompleteCidade" class="cidade" name="nome_cidade" style="width: 302.3px;" placeholder="Selecione um Cidade" required>
+                </div>
             @enderror
 
             {{-- RUA --}}
@@ -126,36 +120,24 @@
 
             {{-- ESTADO --}}
             @error('estado')
-                <select title="{{ $message }}" id="estado" name="id_estado" style="border: 1px solid red; background-color:rgb(235, 201, 206)" required>
-                    <option value="" disabled selected hidden>Selecione o estado *</option>
-                    @foreach ($estados as $estado)
-                        <option selected value="{{ $estado->id_estado }}">{{ $estado->nome }}</option>
-                    @endforeach
-                </select>
+                <div class="autoComplete_wrapper">  
+                    <input title="{{ $message }}" type="text" id="autoCompleteEstado" class="estado alert-danger" name="nome_estado" style="border: 1px solid red; background-color:rgb(235, 201, 206)" placeholder="Selecione um Estado" required>
+                </div>   
             @else
-                <select  id="estado" name="id_estado" required>
-                    <option value="" disabled selected hidden>Selecione o estado *</option>
-                    @foreach ($estados as $estado)
-                        <option selected value="{{ $estado->id_estado }}">{{ $estado->nome }}</option>
-                    @endforeach
-                </select>
+                <div class="autoComplete_wrapper">  
+                    <input type="text" id="autoCompleteEstado" class="estado" name="nome_estado" style="width: 302.3px;" placeholder="Selecione um Estado" required>
+                </div>
             @enderror
 
             {{-- BAIRRO --}}
             @error('bairro')
-                <select title="{{ $message }}" id="bairro" name="id_bairro" style="border: 1px solid red; background-color:rgb(235, 201, 206)" required>
-                    <option value="" disabled selected hidden>Selecione o bairro *</option>
-                    @foreach ($bairros as $bairro)
-                        <option selected value="{{ $bairro->id_bairro }}">{{ $bairro->nome }}</option>
-                    @endforeach
-                </select>
+                <div title="{{ $message }}" class="autoComplete_wrapper">  
+                    <input type="text" id="autoCompleteBairro" class="bairro alert-danger" name="nome_bairro" style="border: 1px solid red; background-color:rgb(235, 201, 206)" placeholder="Selecione um bairro" required>
+                </div>    
             @else
-                <select id="bairro" name="id_bairro" required>
-                    <option value="" disabled selected hidden>Selecione o bairro *</option>
-                    @foreach ($bairros as $bairro)
-                        <option selected value="{{ $bairro->id_bairro }}">{{ $bairro->nome }}</option>
-                    @endforeach
-                </select>
+                <div class="autoComplete_wrapper">  
+                    <input type="text" id="autoCompleteBairro" class="bairro" name="nome_bairro" style="width: 308.5px;" placeholder="Selecione um bairro" required>
+                </div>    
             @enderror
 
             {{-- FOTO --}}
@@ -186,6 +168,65 @@
         $(document).ready(function(){
             $('#nascimento').inputmask('99/99/9999');
         });
+        
+        // Variável PHP contendo os bairros
+        const bairros = {!! json_encode($bairros) !!};
+
+        // Variável PHP contendo os bairros
+        const cidades = {!! json_encode($cidades) !!};
+
+        // Variável PHP contendo os bairros
+        const estados = {!! json_encode($estados) !!};
+
+        function inicializarAutoComplete(data, selector, onSelectionCallback) {
+            const autoCompleteJS = new autoComplete({
+                data: {
+                    src: data,
+                    key: ["nome"],
+                },
+                name: "autoComplete",
+                selector: selector,
+                threshold: 0,
+                debounce: 300,
+                searchEngine: "strict",
+                highlight: true,
+                maxResults: 5,
+                onSelection: onSelectionCallback,
+            });
+
+            const autoCompleteInput = document.querySelector(selector);
+            autoCompleteInput.addEventListener('focusout', function() {
+                const inputText = this.value;
+
+                const encontrado = data.find(item => item.nome === inputText);
+
+                if (!encontrado) {
+                    this.value = '';
+                }
+            });
+        }
+        // Inicializar o autocomplete para as cidades
+        inicializarAutoComplete(cidades, "#autoCompleteCidade", feedback => {
+            const cidade = feedback.selection.value;
+            const autoCompleteInput = document.getElementById('autoCompleteCidade');
+            autoCompleteInput.value = cidade.nome;
+        });
+
+        // Inicializar o autocomplete para os bairros
+        inicializarAutoComplete(bairros, "#autoCompleteBairro", feedback => {
+            const bairro = feedback.selection.value;
+            const autoCompleteInput = document.getElementById('autoCompleteBairro');
+            autoCompleteInput.value = bairro.nome;
+        });
+
+
+        // Inicializar o autocomplete para os estados
+        inicializarAutoComplete(estados, "#autoCompleteEstado", feedback => {
+            const estado = feedback.selection.value;
+            const autoCompleteInput = document.getElementById('autoCompleteEstado');
+            autoCompleteInput.value = estado.nome;
+        });
+
     </script>
 </body>
 </html>
