@@ -27,10 +27,7 @@ class EstadoController extends Controller
     {
         $estado = $this->estadoModel::all();
         
-        return response()->json([
-            'message' => 'Estado successfully recovered',
-            'data' => $estado
-        ]);
+        return $estado;
     }
 
     public function get($id_estado)

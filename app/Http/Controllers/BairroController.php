@@ -22,10 +22,6 @@ class BairroController extends Controller
     {
         return [
             'nome' => 'required|string|max:255',
-            'id_cidade' => [
-                'required',
-                Rule::exists(Cidade::class, 'id_cidade')
-            ]
         ];
     }
 
@@ -33,10 +29,7 @@ class BairroController extends Controller
     {
         $bairro = $this->bairroModel::all();
         
-        return response()->json([
-            'message' => 'Bairro successfully recovered',
-            'data' => $bairro
-        ]);
+        return $bairro;
     }
 
     public function get($id_bairro)
@@ -48,9 +41,8 @@ class BairroController extends Controller
     {
         $validator = Validator::make($request->all(), [
             ...$this->getValidationSchema(),
-            'id_cidade' => [
-                Rule::unique(Bairro::class, 'id_cidade')
-                    ->where('nome', $request->input('nome'))
+            'nome' => [
+                Rule::unique(Bairro::class, 'nome')
             ] 
         ]);
 
@@ -62,7 +54,6 @@ class BairroController extends Controller
 
         $bairro = $this->bairroModel::create([
             'nome' => $validatedData['nome'],
-            'id_cidade' => $validatedData['id_cidade']
         ]);
 
         return response()->json([
@@ -75,9 +66,8 @@ class BairroController extends Controller
     {
         $validator = Validator::make($request->all(), [
             ...$this->getValidationSchema(),
-            'id_cidade' => [
-                Rule::unique(Bairro::class, 'id_cidade')
-                    ->where('nome', $request->input('nome'))
+            'nome' => [
+                Rule::unique(Bairro::class, 'nome')
             ] 
         ]);
 
@@ -91,7 +81,6 @@ class BairroController extends Controller
 
         $bairro->update([
             'nome' => $validatedData['nome'],
-            'id_cidade' => $validatedData['id_cidade']
         ]);
 
         return response()->json([

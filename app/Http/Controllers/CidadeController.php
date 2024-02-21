@@ -22,10 +22,6 @@ class CidadeController extends Controller
     {
         return [
             'nome' => 'required|string|max:255',
-            'id_estado' => [
-                'required',
-                Rule::exists(Estado::class, 'id_estado')
-            ]
         ];
     }
 
@@ -33,10 +29,7 @@ class CidadeController extends Controller
     {
         $cidade = $this->cidadeModel::all();
         
-        return response()->json([
-            'message' => 'Cidade successfully recovered',
-            'data' => $cidade
-        ]);
+        return $cidade;
     }
 
     public function get($id_cidade)
@@ -48,9 +41,8 @@ class CidadeController extends Controller
     {
         $validator = Validator::make($request->all(), [
             ...$this->getValidationSchema(),
-            'id_estado' => [
-                Rule::unique(Cidade::class, 'id_estado')
-                    ->where('nome', $request->input('nome'))
+            'nome' => [
+                Rule::unique(Cidade::class, 'nome'),
             ] 
         ]);
 
@@ -62,7 +54,6 @@ class CidadeController extends Controller
 
         $cidade = $this->cidadeModel::create([
             'nome' => $validatedData['nome'],
-            'id_estado' => $validatedData['id_estado']
         ]);
 
         return response()->json([
@@ -75,9 +66,8 @@ class CidadeController extends Controller
     {
         $validator = Validator::make($request->all(), [
             ...$this->getValidationSchema(),
-            'id_estado' => [
-                Rule::unique(Cidade::class, 'id_estado')
-                    ->where('nome', $request->input('nome'))
+            'nome' => [
+                Rule::unique(Cidade::class, 'nome'),
             ] 
         ]);
 
@@ -91,7 +81,6 @@ class CidadeController extends Controller
 
         $cidade->update([
             'nome' => $validatedData['nome'],
-            'id_estaado' => $validatedData['id_estado']
         ]);
 
         return response()->json([

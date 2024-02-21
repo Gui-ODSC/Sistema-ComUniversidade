@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Estado extends Model
 {
@@ -20,8 +20,8 @@ class Estado extends Model
         'nome'
     ];
 
-    public function cidade(): HasMany
+    public function endereco(): BelongsTo
     {
-        return $this->hasMany(Cidade::class, 'id_estado', 'id_estado');
+        return $this->belongsTo(Endereco::class, 'id_estado', 'id_estado');
     }
 }

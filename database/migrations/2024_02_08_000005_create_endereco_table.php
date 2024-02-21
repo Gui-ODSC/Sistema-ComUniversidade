@@ -14,11 +14,15 @@ return new class extends Migration
         Schema::create('Endereco', function (Blueprint $table) {
             $table->id('id_endereco');
             $table->unsignedBigInteger('id_bairro');
+            $table->unsignedBigInteger('id_cidade');
+            $table->unsignedBigInteger('id_estado');
             $table->string('rua');
             $table->integer('numero');
-            $table->string('complemento');
+            $table->string('complemento')->nullable();
             
             $table->foreign('id_bairro')->references('id_bairro')->on('Bairro')->onDelete('cascade');
+            $table->foreign('id_cidade')->references('id_cidade')->on('Cidade')->onDelete('cascade');
+            $table->foreign('id_estado')->references('id_estado')->on('Estado')->onDelete('cascade');
             $table->timestamps();
         });
     }

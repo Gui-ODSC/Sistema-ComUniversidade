@@ -18,17 +18,11 @@ class Bairro extends Model
     protected $primaryKey = 'id_bairro'; 
 
     protected $fillable = [
-        'id_cidade',
         'nome',
     ];
 
-    public function cidade():BelongsTo
+    public function endereco():BelongsTo
     {
-        return $this->belongsTo(Cidade::class, 'id_cidade', 'id_cidade');
-    }
-
-    public function endereco():HasMany
-    {
-        return $this->hasMany(Endereco::class, 'id_bairro', 'id_bairro');
+        return $this->belongsTo(Endereco::class, 'id_bairro', 'id_bairro');
     }
 }

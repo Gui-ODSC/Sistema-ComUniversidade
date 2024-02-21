@@ -18,17 +18,11 @@ class Cidade extends Model
     protected $primaryKey = 'id_cidade'; 
 
     protected $fillable = [
-        'id_estado',
         'nome',
     ];
 
-    public function estado():BelongsTo
+    public function endereco():BelongsTo
     {
-        return $this->belongsTo(Estado::class, 'id_estado', 'id_estado');
-    }
-
-    public function bairro():HasMany
-    {
-        return $this->hasMany(Bairro::class, 'id_cidade', 'id_cidade');
+        return $this->belongsTo(Endereco::class, 'id_cidade', 'id_cidade');
     }
 }
