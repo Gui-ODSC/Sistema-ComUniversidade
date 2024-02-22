@@ -93,7 +93,7 @@
                 </div>
             @else
                 <div class="autoComplete_wrapper">  
-                    <input type="text" id="autoCompleteCidade" class="cidade" name="nome_cidade" style="width: 302.3px;" placeholder="Selecione um Cidade" required>
+                    <input type="text" id="autoCompleteCidade" class="cidade" name="nome_cidade"  placeholder="Selecione um Cidade" required>
                 </div>
             @enderror
 
@@ -125,7 +125,7 @@
                 </div>   
             @else
                 <div class="autoComplete_wrapper">  
-                    <input type="text" id="autoCompleteEstado" class="estado" name="nome_estado" style="width: 302.3px;" placeholder="Selecione um Estado" required>
+                    <input type="text" id="autoCompleteEstado" class="estado" name="nome_estado" placeholder="Selecione um Estado" required>
                 </div>
             @enderror
 
@@ -136,7 +136,7 @@
                 </div>    
             @else
                 <div class="autoComplete_wrapper">  
-                    <input type="text" id="autoCompleteBairro" class="bairro" name="nome_bairro" style="width: 308.5px;" placeholder="Selecione um bairro" required>
+                    <input type="text" id="autoCompleteBairro" class="bairro" name="nome_bairro" placeholder="Selecione um bairro" required>
                 </div>    
             @enderror
 

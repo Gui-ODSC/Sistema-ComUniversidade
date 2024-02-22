@@ -104,28 +104,15 @@ h4 {
 .cadastro-container input[id="telefone"] {
     display: inline-flex;
     margin-top: 5px;
-    width: 50%;
+    width: 307px;
     border-radius: 10px;
     padding: 5px;
-}
-
-.cadastro-container select[id="cidade"] {
-    display: inline-flex;
-    height: 44px;
-    margin-top: 5px;
-    width: 49%;
-    border-radius: 10px;
-    padding: 5px;
-    background-color: #FFF;
-    overflow: hidden;
-    cursor: pointer;
-    resize: none;
 }
 
 .cadastro-container input[id="rua"] {
     display: inline-flex;
     margin-top: 5px;
-    width: 50%;
+    width: 307px;
     border-radius: 10px;
     padding: 5px;
 }
@@ -133,7 +120,7 @@ h4 {
 .cadastro-container input[id="numero"] {
     display: inline-flex;
     margin-top: 5px;
-    width: 49%;
+    width: 300px;
     border-radius: 10px;
     padding: 5px;
 }
@@ -141,46 +128,20 @@ h4 {
 .cadastro-container input[id="complemento"] {
     display: inline-flex;
     margin-top: 5px;
-    width: 308.5px;
+    width: 307px;
     border-radius: 10px;
     padding: 5px;
-    position: static;
-}
-
-.cadastro-container select[id="estado"], .estado, .cidade {
-    display: inline-flex;
-    height: 44px;
-    margin-top: 5px;
-    width: 49%;
-    border-radius: 10px;
-    padding: 5px;
-    background-color: #FFF;
-    overflow: hidden;
-    cursor: pointer;
-}
-
-.cadastro-container select[id="bairro"] {
-    display: inline-flex;
-    height: 44px;
-    margin-top: 5px;
-    width: 50%;
-    border-radius: 10px;
-    padding: 5px;
-    background-color: #FFF;
-    overflow: hidden;
-    cursor: pointer;
 }
 
 .custom-file-upload {
     border: 1px solid black;
     display: inline-block;
-    height: 44px;
-    width: 49%;
-    padding: 5px;
+    height: 42px;
+    width: 300px;
+    padding: 7px;
     cursor: pointer;
     background-color: #4363bd;
     border-radius: 10px;
-    margin-top: 5px;
     color: #fff;
 }
 
@@ -253,20 +214,72 @@ h4 {
 
 
 /* ESTILIZACAO AUTOCOMPLETE */
-
-.autoComplete_wrapper #autoCompleteBairro, #autoCompleteEstado, #autoCompleteCidade {
-    padding: 0px 10px;
-    border-radius: 10px;
-    overflow: hidden;
-    cursor: pointer;
+.autoComplete_wrapper #autoCompleteBairro {
+    display: inline-flex;
+    padding: 5px;
     color: black;
     font-family: "Manrope", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
     font-weight: lighter;
     font-size: 20px;
+    cursor: pointer;
+    overflow: hidden;
+    background-color: #FFF;
+    border-radius: 10px;
+    margin-top: 5px;
+    height: 42px;
+    width: 307px;
+    margin-bottom: 0px;
+
+}
+
+.autoComplete_wrapper #autoCompleteCidade {
+    display: inline-flex;
+    padding: 5px;
+    color: black;
+    font-family: "Manrope", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-weight: lighter;
+    font-size: 20px;
+    cursor: pointer;
+    overflow: hidden;
+    background-color: #FFF;
+    border-radius: 10px;
+    margin-top: 5px;
+    height: 42px;
+    width: 300px;
+    margin-bottom: 0px;
+}
+
+.autoComplete_wrapper #autoCompleteEstado {
+    display: inline-flex;
+    padding: 5px;
+    color: black;
+    font-family: "Manrope", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-weight: lighter;
+    font-size: 20px;
+    cursor: pointer;
+    overflow: hidden;
+    background-color: #FFF;
+    border-radius: 10px;
+    margin-top: 5px;
+    height: 42px;
+    width: 300px;
+    margin-bottom: 0px;
 }
 
 .autoComplete_wrapper #autoCompleteBairro::placeholder {
+    color: black;
+}
+
+.autoComplete_wrapper #autoCompleteEstado::placeholder {
+    color: black;
+}
+
+.autoComplete_wrapper #autoCompleteCidade::placeholder {
     color: black;
 }
