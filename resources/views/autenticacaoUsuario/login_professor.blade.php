@@ -22,7 +22,7 @@
             <input type="text" id="password" placeholder="Login">
             <label for="password">Senha</label>
             <input type="password" id="password" placeholder="Senha">
-            <span><a href="{{ route('recuperacao_senha') }}">Recuperar a Senha</a></span><br>
+            <span><a href="{{ route('inicial') }}">Recuperar a Senha</a></span><br>
             <button>Entrar</button>
         </form>
     </div>
