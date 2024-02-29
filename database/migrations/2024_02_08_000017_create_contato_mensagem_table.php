@@ -18,9 +18,9 @@ return new class extends Migration
             $table->unsignedBigInteger('id_usuario_destino');
             $table->string('mensagem');
 
-            $table->foreign('id_contato')->references('id_contato')->on('Contato')->onDelete('cascade');
-            $table->foreign('id_usuario_origem')->references('id_usuario')->on('Usuario')->onDelete('cascade');
-            $table->foreign('id_usuario_destino')->references('id_usuario')->on('Usuario')->onDelete('cascade');
+            $table->foreign('id_contato')->references('id_contato')->on('Contato')->onDelete('restrict');
+            $table->foreign('id_usuario_origem')->references('id_usuario')->on('Usuario')->onDelete('restrict');
+            $table->foreign('id_usuario_destino')->references('id_usuario')->on('Usuario')->onDelete('restrict');
             $table->timestamps();
         });
     }

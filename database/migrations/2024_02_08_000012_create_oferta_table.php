@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('descricao');
             $table->enum('tipo', ['ACAO', 'CONHECIMENTO']);
 
-            $table->foreign('id_usuario_professor')->references('id_usuario_professor')->on('UsuarioProfessor')->onDelete('cascade');
-            $table->foreign('id_area_conhecimento')->references('id_area_conhecimento')->on('AreaConhecimento')->onDelete('cascade');
+            $table->foreign('id_usuario_professor')->references('id_usuario_professor')->on('UsuarioProfessor')->onDelete('restrict');
+            $table->foreign('id_area_conhecimento')->references('id_area_conhecimento')->on('AreaConhecimento')->onDelete('restrict');
             $table->unique(['id_usuario_professor', 'titulo']);
             $table->timestamps();
         });

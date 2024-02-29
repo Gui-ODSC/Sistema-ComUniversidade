@@ -26,7 +26,7 @@ return new class extends Migration
             $table->string('foto')->nullable();
             $table->enum('tipo', ['MEMBRO', 'ALUNO', 'PROFESSOR']);
             
-            $table->foreign('id_endereco')->references('id_endereco')->on('Endereco')->onDelete('cascade');
+            $table->foreign('id_endereco')->references('id_endereco')->on('Endereco')->onDelete('restrict');
             $table->timestamps();
         });
     }

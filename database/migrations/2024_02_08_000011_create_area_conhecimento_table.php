@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id('id_area_conhecimento');
             $table->string('nome');
 
-            $table->unique(['id_area_conhecimento', 'nome']);
+            $table->unique('nome');
             $table->timestamps();
         });
     }

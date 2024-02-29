@@ -20,9 +20,9 @@ return new class extends Migration
             $table->integer('numero');
             $table->string('complemento')->nullable();
             
-            $table->foreign('id_bairro')->references('id_bairro')->on('Bairro')->onDelete('cascade');
-            $table->foreign('id_cidade')->references('id_cidade')->on('Cidade')->onDelete('cascade');
-            $table->foreign('id_estado')->references('id_estado')->on('Estado')->onDelete('cascade');
+            $table->foreign('id_bairro')->references('id_bairro')->on('Bairro')->onDelete('restrict');
+            $table->foreign('id_cidade')->references('id_cidade')->on('Cidade')->onDelete('restrict');
+            $table->foreign('id_estado')->references('id_estado')->on('Estado')->onDelete('restrict');
             $table->timestamps();
         });
     }

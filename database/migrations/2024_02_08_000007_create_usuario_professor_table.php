@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_usuario');
             $table->string('link_curriculo');
             
-            $table->foreign('id_usuario')->references('id_usuario')->on('Usuario')->onDelete('cascade');
+            $table->foreign('id_usuario')->references('id_usuario')->on('Usuario')->onDelete('restrict');
             $table->unique(['id_usuario_professor', 'id_usuario']);
             $table->timestamps();
         });

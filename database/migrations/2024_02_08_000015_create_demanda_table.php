@@ -21,7 +21,7 @@ return new class extends Migration
             $table->integer('pessoas_afetadas')->unsigned;
             $table->enum('duracao', ['DIAS', 'SEMANAS', 'MESES', 'ANOS', 'INDEFINIDO']);
             $table->enum('nivel_prioridade', ['BAIXO', 'MEDIO', 'ALTO']);
-            $table->string('instituicao_setor');
+            $table->string('instituicao_setor')->nullable();
 
             $table->foreign('id_usuario')->references('id_usuario')->on('Usuario')->onDelete('cascade');
             $table->foreign('id_publico_alvo')->references('id_publico_alvo')->on('PublicoAlvo')->onDelete('cascade');

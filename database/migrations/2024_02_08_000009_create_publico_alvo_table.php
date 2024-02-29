@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id('id_publico_alvo');
             $table->string('nome');
 
-            $table->unique(['id_publico_alvo', 'nome']);
+            $table->unique('nome');
             $table->timestamps();
         });
     }
