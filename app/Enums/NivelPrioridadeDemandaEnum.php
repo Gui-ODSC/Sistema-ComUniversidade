@@ -2,7 +2,7 @@
 
 namespace App\Enums;
 
-enum NivelPrioridadeDemandaEnum
+enum NivelPrioridadeDemandaEnum: string
 {
     case BAIXO = 'BAIXO';
     case MEDIO = 'MEDIO';

@@ -2,7 +2,7 @@
 
 namespace App\Enums;
 
-enum DuracaoDemandaEnum
+enum DuracaoDemandaEnum: string
 {
     case DIAS = 'DIAS';
     case SEMANAS = 'SEMANAS';

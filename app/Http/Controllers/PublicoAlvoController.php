@@ -27,10 +27,7 @@ class PublicoAlvoController extends Controller
     {
         $publicoAlvo = $this->publicoAlvoModel::all();
         
-        return response()->json([
-            'message' => 'Publico Alvo successfully recovered',
-            'data' => $publicoAlvo
-        ]);
+        return $publicoAlvo;
     }
 
     public function get($id_tipo_acao)
@@ -38,39 +35,35 @@ class PublicoAlvoController extends Controller
         return $this->publicoAlvoModel::findOrFail($id_tipo_acao);
     }
 
-    public function create(Request $request)
+    public function validarCamposPublicoAlvo(Request $request)
     {
-        $validator = Validator::make($request->all(), [
+        
+        $publicoAlvo = PublicoAlvo::where('nome', $request->input('publico_alvo'))->first();
+
+        if (!$publicoAlvo ) {
+            return response()->json(['error' => 'O público alvo selecionado não foi encontrado.'], 400);
+        }
+
+        $validatedData = array_merge($request->all(), [
+            'id_publico_alvo' => $publicoAlvo->id_publico_alvo,
+        ]);
+
+        $validator = Validator::make($validatedData, [
             ...$this->getValidationSchema(),
-            'id_publico_alvo' => [
-                Rule::unique(PublicoAlvo::class, 'id_publico_alvo')
-                    ->where('nome', $request->input('nome'))
+            'nome' => [
+                Rule::unique(PublicoAlvo::class, 'nome')
             ]
-        ]);
+        ], $this->messageValidation());
 
-        if ($validator->fails()) {
-			return response($validator->errors())->setStatusCode(400);
-		}
-
-        $validatedData = $validator->validated();
-
-        $oferta = $this->publicoAlvoModel::create([
-            'nome' => $validatedData['nome']
-        ]);
-
-        return response()->json([
-            'message' => 'Publico Alvo Created successfull',
-            'data' => $oferta
-        ])->setStatusCode(201); 
+        return $validator;
     }
 
     public function update($id_tipo_acao, Request $request)
     {
         $validator = Validator::make($request->all(), [
             ...$this->getValidationSchema(),
-            'id_publico_alvo' => [
-                Rule::unique(PublicoAlvo::class, 'id_publico_alvo')
-                    ->where('nome', $request->input('nome'))
+            'nome' => [
+                Rule::unique(PublicoAlvo::class, 'nome')
             ]
         ]);
 
@@ -101,5 +94,15 @@ class PublicoAlvoController extends Controller
         return response()->json([
             'message' => 'Publico Alvo deleted successfully'
         ])->setStatusCode(200);
+    }
+
+    protected function messageValidation()
+    {
+        return [
+            'nome.unique' => 'Já existe um nome de publico alvo cadastrado.',
+            'nome.required' => 'O nome do público alvo é obrigatório',
+            'nome.string' => 'O nome deve ser um texto',
+            'nome.max' => 'Número máximo de caracteres ultrapassado'
+        ];
     }
 }

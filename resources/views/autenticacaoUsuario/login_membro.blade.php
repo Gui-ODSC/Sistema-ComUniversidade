@@ -19,7 +19,7 @@
         <form method="POST" action="{{ route('login_store') }}">
             @csrf
             @if (session()->has('success'))
-                <div class="alert alert-success">
+                <div class="alert alert-success" style="text-align: center">
                     <p>{{session('success')}}</p>
                 </div>
             @endif

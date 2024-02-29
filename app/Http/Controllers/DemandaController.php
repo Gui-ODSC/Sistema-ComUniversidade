@@ -41,12 +41,14 @@ class DemandaController extends Controller
             'descricao' => 'required|string|max:255',
             'pessoas_afetadas' => 'required|integer|min:1',
             'duracao' => [
+                'required',
                 new Enum(DuracaoDemandaEnum::class)
             ],
             'nivel_prioridade' => [
+                'required',
                 new Enum(NivelPrioridadeDemandaEnum::class)
             ],
-            'instituicao_setor' => 'required|string|max:255'
+            'instituicao_setor' => 'string|max:255|nullable'
         ];
     }
 
@@ -54,10 +56,7 @@ class DemandaController extends Controller
     {
         $demanda = $this->demandaModel::all();
         
-        return response()->json([
-            'message' => 'Demanda successfully recovered',
-            'data' => $demanda
-        ]);
+        return $demanda;
     }
 
     public function get($id_demanda)
@@ -65,39 +64,23 @@ class DemandaController extends Controller
         return $this->demandaModel::findOrFail($id_demanda);
     }
 
-    public function create(Request $request)
+    public function validarCamposDemanda(Request $request)
     {
-        //VALIDACAO DA CHAVE UNIQUE -> FAZENDO UM SPREED DOS DADOS JÁ VALIDADOS
-        $validator = Validator::make($request->all(), [
+
+        $idUsuarioLogado = auth()->id();
+
+        $dadosValidacao = array_merge($request->all(), ['id_usuario' => $idUsuarioLogado]);
+
+        $validator = Validator::make($dadosValidacao, [
             ...$this->getValidationSchema(), 
             'id_usuario' => [
                 Rule::unique(Demanda::class, 'id_usuario')
                     ->where('titulo', $request->input('titulo'))
             ]
-        ]);
+        ], $this->messageValidation());
 
-        if ($validator->fails()) {
-			return response($validator->errors())->setStatusCode(400);
-		}
+        return $validator;
 
-        $validatedData = $validator->validated();
-
-        $demanda = $this->demandaModel::create([
-            'id_usuario' => $validatedData['id_usuario'],
-            'id_publico_alvo' => $validatedData['id_publico_alvo'],
-            'id_area_conhecimento' => $validatedData['id_area_conhecimento'],
-            'titulo' => $validatedData['titulo'],
-            'descricao' => $validatedData['descricao'],
-            'pessoas_afetadas' => $validatedData['pessoas_afetadas'],
-            'duracao' => $validatedData['duracao'],
-            'nivel_prioridade' => $validatedData['nivel_prioridade'],
-            'instituicao_setor' => $validatedData['instituicao_setor']
-        ]);
-
-        return response()->json([
-            'message' => 'Demanda Created successfull',
-            'data' => $demanda
-        ])->setStatusCode(201); 
     }
 
     public function update($id_demanda, Request $request)
@@ -149,4 +132,36 @@ class DemandaController extends Controller
         ])->setStatusCode(200);
 
     }
+
+    protected function messageValidation()
+    {
+        return [
+            'id_usuario.unique' => 'Esse título já está em uso em suas demandas. Por favor, escolha outro.',
+            'id_usuario.exists' => 'Esse usuário não existe no banco de dados.',
+            'id_usuario.required' => 'O campo ID do usuário é obrigatório.',
+            'id_publico_alvo.required' => 'O campo ID do público-alvo é obrigatório.',
+            'id_publico_alvo.exists' => 'O ID do público-alvo fornecido é inválido.',
+            'id_area_conhecimento.required' => 'O campo ID da área de conhecimento é obrigatório.',
+            'id_area_conhecimento.exists' => 'O ID da área de conhecimento fornecido é inválido.',
+            'titulo.required' => 'O campo título é obrigatório.',
+            'titulo.string' => 'O campo título deve ser um texto.',
+            'titulo.max' => 'O campo título ultrapassou o numero de caracteres.',
+            'descricao.required' => 'O campo descrição é obrigatório.',
+            'descricao.string' => 'O campo descrição deve ser um texto.',
+            'descricao.max' => 'O campo descricao ultrapassou o numero de caracteres.',
+            'pessoas_afetadas.required' => 'O campo pessoas afetadas é obrigatório.',
+            'pessoas_afetadas.integer' => 'O campo pessoas afetadas deve ser um número inteiro.',
+            'pessoas_afetadas.min' => 'O campo pessoas afetadas deve ser no mínimo 1.',
+            'duracao.required' => 'O valor selecionado para a duração é Obrigatório.',
+            'duracao' => 'O valor selecionado para a duração é inválido.',
+            'nivel_prioridade.required' => 'O valor selecionado para o nível de prioridade é Obrigatório.',
+            'nivel_prioridade' => 'O valor selecionado para o nível de prioridade é inválido.',
+            'instituicao_setor.string' => 'O campo instituição/setor deve ser um texto.',
+            'instituicao_setor.max' => 'O campo instituição/setor ultrapassou o número de caracteres.'
+        ];
+    }
+
+
+
+    
 }

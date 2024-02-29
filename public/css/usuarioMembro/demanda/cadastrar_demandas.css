@@ -16,23 +16,15 @@
     font-weight: bold;
 }
 
-.cadastrar_demandas input[name="titulo_demanda"] {
+.cadastrar_demandas input[name="titulo"] {
     display: inline-flex;
     margin-top: 5px;
-    width: 60%;
+    width: 633px;
     border-radius: 7px;
     padding: 5px;   
 }
 
-.cadastrar_demandas input[name="publico_demanda"] {
-    display: inline-flex;
-    margin-top: 5px;
-    width: 39%;
-    border-radius: 7px;
-    padding: 5px;
-}
-
-.cadastrar_demandas textarea[name="texto_livre"] {
+.cadastrar_demandas textarea[name="descricao"] {
     display: inline-flex;
     margin-top: 5px;
     width: 99.5%;
@@ -41,26 +33,40 @@
     padding: 5px;
     word-wrap: break-word;
     border: 2px solid black;
-    font-weight: bold;
+    resize: none;
 }
 
-.cadastrar_demandas input[name="pessoas_impactadas"] {
+.cadastrar_demandas input[name="pessoas_afetadas"] {
     display: inline-flex;
-    width: 33%;
+    width: 370px;
     border-radius: 7px;
     padding: 5px;
 }
 
-.cadastrar_demandas input[name="tipo_acao"] {
+.cadastrar_demandas select[name="duracao"] {
     display: inline-flex;
-    width: 33%;
+    width: 270px;
+    height: 38px;
     border-radius: 7px;
     padding: 5px;
+    background-color: #e2e2e2  ;
+    border: solid 2px black;
 }
 
-.cadastrar_demandas input[name="prioridade"] {
+.cadastrar_demandas select[name="nivel_prioridade"] {
     display: inline-flex;
-    width: 33%;
+    width: 270px;
+    height: 38px;
+    border-radius: 7px;
+    padding: 5px;
+    background-color: #e2e2e2  ;
+    border: solid 2px black;
+}
+
+.cadastrar_demandas input[name="instituicao_setor"] {
+    display: inline-flex;
+    margin-top: 5px;
+    width: 320px;
     border-radius: 7px;
     padding: 5px;
 }
@@ -73,20 +79,8 @@
     padding: 5px;
 }
 
-.cadastrar_demandas input[name="duracao"] {
-    display: inline-flex;
-    margin-top: 5px;
-    width: 33%;
-    border-radius: 7px;
-    padding: 5px;
-}
-
-.cadastrar_demandas input[name="setor_instituicao"] {
-    display: inline-flex;
-    margin-top: 5px;
-    width: 33%;
-    border-radius: 7px;
-    padding: 5px;
+.cadastrar_demandas .button_send {
+    display: block;
 }
 
 .cadastrar_demandas button {
@@ -100,4 +94,42 @@
     margin-top: 30px;
     width: 250px;
     height: 50px;
+}
+
+/* ESTILIZAÇÃO AUTOCOMPLETE */
+.autoComplete_wrapper #autoCompletePublicoAlvo {
+    display: inline-flex;
+    padding: 5px;
+    color: black;
+    cursor: pointer;
+    overflow: hidden;
+    background-color: #FFF;
+    border-radius: 10px;
+    margin-top: 5px;
+    width: 300px;
+    margin-bottom: 0px;
+    border: solid 2px black;
+}
+
+.autoComplete_wrapper #autoCompleteAreaConhecimento {
+    display: inline-flex;
+    padding: 5px;
+    color: black;
+    cursor: pointer;
+    overflow: hidden;
+    background-color: #FFF;
+    border-radius: 10px;
+    margin-top: 5px;
+    width: 300px;
+    margin-bottom: 0px;
+    border: solid 2px black;
+
+}
+
+.autoComplete_wrapper #autoCompleteAreaConhecimento::placeholder {
+    color: black;
+}
+
+.autoComplete_wrapper #autoCompletePublicoAlvo::placeholder {
+    color: black;
 }

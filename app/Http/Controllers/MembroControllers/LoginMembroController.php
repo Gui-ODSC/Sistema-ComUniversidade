@@ -28,7 +28,7 @@ class LoginMembroController extends Controller
             
             $request->session()->regenerate();
 
-            return redirect()->route('minhas_demandas_membro');
+            return redirect()->route('demanda_index');
         }
 
         return back()->withErrors([

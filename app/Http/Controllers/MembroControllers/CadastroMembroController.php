@@ -107,7 +107,7 @@ class CadastroMembroController extends Controller
             'tipo' => 'MEMBRO'
         ]);
 
-        return redirect()->route('login_index');
+        return redirect()->route('login_index')->with("success", "Usuário Cadastrado com Sucesso.");
     }
 
     private function listErrosUsuario($errors)
