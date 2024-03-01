@@ -1,0 +1,135 @@
+.cadastrar_demandas h1 {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.cadastrar_demandas {
+    text-align: center;
+}
+
+.cadastrar_demandas input {
+    border: solid 2px black;
+}
+
+.cadastrar_demandas input::placeholder {
+    font-weight: bold;
+}
+
+.cadastrar_demandas input[name="titulo"] {
+    display: inline-flex;
+    margin-top: 5px;
+    width: 633px;
+    border-radius: 7px;
+    padding: 5px;   
+}
+
+.cadastrar_demandas textarea[name="descricao"] {
+    display: inline-flex;
+    margin-top: 5px;
+    width: 99.5%;
+    height: 170px;
+    border-radius: 7px;
+    padding: 5px;
+    word-wrap: break-word;
+    border: 2px solid black;
+    resize: none;
+}
+
+.cadastrar_demandas input[name="pessoas_afetadas"] {
+    display: inline-flex;
+    width: 370px;
+    border-radius: 7px;
+    padding: 5px;
+}
+
+.cadastrar_demandas select[name="duracao"] {
+    display: inline-flex;
+    width: 270px;
+    height: 38px;
+    border-radius: 7px;
+    padding: 5px;
+    background-color: #e2e2e2  ;
+    border: solid 2px black;
+}
+
+.cadastrar_demandas select[name="nivel_prioridade"] {
+    display: inline-flex;
+    width: 270px;
+    height: 38px;
+    border-radius: 7px;
+    padding: 5px;
+    background-color: #e2e2e2  ;
+    border: solid 2px black;
+}
+
+.cadastrar_demandas input[name="instituicao_setor"] {
+    display: inline-flex;
+    margin-top: 5px;
+    width: 320px;
+    border-radius: 7px;
+    padding: 5px;
+}
+
+.cadastrar_demandas input[name="area_conhecimento"] {
+    display: inline-flex;
+    margin-top: 5px;
+    width: 33%;
+    border-radius: 7px;
+    padding: 5px;
+}
+
+.cadastrar_demandas .button_send {
+    display: block;
+}
+
+.cadastrar_demandas button {
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    background-color: #191970;
+    border: none;
+    color: #FFF;
+    font-weight: bold;
+    margin-top: 30px;
+    width: 250px;
+    height: 50px;
+}
+
+/* ESTILIZAÇÃO AUTOCOMPLETE */
+.autoComplete_wrapper #autoCompletePublicoAlvo {
+    display: inline-flex;
+    padding: 5px;
+    color: black;
+    cursor: pointer;
+    overflow: hidden;
+    background-color: #FFF;
+    border-radius: 10px;
+    margin-top: 5px;
+    width: 300px;
+    margin-bottom: 0px;
+    border: solid 2px black;
+}
+
+.autoComplete_wrapper #autoCompleteAreaConhecimento {
+    display: inline-flex;
+    padding: 5px;
+    color: black;
+    cursor: pointer;
+    overflow: hidden;
+    background-color: #FFF;
+    border-radius: 10px;
+    margin-top: 5px;
+    width: 300px;
+    margin-bottom: 0px;
+    border: solid 2px black;
+
+}
+
+.autoComplete_wrapper #autoCompleteAreaConhecimento::placeholder {
+    color: black;
+}
+
+.autoComplete_wrapper #autoCompletePublicoAlvo::placeholder {
+    color: black;
+}

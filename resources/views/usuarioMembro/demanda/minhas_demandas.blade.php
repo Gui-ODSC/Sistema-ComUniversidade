@@ -40,7 +40,7 @@
                             <td>{{ $demanda->titulo }}</td>
                             <td>{{ $demanda->areaConhecimento->nome }}</td>
                             <td>{{ \Carbon\Carbon::parse($demanda->created_at)->format('d/m/Y') }}</td>
-                            <td><a href="{{ route('editar_demandas_membro') }}"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/minhas_demandas/editar.png') }}" alt="tres pontos para mais informação"></a></td>
+                            <td><a href="{{ route('demanda_edit_index', $demanda->id_demanda) }}"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/minhas_demandas/editar.png') }}" alt="tres pontos para mais informação"></a></td>
                             <td><a onclick="openModalDeletar()"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/minhas_demandas/delete.png') }}" alt="tres pontos para mais informação"></a></td>
                             <td><a href="{{ route('visualizar_matching_demandas_membro') }}"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/minhas_demandas/ver.png') }}" alt="tres pontos para mais informação"></a></td>
                         </tr>

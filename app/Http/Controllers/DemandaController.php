@@ -64,7 +64,7 @@ class DemandaController extends Controller
         return $this->demandaModel::findOrFail($id_demanda);
     }
 
-    public function validarCamposDemanda(Request $request)
+    public function validarCamposDemandaCreate(Request $request)
     {
 
         $idUsuarioLogado = auth()->id();
@@ -83,41 +83,22 @@ class DemandaController extends Controller
 
     }
 
-    public function update($id_demanda, Request $request)
+    public function validarCamposDemandaUpdate(Request $request, $demandaId)
     {
-        //VALIDACAO DA CHAVE UNIQUE -> FAZENDO UM SPREED DOS DADOS JÁ VALIDADOS
-        $validator = Validator::make($request->all(), [
+        $idUsuarioLogado = auth()->id();
+
+        $dadosValidacao = array_merge($request->all(), ['id_usuario' => $idUsuarioLogado]);
+
+        $validator = Validator::make($dadosValidacao, [
             ...$this->getValidationSchema(), 
             'id_usuario' => [
                 Rule::unique(Demanda::class, 'id_usuario')
                     ->where('titulo', $request->input('titulo'))
+                    ->ignore($demandaId, 'id_demanda')
             ]
-        ]);
-        
-        if ($validator->fails()) {
-			return response($validator->errors())->setStatusCode(400);
-		}
-        
-        $validatedData = $validator->validated();
+        ], $this->messageValidation());
 
-        $demanda = $this->demandaModel::findOrFail($id_demanda);
-
-        $demanda->update([
-            'id_usuario' => $validatedData['id_usuario'],
-            'id_publico_alvo' => $validatedData['id_publico_alvo'],
-            'id_area_conhecimento' => $validatedData['id_area_conhecimento'],
-            'titulo' => $validatedData['titulo'],
-            'descricao' => $validatedData['descricao'],
-            'pessoas_afetadas' => $validatedData['pessoas_afetadas'],
-            'duracao' => $validatedData['duracao'],
-            'nivel_prioridade' => $validatedData['nivel_prioridade'],
-            'instituicao_setor' => $validatedData['instituicao_setor']
-        ]);
-
-        return response()->json([
-            'message' => 'Demanda Updated Successfully',
-            'data' => $demanda
-        ])->setStatusCode(200);
+        return $validator;
             
     }
 

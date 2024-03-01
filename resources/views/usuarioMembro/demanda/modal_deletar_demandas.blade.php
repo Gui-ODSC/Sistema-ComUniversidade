@@ -17,8 +17,8 @@
             <div class="modal-excluir">
             <h2>Deseja mesmo Excluir ?</h2>
             <div class="div-botoes">
-                <a href="{{ route('minhas_demandas_membro') }}"><button id="botao-sim">Sim</button></a>
-                <a href="{{ route('minhas_demandas_membro') }}"><button id="botao-nao">Não</button></a>
+                <a href="{{ route('demanda_index') }}"><button id="botao-sim">Sim</button></a>
+                <a href="{{ route('demanda_index') }}"><button id="botao-nao">Não</button></a>
             </div>
         </div>
     </div>

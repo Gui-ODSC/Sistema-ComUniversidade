@@ -6,7 +6,9 @@ use App\Http\Controllers\AreaConhecimentoController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\DemandaController;
 use App\Http\Controllers\PublicoAlvoController;
+use App\Models\AreaConhecimento;
 use App\Models\Demanda;
+use App\Models\PublicoAlvo;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -74,7 +76,7 @@ class DemandaMembroController extends Controller
             'id_publico_alvo' => $publicoAlvoId
         ]);
 
-        $validarCamposDemanda = $this->demandaController->validarCamposDemanda($request);
+        $validarCamposDemanda = $this->demandaController->validarCamposDemandaCreate($request);
 
         // Verifica se a validação dos campos de AreaConhecimento falhou
         if ($validarCamposAreaConhecimento->fails()) {
@@ -121,6 +123,91 @@ class DemandaMembroController extends Controller
         return redirect()->route('demanda_index')->with('new_cadastro', 'Nova demanda cadastrada.');
 
     }
+
+    public function edit_index($demandaId)
+    {
+        $demanda = Demanda::findOrFail($demandaId);
+        $publicoAlvo = PublicoAlvo::where('id_publico_alvo', $demanda->id_publico_alvo)->first();
+        $areaConhecimento = AreaConhecimento::where('id_area_conhecimento', $demanda->id_area_conhecimento)->first();
+        $listPublicoAlvo = $this->publicoAlvoController->list();
+        $listAreaConhecimento = $this->areaConhecimentoController->list();
+
+        return view(
+            'usuarioMembro/demanda/editar_demandas',
+            [
+                'demanda' => $demanda,
+                'publicoAlvo' => $publicoAlvo,
+                'areaConhecimento' => $areaConhecimento,
+                'listPublicoAlvo' => $listPublicoAlvo,
+                'listAreaConhecimento' => $listAreaConhecimento,
+            ]
+        );
+    }
+
+    public function edit_store(Request $request, $demandaId)
+    {
+        $validarCamposAreaConhecimento = $this->areaConhecimentoController->validarCamposAreaConhecimento($request);
+        $validarCamposPublicoAlvo = $this->publicoAlvoController->validarCamposPublicoAlvo($request);
+
+        $areaConhecimentoId = $validarCamposAreaConhecimento->getData()['id_area_conhecimento'];
+
+        $publicoAlvoId = $validarCamposPublicoAlvo->getData()['id_publico_alvo'];
+
+        $request->merge([
+            'id_area_conhecimento' => $areaConhecimentoId,
+            'id_publico_alvo' => $publicoAlvoId
+        ]);
+
+        $validarCamposDemanda = $this->demandaController->validarCamposDemandaUpdate($request, $demandaId);
+
+        // Verifica se a validação dos campos de AreaConhecimento falhou
+        if ($validarCamposAreaConhecimento->fails()) {
+            return back()->withErrors([
+                "message" => 'Campos de Área de Conhecimento Inválidos',
+                "dados" => $validarCamposAreaConhecimento->errors()->all(),
+                ...$this->listErrosAreaConhecimento($validarCamposAreaConhecimento->errors())
+            ]);
+        }
+
+        // Verifica se a validação dos campos de Publico Alvo falhou
+        if ($validarCamposPublicoAlvo->fails()) {
+            return back()->withErrors([
+                "message" => 'Campo de publico alvo inválidos',
+                "dados" => $validarCamposPublicoAlvo->errors()->all(),
+                ...$this->listErrosPublicoAlvo($validarCamposPublicoAlvo->errors())
+            ]);
+        }
+
+        // Verifica se a validação dos campos de demanda falhou
+        if ($validarCamposDemanda->fails()) {
+            return back()->withErrors([
+                "message" => 'Campo de demanda inválidos',
+                "dados" => $validarCamposDemanda->errors()->all(),
+                ...$this->listErrosDemanda($validarCamposDemanda->errors())
+            ]);
+        }
+
+        $validatedDataDemanda = $validarCamposDemanda->validate();
+
+        $demanda = $this->demandaModel::findOrFail($demandaId);
+
+        $demanda->update([
+            'id_usuario' => $validatedDataDemanda['id_usuario'],
+            'id_publico_alvo' => $validatedDataDemanda['id_publico_alvo'],
+            'id_area_conhecimento' => $validatedDataDemanda['id_area_conhecimento'],
+            'titulo' => $validatedDataDemanda['titulo'],
+            'descricao' => $validatedDataDemanda['descricao'],
+            'pessoas_afetadas' => $validatedDataDemanda['pessoas_afetadas'],
+            'duracao' => $validatedDataDemanda['duracao'],
+            'nivel_prioridade' => $validatedDataDemanda['nivel_prioridade'],
+            'instituicao_setor' => $validatedDataDemanda['instituicao_setor'],
+            'updated_at' => date('Y-m-d H:i:s'),
+        ]);
+
+        return redirect()->route('demanda_index')->with('new_cadastro', 'Demanda atualizada com Sucesso.');
+    }
+
+    /* TRATAMENTO DE ERROS */
 
     private function listErrosAreaConhecimento($errors)
     {
