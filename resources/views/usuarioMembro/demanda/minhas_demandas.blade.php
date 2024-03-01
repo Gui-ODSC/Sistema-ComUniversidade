@@ -20,7 +20,7 @@
         @endif
         <h1>Minhas Demandas</h1>
         <a href="{{ route('demanda_create_index') }}"><button>Cadastrar Novas Demandas</button></a>
-        <table class="table table-bordered table-rounded p-5 table-personalizacao">
+        <table class="table table-rounded p-5 table-personalizacao">
             <thead>
                 <tr>
                     <th scope="col"></th>

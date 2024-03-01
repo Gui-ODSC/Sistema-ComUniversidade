@@ -3,17 +3,20 @@
     margin-top: 20px;
     margin-bottom: 30px;
     color: #191970;
-    text-decoration: underline;
 }
 
 .minhas-demandas button {
     padding: 10px;
     border-radius: 10px;
-    margin-bottom: 20px;
-    background-color: #191970;
+    margin-bottom: 10px;
+    background-color: #376985;
     border: none;
     color: #FFF;
     font-weight: bold;
+}
+
+.minhas-demandas button:hover{
+    background-color: #1f3b4b;
 }
 
 #icones_demanda {
@@ -25,12 +28,29 @@
     padding: 3px;
 }
 
+.table-rounded {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
 .table-personalizacao {
+    margin-top: 10px;
     text-align: center;
 }
 
 .table-personalizacao thead, tbody {
-    border: solid 2px black;
+    border-radius: 50px;
+}
+
+.table-personalizacao thead th{
+    background-color: #376985;
+    color: #fff;
+    margin-top: 10px;
+}
+
+.table-personalizacao tbody td, th{
+    border-bottom: solid 1px rgb(116, 116, 116);
+    margin-bottom: 30px;
 }
 
 .table th:nth-child(2) {
