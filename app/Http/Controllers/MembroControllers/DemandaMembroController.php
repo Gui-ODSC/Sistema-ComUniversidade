@@ -48,7 +48,7 @@ class DemandaMembroController extends Controller
         );
     }
 
-    public function create_index()
+    public function createIndex()
     {
         $listPublicoAlvo = $this->publicoAlvoController->list();
         $listAreaConhecimento = $this->areaConhecimentoController->list();
@@ -62,7 +62,7 @@ class DemandaMembroController extends Controller
         );
     }
 
-    public function create_store(Request $request)
+    public function createStore(Request $request)
     {
         $validarCamposAreaConhecimento = $this->areaConhecimentoController->validarCamposAreaConhecimento($request);
         $validarCamposPublicoAlvo = $this->publicoAlvoController->validarCamposPublicoAlvo($request);
@@ -120,11 +120,11 @@ class DemandaMembroController extends Controller
             'created_at' => date('Y-m-d H:i:s'),
         ]);
 
-        return redirect()->route('demanda_index')->with('new_cadastro', 'Nova demanda cadastrada.');
+        return redirect()->route('demanda_index')->with('msg-demanda', 'Nova demanda cadastrada.');
 
     }
 
-    public function edit_index($demandaId)
+    public function editIndex($demandaId)
     {
         $demanda = Demanda::findOrFail($demandaId);
         $publicoAlvo = PublicoAlvo::where('id_publico_alvo', $demanda->id_publico_alvo)->first();
@@ -144,7 +144,7 @@ class DemandaMembroController extends Controller
         );
     }
 
-    public function edit_store(Request $request, $demandaId)
+    public function editStore(Request $request, $demandaId)
     {
         $validarCamposAreaConhecimento = $this->areaConhecimentoController->validarCamposAreaConhecimento($request);
         $validarCamposPublicoAlvo = $this->publicoAlvoController->validarCamposPublicoAlvo($request);
@@ -204,7 +204,14 @@ class DemandaMembroController extends Controller
             'updated_at' => date('Y-m-d H:i:s'),
         ]);
 
-        return redirect()->route('demanda_index')->with('new_cadastro', 'Demanda atualizada com Sucesso.');
+        return redirect()->route('demanda_index')->with('msg-demanda', 'Demanda atualizada com Sucesso.');
+    }
+
+    public function deleteStore($demandaId)
+    {
+        $demanda = Demanda::findOrFail($demandaId);
+        $demanda->deleteOrFail();
+        return redirect()->route('demanda_index')->with('msg-demanda', 'Demanda excluída com sucesso!');
     }
 
     /* TRATAMENTO DE ERROS */

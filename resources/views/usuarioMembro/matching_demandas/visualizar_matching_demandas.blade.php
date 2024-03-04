@@ -17,18 +17,18 @@
         <div class="container-info-demanda">
             <div class="header-demanda">
                 <h4>Dados demanda:</h4>
-                <h4>Criada em: 22/12/2023</h4>
+                <h4>Criada em: {{ \Carbon\Carbon::parse($demanda->created_at)->format('d/m/Y') }}</h4>
             </div>
-            <h2>Consultas Médicas em Áreas Inacessíveis</h2>
+            <h2>{{$demanda->titulo}}</h2>
             <hr>
             <div class="dados-detalhados-demanda">
                 <h5>Tipo: Demanda</h5>
-                <h5>Área Conhecimento: Saúde</h5>
-                <h5>Pessoas Afetadas: Aprox. 200</h5>
-                <h5>Público Alvo: Moradores de áreas Isoladas</h5>
-                <h5>Duração: Indefinido</h5>
-                <h5>Nivel Prioridade: Alta</h5>
-                <h5>Instituição: Penha Damasco</h5>
+                <h5>Área Conhecimento: {{$demanda->areaConhecimento->nome}}</h5>
+                <h5>Pessoas Afetadas: Aprox. {{$demanda->pessoas_afetadas}}</h5>
+                <h5>Público Alvo: {{$demanda->publicoAlvo->nome}}</h5>
+                <h5>Duração: {{$demanda->duracao}}</h5>
+                <h5>Nivel Prioridade: {{$demanda->nivel_prioridade}}</h5>
+                <h5>Instituição: {{$demanda->instituicao_setor ?? '' }}</h5>
             </div>
         </div>
         <h1>Ofertas encontradas para esta demanda</h1>
@@ -45,15 +45,25 @@
                 </tr>
             </thead>
             <tbody>
+                {{-- @php  $contador = 1; @endphp 
+                @if (count($matchings) < 1)
+                    <tr>
+                        <td colspan="7"><p style="opacity: 0.6; margin-top: 5px; margin-bottom: 0px">-- Nenhum Matching Encontrado para esta demanda --</p></td>
+                    </tr>
+                @else
+                @foreach ($matchings as $matching)  
                 <tr>
                     <th scope="row">1</th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>{{$matching->titulo}}</td>
+                    <td>{{$matching->areaConhecimento}}</td>
+                    <td>{{ \Carbon\Carbon::parse($matching->created_at)->format('d/m/Y') }}</td>
                     <td><img id="icones_status" src="{{ asset('img/usuarioMembro/visualizar_matching_demandas/olho_desmarcado.png') }}" alt="tres pontos para mais informação"></td>
                     <td><a onclick="openModalDeletar()"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/minhas_demandas/delete.png') }}" alt="tres pontos para mais informação"></a></td>
                     <td><a onclick="openModalVisualizarOferta()"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/visualizar_matching_demandas/pesquisa_contatos.png') }}" alt="tres pontos para mais informação"></a></td>
                 </tr>
+                @php $contador++; @endphp
+                @endforeach
+                @endif --}}
                 <tr>
                     <th scope="row">2</th>
                     <td></td>

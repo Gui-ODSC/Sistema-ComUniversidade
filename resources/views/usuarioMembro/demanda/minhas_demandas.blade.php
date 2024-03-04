@@ -13,9 +13,9 @@
 <body> 
     @include('menu')
     <main class="minhas-demandas" id="conteudo">
-        @if( session()->has('new_cadastro'))
+        @if( session()->has('msg-demanda'))
             <div class="alert alert-success" style="text-align: center">
-                <p>{{session('new_cadastro')}}</p>
+                <p>{{session('msg-demanda')}}</p>
             </div>
         @endif
         <h1>Minhas Demandas</h1>
@@ -33,23 +33,29 @@
                 </tr>
             </thead>
                 <tbody>
-                    @php $contador = 1; @endphp 
-                    @foreach ($demandas as $demanda)      
+                    @php  $contador = 1; @endphp 
+                    @if (count($demandas) < 1)
+                        <tr>
+                            <td colspan="7"><p style="opacity: 0.6; margin-top: 5px; margin-bottom: 0px">-- Cadastre uma nova demanda --</p></td>
+                        </tr>
+                    @else
+                    @foreach ($demandas as $demanda)    
                         <tr>
                             <th scope="row">{{$contador}}</th>
                             <td>{{ $demanda->titulo }}</td>
                             <td>{{ $demanda->areaConhecimento->nome }}</td>
                             <td>{{ \Carbon\Carbon::parse($demanda->created_at)->format('d/m/Y') }}</td>
                             <td><a href="{{ route('demanda_edit_index', $demanda->id_demanda) }}"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/minhas_demandas/editar.png') }}" alt="tres pontos para mais informação"></a></td>
-                            <td><a onclick="openModalDeletar()"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/minhas_demandas/delete.png') }}" alt="tres pontos para mais informação"></a></td>
-                            <td><a href="{{ route('visualizar_matching_demandas_membro') }}"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/minhas_demandas/ver.png') }}" alt="tres pontos para mais informação"></a></td>
+                            <td><a onclick="openModalDeletar({{$demanda->id_demanda}})"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/minhas_demandas/delete.png') }}" alt="tres pontos para mais informação"></a></td>
+                            <x-usuario-membro.modal-deletar-demanda :id-demanda="$demanda->id_demanda" />
+                            <td><a href="{{ route('demanda_matching_list', $demanda->id_demanda) }}"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/minhas_demandas/ver.png') }}" alt="tres pontos para mais informação"></a></td>
                         </tr>
                         @php $contador++; @endphp
                     @endforeach
+                    @endif
                 </tbody>
             </table>
-            <script src="{{ asset('js/errors/mensagem_erro.js') }}"></script>   
-        @include('usuarioMembro/demanda/modal_deletar_demandas')
+        <script src="{{ asset('js/errors/mensagem_erro.js') }}"></script>   
     </main>
 </body>
 </html>

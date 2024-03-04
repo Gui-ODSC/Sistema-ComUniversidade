@@ -1,7 +1,13 @@
 .modal-excluir h2 {
     text-align: center;
     margin-top: 30px;
+    margin-bottom: 5px;
+}
+
+.modal-excluir h4 {
+    text-align: center;
     margin-bottom: 30px;
+    text-decoration: underline;
 }
 
 .div-botoes {
@@ -16,6 +22,7 @@
     border: none;
     color: #FFF;
     font-weight: bold;
+    width: 100px;
 }
 
 #botao-sim {
@@ -31,6 +38,7 @@
 .caixa-modal {
     display: none;
     position: fixed;
+    max-width: 900px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
