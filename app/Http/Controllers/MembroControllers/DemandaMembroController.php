@@ -117,7 +117,7 @@ class DemandaMembroController extends Controller
             'duracao' => $validatedDataDemanda['duracao'],
             'nivel_prioridade' => $validatedDataDemanda['nivel_prioridade'],
             'instituicao_setor' => $validatedDataDemanda['instituicao_setor'],
-            'created_at' => date('Y-m-d H:i:s'),
+            'created_at' => now(),
         ]);
 
         return redirect()->route('demanda_index')->with('msg-demanda', 'Nova demanda cadastrada.');

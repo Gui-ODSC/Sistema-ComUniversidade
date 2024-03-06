@@ -13,7 +13,7 @@
 <body> 
     @include('menu')
     <main class="perfil" id="conteudo">
-        <form action="{{ route('login_membro') }}">
+        <form action="#">
             <button>Editar</button>
             <div id="container">
                 <img src="{{ asset('img/foto_usuario_perfil/perfil_foto.jpeg') }}" alt="foto perfil" id="imagem">

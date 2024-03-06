@@ -16,10 +16,10 @@ class MatchingMembroController extends Controller
 
     public function matchingList($demandaId)
     {
-        $demanda = Demanda::findOrFail($demandaId)->first();
+        $demanda = Demanda::findOrFail($demandaId);
 
         return view(
-            'usuarioMembro.matching_demandas.visualizar_matching_demandas',
+            'usuarioMembro/matching_demandas/visualizar_matching_demandas',
             [
                 'demanda' => $demanda,
             ]
