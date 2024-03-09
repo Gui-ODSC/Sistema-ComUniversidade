@@ -77,31 +77,29 @@ class EnderecoController extends Controller
         return $validator;
     }
 
-    public function update($id_endereco, Request $request)
+    public function validarUpdateEndereco($id_endereco, Request $request)
     {
-        $validator = Validator::make($request->all(), $this->getValidationSchema());
-        
-        if ($validator->fails()) {
-			return response($validator->errors())->setStatusCode(400);
-		}
-        
-        $validatedData = $validator->validated();
+        $cidade = Cidade::where('nome', $request->input('nome_cidade'))->first();
+        $bairro = Bairro::where('nome', $request->input('nome_bairro'))->first();
+        $estado = Estado::where('nome', $request->input('nome_estado'))->first();
 
-        $endereco = $this->enderecoModel::findOrFail($id_endereco);
+        if (!$cidade || !$bairro || !$estado) {
+            return response()->json(['error' => 'Alguma das entidades de Endereço não foi encontrada.'], 400);
+        }
 
-        $endereco->update([
-            'rua' => $validatedData['rua'],
-            'numero' => $validatedData['numero'],
-            'complemento' => $validatedData['complemento'],
-            'id_bairro' => $validatedData['id_bairro'],
-            'id_cidade' => $validatedData['id_cidade'],
-            'id_estado' => $validatedData['id_estado']
+        $validatedData = array_merge($request->all(), [
+            'id_cidade' => $cidade->id_cidade,
+            'id_bairro' => $bairro->id_bairro,
+            'id_estado' => $estado->id_estado
         ]);
 
-        return response()->json([
-            'message' => 'Endereco Updated Successfully',
-            'data' => $endereco
-        ])->setStatusCode(200);
+        $validator = Validator::make(
+            $validatedData,
+            $this->getValidationSchema(),
+            $this->messageValidation()
+        );
+        
+        return $validator;
             
     }
 

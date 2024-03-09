@@ -72,39 +72,17 @@ class UsuarioController extends Controller
         
     }
 
-    public function update($id_usuario, Request $request)
+    public function validarUpdateUsuario($id_usuario, Request $request)
     {
         $validator = Validator::make($request->all(), [
             ...$this->getValidationSchema(),
             'email' => [
                 Rule::unique(Usuario::class, 'email')
+                    ->ignore($id_usuario, 'id_usuario')
             ] 
-        ]);
-
-        if ($validator->fails()) {
-			return response($validator->errors())->setStatusCode(400);
-		}
+        ], $this->messageValidation());
         
-        $validatedData = $validator->validated();
-
-        $usuario = $this->usuarioModel::findOrFail($id_usuario);
-
-        $usuario->update([
-            'id_endereco' => $validatedData['id_endereco'],
-            'nome' => $validatedData['nome'],
-            'sobrenome' => $validatedData['sobrenome'],
-            'nascimento' => Carbon::createFromFormat('d-m-Y', $validatedData['nascimento'])->format('Y-m-d'),
-            'telefone' => $validatedData['telefone'],
-            'email' => $validatedData['email'],
-            'email_secundario' => $validatedData['email_secundario'] ?? null,
-            'password' => Hash::make($validatedData['password']),
-            'foto' => $validatedData['foto'],
-        ]);
-
-        return response()->json([
-            'message' => 'Usuario Updated Successfully',
-            'data' => $usuario
-        ])->setStatusCode(200);
+        return $validator;
         
     }
 

@@ -7,19 +7,23 @@
     border-radius: 50px;
 }
 
-.perfil button {
-    display: block;
-    position: absolute; /* Posiciona o botão absolutamente dentro do contêiner pai (.perfil) */
-    top: 100px; /* Ajuste a posição conforme necessário */
-    right: 30px; /* Ajuste a posição conforme necessário */
+.perfil div-button {
+    display: flex;
     padding: 10px;
+    margin: auto;
+    justify-content: center;
+}
+
+.perfil button {
     border-radius: 10px;
+    padding: 10px;
     margin-bottom: 20px;
     background-color: #191970;
     border: none;
     color: #FFF;
     font-weight: bold;
-    width: 90px;
+    margin-top: 10px;
+    width: 150px;
 }
 
 #container {
@@ -103,7 +107,7 @@
 .perfil input[name="telefone"] {
     display: inline-flex;
     margin-top: 5px;
-    width: 31%;
+    width: 50%;
     border-radius: 10px;
     padding: 5px;
 }
@@ -111,7 +115,7 @@
 .perfil input[name="cidade"] {
     display: inline-flex;
     margin-top: 5px;
-    width: 34%;
+    width: 33%;
     border-radius: 10px;
     padding: 5px;
 }
@@ -119,7 +123,7 @@
 .perfil input[name="rua"] {
     display: inline-flex;
     margin-top: 5px;
-    width: 49%;
+    width: 33%;
     border-radius: 10px;
     padding: 5px;
 }
@@ -127,7 +131,7 @@
 .perfil input[name="numero"] {
     display: inline-flex;
     margin-top: 5px;
-    width: 49%;
+    width: 33%;
     border-radius: 10px;
     padding: 5px;
 }
@@ -135,7 +139,7 @@
 .perfil input[name="complemento"] {
     display: inline-flex;
     margin-top: 5px;
-    width: 50%;
+    width: 33%;
     border-radius: 10px;
     padding: 5px;
 }
@@ -143,7 +147,7 @@
 .perfil input[name="estado"] {
     display: inline-flex;
     margin-top: 5px;
-    width: 34%;
+    width: 24%;
     border-radius: 10px;
     padding: 5px;
 }
@@ -151,22 +155,80 @@
 .perfil input[name="bairro"] {
     display: inline-flex;
     margin-top: 5px;
-    width: 50%;
+    width: 30%;
     border-radius: 10px;
     padding: 5px;
 }
 
-.perfil input::placeholder {
+/* .perfil input::placeholder {
+    color: black;
+} */
+
+/* ESTILIZACAO AUTOCOMPLETE */
+.autoComplete_wrapper #autoCompleteBairro {
+    display: inline-flex;
+    padding: 5px;
+    color: black;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-weight: lighter;
+    cursor: pointer;
+    overflow: hidden;
+    background-color: #FFF;
+    border-radius: 10px;
+    margin-top: 5px;
+    height: 37px;
+    width: 405px;
+    margin-bottom: 0px;
+    border: solid 2px black
+
+}
+
+.autoComplete_wrapper #autoCompleteCidade {
+    display: inline-flex;
+    padding: 5px;
+    color: black;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-weight: lighter;
+    cursor: pointer;
+    overflow: hidden;
+    background-color: #FFF;
+    border-radius: 10px;
+    margin-top: 5px;
+    height: 37px;
+    width: 406px;
+    margin-bottom: 0px;
+    border: solid 2px black
+}
+
+.autoComplete_wrapper #autoCompleteEstado {
+    display: inline-flex;
+    padding: 5px;
+    color: black;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-weight: lighter;
+    cursor: pointer;
+    overflow: hidden;
+    background-color: #FFF;
+    border-radius: 10px;
+    margin-top: 5px;
+    height: 37px;
+    width: 406px;
+    margin-bottom: 0px;
+    border: solid 2px black
+}
+
+.autoComplete_wrapper #autoCompleteBairro::placeholder {
     color: black;
 }
 
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
-  -webkit-appearance: none; 
-  margin: 0; 
+.autoComplete_wrapper #autoCompleteEstado::placeholder {
+    color: black;
 }
 
-input[type=number] {
-  -moz-appearance: textfield; /* Firefox */
+.autoComplete_wrapper #autoCompleteCidade::placeholder {
+    color: black;
 }
 

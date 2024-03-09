@@ -136,7 +136,7 @@
                 </div>    
             @else
                 <div class="autoComplete_wrapper">  
-                    <input type="text" id="autoCompleteBairro" class="bairro" name="nome_bairro" placeholder="Selecione um bairro" required>
+                    <input type="text" id="autoCompleteBairro" class="bairro" name="nome_bairro" placeholder="Selecione um bairro"  required>
                 </div>    
             @enderror
 
