@@ -16,8 +16,8 @@
             <h3>Deseja mesmo Remover esta Oferta da Lista?</h3>
             <h6>Após removida, ela não será mostrada novamente.</h6>
             <div class="div-botoes">
-                <form action="{{ route('demanda_matching_index', $idMatching) }}" method="POST">
-                    @method('DELETE')
+                <form action="{{ route('matching_remover', [$idDemanda, $idMatching]) }}" method="POST">
+                    {{-- @method('DELETE') --}}
                     @csrf
                     <button type="submit" id="botao-sim">Sim</button>
                 </form>

@@ -4,18 +4,22 @@ namespace App\Http\Controllers\MembroControllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Demanda;
+use App\Models\MatchingsExcluidos;
 use App\Models\Oferta;
 use App\Models\OfertaAcao;
 use App\Models\OfertaConhecimento;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class MatchingMembroController extends Controller
 {
+
     public function matchingList($demandaId)
     {
         $demanda = Demanda::findOrFail($demandaId);
 
         $ofertasEncontradas = $this->algoritmoMatchings(
+            $demanda->id_demanda,
             $demanda->titulo, 
             $demanda->descricao, 
             $demanda->publicoAlvo, 
@@ -32,8 +36,9 @@ class MatchingMembroController extends Controller
     }
 
 
-    public function algoritmoMatchings($titulo_demanda, $descricao_demanda, $publicoAlvo_demanda, $areaConhecimento_demanda)
+    public function algoritmoMatchings($id_demanda, $titulo_demanda, $descricao_demanda, $publicoAlvo_demanda, $areaConhecimento_demanda)
     {   
+        $id_usuario = Auth::id();
 
         /* LAÇO PARA PEGAR TODAS AS OFERTAS DISPONÍVEIS */
         $ofertas = Oferta::with(['ofertaAcao', 'ofertaConhecimento'])->get();
@@ -43,6 +48,17 @@ class MatchingMembroController extends Controller
         /* LACO PARA COMPARAR AS OFERTAS COM AS DEMANDAS E ARMAZENAR AS SEMELHANTES */
         foreach($ofertas as $oferta) {
             $resultado = 0;
+
+            /* CONTROLE DE EXCLUSAO DE OFERTAS INDESEJADAS NO MATCHING */
+            $busca_ofertas_excluidas = MatchingsExcluidos::where('id_oferta', $oferta->id_oferta)
+                ->where('id_demanda', $id_demanda)
+                ->where('id_usuario', $id_usuario)
+                ->get(); 
+
+            if (!$busca_ofertas_excluidas->isEmpty()) {
+                continue;
+            }
+            /* FIM */
 
             /* COMPARAÇÃO DE TITULOS */
             $resultado_titulo = $this->ratCliff($oferta->titulo, $titulo_demanda);
@@ -77,6 +93,24 @@ class MatchingMembroController extends Controller
     }
 
 
+    public function matching_remover($demandaId, $ofertaId) {
+
+        $userId = Auth::id();
+        $demanda = Demanda::findOrFail($demandaId);
+        $oferta = Oferta::findOrFail($ofertaId);
+
+        MatchingsExcluidos::create([
+            'id_usuario' => $userId,
+            'id_demanda' => $demanda->id_demanda,
+            'id_oferta' => $oferta->id_oferta,
+            'created_at' => now()
+        ]);
+
+        return redirect()->route('demanda_matching_index', $demandaId)->with('msg-matching', 'Oferta removida com Sucesso!');
+    }
+
+
+
     /* ALGORITMO DE MATCHINGS */
     private function getLongestCommonSequences(
         $s1,
@@ -107,7 +141,7 @@ class MatchingMembroController extends Controller
                     $lcs = trim($substring);
                     $results[] = trim($substring);
                     break;
-                }
+                } 
             }
         }
     

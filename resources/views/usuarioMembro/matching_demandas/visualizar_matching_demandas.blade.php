@@ -32,6 +32,11 @@
             </div>
         </div>
         <h1>Ofertas encontradas para esta demanda</h1>
+        @if( session()->has('msg-matching'))
+            <div class="alert alert-success" style="text-align: center">
+                <p>{{session('msg-matching')}}</p>
+            </div>
+        @endif
         <table class="table table-rounded p-5 table-personalizacao">
             <thead>
                 <tr>
@@ -69,13 +74,7 @@
                 @endif
             </tbody>
         </table>
-       {{--  <!-- MODAL DELETAR -->
-        @include('usuarioMembro/matching_demandas/modal_deletar_matchings')
-        <!-- MODAL DELETAR --> --}}
-
-        <!-- MODAL VISUALIZAR MATCHING -->
-        {{-- @include('usuarioMembro/matching_demandas/modal_contatar/modal_visualizar_oferta') --}}
-        <!-- MODAL VISUALIZAR MATCHING -->
+        <script src="{{ asset('js/errors/mensagem_erro.js') }}"></script>  
     </main>
 </body>
 </html>
