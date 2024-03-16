@@ -27,7 +27,7 @@ class ModalDeletarDemanda extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.usuario-membro.modal-deletar-demanda', [
+        return view('components.usuario-membro.demanda.modal-deletar-demanda', [
             'demanda' => $this->demanda
         ]);
     }

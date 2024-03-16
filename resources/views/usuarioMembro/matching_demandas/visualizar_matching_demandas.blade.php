@@ -26,8 +26,8 @@
                 <h5>Área Conhecimento: {{$demanda->areaConhecimento->nome}}</h5>
                 <h5>Pessoas Afetadas: Aprox. {{$demanda->pessoas_afetadas}}</h5>
                 <h5>Público Alvo: {{$demanda->publicoAlvo->nome}}</h5>
-                <h5>Duração: {{$demanda->duracao}}</h5>
-                <h5>Nivel Prioridade: {{$demanda->nivel_prioridade}}</h5>
+                <h5>Duração: {{ucwords(strtolower($demanda->duracao))}}</h5>
+                <h5>Nivel Prioridade: {{ucwords(strtolower($demanda->nivel_prioridade))}}</h5>
                 <h5>Instituição: {{$demanda->instituicao_setor ?? '' }}</h5>
             </div>
         </div>
@@ -54,7 +54,7 @@
                 @php  $contador = 1; @endphp 
                 @if (count($ofertasEncontradas) < 1)
                     <tr>
-                        <td colspan="7"><p style="opacity: 0.6; margin-top: 5px; margin-bottom: 0px">-- Nenhum Matching Encontrado para esta demanda --</p></td>
+                        <td colspan="8"><p style="opacity: 0.6; margin-top: 5px; margin-bottom: 0px">-- Nenhum Matching Encontrado para esta demanda --</p></td>
                     </tr>
                 @else
                     @foreach ($ofertasEncontradas as $matching)  
@@ -67,7 +67,8 @@
                             <td><img id="icones_status" src="{{ asset('img/usuarioMembro/visualizar_matching_demandas/olho_desmarcado.png') }}" alt="tres pontos para mais informação"></td>
                             <td><a onclick="openModalDeletar({{$matching->id_oferta}})"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/minhas_demandas/delete.png') }}" alt="tres pontos para mais informação"></a></td>
                             <x-usuario-membro.modal-deletar-matching :id-matching="$matching->id_oferta" :id-demanda="$demanda->id_demanda" />
-                            <td><a onclick="openModalVisualizarOferta()"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/visualizar_matching_demandas/pesquisa_contatos.png') }}" alt="tres pontos para mais informação"></a></td>
+                            <td><a onclick="openModalVisualizarOferta({{$matching->id_oferta}})"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/visualizar_matching_demandas/pesquisa_contatos.png') }}" alt="tres pontos para mais informação"></a></td>
+                            <x-usuario-membro.modal-visualizar-oferta :id-matching="$matching->id_oferta" :id-demanda="$demanda->id_demanda" />
                         </tr>
                         @php $contador++; @endphp
                     @endforeach

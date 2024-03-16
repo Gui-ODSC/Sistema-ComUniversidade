@@ -15,7 +15,7 @@
 
 .informacao-professor {
     width: 800px;
-    height: 100px;
+    height: 90px;
     border-bottom: solid 1px black;
 }
 
@@ -38,7 +38,7 @@
     flex-direction: row;
     text-align: center;
     width: 400px;
-    height: 100px;
+    height: 90px;
     border-left: solid 1px black;
     border-bottom: solid 1px black;
 }
@@ -50,10 +50,24 @@
 
 .informacao-oferta {
     display: flex;
-    flex-wrap: wrap;
-    height: 130px;
+    flex-direction: column;
+}
+
+#titulo-oferta {
     width: 100%;
-    padding: 5px;
+    height: 40px;
+}
+
+.informacao-oferta-coluna {
+    display: flex;
+    padding: 10px 10px 0px 10px;
+}
+.informacao-oferta-coluna div {
+    margin-right: 50px;
+}
+
+.informacao-oferta-coluna div h6 {
+    margin-top: 10px;
 }
 
 #data {
@@ -63,12 +77,13 @@
 .informacao-oferta h6 {
     font-size: 15px;
     flex: 0 0 100%;
-    margin-top: 5px;
+    margin: 5px 0;
     box-sizing: border-box;
 }
 
 .informacao-oferta h2 {
     margin-left: 10px;
+    margin-top: 10px;
     font-weight: bold;
 }
     
