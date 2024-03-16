@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{{ asset('css/menu_navegacao/menu.css') }}">
     <link rel="stylesheet" href="{{ asset('css/usuarioMembro/matching_demandas/visualizar_matching_demandas.css') }}">
     <script src="{{ asset('js/menu/menu_navegacao.js') }}"></script>
-    <script src="{{ asset('js/usuarioMembro/demanda/modal_deletar_demanda.js') }}"></script>
+    <script src="{{ asset('js/usuarioMembro/matching_demandas/modal_deletar_oferta.js') }}"></script>
     <script src="{{ asset('js/usuarioMembro/matching_demandas/modal_visualizar_oferta.js') }}"></script>
     <title>Matching Demanda</title>
 </head>
@@ -32,12 +32,13 @@
             </div>
         </div>
         <h1>Ofertas encontradas para esta demanda</h1>
-        <table class="table table-bordered table-rounded p-5 table-personalizacao">
+        <table class="table table-rounded p-5 table-personalizacao">
             <thead>
                 <tr>
                     <th scope="col"></th>
                     <th scope="col">Título</th>
                     <th scope="col">Área de Conhecimento</th>
+                    <th scope="col">Tipo Oferta</th>
                     <th scope="col">Data Oferta</th>
                     <th scope="col">Status</th>
                     <th scope="col">Deletar</th>
@@ -45,87 +46,35 @@
                 </tr>
             </thead>
             <tbody>
-                {{-- @php  $contador = 1; @endphp 
-                @if (count($matchings) < 1)
+                @php  $contador = 1; @endphp 
+                @if (count($ofertasEncontradas) < 1)
                     <tr>
                         <td colspan="7"><p style="opacity: 0.6; margin-top: 5px; margin-bottom: 0px">-- Nenhum Matching Encontrado para esta demanda --</p></td>
                     </tr>
                 @else
-                @foreach ($matchings as $matching)  
-                <tr>
-                    <th scope="row">1</th>
-                    <td>{{$matching->titulo}}</td>
-                    <td>{{$matching->areaConhecimento}}</td>
-                    <td>{{ \Carbon\Carbon::parse($matching->created_at)->format('d/m/Y') }}</td>
-                    <td><img id="icones_status" src="{{ asset('img/usuarioMembro/visualizar_matching_demandas/olho_desmarcado.png') }}" alt="tres pontos para mais informação"></td>
-                    <td><a onclick="openModalDeletar()"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/minhas_demandas/delete.png') }}" alt="tres pontos para mais informação"></a></td>
-                    <td><a onclick="openModalVisualizarOferta()"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/visualizar_matching_demandas/pesquisa_contatos.png') }}" alt="tres pontos para mais informação"></a></td>
-                </tr>
-                @php $contador++; @endphp
-                @endforeach
-                @endif --}}
-                <tr>
-                    <th scope="row">2</th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td><img id="icones_status" src="{{ asset('img/usuarioMembro/visualizar_matching_demandas/olho_marcado.png') }}" alt="tres pontos para mais informação"></td>
-                    <td><a onclick="openModalDeletar()"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/minhas_demandas/delete.png') }}" alt="tres pontos para mais informação"></a></td>
-                    <td><a onclick="openModalVisualizarOferta()"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/visualizar_matching_demandas/pesquisa_contatos.png') }}" alt="tres pontos para mais informação"></a></td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td><img id="icones_status" src="{{ asset('img/usuarioMembro/visualizar_matching_demandas/olho_marcado.png') }}" alt="tres pontos para mais informação"></td>
-                    <td><a onclick="openModalDeletar()"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/minhas_demandas/delete.png') }}" alt="tres pontos para mais informação"></a></td>
-                    <td><a onclick="openModalVisualizarOferta()"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/visualizar_matching_demandas/pesquisa_contatos.png') }}" alt="tres pontos para mais informação"></a></td>
-                </tr>
-                <tr>
-                    <th scope="row">4</th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td><img id="icones_status" src="{{ asset('img/usuarioMembro/visualizar_matching_demandas/olho_desmarcado.png') }}" alt="tres pontos para mais informação"></td>
-                    <td><a onclick="openModalDeletar()"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/minhas_demandas/delete.png') }}" alt="tres pontos para mais informação"></a></td>
-                    <td><a onclick="openModalVisualizarOferta()"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/visualizar_matching_demandas/pesquisa_contatos.png') }}" alt="tres pontos para mais informação"></a></td>
-                </tr>
-                <tr>
-                    <th scope="row">5</th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td><img id="icones_status" src="{{ asset('img/usuarioMembro/visualizar_matching_demandas/olho_desmarcado.png') }}" alt="tres pontos para mais informação"></td>
-                    <td><a onclick="openModalDeletar()"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/minhas_demandas/delete.png') }}" alt="tres pontos para mais informação"></a></td>
-                    <td><a onclick="openModalVisualizarOferta()"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/visualizar_matching_demandas/pesquisa_contatos.png') }}" alt="tres pontos para mais informação"></a></td>
-                </tr>
-                <tr>
-                    <th scope="row">6</th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td><img id="icones_status" src="{{ asset('img/usuarioMembro/visualizar_matching_demandas/olho_desmarcado.png') }}" alt="tres pontos para mais informação"></td>
-                    <td><a onclick="openModalDeletar()"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/minhas_demandas/delete.png') }}" alt="tres pontos para mais informação"></a></td>
-                    <td><a onclick="openModalVisualizarOferta()"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/visualizar_matching_demandas/pesquisa_contatos.png') }}" alt="tres pontos para mais informação"></a></td>
-                </tr>
-                <tr>
-                    <th scope="row">7</th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td><img id="icones_status" src="{{ asset('img/usuarioMembro/visualizar_matching_demandas/olho_marcado.png') }}" alt="tres pontos para mais informação"></td>
-                    <td><a onclick="openModalDeletar()"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/minhas_demandas/delete.png') }}" alt="tres pontos para mais informação"></a></td>
-                    <td><a onclick="openModalVisualizarOferta()"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/visualizar_matching_demandas/pesquisa_contatos.png') }}" alt="tres pontos para mais informação"></a></td>
-                </tr>
+                    @foreach ($ofertasEncontradas as $matching)  
+                        <tr>
+                            <th scope="row">{{$contador}}</th>
+                            <td>{{$matching->titulo}}</td>
+                            <td>{{$matching->areaConhecimento->nome}}</td>
+                            <td>{{ucwords(strtolower($matching->tipo))}}</td>
+                            <td>{{ \Carbon\Carbon::parse($matching->created_at)->format('d/m/Y') }}</td>
+                            <td><img id="icones_status" src="{{ asset('img/usuarioMembro/visualizar_matching_demandas/olho_desmarcado.png') }}" alt="tres pontos para mais informação"></td>
+                            <td><a onclick="openModalDeletar({{$matching->id_oferta}})"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/minhas_demandas/delete.png') }}" alt="tres pontos para mais informação"></a></td>
+                            <x-usuario-membro.modal-deletar-matching :id-matching="$matching->id_oferta" :id-demanda="$demanda->id_demanda" />
+                            <td><a onclick="openModalVisualizarOferta()"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/visualizar_matching_demandas/pesquisa_contatos.png') }}" alt="tres pontos para mais informação"></a></td>
+                        </tr>
+                        @php $contador++; @endphp
+                    @endforeach
+                @endif
             </tbody>
         </table>
-        <!-- MODAL DELETAR -->
+       {{--  <!-- MODAL DELETAR -->
         @include('usuarioMembro/matching_demandas/modal_deletar_matchings')
-        <!-- MODAL DELETAR -->
+        <!-- MODAL DELETAR --> --}}
 
         <!-- MODAL VISUALIZAR MATCHING -->
-        @include('usuarioMembro/matching_demandas/modal_contatar/modal_visualizar_oferta')
+        {{-- @include('usuarioMembro/matching_demandas/modal_contatar/modal_visualizar_oferta') --}}
         <!-- MODAL VISUALIZAR MATCHING -->
     </main>
 </body>

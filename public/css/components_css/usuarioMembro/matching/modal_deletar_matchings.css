@@ -1,6 +1,10 @@
-.modal-excluir h2 {
+.modal-excluir h3 {
     text-align: center;
     margin-top: 30px;
+}
+
+.modal-excluir h6 {
+    text-align: center;
     margin-bottom: 30px;
 }
 
