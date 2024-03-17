@@ -57,18 +57,22 @@
                         <td colspan="8"><p style="opacity: 0.6; margin-top: 5px; margin-bottom: 0px">-- Nenhum Matching Encontrado para esta demanda --</p></td>
                     </tr>
                 @else
-                    @foreach ($ofertasEncontradas as $matching)  
+                    @foreach ($ofertasEncontradas as $key => $matching)  
                         <tr>
                             <th scope="row">{{$contador}}</th>
-                            <td>{{$matching->titulo}}</td>
-                            <td>{{$matching->areaConhecimento->nome}}</td>
-                            <td>{{ucwords(strtolower($matching->tipo))}}</td>
-                            <td>{{ \Carbon\Carbon::parse($matching->created_at)->format('d/m/Y') }}</td>
-                            <td><img id="icones_status" src="{{ asset('img/usuarioMembro/visualizar_matching_demandas/olho_desmarcado.png') }}" alt="tres pontos para mais informação"></td>
-                            <td><a onclick="openModalDeletar({{$matching->id_oferta}})"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/minhas_demandas/delete.png') }}" alt="tres pontos para mais informação"></a></td>
-                            <x-usuario-membro.modal-deletar-matching :id-matching="$matching->id_oferta" :id-demanda="$demanda->id_demanda" />
-                            <td><a onclick="openModalVisualizarOferta({{$matching->id_oferta}})"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/visualizar_matching_demandas/pesquisa_contatos.png') }}" alt="tres pontos para mais informação"></a></td>
-                            <x-usuario-membro.modal-visualizar-oferta :id-matching="$matching->id_oferta" :id-demanda="$demanda->id_demanda" />
+                            <td>{{$matching['oferta']->titulo}}</td>
+                            <td>{{$matching['oferta']->areaConhecimento->nome}}</td>
+                            <td>{{ucwords(strtolower($matching['oferta']->tipo))}}</td>
+                            <td>{{ \Carbon\Carbon::parse($matching['oferta']->created_at)->format('d/m/Y') }}</td>
+                            @if ($matching['status'] == 'nao_visualizado')
+                                <td><img id="icones_status" src="{{ asset('img/usuarioMembro/visualizar_matching_demandas/olho_desmarcado.png') }}" alt="tres pontos para mais informação"></td>
+                            @elseif ($matching['status'] == 'visualizado')
+                                <td><img id="icones_status" src="{{ asset('img/usuarioMembro/visualizar_matching_demandas/olho_marcado.png') }}" alt="tres pontos para mais informação"></td>
+                            @endif
+                            <td><a onclick="openModalDeletar({{$matching['oferta']->id_oferta}})"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/minhas_demandas/delete.png') }}" alt="tres pontos para mais informação"></a></td>
+                            <x-usuario-membro.modal-deletar-matching :id-matching="$matching['oferta']->id_oferta" :id-demanda="$demanda->id_demanda" />
+                            <td><a onclick="openModalVisualizarOferta({{$matching['oferta']->id_oferta}})"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/visualizar_matching_demandas/pesquisa_contatos.png') }}" alt="tres pontos para mais informação"></a></td>
+                            <x-usuario-membro.modal-visualizar-oferta :id-matching="$matching['oferta']->id_oferta" :id-demanda="$demanda->id_demanda" />
                         </tr>
                         @php $contador++; @endphp
                     @endforeach

@@ -5,9 +5,12 @@ namespace App\Http\Controllers\MembroControllers;
 use App\Http\Controllers\Controller;
 use App\Models\Demanda;
 use App\Models\MatchingsExcluidos;
+use App\Models\MatchingsVisualizados;
 use App\Models\Oferta;
 use App\Models\OfertaAcao;
 use App\Models\OfertaConhecimento;
+use App\Models\Usuario;
+use App\Models\UsuarioProfessor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -25,6 +28,8 @@ class MatchingMembroController extends Controller
             $demanda->publicoAlvo, 
             $demanda->areaConhecimento
         );
+
+        /* return $ofertasEncontradas; */
         
         return view(
             'usuarioMembro/matching_demandas/visualizar_matching_demandas',
@@ -68,16 +73,36 @@ class MatchingMembroController extends Controller
 
             $resultado = $resultado_titulo + $resultado_descricao;
 
-            if ($resultado >= 1.4)
-            {
-                if ($resultado === 2.0) {
-                    $matchingsEncontrados[] = $oferta;
+            /* LOGICA PARA CONTROLAR AS OFERTAS VISUALIZADAS E NÃO VISUALIZADAS */
+            $ofertas_visualizacao = MatchingsVisualizados::where('id_oferta', $oferta->id_oferta)
+            ->where('id_demanda', $id_demanda)
+            ->where('id_usuario', $id_usuario)
+            ->get(); 
+
+            if (!$ofertas_visualizacao->isEmpty()) {
+                    if ($resultado >= 1.4)
+                {
+                    if ($resultado === 2.0) {
+                        $matchingsEncontrados[] = ['status' => 'visualizado', 'oferta' => $oferta];
+                    } else {
+                        $matchingsEncontrados[] = ['status' => 'visualizado', 'oferta' => $oferta];
+                    }
                 } else {
-                    $matchingsEncontrados[] = $oferta;
+                    continue;
                 }
             } else {
-                continue;
+                if ($resultado >= 1.4)
+                {
+                    if ($resultado === 2.0) {
+                        $matchingsEncontrados[] = ['status' => 'nao_visualizado', 'oferta' => $oferta];
+                    } else {
+                        $matchingsEncontrados[] = ['status' => 'nao_visualizado', 'oferta' => $oferta];
+                    }
+                } else {
+                    continue;
+                }
             }
+            
 
             /* DEVE SER USADO O ALGORITMO DE RATCLIFF PARA CADA CAMPO DE COMPARAÇÃO */
             /* TITULO, DESCRICAO, PUBLICOALVO, AREACONHECIMENTO.
@@ -103,6 +128,7 @@ class MatchingMembroController extends Controller
             'id_usuario' => $userId,
             'id_demanda' => $demanda->id_demanda,
             'id_oferta' => $oferta->id_oferta,
+            'updated_at' => null,
             'created_at' => now()
         ]);
 
@@ -110,6 +136,30 @@ class MatchingMembroController extends Controller
     }
 
 
+    public function matching_status_visualizar($demandaId, $ofertaId) {
+        $userId = Auth::id();
+        $demanda = Demanda::findOrFail($demandaId);
+        $oferta = Oferta::findOrFail($ofertaId);
+    
+        $matchingExistente = MatchingsVisualizados::where('id_usuario', $userId)
+            ->where('id_demanda', $demanda->id_demanda)
+            ->where('id_oferta', $oferta->id_oferta)
+            ->exists();
+        
+        if ($matchingExistente) {
+            return back();/* redirect()->route('demanda_matching_index', $demandaId) */;
+        }
+    
+        MatchingsVisualizados::create([
+            'id_usuario' => $userId,
+            'id_demanda' => $demanda->id_demanda,
+            'id_oferta' => $oferta->id_oferta,
+            'created_at' => now(),
+            'updated_at' => null,
+        ]);
+    
+        return back();/* redirect()->route('demanda_matching_index', $demandaId) */;
+    }
 
     /* ALGORITMO DE MATCHINGS */
     private function getLongestCommonSequences(

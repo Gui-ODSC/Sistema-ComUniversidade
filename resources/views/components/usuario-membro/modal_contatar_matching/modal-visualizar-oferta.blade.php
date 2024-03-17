@@ -11,7 +11,10 @@
 </head>
 <body>
     <!-- MODAL -->
-    <div class="clicar-fora-modal-visualizar" id="clicar-fora-modal-visualizar-{{$idMatching}}" onclick="closeModalVisualizarOferta({{$idMatching}})"></div>
+    <form action="{{ route('matching_visualizar', [$idDemanda, $idMatching]) }}" method="POST">
+        @csrf
+    <a type="submit"><div class="clicar-fora-modal-visualizar" id="clicar-fora-modal-visualizar-{{$idMatching}}" onclick="closeModalVisualizarOferta({{$idMatching}})"></div></a>
+    </form>
         <div class="modal-visualizar" id="modal-visualizar-{{$idMatching}}">
             <div class="dados-oferta">
                 <div class="dados-usuario-professor">
@@ -70,7 +73,10 @@
                     </a>
                 </div>
                 <div>
-                    <span onclick="closeModalVisualizarOferta({{$idMatching}})" id="botao-fechar-modal"><button>Fechar</button></span>
+                    <form action="{{ route('matching_visualizar', [$idDemanda, $idMatching]) }}" method="POST">
+                        @csrf
+                        <span onclick="closeModalVisualizarOferta({{$idMatching}})" id="botao-fechar-modal"><button {{-- type="submit" --}}>Fechar</button></span>
+                    </form>
                 </div>
             </div>
         </div>
