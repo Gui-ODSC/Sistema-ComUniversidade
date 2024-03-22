@@ -1,49 +1,111 @@
 <?php 
 
+use App\Http\Controllers\AreaConhecimentoController;
+use App\Http\Controllers\BairroController;
+use App\Http\Controllers\CidadeController;
+use App\Http\Controllers\DemandaController;
+use App\Http\Controllers\EnderecoController;
+use App\Http\Controllers\EstadoController;
+use App\Http\Controllers\MembroControllers\CadastroMembroController;
+use App\Http\Controllers\MembroControllers\ContatoMembroController;
+use App\Http\Controllers\MembroControllers\DemandaMembroController;
+use App\Http\Controllers\MembroControllers\MatchingMembroController;
+use App\Http\Controllers\MembroControllers\PerfilMembroController;
+use App\Http\Controllers\UsuarioAlunoController;
+use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\UsuarioProfessorController;
 use Illuminate\Support\Facades\Route;
 
-//ROTAS REFERENTE AOS USUÁRIOS MEMBROS DO SISTEMA
+//ROTAS REFERENTE A VISUALIZAÇÃO DOS USUÁRIOS MEMBROS DO SISTEMA
 Route::prefix('membro')->group(function(){
 
-    //Rota de cadastro para membros da sociedade FOI
-    Route::get('/cadastro', function(){
-        return view('usuarioMembro/cadastro/cadastro_membro');
-    })->name('cadastro_membro');
+    //Rota de cadastro para membros da sociedade 
+    Route::prefix('/cadastro')->controller(CadastroMembroController::class)->group( function(){
+        Route::get('/', 'index')->name('cadastro_index');
+        Route::post('/', 'create')->name('cadastro_create');
+    }); 
 
-    //Rota de Recuperação de Senha FOI
+    Route::prefix('/demandas')->controller(DemandaMembroController::class)->group(function(){
+        Route::get('/visualizar', 'index')->name('demanda_index');
+        Route::get('/cadastrar', 'createIndex')->name('demanda_create_index');
+        Route::post('/', 'createStore')->name('demanda_create_store');
+        Route::prefix('/{demandaId}')->group(function (){
+            Route::get('/edit', 'editIndex')->name('demanda_edit_index');
+            Route::post('/edit', 'editStore')->name('demanda_edit_store');
+            Route::delete('/delete', 'deleteStore')->name('demanda_delete_store');
+            /* MATCHINGS */
+            Route::prefix('/matchings')->controller(MatchingMembroController::class)->group(function (){
+                Route::get('/list', 'matchingList')->name('demanda_matching_index');
+                Route::prefix('/{ofertaId}')->group(function() {
+                    Route::post('/remove', 'matching_remover')->name('matching_remover');
+                    Route::get('/visualizar', 'matching_status_visualizar')->name('matching_visualizar');
+                    /* CONTATO */
+                    Route::prefix('/contato')->controller(ContatoMembroController::class)->group(function () {
+                        Route::post('/', 'criarContato')->name('contato_store');
+                    })->middleware('auth');
+                });
+            })->middleware('auth');
+        })->middleware('auth');
+    })->middleware('auth');
+
+    Route::prefix('/perfil')->controller(PerfilMembroController::class)->group(function(){
+        Route::get('/', 'index')->name('perfil_index');
+        Route::prefix('/{usuarioId}')->group(function(){
+            Route::get('/edit', 'editIndex')->name('perfil_edit_index');
+            Route::post('/', 'editStore')->name('perfil_edit_store');
+        })->middleware('auth');
+    })->middleware('auth');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+    /* //Rota de Recuperação de Senha FOI
     Route::get('/recuperacao_senha', function(){
         return view('recuperacao_senha');
     })->name('recuperacao_senha_membro');
-
+ */
     //Rota de telas do usuario membros para demandas FOI
-    Route::prefix('extensao/demanda')->group(function(){
+    /* Route::prefix('extensao/demanda')->group(function(){
         Route::get('/minhas_demandas', function(){
             return view('usuarioMembro/demanda/minhas_demandas');
-        })->name('minhas_demandas_membro');
+        })->middleware('auth')->name('minhas_demandas_membro'); */
 
-        //CADASTRAR
+        /* //CADASTRAR
         Route::get('/cadastrar_demandas', function(){
             return view('usuarioMembro/demanda/cadastrar_demandas');
         })->name('cadastrar_demandas_membro');
         Route::get('/sucesso_cadastro_demanda', function(){
             return view('usuarioMembro/demanda/sucesso_cadastro_demanda');
-        })->name('sucesso_cadastro_demanda_membro');
+        })->name('sucesso_cadastro_demanda_membro'); */
 
         //EDITAR
-        Route::get('/editar_demandas', function(){
+        /* Route::get('/editar_demandas', function(){
             return view('usuarioMembro/demanda/editar_demandas');
         })->name('editar_demandas_membro');
         Route::get('/sucesso_edicao_demanda', function(){
             return view('usuarioMembro/demanda/sucesso_edicao_demanda');
-        })->name('sucesso_edicao_demanda_membro');    
-    });
+        })->name('sucesso_edicao_demanda_membro'); */    
+    /* }); */
 
     //Rota de telas do usuario Membro para as telas de matching
-    Route::prefix('extensao/matching')->group(function(){
+    /* Route::prefix('extensao/matching')->group(function(){
         Route::get('/visualizar_matching_demanda', function(){
             return view('usuarioMembro/matching_demandas/visualizar_matching_demandas');
         })->name('visualizar_matching_demandas_membro');
-    });
+    }); */
 
     //Rota de telas do usuario Membro para Todas as Ofertas FOI
     Route::prefix('extensao/')->group(function(){
@@ -103,3 +165,111 @@ Route::prefix('membro')->group(function(){
     });
 
 });
+
+
+//ROTAS PARA FUNCIONALIDADES NO SISTEMA
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Route::prefix('teste/controllers')->controller(AreaConhecimentoController::class)->group(function() {
+//     Route::get('/', 'list');
+//     Route::post('/', 'create');
+//     Route::prefix('/{id_area_conhecimento}')->group(function() {
+//         Route::get('/', 'get');
+//         Route::put('/', 'update');
+//         Route::delete('/', 'delete');
+//     });
+// });
+
+/* Route::prefix('teste/controllers')->controller(BairroController::class)->group(function() {
+    Route::get('/', 'list');
+    Route::post('/', 'create');
+    Route::prefix('/{id_bairro}')->group(function() {
+        Route::get('/', 'get');
+        Route::put('/', 'update');
+        Route::delete('/', 'delete');
+    });
+}); */
+
+/* Route::prefix('teste/controllers')->controller(CidadeController::class)->group(function() {
+    Route::get('/', 'list');
+    Route::post('/', 'create');
+    Route::prefix('/{id_cidade}')->group(function() {
+        Route::get('/', 'get');
+        Route::put('/', 'update');
+        Route::delete('/', 'delete');
+    });
+}); */
+
+
+/* Route::prefix('teste/controllers')->controller(EstadoController::class)->group(function() {
+    Route::get('/', 'list');
+    Route::post('/', 'create');
+    Route::prefix('/{id_estado}')->group(function() {
+        Route::get('/', 'get');
+        Route::put('/', 'update');
+        Route::delete('/', 'delete');
+    });
+}); */
+
+// Route::prefix('teste/controllers')->controller(EnderecoController::class)->group(function() {
+//     Route::get('/', 'list');
+//     Route::post('/', 'create');
+//     Route::prefix('/{id_endereco}')->group(function() {
+//         Route::get('/', 'get');
+//         Route::put('/', 'update');
+//         Route::delete('/', 'delete');
+//     });
+// });
+
+/* Route::prefix('teste/controllers')->controller(UsuarioController::class)->group(function() {
+    Route::get('/', 'list');
+    Route::post('/', 'create');
+    Route::prefix('/{id_usuario}')->group(function() {
+        Route::get('/', 'get');
+        Route::put('/', 'update');
+        Route::delete('/', 'delete');
+    });
+}); */
+
+// Route::prefix('teste/controllers')->controller(UsuarioAlunoController::class)->group(function() {
+//     Route::get('/', 'list');
+//     Route::post('/', 'create');
+//     Route::prefix('/{id_usuario}')->group(function() {
+//         Route::get('/', 'get');
+//         Route::put('/', 'update');
+//         Route::delete('/', 'delete');
+//     });
+// });
+
+// Route::prefix('teste/controllers')->controller(UsuarioProfessorController::class)->group(function() {
+//     Route::get('/', 'list');
+//     Route::post('/', 'create');
+//     Route::prefix('/{id_usuario}')->group(function() {
+//         Route::get('/', 'get');
+//         Route::put('/', 'update');
+//         Route::delete('/', 'delete');
+//     });
+// });
+
+/* Route::prefix('teste/controllers')->controller(DemandaController::class)->group(function() {
+    Route::get('/', 'list');
+    Route::post('/', 'create');
+    Route::prefix('/{id_usuario}')->group(function() {
+        Route::get('/', 'get');
+        Route::put('/', 'update');
+        Route::delete('/', 'delete');
+    });
+}); */
