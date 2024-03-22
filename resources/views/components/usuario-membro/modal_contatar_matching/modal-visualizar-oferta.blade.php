@@ -11,8 +11,6 @@
 </head>
 <body>
     <!-- MODAL -->
-    <form action="{{ route('matching_visualizar', [$idDemanda, $idMatching]) }}" method="POST">
-        @csrf
     <a type="submit"><div class="clicar-fora-modal-visualizar" id="clicar-fora-modal-visualizar-{{$idMatching}}" onclick="closeModalVisualizarOferta({{$idMatching}})"></div></a>
     </form>
         <div class="modal-visualizar" id="modal-visualizar-{{$idMatching}}">
@@ -73,12 +71,13 @@
                     </a>
                 </div>
                 <div>
-                    <form action="{{ route('matching_visualizar', [$idDemanda, $idMatching]) }}" method="POST">
+                    <form action="{{ route('matching_visualizar', [$idDemanda, $idMatching]) }}" method="GET">
                         @csrf
-                        <span onclick="closeModalVisualizarOferta({{$idMatching}})" id="botao-fechar-modal"><button {{-- type="submit" --}}>Fechar</button></span>
+                        <span onclick="closeModalVisualizarOferta({{$idMatching}})" id="botao-fechar-modal"><button>Fechar</button></span>
                     </form>
                 </div>
             </div>
+            <x-usuario-membro.modal-contatar-oferta :id-matching="$idMatching" :id-demanda="$idDemanda"/>
         </div>
     </div>
     <!-- MODAL -->

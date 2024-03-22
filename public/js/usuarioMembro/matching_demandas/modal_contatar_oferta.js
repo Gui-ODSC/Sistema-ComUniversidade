@@ -1,12 +1,12 @@
 //ABRE E FECHA O MODAL
-function openModalContatarOferta() {
+function openModalContatarOferta(id) {
     // Exibe o modal e a sobreposição
-    document.getElementById('modal-contatar').style.display = 'block';
-    document.getElementById('clicar-fora-modal-contatar').style.display = 'block';
+    document.getElementById(`modal-contatar-${id}`).style.display = 'block';
+    document.getElementById(`clicar-fora-modal-contatar-${id}`).style.display = 'block';
 }
 
-function closeModalContatarOferta() {
+function closeModalContatarOferta(id) {
     // Oculta o modal e a sobreposição
-    document.getElementById('modal-contatar').style.display = 'none';
-    document.getElementById('clicar-fora-modal-contatar').style.display = 'none';
+    document.getElementById(`modal-contatar-${id}`).style.display = 'none';
+    document.getElementById(`clicar-fora-modal-contatar-${id}`).style.display = 'none';
 }
