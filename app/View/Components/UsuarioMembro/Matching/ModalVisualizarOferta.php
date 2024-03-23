@@ -1,6 +1,6 @@
 <?php
 
-namespace App\View\Components\UsuarioMembro;
+namespace App\View\Components\UsuarioMembro\Matching;
 
 use App\Http\Controllers\MembroControllers\MatchingMembroController;
 use App\Models\Usuario;
@@ -10,7 +10,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 use App\Models\Oferta;
 
-class ModalContatarOferta extends Component
+class ModalVisualizarOferta extends Component
 {
     public Oferta $matching;
     public Usuario $professor;
@@ -32,7 +32,7 @@ class ModalContatarOferta extends Component
     {   
 
         /* $matchingMembroController->matching_visualizar($idDemanda, $idMatching); */
-        return view('components.usuario-membro.modal_contatar_matching.modal-contatar-oferta', [
+        return view('components.usuario-membro.matching.modal_contatar_matching.modal-visualizar-oferta', [
             'oferta' => $this->matching,
             'professor' => $this->professor,
             'id_demanda' => $this->idDemanda

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\View\Components\UsuarioMembro;
+namespace App\View\Components\UsuarioMembro\Demanda;
 
 use Closure;
 use Illuminate\Contracts\View\View;
@@ -28,7 +28,7 @@ class ModalDeletarDemanda extends Component
     public function render(): View|Closure|string
     {
         return view('components.usuario-membro.demanda.modal-deletar-demanda', [
-            'demanda' => $this->demanda
+            'demanda' => $this->demanda,
         ]);
     }
 }

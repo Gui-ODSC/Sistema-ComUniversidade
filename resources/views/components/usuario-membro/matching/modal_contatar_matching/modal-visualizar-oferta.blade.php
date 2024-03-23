@@ -77,12 +77,8 @@
                     </form>
                 </div>
             </div>
-            <x-usuario-membro.modal-contatar-oferta :id-matching="$idMatching" :id-demanda="$idDemanda"/>
+            <x-usuario-membro.matching.modal-contatar-oferta :id-matching="$idMatching" :id-demanda="$idDemanda"/>
         </div>
     </div>
-    <!-- MODAL -->
-    {{-- <!-- MODAL CONTATAR -->
-    @include('usuarioMembro/matching_demandas/modal_contatar/modal_contatar_oferta')
-    <!-- MODAL CONTATAR --> --}}
 </body>
 </html>
