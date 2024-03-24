@@ -49,14 +49,14 @@
                         <div id="icones-contato">
                             @if ($contato['respostaMensagem'] != null)
                                 @if ($contato['respostaMensagem']->tipo_mensagem === 'INTERESSADO')
-                                    <img id="imagem-contato-status" src="{{ asset('img/usuarioMembro/contatos_realizados/status_check.png') }}" alt="">
+                                    <img title="Interessado(a)" id="imagem-contato-status" src="{{ asset('img/usuarioMembro/contatos_realizados/status_check.png') }}" alt="">
                                 @elseif ($contato['respostaMensagem']->tipo_mensagem === 'SEM_DISPONIBILIDADE')
-                                    <img id="imagem-contato-status" src="{{ asset('img/usuarioMembro/contatos_realizados/status_sem_disponibilidade.png') }}" alt="">
+                                    <img title="Sem Disponibilidade" id="imagem-contato-status" src="{{ asset('img/usuarioMembro/contatos_realizados/status_sem_disponibilidade.png') }}" alt="">
                                 @elseif ($contato['respostaMensagem']->tipo_mensagem === 'RESPONDIDA')
-                                    <img id="imagem-contato-status" src="{{ asset('img/usuarioMembro/contatos_realizados/status_respondida.png') }}" alt="">
+                                    <img title="Mensagem Respondida" id="imagem-contato-status" src="{{ asset('img/usuarioMembro/contatos_realizados/status_respondida.png') }}" alt="">
                                 @endif
                             @else
-                                <img id="imagem-contato-status" src="{{ asset('img/usuarioMembro/contatos_realizados/status_realizado.png') }}" alt="">
+                                <img title="Mensagem Enviada" id="imagem-contato-status" src="{{ asset('img/usuarioMembro/contatos_realizados/status_realizado.png') }}" alt="">
                             @endif
                             <x-usuario-membro.contatos-realizados.modal-visualizar-contato :id-contato="$contato['dados']->id_contato"/>
                             <a onclick="openModalVisualizarContatoRealizado({{$contato['dados']->id_contato}})"><img id="icone-visualizar-contato" src="{{ asset('img/usuarioMembro/contatos_realizados/visualizar_contato.png') }}" alt="icone mais info"></a>

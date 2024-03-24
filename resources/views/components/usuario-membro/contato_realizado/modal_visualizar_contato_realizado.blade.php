@@ -63,14 +63,14 @@
                         <h6>Área de Conhecimento: {{$oferta->areaConhecimento->nome}}</h6>
                         @if ($respostaMensagem != null)
                             @if ($respostaMensagem->tipo_mensagem === 'INTERESSADO')
-                                <h6>Status: <img src="{{ asset('img/usuarioMembro/contatos_realizados/status_check.png') }}" alt="">Interessado</h6>
+                                <h6 title="Interessado(a)">Status: <img src="{{ asset('img/usuarioMembro/contatos_realizados/status_check.png') }}" alt="">Interessado(a)</h6>
                             @elseif ($respostaMensagem->tipo_mensagem === 'SEM_DISPONIBILIDADE')
-                                <h6>Status: <img src="{{ asset('img/usuarioMembro/contatos_realizados/status_sem_disponibilidade.png') }}" alt="">Sem Disponibilidade</h6>
+                                <h6 title="Sem Disponibilidade">Status: <img src="{{ asset('img/usuarioMembro/contatos_realizados/status_sem_disponibilidade.png') }}" alt="">Sem Disponibilidade</h6>
                             @elseif ($respostaMensagem->tipo_mensagem === 'RESPONDIDA')
-                                <h6>Status: <img src="{{ asset('img/usuarioMembro/contatos_realizados/status_respondida.png') }}" alt="">Contato Respondido</h6>
+                                <h6 title="Contato Respondido">Status: <img src="{{ asset('img/usuarioMembro/contatos_realizados/status_respondida.png') }}" alt="">Contato Respondido</h6>
                             @endif
                         @else
-                            <h6>Status: <img src="{{ asset('img/usuarioMembro/contatos_realizados/status_realizado.png') }}" alt="">Contato Realizado</h6>
+                            <h6 title="Mensagem Enviada">Status: <img src="{{ asset('img/usuarioMembro/contatos_realizados/status_realizado.png') }}" alt="">Contato Realizado</h6>
                         @endif
                     </div>
                 </div>
