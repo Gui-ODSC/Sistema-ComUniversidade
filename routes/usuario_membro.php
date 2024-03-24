@@ -41,12 +41,16 @@ Route::prefix('membro')->group(function(){
                     Route::get('/visualizar', 'matching_status_visualizar')->name('matching_visualizar');
                     /* CONTATO */
                     Route::prefix('/contato')->controller(ContatoMembroController::class)->group(function () {
-                        Route::post('/', 'criarContato')->name('contato_store');
+                        Route::post('/', 'create')->name('contato_store');
                     })->middleware('auth');
                 });
             })->middleware('auth');
         })->middleware('auth');
     })->middleware('auth');
+
+    Route::prefix('/contatos')->controller(ContatoMembroController::class)->group(function(){
+        Route::get('/', 'list')->name('list_contatos_realizados');
+    });
 
     Route::prefix('/perfil')->controller(PerfilMembroController::class)->group(function(){
         Route::get('/', 'index')->name('perfil_index');
@@ -108,14 +112,14 @@ Route::prefix('membro')->group(function(){
     }); */
 
     //Rota de telas do usuario Membro para Todas as Ofertas FOI
-    Route::prefix('extensao/')->group(function(){
+    /* Route::prefix('extensao/')->group(function(){
         Route::get('/todas_ofertas_disponiveis', function(){
             return view('usuarioMembro/todas_ofertas/todas_ofertas_membro');
         })->name('todas_ofertas_membro');
-    });
+    }); */
 
     //Rota de telas do usuario para configuracoes FOI
-    Route::prefix('extensao/configuracoes_membro')->group(function(){
+    /* Route::prefix('extensao/configuracoes_membro')->group(function(){
         Route::get('/configuracao', function(){
             return view('usuarioMembro/configuracao/configuracoes_membro');
         })->name('configuracoes');
@@ -134,35 +138,35 @@ Route::prefix('membro')->group(function(){
         Route::get('/sobre_nos', function(){
             return view('usuarioMembro/configuracao/sobre_nos');
         })->name('sobre_nos');
-    });
+    }); */
 
     //Rota de telas do usuario para perfil FOI
-    Route::prefix('extensao/perfil')->group(function(){
+    /* Route::prefix('extensao/perfil')->group(function(){
         Route::get('/perfil_membro', function(){
             return view('usuarioMembro/perfil/perfil_membro');
         })->name('perfil_membro');
-    });
+    }); */
 
     //Rota de telas do usuario para sair FOI
-    Route::prefix('extensao/sair')->group(function(){
+    /* Route::prefix('extensao/sair')->group(function(){
         Route::get('/sair_membro', function(){
             return view('usuarioMembro/sair/sair_membro');
         })->name('sair');
-    });
+    }); */
 
     //Rota de Contatos Realizados pelo usuario membro FOI
-    Route::prefix('extensao/contatos')->group(function(){
+    /* Route::prefix('extensao/contatos')->group(function(){
         Route::get('/contatos_realizados', function(){
             return view('usuarioMembro/contatos_realizados/todos_contatos_realizados');
         })->name('todos_contatos_realizados_membro');
-    });
+    }); */
 
     //Rota de Contatos Recebidos pelo usuario membro FOI
-    Route::prefix('extensao/contatos')->group(function(){
+    /* Route::prefix('extensao/contatos')->group(function(){
         Route::get('/contatos_recebidos', function(){
             return view('usuarioMembro/contatos_recebidos/todos_contatos_recebidos');
         })->name('todos_contatos_recebidos_membro');
-    });
+    }); */
 
 });
 

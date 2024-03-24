@@ -4,6 +4,7 @@ namespace App\Http\Controllers\MembroControllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Contato;
+use App\Models\ContatoMensagem;
 use App\Models\Demanda;
 use App\Models\MatchingsExcluidos;
 use App\Models\Oferta;
@@ -14,7 +15,59 @@ use Illuminate\Support\Facades\Auth;
 
 class ContatoMembroController extends Controller
 {
-    public function criarContato($demandaId, $ofertaId, Request $request) {
+
+    public function list() {
+        $usuarioId = Auth::id();
+
+        $contatosRealizados = Contato::where('id_usuario_origem', $usuarioId)
+            ->with('oferta', 'demanda', 'usuarioOrigem', 'usuarioDestino', 'contatoMensagem')
+            /* ->orderBy('created_at', 'asc') */
+            ->get();
+
+        // Criar arrays vazios para armazenar os resultados
+        $contatosFormatados = [];
+
+        // Iterar sobre cada contato realizado para formatar os dados
+        foreach ($contatosRealizados as $contato) {
+
+            if ($valor = ContatoMensagem::where('id_usuario_destino', $usuarioId)
+            ->where('id_contato', $contato->id_contato)
+            ->first()
+            ) {
+                $respostaMensagem = $valor;
+            } else {
+                $respostaMensagem = null;
+            }
+
+            if (!is_object($respostaMensagem)) {
+                $contatosFormatados[] = [
+                    'dados' => $contato, 
+                    'usuarioEmissor' => $contato->usuarioOrigem,
+                    'usuarioReceptor' => $contato->usuarioDestino,
+                    'demanda' => $contato->demanda,
+                    'oferta' => $contato->oferta,
+                    'respostaMensagem' => null,
+                ];
+            } else {
+                $contatosFormatados[] = [
+                    'dados' => $contato, 
+                    'usuarioEmissor' => $contato->usuarioOrigem,
+                    'usuarioReceptor' => $contato->usuarioDestino,
+                    'demanda' => $contato->demanda,
+                    'oferta' => $contato->oferta,
+                    'respostaMensagem' => $respostaMensagem,
+                ];
+            }
+        }
+
+        return view('usuarioMembro/contatos_realizados/todos_contatos_realizados',
+            [
+                'contatosRealizados' => $contatosFormatados
+            ]
+        );
+    }
+
+    public function create($demandaId, $ofertaId, Request $request) {
 
         $userId = Auth::id();
         $demanda = Demanda::findOrFail($demandaId);
@@ -35,7 +88,20 @@ class ContatoMembroController extends Controller
         $contato->id_usuario_destino = $oferta->usuarioProfessor->id_usuario;
         $contato->id_oferta = $oferta->id_oferta;
         $contato->id_demanda = $demanda->id_demanda;
+        $contato->created_at = now();
+        $contato->updated_at = null;
         $contato->saveOrFail();
+
+        // Criação do ContatoMensagem
+        $contatoMensagem = new ContatoMensagem();
+        $contatoMensagem->id_contato = $contato->id_contato;
+        $contatoMensagem->id_usuario_origem = $demanda->id_usuario;
+        $contatoMensagem->id_usuario_destino = $oferta->usuarioProfessor->id_usuario; 
+        $contatoMensagem->mensagem = $request->input('mensagem-contato');
+        $contatoMensagem->tipo_mensagem = 'ENVIADA';
+        $contatoMensagem->created_at = now();
+        $contatoMensagem->updated_at = null;
+        $contatoMensagem->saveOrFail();
 
         return redirect()->to(route('matching_visualizar', [$demandaId, $ofertaId]));
     }

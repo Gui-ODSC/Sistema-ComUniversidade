@@ -46,9 +46,9 @@
                             <h6>Área de Conhecimento: {{$oferta->areaConhecimento->nome}}</h6>
                         </div>
                         <div>
-                            <h6 id="data">Ofertado em: 22/12/2023</h6>
+                            <h6 id="data">Ofertado em: {{ \Carbon\Carbon::parse($oferta->created_at)->format('d/m/Y') }}</h6>
                             @if ($oferta->tipo == 'ACAO')
-                                <h6>Duração: Anos</h6>
+                                <h6>Duração: {{ucwords(strtolower($oferta->ofertaAcao->duracao))}}</h6>
                                 <h6>Regime: {{ucwords(strtolower($oferta->ofertaAcao->regime))}}</h6>
                             @endif
                             @if ($oferta->tipo == 'CONHECIMENTO')

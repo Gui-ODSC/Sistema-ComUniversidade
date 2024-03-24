@@ -42,7 +42,7 @@ Route::prefix('/autenticacao')->group(function(){
 
 
 
-    
+    /* arrumar depois */
     Route::get('/login_aluno', function(){
         return view('autenticacaoUsuario/login_aluno');
     })->name('login_aluno');

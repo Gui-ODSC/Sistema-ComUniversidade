@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Contato extends Model
 {
@@ -24,14 +25,14 @@ class Contato extends Model
         'id_demanda',
     ];
 
-    public function demanda():BelongsTo
+    public function demanda():HasOne
     {
-        return $this->belongsTo(Demanda::class, 'id_demanda', 'id_demanda');
+        return $this->hasOne(Demanda::class, 'id_demanda', 'id_demanda');
     }
 
-    public function oferta():BelongsTo
+    public function oferta():HasOne
     {
-        return $this->belongsTo(Oferta::class, 'id_oferta', 'id_oferta');
+        return $this->hasOne(Oferta::class, 'id_oferta', 'id_oferta');
     }
 
     public function usuarioOrigem():BelongsTo

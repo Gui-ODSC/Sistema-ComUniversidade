@@ -44,7 +44,7 @@
                     <div>
                         <h6 id="data">Ofertado em: 22/12/2023</h6>
                         @if ($oferta->tipo == 'ACAO')
-                            <h6>Duração: Anos</h6>
+                            <h6>Duração: {{ucwords(strtolower($oferta->ofertaAcao->duracao))}}</h6>
                             <h6>Regime: {{ucwords(strtolower($oferta->ofertaAcao->regime))}}</h6>
                         @endif
                         @if ($oferta->tipo == 'CONHECIMENTO')
@@ -56,7 +56,7 @@
             <form id="form-contato-{{$idMatching}}" action="{{ route('contato_store', [$idDemanda, $idMatching]) }}" method="POST" onsubmit="return validarEnviarFormulario({{$idMatching}})">
                 @csrf
                 <div class="mensagem-contato">
-                    <h6>Descricao Oferta:</h6>
+                    <h6>Mandar Mensagem:</h6>
                     <textarea name="mensagem-contato" id="mensagem-contato-{{$idMatching}}" cols="119" rows="5" placeholder="Contate o ofertante através dessa caixa de mensagem (*Obrigatório)"></textarea>
                 </div>
                 <div class="botoes-oferta-contatar">
