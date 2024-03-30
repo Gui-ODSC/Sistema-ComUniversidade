@@ -25,11 +25,11 @@
                 <div class="contato" id="oferta-requisitada">
                     <div class="info-esquerda">
                         <div id="img-contato">
-                            <img src="{{ asset('img/usuarioMembro/contatos_recebidos/perfil.png') }}" alt="foto perfil" id="imagem">
+                            <img src="{{ asset('img/usuarioMembro/contatos/perfil.png') }}" alt="foto perfil" id="imagem">
                         </div>
                         <div id="info-usuario-contato">
                             <h4>{{$contato['usuarioReceptor']->nome}}</h4>
-                            <h5>status: Professor(a)</h5>
+                            <h5>status: {{ucwords(strtolower($contato['usuarioReceptor']->tipo))}}(a)</h5>
                         </div>
                     </div>
                     <div class="info-direita">
@@ -49,17 +49,17 @@
                         <div id="icones-contato">
                             @if ($contato['respostaMensagem'] != null)
                                 @if ($contato['respostaMensagem']->tipo_mensagem === 'INTERESSADO')
-                                    <img title="Interessado(a)" id="imagem-contato-status" src="{{ asset('img/usuarioMembro/contatos_realizados/status_check.png') }}" alt="">
+                                    <img title="Interessado(a)" id="imagem-contato-status" src="{{ asset('img/usuarioMembro/contatos/status_check.png') }}" alt="">
                                 @elseif ($contato['respostaMensagem']->tipo_mensagem === 'SEM_DISPONIBILIDADE')
-                                    <img title="Sem Disponibilidade" id="imagem-contato-status" src="{{ asset('img/usuarioMembro/contatos_realizados/status_sem_disponibilidade.png') }}" alt="">
+                                    <img title="Sem Disponibilidade" id="imagem-contato-status" src="{{ asset('img/usuarioMembro/contatos/status_sem_disponibilidade.png') }}" alt="">
                                 @elseif ($contato['respostaMensagem']->tipo_mensagem === 'RESPONDIDA')
-                                    <img title="Mensagem Respondida" id="imagem-contato-status" src="{{ asset('img/usuarioMembro/contatos_realizados/status_respondida.png') }}" alt="">
+                                    <img title="Mensagem Respondida" id="imagem-contato-status" src="{{ asset('img/usuarioMembro/contatos/status_respondida.png') }}" alt="">
                                 @endif
                             @else
-                                <img title="Mensagem Enviada" id="imagem-contato-status" src="{{ asset('img/usuarioMembro/contatos_realizados/status_realizado.png') }}" alt="">
+                                <img title="Mensagem Enviada" id="imagem-contato-status" src="{{ asset('img/usuarioMembro/contatos/status_realizado.png') }}" alt="">
                             @endif
-                            <x-usuario-membro.contatos-realizados.modal-visualizar-contato :id-contato="$contato['dados']->id_contato"/>
-                            <a onclick="openModalVisualizarContatoRealizado({{$contato['dados']->id_contato}})"><img id="icone-visualizar-contato" src="{{ asset('img/usuarioMembro/contatos_realizados/visualizar_contato.png') }}" alt="icone mais info"></a>
+                            <a onclick="openModalVisualizarContatoRealizado({{$contato['dados']->id_contato}})"><img id="icone-visualizar-contato" src="{{ asset('img/usuarioMembro/contatos/visualizar_contato.png') }}" alt="icone mais info"></a>
+                            <x-usuario-membro.contatos-realizados.modal-visualizar-contato-realizado :id-contato="$contato['dados']->id_contato"/>
                         </div>
                     </div>
                 </div>

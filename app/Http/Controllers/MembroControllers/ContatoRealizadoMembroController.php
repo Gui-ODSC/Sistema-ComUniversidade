@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class ContatoMembroController extends Controller
+class ContatoRealizadoMembroController extends Controller
 {
 
     public function list() {
@@ -21,7 +21,7 @@ class ContatoMembroController extends Controller
 
         $contatosRealizados = Contato::where('id_usuario_origem', $usuarioId)
             ->with('oferta', 'demanda', 'usuarioOrigem', 'usuarioDestino', 'contatoMensagem')
-            /* ->orderBy('created_at', 'asc') */
+            ->orderBy('created_at', 'asc')
             ->get();
 
         // Criar arrays vazios para armazenar os resultados

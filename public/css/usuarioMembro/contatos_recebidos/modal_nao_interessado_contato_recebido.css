@@ -1,4 +1,4 @@
-.secao-confirma-desinteresse {
+.secao-confirma-sem-disponibilidade {
     background-color: rgb(79, 75, 75);
     display: flex;
     width: 100%;
@@ -10,7 +10,7 @@
     border: solid 3px black;
 }
 
-.texto-modal-confirma-desinteresse {
+.texto-modal-confirma-sem-disponibilidade {
     width: 100%;
     text-align: center;
     margin-top: 20px;
@@ -20,11 +20,11 @@
     text-align: center;
 }
 
-.texto-modal-confirma-desinteresse #font-vermelha {
+.texto-modal-confirma-sem-disponibilidade #font-vermelha {
     color: rgb(252, 153, 153);
 }
 
-.botoes-modal-confirma-desinteresse {
+.botoes-modal-confirma-sem-disponibilidade {
     width: 100%;
     display: flex;
     justify-content: center; 
@@ -32,7 +32,7 @@
     border-radius: 10px;
 }
 
-.botoes-modal-confirma-desinteresse button {
+.botoes-modal-confirma-sem-disponibilidade button {
     width: 150px;
     height: 50px;
     margin: 5px 30px; 
@@ -44,17 +44,17 @@
     color: black;
 }
 
-.botoes-modal-confirma-desinteresse button:nth-child(1) {
+.botoes-modal-confirma-sem-disponibilidade button:nth-child(1) {
     background-color: #4CAF50; 
 }
 
-.botoes-modal-confirma-desinteresse button:nth-child(2) {
+.botoes-modal-confirma-sem-disponibilidade button:nth-child(2) {
     background-color: #f44336; 
 }
 
 /* MODAL */
 
-.modal-confirmar-desinteresse {
+.modal-confirmar-sem-disponibilidade {
     display: none;
     position: fixed;
     top: 50%;
@@ -70,7 +70,7 @@
     border-radius: 20px;
 }
 
-.clicar-fora-confirmar-desinteresse {
+.clicar-fora-confirmar-sem-disponibilidade {
     display: none;
     position: fixed;
     top: 0;
@@ -81,6 +81,6 @@
     z-index: 900;
 }
 
-#botao-fechar-modal-desinteresse button{
+#botao-fechar-modal-sem-disponibilidade button{
     background-color: red;
 }

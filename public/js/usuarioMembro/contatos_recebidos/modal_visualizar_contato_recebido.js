@@ -1,9 +1,9 @@
-function openModalVisualizarContatoRecebido() {
+function openModalVisualizarContatoRecebido(id) {
     // Exibe o modal e a sobreposição
-    document.getElementById('modal-visualizar').style.display = 'block';
+    document.getElementById(`modal-visualizar-${id}`).style.display = 'block';
 }
 
-function closeModalVisualizarContatoRecebido() {
+function closeModalVisualizarContatoRecebido(id) {
     // Oculta o modal e a sobreposição
-    document.getElementById('modal-visualizar').style.display = 'none';
+    document.getElementById(`modal-visualizar-${id}`).style.display = 'none';
 }

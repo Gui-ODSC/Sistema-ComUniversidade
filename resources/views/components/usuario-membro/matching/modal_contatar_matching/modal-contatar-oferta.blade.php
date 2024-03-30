@@ -53,7 +53,7 @@
                     </div>
                 </div>
             </div>
-            <form id="form-contato-{{$idMatching}}" action="{{ route('contato_store', [$idDemanda, $idMatching]) }}" method="POST" onsubmit="return validarEnviarFormulario({{$idMatching}})">
+            <form id="form-contato-{{$idMatching}}" action="{{ route('contato_realizado_store', [$idDemanda, $idMatching]) }}" method="POST" onsubmit="return validarEnviarFormulario({{$idMatching}})">
                 @csrf
                 <div class="mensagem-contato">
                     <h6>Mandar Mensagem:</h6>

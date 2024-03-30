@@ -10,7 +10,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\Component;
 
-class ModalVisualizarContato extends Component
+class ModalVisualizarContatoRealizado extends Component
 {
 
     public Contato $contato;

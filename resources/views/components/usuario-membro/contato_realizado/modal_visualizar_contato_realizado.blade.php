@@ -18,12 +18,12 @@
                 <div class="dados-usuario-professor-contato-respondido">
                     <div class="informacao-professor-contato-respondido">
                         <div id="foto-nome-contato-respondido">
-                            <img src="{{ asset('img/usuarioMembro/contatos_recebidos/perfil.png') }}" alt="">
+                            <img src="{{ asset('img/usuarioMembro/contatos/perfil.png') }}" alt="">
                             <h2>{{$usuarioReceptor->nome}}</h2>
                         </div>
                         <div id="dados-professor-contato-respondido">
                             <hr>
-                            <h6>Cargo: Professor</h6>
+                            <h6>Cargo: {{ucwords(strtolower($usuarioReceptor->tipo))}}(a)</h6>
                             <h6>Instituição: {{-- adicionar --}}</h6>
                             <h6>Tipo Oferta: {{ucwords(strtolower($oferta->tipo))}}</h6>
                         </div>
@@ -39,7 +39,7 @@
                     </div>
                 </div>
                 <div class="informacao-oferta-contato-respondido">
-                    <h5>Dados Demanda:</h5>
+                    <h5>Dados Oferta:</h5>
                     <div id="titulo-data-oferta-contato-respondido">
                         <h2>Título: {{$oferta->titulo}}</h2>
                         <h6 id="data">Ofertado em: {{ \Carbon\Carbon::parse($oferta->created_at)->format('d/m/Y') }}</h6>
@@ -63,14 +63,14 @@
                         <h6>Área de Conhecimento: {{$oferta->areaConhecimento->nome}}</h6>
                         @if ($respostaMensagem != null)
                             @if ($respostaMensagem->tipo_mensagem === 'INTERESSADO')
-                                <h6 title="Interessado(a)">Status: <img src="{{ asset('img/usuarioMembro/contatos_realizados/status_check.png') }}" alt="">Interessado(a)</h6>
+                                <h6 title="Interessado(a)">Status: <img src="{{ asset('img/usuarioMembro/contatos/status_check.png') }}" alt="">Interessado(a)</h6>
                             @elseif ($respostaMensagem->tipo_mensagem === 'SEM_DISPONIBILIDADE')
-                                <h6 title="Sem Disponibilidade">Status: <img src="{{ asset('img/usuarioMembro/contatos_realizados/status_sem_disponibilidade.png') }}" alt="">Sem Disponibilidade</h6>
+                                <h6 title="Sem Disponibilidade">Status: <img src="{{ asset('img/usuarioMembro/contatos/status_sem_disponibilidade.png') }}" alt="">Sem Disponibilidade</h6>
                             @elseif ($respostaMensagem->tipo_mensagem === 'RESPONDIDA')
-                                <h6 title="Contato Respondido">Status: <img src="{{ asset('img/usuarioMembro/contatos_realizados/status_respondida.png') }}" alt="">Contato Respondido</h6>
+                                <h6 title="Contato Respondido">Status: <img src="{{ asset('img/usuarioMembro/contatos/status_respondida.png') }}" alt="">Contato Respondido</h6>
                             @endif
                         @else
-                            <h6 title="Mensagem Enviada">Status: <img src="{{ asset('img/usuarioMembro/contatos_realizados/status_realizado.png') }}" alt="">Contato Realizado</h6>
+                            <h6 title="Mensagem Enviada">Status: <img src="{{ asset('img/usuarioMembro/contatos/status_realizado.png') }}" alt="">Contato Realizado</h6>
                         @endif
                     </div>
                 </div>
@@ -81,7 +81,7 @@
                     <div id="abrir-fechar-mensagem-check">
                         <h6>Mensagem Enviada por Você</h6>
                         <button id="botao-abrir-mensagem-check" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample-{{$idContato}}">
-                            <img src="{{ asset('img/usuarioMembro/contatos_recebidos/seta.png') }}" alt="">
+                            <img src="{{ asset('img/usuarioMembro/contatos/seta.png') }}" alt="">
                         </button>
                     </div>
                     <div class="collapse" id="collapseExample-{{$idContato}}">

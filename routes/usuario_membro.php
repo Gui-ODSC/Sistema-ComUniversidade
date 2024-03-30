@@ -7,7 +7,8 @@ use App\Http\Controllers\DemandaController;
 use App\Http\Controllers\EnderecoController;
 use App\Http\Controllers\EstadoController;
 use App\Http\Controllers\MembroControllers\CadastroMembroController;
-use App\Http\Controllers\MembroControllers\ContatoMembroController;
+use App\Http\Controllers\MembroControllers\ContatoRealizadoMembroController;
+use App\Http\Controllers\MembroControllers\ContatoRecebidoMembroController;
 use App\Http\Controllers\MembroControllers\DemandaMembroController;
 use App\Http\Controllers\MembroControllers\MatchingMembroController;
 use App\Http\Controllers\MembroControllers\PerfilMembroController;
@@ -40,16 +41,23 @@ Route::prefix('membro')->group(function(){
                     Route::post('/remove', 'matching_remover')->name('matching_remover');
                     Route::get('/visualizar', 'matching_status_visualizar')->name('matching_visualizar');
                     /* CONTATO */
-                    Route::prefix('/contato')->controller(ContatoMembroController::class)->group(function () {
-                        Route::post('/', 'create')->name('contato_store');
+                    Route::prefix('/contato')->controller(ContatoRealizadoMembroController::class)->group(function () {
+                        Route::post('/', 'create')->name('contato_realizado_store');
                     })->middleware('auth');
                 });
             })->middleware('auth');
         })->middleware('auth');
     })->middleware('auth');
 
-    Route::prefix('/contatos')->controller(ContatoMembroController::class)->group(function(){
+    Route::prefix('/contatos-realizados')->controller(ContatoRealizadoMembroController::class)->group(function(){
         Route::get('/', 'list')->name('list_contatos_realizados');
+    });
+
+    Route::prefix('/contatos-recebidos')->controller(ContatoRecebidoMembroController::class)->group(function() {
+        Route::get('/', 'list')->name('list_contatos_recebidos');
+        Route::prefix('/{contatoId}')->group(function(){
+            Route::post('/', 'resposta')->name('contato_recebido_store');
+        });
     });
 
     Route::prefix('/perfil')->controller(PerfilMembroController::class)->group(function(){
