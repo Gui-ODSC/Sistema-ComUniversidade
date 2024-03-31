@@ -38,7 +38,7 @@
                 </div>
             </div>
             <div class="mensagem-contato">
-                <form id="form-contato" action="{{ route('todas_ofertas_membro') }}" onsubmit="return validarEnviarFormulario()">
+                <form id="form-contato" action="#{{-- {{ route('todas_ofertas_membro') }} --}}" onsubmit="return validarEnviarFormulario()">
                     <h6>Descricao Oferta:</h6>
                     <textarea name="mensagem-contato" id="mensagem-contato" cols="122" rows="5" placeholder="Contate o ofertante através dessa caixa de mensagem (*Obrigatório)"></textarea>
                 </div>

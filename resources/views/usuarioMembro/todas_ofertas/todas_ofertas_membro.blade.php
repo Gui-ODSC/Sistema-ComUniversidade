@@ -77,7 +77,7 @@
         <table class="table table-rounded p-5 table-personalizacao">
             <thead>
                 <tr>
-                    <th scope="col">Id</th>
+                    <th scope="col"></th>
                     <th scope="col">Título</th>
                     <th scope="col">Área de Conhecimento</th>
                     <th scope="col">Data Oferta</th>
@@ -86,68 +86,27 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Melhoria da Experiência do Cliente</td>
-                    <td>Otto</td>
-                    <td>12/03/2022</td>
-                    <td><img id="icones_status" src="{{ asset('img/usuarioMembro/todas_ofertas/olho_desmarcado.png') }}" alt="tres pontos para mais informação"></td>
-                    <td><a onclick="openModalVisualizarOferta()" ><img id="icones_demanda" src="{{ asset('img/usuarioMembro/todas_ofertas/pesquisa_contatos.png') }}" alt="tres pontos para mais informação"></a></td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Desenvolvimento de Estratégia de Sustentabilidade</td>
-                    <td>Thornton</td>
-                    <td>25/07/2023</td>
-                    <td><img id="icones_status" src="{{ asset('img/usuarioMembro/todas_ofertas/olho_marcado.png') }}" alt="tres pontos para mais informação"></td>
-                    <td><a onclick="openModalVisualizarOferta()" ><img id="icones_demanda" src="{{ asset('img/usuarioMembro/todas_ofertas/pesquisa_contatos.png') }}" alt="tres pontos para mais informação"></a></td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Implementação de Programa de Bem-Estar</td>
-                    <td>Thornton</td>
-                    <td>05/09/2024</td>
-                    <td><img id="icones_status" src="{{ asset('img/usuarioMembro/todas_ofertas/olho_desmarcado.png') }}" alt="tres pontos para mais informação"></td>
-                    <td><a onclick="openModalVisualizarOferta()" ><img id="icones_demanda" src="{{ asset('img/usuarioMembro/todas_ofertas/pesquisa_contatos.png') }}" alt="tres pontos para mais informação"></a></td>
-                </tr>
-                <tr>
-                    <th scope="row">4</th>
-                    <td>Integração de Tecnologias Emergentes</td>
-                    <td>Thornton</td>
-                    <td>18/01/2025</td>
-                    <td><img id="icones_status" src="{{ asset('img/usuarioMembro/todas_ofertas/olho_marcado.png') }}" alt="tres pontos para mais informação"></td>
-                    <td><a onclick="openModalVisualizarOferta()" ><img id="icones_demanda" src="{{ asset('img/usuarioMembro/todas_ofertas/pesquisa_contatos.png') }}" alt="tres pontos para mais informação"></a></td>
-                </tr>
-                <tr>
-                    <th scope="row">5</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>08/06/2022</td>
-                    <td><img id="icones_status" src="{{ asset('img/usuarioMembro/todas_ofertas/olho_marcado.png') }}" alt="tres pontos para mais informação"></td>
-                    <td><a onclick="openModalVisualizarOferta()" ><img id="icones_demanda" src="{{ asset('img/usuarioMembro/todas_ofertas/pesquisa_contatos.png') }}" alt="tres pontos para mais informação"></a></td>
-                </tr>
-                <tr>
-                    <th scope="row">6</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>30/10/2023</td>
-                    <td><img id="icones_status" src="{{ asset('img/usuarioMembro/todas_ofertas/olho_desmarcado.png') }}" alt="tres pontos para mais informação"></td>
-                    <td><a onclick="openModalVisualizarOferta()" ><img id="icones_demanda" src="{{ asset('img/usuarioMembro/todas_ofertas/pesquisa_contatos.png') }}" alt="tres pontos para mais informação"></a></td>
-                </tr>
-                <tr>
-                    <th scope="row">7</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>21/12/2024</td>
-                    <td><img id="icones_status" src="{{ asset('img/usuarioMembro/todas_ofertas/olho_desmarcado.png') }}" alt="tres pontos para mais informação"></td>
-                    <td><a onclick="openModalVisualizarOferta()" ><img id="icones_demanda" src="{{ asset('img/usuarioMembro/todas_ofertas/pesquisa_contatos.png') }}" alt="tres pontos para mais informação"></a></td>
-                </tr>
+                @php  $contador = 1; @endphp 
+                @if (count($ofertas) < 1)
+                    <tr>
+                        <td colspan="7"><p style="opacity: 0.6; margin-top: 5px; margin-bottom: 0px">-- Nenhuma Oferta Disponível no Momento --</p></td>
+                    </tr>
+                @else
+                    @foreach ($ofertas as $oferta)
+                        <tr>
+                            <th scope="row">{{$contador}}</th>
+                            <td>{{$oferta->titulo}}</td>
+                            <td>{{$oferta->areaConhecimento->nome}}</td>
+                            <td>{{ \Carbon\Carbon::parse($oferta->created_at)->format('d/m/Y') }}</td>
+                            <td><img id="icones_status" src="{{ asset('img/usuarioMembro/todas_ofertas/olho_desmarcado.png') }}" alt="tres pontos para mais informação"></td>
+                            <td><a onclick="openModalVisualizarOferta({{$oferta->id_oferta}})" ><img id="icones_demanda" src="{{ asset('img/usuarioMembro/todas_ofertas/pesquisa_contatos.png') }}" alt="tres pontos para mais informação"></a></td>
+                            <x-usuario-membro.todas-ofertas.modal-visualizar-oferta :id-oferta="$oferta->id_oferta" />
+                        </tr>
+                        @php $contador++; @endphp
+                    @endforeach
+                @endif
             </tbody>
         </table>
-        <!-- MODAL VISUALIZAR OFERTA -->
-        @include('usuarioMembro/todas_ofertas/modal_visualizar_oferta')
-        <!-- MODAL VISUALIZAR OFERTA -->
-
         <!-- ZERA O CAMPO DE PESQUISA DA CAIXINHA -->
         <script>
             // Obtém o elemento do campo de pesquisa pelo ID

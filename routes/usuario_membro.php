@@ -12,6 +12,7 @@ use App\Http\Controllers\MembroControllers\ContatoRecebidoMembroController;
 use App\Http\Controllers\MembroControllers\DemandaMembroController;
 use App\Http\Controllers\MembroControllers\MatchingMembroController;
 use App\Http\Controllers\MembroControllers\PerfilMembroController;
+use App\Http\Controllers\MembroControllers\TodasOfertasController;
 use App\Http\Controllers\UsuarioAlunoController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\UsuarioProfessorController;
@@ -67,6 +68,10 @@ Route::prefix('membro')->group(function(){
             Route::post('/', 'editStore')->name('perfil_edit_store');
         })->middleware('auth');
     })->middleware('auth');
+
+    Route::prefix('/todas-ofertas')->controller(TodasOfertasController::class)->group(function(){
+        Route::get('/', 'list')->name('list_todas_ofertas');
+    });
 
 
 

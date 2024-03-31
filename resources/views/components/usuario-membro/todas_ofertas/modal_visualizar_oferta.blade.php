@@ -11,8 +11,8 @@
 </head>
 <body>
     <!-- MODAL -->
-    <div class="clicar-fora-modal-visualizar" id="clicar-fora-modal-visualizar" onclick="closeModalVisualizarOferta()"></div>
-        <div class="modal-visualizar" id="modal-visualizar">
+    <div class="clicar-fora-modal-visualizar" id="clicar-fora-modal-visualizar-{{$idOferta}}" onclick="closeModalVisualizarOferta({{$idOferta}})"></div>
+        <div class="modal-visualizar" id="modal-visualizar-{{$idOferta}}">
             <div class="dados-oferta">
                 <div class="dados-usuario-professor">
                     <div class="informacao-professor">
