@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_oferta');
             $table->unsignedBigInteger('id_tipo_acao');
             $table->unsignedBigInteger('id_publico_alvo');
-            $table->enum('status_registro', ['NAO REGISTRADA', 'REGISTRADA']);
+            $table->enum('status_registro', ['NAO_REGISTRADA', 'REGISTRADA']);
             $table->enum('duracao', ['SEMANAS', 'MESES', 'ANOS', 'INDEFINIDO']);
             $table->enum('regime', ['PRESENCIAL', 'ONLINE']);
 

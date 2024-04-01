@@ -54,7 +54,7 @@ class ModalVisualizarContatoRecebido extends Component
                 'usuarioReceptor' => $this->contato->usuarioDestino,
                 'dadosProfessor' => $this->professor,
                 'demanda' => $this->contato->demanda,
-                'oferta' => $this->contato->oferta,
+                'oferta' => $this->contato->oferta,/* possivelmente remover */
                 'contatoMensagem' => $this->contatoMensagem,
                 'respostaMensagem' => null
             ]);
@@ -65,7 +65,7 @@ class ModalVisualizarContatoRecebido extends Component
                 'usuarioReceptor' => $this->contato->usuarioDestino,
                 'dadosProfessor' => $this->professor,
                 'demanda' => $this->contato->demanda,
-                'oferta' => $this->contato->oferta,
+                'oferta' => $this->contato->oferta,/* possivelmente remover */
                 'contatoMensagem' => $this->contatoMensagem,
                 'respostaMensagem' => $this->respostaMensagem,
             ]);
