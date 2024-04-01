@@ -62,7 +62,11 @@
                             <th scope="row">{{$contador}}</th>
                             <td>{{$matching['oferta']->titulo}}</td>
                             <td>{{$matching['oferta']->areaConhecimento->nome}}</td>
-                            <td>{{ucwords(strtolower($matching['oferta']->tipo))}}</td>
+                            @if ($matching['oferta']->tipo === 'ACAO')
+                                <td>Ação</td>
+                            @elseif ($matching['oferta']->tipo === 'CONHECIMENTO')
+                                <td>Conhecimento</td>
+                            @endif
                             <td>{{ \Carbon\Carbon::parse($matching['oferta']->created_at)->format('d/m/Y') }}</td>
                             @if ($matching['status'] == 'nao_visualizado')
                                 <td><img id="icones_status" src="{{ asset('img/usuarioMembro/visualizar_matching_demandas/olho_desmarcado.png') }}" alt="tres pontos para mais informação"></td>

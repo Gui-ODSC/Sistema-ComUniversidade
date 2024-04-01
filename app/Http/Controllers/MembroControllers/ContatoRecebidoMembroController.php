@@ -41,7 +41,7 @@ class ContatoRecebidoMembroController extends Controller
                     'usuarioEmissor' => $contato->usuarioOrigem,
                     'usuarioReceptor' => $contato->usuarioDestino,
                     'demanda' => $contato->demanda,
-                    'oferta' => $contato->oferta,
+                    'oferta' => $contato->oferta,/* possivelmente remover */
                     'mensagemRecebida' => $mensagemRecebida,
                     'respostaEnviada' => null
                 ];
@@ -51,7 +51,7 @@ class ContatoRecebidoMembroController extends Controller
                     'usuarioEmissor' => $contato->usuarioOrigem,
                     'usuarioReceptor' => $contato->usuarioDestino,
                     'demanda' => $contato->demanda,
-                    'oferta' => $contato->oferta,
+                    'oferta' => $contato->oferta,/* possivelmente remover */
                     'mensagemRecebida' => $mensagemRecebida,
                     'respostaEnviada' => $respostaEnviada
                 ];

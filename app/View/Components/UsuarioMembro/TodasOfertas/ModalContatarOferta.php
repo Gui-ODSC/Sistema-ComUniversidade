@@ -9,7 +9,7 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class ModalVisualizarOferta extends Component
+class ModalContatarOferta extends Component
 {
     public Oferta $oferta;
     public Usuario $professor;
@@ -24,7 +24,7 @@ class ModalVisualizarOferta extends Component
 
     public function render(): View|Closure|string
     {   
-        return view('components.usuario-membro.todas_ofertas.modal_visualizar_oferta',
+        return view('components.usuario-membro.todas_ofertas.modal_contatar_oferta',
         [
             'oferta' => $this->oferta,
             'professor' => $this->professor,

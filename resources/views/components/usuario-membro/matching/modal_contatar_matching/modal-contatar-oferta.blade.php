@@ -19,9 +19,13 @@
                     <div class="informacao-professor-contatar">
                         <h2>{{$professor->nome}}</h2>
                         <hr>
-                        <h6>Cargo: Professor</h6>
+                        <h6>Cargo: {{(ucwords(strtolower($professor->tipo)))}}</h6>
                         <h6>Instituição: </h6>
-                        <h6>Tipo Oferta: {{ucwords(strtolower($oferta->tipo))}}</h6>
+                        @if ($oferta->tipo === 'ACAO')
+                            <h6>Tipo Oferta: Ação</h6>
+                        @elseif ($oferta->tipo === 'CONHECIMENTO')
+                            <h6>Tipo Oferta: Conhecimento</h6>
+                        @endif
                     </div>
                     <div class="informacao-email-contatar">
                         <h4>Contatos Email</h4>
@@ -29,27 +33,42 @@
                         <h6>{{$professor->email_secundario ?? '' }}</h6>
                     </div>
                 </div>
-                <div class="informacao-oferta-coluna">
-                    <div>
-                        @if ($oferta->tipo == 'ACAO')
-                            <h6>Público Alvo: {{$oferta->ofertaAcao->publicoAlvo->nome}}</h6>
-                            <h6>Status da Oferta: {{ucwords(strtolower($oferta->ofertaAcao->status_registro))}}</h6>
-                        @endif
-                        @if ($oferta->tipo == 'CONHECIMENTO')
-                            <h6>Currículo Lattes: <a href="{{$oferta->ofertaConhecimento->link_lattes}}">{{$oferta->ofertaConhecimento->link_lattes}}</a></h6>
-                            <h6>Currículo Linkedin: <a href="{{$oferta->ofertaConhecimento->link_linkedin}}">{{$oferta->ofertaConhecimento->link_linkedin}}</a></h6>
-                        @endif
-                        <h6>Área de Conhecimento: {{$oferta->areaConhecimento->nome}}</h6>
-                    </div>
-                    <div>
-                        <h6 id="data">Ofertado em: 22/12/2023</h6>
-                        @if ($oferta->tipo == 'ACAO')
-                            <h6>Duração: {{ucwords(strtolower($oferta->ofertaAcao->duracao))}}</h6>
-                            <h6>Regime: {{ucwords(strtolower($oferta->ofertaAcao->regime))}}</h6>
-                        @endif
-                        @if ($oferta->tipo == 'CONHECIMENTO')
-                            <h6>Tempo de Atuação: {{$oferta->ofertaConhecimento->tempo_atuacao}}</h6>
-                        @endif
+                <div class="informacao-oferta-contatar">
+                    <div class="informacao-oferta-contatar">
+                        <div id="titulo-oferta-contatar">
+                            <h2>Título: {{$oferta->titulo}}</h2>
+                        </div>
+                        <div class="informacao-oferta-coluna-contatar">
+                            <div>
+                                @if ($oferta->tipo == 'ACAO')
+                                    <h6>Público Alvo: {{$oferta->ofertaAcao->publicoAlvo->nome}}</h6>
+                                    <h6>Status da Oferta: {{ucwords(strtolower($oferta->ofertaAcao->status_registro))}}</h6>
+                                @endif
+                                @if ($oferta->tipo == 'CONHECIMENTO')
+                                    <h6>Currículo Lattes: <a href="{{$oferta->ofertaConhecimento->link_lattes}}">{{$oferta->ofertaConhecimento->link_lattes}}</a></h6>
+                                    <h6>Currículo Linkedin: <a href="{{$oferta->ofertaConhecimento->link_linkedin}}">{{$oferta->ofertaConhecimento->link_linkedin}}</a></h6>
+                                @endif
+                                <h6>Área de Conhecimento: {{$oferta->areaConhecimento->nome}}</h6>
+                            </div>
+                            <div>
+                                <h6 id="data-contatar">Ofertado em: {{ \Carbon\Carbon::parse($oferta->created_at)->format('d/m/Y') }}</h6>
+                                @if ($oferta->tipo == 'ACAO')
+                                    <h6>Duração: {{ucwords(strtolower($oferta->ofertaAcao->duracao))}}</h6>
+                                    <h6>Regime: {{ucwords(strtolower($oferta->ofertaAcao->regime))}}</h6>
+                                @endif
+                                @if ($oferta->tipo == 'CONHECIMENTO')
+                                    @if ($oferta->ofertaConhecimento->tempo_atuacao === 'MENOS_1_ANO')
+                                        <h6>Tempo de Atuação: Menos de 1 Ano</h6>
+                                    @elseif ($oferta->ofertaConhecimento->tempo_atuacao === 'MAIS_1_ANO')
+                                        <h6>Tempo de Atuação: Mais de 1 Ano</h6>
+                                    @elseif ($oferta->ofertaConhecimento->tempo_atuacao === 'MAIS_3_ANOS')
+                                        <h6>Tempo de Atuação: Mais de 3 Anos</h6>
+                                    @elseif ($oferta->ofertaConhecimento->tempo_atuacao === 'MAIS_5_ANOS')
+                                        <h6>Tempo de Atuação: Mais de 5 Anos</h6>
+                                    @endif
+                                @endif
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

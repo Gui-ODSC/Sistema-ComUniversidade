@@ -1,7 +1,7 @@
 var envioAutomaticoAgendado = false; // Variável para controlar o envio automático
 
-function validarEnviarFormulario() {
-    var mensagemContato = document.getElementById('mensagem-contato').value.trim();
+function validarEnviarFormulario(id) {
+    var mensagemContato = document.getElementById(`mensagem-contato-${id}`).value.trim();
 
     if (mensagemContato === '') {
         alert('Por favor, preencha a descrição da oferta antes de enviar.');
@@ -9,32 +9,32 @@ function validarEnviarFormulario() {
     }
 
     // Mostrar o modal de sucesso
-    mostrarModalSucesso();
+    mostrarModalSucesso(id);
 
     // Agendar o envio real do formulário após um breve intervalo (para dar tempo ao usuário de ver o modal)
     setTimeout(function() {
         if (!envioAutomaticoAgendado) {
-            document.getElementById('form-contato').submit();
+            document.getElementById(`form-contato-${id}`).submit();
         }
     }, 10000); // Tempo em milissegundos (aqui definido como 10 segundos para ilustração)
 
     return false; // Impede o envio do formulário imediatamente
 }
 
-function mostrarModalSucesso() {
+function mostrarModalSucesso(id) {
     // Mostra o modal de sucesso
-    var modal = document.getElementById('modal-sucesso');
+    var modal = document.getElementById(`modal-sucesso-${id}`);
     modal.style.display = 'block';
 }
 
-function fecharModalSucesso() {
+function fecharModalSucesso(id) {
     // Fecha o modal de sucesso
-    var modal = document.getElementById('modal-sucesso');
+    var modal = document.getElementById(`modal-sucesso-${id}`);
     modal.style.display = 'none';
 
     // Atualiza a variável para indicar que o envio automático foi cancelado
     envioAutomaticoAgendado = true;
 
     // Envia o formulário imediatamente
-    document.getElementById('form-contato').submit();
+    document.getElementById(`form-contato-${id}`).submit();
 }

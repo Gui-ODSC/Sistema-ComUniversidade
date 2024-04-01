@@ -108,12 +108,13 @@
 }
 
 .table-personalizacao thead, tbody {
-    border-radius: 10px;
+    border-radius: 50px;
 }
 
 .table-personalizacao thead th{
     background-color: #376985;
     color: #fff;
+    margin-top: 10px;
 }
 
 .table-personalizacao tbody td, th{
@@ -128,7 +129,7 @@
     width: 50px; /* Largura desejada da célula do título */
 }
 
-.table th:nth-child(6) {
+.table th:nth-child(7) {
     width: 50px; /* Largura desejada da célula do título */
 }
 

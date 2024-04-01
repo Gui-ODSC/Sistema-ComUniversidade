@@ -4,19 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('css/menu_navegacao/menu.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/components_css/usuarioMembro/matching/modal_contatar/modal_visualizar_oferta.css') }}">
-    <script src="{{ asset('js/usuarioMembro/matching_demandas/modal_contatar_oferta.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('css/components_css/usuarioMembro/todas_ofertas/modal_contatar_oferta.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/components_css/usuarioMembro/todas_ofertas/modal_sucesso_oferta.css') }}">
+    <script src="{{ asset('js/usuarioMembro/todas_ofertas/mensagem_contatar_oferta.js') }}"></script>
     <script src="{{ asset('js/menu/menu_navegacao.js') }}"></script>
     <title>Minhas Demandas</title>
 </head>
 <body>
     <!-- MODAL -->
-    <a type="submit"><div class="clicar-fora-modal-visualizar" id="clicar-fora-modal-visualizar-{{$idMatching}}" onclick="closeModalVisualizarOferta({{$idMatching}})"></div></a>
-    </form>
-        <div class="modal-visualizar" id="modal-visualizar-{{$idMatching}}">
-            <div class="dados-oferta">
-                <div class="dados-usuario-professor">
-                    <div class="informacao-professor">
+    <div class="clicar-fora-modal-contatar" id="clicar-fora-modal-contatar-{{$idOferta}}" onclick="closeModalContatarOferta({{$idOferta}})"></div>
+        <div class="modal-contatar" id="modal-contatar-{{$idOferta}}">
+            <div class="dados-oferta-contatar">
+                <div class="dados-usuario-professor-contatar">
+                    <div class="informacao-professor-contatar">
                         <h2>{{$professor->nome}}</h2>
                         <hr>
                         <h6>Cargo: {{(ucwords(strtolower($professor->tipo)))}}</h6>
@@ -27,17 +27,17 @@
                             <h6>Tipo Oferta: Conhecimento</h6>
                         @endif
                     </div>
-                    <div class="informacao-email">
+                    <div class="informacao-email-contatar">
                         <h4>Contatos Email</h4>
                         <h6>{{$professor->email}}</h6>
                         <h6>{{$professor->email_secundario ?? '' }}</h6>
                     </div>
                 </div>
-                <div class="informacao-oferta">
-                    <div id="titulo-oferta">
+                <div class="informacao-oferta-contatar">
+                    <div id="titulo-oferta-contatar">
                         <h2>Título: {{$oferta->titulo}}</h2>
                     </div>
-                    <div class="informacao-oferta-coluna">
+                    <div class="informacao-oferta-coluna-contatar">
                         <div>
                             @if ($oferta->tipo == 'ACAO')
                                 <h6>Público Alvo: {{$oferta->ofertaAcao->publicoAlvo->nome}}</h6>
@@ -74,27 +74,34 @@
                     </div>
                 </div>
             </div>
-            <div class="descricao-oferta">
-                <h6>Descricao Oferta:</h6>
-                <p>{{$oferta->descricao}}</p>
-            </div>
-            <div class="botoes-oferta">
-                <div>
-                    <a onclick="openModalContatarOferta({{$idMatching}})">
-                        <button>Contatar
-                            <img id="icone-telefone" src="{{ asset('img/usuarioMembro/visualizar_matching_demandas/modal_contatar/telefone_contato.png') }}" alt="">
-                        </button>
-                    </a>
+            <form id="form-contato-{{$idOferta}}" action="{{ route('contato_direto_store', $idOferta) }}" method="POST" onsubmit="return validarEnviarFormulario({{$idOferta}})">
+                @csrf
+                <div class="mensagem-contato">
+                    <h6>Mandar Mensagem:</h6>
+                    <textarea name="mensagem-contato" id="mensagem-contato-{{$idOferta}}" cols="122" rows="5" placeholder="Contate o ofertante através dessa caixa de mensagem (*Obrigatório)"></textarea>
                 </div>
-                <div>
-                    <form action="{{ route('matching_visualizar', [$idDemanda, $idMatching]) }}" method="GET">
-                        @csrf
-                        <span onclick="closeModalVisualizarOferta({{$idMatching}})" id="botao-fechar-modal"><button>Fechar</button></span>
-                    </form>
+                <div class="botoes-oferta-contatar">
+                    <div>
+                        <button type="submit">Enviar</button>
+                    </div>
+                    <div>
+                        <span onclick="closeModalContatarOferta({{$idOferta}})" id="botao-fechar-modal-contatar"><button type="button">Voltar</button></span>
+                    </div>
                 </div>
-            </div>
-            <x-usuario-membro.matching.modal-contatar-oferta :id-matching="$idMatching" :id-demanda="$idDemanda"/>
+            </form>
         </div>
     </div>
+    <!-- MODAL -->
+    <!-- MODAL SUCESSO -->
+    <div class="modal-sucesso-contatar" id="modal-sucesso-{{$idOferta}}">
+        <div class="modal-conteudo-sucesso-contatar">
+            <span class="fechar-modal-sucesso-contatar" onclick="fecharModalSucesso({{$idOferta}})">&times;</span>
+            <h5 class="titulo-sucesso" id="titulo-sucesso-{{$idOferta}}">Mensagem enviada com sucesso!</h5>
+            <div id="mensagem-sucesso">
+                <p>Visualize esta mensagem através do menu, na seção <strong>"CONTATOS REALIZADOS"</strong>.</p>
+            </div>
+        </div>
+    </div>
+    <!-- MODAL SUCESSO -->
 </body>
 </html>

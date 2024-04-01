@@ -29,8 +29,6 @@ class MatchingMembroController extends Controller
             $demanda->areaConhecimento
         );
 
-        /* return $ofertasEncontradas; */
-        
         return view(
             'usuarioMembro/matching_demandas/visualizar_matching_demandas',
             [
@@ -80,7 +78,7 @@ class MatchingMembroController extends Controller
             ->get(); 
 
             if (!$ofertas_visualizacao->isEmpty()) {
-                    if ($resultado >= 1.4)
+                if ($resultado >= 1.4)
                 {
                     if ($resultado === 2.0) {
                         $matchingsEncontrados[] = ['status' => 'visualizado', 'oferta' => $oferta];

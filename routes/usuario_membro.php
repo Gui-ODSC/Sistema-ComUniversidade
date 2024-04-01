@@ -71,6 +71,11 @@ Route::prefix('membro')->group(function(){
 
     Route::prefix('/todas-ofertas')->controller(TodasOfertasController::class)->group(function(){
         Route::get('/', 'list')->name('list_todas_ofertas');
+        Route::prefix('/{ofertaId}')->group(function (){
+            Route::post('/', 'create')->name('contato_direto_store');
+            Route::post('/visualizar', 'contato_direto_status_visualizar')->name('contato_direto_visualizar');
+            Route::post('/remover', 'contatos_diretos_remover')->name('contato_direto_remover');
+        });
     });
 
 

@@ -25,7 +25,11 @@
                             <hr>
                             <h6>Cargo: {{ucwords(strtolower($usuarioReceptor->tipo))}}(a)</h6>
                             <h6>Instituição: {{-- adicionar --}}</h6>
-                            <h6>Tipo Oferta: {{ucwords(strtolower($oferta->tipo))}}</h6>
+                            @if ($oferta->tipo === 'ACAO')
+                                <h6>Tipo Oferta: Ação</h6>
+                            @elseif ($oferta->tipo === 'CONHECIMENTO')
+                                <h6>Tipo Oferta: Conhecimento</h6>
+                            @endif
                         </div>
                     </div>
                     <div class="info-criador-interessado-contato-respondido">
@@ -58,7 +62,15 @@
                             <h6>Regime: {{ucwords(strtolower($oferta->ofertaAcao->regime))}}</h6>
                         @endif
                         @if ($oferta->tipo == 'CONHECIMENTO')
-                            <h6>Tempo de Atuação: {{$oferta->ofertaConhecimento->tempo_atuacao}}</h6>
+                            @if ($oferta->ofertaConhecimento->tempo_atuacao === 'MENOS_1_ANO')
+                                <h6>Tempo de Atuação: Menos de 1 Ano</h6>
+                            @elseif ($oferta->ofertaConhecimento->tempo_atuacao === 'MAIS_1_ANO')
+                                <h6>Tempo de Atuação: Mais de 1 Ano</h6>
+                            @elseif ($oferta->ofertaConhecimento->tempo_atuacao === 'MAIS_3_ANOS')
+                                <h6>Tempo de Atuação: Mais de 3 Anos</h6>
+                            @elseif ($oferta->ofertaConhecimento->tempo_atuacao === 'MAIS_5_ANOS')
+                                <h6>Tempo de Atuação: Mais de 5 Anos</h6>
+                            @endif
                         @endif
                         <h6>Área de Conhecimento: {{$oferta->areaConhecimento->nome}}</h6>
                         @if ($respostaMensagem != null)

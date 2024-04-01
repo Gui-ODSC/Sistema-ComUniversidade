@@ -44,7 +44,7 @@ class ContatoRealizadoMembroController extends Controller
                     'dados' => $contato, 
                     'usuarioEmissor' => $contato->usuarioOrigem,
                     'usuarioReceptor' => $contato->usuarioDestino,
-                    'demanda' => $contato->demanda,
+                    'demanda' => $contato->demanda,/* possivelmente remover */
                     'oferta' => $contato->oferta,
                     'respostaMensagem' => null,
                 ];
@@ -53,7 +53,7 @@ class ContatoRealizadoMembroController extends Controller
                     'dados' => $contato, 
                     'usuarioEmissor' => $contato->usuarioOrigem,
                     'usuarioReceptor' => $contato->usuarioDestino,
-                    'demanda' => $contato->demanda,
+                    'demanda' => $contato->demanda,/* possivelmente remover */
                     'oferta' => $contato->oferta,
                     'respostaMensagem' => $respostaMensagem,
                 ];
@@ -73,21 +73,13 @@ class ContatoRealizadoMembroController extends Controller
         $demanda = Demanda::findOrFail($demandaId);
         $oferta = Oferta::findOrFail($ofertaId);
 
-        // Remove a oferta da lista, porque ja foi contatada.
-        MatchingsExcluidos::create([
-            'id_usuario' => $userId,
-            'id_demanda' => $demanda->id_demanda,
-            'id_oferta' => $oferta->id_oferta,
-            'updated_at' => null,
-            'created_at' => now()
-        ]);
-
         // Criação do contato
         $contato = new Contato();
         $contato->id_usuario_origem = $demanda->id_usuario;
         $contato->id_usuario_destino = $oferta->usuarioProfessor->id_usuario;
         $contato->id_oferta = $oferta->id_oferta;
         $contato->id_demanda = $demanda->id_demanda;
+        $contato->tipo_contato = 'MATCHING';
         $contato->created_at = now();
         $contato->updated_at = null;
         $contato->saveOrFail();
@@ -102,6 +94,15 @@ class ContatoRealizadoMembroController extends Controller
         $contatoMensagem->created_at = now();
         $contatoMensagem->updated_at = null;
         $contatoMensagem->saveOrFail();
+
+        // Remove a oferta da lista, porque ja foi Realizada.
+        MatchingsExcluidos::create([
+            'id_usuario' => $userId,
+            'id_demanda' => $demanda->id_demanda,
+            'id_oferta' => $oferta->id_oferta,
+            'updated_at' => null,
+            'created_at' => now()
+        ]);
 
         return redirect()->to(route('matching_visualizar', [$demandaId, $ofertaId]));
     }

@@ -6,6 +6,7 @@
     <!-- JS -->
     <script src="{{ asset('js/menu/menu_navegacao.js') }}"></script>
     <script src="{{ asset('js/usuarioMembro/todas_ofertas/modal_visualizar_oferta.js') }}"></script>
+    <script src="{{ asset('js/usuarioMembro/todas_ofertas/modal_deletar_oferta.js') }}"></script>
     <!-- CloudFlare -->
     <link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css' type='text/css'>
     <!-- Bootstrap -->
@@ -74,6 +75,11 @@
                 <a href="#"><button>Buscar</button></a>
             </div>
         </div>
+        @if( session()->has('msg-deletar'))
+            <div class="alert alert-success" style="text-align: center">
+                <p>{{session('msg-deletar')}}</p>
+            </div>
+        @endif
         <table class="table table-rounded p-5 table-personalizacao">
             <thead>
                 <tr>
@@ -82,6 +88,7 @@
                     <th scope="col">Área de Conhecimento</th>
                     <th scope="col">Data Oferta</th>
                     <th scope="col">Status</th>
+                    <th scope="col">Deletar</th>
                     <th scope="col">Contato</th>
                 </tr>
             </thead>
@@ -92,15 +99,21 @@
                         <td colspan="7"><p style="opacity: 0.6; margin-top: 5px; margin-bottom: 0px">-- Nenhuma Oferta Disponível no Momento --</p></td>
                     </tr>
                 @else
-                    @foreach ($ofertas as $oferta)
+                    @foreach ($ofertas as $key => $oferta)
                         <tr>
                             <th scope="row">{{$contador}}</th>
-                            <td>{{$oferta->titulo}}</td>
-                            <td>{{$oferta->areaConhecimento->nome}}</td>
-                            <td>{{ \Carbon\Carbon::parse($oferta->created_at)->format('d/m/Y') }}</td>
-                            <td><img id="icones_status" src="{{ asset('img/usuarioMembro/todas_ofertas/olho_desmarcado.png') }}" alt="tres pontos para mais informação"></td>
-                            <td><a onclick="openModalVisualizarOferta({{$oferta->id_oferta}})" ><img id="icones_demanda" src="{{ asset('img/usuarioMembro/todas_ofertas/pesquisa_contatos.png') }}" alt="tres pontos para mais informação"></a></td>
-                            <x-usuario-membro.todas-ofertas.modal-visualizar-oferta :id-oferta="$oferta->id_oferta" />
+                            <td>{{$oferta['oferta']->titulo}}</td>
+                            <td>{{$oferta['oferta']->areaConhecimento->nome}}</td>
+                            <td>{{ \Carbon\Carbon::parse($oferta['oferta']->created_at)->format('d/m/Y') }}</td>
+                            @if ($oferta['status'] == 'nao_visualizado')
+                                <td><img id="icones_status" src="{{ asset('img/usuarioMembro/todas_ofertas/olho_desmarcado.png') }}" alt="tres pontos para mais informação"></td>
+                            @elseif ($oferta['status'] == 'visualizado')
+                                <td><img id="icones_status" src="{{ asset('img/usuarioMembro/todas_ofertas/olho_marcado.png') }}" alt="tres pontos para mais informação"></td>
+                            @endif
+                            <td><a onclick="openModalDeletar({{$oferta['oferta']->id_oferta}})"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/minhas_demandas/delete.png') }}" alt="tres pontos para mais informação"></a></td>
+                            <x-usuario-membro.todas-ofertas.modal-deletar-oferta :id-oferta="$oferta['oferta']->id_oferta" />
+                            <td><a onclick="openModalVisualizarOferta({{$oferta['oferta']->id_oferta}})" ><img id="icones_demanda" src="{{ asset('img/usuarioMembro/todas_ofertas/pesquisa_contatos.png') }}" alt="tres pontos para mais informação"></a></td>
+                            <x-usuario-membro.todas-ofertas.modal-visualizar-oferta :id-oferta="$oferta['oferta']->id_oferta" />
                         </tr>
                         @php $contador++; @endphp
                     @endforeach
@@ -118,5 +131,7 @@
             };
         </script>
     </main>
+    <script src="{{ asset('js/errors/mensagem_erro.js') }}"></script>  
+
 </body>
 </html>
