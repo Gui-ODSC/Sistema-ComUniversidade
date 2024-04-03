@@ -14,8 +14,6 @@
     <main class="configuracoes" id="conteudo">
         <h1>Configurações</h1>
         <a href="{{ route('ajuda_sistema') }}"><button>Ajuda do Sistema</button></a>
-        <a href="{{ route('historico_demandas') }}"><button>Historico de Demandas</button></a>
-        <a href="{{ route('historico_ofertas') }}"><button>Historico de Ofertas</button></a>
         <a href="{{ route('enviar_feedback') }}"><button>Enviar Feedback</button></a>
         <a href="{{ route('sobre_nos') }}"><button>Sobre nós</button></a>
     </main>

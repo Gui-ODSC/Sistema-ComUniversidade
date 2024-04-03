@@ -16,7 +16,7 @@
             <h1>Enviar Feedback</h1>
             <hr>
             <div class="session-img">
-                <a href="{{ route('perfil_membro') }}"><img id='imagem-perfil' src="{{ asset('img/foto_usuario_perfil/perfil_foto.jpeg') }}" alt="imagem de perfil do usuario"></a>
+                <a href="{{ route('perfil_index') }}"><img id='imagem-perfil' src="{{ asset('img/foto_usuario_perfil/perfil_foto.jpeg') }}" alt="imagem de perfil do usuario"></a>
                 <h5>Guilherme Oliveira</h5>
             </div>
             <hr>

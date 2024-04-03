@@ -78,6 +78,27 @@ Route::prefix('membro')->group(function(){
         });
     });
 
+    //Rota de telas do usuario para configuracoes FOI
+    Route::prefix('extensao/configuracoes_membro')->group(function(){
+        Route::get('/configuracao', function(){
+            return view('usuarioMembro/configuracao/configuracoes_membro');
+        })->name('configuracoes');
+        Route::get('/ajuda_sistema', function(){
+            return view('usuarioMembro/configuracao/ajuda_sistema');
+        })->name('ajuda_sistema');
+        /* Route::get('/historico_demandas', function(){
+            return view('usuarioMembro/configuracao/historico_demandas');
+        })->name('historico_demandas');
+        Route::get('/historico_ofertas', function(){
+            return view('usuarioMembro/configuracao/historico_ofertas');
+        })->name('historico_ofertas') */;
+        Route::get('/enviar_feedback', function(){
+            return view('usuarioMembro/configuracao/enviar_feedback');
+        })->name('enviar_feedback');
+        Route::get('/sobre_nos', function(){
+            return view('usuarioMembro/configuracao/sobre_nos');
+        })->name('sobre_nos');
+    });
 
 
 
@@ -136,27 +157,7 @@ Route::prefix('membro')->group(function(){
         })->name('todas_ofertas_membro');
     }); */
 
-    //Rota de telas do usuario para configuracoes FOI
-    /* Route::prefix('extensao/configuracoes_membro')->group(function(){
-        Route::get('/configuracao', function(){
-            return view('usuarioMembro/configuracao/configuracoes_membro');
-        })->name('configuracoes');
-        Route::get('/ajuda_sistema', function(){
-            return view('usuarioMembro/configuracao/ajuda_sistema');
-        })->name('ajuda_sistema');
-        Route::get('/historico_demandas', function(){
-            return view('usuarioMembro/configuracao/historico_demandas');
-        })->name('historico_demandas');
-        Route::get('/historico_ofertas', function(){
-            return view('usuarioMembro/configuracao/historico_ofertas');
-        })->name('historico_ofertas');
-        Route::get('/enviar_feedback', function(){
-            return view('usuarioMembro/configuracao/enviar_feedback');
-        })->name('enviar_feedback');
-        Route::get('/sobre_nos', function(){
-            return view('usuarioMembro/configuracao/sobre_nos');
-        })->name('sobre_nos');
-    }); */
+    
 
     //Rota de telas do usuario para perfil FOI
     /* Route::prefix('extensao/perfil')->group(function(){
