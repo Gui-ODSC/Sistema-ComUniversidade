@@ -163,6 +163,10 @@ body {
     border-bottom: solid 1px rgb(116, 116, 116);
 }
 
+.table th:nth-child(1) {
+    width: 50px; /* Largura desejada da célula do título */
+}
+
 .table th:nth-child(2) {
     width: 600px; /* Largura desejada da célula do título */
 }
