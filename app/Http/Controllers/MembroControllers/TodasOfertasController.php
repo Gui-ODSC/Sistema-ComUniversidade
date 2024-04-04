@@ -23,7 +23,7 @@ class TodasOfertasController extends Controller
 
         $listOfertas = Oferta::with('usuarioProfessor', 'ofertaConhecimento', 'ofertaAcao', 'areaConhecimento', 'contato')
         ->whereNotIn('id_oferta', $ofertasNaoMostrar)
-        ->get();
+        ->paginate(1);
 
         $ofertasDisponiveis = [];
 
@@ -43,6 +43,7 @@ class TodasOfertasController extends Controller
         return view('usuarioMembro.todas_ofertas.todas_ofertas_membro', 
             [
                 'ofertas' => $ofertasDisponiveis,
+                'paginate' => $listOfertas,
             ]
         );
     }

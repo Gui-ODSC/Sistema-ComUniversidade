@@ -21,7 +21,9 @@
 <body> 
     @include('menu')
     <main class="todas-ofertas" id="conteudo">
-        <h1>Todas as Ofertas Disponíveis</h1>
+        <div class="titulo">
+            <h1>Todas as Ofertas Disponíveis</h1>
+        </div>
         <div class="caixa-pesquisa-oferta">
             <input id="campo-pesquisa" type="text" placeholder="Busca de Ofertas">
             <a href="#"><div id="lupa"></div></a>
@@ -131,7 +133,11 @@
             };
         </script>
     </main>
+    <div class="paginacao-botao">
+        <div class="nav-paginator ">
+            {{ $paginate->links() }}
+        </div>
+    </div>
     <script src="{{ asset('js/errors/mensagem_erro.js') }}"></script>  
-
 </body>
 </html>
