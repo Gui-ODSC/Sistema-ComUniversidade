@@ -132,12 +132,12 @@
                 campoPesquisa.value = '';
             };
         </script>
-    </main>
-    <div class="paginacao-botao">
-        <div class="nav-paginator ">
-            {{ $paginate->links() }}
+        <div class="paginacao-botao">
+            <div class="nav-paginator ">
+                {{ $paginate->links() }}
+            </div>
         </div>
-    </div>
+    </main>
     <script src="{{ asset('js/errors/mensagem_erro.js') }}"></script>  
 </body>
 </html>
