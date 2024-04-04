@@ -4,16 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ asset('css/menu_navegacao/menu.css') }}">
     <link rel="stylesheet" href="{{ asset('css/usuarioMembro/contatos_realizados/todos_contatos_realizados.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/menu_navegacao/menu.css') }}">
     <script src="{{ asset('js/usuarioMembro/contatos_realizados/modal_visualizar_contato_realizado.js') }}"></script>
     <script src="{{ asset('js/menu/menu_navegacao.js') }}"></script>
     <title>Contatos Realizados</title>
 </head>
-<body style="background-color: #376985"> 
+<body> 
     @include('menu')
     <main class="todos-contatos" id="conteudo">
-        <h1>Contatos Realizados</h1>
+        <div class="titulo">
+            <h1>Contatos Realizados</h1>
+        </div>
         <div class="secao-contatos">
             @if (count($contatosRealizados) < 1)
                 <div class="contato" id="oferta-requisitada" style="text-align: center; justify-content: center; display: flex; flex-direction: column;">
@@ -65,6 +67,11 @@
                 </div>
             @endforeach 
         @endif
+        <div class="paginacao-botao">
+            <div class="nav-paginator ">
+                {{ $paginate->links() }}
+            </div>
+        </div>
     </main>
 </body>
 </html>

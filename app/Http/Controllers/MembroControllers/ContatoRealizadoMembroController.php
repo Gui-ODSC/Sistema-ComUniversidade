@@ -22,7 +22,7 @@ class ContatoRealizadoMembroController extends Controller
         $contatosRealizados = Contato::where('id_usuario_origem', $usuarioId)
             ->with('oferta', 'demanda', 'usuarioOrigem', 'usuarioDestino', 'contatoMensagem')
             ->orderBy('created_at', 'asc')
-            ->get();
+            ->paginate(1);
 
         // Criar arrays vazios para armazenar os resultados
         $contatosFormatados = [];
@@ -62,7 +62,8 @@ class ContatoRealizadoMembroController extends Controller
 
         return view('usuarioMembro/contatos_realizados/todos_contatos_realizados',
             [
-                'contatosRealizados' => $contatosFormatados
+                'contatosRealizados' => $contatosFormatados,
+                'paginate' => $contatosRealizados
             ]
         );
     }
