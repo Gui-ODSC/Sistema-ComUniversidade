@@ -20,6 +20,11 @@ header {
     font-size: 25px;
 }
 
+.btn-abrir:hover {
+    color: #FFF;
+    font-size: 25px;
+}
+
 nav {
     height: 100%;
     width: 0px;
