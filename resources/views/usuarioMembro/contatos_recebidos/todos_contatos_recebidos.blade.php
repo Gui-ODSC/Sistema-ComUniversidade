@@ -13,7 +13,9 @@
 <body style="background-color: #376985"> 
     @include('menu')
     <main class="todos-contatos" id="conteudo">
-        <h1>Contatos Recebidos</h1>
+        <div class="titulo">
+            <h1>Contatos Recebidos</h1>
+        </div>
         <div class="secao-contatos">
             @if( session()->has('msg-contato-respondido'))
                 <div class="alert alert-success" style="text-align: center">
@@ -67,6 +69,11 @@
             </div>
             @endforeach 
         @endif
+        <div class="paginacao-botao">
+            <div class="nav-paginator ">
+                {{ $paginate->links() }}
+            </div>
+        </div>
         <script src="{{ asset('js/errors/mensagem_erro.js') }}"></script>  
     </main>
 </body>

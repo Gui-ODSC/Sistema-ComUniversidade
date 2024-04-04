@@ -17,7 +17,7 @@ class ContatoRecebidoMembroController extends Controller
         $contatosRecebidos = Contato::where('id_usuario_destino', $usuarioId)
             ->with('oferta', 'demanda', 'usuarioOrigem', 'usuarioDestino', 'contatoMensagem')
             ->orderBy('created_at', 'asc')
-            ->get();
+            ->paginate(1);
         
         $contatosFormatados = [];
 
@@ -62,7 +62,8 @@ class ContatoRecebidoMembroController extends Controller
 
         return view('usuarioMembro/contatos_recebidos/todos_contatos_recebidos',
             [
-                'contatosRecebidos' => $contatosFormatados
+                'contatosRecebidos' => $contatosFormatados,
+                'paginate' => $contatosRecebidos
             ]
         );
     }
