@@ -18,8 +18,17 @@
                 <p>{{session('msg-demanda')}}</p>
             </div>
         @endif
-        <h1>Minhas Demandas</h1>
-        <a href="{{ route('demanda_create_index') }}"><button>Cadastrar Novas Demandas</button></a>
+        <div class="titulo">
+            <h1>Minhas Demandas</h1>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-top: 20px">
+            <div class="paginacao-botao">
+                <div class="nav-paginator ">
+                    {{ $demandas->links() }}
+                </div>
+            </div>
+            <a href="{{ route('demanda_create_index') }}"><button>Cadastrar Novas Demandas</button></a>
+        </div>
         <table class="table table-rounded p-5 table-personalizacao">
             <thead>
                 <tr>
@@ -55,6 +64,8 @@
                     @endif
                 </tbody>
             </table>
+            
+            
         <script src="{{ asset('js/errors/mensagem_erro.js') }}"></script>   
     </main>
 </body>

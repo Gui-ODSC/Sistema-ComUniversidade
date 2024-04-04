@@ -1,8 +1,27 @@
-.minhas-demandas h1 {
-    text-align: center;
-    margin-top: 20px;
-    margin-bottom: 30px;
-    color: #191970;
+body {
+    /* background: linear-gradient(90deg, rgba(9,107,170,1) 0%, rgba(16,43,73,1) 100%); */
+    background: linear-gradient(90deg, rgba(9,107,170,1) 0%, rgba(44,39,88,1) 50%, rgba(40,35,69,1) 100%);
+}
+
+.titulo {
+    display: flex;
+    /* background: linear-gradient(90deg, rgba(9,107,170,1) 0%, rgba(44,39,88,1) 50%, rgba(40,35,69,1) 100%); */
+    /* background: linear-gradient(360deg, rgba(9,107,170,1) 0%, rgba(44,39,88,1) 50%, rgba(40,35,69,1) 100%); */
+    background-color: rgba(44,39,88,1);
+    width: 500px;
+    margin: auto;
+    align-items: center;
+    height: 70px;
+    border-radius: 10px;
+    align-content: center;
+    box-shadow: -1px 1px 4px 4px #37769a;
+}
+
+.titulo h1 {
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    color: #fff;
 }
 
 .minhas-demandas button {
@@ -10,6 +29,7 @@
     border-radius: 10px;
     margin-bottom: 10px;
     background-color: #376985;
+    box-shadow: -1px 1px 4px 4px black;
     border: none;
     color: #FFF;
     font-weight: bold;
@@ -26,11 +46,18 @@
     background-color: black;
     border: solid 2px grey;
     padding: 3px;
+    transition: all 0.3s ease; /* Adiciona uma transição suave */
+}
+
+#icones_demanda:hover {
+    transform: scale(1.2); /* Aumenta o tamanho em 20% quando o mouse passa sobre ele */
 }
 
 .table-rounded {
     border-radius: 10px;
     overflow: hidden;
+    box-shadow: -1px 1px 4px 4px black;
+
 }
 
 .table-personalizacao {
@@ -53,6 +80,10 @@
     margin-bottom: 30px;
 }
 
+.table th:nth-child(1) {
+    width: 50px; /* Largura desejada da célula do título */
+}
+
 .table th:nth-child(2) {
     width: 600px; /* Largura desejada da célula do título */
 }
@@ -67,4 +98,44 @@
 
 #icones_demanda {
     cursor: pointer;
+}
+
+
+/* PAGINACAO */
+.nav-paginator nav {
+    position: relative;
+    background-color: transparent;
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    height: auto;
+    margin: auto;
+    align-items: center;
+    border: 2px solid #1f3b4b;
+    box-shadow: -1px 1px 4px 4px black;
+    border-radius: 5px;
+}
+
+.pagination {
+    margin: 2px;
+}
+
+.pagination {
+    --bs-pagination-active-bg: #376985;
+    --bs-pagination-active-border-color: black;
+    --bs-pagination-border-color: black;
+    --bs-pagination-border-width: 2px;
+    --bs-pagination-disabled-border-color: black;
+    --bs-pagination-hover-bg: #6d91be;
+    --bs-pagination-hover-border-color: black;
+    --bs-pagination-hover-color: #FFF;
+    --bs-pagination-color: black;
+}
+
+.paginacao-botao {
+    display: flex;
+    height: auto;
+    justify-content: center;
+    margin: auto 0;
+    align-items: center;
 }
