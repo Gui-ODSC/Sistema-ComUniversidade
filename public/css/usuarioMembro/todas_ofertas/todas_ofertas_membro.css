@@ -14,7 +14,7 @@ body {
     height: 70px;
     border-radius: 10px;
     align-content: center;
-    box-shadow: -1px 1px 4px 4px #37769a;
+    box-shadow: -1px 1px 4px 4px #376985;
 }
 
 .titulo h1 {
@@ -142,6 +142,7 @@ body {
 .table-rounded {
     border-radius: 10px;
     overflow: hidden;
+    box-shadow: -1px 1px 4px 4px black;
 }
 
 .table-personalizacao {

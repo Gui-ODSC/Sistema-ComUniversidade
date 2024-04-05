@@ -7,6 +7,7 @@
     <script src="{{ asset('js/menu/menu_navegacao.js') }}"></script>
     <script src="{{ asset('js/usuarioMembro/todas_ofertas/modal_visualizar_oferta.js') }}"></script>
     <script src="{{ asset('js/usuarioMembro/todas_ofertas/modal_deletar_oferta.js') }}"></script>
+    <script src="{{ asset('js/usuarioMembro/todas_ofertas/filtros_ofertas.js') }}"></script>
     <!-- CloudFlare -->
     <link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css' type='text/css'>
     <!-- Bootstrap -->
@@ -36,15 +37,15 @@
                         Tipo Oferta
                     </button>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#oferta_conhecimento" onclick="selecionarOpcao('oferta_conhecimento')">Oferta Conhecimento</a></li>
-                        <li><a class="dropdown-item" href="#oferta_acao" onclick="selecionarOpcao('oferta_acao')">Oferta Ação</a></li>
+                        <li><a class="dropdown-item" href="#{Oferta Conhecimento}" onclick="selecionarTipoOferta('Oferta Conhecimento')">Oferta Conhecimento</a></li>
+                        <li><a class="dropdown-item" href="#{Oferta Ação}" onclick="selecionarTipoOferta('Oferta Ação')">Oferta Ação</a></li>
                     </ul>
                 </div>
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <div class="dropdown" id="areaConhecimentoDropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" disabled>
                         Área Conhecimento
                     </button>
-                    <ul class="dropdown-menu" id="areaConhecimentoDropdown">
+                    <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="#">Engenharia</a></li>
                         <li><a class="dropdown-item" href="#">Tecnologia</a></li>
                         <li><a class="dropdown-item" href="#">Ciências Sociais</a></li>
@@ -52,8 +53,8 @@
                         <li><a class="dropdown-item" href="#">Ciências Naturais</a></li>
                     </ul>
                 </div>
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <div class="dropdown" id="tempoAtuacaoDropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" disabled>
                         Tempo Atuação
                     </button>
                     <ul class="dropdown-menu" id="tempoAtuacaoDropdown">
@@ -63,8 +64,8 @@
                         <li><a class="dropdown-item" href="#">Indefinido</a></li>
                     </ul>
                 </div>
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <div class="dropdown" id="statusRegistroDropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" disabled>
                         Status Registro
                     </button>
                     <ul class="dropdown-menu" id="tempoAtuacaoDropdown">
