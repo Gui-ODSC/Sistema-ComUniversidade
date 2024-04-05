@@ -9,6 +9,7 @@
     <script src="{{ asset('js/menu/menu_navegacao.js') }}"></script>
     <script src="{{ asset('js/usuarioMembro/matching_demandas/modal_deletar_oferta.js') }}"></script>
     <script src="{{ asset('js/usuarioMembro/matching_demandas/modal_visualizar_oferta.js') }}"></script>
+    <script src="{{ asset('js/usuarioMembro/matching_demandas/modal_descricao_demanda.js') }}"></script>
     <title>Matching Demanda</title>
 </head>
 <body> 
@@ -19,7 +20,14 @@
                 <h4>Dados demanda:</h4>
                 <h4>Criada em: {{ \Carbon\Carbon::parse($demanda->created_at)->format('d/m/Y') }}</h4>
             </div>
-            <h2>{{$demanda->titulo}}</h2>
+            <div class="titulo-descricao">
+                <h2>{{$demanda->titulo}}</h2>
+                <div style="display: flex; align-items: center; flex-direction: column; margin-right: 20px;">
+                    <a onclick="openModalDeletar({{$demanda->id_demanda}})"><img src="{{ asset('img/usuarioMembro/visualizar_matching_demandas/modal_contatar/descricao.png') }}" alt="tres pontos para mais informação"></a>
+                    <p style="margin: 0">Descrição</p>
+                    <x-usuario-membro.matching.modal-descricao-demanda :id-demanda="$demanda->id_demanda"/>
+                </div>
+            </div>
             <hr>
             <div class="dados-detalhados-demanda">
                 <h5>Tipo: Demanda</h5>
