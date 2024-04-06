@@ -10,7 +10,7 @@
     <script src="{{ asset('js/menu/menu_navegacao.js') }}"></script>
     <title>Contatos Recebidos</title>
 </head>
-<body style="background-color: #376985"> 
+<body> 
     @include('menu')
     <main class="todos-contatos" id="conteudo">
         <div class="titulo">

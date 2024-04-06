@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{{ asset('css/usuarioMembro/contatos_recebidos/modal_interessado_contato_recebido.css') }}">
     <link rel="stylesheet" href="{{ asset('css/usuarioMembro/contatos_recebidos/modal_nao_interessado_contato_recebido.css') }}">
     <script src="{{ asset('js/usuarioMembro/contatos_recebidos/validacao_mensagem_resposta.js') }}"></script>
+    <script src="{{ asset('js/usuarioMembro/contatos_recebidos/modal_descricao_demanda.js') }}"></script>
     <script src="{{ asset('js/menu/menu_navegacao.js') }}"></script>
     <title>Contatos Recebidos</title>
 </head>
@@ -43,22 +44,28 @@
                     <h2>Título da Demanda: {{$demanda->titulo}}</h2>
                     <h6 id="data">Demanda Realizada em: {{ \Carbon\Carbon::parse($demanda->created_at)->format('d/m/Y') }}</h6>
                 </div>
-                <div id="dados-informacao-oferta">
-                    <h6>Público Alvo: {{$demanda->publicoAlvo->nome}}</h6>
-                    <h6>Duração: {{(ucwords(strtolower($demanda->duracao)))}}</h6>
-                    <h6>Nº Pessoas Impactadas: Aprox. {{$demanda->pessoas_afetadas}}</h6>
-                    <h6>Área de Conhecimento: {{$demanda->areaConhecimento->nome}}</h6>
-                    @if ($respostaMensagem != null)
-                        @if ($respostaMensagem->tipo_mensagem === 'INTERESSADO')
-                            <h6 title="Interessado">Status: <img src="{{ asset('img/usuarioMembro/contatos/status_check.png') }}" alt="">Interessado(a)</h6>
-                        @elseif ($respostaMensagem->tipo_mensagem === 'SEM_DISPONIBILIDADE')
-                            <h6 title="Sem Disponibilidade">Status: <img src="{{ asset('img/usuarioMembro/contatos/status_sem_disponibilidade.png') }}" alt="">Sem Disponibilidade</h6>
-                        @elseif ($respostaMensagem->tipo_mensagem === 'RESPONDIDA')
-                            <h6 title="Mensage Respondida">Status: <img src="{{ asset('img/usuarioMembro/contatos/status_respondida.png') }}" alt="">Contato Respondido</h6>
+                <div style="display: flex; height: 50px; align-items: center">
+                    <div class="dados-oferta-descricao">
+                        <a onclick="openModalDescricao({{$demanda->id_demanda}})"><img src="{{ asset('img/usuarioMembro/visualizar_matching_demandas/modal_contatar/descricao.png') }}" alt="tres pontos para mais informação"></a>
+                        <x-usuario-membro.contatos-recebidos.modal-descricao-demanda :id-demanda="$demanda->id_demanda"/>
+                    </div>
+                    <div id="dados-informacao-oferta">
+                        <h6>Público Alvo: {{$demanda->publicoAlvo->nome}}</h6>
+                        <h6>Duração: {{(ucwords(strtolower($demanda->duracao)))}}</h6>
+                        <h6>Nº Pessoas Impactadas: Aprox. {{$demanda->pessoas_afetadas}}</h6>
+                        <h6>Área de Conhecimento: {{$demanda->areaConhecimento->nome}}</h6>
+                        @if ($respostaMensagem != null)
+                            @if ($respostaMensagem->tipo_mensagem === 'INTERESSADO')
+                                <h6 title="Interessado">Status: <img src="{{ asset('img/usuarioMembro/contatos/status_check.png') }}" alt="">Interessado(a)</h6>
+                            @elseif ($respostaMensagem->tipo_mensagem === 'SEM_DISPONIBILIDADE')
+                                <h6 title="Sem Disponibilidade">Status: <img src="{{ asset('img/usuarioMembro/contatos/status_sem_disponibilidade.png') }}" alt="">Sem Disponibilidade</h6>
+                            @elseif ($respostaMensagem->tipo_mensagem === 'RESPONDIDA')
+                                <h6 title="Mensage Respondida">Status: <img src="{{ asset('img/usuarioMembro/contatos/status_respondida.png') }}" alt="">Contato Respondido</h6>
+                            @endif
+                        @else    
+                            <h6 title="Mensagem Recebida">Status: <img src="{{ asset('img/usuarioMembro/contatos/status_recebido.png') }}" alt="">Contato Recebido</h6>
                         @endif
-                    @else    
-                        <h6 title="Mensagem Recebida">Status: <img src="{{ asset('img/usuarioMembro/contatos/status_recebido.png') }}" alt="">Contato Recebido</h6>
-                    @endif
+                    </div>
                 </div>
             </div>
         </div>
