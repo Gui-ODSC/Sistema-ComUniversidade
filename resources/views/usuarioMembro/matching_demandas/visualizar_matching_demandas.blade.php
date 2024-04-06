@@ -23,7 +23,7 @@
             <div class="titulo-descricao">
                 <h2>{{$demanda->titulo}}</h2>
                 <div style="display: flex; align-items: center; flex-direction: column; margin-right: 20px;">
-                    <a onclick="openModalDeletar({{$demanda->id_demanda}})"><img src="{{ asset('img/usuarioMembro/visualizar_matching_demandas/modal_contatar/descricao.png') }}" alt="tres pontos para mais informação"></a>
+                    <a onclick="openModalDescricao({{$demanda->id_demanda}})"><img src="{{ asset('img/usuarioMembro/visualizar_matching_demandas/modal_contatar/descricao.png') }}" alt="tres pontos para mais informação"></a>
                     <p style="margin: 0">Descrição</p>
                     <x-usuario-membro.matching.modal-descricao-demanda :id-demanda="$demanda->id_demanda"/>
                 </div>

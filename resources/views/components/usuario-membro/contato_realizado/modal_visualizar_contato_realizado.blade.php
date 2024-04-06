@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{{ asset('css/components_css/usuarioMembro/contato_realizado/modal_visualizar_contato_realizado.css') }}">
     <link rel="stylesheet" href="{{ asset('css/menu_navegacao/menu.css') }}">
     <script src="{{ asset('js/menu/menu_navegacao.js') }}"></script>
+    <script src="{{ asset('js/usuarioMembro/contatos_realizados/modal_descricao_oferta.js') }}"></script>
     <link rel="stylesheet" href="">
     <title>Contatos Realizados</title>
 </head>
@@ -48,43 +49,50 @@
                         <h2>Título: {{$oferta->titulo}}</h2>
                         <h6 id="data">Ofertado em: {{ \Carbon\Carbon::parse($oferta->created_at)->format('d/m/Y') }}</h6>
                     </div>
-                    <div id="dados-informacao-oferta-contato-respondido">
-                        @if ($oferta->tipo == 'ACAO')
-                            <h6>Público Alvo: {{$oferta->ofertaAcao->publicoAlvo->nome}}</h6>
-                            <h6>Status da Oferta: {{ucwords(strtolower($oferta->ofertaAcao->status_registro))}}</h6>
-                        @endif
-                        @if ($oferta->tipo == 'CONHECIMENTO')
-                            <h6>Currículo Lattes: <a href="{{$oferta->ofertaConhecimento->link_lattes}}">{{$oferta->ofertaConhecimento->link_lattes}}</a></h6>
-                            <h6>Currículo Linkedin: <a href="{{$oferta->ofertaConhecimento->link_linkedin}}">{{$oferta->ofertaConhecimento->link_linkedin}}</a></h6>
-                        @endif
-                        @if ($oferta->tipo == 'ACAO')
-                            <h6>Duração: {{ucwords(strtolower($oferta->ofertaAcao->duracao))}}</h6>
-                            <h6>Regime: {{ucwords(strtolower($oferta->ofertaAcao->regime))}}</h6>
-                        @endif
-                        @if ($oferta->tipo == 'CONHECIMENTO')
-                            @if ($oferta->ofertaConhecimento->tempo_atuacao === 'MENOS_1_ANO')
-                                <h6>Tempo de Atuação: Menos de 1 Ano</h6>
-                            @elseif ($oferta->ofertaConhecimento->tempo_atuacao === 'MAIS_1_ANO')
-                                <h6>Tempo de Atuação: Mais de 1 Ano</h6>
-                            @elseif ($oferta->ofertaConhecimento->tempo_atuacao === 'MAIS_3_ANOS')
-                                <h6>Tempo de Atuação: Mais de 3 Anos</h6>
-                            @elseif ($oferta->ofertaConhecimento->tempo_atuacao === 'MAIS_5_ANOS')
-                                <h6>Tempo de Atuação: Mais de 5 Anos</h6>
+                    <div style="display: flex; height: 50px; align-items: center">
+                        <div class="dados-oferta-descricao">
+                            <a onclick="openModalDescricao({{$oferta->id_oferta}})"><img src="{{ asset('img/usuarioMembro/visualizar_matching_demandas/modal_contatar/descricao.png') }}" alt="tres pontos para mais informação"></a>
+                            <x-usuario-membro.contatos-realizados.modal-descricao-oferta :id-oferta="$oferta->id_oferta"/>
+                        </div>
+                        <div id="dados-informacao-oferta-contato-respondido">
+                            @if ($oferta->tipo == 'ACAO')
+                                <h6>Público Alvo: {{$oferta->ofertaAcao->publicoAlvo->nome}}</h6>
+                                <h6>Status da Oferta: {{ucwords(strtolower($oferta->ofertaAcao->status_registro))}}</h6>
                             @endif
-                        @endif
-                        <h6>Área de Conhecimento: {{$oferta->areaConhecimento->nome}}</h6>
-                        @if ($respostaMensagem != null)
-                            @if ($respostaMensagem->tipo_mensagem === 'INTERESSADO')
-                                <h6 title="Interessado(a)">Status: <img src="{{ asset('img/usuarioMembro/contatos/status_check.png') }}" alt="">Interessado(a)</h6>
-                            @elseif ($respostaMensagem->tipo_mensagem === 'SEM_DISPONIBILIDADE')
-                                <h6 title="Sem Disponibilidade">Status: <img src="{{ asset('img/usuarioMembro/contatos/status_sem_disponibilidade.png') }}" alt="">Sem Disponibilidade</h6>
-                            @elseif ($respostaMensagem->tipo_mensagem === 'RESPONDIDA')
-                                <h6 title="Contato Respondido">Status: <img src="{{ asset('img/usuarioMembro/contatos/status_respondida.png') }}" alt="">Contato Respondido</h6>
+                            @if ($oferta->tipo == 'CONHECIMENTO')
+                                <h6>Currículo Lattes: <a href="{{$oferta->ofertaConhecimento->link_lattes}}">{{$oferta->ofertaConhecimento->link_lattes}}</a></h6>
+                                <h6>Currículo Linkedin: <a href="{{$oferta->ofertaConhecimento->link_linkedin}}">{{$oferta->ofertaConhecimento->link_linkedin}}</a></h6>
                             @endif
-                        @else
-                            <h6 title="Mensagem Enviada">Status: <img src="{{ asset('img/usuarioMembro/contatos/status_realizado.png') }}" alt="">Contato Realizado</h6>
-                        @endif
+                            @if ($oferta->tipo == 'ACAO')
+                                <h6>Duração: {{ucwords(strtolower($oferta->ofertaAcao->duracao))}}</h6>
+                                <h6>Regime: {{ucwords(strtolower($oferta->ofertaAcao->regime))}}</h6>
+                            @endif
+                            @if ($oferta->tipo == 'CONHECIMENTO')
+                                @if ($oferta->ofertaConhecimento->tempo_atuacao === 'MENOS_1_ANO')
+                                    <h6>Tempo de Atuação: Menos de 1 Ano</h6>
+                                @elseif ($oferta->ofertaConhecimento->tempo_atuacao === 'MAIS_1_ANO')
+                                    <h6>Tempo de Atuação: Mais de 1 Ano</h6>
+                                @elseif ($oferta->ofertaConhecimento->tempo_atuacao === 'MAIS_3_ANOS')
+                                    <h6>Tempo de Atuação: Mais de 3 Anos</h6>
+                                @elseif ($oferta->ofertaConhecimento->tempo_atuacao === 'MAIS_5_ANOS')
+                                    <h6>Tempo de Atuação: Mais de 5 Anos</h6>
+                                @endif
+                            @endif
+                            <h6>Área de Conhecimento: {{$oferta->areaConhecimento->nome}}</h6>
+                            @if ($respostaMensagem != null)
+                                @if ($respostaMensagem->tipo_mensagem === 'INTERESSADO')
+                                    <h6 title="Interessado(a)">Status: <img src="{{ asset('img/usuarioMembro/contatos/status_check.png') }}" alt="">Interessado(a)</h6>
+                                @elseif ($respostaMensagem->tipo_mensagem === 'SEM_DISPONIBILIDADE')
+                                    <h6 title="Sem Disponibilidade">Status: <img src="{{ asset('img/usuarioMembro/contatos/status_sem_disponibilidade.png') }}" alt="">Sem Disponibilidade</h6>
+                                @elseif ($respostaMensagem->tipo_mensagem === 'RESPONDIDA')
+                                    <h6 title="Contato Respondido">Status: <img src="{{ asset('img/usuarioMembro/contatos/status_respondida.png') }}" alt="">Contato Respondido</h6>
+                                @endif
+                            @else
+                                <h6 title="Mensagem Enviada">Status: <img src="{{ asset('img/usuarioMembro/contatos/status_realizado.png') }}" alt="">Contato Realizado</h6>
+                            @endif
+                        </div>
                     </div>
+                    
                 </div>
             </div>
             {{-- SE TIVER RESPOSTA --}}

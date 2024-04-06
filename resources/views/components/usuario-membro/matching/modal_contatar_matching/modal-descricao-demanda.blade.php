@@ -8,9 +8,9 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="clicar-fora-modal" id="clicar-fora-modal-{{$idDemanda}}" onclick="closeModalDeletar({{$idDemanda}})"></div>
+    <div class="clicar-fora-modal" id="clicar-fora-modal-{{$idDemanda}}" onclick="closeModalDescricao({{$idDemanda}})"></div>
     <div class="caixa-modal" id="caixa-modal-{{$idDemanda}}">
-        <span onclick="closeModalDeletar({{$idDemanda}})" id="botao_fechar_modal"><img src="{{ asset('img/usuarioMembro/minhas_demandas/fechar.png') }}" alt=""></span>
+        <span onclick="closeModalDescricao({{$idDemanda}})" id="botao_fechar_modal"><img src="{{ asset('img/usuarioMembro/minhas_demandas/fechar.png') }}" alt=""></span>
         <div class="modal-descricao">
             <h3>Descrição da Demanda</h3>
             <h6>{{$demanda->descricao}}</h6>
