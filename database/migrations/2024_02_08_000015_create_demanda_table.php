@@ -17,7 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_publico_alvo');
             $table->unsignedBigInteger('id_area_conhecimento');
             $table->string('titulo');
-            $table->string('descricao');
+            $table->longText('descricao');
             $table->integer('pessoas_afetadas')->unsigned;
             $table->enum('duracao', ['DIAS', 'SEMANAS', 'MESES', 'ANOS', 'INDEFINIDO']);
             $table->enum('nivel_prioridade', ['BAIXO', 'MEDIO', 'ALTO']);

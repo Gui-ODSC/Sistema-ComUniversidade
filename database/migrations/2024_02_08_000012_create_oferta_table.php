@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_usuario_professor');
             $table->unsignedBigInteger('id_area_conhecimento');
             $table->string('titulo');
-            $table->string('descricao');
+            $table->longText('descricao');
             $table->enum('tipo', ['ACAO', 'CONHECIMENTO']);
 
             $table->foreign('id_usuario_professor')->references('id_usuario_professor')->on('UsuarioProfessor')->onDelete('restrict');
