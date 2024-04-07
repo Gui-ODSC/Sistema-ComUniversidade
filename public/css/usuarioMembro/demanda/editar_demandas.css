@@ -1,135 +1,236 @@
-.cadastrar_demandas h1 {
+body {
+    /* background: linear-gradient(90deg, rgba(9,107,170,1) 0%, rgba(16,43,73,1) 100%); */
+    background: linear-gradient(90deg, rgba(9,107,170,1) 0%, rgba(44,39,88,1) 50%, rgba(40,35,69,1) 100%);
+}
+
+.titulo {
+    display: flex;
+    /* background: linear-gradient(90deg, rgba(9,107,170,1) 0%, rgba(44,39,88,1) 50%, rgba(40,35,69,1) 100%); */
+    /* background: linear-gradient(360deg, rgba(9,107,170,1) 0%, rgba(44,39,88,1) 50%, rgba(40,35,69,1) 100%); */
+    background-color: rgba(44,39,88,1);
+    width: 500px;
+    margin: auto;
+    align-items: center;
+    height: 70px;
+    border-radius: 10px;
+    align-content: center;
+    box-shadow: -1px 1px 4px 4px #37769a;
+}
+
+.titulo h1 {
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    color: #fff;
+}
+
+.botao-voltar {
+    display: flex;
+    align-items: start;
+    background-color: black;
+    width: 40px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.botao-voltar:hover{
+    transform: scale(1.2);
+}
+
+.botao-voltar img {
+    width: 40px;
+}
+
+.section-form {
+    background-color: #FFF;
+    margin-top: 60px;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: rgba(44,39,88,1);
+}
+
+.cadastrar-demandas {
     text-align: center;
-    margin-top: 20px;
-    margin-bottom: 30px;
 }
 
-.cadastrar_demandas {
-    text-align: center;
-}
-
-.cadastrar_demandas input {
-    border: solid 2px black;
-}
-
-.cadastrar_demandas input::placeholder {
-    font-weight: bold;
-}
-
-.cadastrar_demandas input[name="titulo"] {
-    display: inline-flex;
-    margin-top: 5px;
-    width: 633px;
-    border-radius: 7px;
-    padding: 5px;   
-}
-
-.cadastrar_demandas textarea[name="descricao"] {
-    display: inline-flex;
-    margin-top: 5px;
-    width: 99.5%;
-    height: 170px;
-    border-radius: 7px;
-    padding: 5px;
-    word-wrap: break-word;
-    border: 2px solid black;
-    resize: none;
-}
-
-.cadastrar_demandas input[name="pessoas_afetadas"] {
-    display: inline-flex;
-    width: 370px;
-    border-radius: 7px;
-    padding: 5px;
-}
-
-.cadastrar_demandas select[name="duracao"] {
-    display: inline-flex;
-    width: 270px;
-    height: 38px;
-    border-radius: 7px;
-    padding: 5px;
-    background-color: #e2e2e2  ;
-    border: solid 2px black;
-}
-
-.cadastrar_demandas select[name="nivel_prioridade"] {
-    display: inline-flex;
-    width: 270px;
-    height: 38px;
-    border-radius: 7px;
-    padding: 5px;
-    background-color: #e2e2e2  ;
-    border: solid 2px black;
-}
-
-.cadastrar_demandas input[name="instituicao_setor"] {
-    display: inline-flex;
-    margin-top: 5px;
-    width: 320px;
-    border-radius: 7px;
-    padding: 5px;
-}
-
-.cadastrar_demandas input[name="area_conhecimento"] {
-    display: inline-flex;
-    margin-top: 5px;
-    width: 33%;
-    border-radius: 7px;
-    padding: 5px;
-}
-
-.cadastrar_demandas .button_send {
+.cadastrar-demandas .button_send {
     display: block;
+    margin-top: 25px;
+    margin-bottom: 50px;
 }
 
-.cadastrar_demandas button {
+.cadastrar-demandas button {
     padding: 10px;
     border-radius: 10px;
-    margin-bottom: 20px;
-    background-color: #191970;
+    margin-bottom: 10px;
+    background-color: #376985;
+    box-shadow: -1px 1px 4px 4px black;
     border: none;
     color: #FFF;
     font-weight: bold;
-    margin-top: 30px;
     width: 250px;
     height: 50px;
+    transition: all 0.3s ease;
 }
 
-/* ESTILIZAÇÃO AUTOCOMPLETE */
-.autoComplete_wrapper #autoCompletePublicoAlvo {
-    display: inline-flex;
-    padding: 5px;
-    color: black;
-    cursor: pointer;
+.cadastrar-demandas button:hover {
+    transform: scale(1.1);
+}
+
+/* INPUT MALUCO */
+
+.cadastrar-demandas {
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+  
+.cadastrar-demandas .caixa-input{
     overflow: hidden;
-    background-color: #FFF;
-    border-radius: 10px;
-    margin-top: 5px;
-    width: 300px;
-    margin-bottom: 0px;
+    position: relative;
+    width:100%;
+    height: 60px;
+    margin-bottom: 3px;
+}
+
+/* AutoComplete */
+.caixa-input #autoComplete_list {
+    display: block;
     border: solid 2px black;
+    z-index: 1;
 }
 
-.autoComplete_wrapper #autoCompleteAreaConhecimento {
-    display: inline-flex;
-    padding: 5px;
-    color: black;
-    cursor: pointer;
-    overflow: hidden;
-    background-color: #FFF;
-    border-radius: 10px;
-    margin-top: 5px;
-    width: 300px;
-    margin-bottom: 0px;
-    border: solid 2px black;
-
+.caixa-input li {
+    list-style-type: none;
 }
 
-.autoComplete_wrapper #autoCompleteAreaConhecimento::placeholder {
-    color: black;
+/* Fim */
+  
+.cadastrar-demandas input {
+    color: #fff;
+    font-size: 22px;
+    width: 100%;
+    padding: 20px 10px 10px 5px;
+    background-color: #4d6d7f;
+    border: none;
+    border-radius: 4px;
+    border-radius: 5px;
+}
+  
+.cadastrar-demandas label {
+    color: #fff;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    border-bottom: 1px solid #ffffff;
+}
+  
+.cadastrar-demandas span {
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    font-size: 20px;
+    transition: all 0.3s ease;
+}
+  
+.cadastrar-demandas label::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 100%;
+    height: 100%;
+    border-bottom: 3px solid #FFF;
+    transform: translateX(-100%);
+    transition: all 0.3s ease;
+}
+  
+.cadastrar-demandas input:focus + label span,
+input:valid + label span {
+    transform: translateY(-120%);
+    font-size: 14px;
+    bottom: 10px;
+    color: #FFF;
+}
+  
+.cadastrar-demandas input:focus + label::after,
+  input:valid + label::after {
+    transform: translateX(0%);
 }
 
-.autoComplete_wrapper #autoCompletePublicoAlvo::placeholder {
-    color: black;
+/* TextArea */
+.cadastrar-demandas textarea {
+    color: #FFF;
+    font-size: 22px;
+    width: 100%;
+    padding: 30px 10px 10px 5px;
+    background-color: #4d6d7f;
+    border: none;
+    border-radius: 4px;
+    line-height: 1;
+    overflow-y: scroll;
+    height: 120px;
+    resize: none;
+}
+
+#campo-spam {
+    height: 120px;
+    padding-top: 15px;
+}
+  
+.cadastrar-demandas textarea:focus + label span,
+textarea:valid + label span {
+    transform: translateY(2%);
+    font-size: 14px;
+    bottom: 10px;
+    color: #FFF;
+    padding-bottom: 10px;
+}
+
+.cadastrar-demandas textarea:focus + label::after,
+  textarea:valid + label::after {
+    transform: translateX(0%);
+}
+
+/* Select */
+.cadastrar-demandas select {
+    color: #fff;
+    font-size: 22px;
+    width: 100%;
+    height: 100%;
+    padding: 20px 0px 10px 5px;
+    background-color: #4d6d7f;
+    border: none;
+    border-radius: 4px;
+    line-height: 1;
+}
+
+.cadastrar-demandas select:focus + label span,
+select:valid + label span {
+    transform: translateY(-120%);
+    font-size: 14px;
+    bottom: 10px;
+    color: #FFF;
+}
+
+.cadastrar-demandas select:focus + label::after,
+  select:valid + label::after {
+    transform: translateX(0%);
+}
+
+/* Remover setinha campo number */
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield; /* Firefox */
 }

@@ -11,100 +11,167 @@
     {{-- AUTOCOMPLETE --}}
     <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js/dist/js/autoComplete.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/css/autoComplete.02.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <title>Editar Demanda</title>
 </head>
 <body>
     @include('menu')
-    <main class="cadastrar_demandas" id="conteudo">
-        <h1>Editar Demanda</h1>
+    <main class="cadastrar-demandas" id="conteudo">
+        <div class="botao-voltar">
+            <a title="Voltar" onclick="goBack()"><img src="{{ asset('img/usuarioMembro/cadastrar_demandas/botao_voltar.png')}}" alt=""></a>
+        </div>
+        <div class="titulo">
+            <h1>Editar Demanda</h1>
+        </div>
         <form action="{{ route('demanda_edit_store', $demanda->id_demanda) }}" method="POST">
-            @csrf
             @if($errors->has('dados'))
-                <div class="msg-erro fade-effect-error" id="error-message-email">
+                <div class="msg-erro fade-effect-error" id="error-message-email" style="margin-top: 30px">
                     @foreach ($errors->get('dados') as $dado)
-                        <p style="display: flex width: 651px">{{ $dado }}</p>
+                        <p style="display: block; align-items: center; width: 100%;">{{ $dado }}</p>
                         <br>
                     @endforeach
                 </div>
             @endif
-            @if ($errors->has('titulo') || $errors->has('id_usuario'))
-                <input title="{{ $errors->first('titulo') ?: $errors->first('id_usuario') }}" type="text" name="titulo" placeholder="Titulo" style="border: 1px solid red; background-color: rgb(235, 201, 206)" required>
-            @else    
-                <input type="text" name="titulo" placeholder="Titulo" value="{{ $demanda->titulo }}" required>
-            @endif
-            @error('publico_alvo')
-                <div class="autoComplete_wrapper">
-                    <input title="{{$message}}" type="text" id="autoCompletePublicoAlvo" name="publico_alvo" placeholder="Publico Alvo da Ação" style="border: 1px solid red; background-color:rgb(235, 201, 206)" autocomplete="off" required>
+            <div class="section-form">
+                @csrf
+                <div class="caixa-input" style="width: 60%;">
+                    @if ($errors->has('titulo') || $errors->has('id_usuario'))
+                        <input title="{{ $errors->first('titulo') ?: $errors->first('id_usuario') }}" type="text" name="titulo" style="border: 1px solid red; background-color: rgb(235, 201, 206)" required>
+                        <label for="titulo">
+                            <span>Titulo</span>
+                        </label>
+                    @else    
+                        <input type="text" name="titulo" value="{{ $demanda->titulo }}" required>
+                        <label for="titulo">
+                            <span>Titulo</span>
+                        </label>
+                    @endif
                 </div>
-            @else
-                <div class="autoComplete_wrapper">
-                    <input type="text" id="autoCompletePublicoAlvo" name="publico_alvo" value="{{ $publicoAlvo->nome }}" placeholder="Publico Alvo da Ação" autocomplete="off" required>
+                <div class="caixa-input" style="width: 482px; margin-left: 3px">
+                    @error('publico_alvo')
+                        <input title="{{$message}}" type="text" id="autoCompletePublicoAlvo" name="publico_alvo" placeholder="Publico Alvo da Ação" style="border: 1px solid red; background-color:rgb(235, 201, 206)" autocomplete="off" required>
+                        <label for="publico_alvo">
+                            <span>Publico alvo</span>
+                        </label>
+                    @else
+                        <input type="text" id="autoCompletePublicoAlvo" name="publico_alvo" value="{{ $publicoAlvo->nome }}" autocomplete="off" required>
+                        <label for="publico_alvo">
+                            <span>Publico alvo</span>
+                        </label>
+                    @enderror
                 </div>
-            @enderror
-            @error('areaConhecimento')
-                <div class="autoComplete_wrapper">
-                    <input title="{{$message}}" type="text" id="autoCompleteAreaConhecimento" name="area_conhecimento" placeholder="Área de Conhecimento" style="border: 1px solid red; background-color:rgb(235, 201, 206)" autocomplete="off" required>
+                <div class="caixa-input" style="width: 50%">
+                    @error('areaConhecimento')
+                        <input title="{{$message}}" type="text" id="autoCompleteAreaConhecimento" name="area_conhecimento" placeholder="Área de Conhecimento" style="border: 1px solid red; background-color:rgb(235, 201, 206)" autocomplete="off" required>
+                        <label for="area_conhecimento">
+                            <span>Área Conhecimento</span>
+                        </label>
+                    @else
+                        <input type="text" id="autoCompleteAreaConhecimento" name="area_conhecimento" value="{{ $areaConhecimento->nome }}" placeholder="Área de Conhecimento" autocomplete="off" required>
+                        <label for="area_conhecimento">
+                            <span>Área Conhecimento</span>
+                        </label>
+                    @enderror
                 </div>
-            @else
-                <div class="autoComplete_wrapper">
-                    <input type="text" id="autoCompleteAreaConhecimento" name="area_conhecimento" value="{{ $areaConhecimento->nome }}" placeholder="Área de Conhecimento" autocomplete="off" required>
+                <div class="caixa-input" style="width: 603px; margin-left: 3px">
+                    @error('pessoas_afetadas')
+                        <input title="{{$message}}" type="number" name="pessoas_afetadas" onkeypress="return event.charCode >= 48 && event.charCode <= 57" style="border: 1px solid red; background-color:rgb(235, 201, 206)" required>
+                        <label for="pessoas_afetadas">
+                            <span>Pessoas Afetadas</span>
+                        </label>
+                    @else
+                        <input type="number" name="pessoas_afetadas" onkeypress="return event.charCode >= 48 && event.charCode <= 57" value="{{ $demanda->pessoas_afetadas }}" required>
+                        <label for="pessoas_afetadas">
+                            <span>Pessoas Afetadas</span>
+                        </label>
+                    @enderror
                 </div>
-            @enderror
-            @error('descricao')
-                <textarea title="{{$message}}" type="text" name="descricao" placeholder="Texto Livre" style="border: 1px solid red; background-color:rgb(235, 201, 206)" required></textarea>
-            @else
-                <textarea type="text" name="descricao" placeholder="Texto Livre" required>{{ $demanda->descricao }}</textarea>
-            @enderror
-            @error('pessoas_afetadas')
-                <input title="{{$message}}" type="number" name="pessoas_afetadas" onkeypress="return event.charCode >= 48 && event.charCode <= 57" placeholder="Numero Aproximado de Pessoas Impactadas" style="border: 1px solid red; background-color:rgb(235, 201, 206)" required>
-            @else
-                <input type="number" name="pessoas_afetadas" onkeypress="return event.charCode >= 48 && event.charCode <= 57" value="{{ $demanda->pessoas_afetadas }}" placeholder="Numero Aproximado de Pessoas Impactadas" required>
-            @enderror
-            @error('duracao')
-                <select title="{{$message}}" name="duracao" style="border: 1px solid red; background-color:rgb(235, 201, 206)" required>
-                    <option disabled selected>Selecione a duração da Demanda:</option>
-                    <option value="DIAS">Dias</option>
-                    <option value="SEMANAS">Semanas</option>
-                    <option value="MESES">Meses</option>
-                    <option value="ANOS">Anos</option>
-                    <option value="INDEFINIDO">Indefinido</option>
-                </select>
-            @else
-                <select name="duracao" required>
-                    <option disabled>Selecione a duração da Demanda:</option>
-                    <option value="DIAS" {{ $demanda->duracao === 'DIAS' ? 'selected' : '' }}>Dias</option>
-                    <option value="SEMANAS" {{ $demanda->duracao === 'SEMANAS' ? 'selected' : '' }}>Semanas</option>
-                    <option value="MESES" {{ $demanda->duracao === 'MESES' ? 'selected' : '' }}>Meses</option>
-                    <option value="ANOS" {{ $demanda->duracao === 'ANOS' ? 'selected' : '' }}>Anos</option>
-                    <option value="INDEFINIDO" {{ $demanda->duracao === 'INDEFINIDO' ? 'selected' : '' }}>Indefinido</option>
-                </select>
-            @enderror
-            @error('nivel_prioridade')
-                <select title="{{$message}}" name="nivel_prioridade" style="border: 1px solid red; background-color:rgb(235, 201, 206)" required>
-                    <option disabled selected>Selecione o nível de Prioridade:</option>
-                    <option value="BAIXO">Baixo</option>
-                    <option value="MEDIO">Medio</option>
-                    <option value="ALTO">Alto</option>
-                </select>
-            @else
-                <select name="nivel_prioridade" required>
-                    <option disabled selected>Selecione o nível de Prioridade:</option>
-                    <option value="BAIXO" {{ $demanda->nivel_prioridade === 'BAIXO'? 'selected' : '' }}>Baixo</option>
-                    <option value="MEDIO" {{ $demanda->nivel_prioridade === 'MEDIO'? 'selected' : '' }}>Medio</option>
-                    <option value="ALTO" {{ $demanda->nivel_prioridade === 'ALTO'? 'selected' : '' }}>Alto</option>
-                </select>
-            @enderror
-            @error('instituicao_setor')
-                <input title="{{$message}}" type="text" name="instituicao_setor" placeholder="Setor/Instituição" style="border: 1px solid red; background-color:rgb(235, 201, 206)">
-            @else
-                <input type="text" name="instituicao_setor" value="{{ $demanda->instituicao_setor ?? '' }}" placeholder="Setor/Instituição">
-            @enderror
+                <div class="caixa-input" style="height: 120px; width: 100%;">
+                    @error('descricao')
+                        <textarea title="{{$message}}" type="text" name="descricao" style="border: 1px solid red; background-color:rgb(235, 201, 206)" required></textarea>
+                        <label id="campo-label" for="descricao">
+                            <span id="campo-spam">Descrição</span>
+                        </label>
+                    @else
+                        <textarea type="text" name="descricao" required>{{ $demanda->descricao }}</textarea>
+                        <label id="campo-label" for="descricao">
+                            <span id="campo-spam">Descrição</span>
+                        </label>
+                    @enderror
+                </div>
+                <div class="caixa-input" style="width: 35%">
+                    @error('duracao')
+                        <select title="{{$message}}" name="duracao" style="border: 1px solid red; background-color:rgb(235, 201, 206)" required>
+                            <option disabled selected></option>
+                            <option value="DIAS">Dias</option>
+                            <option value="SEMANAS">Semanas</option>
+                            <option value="MESES">Meses</option>
+                            <option value="ANOS">Anos</option>
+                            <option value="INDEFINIDO">Indefinido</option>
+                        </select>
+                        <label for="duracao">
+                            <span>Selecione a duração da demanda</span>
+                        </label>
+                    @else
+                        <select name="duracao" required>
+                            <option disabled></option>
+                            <option value="DIAS" {{ $demanda->duracao === 'DIAS' ? 'selected' : '' }}>Dias</option>
+                            <option value="SEMANAS" {{ $demanda->duracao === 'SEMANAS' ? 'selected' : '' }}>Semanas</option>
+                            <option value="MESES" {{ $demanda->duracao === 'MESES' ? 'selected' : '' }}>Meses</option>
+                            <option value="ANOS" {{ $demanda->duracao === 'ANOS' ? 'selected' : '' }}>Anos</option>
+                            <option value="INDEFINIDO" {{ $demanda->duracao === 'INDEFINIDO' ? 'selected' : '' }}>Indefinido</option>
+                        </select>
+                        <label for="duracao">
+                            <span>Selecione a duração da demanda</span>
+                        </label>
+                    @enderror
+                </div>
+                <div class="caixa-input" style="width: 35%; margin-left: 3px">
+                    @error('nivel_prioridade')
+                        <select title="{{$message}}" name="nivel_prioridade" style="border: 1px solid red; background-color:rgb(235, 201, 206)" required>
+                            <option disabled selected></option>
+                            <option value="BAIXO">Baixo</option>
+                            <option value="MEDIO">Medio</option>
+                            <option value="ALTO">Alto</option>
+                        </select>
+                        <label for="nivel_prioridade">
+                            <span>Selecione a duração da demanda</span>
+                        </label>
+                    @else
+                        <select name="nivel_prioridade" required>
+                            <option disabled selected></option>
+                            <option value="BAIXO" {{ $demanda->nivel_prioridade === 'BAIXO'? 'selected' : '' }}>Baixo</option>
+                            <option value="MEDIO" {{ $demanda->nivel_prioridade === 'MEDIO'? 'selected' : '' }}>Medio</option>
+                            <option value="ALTO" {{ $demanda->nivel_prioridade === 'ALTO'? 'selected' : '' }}>Alto</option>
+                        </select>
+                        <label for="nivel_prioridade">
+                            <span>Selecione a duração da demanda</span>
+                        </label>
+                    @enderror
+                </div>
+                <div class="caixa-input" style="width: 358px; margin-left: 3px">
+                    @error('instituicao_setor')
+                        <input title="{{$message}}" type="text" name="instituicao_setor" style="border: 1px solid red; background-color:rgb(235, 201, 206)">
+                        <label for="instituicao_setor">
+                            <span>Instituicao Prioridade</span>
+                        </label>
+                    @else
+                        <input type="text" name="instituicao_setor" value="{{ $demanda->instituicao_setor ?? '' }}" />
+                        <label for="instituicao_setor">
+                            <span>Instituicao Prioridade</span>
+                        </label>
+                    @enderror
+                </div>
+            </div>
             <div class="button_send">
                 <button type="submit">Salvar</button>
             </div>
         </form>
         <script src="{{ asset('js/errors/mensagem_erro.js') }}"></script>
         <script>
+            function goBack() {
+                window.history.back();
+            }
             // Variável PHP contendo os bairros
             const listPublicoAlvo = {!! json_encode($listPublicoAlvo) !!};
     
