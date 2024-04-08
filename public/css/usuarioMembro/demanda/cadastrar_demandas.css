@@ -111,7 +111,7 @@ body {
 /* Fim */
   
 .cadastrar-demandas input {
-    color: rgb(18, 16, 36);
+    color: #FFF;
     font-size: 22px;
     width: 100%;
     padding: 20px 10px 10px 5px;
@@ -167,7 +167,7 @@ input:valid + label span {
 
 /* TextArea */
 .cadastrar-demandas textarea {
-    color: rgb(18, 16, 36);
+    color: #FFF;
     font-size: 22px;
     width: 100%;
     padding: 30px 10px 10px 5px;
@@ -200,7 +200,7 @@ textarea:valid + label span {
 
 /* Select */
 .cadastrar-demandas select {
-    color: rgb(18, 16, 36);
+    color: #FFF;
     font-size: 22px;
     width: 100%;
     height: 100%;
