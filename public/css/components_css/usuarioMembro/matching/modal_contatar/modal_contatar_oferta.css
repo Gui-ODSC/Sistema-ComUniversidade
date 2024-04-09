@@ -1,10 +1,11 @@
 .dados-oferta-contatar {
     width: 100%;
     height: 250px;
-    background-color: #ADD8E6;
+    background-color: #376985;
     padding: 5px;
     border-radius: 10px;
     border: solid 2px black;
+    color: #fff;
 }
 
 .dados-usuario-professor-contatar {
@@ -16,7 +17,7 @@
 .informacao-professor-contatar {
     width: 800px;
     height: 90px;
-    border-bottom: solid 1px black;
+    border-bottom: solid 1px #FFF;
 }
 
 .informacao-professor-contatar hr{
@@ -39,13 +40,12 @@
     text-align: center;
     width: 400px;
     height: 90px;
-    border-left: solid 1px black;
-    border-bottom: solid 1px black;
+    border-left: solid 1px #FFF;
+    border-bottom: solid 1px #FFF;
 }
 
 .informacao-email-contatar h6{
-    text-decoration: underline;
-    color: #194596;
+    color: #FFF;
 }
 
 .informacao-oferta-contatar {
@@ -116,10 +116,11 @@
     overflow-y: auto;
     margin-top: 2px;
     height: 200px;
-    background-color: #ADD8E6;
+    background-color: #376985;
     border-radius: 10px;
     border: solid 2px black;
     padding: 5px;
+    color: #fff;
 }
 
 .mensagem-contato h6 {
@@ -133,6 +134,7 @@
     padding: 7px;
     resize: none;
     width: 99%;
+    text-align: justify;
 }
 
 /* MODAL */

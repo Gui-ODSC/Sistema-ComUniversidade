@@ -1,10 +1,11 @@
 .dados-oferta {
     width: 100%;
     height: 250px;
-    background-color: #ADD8E6;
+    background-color: #376985;
     padding: 5px;
     border-radius: 10px;
     border: solid 2px black;
+    color: #fff;
 }
 
 .dados-usuario-professor {
@@ -16,7 +17,7 @@
 .informacao-professor {
     width: 800px;
     height: 90px;
-    border-bottom: solid 1px black;
+    border-bottom: solid 1px #FFF;
 }
 
 .informacao-professor hr{
@@ -39,13 +40,12 @@
     text-align: center;
     width: 400px;
     height: 90px;
-    border-left: solid 1px black;
-    border-bottom: solid 1px black;
+    border-left: solid 1px #FFF;
+    border-bottom: solid 1px #FFF;
 }
 
 .informacao-email h6{
-    text-decoration: underline;
-    color: #194596;
+    color: #FFF;
 }
 
 .informacao-oferta {
@@ -99,10 +99,11 @@
     overflow-y: auto;
     margin-top: 2px;
     height: 200px;
-    background-color: #ADD8E6;
+    background-color: #376985;
     border-radius: 10px;
     border: solid 2px black;
     padding: 5px;
+    color: #fff;
 }
 
 .descricao-oferta h6 {
@@ -111,6 +112,8 @@
 
 .descricao-oferta p {
     margin-left: 5px;
+    margin-right: 10px;
+    text-align: justify;
 }
 
 .botoes-oferta {
@@ -147,9 +150,8 @@
     width: 1200px;
     height: 520px;
     padding: 20px;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #FFF;
+    box-shadow: -1px 1px 4px 4px black;
     z-index: 1000;
     border-radius: 20px;
 }

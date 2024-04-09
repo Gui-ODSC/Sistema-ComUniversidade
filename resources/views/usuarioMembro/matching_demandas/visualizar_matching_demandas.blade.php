@@ -30,13 +30,17 @@
             </div>
             <hr>
             <div class="dados-detalhados-demanda">
-                <h5>Tipo: Demanda</h5>
-                <h5>Área Conhecimento: {{$demanda->areaConhecimento->nome}}</h5>
-                <h5>Pessoas Afetadas: Aprox. {{$demanda->pessoas_afetadas}}</h5>
-                <h5>Público Alvo: {{$demanda->publicoAlvo->nome}}</h5>
-                <h5>Duração: {{ucwords(strtolower($demanda->duracao))}}</h5>
-                <h5>Nivel Prioridade: {{ucwords(strtolower($demanda->nivel_prioridade))}}</h5>
-                <h5>Instituição: {{$demanda->instituicao_setor ?? '' }}</h5>
+                <div>
+                    <h5>Tipo: Demanda</h5>
+                    <h5>Pessoas Afetadas: Aprox. {{$demanda->pessoas_afetadas}}</h5>
+                    <h5>Duração: {{ucwords(strtolower($demanda->duracao))}}</h5>
+                    <h5>Instituição: {{$demanda->instituicao_setor ?? '' }}</h5>
+                </div>
+                <div>
+                    <h5>Área Conhecimento: {{$demanda->areaConhecimento->nome}}</h5>
+                    <h5>Público Alvo: {{$demanda->publicoAlvo->nome}}</h5>
+                    <h5>Nivel Prioridade: {{ucwords(strtolower($demanda->nivel_prioridade))}}</h5>
+                </div>
             </div>
         </div>
         <h1>Ofertas encontradas para esta demanda</h1>

@@ -11,7 +11,7 @@
 </head>
 <body>
     <!-- MODAL -->
-    <a type="submit"><div class="clicar-fora-modal-visualizar" id="clicar-fora-modal-visualizar-{{$idMatching}}" onclick="closeModalVisualizarOferta({{$idMatching}})"></div></a>
+    <div class="clicar-fora-modal-visualizar" id="clicar-fora-modal-visualizar-{{$idMatching}}" onclick="closeModalVisualizarOferta({{$idMatching}})"></div>
     </form>
         <div class="modal-visualizar" id="modal-visualizar-{{$idMatching}}">
             <div class="dados-oferta">

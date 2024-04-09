@@ -92,11 +92,13 @@
     <!-- MODAL -->
     <!-- MODAL SUCESSO -->
     <div class="modal-sucesso-contatar" id="modal-sucesso-{{$idMatching}}">
-        <div class="modal-conteudo-sucesso-contatar">
-            <span class="fechar-modal-sucesso-contatar" onclick="fecharModalSucesso({{$idMatching}})">&times;</span>
-            <h5 class="titulo-sucesso" id="titulo-sucesso-{{$idMatching}}">Mensagem enviada com sucesso!</h5>
-            <div id="mensagem-sucesso">
-                <p>Visualize esta mensagem através do menu, na seção <strong>"CONTATOS REALIZADOS"</strong>.</p>
+        <div class="sucesso-content">
+            <div class="modal-conteudo-sucesso-contatar">
+                <span class="fechar-modal-sucesso-contatar" onclick="fecharModalSucesso({{$idMatching}})"><img src="{{ asset('img/usuarioMembro/minhas_demandas/fechar.png') }}"/></span>
+                <h5 class="titulo-sucesso" id="titulo-sucesso-{{$idMatching}}">Mensagem enviada com sucesso!</h5>
+                <div id="mensagem-sucesso">
+                    <p>Visualize esta mensagem através do menu, na seção <strong>"CONTATOS REALIZADOS"</strong>.</p>
+                </div>
             </div>
         </div>
     </div>

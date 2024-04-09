@@ -19,30 +19,39 @@
     width: 500px;
     height: 300px;
     transform: translate(-50%, -50%);
-    background-color: #fff;
-    padding: 20px;
+    background: linear-gradient(90deg, rgba(9,107,170,1) 0%, rgba(44,39,88,1) 50%, rgba(40,35,69,1) 100%);
+    border: solid 10px #FFF;
     text-align: center;
     border-radius: 10px;
+    padding: 10px;
+    color: #FFF;
 }
 
 .titulo-sucesso{
     font-weight: bold;
-    margin-top: 50px;
+    font-size: 25px;
+    margin-top: 60px;
 }
 
 #mensagem-sucesso {
     display: flex;
     margin: auto;
     justify-content: center;
-    margin-top: 40px;
+    margin-top: 30px;
     width: 340px;
     text-align: center;
+    font-size: 17px;
 }
 
 .fechar-modal-sucesso-contatar {
     position: absolute;
-    top: 5px;
-    right: 20px;
-    font-size: 40px;
+    top: 10px;
+    right: 10px;
     cursor: pointer;
+}
+
+.fechar-modal-sucesso-contatar img {
+    width: 40px;
+    background-color: #FFF;
+    border-radius: 100px;
 }

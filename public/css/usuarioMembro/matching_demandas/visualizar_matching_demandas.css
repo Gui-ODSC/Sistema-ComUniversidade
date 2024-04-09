@@ -1,7 +1,14 @@
+body {
+    /* background: linear-gradient(90deg, rgba(9,107,170,1) 0%, rgba(16,43,73,1) 100%); */
+    background: linear-gradient(90deg, rgba(9,107,170,1) 0%, rgba(44,39,88,1) 50%, rgba(40,35,69,1) 100%);
+}
+
+
 .matchings h1 {
     text-align: center;
     margin-top: 20px;
     margin-bottom: 30px;
+    color: #fff;
 }
 
 .header-demanda {
@@ -45,6 +52,7 @@
     border-radius: 10px;
     color: white;
     padding: 10px;
+    box-shadow: -1px 1px 4px 4px #FFF;
 }
 
 .container-info-demanda hr{
@@ -54,19 +62,24 @@
 .dados-detalhados-demanda {
     display: flex;
     flex-wrap: wrap;
-  }
+}
 
+.dados-detalhados-demanda div{
+    max-width: 50%;
+    min-width: 300px;
+}
+
+.dados-detalhados-demanda h5 {
+  flex: 0 0 100%; /* Cada h5 ocupará 100% da largura até atingir a largura máxima permitida */
+  margin: 5px 0; /* Adiciona um espaçamento entre cada h5 */
+  box-sizing: border-box; /* Garante que a largura inclui a margem e o preenchimento */
+}
+
+@media (min-width: 600px) {
   .dados-detalhados-demanda h5 {
-    flex: 0 0 100%; /* Cada h5 ocupará 100% da largura até atingir a largura máxima permitida */
-    margin: 5px 0; /* Adiciona um espaçamento entre cada h5 */
-    box-sizing: border-box; /* Garante que a largura inclui a margem e o preenchimento */
+    flex: 0 0 calc(50% - 10px); /* Em telas maiores, cada h5 ocupará 50% da largura */
   }
-
-  @media (min-width: 600px) {
-    .dados-detalhados-demanda h5 {
-      flex: 0 0 calc(50% - 10px); /* Em telas maiores, cada h5 ocupará 50% da largura */
-    }
-  }
+}
 
 #icones_status {
     width: 35px;
@@ -81,11 +94,18 @@
     border: solid 2px grey;
     padding: 3px;
     cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#icones_demanda:hover {
+    transform: scale(1.2);
+    cursor: pointer;
 }
 
 .table-rounded {
     border-radius: 10px;
     overflow: hidden;
+    box-shadow: -1px 1px 4px 4px black;
 }
 
 .table-personalizacao {
@@ -106,6 +126,10 @@
 .table-personalizacao tbody td, th{
     border-bottom: solid 1px rgb(116, 116, 116);
     margin-bottom: 30px;
+}
+
+.table th:nth-child(1) {
+    width: 50px; /* Largura desejada da célula do título */
 }
 
 .table th:nth-child(2) {
