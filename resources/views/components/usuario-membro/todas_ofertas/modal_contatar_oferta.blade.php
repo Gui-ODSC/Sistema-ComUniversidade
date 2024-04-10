@@ -94,11 +94,13 @@
     <!-- MODAL -->
     <!-- MODAL SUCESSO -->
     <div class="modal-sucesso-contatar" id="modal-sucesso-{{$idOferta}}">
-        <div class="modal-conteudo-sucesso-contatar">
-            <span class="fechar-modal-sucesso-contatar" onclick="fecharModalSucesso({{$idOferta}})">&times;</span>
-            <h5 class="titulo-sucesso" id="titulo-sucesso-{{$idOferta}}">Mensagem enviada com sucesso!</h5>
-            <div id="mensagem-sucesso">
-                <p>Visualize esta mensagem através do menu, na seção <strong>"CONTATOS REALIZADOS"</strong>.</p>
+        <div class="sucesso-content">
+            <div class="modal-conteudo-sucesso-contatar">
+                <span class="fechar-modal-sucesso-contatar" onclick="fecharModalSucesso({{$idOferta}})"><img src="{{ asset('img/usuarioMembro/minhas_demandas/fechar.png') }}"/></span>
+                <h5 class="titulo-sucesso" id="titulo-sucesso-{{$idOferta}}">Mensagem enviada com sucesso!</h5>
+                <div id="mensagem-sucesso">
+                    <p>Visualize esta mensagem através do menu, na seção <strong>"CONTATOS REALIZADOS"</strong>.</p>
+                </div>
             </div>
         </div>
     </div>
