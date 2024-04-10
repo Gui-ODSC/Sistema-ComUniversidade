@@ -98,15 +98,15 @@
             {{-- SE TIVER RESPOSTA --}}
             @if ($respostaMensagem != null)
                 <div class="mensagem-contato-recebido-check">
-                    <div id="abrir-fechar-mensagem-check">
-                        <h6>Mensagem Enviada por Você</h6>
-                        <button id="botao-abrir-mensagem-check" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample-{{$idContato}}">
-                            <img src="{{ asset('img/usuarioMembro/contatos/seta.png') }}" alt="">
-                        </button>
-                    </div>
+                    <a id="botao-abrir-mensagem-check" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample-{{$idContato}}">
+                        <div id="abrir-fechar-mensagem-check">
+                            <h6>Mensagem Enviada por Você</h6>
+                            <img src="{{ asset('img/usuarioMembro/contatos/seta_branca.png') }}" alt="">
+                        </div>
+                    </a>
                     <div class="collapse" id="collapseExample-{{$idContato}}">
                         <div id="texto-check">
-                            {{$contatoMensagem->mensagem}}
+                            - {{$contatoMensagem->mensagem}}
                         </div>
                     </div>
                 </div>

@@ -1,10 +1,11 @@
 .dados-oferta-contato-respondido {
     width: 100%;
     max-height: 250px;
-    background-color: #ADD8E6;
+    background-color: #376985;
     padding: 5px;
     border-radius: 10px;
     border: solid 2px black;
+    color: #fff;
 }
 
 .dados-usuario-professor-contato-respondido {
@@ -16,7 +17,7 @@
 .informacao-professor-contato-respondido {
     width: 1700px;
     height: 100px;
-    border-bottom: solid 1px black;
+    border-bottom: solid 1px #FFF;
 }
 
 #foto-nome-contato-respondido {
@@ -41,7 +42,7 @@
     margin-top: 7px;
     margin-bottom: 3px;
     width: 75%;
-    color: black;
+    color: #FFF;
 }
 
 #dados-professor-contato-respondido h6{
@@ -53,7 +54,7 @@
 .info-criador-interessado-contato-respondido {
     width: 100%;
     height: 100px;
-    border-bottom: solid 1px black;
+    border-bottom: solid 1px #FFF;
     display: flex;
     flex-direction: column;
     justify-content: right;
@@ -71,13 +72,12 @@
     text-align: center;
     width: 900px;
     height: 100px;
-    border-left: solid 1px black;
-    border-bottom: solid 1px black;
+    border-left: solid 1px #FFF;
+    border-bottom: solid 1px #FFF;
 }
 
 .informacao-email-contato-respondido h6{
-    text-decoration: underline;
-    color: #194596;
+    color: #FFF;
 }
 
 .informacao-oferta-contato-respondido {
@@ -102,7 +102,7 @@
 }
 
 .dados-oferta-descricao a {
-    background-color: black;
+    background-color: #FFF;
     border-radius: 10px;
     margin-bottom: 5px;
     margin-top: 5px;
@@ -165,26 +165,8 @@
     margin-top: -5px;
 }
 
-.mensagem-contato-recebido {
-    overflow: hidden; 
-    text-overflow: ellipsis; 
-    overflow-y: auto;
-    margin-top: 2px;
-    max-height: 150px;
-    background-color: orange;
-    border-radius: 10px;
-    border: solid 2px black;
-    padding: 5px;
-}
-
-.mensagem-contato-recebido h6 {
-    font-weight: bold;
-    margin-left: 5px;
-    margin-top: 5px;
-}
-
-.mensagem-contato-recebido p{
-    margin: 0px 5px;
+#dados-informacao-oferta-contato-respondido a{
+    color: #FFF;
 }
 
 #abrir-fechar-mensagem {
@@ -216,10 +198,11 @@
     overflow-y: auto;
     margin-top: 2px;
     height: 180px;
-    background-color: #ADD8E6;
+    background-color: #376985;
     border-radius: 10px;
     border: solid 2px black;
     padding: 5px;
+    color: #fff;
 }
 
 .resposta-realizada h6 {
@@ -260,8 +243,7 @@
     max-height: 600px;
     padding: 10px;
     background-color: #fff;
-    border: 1px solid #ccc;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: -1px 1px 4px 4px black;
     z-index: 1100;
     border-radius: 20px;
 }
@@ -282,13 +264,6 @@
     color: #fff;
 }
 
-
-
-
-
-
-
-
 /* teste Check */
 .mensagem-contato-recebido-check {
     overflow: hidden; 
@@ -296,10 +271,11 @@
     overflow-y: auto;
     margin-top: 2px;
     max-height: 150px;
-    background-color: orange;
+    background-color: rgba(44,39,88,1);
     border-radius: 10px;
     border: solid 2px black;
     padding: 5px;
+    color: #FFF;
 }
 
 .mensagem-contato-recebido-check h6 {
@@ -318,10 +294,11 @@
     overflow-y: auto;
     margin-top: 2px;
     height: 180px;
-    background-color: #ADD8E6;
+    background-color: #376985;
     border-radius: 10px;
     border: solid 2px black;
     padding: 5px;
+    color: #FFF;
 }
 
 .resposta-realizada-check h6 {
@@ -335,6 +312,13 @@
     padding: 7px;
 }
 
+.mensagem-contato-recebido-check a {
+    background-color: rgba(44,39,88,1);
+    border: none;
+    color:#FFF;
+    text-decoration: none;
+}
+
 #abrir-fechar-mensagem-check {
     display: flex;
     justify-content: space-between;
@@ -342,11 +326,6 @@
     align-items: center;
     height: 20px;
     margin-top: 5px;
-}
-
-#abrir-fechar-mensagem-check button {
-    background-color: orange;
-    border: none;
 }
 
 #abrir-fechar-mensagem-check img {
