@@ -112,13 +112,18 @@
                 </div>
                 <div class='resposta-realizada-check'>
                     <h6>Resposta ({{$usuarioReceptor->nome}})</h6>
-                    <p>{{$respostaMensagem->mensagem}}
-                    <br><br><br>Independentemente do conteúdo apresentado acima, o sistema entende que o contato incial já foi realizado entre as partes interessadas, portanto qualquer próxima forma de contato deve seguir por meio de outro sistema de contato (email, telefone ....)</p>
+                    <div class="resposta-mensagem">
+                        <p>{{$respostaMensagem->mensagem}}
+                        <hr>
+                        Independentemente do conteúdo apresentado acima, o sistema entende que o contato incial já foi realizado entre as partes interessadas, portanto qualquer próxima forma de contato deve seguir por meio de outro sistema de contato (email, telefone ....)</p>
+                    </div>
                 </div>
             @else
                 <div class='resposta-realizada'>
                     <h6>Mensagem Enviada ({{$usuarioEmissor->nome}})</h6>
-                    <p>{{$contatoMensagem->mensagem}}</p>
+                    <div class="resposta-mensagem">
+                        <p>{{$contatoMensagem->mensagem}}</p>
+                    </div>
                 </div>
             @endif
             <div class="botoes-oferta-respondido">
