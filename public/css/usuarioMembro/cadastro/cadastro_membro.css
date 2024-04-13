@@ -158,7 +158,6 @@ h4 {
     font-size: 20px;
     transition: all 0.3s ease;
     border-radius: 10px;
-
 }
   
 .cadastro-container label::after{
@@ -172,14 +171,14 @@ h4 {
     transition: all 0.3s ease;
 }
   
-.cadastro-container input:focus + label span, input:valid + label span{
+.cadastro-container input:valid + label span{
     height: 40px;
     font-size: 14px;
     bottom: 10px;
     color: #FFF;
 }
 
-.cadastro-container input:focus + label span, input:invalid + label span{
+.cadastro-container input:invalid + label span{
     height: 40px;
     font-size: 14px;
     bottom: 10px;

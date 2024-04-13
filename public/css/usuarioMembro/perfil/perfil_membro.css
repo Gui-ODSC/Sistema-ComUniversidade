@@ -23,11 +23,11 @@
 }
 
 #container {
-    margin: auto;
     position: relative;
-    width: 170px;
-    height: 170px;
+    width: 200px;
+    height: 200px;
     overflow: hidden;
+    margin: 0px 20px 20px 0px;
 }
 
 #imagem {
@@ -47,118 +47,187 @@
     cursor: pointer;
 }
 
-.perfil input {
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: linear-gradient(90deg, rgba(9,107,170,1) 0%, rgba(44,39,88,1) 50%, rgba(40,35,69,1) 100%);
+    font-family: "Manrope", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+h1 {
+    color: #FFF;
+}
+
+.botao-voltar {
+    display: flex;
+    align-items: start;
+    background-color: black;
+    width: 40px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.botao-voltar:hover{
+    transform: scale(1.2);
+}
+
+.botao-voltar img {
+    width: 40px;
+}
+
+.section-form {
+    background-color: #FFF;
+    border-radius: 10px;
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: rgba(44,39,88,1);
+}
+
+.cadastro-container {
+    padding: 20px 20px 10px 20px;
+    background-color: rgba(44,39,88,1);
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    width: 100%;
+    height: 60%;
+    border-radius: 20px;
+    font-size: larger;
+    color: #FFF;
+    box-shadow: -1px 1px 4px 4px #37769a;
+    flex-wrap: wrap;
+}
+
+.cadastro-container .caixa-input{
+    overflow: hidden;
+    position: relative;
+    width:100%;
+    height: 50px;
+    margin-bottom: 3px;
+    z-index: 100;
+}
+
+/* AUTOCOMPLETE */
+.autoComplete_wrapper {
+    height: 50px;
+}
+
+.caixa-input #autoComplete_list {
+    display: block;
     border: solid 2px black;
+    z-index: 1;
 }
 
-/*ESTILIZAÇÃO DE CADA INPUT DO CADASTRO*/
-.perfil input[name="nome"] {
-    display: inline-flex;
-    margin-top: 5px;
-    width: 60%;
+#autoComplete_list ul {
+    list-style-type: none;
+    position: absolute;
+
+    height: 50px;
+    z-index: 1;
+}
+
+.caixa-input li {
+    list-style-type: none;
+}
+
+/* INPUTS PERSONALIZADOS */
+.cadastro-container input {
+    color: #FFF;
+    font-size: 20px;
+    width: 100%;
+    height: 50px;
+    padding: 20px 10px 10px 5px;
+    background-color: #4d6d7f;
+    border: none;
+    border-radius: 5px;
+}
+
+.cadastro-container label {
+    color: #fff;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    pointer-events: none;
+    border-bottom: 1px solid #ffffff;
+}
+  
+.cadastro-container span {
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    font-size: 20px;
+    transition: all 0.3s ease;
     border-radius: 10px;
-    padding: 5px;
+
+}
+  
+.cadastro-container label::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 100%;
+    border-bottom: 3px solid #FFF;
+    transform: translateX(-100%);
+    transition: all 0.3s ease;
+}
+  
+.cadastro-container input:read-only + label span, input:valid + label span{
+    height: 40px;
+    font-size: 14px;
+    bottom: 10px;
+    color: #FFF;
 }
 
-.perfil input[name="nascimento"] {
-    display: inline-flex;
-    margin-top: 5px;
-    width: 39%;
+.cadastro-container input:focus + label span, input:invalid + label span{
+    height: 40px;
+    font-size: 14px;
+    bottom: 10px;
+    color: #FFF;
+}
+
+
+.fade-out {
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
+    box-shadow: black 10px;
+}
+
+.msg-erro {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1000px;
+    min-height: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    background: linear-gradient(90deg, rgba(201,39,12,1) 0%, rgba(255,199,0,1) 100%);
     border-radius: 10px;
-    padding: 5px;
+    padding: 3px;
+    z-index: 9999; /* Para garantir que a mensagem fique acima de outros elementos */
+    margin-top: 10px; /* Define a distância entre cada mensagem de erro */
 }
 
-.perfil input[name="sobrenome"] {
-    display: inline-flex;
-    margin-top: 5px;
-    width: 99.3%;
-    border-radius: 10px;
-    padding: 5px;
-}
 
-.perfil input[name="email"] {
-    display: inline-flex;
-    margin-top: 5px;
-    width: 50%;
-    border-radius: 10px;
-    padding: 5px;
-}
-
-.perfil input[name="email_secundario"] {
-    display: inline-flex;
-    margin-top: 5px;
-    width: 49%;
-    border-radius: 10px;
-    padding: 5px;
-}
-
-.perfil input[name="password"] {
-    display: inline-flex;
-    margin-top: 5px;
-    width: 49%;
-    border-radius: 10px;
-    padding: 5px;
-}
-
-.perfil input[name="telefone"] {
-    display: inline-flex;
-    margin-top: 5px;
-    width: 31%;
-    border-radius: 10px;
-    padding: 5px;
-}
-
-.perfil input[name="cidade"] {
-    display: inline-flex;
-    margin-top: 5px;
-    width: 34%;
-    border-radius: 10px;
-    padding: 5px;
-}
-
-.perfil input[name="rua"] {
-    display: inline-flex;
-    margin-top: 5px;
-    width: 49%;
-    border-radius: 10px;
-    padding: 5px;
-}
-
-.perfil input[name="numero"] {
-    display: inline-flex;
-    margin-top: 5px;
-    width: 49%;
-    border-radius: 10px;
-    padding: 5px;
-}
-
-.perfil input[name="complemento"] {
-    display: inline-flex;
-    margin-top: 5px;
-    width: 50%;
-    border-radius: 10px;
-    padding: 5px;
-}
-
-.perfil input[name="estado"] {
-    display: inline-flex;
-    margin-top: 5px;
-    width: 34%;
-    border-radius: 10px;
-    padding: 5px;
-}
-
-.perfil input[name="bairro"] {
-    display: inline-flex;
-    margin-top: 5px;
-    width: 50%;
-    border-radius: 10px;
-    padding: 5px;
-}
-
-.perfil input::placeholder {
+.msg-erro p {
+    height: 100%;
     color: black;
+    font-size: 17px;
+    margin-bottom: 0px;
 }
+
 
 input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button { 
