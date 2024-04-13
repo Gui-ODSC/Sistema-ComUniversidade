@@ -4,7 +4,7 @@
 }
 
 body {
-    background-color: #708090;
+    background: linear-gradient(90deg, rgba(9,107,170,1) 0%, rgba(44,39,88,1) 50%, rgba(40,35,69,1) 100%);
     font-family: "Manrope", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
@@ -28,10 +28,26 @@ header {
     text-decoration: none;
 }
 
-h1 {
-    text-align: center;
-    margin-top: 20px;
-    margin-bottom: 5px;
+.titulo {
+    display: flex;
+    background-color: rgba(44,39,88,1);
+    width: 500px;
+    margin: auto;
+    margin-bottom: 40px;
+    align-items: center;
+    height: 100px;
+    border-radius: 10px;
+    align-content: center;
+    box-shadow: -1px 1px 4px 4px #37769a;
+    flex-direction: column;
+}
+
+.titulo h1, h2 {
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    padding-top: 10px;
+    color: #fff;
 }
 
 h4 {
@@ -39,98 +55,139 @@ h4 {
     margin-bottom: 40px;
 }
 
+.botao-voltar {
+    display: flex;
+    align-items: start;
+    background-color: black;
+    width: 40px;
+    margin-left: 30px;
+    margin-top: 20px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.botao-voltar:hover{
+    transform: scale(1.2);
+}
+
+.botao-voltar img {
+    width: 40px;
+}
+
+.section-form {
+    background-color: #FFF;
+    margin-top: 30px;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: rgba(44,39,88,1);
+}
+
 .cadastro-container {
     padding: 40px 20px 10px 20px;
-    background-color: #2F4F4F;
+    background-color: rgba(44,39,88,1);
     margin: auto;
-    margin-top: 50px;
     margin-bottom: 30px;
-    width: 50%;
+    width: 80%;
     height: 60%;
     border-radius: 20px;
     font-size: larger;
     color: #FFF;
+    box-shadow: -1px 1px 4px 4px #37769a;
 }
 
-/*ESTILIZAÇÃO DE CADA INPUT DO CADASTRO*/
-.cadastro-container input[id="nome"] {
-    display: inline-flex;
-    margin-top: 5px;
-    width: 60%;
-    border-radius: 10px;
-    padding: 5px;
+.cadastro-container .caixa-input{
+    overflow: hidden;
+    position: relative;
+    width:100%;
+    height: 50px;
+    margin-bottom: 3px;
+    z-index: 100;
 }
 
-.cadastro-container input[id="nascimento"] {
-    display: inline-flex;
-    margin-top: 5px;
-    width: 39%;
-    border-radius: 10px;
-    padding: 5px;
+/* AUTOCOMPLETE */
+.autoComplete_wrapper {
+    height: 50px;
 }
 
-.cadastro-container input[id="sobrenome"] {
-    display: inline-flex;
-    margin-top: 5px;
+.caixa-input #autoComplete_list {
+    display: block;
+    border: solid 2px black;
+    z-index: 1;
+}
+
+#autoComplete_list ul {
+    list-style-type: none;
+    position: absolute;
+
+    height: 50px;
+    z-index: 1;
+}
+
+.caixa-input li {
+    list-style-type: none;
+}
+
+/* INPUTS PERSONALIZADOS */
+.cadastro-container input {
+    color: #FFF;
+    font-size: 20px;
     width: 100%;
-    border-radius: 10px;
-    padding: 5px;
+    height: 50px;
+    padding: 17px 10px 10px 5px;
+    background-color: #4d6d7f;
+    border: none;
+    border-radius: 5px;
 }
 
-.cadastro-container input[id="email"] {
-    display: inline-flex;
-    margin-top: 5px;
+.cadastro-container label {
+    color: #fff;
+    position: absolute;
+    left: 0;
     width: 100%;
-    border-radius: 10px;
-    padding: 5px;
+    height: 50px;
+    pointer-events: none;
+    border-bottom: 1px solid #ffffff;
 }
+  
+.cadastro-container span {
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    font-size: 20px;
+    transition: all 0.3s ease;
+    border-radius: 10px;
 
-.cadastro-container input[id="email_secundario"] {
-    display: inline-flex;
-    margin-top: 5px;
+}
+  
+.cadastro-container label::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -1px;
     width: 100%;
-    border-radius: 10px;
-    padding: 5px;
+    border-bottom: 3px solid #FFF;
+    transform: translateX(-100%);
+    transition: all 0.3s ease;
+}
+  
+.cadastro-container input:focus + label span, input:valid + label span{
+    height: 40px;
+    font-size: 14px;
+    bottom: 10px;
+    color: #FFF;
 }
 
-.cadastro-container input[id="password"] {
-    display: inline-flex;
-    margin-top: 5px;
-    width: 100%;
-    border-radius: 10px;
-    padding: 5px;
+.cadastro-container input:focus + label span, input:invalid + label span{
+    height: 40px;
+    font-size: 14px;
+    bottom: 10px;
+    color: #FFF;
 }
 
-.cadastro-container input[id="telefone"] {
-    display: inline-flex;
-    margin-top: 5px;
-    width: 307px;
-    border-radius: 10px;
-    padding: 5px;
-}
-
-.cadastro-container input[id="rua"] {
-    display: inline-flex;
-    margin-top: 5px;
-    width: 307px;
-    border-radius: 10px;
-    padding: 5px;
-}
-
-.cadastro-container input[id="numero"] {
-    display: inline-flex;
-    margin-top: 5px;
-    width: 300px;
-    border-radius: 10px;
-    padding: 5px;
-}
-
-.cadastro-container input[id="complemento"] {
-    display: inline-flex;
-    margin-top: 5px;
-    width: 307px;
-    border-radius: 10px;
-    padding: 5px;
+.cadastro-container input:focus + label::after {
+    transform: translateX(0%);
 }
 
 .custom-file-upload {
@@ -143,27 +200,6 @@ h4 {
     background-color: #4363bd;
     border-radius: 10px;
     color: #fff;
-}
-
-.cadastro-container input::placeholder {
-    padding: 5px; 
-}
-
-.cadastro-container span, a{
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    padding-top: 5px;
-}
-
-.aviso-campo-obrigatorio {
-    background-color: rgb(128,128,128, 0.5);
-    border-radius: 10px;
-    padding: 1px;
-    max-height: 35px;
-    display: flex;
-    text-align: start;
-    margin-top: 5px;
 }
 
 .cadastro-container button {
@@ -213,73 +249,14 @@ h4 {
 }
 
 
-/* ESTILIZACAO AUTOCOMPLETE */
-.autoComplete_wrapper #autoCompleteBairro {
-    display: inline-flex;
-    padding: 5px;
-    color: black;
-    font-family: "Manrope", sans-serif;
-    font-optical-sizing: auto;
-    font-style: normal;
-    font-weight: lighter;
-    font-size: 20px;
-    cursor: pointer;
-    overflow: hidden;
-    background-color: #FFF;
-    border-radius: 10px;
-    margin-top: 5px;
-    height: 42px;
-    width: 307px;
-    margin-bottom: 0px;
+/* Remover setinha campo number */
 
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 
-.autoComplete_wrapper #autoCompleteCidade {
-    display: inline-flex;
-    padding: 5px;
-    color: black;
-    font-family: "Manrope", sans-serif;
-    font-optical-sizing: auto;
-    font-style: normal;
-    font-weight: lighter;
-    font-size: 20px;
-    cursor: pointer;
-    overflow: hidden;
-    background-color: #FFF;
-    border-radius: 10px;
-    margin-top: 5px;
-    height: 42px;
-    width: 300px;
-    margin-bottom: 0px;
-}
-
-.autoComplete_wrapper #autoCompleteEstado {
-    display: inline-flex;
-    padding: 5px;
-    color: black;
-    font-family: "Manrope", sans-serif;
-    font-optical-sizing: auto;
-    font-style: normal;
-    font-weight: lighter;
-    font-size: 20px;
-    cursor: pointer;
-    overflow: hidden;
-    background-color: #FFF;
-    border-radius: 10px;
-    margin-top: 5px;
-    height: 42px;
-    width: 300px;
-    margin-bottom: 0px;
-}
-
-.autoComplete_wrapper #autoCompleteBairro::placeholder {
-    color: black;
-}
-
-.autoComplete_wrapper #autoCompleteEstado::placeholder {
-    color: black;
-}
-
-.autoComplete_wrapper #autoCompleteCidade::placeholder {
-    color: black;
+input[type="number"] {
+    -moz-appearance: textfield; /* Firefox */
 }

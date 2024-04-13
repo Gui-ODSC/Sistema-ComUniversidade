@@ -117,7 +117,6 @@ body {
     padding: 20px 10px 10px 5px;
     background-color: #4d6d7f;
     border: none;
-    border-radius: 4px;
     border-radius: 5px;
 }
   
@@ -159,9 +158,16 @@ input:valid + label span {
     bottom: 10px;
     color: #FFF;
 }
+
+.cadastrar-demandas input:focus + label span,
+input:invalid + label span {
+    transform: translateY(-120%);
+    font-size: 14px;
+    bottom: 10px;
+    color: #FFF;
+}
   
-.cadastrar-demandas input:focus + label::after,
-  input:valid + label::after {
+.cadastrar-demandas input:focus + label::after {
     transform: translateX(0%);
 }
 
@@ -193,8 +199,15 @@ textarea:valid + label span {
     color: #FFF;
 }
 
-.cadastrar-demandas textarea:focus + label::after,
-  textarea:valid + label::after {
+.cadastrar-demandas textarea:focus + label span,
+textarea:invalid + label span {
+    transform: translateY(2%);
+    font-size: 14px;
+    bottom: 10px;
+    color: #FFF;
+}
+
+.cadastrar-demandas textarea:focus + label::after {
     transform: translateX(0%);
 }
 
@@ -219,8 +232,15 @@ select:valid + label span {
     color: #FFF;
 }
 
-.cadastrar-demandas select:focus + label::after,
-  select:valid + label::after {
+.cadastrar-demandas select:focus + label span,
+select:invalid + label span {
+    transform: translateY(-120%);
+    font-size: 14px;
+    bottom: 10px;
+    color: #FFF;
+}
+
+.cadastrar-demandas select:focus + label::after {
     transform: translateX(0%);
 }
 

@@ -23,150 +23,242 @@
     </nav>
 </header>
 <body>
+    <div class="botao-voltar">
+        <a title="Voltar" href="{{ route('login_index') }}"><img src="{{ asset('img/usuarioMembro/cadastrar_demandas/botao_voltar.png')}}" alt=""></a>
+    </div>
     <div class="cadastro-container">
-        <form method="POST" action="{{ route('cadastro_create') }}">
-            @csrf
+        <div class="titulo">
             <h1>Cadastro Membro</h1>
             <h4>Seja bem vindo(a)</h2>
+        </div>
+        <form method="POST" action="{{ route('cadastro_create') }}">
+            @csrf
             @if($errors->has('dados'))
-                <div class="msg-erro" id="error-message-email">
+                <div class="msg-erro" id="error-message-email" style="margin-top: 30px">
                     @foreach ($errors->get('dados') as $dado)
-                        <p style="display: flex width: 651px">{{ $dado }}</p>
+                        <p style="display: block; align-items: center; width: 100%;">{{ $dado }}</p>
                         <br>
                     @endforeach
                 </div>
-                <script src="{{ asset('js/usuarioMembro/login_membro/mensagem_erro.js') }}"></script>
             @endif
-            {{-- NOME --}}
-            @error('nome')
-                <input title="{{ $message }}" class="alert-danger" type="text" id="nome" name="nome" value="Guilherme" style="border: 1px solid red; background-color:rgb(235, 201, 206)" placeholder="Nome *" required>
-            @else
-                <input type="text" id="nome" name="nome" value="Guilherme" placeholder="Nome *" required>
-            @enderror
-
-            {{-- NASCIMENTO --}}
-            @error('nascimento')
-                <input title="{{ $message }}" class="alert-danger" type="text" id="nascimento" name="nascimento" value="15/03/2003" style="border: 1px solid red; background-color:rgb(235, 201, 206)" placeholder="Ex: 01/01/2023 *" required>
-            @else
-                <input type="text" id="nascimento" name="nascimento" value="15/03/2003" placeholder="Ex: 01/01/2023 *" required>
-            @enderror
-
-            {{-- SOBRENOME --}}
-            @error('sobrenome')
-                <input title="{{ $message }}" class="alert-danger" type="text" id="sobrenome" name="sobrenome" value="Oliveira" style="border: 1px solid red; background-color:rgb(235, 201, 206)" placeholder="Sobrenome *" required>
-            @else
-                <input type="text" id="sobrenome" name="sobrenome" value="Oliveira" placeholder="Sobrenome *" required>
-            @enderror
-
-            {{-- EMAIL --}}
-            @error('email')
-                <input title="{{ $message }}" class="alert-danger" type="text" id="email" name="email" value="gui@gmail.com" style="border: 1px solid red; background-color:rgb(235, 201, 206)" placeholder="Email *" required>
-            @else
-                <input type="email" id="email" name="email" value="gui@gmail.com" placeholder="Email *" required>
-            @enderror
-
-            {{-- EMAIL_SECUNDARIO --}}
-            @error('email_secundario')
-                <input title="{{ $message }}" class="alert-danger" type="email" id="email_secundario" name="email_secundario" style="border: 1px solid red; background-color:rgb(235, 201, 206)" placeholder="Email Secundario">
-            @else
-                <input type="email" id="email_secundario" name="email_secundario" placeholder="Email Secundario">
-            @enderror
-
-            {{-- PASSWORD --}}
-            @error('password')
-                <input title="{{ $message }}" class="alert-danger" type="password" id="password" name="password" style="border: 1px solid red; background-color:rgb(235, 201, 206)" placeholder="Senha *" required>
-            @else
-                <input type="password" id="password" name="password" value="ddddd" placeholder="Senha *" required>
-            @enderror
-
-            {{-- TELEFONE --}}
-            @error('telefone')
-                <input title="{{ $message }}" class="alert-danger" type="text" id="telefone" name="telefone" value="(11) 94363-4828" style="border: 1px solid red; background-color:rgb(235, 201, 206)" placeholder="Ex: (99) 9999-9999 *" required>
-            @else
-                <input type="text" id="telefone" name="telefone" value="(11) 94363-4828" placeholder="Ex: (99) 9999-9999 *" required>
-            @enderror
-            
-            {{-- CIDADE --}}
-            @error('cidade')
-                <div class="autoComplete_wrapper">  
-                    <input title="{{ $message }}" type="text" id="autoCompleteCidade" class="cidade alert-danger" name="nome_cidade" style="border: 1px solid red; background-color:rgb(235, 201, 206)" placeholder="Selecione um Cidade" required>
+            <div class="section-form">
+                {{-- NOME --}}
+                <div class="caixa-input" style="width: 40%;">
+                    @error('nome')
+                        <input title="{{ $message }}" class="alert-danger" type="text" id="nome" name="nome" autocomplete="off"  style="border: 1px solid red; background-color:rgb(235, 201, 206)" required>
+                        <label for="nome">
+                            <span>Nome</span>
+                        </label>
+                    @else
+                        <input type="text" id="nome" name="nome" autocomplete="off" required>
+                        <label for="nome">
+                            <span>Nome</span>
+                        </label>
+                    @enderror
                 </div>
-            @else
-                <div class="autoComplete_wrapper">  
-                    <input type="text" id="autoCompleteCidade" class="cidade" name="nome_cidade"  placeholder="Selecione um Cidade" required>
+                <div class="caixa-input" style="width: 578px; margin-left: 3px">
+                    {{-- SOBRENOME --}}
+                    @error('sobrenome')
+                        <input title="{{ $message }}" class="alert-danger" type="text" id="sobrenome" name="sobrenome" autocomplete="off" style="border: 1px solid red; background-color:rgb(235, 201, 206)" required>
+                        <label for="sobrenome">
+                            <span>Sobrenome</span>
+                        </label>
+                    @else
+                        <input type="text" id="sobrenome" name="sobrenome" autocomplete="off" required>
+                        <label for="sobrenome">
+                            <span>Sobrenome</span>
+                        </label>
+                    @enderror
                 </div>
-            @enderror
-
-            {{-- RUA --}}
-            @error('rua')
-                <input title="{{ $message }}" class="alert-danger" type="text" id="rua" name="rua" value="ffff" style="border: 1px solid red; background-color:rgb(235, 201, 206)" placeholder="Rua *" required>
-            @else
-                <input type="text" id="rua" name="rua" value="ffff" placeholder="Rua *" required>
-            @enderror
-
-            {{-- NUMERO --}}
-            @error('numero')
-                <input title="{{ $message }}" class="alert-danger" type="number" id="numero" name="numero" value="2222" style="border: 1px solid red; background-color:rgb(235, 201, 206)" placeholder="Numero *" required>
-            @else
-                <input type="number" id="numero" name="numero" value="2222" placeholder="Numero *" required>
-            @enderror
-
-            {{-- COMPLEMENTO --}}
-            @error('complemento')
-                <input title="{{ $message }}" class="alert-danger" type="text" id="complemento" name="complemento" style="border: 1px solid red; background-color:rgb(235, 201, 206)" placeholder="Complemento">
-            @else
-                <input type="text" id="complemento" name="complemento" placeholder="Complemento">
-            @enderror
-
-            {{-- ESTADO --}}
-            @error('estado')
-                <div class="autoComplete_wrapper">  
-                    <input title="{{ $message }}" type="text" id="autoCompleteEstado" class="estado alert-danger" name="nome_estado" style="border: 1px solid red; background-color:rgb(235, 201, 206)" placeholder="Selecione um Estado" required>
-                </div>   
-            @else
-                <div class="autoComplete_wrapper">  
-                    <input type="text" id="autoCompleteEstado" class="estado" name="nome_estado" placeholder="Selecione um Estado" required>
+                <div class="caixa-input" style="width: 20%;">
+                    {{-- NASCIMENTO --}}
+                    @error('nascimento')
+                        <input title="{{ $message }}" class="alert-danger" type="text" id="nascimento" name="nascimento" autocomplete="off" required>
+                        <label for="nascimento">
+                            <span>Data Nascimento</span>
+                        </label>
+                    @else
+                        <input type="text" id="nascimento" name="nascimento" autocomplete="off" required>
+                        <label for="nascimento">
+                            <span>Data Nascimento</span>
+                        </label>
+                    @enderror
                 </div>
-            @enderror
+                <div class="caixa-input" style="width: 773px; margin-left: 3px">
+                    {{-- EMAIL --}}
+                    @error('email')
+                        <input title="{{ $message }}" class="alert-danger" type="email" id="email" name="email" autocomplete="off" style="border: 1px solid red; background-color:rgb(235, 201, 206)" required>
+                        <label for="email">
+                            <span>Email</span>
+                        </label>
+                    @else
+                        <input type="email" id="email" name="email" autocomplete="off" required>
+                        <label for="email">
+                            <span>Email</span>
+                        </label>
+                    @enderror
+                </div>
+                <div class="caixa-input" style="width: 70%;">
+                    {{-- EMAIL_SECUNDARIO --}}
+                    @error('email_secundario')
+                        <input title="{{ $message }}" class="alert-danger" type="email" id="email_secundario" name="email_secundario" autocomplete="off" style="border: 1px solid red; background-color:rgb(235, 201, 206)">
+                        <label for="email_secundario">
+                            <span>Email Secundário</span>
+                        </label>
+                    @else
+                        <input type="email" id="email_secundario" name="email_secundario" autocomplete="off">
+                        <label for="email_secundario">
+                            <span>Email Secundário</span>
+                        </label>
+                    @enderror
+                </div>
 
-            {{-- BAIRRO --}}
-            @error('bairro')
-                <div title="{{ $message }}" class="autoComplete_wrapper">  
-                    <input type="text" id="autoCompleteBairro" class="bairro alert-danger" name="nome_bairro" style="border: 1px solid red; background-color:rgb(235, 201, 206)" placeholder="Selecione um bairro" required>
-                </div>    
-            @else
-                <div class="autoComplete_wrapper">  
-                    <input type="text" id="autoCompleteBairro" class="bairro" name="nome_bairro" placeholder="Selecione um bairro"  required>
-                </div>    
-            @enderror
-
-            {{-- FOTO --}}
-            @error('foto')
-                <label title="{{ $message }}" for="foto" class="custom-file-upload" style="border: 1px solid red; background-color:rgb(235, 201, 206)">
-                    <input type="file" id="foto" name="foto" style="display:none">
-                    Adicionar Foto Perfil
-                </label>
-            @else
-                <label for="foto" class="custom-file-upload">
-                    <input type="file" id="foto" name="foto" style="display:none">
-                    Adicionar Foto Perfil
-                </label>
-            @enderror
-            <div class="aviso-campo-obrigatorio">
-                <p>* Campos obrigatórios</p>
+                <div class="caixa-input" style="width: 288px; margin-left: 3px">
+                     {{-- TELEFONE --}}
+                    @error('telefone')
+                        <input title="{{ $message }}" class="alert-danger" type="text" id="telefone" name="telefone" autocomplete="off" style="border: 1px solid red; background-color:rgb(235, 201, 206)" required>
+                        <label for="telefone">
+                            <span>Telefone</span>
+                        </label>
+                    @else
+                        <input type="text" id="telefone" name="telefone" autocomplete="off" required>
+                        <label for="telefone">
+                            <span>Telefone</span>
+                        </label>
+                    @enderror
+                </div>
+                <div class="caixa-input" style="width: 50%;">
+                    {{-- PASSWORD --}}
+                    @error('password')
+                        <input title="{{ $message }}" class="alert-danger" type="password" id="password" name="password" style="border: 1px solid red; background-color:rgb(235, 201, 206)" required>
+                        <label for="password">
+                            <span>Senha</span>
+                        </label>
+                    @else
+                        <input type="password" id="password" name="password" required>
+                        <label for="password">
+                            <span>Senha</span>
+                        </label>
+                    @enderror
+                </div>
+                <div class="caixa-input" style="width: 482px; margin-left: 3px;">
+                    {{-- CIDADE --}}
+                    @error('cidade')
+                        <input title="{{ $message }}" class="cidade alert-danger" type="text" name="nome_cidade" autocomplete="off" style="border: 1px solid red; background-color:rgb(235, 201, 206)" required>
+                        <label for="nome_cidade">
+                            <span>Cidade</span>
+                        </label>
+                    @else
+                        <input type="text" id="autoCompleteCidade" name="nome_cidade" autocomplete="off" required>
+                        <label for="nome_cidade">
+                            <span>Cidade</span>
+                        </label>
+                    @enderror
+                </div>
+                <div class="caixa-input" style="width: 40%;">
+                    {{-- RUA --}}
+                    @error('rua')
+                        <input title="{{ $message }}" class="alert-danger" type="text" id="rua" name="rua" autocomplete="off" style="border: 1px solid red; background-color:rgb(235, 201, 206)" required>
+                        <label for="rua">
+                            <span>Rua</span>
+                        </label>
+                    @else
+                        <input type="text" id="rua" name="rua" autocomplete="off" required>
+                        <label for="rua">
+                            <span>Rua</span>
+                        </label>
+                    @enderror
+                </div>
+                <div class="caixa-input" style="width: 30%; margin-left: 3px;">
+                    {{-- NUMERO --}}
+                    @error('numero')
+                        <input title="{{ $message }}" class="alert-danger" type="number" id="numero" name="numero" autocomplete="off" style="border: 1px solid red; background-color:rgb(235, 201, 206)" required>
+                        <label for="numero">
+                            <span>Número</span>
+                        </label>
+                    @else
+                        <input type="number" id="numero" name="numero" autocomplete="off" required>
+                        <label for="numero">
+                            <span>Número</span>
+                        </label>
+                    @enderror
+                </div>
+                <div class="caixa-input" style="width: 285px; margin-left: 3px;">
+                    {{-- COMPLEMENTO --}}
+                    @error('complemento')
+                        <input title="{{ $message }}" class="alert-danger" type="text" id="complemento" name="complemento" autocomplete="off" style="border: 1px solid red; background-color:rgb(235, 201, 206)">
+                        <label for="complemento">
+                            <span>Complemento</span>
+                        </label>
+                    @else
+                        <input type="text" id="complemento" name="complemento" autocomplete="off">
+                        <label for="complemento">
+                            <span>Complemento</span>
+                        </label>
+                    @enderror
+                </div>
+                <div class="caixa-input" style="width: 35%;">
+                    {{-- ESTADO --}}
+                    @error('estado')
+                        <input title="{{ $message }}" type="text" id="autoCompleteEstado" class="estado alert-danger" name="nome_estado" autocomplete="off" style="border: 1px solid red; background-color:rgb(235, 201, 206)" required>
+                        <label for="nome_estado">
+                            <span>Estado</span>
+                        </label>
+                    @else
+                        <input class="estado" type="text" id="autoCompleteEstado" name="nome_estado" autocomplete="off" required>
+                        <label for="nome_estado">
+                            <span>Estado</span>
+                        </label>
+                    @enderror
+                </div>
+                <div class="caixa-input" style="width: 35%; margin-left: 3px;">
+                    {{-- BAIRRO --}}
+                    @error('bairro')
+                        <div title="{{ $message }}" class="autoComplete_wrapper">  
+                            <input type="text" id="autoCompleteBairro" class="bairro alert-danger" name="nome_bairro" autocomplete="off" style="border: 1px solid red; background-color:rgb(235, 201, 206)" required>
+                            <label for="nome_bairro">
+                                <span>Bairro</span>
+                            </label>
+                        </div>    
+                    @else
+                        <input type="text" id="autoCompleteBairro" class="bairro" name="nome_bairro" autocomplete="off" required>
+                        <label for="nome_bairro">
+                            <span>Bairro</span>
+                        </label>
+                    @enderror
+                </div>
+                <div class="caixa-input" style="width: 285px; margin-left: 3px;">
+                    {{-- FOTO --}}
+                    @error('foto')
+                        <label title="{{ $message }}" for="foto" class="custom-file-upload" style="border: 1px solid red; background-color:rgb(235, 201, 206)">
+                            <input type="file" id="foto" name="foto" style="display:none">
+                            Adicionar Foto Perfil
+                        </label>
+                    @else
+                        <label for="foto" class="custom-file-upload">
+                            <input type="file" id="foto" name="foto" style="display:none">
+                            Adicionar Foto Perfil
+                        </label>
+                    @enderror
+                </div>
+                <button type="submit">Cadastrar</button>
             </div>
-            <button type="submit">Cadastrar</button>
         <form>
     </div>
+    <script src="{{ asset('js/usuarioMembro/login_membro/mensagem_erro.js') }}"></script>
     <script>
         // Aplica a máscara de telefone usando Inputmask
-        $(document).ready(function(){
-            $('#telefone').inputmask('(99) 99999-9999');
+        $('#telefone').on('input', function() {
+            if ($(this).val().trim().length > 0) {
+                $(this).inputmask('(99) 99999-9999');
+            }
         });
     
         // Aplica a máscara de data usando Inputmask
-        $(document).ready(function(){
-            $('#nascimento').inputmask('99/99/9999');
+        $('#nascimento').on('input', function() {
+            if ($(this).val().trim().length > 0) {
+                $(this).inputmask('99/99/9999');
+            }
         });
         
         // Variável PHP contendo os bairros
