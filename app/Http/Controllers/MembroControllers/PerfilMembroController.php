@@ -111,16 +111,21 @@ class PerfilMembroController extends Controller
 
         $endereco->update($validatedDataEndereco);
 
-        $usuario->update([
+        $dadosAtualizados = [
             'nome' => $validatedDataUsuario['nome'],
             'sobrenome' => $validatedDataUsuario['sobrenome'],
             'nascimento' => Carbon::createFromFormat('d/m/Y', $validatedDataUsuario['nascimento'])->format('Y-m-d'),
             'telefone' => $validatedDataUsuario['telefone'],
             'email' => $validatedDataUsuario['email'],
             'email_secundario' => $validatedDataUsuario['email_secundario'] ?? null,
-            'password' => Hash::make($validatedDataUsuario['password']),
             'foto' => $validatedDataUsuario['foto'] ?? null,
-        ]);
+        ];
+
+        if (filled($validatedDataUsuario['password'])) {
+            $dadosAtualizados['password'] = Hash::make($validatedDataUsuario['password']);
+        }
+
+        $usuario->update($dadosAtualizados);
 
         return redirect()->route('perfil_index')->with('perfil-update', 'Perfil atualizado com sucesso!');
     }

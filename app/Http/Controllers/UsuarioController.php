@@ -76,6 +76,12 @@ class UsuarioController extends Controller
     {
         $validator = Validator::make($request->all(), [
             ...$this->getValidationSchema(),
+            'password' => [
+                'nullable',
+                'string',
+                'min:8',
+                'regex:/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/',
+            ],
             'email' => [
                 Rule::unique(Usuario::class, 'email')
                     ->ignore($id_usuario, 'id_usuario')
