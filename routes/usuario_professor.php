@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\OfertaAcaoController;
 use App\Http\Controllers\ProfessorControllers\OfertaAcaoProfessorController;
+use App\Http\Controllers\ProfessorControllers\OfertaConhecimentoProfessorController;
 use App\Http\Controllers\ProfessorControllers\OfertaProfessorController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,7 +18,7 @@ Route::prefix('professor')->group(function(){
         Route::get('/visualizar', 'index')->name('oferta_index');
         Route::get('/cadastrar', 'createIndex')->name('oferta_create_index');
         Route::post('/acao', [OfertaAcaoProfessorController::class, 'createStoreAcao'])->name('oferta_create_store_acao');
-        Route::post('/conhecimento', 'createStoreConhecimento')->name('oferta_create_store_conhecimento');
+        Route::post('/conhecimento', [OfertaConhecimentoProfessorController::class, 'createStoreConhecimento'])->name('oferta_create_store_conhecimento');
         Route::prefix('/{ofertaId}')->group(function (){
             Route::get('/edit', 'editIndex')->name('oferta_edit_index');
             Route::post('/edit', 'editStore')->name('oferta_edit_store');
@@ -25,20 +26,6 @@ Route::prefix('professor')->group(function(){
         });
     });
 
-
-
-
-
-    Route::prefix('extensao/ofertas')->group(function(){
-        
-        Route::get('/cadastrar_ofertas', function(){
-            return view('ofertas_membro/cadastrar_ofertas');
-        })->name('cadastrar_ofertas');
-        Route::get('/sucesso_cadastro_oferta', function(){
-            return view('ofertas_membro/sucesso_cadastro_oferta');
-        })->name('sucesso_cadastro_oferta');
-    });
-    
 });
 
 

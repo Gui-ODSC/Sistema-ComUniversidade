@@ -212,7 +212,7 @@
                     </form>
                 </div>
                 <div id="formularioConhecimento" style="display: none; width: 100%">
-                    <form action="{{ route('demanda_create_store') }}" method="POST" style="display: flex; width: 100%; flex-wrap: wrap;">
+                    <form action="{{ route('oferta_create_store_conhecimento') }}" method="POST" style="display: flex; width: 100%; flex-wrap: wrap;">
                         @csrf
                         <div class="caixa-input" style="width: 40%;">
                             @if ($errors->has('titulo') || $errors->has('id_usuario'))

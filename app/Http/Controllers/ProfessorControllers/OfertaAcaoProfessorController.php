@@ -122,7 +122,6 @@ class OfertaAcaoProfessorController extends Controller
             'descricao' => $validatedDataOferta['descricao'],
             'tipo' => $validatedDataOferta['tipo'],
             'created_at' => now(),
-            'update_at' => null,
         ]);
 
         $idOferta = $novaOferta->id_oferta;
@@ -136,7 +135,6 @@ class OfertaAcaoProfessorController extends Controller
             'regime' => $validatedDataOfertaAcao['regime'],
             'data_limite' => $validatedDataOfertaAcao['data_limite'] ?? null,	
             'created_at' => now(),	
-            'update_at' => null,
         ]);
 
         return redirect()->route('oferta_index')->with('msg-demanda', 'Nova Oferta cadastrada.');

@@ -23,7 +23,7 @@ class OfertaConhecimentoController extends Controller
     {
         return [
             'id_oferta' => [
-                'required',
+                'if_exists:required',
                 Rule::exists(Oferta::class, 'id_oferta')
             ],
             'tempo_atuacao' => [
@@ -38,10 +38,7 @@ class OfertaConhecimentoController extends Controller
     {
         $ofertaConhecimento = $this->ofertaConhecimentoModel::all();
         
-        return response()->json([
-            'message' => 'Oferta Conhecimento successfully recovered',
-            'data' => $ofertaConhecimento
-        ]);
+        return $ofertaConhecimento;
     }
 
     public function get($id_oferta_conhecimento)
@@ -49,7 +46,7 @@ class OfertaConhecimentoController extends Controller
         return $this->ofertaConhecimentoModel::findOrFail($id_oferta_conhecimento);
     }
 
-    public function create(Request $request)
+    public function validarCamposOfertaConhecimentoCreate(Request $request)
     {
         $validator = Validator::make($request->all(), [
             ...$this->getValidationSchema(),
@@ -57,56 +54,14 @@ class OfertaConhecimentoController extends Controller
                 Rule::unique(OfertaConhecimento::class, 'id_oferta_conhecimento')
                     ->where('id_oferta', $request->input('id_oferta'))
             ]
-        ]);
+        ], $this->messageValidation());
 
-        if ($validator->fails()) {
-			return response($validator->errors())->setStatusCode(400);
-		}
-
-        $validatedData = $validator->validated();
-
-        $oferta = $this->ofertaConhecimentoModel::create([
-            'id_oferta' => $validatedData['id_oferta'],
-            'tempo_atuacao' => $validatedData['tempo_atuacao'],
-            'link_lattes' => $validatedData['link_lattes'],
-            'link_linkedin' => $validatedData['link_linkedin']
-        ]);
-
-        return response()->json([
-            'message' => 'Oferta Conhecimento Created successfull',
-            'data' => $oferta
-        ])->setStatusCode(201); 
+        return $validator;
     }
 
     public function update($id_oferta_conhecimento, Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            ...$this->getValidationSchema(),
-            'id_oferta_conhecimento' => [
-                Rule::unique(OfertaConhecimento::class, 'id_oferta_conhecimento')
-                    ->where('id_oferta', $request->input('id_oferta'))
-            ]
-        ]);
-
-        if ($validator->fails()) {
-			return response($validator->errors())->setStatusCode(400);
-		}
         
-        $validatedData = $validator->validated();
-
-        $ofertaConhecimento = $this->ofertaConhecimentoModel::findOrFail($id_oferta_conhecimento);
-
-        $ofertaConhecimento->update([
-            'id_oferta' => $validatedData['id_oferta'],
-            'tempo_atuacao' => $validatedData['tempo_atuacao'],
-            'link_lattes' => $validatedData['link_lattes'],
-            'link_linkedin' => $validatedData['link_linkedin']
-        ]);
-
-        return response()->json([
-            'message' => 'Oferta Conhecimento Updated Successfully',
-            'data' => $ofertaConhecimento
-        ])->setStatusCode(200);
     }
 
     public function delete($id_oferta_conhecimento) 
@@ -119,5 +74,21 @@ class OfertaConhecimentoController extends Controller
             'message' => 'Oferta Conhecimento deleted successfully'
         ])->setStatusCode(200);
 
+    }
+
+    protected function messageValidation()
+    {
+        return [
+            'id_oferta.unique' => 'Essa oferta já existe. Por favor, escolha outra.',
+            'id_oferta.exists' => 'Essa oferta não existe no banco de dados.',
+            'id_oferta.required' => 'Oferta é um campo Obrigatório.',
+            'tempo_atuacao.required' => 'O valor selecionado para o Tempo Atuação é Obrigatório.',
+            'tempo_atuacao' => 'O valor selecionado para o Tempo Atuação é inválido.',
+            'data_limite' => 'Valor inválido para a data limite', 
+            'link_lattes.string' => 'O valor para o Link Lattes deve ser um texto.',
+            'link_lattes.url' => 'O valor para o Link Lattes deve conter https ou http.',
+            'link_linkedin.string' => 'O valor para o Link Linkedin deve ser um texto.',
+            'link_linkedin.url' => 'O valor para o Link Linkedin deve conter https ou http.',
+        ];
     }
 }
