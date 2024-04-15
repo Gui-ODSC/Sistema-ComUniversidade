@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\TipoAcao;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 
@@ -19,18 +20,15 @@ class TipoAcaoController extends Controller
     private function getValidationSchema()
     {
         return [
-            'nome_modalidade' => 'required|string|max:255'
+            'nome' => 'required|string|max:255'
         ];
     }
 
-    public function list()
+    public function list() 
     {
         $tipoAcao = $this->tipoAcaoModel::all();
         
-        return response()->json([
-            'message' => 'Tipo Acao successfully recovered',
-            'data' => $tipoAcao
-        ]);
+        return $tipoAcao;
     }
 
     public function get($id_tipo_acao)
@@ -38,68 +36,63 @@ class TipoAcaoController extends Controller
         return $this->tipoAcaoModel::findOrFail($id_tipo_acao);
     }
 
-    public function create(Request $request)
+    public function validarCamposTipoAcao(Request $request)
     {
-        $validator = Validator::make($request->all(), [
+        $tipoAcao = TipoAcao::where('nome', $request->input('tipo_acao'))->first();
+
+        if (!$tipoAcao ) {
+            return response()->json(['error' => 'A modalidade selecionada não foi encontrada.'], 400);
+        }
+
+        $validatedData = array_merge($request->all(), [
+            'id_tipo_acao' => $tipoAcao->id_tipo_acao,
+        ]);
+
+        $validator = Validator::make($validatedData, [
             ...$this->getValidationSchema(),
-            'id_tipo_acao' => [
-                Rule::unique(TipoAcao::class, 'id_tipo_acao')
-                    ->where('nome_modalidade', $request->input('nome_modalidade'))
+            'nome' => [
+                Rule::unique(TipoAcao::class, 'nome')
             ]
-        ]);
-
-        if ($validator->fails()) {
-			return response($validator->errors())->setStatusCode(400);
-		}
-
-        $validatedData = $validator->validated();
-
-        $oferta = $this->tipoAcaoModel::create([
-            'nome_modalidade' => $validatedData['nome_modalidade']
-        ]);
-
-        return response()->json([
-            'message' => 'Tipo Acao Created successfull',
-            'data' => $oferta
-        ])->setStatusCode(201); 
+        ], $this->messageValidation());
+        
+        return $validator;
     }
 
     public function update($id_tipo_acao, Request $request)
     {
         $validator = Validator::make($request->all(), [
             ...$this->getValidationSchema(),
-            'id_tipo_acao' => [
-                Rule::unique(TipoAcao::class, 'id_tipo_acao')
-                    ->where('nome_modalidade', $request->input('nome_modalidade'))
+            'nome' => [
+                Rule::unique(TipoAcao::class, 'nome')
             ]
         ]);
 
         if ($validator->fails()) {
 			return response($validator->errors())->setStatusCode(400);
 		}
-        
+
         $validatedData = $validator->validated();
 
         $tipoAcao = $this->tipoAcaoModel::findOrFail($id_tipo_acao);
 
         $tipoAcao->update([
-            'nome_modalidade' => $validatedData['nome_modalidade']
+            'nome' => $validatedData['nome']
         ]);
 
         return response()->json([
-            'message' => 'Tipo Acao Updated Successfully',
+            'message' => 'AreaConhecimento updated successfully',
             'data' => $tipoAcao
         ])->setStatusCode(200);
+
     }
 
-    public function delete($id_tipo_acao) 
+    protected function messageValidation()
     {
-            
-        $tipoAcao = $this->tipoAcaoModel->findOrFail($id_tipo_acao);
-        $tipoAcao->delete();
-
-        return response()->json([
-            'message' => 'Tipo Acao deleted successfully'
-        ])->setStatusCode(200);
+        return [
+            'nome.unique' => 'Já existe um nome de modalidade cadastrado.',
+            'nome.required' => 'O nome para modalidade é obrigatório',
+            'nome.string' => 'O nome deve ser um texto',
+            'nome.max' => 'Número máximo de caracteres ultrapassado'
+        ];
     }
 }

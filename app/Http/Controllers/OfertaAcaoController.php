@@ -27,7 +27,7 @@ class OfertaAcaoController extends Controller
     {
         return [
             'id_oferta' => [
-                'required',
+                'if_exists:required',
                 Rule::exists(Oferta::class, 'id_oferta')
             ],
             'id_tipo_acao' => [
@@ -46,7 +46,8 @@ class OfertaAcaoController extends Controller
             ],
             'regime' => [
                 new Enum(RegimeOfertaAcao::class)
-            ]
+            ],
+            'data_limite' => 'nullable|date'
         ];
     }
 
@@ -54,10 +55,7 @@ class OfertaAcaoController extends Controller
     {
         $ofertaAcao = $this->ofertaAcaoModel::all();
         
-        return response()->json([
-            'message' => 'Oferta Acao successfully recovered',
-            'data' => $ofertaAcao
-        ]);
+        return $ofertaAcao;
     }
 
     public function get($id_oferta_acao)
@@ -65,7 +63,7 @@ class OfertaAcaoController extends Controller
         return $this->ofertaAcaoModel::findOrFail($id_oferta_acao);
     }
 
-    public function create(Request $request)
+    public function validarCamposOfertaAcaoCreate(Request $request)
     {
         $validator = Validator::make($request->all(), [
             ...$this->getValidationSchema(),
@@ -73,60 +71,15 @@ class OfertaAcaoController extends Controller
                 Rule::unique(OfertaAcao::class, 'id_oferta_acao')
                     ->where('id_oferta', $request->input('id_oferta'))
             ]
-        ]);
+        ], $this->messageValidation());
 
-        if ($validator->fails()) {
-			return response($validator->errors())->setStatusCode(400);
-		}
-
-        $validatedData = $validator->validated();
-
-        $oferta = $this->ofertaAcaoModel::create([
-            'id_oferta' => $validatedData['id_oferta'],
-            'id_tipo_acao' => $validatedData['id_tipo_acao'],
-            'id_publico_alvo' => $validatedData['id_publico_alvo'],
-            'status_registro' => $validatedData['status_registro'],
-            'duracao' => $validatedData['duracao'],
-            'regime' => $validatedData['regime']
-        ]);
-
-        return response()->json([
-            'message' => 'Oferta Acao Created successfull',
-            'data' => $oferta
-        ])->setStatusCode(201); 
+        return $validator;
+        
     }
 
     public function update($id_oferta_acao, Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            ...$this->getValidationSchema(),
-            'id_oferta_acao' => [
-                Rule::unique(OfertaAcao::class, 'id_oferta_acao')
-                    ->where('id_oferta', $request->input('id_oferta'))
-            ]
-        ]);
-
-        if ($validator->fails()) {
-			return response($validator->errors())->setStatusCode(400);
-		}
         
-        $validatedData = $validator->validated();
-
-        $ofertaAcao = $this->ofertaAcaoModel::findOrFail($id_oferta_acao);
-
-        $ofertaAcao->update([
-            'id_oferta' => $validatedData['id_oferta'],
-            'id_tipo_acao' => $validatedData['id_tipo_acao'],
-            'id_publico_alvo' => $validatedData['id_publico_alvo'],
-            'status_registro' => $validatedData['status_registro'],
-            'duracao' => $validatedData['duracao'],
-            'regime' => $validatedData['regime']
-        ]);
-
-        return response()->json([
-            'message' => 'Oferta Acao Updated Successfully',
-            'data' => $ofertaAcao
-        ])->setStatusCode(200);
     }
 
     public function delete($id_oferta_acao) 
@@ -139,5 +92,25 @@ class OfertaAcaoController extends Controller
             'message' => 'Oferta Acao deleted successfully'
         ])->setStatusCode(200);
 
+    }
+
+    protected function messageValidation()
+    {
+        return [
+            'id_oferta.unique' => 'Essa oferta já existe. Por favor, escolha outra.',
+            'id_oferta.exists' => 'Essa oferta não existe no banco de dados.',
+            'id_oferta.required' => 'Oferta é um campo Obrigatório.',
+            'id_tipo_acao.required' => 'O campo ID da modalidade é obrigatória.',
+            'id_tipo_acao.exists' => 'O ID da modalidade fornecida é inválida.',
+            'id_publico_alvo.required' => 'O campo ID do id_publico_alvo é obrigatório.',
+            'id_publico_alvo.exists' => 'O ID do id_publico_alvo fornecido é inválido.',
+            'status_registro.required' => 'O valor selecionado para o Status de Registro é Obrigatório.',
+            'status_registro' => 'O valor selecionado para o Status de Registro é inválido.',
+            'duracao.required' => 'O valor selecionado para a Duracão da oferta é Obrigatório.',
+            'duracao' => 'O valor selecionado para a Duracão da oferta é inválido.',
+            'regime.required' => 'O valor selecionado para o Regime de oferta é Obrigatório.',
+            'regime' => 'O valor selecionado para o Regime de oferta é inválido.',
+            'data_limite' => 'Valor inválido para a data limite', 
+        ];
     }
 }

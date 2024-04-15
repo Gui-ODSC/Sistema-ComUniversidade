@@ -86,17 +86,6 @@ class AreaConhecimentoController extends Controller
 
     }
 
-    public function delete($id_area_conhecimento) 
-    {
-        $areaConhecimento = $this->areaConhecimentoModel->findOrFail($id_area_conhecimento);
-        $areaConhecimento->delete();
-        
-        return response()->json([
-            'message' => 'AreaConhecimento deleted successfully'
-        ])->setStatusCode(200);
-
-    }
-
     protected function messageValidation()
     {
         return [

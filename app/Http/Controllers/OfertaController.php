@@ -54,34 +54,23 @@ class OfertaController extends Controller
         return $this->ofertaModel::findOrFail($id_oferta);
     }
 
-    public function create(Request $request)
+    public function validarCamposOfertaCreate(Request $request)
     {
-        $validator = Validator::make($request->all(), [
+        $idUsuarioLogado = auth()->id();
+        $usuarioProfessor = UsuarioProfessor::where('id_usuario', $idUsuarioLogado)->firstOrFail();
+
+        $dadosValidacao = array_merge($request->all(), ['id_usuario_professor' => $usuarioProfessor->id_usuario_professor]);
+
+        $validator = Validator::make($dadosValidacao, [
             ...$this->getValidationSchema(),
             'id_usuario_professor' => [
                 Rule::unique(Oferta::class, 'id_usuario_professor')
                     ->where('titulo', $request->input('titulo'))
             ]
-        ]);
+        ], $this->messageValidation());
 
-        if ($validator->fails()) {
-			return response($validator->errors())->setStatusCode(400);
-		}
+        return $validator;
 
-        $validatedData = $validator->validated();
-
-        $oferta = $this->ofertaModel::create([
-            'id_usuario_professor' => $validatedData['id_usuario_professor'],
-            'id_area_conhecimento' => $validatedData['id_area_conhecimento'],
-            'titulo' => $validatedData['titulo'],
-            'descricao' => $validatedData['descricao'],
-            'tipo' => $validatedData['tipo']
-        ]);
-
-        return response()->json([
-            'message' => 'Oferta Created successfull',
-            'data' => $oferta
-        ])->setStatusCode(201); 
     }
 
     public function update($id_oferta, Request $request)
@@ -126,5 +115,24 @@ class OfertaController extends Controller
             'message' => 'Oferta deleted successfully'
         ])->setStatusCode(200);
 
+    }
+
+    protected function messageValidation()
+    {
+        return [
+            'id_usuario_professor.unique' => 'Esse título já está em uso em suas ofertas. Por favor, escolha outro.',
+            'id_usuario_professor.exists' => 'Esse usuário não existe no banco de dados.',
+            'id_usuario_professor.required' => 'O campo ID do usuário é obrigatório.',
+            'id_area_conhecimento.required' => 'O campo ID da área de conhecimento é obrigatório.',
+            'id_area_conhecimento.exists' => 'O ID da área de conhecimento fornecido é inválido.',
+            'titulo.required' => 'O campo título é obrigatório.',
+            'titulo.string' => 'O campo título deve ser um texto.',
+            'titulo.max' => 'O campo título ultrapassou o numero de caracteres.',
+            'descricao.required' => 'O campo descrição é obrigatório.',
+            'descricao.string' => 'O campo descrição deve ser um texto.',
+            'descricao.max' => 'O campo descricao ultrapassou o numero de caracteres.',
+            'tipo.required' => 'O valor selecionado para o Tipo Oferta é Obrigatório.',
+            'tipo' => 'O valor selecionado para o Tipo Oferta é inválido.',
+        ];
     }
 }
