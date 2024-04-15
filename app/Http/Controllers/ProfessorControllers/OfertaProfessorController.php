@@ -10,7 +10,9 @@ use App\Http\Controllers\TipoAcaoController;
 use App\Models\AreaConhecimento;
 use App\Models\Demanda;
 use App\Models\Oferta;
+use App\Models\OfertaAcao;
 use App\Models\PublicoAlvo;
+use App\Models\TipoAcao;
 use App\Models\UsuarioProfessor;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -45,7 +47,7 @@ class OfertaProfessorController extends Controller
         $professor = UsuarioProfessor::where('id_usuario', $userId)->firstOrFail();
 
         $listOfertas = Oferta::where('id_usuario_professor', $professor->id_usuario_professor)
-            ->with(['areaConhecimento'])->orderby('created_at', 'ASC')->paginate(4);
+            ->with(['areaConhecimento'])->orderby('created_at', 'ASC')->paginate(5);
 
         return view(
             'usuarioProfessor/oferta/minhas_ofertas', 
@@ -73,26 +75,58 @@ class OfertaProfessorController extends Controller
         );
     }
 
-    /* public function editIndex($demandaId)
+    public function editIndexAcao($ofertaId)
     {
-        $demanda = Demanda::findOrFail($demandaId);
-        $publicoAlvo = PublicoAlvo::where('id_publico_alvo', $demanda->id_publico_alvo)->first();
-        $areaConhecimento = AreaConhecimento::where('id_area_conhecimento', $demanda->id_area_conhecimento)->first();
+        $oferta = Oferta::with(['ofertaAcao'])->findOrFail($ofertaId);
+        $publicoAlvo = PublicoAlvo::where('id_publico_alvo', $oferta->ofertaAcao->id_publico_alvo)->first();
+        $areaConhecimento = AreaConhecimento::where('id_area_conhecimento', $oferta->id_area_conhecimento)->first();
+        $tipoAcao = TipoAcao::where('id_tipo_acao', $oferta->ofertaAcao->id_tipo_acao)->first();
         $listPublicoAlvo = $this->publicoAlvoController->list();
+        $listAreaConhecimento = $this->areaConhecimentoController->list();
+        $listTipoAcao = $this->tipoAcaoController->list();
+        $data_limite_formatada = $oferta->ofertaAcao->data_limite ? date('Y-m-d', strtotime($oferta->ofertaAcao->data_limite)) : '';
+
+
+        return view(
+            'usuarioProfessor/oferta/editar_ofertas_acao',
+            [
+                'oferta' => $oferta,
+                'publicoAlvo' => $publicoAlvo,
+                'areaConhecimento' => $areaConhecimento,
+                'tipoAcao' => $tipoAcao,
+                'listPublicoAlvo' => $listPublicoAlvo,
+                'listAreaConhecimento' => $listAreaConhecimento,
+                'listTipoAcao' => $listTipoAcao,
+                'dataLimite' => $data_limite_formatada,
+            ]
+        );
+    }
+
+    public function editIndexConhecimento($ofertaId)
+    {
+        $oferta = Oferta::with(['ofertaConhecimento'])->findOrFail($ofertaId);
+        $areaConhecimento = AreaConhecimento::where('id_area_conhecimento', $oferta->id_area_conhecimento)->first();
         $listAreaConhecimento = $this->areaConhecimentoController->list();
 
         return view(
-            'usuarioMembro/demanda/editar_demandas',
+            'usuarioProfessor/oferta/editar_ofertas_conhecimento',
             [
-                'demanda' => $demanda,
-                'publicoAlvo' => $publicoAlvo,
+                'oferta' => $oferta,
                 'areaConhecimento' => $areaConhecimento,
-                'listPublicoAlvo' => $listPublicoAlvo,
                 'listAreaConhecimento' => $listAreaConhecimento,
             ]
         );
     }
 
+    public function editStoreAcao($ofertaId) {
+        return "";
+    }
+
+    public function editStoreConhecimento($ofertaId) {
+        return "";
+    }
+
+    /*
     public function editStore(Request $request, $demandaId)
     {
         $validarCamposAreaConhecimento = $this->areaConhecimentoController->validarCamposAreaConhecimento($request);

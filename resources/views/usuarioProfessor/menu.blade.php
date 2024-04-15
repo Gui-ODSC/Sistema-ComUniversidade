@@ -6,7 +6,7 @@
 </header>
 <nav class="menu-navegacao" id="menu_navegacao">
     <a href="" onclick="fecharMenu()">&times; Fechar</a>
-    <a href="{{-- {{ route('demanda_index') }} --}}"><i><img src="{{ asset('img/menu/oferta.png') }}" id="icones-menu" alt="icone de demanda"></i>Minhas Ofertas</a>
+    <a href="{{ route('oferta_index') }}"><i><img src="{{ asset('img/menu/oferta.png') }}" id="icones-menu" alt="icone de demanda"></i>Minhas Ofertas</a>
     <a href="{{-- {{ route('list_todas_ofertas') }} --}}"><i><img src="{{ asset('img/menu/setas.png') }}" id="icones-menu" alt="icone de oferta/demanda"></i>Todas as Demandas</a>
     <a href="{{-- {{ route('list_contatos_realizados') }} --}}"><i><img src="{{ asset('img/menu/contato.png') }}" id="icones-menu" alt="icone de contato"></i>Contatos Realizados</a>
     <a href="{{-- {{ route('list_contatos_recebidos') }} --}}"><i><img src="{{ asset('img/menu/contato.png') }}" id="icones-menu" alt="icone de contato"></i>Contatos Recebidos</a>

@@ -102,12 +102,12 @@
                 <div class="caixa-input" style="width: 35%">
                     @error('duracao')
                         <select title="{{$message}}" name="duracao" style="border: 1px solid red; background-color:rgb(235, 201, 206)" required>
-                            <option disabled selected></option>
-                            <option value="DIAS">Dias</option>
-                            <option value="SEMANAS">Semanas</option>
-                            <option value="MESES">Meses</option>
-                            <option value="ANOS">Anos</option>
-                            <option value="INDEFINIDO">Indefinido</option>
+                            <option disabled></option>
+                            <option value="DIAS" {{ $demanda->duracao === 'DIAS' ? 'selected' : '' }}>Dias</option>
+                            <option value="SEMANAS" {{ $demanda->duracao === 'SEMANAS' ? 'selected' : '' }}>Semanas</option>
+                            <option value="MESES" {{ $demanda->duracao === 'MESES' ? 'selected' : '' }}>Meses</option>
+                            <option value="ANOS" {{ $demanda->duracao === 'ANOS' ? 'selected' : '' }}>Anos</option>
+                            <option value="INDEFINIDO" {{ $demanda->duracao === 'INDEFINIDO' ? 'selected' : '' }}>Indefinido</option>
                         </select>
                         <label for="duracao">
                             <span>Selecione a duração da demanda</span>
@@ -130,9 +130,9 @@
                     @error('nivel_prioridade')
                         <select title="{{$message}}" name="nivel_prioridade" style="border: 1px solid red; background-color:rgb(235, 201, 206)" required>
                             <option disabled selected></option>
-                            <option value="BAIXO">Baixo</option>
-                            <option value="MEDIO">Medio</option>
-                            <option value="ALTO">Alto</option>
+                            <option value="BAIXO" {{ $demanda->nivel_prioridade === 'BAIXO'? 'selected' : '' }}>Baixo</option>
+                            <option value="MEDIO" {{ $demanda->nivel_prioridade === 'MEDIO'? 'selected' : '' }}>Medio</option>
+                            <option value="ALTO" {{ $demanda->nivel_prioridade === 'ALTO'? 'selected' : '' }}>Alto</option>
                         </select>
                         <label for="nivel_prioridade">
                             <span>Selecione a duração da demanda</span>

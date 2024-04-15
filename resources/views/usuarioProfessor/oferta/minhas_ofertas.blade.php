@@ -60,7 +60,11 @@
                                 <td>Conhecimento</td>
                             @endif
                             <td>{{ \Carbon\Carbon::parse($oferta->created_at)->format('d/m/Y') }}</td>
-                            <td><a href="{{ route('demanda_edit_index', $oferta->id_oferta) }}"><img id="icones_oferta" src="{{ asset('img/usuarioMembro/minhas_demandas/editar.png') }}" alt="tres pontos para mais informação"></a></td>
+                            @if ($oferta->tipo === 'ACAO')
+                                <td><a href="{{ route('oferta_edit_index_acao', $oferta->id_oferta) }}"><img id="icones_oferta" src="{{ asset('img/usuarioMembro/minhas_demandas/editar.png') }}" alt="tres pontos para mais informação"></a></td>
+                            @elseif ($oferta->tipo === 'CONHECIMENTO')
+                                <td><a href="{{ route('oferta_edit_index_conhecimento', $oferta->id_oferta) }}"><img id="icones_oferta" src="{{ asset('img/usuarioMembro/minhas_demandas/editar.png') }}" alt="tres pontos para mais informação"></a></td>
+                            @endif
                             <td><a onclick="openModalDeletar({{$oferta->id_oferta}})"><img id="icones_oferta" src="{{ asset('img/usuarioMembro/minhas_demandas/delete.png') }}" alt="tres pontos para mais informação"></a></td>
                             <x-usuario-professor.oferta.modal-deletar-oferta :id-oferta="$oferta->id_oferta" />
                             <td><a href="{{ route('demanda_matching_index', $oferta->id_oferta) }}"><img id="icones_oferta" src="{{ asset('img/usuarioMembro/minhas_demandas/ver.png') }}" alt="tres pontos para mais informação"></a></td>

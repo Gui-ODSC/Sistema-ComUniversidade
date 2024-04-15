@@ -20,8 +20,10 @@ Route::prefix('professor')->group(function(){
         Route::post('/acao', [OfertaAcaoProfessorController::class, 'createStoreAcao'])->name('oferta_create_store_acao');
         Route::post('/conhecimento', [OfertaConhecimentoProfessorController::class, 'createStoreConhecimento'])->name('oferta_create_store_conhecimento');
         Route::prefix('/{ofertaId}')->group(function (){
-            Route::get('/edit', 'editIndex')->name('oferta_edit_index');
-            Route::post('/edit', 'editStore')->name('oferta_edit_store');
+            Route::get('/edit_acao', 'editIndexAcao')->name('oferta_edit_index_acao');
+            Route::get('/edit_conhecimento', 'editIndexConhecimento')->name('oferta_edit_index_conhecimento');
+            Route::post('/edit', 'editStoreAcao')->name('oferta_edit_store_acao');
+            Route::post('/edit', 'editStoreConhecimento')->name('oferta_edit_store_conhecimento');
             Route::delete('/delete', 'deleteStore')->name('oferta_delete_store');
         });
     });

@@ -1,6 +1,6 @@
 body {
-    background: rgb(92,69,252);
-    background: linear-gradient(90deg, rgba(92,69,252,1) 0%, rgba(253,57,29,1) 50%, rgba(92,69,252,1) 100%); 
+    /* background: linear-gradient(90deg, rgba(9,107,170,1) 0%, rgba(16,43,73,1) 100%); */
+    background: linear-gradient(90deg, rgba(9,107,170,1) 0%, rgba(44,39,88,1) 50%, rgba(40,35,69,1) 100%);
 }
 
 .titulo {
@@ -8,7 +8,7 @@ body {
     /* background: linear-gradient(90deg, rgba(9,107,170,1) 0%, rgba(44,39,88,1) 50%, rgba(40,35,69,1) 100%); */
     /* background: linear-gradient(360deg, rgba(9,107,170,1) 0%, rgba(44,39,88,1) 50%, rgba(40,35,69,1) 100%); */
     background-color: rgba(44,39,88,1);
-    width: 500px;
+    width: 550px;
     margin: auto;
     align-items: center;
     height: 70px;
@@ -52,17 +52,16 @@ body {
     background-color: rgba(44,39,88,1);
 }
 
-
-.cadastrar-ofertas {
+.editar-ofertas {
     text-align: center;
 }
 
-.cadastrar-ofertas .button_send {
+.editar-ofertas .button_send {
     display: flex;
     margin: 20px auto 0px;
 }
 
-.cadastrar-ofertas button {
+.editar-ofertas button {
     padding: 10px;
     border-radius: 10px;
     margin-bottom: 10px;
@@ -76,20 +75,20 @@ body {
     transition: all 0.3s ease;
 }
 
-.cadastrar-ofertas button:hover {
+.editar-ofertas button:hover {
     transform: scale(1.1);
 }
 
-
 /* INPUT MALUCO */
 
-.cadastrar-ofertas {
+.editar-ofertas {
     align-items: center;
     justify-content: center;
     height: 100vh;
+    
 }
   
-.cadastrar-ofertas .caixa-input{
+.editar-ofertas .caixa-input{
     position: relative;
     width:100%;
     height: 50px;
@@ -97,11 +96,15 @@ body {
 }
 
 /* AutoComplete */
-
 .autoComplete_wrapper {
     width: 100%;
     background-color: #212121;
 }
+
+.autoComplete_wrapper input{
+    padding-left: 0;
+}
+
 
 .caixa-input .autoComplete_wrapper ul {
     position: absolute;
@@ -111,7 +114,7 @@ body {
     left: 0;
     right: 0;
     padding: 0;
-    margin: .5rem 0 0 0;
+    margin: 0 0 0 0;
     border-radius: 4px;
     background-color: #4d6d7f;
     z-index: 1000;
@@ -119,8 +122,7 @@ body {
     border: none;
 }
 
-.autoComplete_wrapper #autoCompleteAreaConhecimento,
-#autoCompletePublicoAlvo, #autoCompleteTipoAcao, #autoCompleteAreaConhecimentoAcao
+.autoComplete_wrapper #autoCompleteAreaConhecimento
 {
     height: 50px;
     width: 100%;
@@ -132,28 +134,28 @@ body {
     border: solid 1px #212121;
     background-color: #47565a;
     color: #FFF;
+    padding-top: 5px;
 }
 
 .caixa-input li {
     list-style-type: none;
 }
 
-
 /* Fim */
   
-.cadastrar-ofertas input {
+.editar-ofertas input {
     color: #FFF;
     font-size: 20px;
     width: 100%;
     height: 50px;
-    padding: 20px 10px 10px 5px;
+    padding: 24px 10px 10px 5px;
     background-color: #4d6d7f;
     border: none;
     border-radius: 5px;
     outline: none;
 }
   
-.cadastrar-ofertas label {
+.editar-ofertas label {
     color: #fff;
     position: absolute;
     left: 0;
@@ -163,7 +165,7 @@ body {
     border-bottom: 1px solid #ffffff;
 }
   
-.cadastrar-ofertas span {
+.editar-ofertas span {
     position: absolute;
     left: 5px;
     font-size: 14px;
@@ -171,7 +173,7 @@ body {
     border-radius: 10px;
 }
   
-.cadastrar-ofertas label::after {
+.editar-ofertas label::after {
     content: "";
     position: absolute;
     left: 0;
@@ -181,26 +183,26 @@ body {
     transition: all 0.3s ease;
 }
   
-.cadastrar-ofertas input:read-only + label span, input:valid + label span {
+.editar-ofertas input:read-only + label span, input:valid + label span {
     height: 40px;
     font-size: 14px;
     bottom: 10px;
     color: #FFF;
 }
 
-.cadastrar-ofertas input:focus + label span, input:invalid + label span {
+.editar-ofertas input:focus + label span, input:invalid + label span {
     height: 40px;
     font-size: 14px;
     bottom: 10px;
     color: #FFF;
 }
   
-.cadastrar-ofertas input:focus + label::after {
+.editar-ofertas input:focus + label::after {
     border-bottom: 3px solid #FFF;
 }
 
 /* TextArea */
-.cadastrar-ofertas textarea {
+.editar-ofertas textarea {
     color: #FFF;
     font-size: 20px;
     width: 100%;
@@ -220,7 +222,7 @@ body {
     height: 120px;
 }
   
-.cadastrar-ofertas textarea:focus + label span,
+.editar-ofertas textarea:focus + label span,
 textarea:valid + label span {
     height: 110px;
     font-size: 14px;
@@ -228,7 +230,7 @@ textarea:valid + label span {
     color: #FFF;
 }
 
-.cadastrar-ofertas textarea:focus + label span,
+.editar-ofertas textarea:focus + label span,
 textarea:invalid + label span {
     height: 110px;
     font-size: 14px;
@@ -236,12 +238,12 @@ textarea:invalid + label span {
     color: #FFF;
 }
 
-.cadastrar-ofertas textarea:focus + label::after {
+.editar-ofertas textarea:focus + label::after {
     border-bottom: 3px solid #FFF;
 }
 
 /* Select */
-.cadastrar-ofertas select {
+.editar-ofertas select {
     color: #FFF;
     font-size: 20px;
     width: 100%;
@@ -253,7 +255,7 @@ textarea:invalid + label span {
     outline: none;
 }
 
-.cadastrar-ofertas select:focus + label span,
+.editar-ofertas select:focus + label span,
 select:valid + label span {
     height: 40px;
     font-size: 14px;
@@ -261,7 +263,7 @@ select:valid + label span {
     color: #FFF;
 }
 
-.cadastrar-ofertas select:focus + label span,
+.editar-ofertas select:focus + label span,
 select:invalid + label span {
     height: 40px;
     font-size: 14px;
@@ -269,7 +271,7 @@ select:invalid + label span {
     color: #FFF;
 }
 
-.cadastrar-ofertas select:focus + label::after {
+.editar-ofertas select:focus + label::after {
     border-bottom: 3px solid #FFF;
 }
 
