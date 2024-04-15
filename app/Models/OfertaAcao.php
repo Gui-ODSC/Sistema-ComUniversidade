@@ -10,7 +10,7 @@ class OfertaAcao extends Model
 {
     use HasFactory;
 
-    public $timestamps = false;
+    public $timestamps = true;
 
     protected $table = 'OfertaAcao';
 
@@ -22,7 +22,8 @@ class OfertaAcao extends Model
         'id_publico_alvo',
         'status_registro',
         'duracao',
-        'regime'
+        'regime',
+        'data_limite'
     ];
 
     public function oferta():BelongsTo

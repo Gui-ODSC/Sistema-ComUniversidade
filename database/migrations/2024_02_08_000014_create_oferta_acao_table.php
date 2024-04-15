@@ -17,8 +17,9 @@ return new class extends Migration
             $table->unsignedBigInteger('id_tipo_acao');
             $table->unsignedBigInteger('id_publico_alvo');
             $table->enum('status_registro', ['NAO_REGISTRADA', 'REGISTRADA']);
-            $table->enum('duracao', ['SEMANAS', 'MESES', 'ANOS', 'INDEFINIDO']);
+            $table->enum('duracao', ['DIAS', 'SEMANAS', 'MESES', 'ANOS', 'INDEFINIDO']);
             $table->enum('regime', ['PRESENCIAL', 'ONLINE']);
+            $table->timestamp('data_limite')->nullable();
 
             $table->foreign('id_oferta')->references('id_oferta')->on('Oferta')->onDelete('restrict');
             $table->foreign('id_tipo_acao')->references('id_tipo_acao')->on('TipoAcao')->onDelete('restrict');

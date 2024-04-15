@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('TipoAcao', function (Blueprint $table) {
             $table->id('id_tipo_acao');
-            $table->string('nome_modalidade');
+            $table->string('nome');
 
-            $table->unique(['id_tipo_acao', 'nome_modalidade']);
+            $table->unique(['id_tipo_acao', 'nome']);
             $table->timestamps();
         });
     }
