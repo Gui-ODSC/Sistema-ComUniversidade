@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\MembroControllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Usuario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,24 +17,31 @@ class LoginMembroController extends Controller
     public function login(Request $request)
     {
         $credentials = $request->validate([
-            'email' => 'required',
+            'email' => 'required|email',
             'password' => 'required'
         ],[
             'email.required' => 'Campo Obrigatório',
+            'email.email' => 'Formato de email inválido',
             'password.required' => 'Campo Obrigatório',
         ]); 
-
-        $credentials = $request->only('email', 'password');
-        if(Auth::attempt($credentials)) {
-            
-            $request->session()->regenerate();
-
-            return redirect()->route('demanda_index');
+    
+        // Verifica se o usuário com o email fornecido é do tipo "professor"
+        $user = Usuario::where('email', $request->email)->first();
+    
+        if ($user && $user->tipo === 'MEMBRO') {
+            if (Auth::attempt($credentials)) {
+                $request->session()->regenerate();
+                return redirect()->route('demanda_index');
+            } else {
+                return back()->withErrors([
+                    "message" => 'Email ou Senha Inválidos.',
+                ]);
+            }
+        } else {
+            return back()->withErrors([
+                "message" => 'Usuário Externo Inexistente.',
+            ]);
         }
-
-        return back()->withErrors([
-            "message" => 'Email ou Senha Inválidos.',
-        ]);
 
     }
 
@@ -43,7 +51,7 @@ class LoginMembroController extends Controller
     
         $request->session()->regenerateToken();
 
-        return redirect()->to(route('login_index'))->with(Auth::logout());
+        return redirect()->to(route('login_membro_index'))->with(Auth::logout());
     }
 
 }
