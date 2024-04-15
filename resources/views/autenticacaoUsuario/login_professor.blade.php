@@ -16,15 +16,43 @@
 </header>
 <body>
     <div class="login-container">
-        <form action="#"> 
+        <form method="POST" action="{{ route('login_professor_store') }}">
+            @csrf
+            @if (session()->has('success'))
+                <div class="alert alert-success" style="text-align: center">
+                    <p>{{session('success')}}</p>
+                </div>
+            @endif
             <h1>Login Professor</h1>
-            <label for="login">Login</label>
-            <input type="text" id="password" placeholder="Login">
+            <label for="email">Login</label>
+            <input class="is-invalid" type="text" id="email" name="email" placeholder="Login" value={{ old('email')}}>
+            @error('email')
+                <div id="error-message-email" class="msg-erro fade-effect-error">
+                    <p>{{ $message }}</p>
+                </div>
+            @enderror
+            @error('message')
+            <div id="error-message-email" class="msg-erro fade-effect-error">
+                <p>{{ $message }}</p>
+            </div>
+            @enderror
             <label for="password">Senha</label>
-            <input type="password" id="password" placeholder="Senha">
-            <span><a href="{{ route('inicial') }}">Recuperar a Senha</a></span><br>
-            <button>Entrar</button>
+            <input type="password" id="password" name="password" placeholder="Senha">
+            @error('password')
+                <div id="error-message-password" class="msg-erro fade-effect-error">
+                    <p>{{ $message }}</p>
+                </div>
+            @enderror
+            @error('message')
+            <div id="error-message-email" class="msg-erro fade-effect-error">
+                <p>{{ $message }}</p>
+            </div>
+            @enderror
+            <span><a href="{{ route('reset_index') }}">Recuperar a Senha</a></span><br>
+            <button type="submit" >Entrar</button>
+            {{-- <span><a href="{{ route('cadastro_professor_index') }}">Ainda não possui conta? Cadastre-se</a></span><br> --}}
         </form>
+        <script src="{{ asset('js/errors/mensagem_erro.js') }}"></script>
     </div>
 </body>
 </html>

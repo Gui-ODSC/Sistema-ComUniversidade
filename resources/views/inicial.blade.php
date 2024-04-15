@@ -10,13 +10,13 @@
     <h1>Bem vindo ao Sistema</h1>
     <div class="selecao">
         <h2>Selecione como deseja acessar o sistema</h2>
-        <a href="{{ route('login_index') }}" class="botao">
+        <a href="{{ route('login_membro_index') }}" class="botao">
             <button>Membro da Sociedade</button>
         </a>
-        <a href="{{ route('login_aluno') }}" class="botao">
+        <a href="{{-- {{ route('login_estudante_index') }} --}}" class="botao">
             <button>Alunos</button>
         </a>
-        <a href="{{ route('login_professor') }}" class="botao">
+        <a href="{{ route('login_professor_index') }}" class="botao">
             <button>Professores</button>
         </a>
     </div>
