@@ -14,7 +14,7 @@
     <title>Minhas Demandas</title>
 </head>
 <body>
-    @include('menu')
+    @include('usuarioMembro.menu')
     <main class="cadastrar-demandas" id="conteudo">
         <div class="botao-voltar">
             <a title="Voltar" onclick="goBack()" href="{{ route('demanda_index') }}" --}}><img src="{{ asset('img/usuarioMembro/cadastrar_demandas/botao_voltar.png')}}" alt=""></a>
@@ -76,7 +76,7 @@
                     @error('pessoas_afetadas')
                         <input title="{{$message}}" type="number" name="pessoas_afetadas" min="0" autocomplete="off" onkeypress="return event.charCode >= 48 && event.charCode <= 57" style="border: 1px solid red; background-color:rgb(235, 201, 206)" required>
                         <label for="pessoas_afetadas">
-                            <span>Pessoas Afetadas</span>
+                            <span>Pessoas Afetadas (apenas números)</span>
                         </label>
                     @else
                         <input type="number" name="pessoas_afetadas" min="0" autocomplete="off" onkeypress="return event.charCode >= 48 && event.charCode <= 57" required>

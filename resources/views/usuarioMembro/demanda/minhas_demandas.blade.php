@@ -11,7 +11,7 @@
     <title>Minhas Demandas</title>
 </head>
 <body> 
-    @include('menu')
+    @include('usuarioMembro.menu')
     <main class="minhas-demandas" id="conteudo">
         @if( session()->has('msg-demanda'))
             <div class="alert alert-success" style="text-align: center">
@@ -64,8 +64,6 @@
                     @endif
                 </tbody>
             </table>
-            
-            
         <script src="{{ asset('js/errors/mensagem_erro.js') }}"></script>   
     </main>
 </body>

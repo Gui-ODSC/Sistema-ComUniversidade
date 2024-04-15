@@ -19,7 +19,7 @@
     <title>Perfil</title>
 </head>
 <body> 
-    @include('menu')
+    @include('usuarioMembro.menu')
     <main class="perfil" id="conteudo">
             <div class="botao-voltar">
                 <a title="Voltar" onclick="goBack()"><img src="{{ asset('img/usuarioMembro/cadastrar_demandas/botao_voltar.png')}}" alt=""></a>

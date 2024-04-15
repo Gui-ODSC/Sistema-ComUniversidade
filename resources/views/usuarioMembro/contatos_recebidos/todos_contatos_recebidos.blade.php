@@ -11,7 +11,7 @@
     <title>Contatos Recebidos</title>
 </head>
 <body> 
-    @include('menu')
+    @include('usuarioMembro.menu')
     <main class="todos-contatos" id="conteudo">
         <div class="titulo">
             <h1>Contatos Recebidos</h1>

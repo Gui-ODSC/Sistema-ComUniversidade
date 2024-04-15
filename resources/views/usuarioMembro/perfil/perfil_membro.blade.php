@@ -16,7 +16,7 @@
     <title>Perfil</title>
 </head>
 <body> 
-    @include('menu')
+    @include('usuarioMembro.menu')
     <main class="perfil" id="conteudo">
         <div>
             <div class="botao-voltar">

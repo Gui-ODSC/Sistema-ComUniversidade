@@ -20,7 +20,7 @@
     <title>Todas as Ofertas</title>
 </head>
 <body> 
-    @include('menu')
+    @include('usuarioMembro.menu')
     <main class="todas-ofertas" id="conteudo">
         <div class="titulo">
             <h1>Todas as Ofertas Disponíveis</h1>

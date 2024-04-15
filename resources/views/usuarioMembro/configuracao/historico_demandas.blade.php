@@ -10,7 +10,7 @@
     <title>Configurações</title>
 </head>
 <body> 
-    @include('menu')
+    @include('usuarioMembro.menu')
     <main class="historico-demanda" id="conteudo">
         <h1>Historico Demandas</h1>
         <table class="table table-bordered p-5 table-personalizacao">

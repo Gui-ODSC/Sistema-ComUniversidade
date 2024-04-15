@@ -13,7 +13,7 @@
     <title>Matching Demanda</title>
 </head>
 <body> 
-    @include('menu')
+    @include('usuarioMembro.menu')
     <main class="matchings" id="conteudo">
         <div class="container-info-demanda">
             <div class="header-demanda">

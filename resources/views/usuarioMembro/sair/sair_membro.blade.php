@@ -9,7 +9,7 @@
 <body>
 <div class="sair">
         <h1>Deseja mesmo Sair?</h1>
-        <a href="{{ route('login_destroy') }}"><button>SIM</button></a>
+        <a href="{{ route('login_membro_destroy') }}"><button>SIM</button></a>
         <a href="{{ route('demanda_index') }}"><button>NÃO</button></a>
     </div>
 </body>

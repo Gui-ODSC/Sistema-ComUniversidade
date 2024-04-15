@@ -10,7 +10,7 @@
     <title>Configurações</title>
 </head>
 <body> 
-    @include('menu')
+    @include('usuarioMembro.menu')
     <main class="sobre-nos" id="conteudo">
         <h1>Sobre Nós</h1>
         <hr>

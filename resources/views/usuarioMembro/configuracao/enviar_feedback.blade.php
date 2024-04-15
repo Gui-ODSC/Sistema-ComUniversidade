@@ -10,7 +10,7 @@
     <title>Configurações</title>
 </head>
 <body> 
-    @include('menu')
+    @include('usuarioMembro.menu')
     <main class="historico-demanda" id="conteudo">
         <div class="enviar-feedback">
             <h1>Enviar Feedback</h1>

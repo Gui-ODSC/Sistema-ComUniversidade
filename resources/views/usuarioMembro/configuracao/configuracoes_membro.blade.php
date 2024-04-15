@@ -10,7 +10,7 @@
     <title>Configurações</title>
 </head>
 <body> 
-    @include('menu')
+    @include('usuarioMembro.menu')
     <main class="configuracoes" id="conteudo">
         <h1>Configurações</h1>
         <a href="{{ route('ajuda_sistema') }}"><button>Ajuda do Sistema</button></a>
