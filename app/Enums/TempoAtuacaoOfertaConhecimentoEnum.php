@@ -2,7 +2,7 @@
 
 namespace App\Enums;
 
-enum TempoAtuacaoOfertaConhecimentoEnum
+enum TempoAtuacaoOfertaConhecimentoEnum: string
 {
     case MENOS_1_ANO = '-1ANO';
     case MAIS_1_ANO = '+1ANO';

@@ -2,7 +2,7 @@
 
 namespace App\Enums;
 
-enum RegimeOfertaAcao
+enum RegimeOfertaAcao: string
 {
     case PRESENCIAL = 'PRESENCIAL';
     case ONLINE = 'ONLINE';

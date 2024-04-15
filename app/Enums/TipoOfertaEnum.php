@@ -2,7 +2,7 @@
 
 namespace App\Enums;
 
-enum TipoOfertaEnum
+enum TipoOfertaEnum: string
 {
     case ACAO = 'ACAO';
     case CONHECIMENTO = 'CONHECIMENTO';

@@ -2,8 +2,9 @@
 
 namespace App\Enums;
 
-enum DuracaoOfertaAcao
+enum DuracaoOfertaAcao:string
 {
+    case DIAS = 'DIAS';
     case SEMANAS = 'SEMANAS';
     case MESES = 'MESES';
     case ANOS = 'ANOS';
