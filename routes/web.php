@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\MembroControllers\LoginMembroController;
+use App\Http\Controllers\ProfessorControllers\LoginProfessorController;
 use App\Http\Controllers\ResetPasswordController;
 use Illuminate\Support\Facades\Route;
 /*
@@ -21,9 +22,15 @@ Route::get('/', function(){
 //Rotas de Login específicas para cada tipo de usuário
 Route::prefix('/autenticacao')->group(function(){
     Route::prefix('/login_membro')->group( function(){
-        Route::get('/login', [LoginMembroController::class, 'index'])->name('login_index');
-        Route::post('/login', [LoginMembroController::class, 'login'])->name('login_store');
-        Route::get('/logout', [LoginMembroController::class, 'logout'])->name('login_destroy');
+        Route::get('/login', [LoginMembroController::class, 'index'])->name('login_membro_index');
+        Route::post('/login', [LoginMembroController::class, 'login'])->name('login_membro_store');
+        Route::get('/logout', [LoginMembroController::class, 'logout'])->name('login_membro_destroy');
+    });
+
+    Route::prefix('/login_professor')->group(function(){
+        Route::get('/login', [LoginProfessorController::class, 'index'])->name('login_professor_index');
+        Route::post('/login', [LoginProfessorController::class, 'login'])->name('login_professor_store');
+        Route::get('/logout', [LoginProfessorController::class, 'logout'])->name('login_professor_destroy');
     });
 
     Route::prefix('/redefinir_senha')->controller(ResetPasswordController::class)->group( function(){
