@@ -13,9 +13,9 @@
 <body> 
     @include('usuarioProfessor.menu')
     <main class="minhas-ofertas" id="conteudo">
-        @if( session()->has('msg-demanda'))
+        @if( session()->has('msg-oferta'))
             <div class="alert alert-success" style="text-align: center">
-                <p>{{session('msg-demanda')}}</p>
+                <p>{{session('msg-oferta')}}</p>
             </div>
         @endif
         <div class="titulo">

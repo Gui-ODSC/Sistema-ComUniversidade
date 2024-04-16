@@ -62,7 +62,7 @@ class OfertaConhecimentoProfessorController extends Controller
             return back()->withErrors([
                 "message" => 'Campos de Área de Conhecimento Inválidos',
                 "dados" => $validarCamposAreaConhecimento->errors()->all(),
-                ...$this->listErrosAreaConhecimento($validarCamposAreaConhecimento->errors())
+                /* ...$this->listErrosAreaConhecimento($validarCamposAreaConhecimento->errors()) */
             ]);
         }
 
@@ -71,7 +71,7 @@ class OfertaConhecimentoProfessorController extends Controller
             return back()->withErrors([
                 "message" => 'Campo de Oferta inválidos',
                 "dados" => $validarCamposOferta->errors()->all(),
-                ...$this->listErrosOferta($validarCamposOferta->errors())
+                /* ...$this->listErrosOferta($validarCamposOferta->errors()) */
             ]);
         }
 
@@ -80,7 +80,7 @@ class OfertaConhecimentoProfessorController extends Controller
             return back()->withErrors([
                 "message" => 'Campo de Oferta inválidos',
                 "dados" => $validarCamposOfertaConhecimento->errors()->all(),
-                ...$this->listErrosOfertaConhecimento($validarCamposOfertaConhecimento->errors())
+                /* ...$this->listErrosOfertaConhecimento($validarCamposOfertaConhecimento->errors()) */
             ]);
         }
 
@@ -110,119 +110,79 @@ class OfertaConhecimentoProfessorController extends Controller
 
     }
 
-    public function editAcaoIndex($demandaId)
-    {
-        $demanda = Demanda::findOrFail($demandaId);
-        $publicoAlvo = PublicoAlvo::where('id_publico_alvo', $demanda->id_publico_alvo)->first();
-        $areaConhecimento = AreaConhecimento::where('id_area_conhecimento', $demanda->id_area_conhecimento)->first();
-        $listPublicoAlvo = $this->publicoAlvoController->list();
-        $listAreaConhecimento = $this->areaConhecimentoController->list();
-
-        return view(
-            'usuarioMembro/demanda/editar_demandas',
-            [
-                'demanda' => $demanda,
-                'publicoAlvo' => $publicoAlvo,
-                'areaConhecimento' => $areaConhecimento,
-                'listPublicoAlvo' => $listPublicoAlvo,
-                'listAreaConhecimento' => $listAreaConhecimento,
-            ]
-        );
-    }
-
-    public function editStore(Request $request, $demandaId)
+    public function editStoreConhecimento(Request $request, $ofertaId)
     {
         $validarCamposAreaConhecimento = $this->areaConhecimentoController->validarCamposAreaConhecimento($request);
-        $validarCamposPublicoAlvo = $this->publicoAlvoController->validarCamposPublicoAlvo($request);
-
         $areaConhecimentoId = $validarCamposAreaConhecimento->getData()['id_area_conhecimento'];
-
-        $publicoAlvoId = $validarCamposPublicoAlvo->getData()['id_publico_alvo'];
 
         $request->merge([
             'id_area_conhecimento' => $areaConhecimentoId,
-            'id_publico_alvo' => $publicoAlvoId
+            'tipo' => 'CONHECIMENTO',
         ]);
 
-        $validarCamposDemanda = $this->demandaController->validarCamposDemandaUpdate($request, $demandaId);
+        $validarCamposOferta = $this->ofertaController->validarCamposOfertaUpdate($request, $ofertaId);
+        $validarCamposOfertaConhecimento = $this->ofertaConhecimentoController->validarCamposOfertaConhecimentoUpdate($request, $ofertaId);
 
         // Verifica se a validação dos campos de AreaConhecimento falhou
         if ($validarCamposAreaConhecimento->fails()) {
             return back()->withErrors([
                 "message" => 'Campos de Área de Conhecimento Inválidos',
                 "dados" => $validarCamposAreaConhecimento->errors()->all(),
-                ...$this->listErrosAreaConhecimento($validarCamposAreaConhecimento->errors())
-            ]);
-        }
-
-        // Verifica se a validação dos campos de Publico Alvo falhou
-        if ($validarCamposPublicoAlvo->fails()) {
-            return back()->withErrors([
-                "message" => 'Campo de publico alvo inválidos',
-                "dados" => $validarCamposPublicoAlvo->errors()->all(),
-                ...$this->listErrosPublicoAlvo($validarCamposPublicoAlvo->errors())
+                /* ...$this->listErrosAreaConhecimento($validarCamposAreaConhecimento->errors()) */
             ]);
         }
 
         // Verifica se a validação dos campos de demanda falhou
-        if ($validarCamposDemanda->fails()) {
+        if ($validarCamposOferta->fails()) {
             return back()->withErrors([
-                "message" => 'Campo de demanda inválidos',
-                "dados" => $validarCamposDemanda->errors()->all(),
-                ...$this->listErrosDemanda($validarCamposDemanda->errors())
+                "message" => 'Campo de Oferta inválidos',
+                "dados" => $validarCamposOferta->errors()->all(),
+                /* ...$this->listErrosOferta($validarCamposOferta->errors()) */
             ]);
         }
 
-        $validatedDataDemanda = $validarCamposDemanda->validate();
+        // Verifica se a validação dos campos de demanda falhou
+        if ($validarCamposOfertaConhecimento->fails()) {
+            return back()->withErrors([
+                "message" => 'Campo de Oferta inválidos',
+                "dados" => $validarCamposOfertaConhecimento->errors()->all(),
+                /* ...$this->listErrosOfertaConhecimento($validarCamposOfertaConhecimento->errors()) */
+            ]);
+        }
 
-        $demanda = $this->demandaModel::findOrFail($demandaId);
+        $validatedDataOferta = $validarCamposOferta->validate();
+        $validatedDataOfertaAcao = $validarCamposOfertaConhecimento->validate();
 
-        $demanda->update([
-            'id_usuario' => $validatedDataDemanda['id_usuario'],
-            'id_publico_alvo' => $validatedDataDemanda['id_publico_alvo'],
-            'id_area_conhecimento' => $validatedDataDemanda['id_area_conhecimento'],
-            'titulo' => $validatedDataDemanda['titulo'],
-            'descricao' => $validatedDataDemanda['descricao'],
-            'pessoas_afetadas' => $validatedDataDemanda['pessoas_afetadas'],
-            'duracao' => $validatedDataDemanda['duracao'],
-            'nivel_prioridade' => $validatedDataDemanda['nivel_prioridade'],
-            'instituicao_setor' => $validatedDataDemanda['instituicao_setor'],
-            'updated_at' => date('Y-m-d H:i:s'),
+        $oferta = $this->ofertaModel::findOrFail($ofertaId);
+        $ofertaConhecimento = $this->ofertaConhecimentoModel::where('id_oferta', $oferta->id_oferta)->first();
+
+        $oferta->update([
+            'id_usuario_professor' => $validatedDataOferta['id_usuario_professor'],
+            'id_area_conhecimento' => $validatedDataOferta['id_area_conhecimento'],
+            'titulo' => $validatedDataOferta['titulo'],
+            'descricao' => $validatedDataOferta['descricao'],
+            'tipo' => $validatedDataOferta['tipo'],
+            'created_at' => now(),
         ]);
 
-        return redirect()->route('demanda_index')->with('msg-demanda', 'Demanda atualizada com Sucesso.');
+        $ofertaConhecimento->update([
+            'id_oferta' => $validatedDataOfertaAcao['id_oferta'],	
+            'tempo_atuacao' => $validatedDataOfertaAcao['tempo_atuacao'],
+            'link_lattes' => $validatedDataOfertaAcao['link_lattes'] ?? null,	
+            'link_linkedin' => $validatedDataOfertaAcao['link_linkedin'] ?? null,
+            'created_at' => now(),	
+        ]);
+
+        return redirect()->route('oferta_index')->with('msg-demanda', 'Nova Oferta cadastrada.');
     }
 
-    public function deleteStore($demandaId)
+    public function deleteStoreConhecimento($ofertaId)
     {
-        $demanda = Demanda::findOrFail($demandaId);
-        $demanda->deleteOrFail();
-        return redirect()->route('demanda_index')->with('msg-demanda', 'Demanda excluída com sucesso!');
+        $oferta = Oferta::findOrFail($ofertaId);
+        $ofertaConhecimento = OfertaConhecimento::where('id_oferta', $oferta->id_oferta)->first();
+        $ofertaConhecimento->deleteOrFail();
+        $oferta->deleteOrFail();
+        return redirect()->route('oferta_index')->with('msg-oferta', 'Oferta Conhecimento excluída com sucesso!');
     }
 
-    /* TRATAMENTO DE ERROS */
-
-    private function listErrosAreaConhecimento($errors)
-    {
-        return [
-            "areaConhecimento" => $errors->first('nome')
-        ];
-    }
-
-    private function listErrosOferta($errors)
-    {
-        return [
-            'titulo' => $errors->first('titulo'),	
-            'descricao' => $errors->first('descricao'),	
-        ];
-    }
-
-    private function listErrosOfertaConhecimento($errors)
-    {
-        return [
-            'tempo_atuacao' => $errors->first('tempo_atuacao'),
-            'link_lattes' => $errors->first('link_lattes'),
-            'link_linkedin' => $errors->first('link_linkedin'),
-        ];
-    }
 }

@@ -23,13 +23,17 @@
         <div class="titulo">
             <h1>Editar Oferta Ação</h1>
         </div>
-        <form action="{{-- {{ route('oferta_edit_store_acao', $oferta->id_oferta) }} --}}" method="POST">
-            @if($errors->has('dados'))
-                <div class="msg-erro fade-effect-error" id="error-message-email" style="margin-top: 30px">
-                    @foreach ($errors->get('dados') as $dado)
-                        <p style="display: block; align-items: center; width: 100%;">{{ $dado }}</p>
-                        <br>
-                    @endforeach
+        <form action="{{ route('oferta_edit_store_acao', $oferta->id_oferta) }}" method="POST">
+            @csrf
+            @if($errors->any())
+                <div class="alert alert-danger" style="text-align: center; margin-top: 20px">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            @if ($error)
+                                <p>{{ $error }}</p>
+                            @endif
+                        @endforeach
+                    </ul>
                 </div>
             @endif
             <div class="section-form">

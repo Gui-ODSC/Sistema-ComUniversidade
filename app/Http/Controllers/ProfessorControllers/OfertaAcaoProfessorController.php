@@ -4,16 +4,12 @@ namespace App\Http\Controllers\ProfessorControllers;
 
 use App\Http\Controllers\AreaConhecimentoController;
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\DemandaController;
 use App\Http\Controllers\OfertaAcaoController;
 use App\Http\Controllers\OfertaController;
 use App\Http\Controllers\PublicoAlvoController;
 use App\Http\Controllers\TipoAcaoController;
-use App\Models\AreaConhecimento;
-use App\Models\Demanda;
 use App\Models\Oferta;
 use App\Models\OfertaAcao;
-use App\Models\PublicoAlvo;
 use Illuminate\Http\Request;
 
 class OfertaAcaoProfessorController extends Controller
@@ -73,7 +69,6 @@ class OfertaAcaoProfessorController extends Controller
             return back()->withErrors([
                 "message" => 'Campos de Área de Conhecimento Inválidos',
                 "dados" => $validarCamposAreaConhecimento->errors()->all(),
-                ...$this->listErrosAreaConhecimento($validarCamposAreaConhecimento->errors())
             ]);
         }
 
@@ -82,7 +77,6 @@ class OfertaAcaoProfessorController extends Controller
             return back()->withErrors([
                 "message" => 'Campo de publico alvo inválidos',
                 "dados" => $validarCamposPublicoAlvo->errors()->all(),
-                ...$this->listErrosPublicoAlvo($validarCamposPublicoAlvo->errors())
             ]);
         }
 
@@ -90,7 +84,6 @@ class OfertaAcaoProfessorController extends Controller
             return back()->withErrors([
                 "message" => 'Campo de publico alvo inválidos',
                 "dados" => $validarCamposTipoAcao->errors()->all(),
-                ...$this->listErrosTipoAcao($validarCamposTipoAcao->errors())
             ]);
         }
 
@@ -99,7 +92,6 @@ class OfertaAcaoProfessorController extends Controller
             return back()->withErrors([
                 "message" => 'Campo de Oferta inválidos',
                 "dados" => $validarCamposOferta->errors()->all(),
-                ...$this->listErrosOferta($validarCamposOferta->errors())
             ]);
         }
 
@@ -108,7 +100,6 @@ class OfertaAcaoProfessorController extends Controller
             return back()->withErrors([
                 "message" => 'Campo de Oferta inválidos',
                 "dados" => $validarCamposOfertaAcao->errors()->all(),
-                ...$this->listErrosOfertaAcao($validarCamposOfertaAcao->errors())
             ]);
         }
 
@@ -137,52 +128,35 @@ class OfertaAcaoProfessorController extends Controller
             'created_at' => now(),	
         ]);
 
-        return redirect()->route('oferta_index')->with('msg-demanda', 'Nova Oferta cadastrada.');
+        return redirect()->route('oferta_index')->with('msg-oferta', 'Nova Oferta cadastrada.');
 
     }
 
-    public function editAcaoIndex($demandaId)
-    {
-        $demanda = Demanda::findOrFail($demandaId);
-        $publicoAlvo = PublicoAlvo::where('id_publico_alvo', $demanda->id_publico_alvo)->first();
-        $areaConhecimento = AreaConhecimento::where('id_area_conhecimento', $demanda->id_area_conhecimento)->first();
-        $listPublicoAlvo = $this->publicoAlvoController->list();
-        $listAreaConhecimento = $this->areaConhecimentoController->list();
-
-        return view(
-            'usuarioMembro/demanda/editar_demandas',
-            [
-                'demanda' => $demanda,
-                'publicoAlvo' => $publicoAlvo,
-                'areaConhecimento' => $areaConhecimento,
-                'listPublicoAlvo' => $listPublicoAlvo,
-                'listAreaConhecimento' => $listAreaConhecimento,
-            ]
-        );
-    }
-
-    public function editStore(Request $request, $demandaId)
+    public function editStoreAcao(Request $request, $ofertaId)
     {
         $validarCamposAreaConhecimento = $this->areaConhecimentoController->validarCamposAreaConhecimento($request);
         $validarCamposPublicoAlvo = $this->publicoAlvoController->validarCamposPublicoAlvo($request);
+        $validarCamposTipoAcao = $this->tipoAcaoController->validarCamposTipoAcao($request);
 
         $areaConhecimentoId = $validarCamposAreaConhecimento->getData()['id_area_conhecimento'];
-
         $publicoAlvoId = $validarCamposPublicoAlvo->getData()['id_publico_alvo'];
+        $tipoAcaoId = $validarCamposTipoAcao->getData()['id_tipo_acao'];
 
         $request->merge([
             'id_area_conhecimento' => $areaConhecimentoId,
-            'id_publico_alvo' => $publicoAlvoId
+            'id_publico_alvo' => $publicoAlvoId,
+            'id_tipo_acao' => $tipoAcaoId,
+            'tipo' => 'ACAO',
         ]);
 
-        $validarCamposDemanda = $this->demandaController->validarCamposDemandaUpdate($request, $demandaId);
+        $validarCamposOferta = $this->ofertaController->validarCamposOfertaUpdate($request, $ofertaId);
+        $validarCamposOfertaAcao = $this->ofertaAcaoController->validarCamposOfertaAcaoUpdate($request, $ofertaId);
 
         // Verifica se a validação dos campos de AreaConhecimento falhou
         if ($validarCamposAreaConhecimento->fails()) {
             return back()->withErrors([
                 "message" => 'Campos de Área de Conhecimento Inválidos',
                 "dados" => $validarCamposAreaConhecimento->errors()->all(),
-                ...$this->listErrosAreaConhecimento($validarCamposAreaConhecimento->errors())
             ]);
         }
 
@@ -191,84 +165,69 @@ class OfertaAcaoProfessorController extends Controller
             return back()->withErrors([
                 "message" => 'Campo de publico alvo inválidos',
                 "dados" => $validarCamposPublicoAlvo->errors()->all(),
-                ...$this->listErrosPublicoAlvo($validarCamposPublicoAlvo->errors())
+            ]);
+        }
+
+        if ($validarCamposTipoAcao->fails()) {
+            return back()->withErrors([
+                "message" => 'Campo de publico alvo inválidos',
+                "dados" => $validarCamposTipoAcao->errors()->all(),
             ]);
         }
 
         // Verifica se a validação dos campos de demanda falhou
-        if ($validarCamposDemanda->fails()) {
+        if ($validarCamposOferta->fails()) {
             return back()->withErrors([
-                "message" => 'Campo de demanda inválidos',
-                "dados" => $validarCamposDemanda->errors()->all(),
-                ...$this->listErrosDemanda($validarCamposDemanda->errors())
+                "message" => 'Campo de Oferta inválidos',
+                "dados" => $validarCamposOferta->errors()->all(),
             ]);
         }
 
-        $validatedDataDemanda = $validarCamposDemanda->validate();
+        // Verifica se a validação dos campos de demanda falhou
+        if ($validarCamposOfertaAcao->fails()) {
+            return back()->withErrors([
+                "message" => 'Campo de Oferta inválidos',
+                "dados" => $validarCamposOfertaAcao->errors()->all(),
+            ]);
+        }
 
-        $demanda = $this->demandaModel::findOrFail($demandaId);
+        $validatedDataOferta = $validarCamposOferta->validate();
+        $validatedDataOfertaAcao = $validarCamposOfertaAcao->validate();
 
-        $demanda->update([
-            'id_usuario' => $validatedDataDemanda['id_usuario'],
-            'id_publico_alvo' => $validatedDataDemanda['id_publico_alvo'],
-            'id_area_conhecimento' => $validatedDataDemanda['id_area_conhecimento'],
-            'titulo' => $validatedDataDemanda['titulo'],
-            'descricao' => $validatedDataDemanda['descricao'],
-            'pessoas_afetadas' => $validatedDataDemanda['pessoas_afetadas'],
-            'duracao' => $validatedDataDemanda['duracao'],
-            'nivel_prioridade' => $validatedDataDemanda['nivel_prioridade'],
-            'instituicao_setor' => $validatedDataDemanda['instituicao_setor'],
-            'updated_at' => date('Y-m-d H:i:s'),
+        $oferta = $this->ofertaModel::findOrFail($ofertaId);
+        $ofertaAcao = $this->ofertaAcaoModel::where('id_oferta', $oferta->id_oferta)->first();
+
+        $oferta->update([
+            'id_usuario_professor' => $validatedDataOferta['id_usuario_professor'],
+            'id_area_conhecimento' => $validatedDataOferta['id_area_conhecimento'],
+            'titulo' => $validatedDataOferta['titulo'],
+            'descricao' => $validatedDataOferta['descricao'],
+            'tipo' => $validatedDataOferta['tipo'],
+            'updated_at' => now(),
         ]);
 
-        return redirect()->route('demanda_index')->with('msg-demanda', 'Demanda atualizada com Sucesso.');
+        $ofertaAcao->update([
+            'id_oferta' => $validatedDataOfertaAcao['id_oferta'],	
+            'id_tipo_acao' => $validatedDataOfertaAcao['id_tipo_acao'],	
+            'id_publico_alvo' => $validatedDataOfertaAcao['id_publico_alvo'],	
+            'status_registro' => $validatedDataOfertaAcao['status_registro'],
+            'duracao' => $validatedDataOfertaAcao['duracao'],	
+            'regime' => $validatedDataOfertaAcao['regime'],
+            'data_limite' => $validatedDataOfertaAcao['data_limite'] ?? null,	
+            'updated_at' => now(),	
+        ]);
+        
+        return redirect()->route('oferta_index')->with('msg-oferta', 'Oferta Ação Atualizada com Sucesso!.');
     }
 
-    public function deleteStore($demandaId)
+    public function deleteStoreAcao($ofertaId)
     {
-        $demanda = Demanda::findOrFail($demandaId);
-        $demanda->deleteOrFail();
-        return redirect()->route('demanda_index')->with('msg-demanda', 'Demanda excluída com sucesso!');
+        $oferta = Oferta::findOrFail($ofertaId);
+        $ofertaAcao = OfertaAcao::where('id_oferta', $oferta->id_oferta)->first();
+        $ofertaAcao->deleteOrFail();
+        $oferta->deleteOrFail();
+
+        return redirect()->route('oferta_index')->with('msg-oferta', 'Oferta Ação excluída com sucesso!');
     }
 
-    /* TRATAMENTO DE ERROS */
-
-    private function listErrosAreaConhecimento($errors)
-    {
-        return [
-            "areaConhecimento" => $errors->first('nome')
-        ];
-    }
-
-    private function listErrosPublicoAlvo($errors)
-    {
-        return [
-            "publico_alvo" => $errors->first('nome')
-        ];
-    }
-
-    private function listErrosTipoAcao($errors)
-    {
-        return [
-            "tipo_acao" => $errors->first('nome')
-        ];
-    }
-
-    private function listErrosOferta($errors)
-    {
-        return [
-            'titulo' => $errors->first('titulo'),	
-            'descricao' => $errors->first('descricao'),	
-        ];
-    }
-
-    private function listErrosOfertaAcao($errors)
-    {
-        return [
-            'status_registro' => $errors->first('status_registro'),
-            'duracao' => $errors->first('duracao'),
-            'regime' => $errors->first('regime'),
-            'data_limite' => $errors->first('data_limite'),
-        ];
-    }
 }

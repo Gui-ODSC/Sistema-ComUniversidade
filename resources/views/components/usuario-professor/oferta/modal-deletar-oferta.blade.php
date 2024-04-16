@@ -14,10 +14,14 @@
         <div class="caixa-modal" id="caixa-modal-{{$idOferta}}">
             <span onclick="closeModalDeletar({{$idOferta}})" id="botao_fechar_model"><img src="{{ asset('img/usuarioMembro/minhas_demandas/fechar.png') }}" alt=""></span>
             <div class="modal-excluir">
-            <h2>Deseja mesmo Excluir essa demanda ?</h2>
+            <h2>Deseja mesmo Excluir essa Oferta ?</h2>
             <h4><strong>{{$oferta->titulo}}</strong></h4>
             <div class="div-botoes">
-                <form action="{{ route('oferta_delete_store', $idOferta) }}" method="POST">
+                @if ($oferta->tipo === 'ACAO')
+                    <form action="{{ route('oferta_delete_store_acao', $idOferta) }}" method="POST">
+                @elseif ($oferta->tipo === 'CONHECIMENTO')
+                    <form action="{{ route('oferta_delete_store_conhecimento', $idOferta) }}" method="POST">
+                @endif
                     @method('DELETE')
                     @csrf
                     <button type="submit" id="botao-sim">Sim</button>

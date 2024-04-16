@@ -32,7 +32,7 @@ class OfertaController extends Controller
                 Rule::exists(AreaConhecimento::class, 'id_area_conhecimento')
             ],
             'titulo' => 'required|string|max:255',
-            'descricao' => 'required|string|max:255',
+            'descricao' => 'required|string',
             'tipo' => [
                 new Enum(TipoOfertaEnum::class)
             ]
@@ -73,36 +73,24 @@ class OfertaController extends Controller
 
     }
 
-    public function update($id_oferta, Request $request)
+    public function validarCamposOfertaUpdate(Request $request, $ofertaId)
     {
-        $validator = Validator::make($request->all(), [
+        $idUsuarioLogado = auth()->id();
+        $usuarioProfessor = UsuarioProfessor::where('id_usuario', $idUsuarioLogado)->firstOrFail();
+
+        $dadosValidacao = array_merge($request->all(), ['id_usuario_professor' => $usuarioProfessor->id_usuario_professor]);
+
+        $validator = Validator::make($dadosValidacao, [
             ...$this->getValidationSchema(),
             'id_usuario_professor' => [
                 Rule::unique(Oferta::class, 'id_usuario_professor')
                     ->where('titulo', $request->input('titulo'))
+                    ->ignore($ofertaId, 'id_oferta')
             ]
-        ]);
+        ], $this->messageValidation());
 
-        if ($validator->fails()) {
-			return response($validator->errors())->setStatusCode(400);
-		}
-        
-        $validatedData = $validator->validated();
+        return $validator;
 
-        $oferta = $this->ofertaModel::findOrFail($id_oferta);
-
-        $oferta->update([
-            'id_usuario_professor' => $validatedData['id_usuario_professor'],
-            'id_area_conhecimento' => $validatedData['id_area_conhecimento'],
-            'titulo' => $validatedData['titulo'],
-            'descricao' => $validatedData['descricao'],
-            'tipo' => $validatedData['tipo']
-        ]);
-
-        return response()->json([
-            'message' => 'Oferta Updated Successfully',
-            'data' => $oferta
-        ])->setStatusCode(200);
     }
 
     public function delete($id_oferta) 
@@ -130,7 +118,6 @@ class OfertaController extends Controller
             'titulo.max' => 'O campo título ultrapassou o numero de caracteres.',
             'descricao.required' => 'O campo descrição é obrigatório.',
             'descricao.string' => 'O campo descrição deve ser um texto.',
-            'descricao.max' => 'O campo descricao ultrapassou o numero de caracteres.',
             'tipo.required' => 'O valor selecionado para o Tipo Oferta é Obrigatório.',
             'tipo' => 'O valor selecionado para o Tipo Oferta é inválido.',
         ];

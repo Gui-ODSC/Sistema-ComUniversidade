@@ -23,7 +23,7 @@ class OfertaConhecimentoController extends Controller
     {
         return [
             'id_oferta' => [
-                'if_exists:required',
+                'required_if:id_oferta,',
                 Rule::exists(Oferta::class, 'id_oferta')
             ],
             'tempo_atuacao' => [
@@ -59,21 +59,22 @@ class OfertaConhecimentoController extends Controller
         return $validator;
     }
 
-    public function update($id_oferta_conhecimento, Request $request)
+    public function validarCamposOfertaConhecimentoUpdate(Request $request, $ofertaId)
     {
-        
-    }
+        $ofertaConhecimento = OfertaConhecimento::where('id_oferta', $ofertaId)->first();
 
-    public function delete($id_oferta_conhecimento) 
-    {
-            
-        $ofertaConhecimento = $this->ofertaConhecimentoModel->findOrFail($id_oferta_conhecimento);
-        $ofertaConhecimento->delete();
+        $dadosValidacao = array_merge($request->all(), ['id_oferta' => $ofertaId]);
 
-        return response()->json([
-            'message' => 'Oferta Conhecimento deleted successfully'
-        ])->setStatusCode(200);
+        $validator = Validator::make($dadosValidacao, [
+            ...$this->getValidationSchema(),
+            'id_oferta_conhecimento' => [
+                Rule::unique(OfertaConhecimento::class, 'id_oferta_conhecimento')
+                    ->where('id_oferta', $request->input('id_oferta'))
+                    ->ignore($ofertaConhecimento->id_oferta_conhecimento, 'id_oferta_conhecimento')
+            ]
+        ], $this->messageValidation());
 
+        return $validator;
     }
 
     protected function messageValidation()

@@ -8,14 +8,10 @@ use App\Http\Controllers\OfertaController;
 use App\Http\Controllers\PublicoAlvoController;
 use App\Http\Controllers\TipoAcaoController;
 use App\Models\AreaConhecimento;
-use App\Models\Demanda;
 use App\Models\Oferta;
-use App\Models\OfertaAcao;
 use App\Models\PublicoAlvo;
 use App\Models\TipoAcao;
 use App\Models\UsuarioProfessor;
-use Carbon\Carbon;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class OfertaProfessorController extends Controller
@@ -118,84 +114,5 @@ class OfertaProfessorController extends Controller
         );
     }
 
-    public function editStoreAcao($ofertaId) {
-        return "";
-    }
-
-    public function editStoreConhecimento($ofertaId) {
-        return "";
-    }
-
-    /*
-    public function editStore(Request $request, $demandaId)
-    {
-        $validarCamposAreaConhecimento = $this->areaConhecimentoController->validarCamposAreaConhecimento($request);
-        $validarCamposPublicoAlvo = $this->publicoAlvoController->validarCamposPublicoAlvo($request);
-
-        $areaConhecimentoId = $validarCamposAreaConhecimento->getData()['id_area_conhecimento'];
-
-        $publicoAlvoId = $validarCamposPublicoAlvo->getData()['id_publico_alvo'];
-
-        $request->merge([
-            'id_area_conhecimento' => $areaConhecimentoId,
-            'id_publico_alvo' => $publicoAlvoId
-        ]);
-
-        $validarCamposDemanda = $this->demandaController->validarCamposDemandaUpdate($request, $demandaId);
-
-        // Verifica se a validação dos campos de AreaConhecimento falhou
-        if ($validarCamposAreaConhecimento->fails()) {
-            return back()->withErrors([
-                "message" => 'Campos de Área de Conhecimento Inválidos',
-                "dados" => $validarCamposAreaConhecimento->errors()->all(),
-                ...$this->listErrosAreaConhecimento($validarCamposAreaConhecimento->errors())
-            ]);
-        }
-
-        // Verifica se a validação dos campos de Publico Alvo falhou
-        if ($validarCamposPublicoAlvo->fails()) {
-            return back()->withErrors([
-                "message" => 'Campo de publico alvo inválidos',
-                "dados" => $validarCamposPublicoAlvo->errors()->all(),
-                ...$this->listErrosPublicoAlvo($validarCamposPublicoAlvo->errors())
-            ]);
-        }
-
-        // Verifica se a validação dos campos de demanda falhou
-        if ($validarCamposDemanda->fails()) {
-            return back()->withErrors([
-                "message" => 'Campo de demanda inválidos',
-                "dados" => $validarCamposDemanda->errors()->all(),
-                ...$this->listErrosDemanda($validarCamposDemanda->errors())
-            ]);
-        }
-
-        $validatedDataDemanda = $validarCamposDemanda->validate();
-
-        $demanda = $this->demandaModel::findOrFail($demandaId);
-
-        $demanda->update([
-            'id_usuario' => $validatedDataDemanda['id_usuario'],
-            'id_publico_alvo' => $validatedDataDemanda['id_publico_alvo'],
-            'id_area_conhecimento' => $validatedDataDemanda['id_area_conhecimento'],
-            'titulo' => $validatedDataDemanda['titulo'],
-            'descricao' => $validatedDataDemanda['descricao'],
-            'pessoas_afetadas' => $validatedDataDemanda['pessoas_afetadas'],
-            'duracao' => $validatedDataDemanda['duracao'],
-            'nivel_prioridade' => $validatedDataDemanda['nivel_prioridade'],
-            'instituicao_setor' => $validatedDataDemanda['instituicao_setor'],
-            'updated_at' => date('Y-m-d H:i:s'),
-        ]);
-
-        return redirect()->route('demanda_index')->with('msg-demanda', 'Demanda atualizada com Sucesso.');
-    }
-
-    public function deleteStore($demandaId)
-    {
-        $demanda = Demanda::findOrFail($demandaId);
-        $demanda->deleteOrFail();
-        return redirect()->route('demanda_index')->with('msg-demanda', 'Demanda excluída com sucesso!');
-    }
- */
-
+    
 }

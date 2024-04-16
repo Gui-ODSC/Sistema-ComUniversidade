@@ -27,7 +27,7 @@ class OfertaAcaoController extends Controller
     {
         return [
             'id_oferta' => [
-                'if_exists:required',
+                'required_if:id_oferta,',
                 Rule::exists(Oferta::class, 'id_oferta')
             ],
             'id_tipo_acao' => [
@@ -77,21 +77,22 @@ class OfertaAcaoController extends Controller
         
     }
 
-    public function update($id_oferta_acao, Request $request)
+    public function validarCamposOfertaAcaoUpdate(Request $request, $ofertaId)
     {
-        
-    }
+        $ofertaAcao = OfertaAcao::where('id_oferta', $ofertaId)->first();
 
-    public function delete($id_oferta_acao) 
-    {
-            
-        $ofertaAcao = $this->ofertaAcaoModel->findOrFail($id_oferta_acao);
-        $ofertaAcao->delete();
+        $dadosValidacao = array_merge($request->all(), ['id_oferta' => $ofertaId]);
 
-        return response()->json([
-            'message' => 'Oferta Acao deleted successfully'
-        ])->setStatusCode(200);
+        $validator = Validator::make($dadosValidacao, [
+            ...$this->getValidationSchema(),
+            'id_oferta_acao' => [
+                Rule::unique(OfertaAcao::class, 'id_oferta_acao')
+                    ->where('id_oferta', $request->input('id_oferta'))
+                    ->ignore($ofertaAcao->id_oferta_acao, 'id_oferta_acao')
+            ]
+        ], $this->messageValidation());
 
+        return $validator;
     }
 
     protected function messageValidation()
