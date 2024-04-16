@@ -21,8 +21,8 @@ return new class extends Migration
             
             $table->foreign('id_usuario_origem')->references('id_usuario')->on('Usuario')->onDelete('restrict');
             $table->foreign('id_usuario_destino')->references('id_usuario')->on('Usuario')->onDelete('restrict');
-            $table->foreign('id_oferta')->references('id_oferta')->on('Oferta')->onDelete('restrict');
-            $table->foreign('id_demanda')->references('id_demanda')->on('Demanda')->onDelete('restrict');
+            $table->foreign('id_oferta')->references('id_oferta')->on('Oferta')->onDelete('cascade');
+            $table->foreign('id_demanda')->references('id_demanda')->on('Demanda')->onDelete('cascade');
             $table->unique(['id_usuario_origem', 'id_usuario_destino', 'id_oferta', 'id_demanda', 'tipo_contato'], 'uniqueTeste');
             $table->timestamps();
         });
