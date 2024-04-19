@@ -48,28 +48,36 @@
                 </div>
                 <div class="caixa-input" style="width: 482px; margin-left: 3px">
                     @error('publico_alvo')
-                        <input title="{{$message}}" type="text" id="autoCompletePublicoAlvo" name="publico_alvo" style="border: 1px solid red; background-color:rgb(235, 201, 206)" autocomplete="off" required>
-                        <label for="publico_alvo">
-                            <span>Publico alvo</span>
-                        </label>
+                        <div class="autoComplete_wrapper">  
+                            <input title="{{$message}}" type="text" id="autoCompletePublicoAlvo" name="publico_alvo" style="border: 1px solid red; background-color:rgb(235, 201, 206)" autocomplete="off" required>
+                            <label for="publico_alvo">
+                                <span>Publico alvo</span>
+                            </label>
+                        </div>
                     @else
-                        <input type="text" id="autoCompletePublicoAlvo" name="publico_alvo" autocomplete="off" required>
-                        <label for="publico_alvo">
-                            <span>Publico alvo</span>
-                        </label>
+                        <div class="autoComplete_wrapper">  
+                            <input type="text" id="autoCompletePublicoAlvo" name="publico_alvo" autocomplete="off" required>
+                            <label for="publico_alvo">
+                                <span>Publico alvo</span>
+                            </label>
+                        </div>
                     @enderror
                 </div>
                 <div class="caixa-input" style="width: 50%">
                     @error('areaConhecimento')
-                        <input title="{{$message}}" type="text" id="autoCompleteAreaConhecimento" name="area_conhecimento" style="border: 1px solid red; background-color:rgb(235, 201, 206)" autocomplete="off" required>
-                        <label for="area_conhecimento">
-                            <span>Área Conhecimento</span>
-                        </label>
+                        <div class="autoComplete_wrapper">  
+                            <input title="{{$message}}" type="text" id="autoCompleteAreaConhecimento" name="area_conhecimento" style="border: 1px solid red; background-color:rgb(235, 201, 206)" autocomplete="off" required>
+                            <label for="area_conhecimento">
+                                <span>Área Conhecimento</span>
+                            </label>
+                        </div>
                     @else
-                        <input type="text" id="autoCompleteAreaConhecimento" name="area_conhecimento" autocomplete="off" required>
-                        <label for="area_conhecimento">
-                            <span>Área Conhecimento</span>
-                        </label>
+                        <div class="autoComplete_wrapper">  
+                            <input type="text" id="autoCompleteAreaConhecimento" name="area_conhecimento" autocomplete="off" required>
+                            <label for="area_conhecimento">
+                                <span>Área Conhecimento</span>
+                            </label>
+                        </div>
                     @enderror
                 </div>
                 <div class="caixa-input" style="width: 603px; margin-left: 3px">
@@ -161,9 +169,9 @@
                         </label>
                     @enderror
                 </div>
-            </div>
-            <div class="button_send">
-                <button type="submit">Cadastrar</button>
+                <div class="button_send">
+                    <button type="submit">Cadastrar</button>
+                </div>
             </div>
         </form>
         <script src="{{ asset('js/errors/mensagem_erro.js') }}"></script>

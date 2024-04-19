@@ -145,15 +145,19 @@
                         <div class="caixa-input" style="width: 472px; margin-left: 3px;">
                             {{-- CIDADE --}}
                             @error('cidade')
-                                <input title="{{ $message }}" class="cidade alert-danger" type="text" name="nome_cidade" autocomplete="off" value="{{ $cidade->nome }}" style="border: 1px solid red; background-color:rgb(235, 201, 206)" required>
-                                <label for="nome_cidade">
-                                    <span>Cidade</span>
-                                </label>
+                                <div class="autoComplete_wrapper">  
+                                    <input title="{{ $message }}" class="cidade alert-danger" type="text" name="nome_cidade" autocomplete="off" value="{{ $cidade->nome }}" style="border: 1px solid red; background-color:rgb(235, 201, 206)" required>
+                                    <label for="nome_cidade">
+                                        <span>Cidade</span>
+                                    </label>
+                                </div>
                             @else
-                                <input type="text" id="autoCompleteCidade" name="nome_cidade" autocomplete="off" value="{{ $cidade->nome }}" required>
-                                <label for="nome_cidade">
-                                    <span>Cidade</span>
-                                </label>
+                                <div class="autoComplete_wrapper">  
+                                    <input type="text" id="autoCompleteCidade" name="nome_cidade" autocomplete="off" value="{{ $cidade->nome }}" required>
+                                    <label for="nome_cidade">
+                                        <span>Cidade</span>
+                                    </label>
+                                </div>
                             @enderror
                         </div>
                     </div>

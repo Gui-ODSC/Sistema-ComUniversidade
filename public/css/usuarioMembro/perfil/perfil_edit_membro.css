@@ -111,33 +111,42 @@ h1 {
 /* AUTOCOMPLETE */
 .autoComplete_wrapper {
     width: 100%;
+    background-color: #212121;
 }
 
-.autoComplete_wrapper #autoCompleteEstado,
-#autoCompleteBairro
+.caixa-input .autoComplete_wrapper ul {
+    position: absolute;
+    max-height: 120px;
+    overflow-y: scroll;
+    top: 100%;
+    left: 0;
+    right: 0;
+    padding: 0;
+    margin: .5rem 0 0 0;
+    border-radius: 4px;
+    background-color: #4d6d7f;
+    z-index: 1000;
+    outline: 0;
+    border: none;
+}
+
+.autoComplete_wrapper #autoCompleteCidade,
+#autoCompleteBairro, #autoCompleteEstado
 {
     height: 50px;
     width: 100%;
     color: #FFF;
+    font-size: 20px
 }
 
-.caixa-input #autoComplete_list {
-    border: solid 2px black;
-}
-
-#autoComplete_list ul {
-    list-style-type: none;
-    position: absolute;
-    height: 50px;
+.caixa-input #autoComplete_list li {
+    border: solid 1px #212121;
+    background-color: #47565a;
+    color: #FFF;
 }
 
 .caixa-input li {
     list-style-type: none;
-}
-
-.autoComplete_wrapper input {
-    height: 50px; 
-    color: #FFF;
 }
 
 

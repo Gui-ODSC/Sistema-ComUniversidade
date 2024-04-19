@@ -44,6 +44,7 @@ body {
 .section-form {
     background-color: #FFF;
     margin-top: 60px;
+    margin-bottom: 60px;
     border-radius: 10px;
     padding: 20px;
     display: flex;
@@ -56,9 +57,8 @@ body {
 }
 
 .cadastrar-demandas .button_send {
-    display: block;
-    margin-top: 25px;
-    margin-bottom: 50px;
+    display: flex;
+    margin: 20px auto 0px;
 }
 
 .cadastrar-demandas button {
@@ -88,18 +88,47 @@ body {
 }
   
 .cadastrar-demandas .caixa-input{
-    overflow: hidden;
     position: relative;
     width:100%;
-    height: 60px;
+    height: 50px;
     margin-bottom: 3px;
 }
 
 /* AutoComplete */
-.caixa-input #autoComplete_list {
-    display: block;
-    border: solid 2px black;
-    z-index: 1;
+.autoComplete_wrapper {
+    width: 100%;
+    background-color: #212121;
+}
+
+.caixa-input .autoComplete_wrapper ul {
+    position: absolute;
+    max-height: 120px;
+    overflow-y: scroll;
+    top: 100%;
+    left: 0;
+    right: 0;
+    padding: 0;
+    margin: .5rem 0 0 0;
+    border-radius: 4px;
+    background-color: #4d6d7f;
+    z-index: 1000;
+    outline: 0;
+    border: none;
+}
+
+.autoComplete_wrapper #autoCompleteAreaConhecimento,
+#autoCompletePublicoAlvo, #autoCompleteTipoAcao
+{
+    height: 50px;
+    width: 100%;
+    color: #FFF;
+    font-size: 20px
+}
+
+.caixa-input #autoComplete_list li {
+    border: solid 1px #212121;
+    background-color: #47565a;
+    color: #FFF;
 }
 
 .caixa-input li {
@@ -109,33 +138,33 @@ body {
 /* Fim */
   
 .cadastrar-demandas input {
-    color: #fff;
-    font-size: 22px;
+    color: #FFF;
+    font-size: 20px;
     width: 100%;
+    height: 50px;
     padding: 20px 10px 10px 5px;
     background-color: #4d6d7f;
     border: none;
-    border-radius: 4px;
     border-radius: 5px;
+    outline: none;
 }
   
 .cadastrar-demandas label {
     color: #fff;
     position: absolute;
     left: 0;
-    bottom: 0;
     width: 100%;
-    height: 100%;
+    height: 50px;
     pointer-events: none;
     border-bottom: 1px solid #ffffff;
 }
   
 .cadastrar-demandas span {
     position: absolute;
-    bottom: 5px;
     left: 5px;
-    font-size: 20px;
+    font-size: 14px;
     transition: all 0.3s ease;
+    border-radius: 10px;
 }
   
 .cadastrar-demandas label::after {
@@ -144,83 +173,100 @@ body {
     left: 0;
     bottom: -1px;
     width: 100%;
-    height: 100%;
-    border-bottom: 3px solid #FFF;
-    transform: translateX(-100%);
+    border-bottom: 1px solid #FFF;
     transition: all 0.3s ease;
 }
   
-.cadastrar-demandas input:focus + label span,
-input:valid + label span {
-    transform: translateY(-120%);
+.cadastrar-demandas input:read-only + label span, input:valid + label span {
+    height: 40px;
+    font-size: 14px;
+    bottom: 10px;
+    color: #FFF;
+}
+
+.cadastrar-demandas input:focus + label span, input:invalid + label span {
+    height: 40px;
     font-size: 14px;
     bottom: 10px;
     color: #FFF;
 }
   
-.cadastrar-demandas input:focus + label::after,
-  input:valid + label::after {
-    transform: translateX(0%);
+.cadastrar-demandas input:focus + label::after{
+    border-bottom: 3px solid #FFF;
 }
 
 /* TextArea */
 .cadastrar-demandas textarea {
     color: #FFF;
-    font-size: 22px;
+    font-size: 20px;
     width: 100%;
-    padding: 30px 10px 10px 5px;
+    height: 50px;
+    padding: 20px 10px 10px 5px;
     background-color: #4d6d7f;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
+    outline: none;
     line-height: 1;
     overflow-y: scroll;
     height: 120px;
     resize: none;
 }
 
-#campo-spam {
+#campo-label {
     height: 120px;
-    padding-top: 15px;
 }
   
 .cadastrar-demandas textarea:focus + label span,
 textarea:valid + label span {
-    transform: translateY(2%);
+    height: 110px;
     font-size: 14px;
     bottom: 10px;
     color: #FFF;
-    padding-bottom: 10px;
 }
 
-.cadastrar-demandas textarea:focus + label::after,
-  textarea:valid + label::after {
-    transform: translateX(0%);
+.cadastrar-demandas textarea:focus + label span,
+textarea:invalid + label span {
+    height: 110px;
+    font-size: 14px;
+    bottom: 10px;
+    color: #FFF;
+}
+
+.cadastrar-demandas textarea:focus + label::after {
+    border-bottom: 3px solid #FFF;
 }
 
 /* Select */
 .cadastrar-demandas select {
-    color: #fff;
-    font-size: 22px;
+    color: #FFF;
+    font-size: 20px;
     width: 100%;
-    height: 100%;
-    padding: 20px 0px 10px 5px;
+    height: 50px;
+    padding: 20px 10px 10px 5px;
     background-color: #4d6d7f;
     border: none;
-    border-radius: 4px;
-    line-height: 1;
+    border-radius: 5px;
+    outline: none;
 }
 
 .cadastrar-demandas select:focus + label span,
 select:valid + label span {
-    transform: translateY(-120%);
+    height: 40px;
     font-size: 14px;
     bottom: 10px;
     color: #FFF;
 }
 
-.cadastrar-demandas select:focus + label::after,
-  select:valid + label::after {
-    transform: translateX(0%);
+.cadastrar-demandas select:focus + label span,
+select:invalid + label span {
+    height: 40px;
+    font-size: 14px;
+    bottom: 10px;
+    color: #FFF;
+}
+
+.cadastrar-demandas select:focus + label::after {
+    border-bottom: 3px solid #FFF;
 }
 
 /* Remover setinha campo number */

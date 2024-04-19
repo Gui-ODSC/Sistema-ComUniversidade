@@ -49,28 +49,36 @@
                 </div>
                 <div class="caixa-input" style="width: 482px; margin-left: 3px">
                     @error('publico_alvo')
-                        <input title="{{$message}}" type="text" id="autoCompletePublicoAlvo" name="publico_alvo" placeholder="Publico Alvo da Ação" style="border: 1px solid red; background-color:rgb(235, 201, 206)" autocomplete="off" required>
-                        <label for="publico_alvo">
-                            <span>Publico alvo</span>
-                        </label>
+                        <div class="autoComplete_wrapper">  
+                            <input title="{{$message}}" type="text" id="autoCompletePublicoAlvo" name="publico_alvo" placeholder="Publico Alvo da Ação" style="border: 1px solid red; background-color:rgb(235, 201, 206)" autocomplete="off" required>
+                            <label for="publico_alvo">
+                                <span>Publico alvo</span>
+                            </label>
+                        </div>
                     @else
-                        <input type="text" id="autoCompletePublicoAlvo" name="publico_alvo" value="{{ $publicoAlvo->nome }}" autocomplete="off" required>
-                        <label for="publico_alvo">
-                            <span>Publico alvo</span>
-                        </label>
+                        <div class="autoComplete_wrapper">  
+                            <input type="text" id="autoCompletePublicoAlvo" name="publico_alvo" value="{{ $publicoAlvo->nome }}" autocomplete="off" required>
+                            <label for="publico_alvo">
+                                <span>Publico alvo</span>
+                            </label>
+                        </div>
                     @enderror
                 </div>
                 <div class="caixa-input" style="width: 50%">
                     @error('areaConhecimento')
-                        <input title="{{$message}}" type="text" id="autoCompleteAreaConhecimento" name="area_conhecimento" placeholder="Área de Conhecimento" style="border: 1px solid red; background-color:rgb(235, 201, 206)" autocomplete="off" required>
-                        <label for="area_conhecimento">
-                            <span>Área Conhecimento</span>
-                        </label>
+                        <div class="autoComplete_wrapper">  
+                            <input title="{{$message}}" type="text" id="autoCompleteAreaConhecimento" name="area_conhecimento" placeholder="Área de Conhecimento" style="border: 1px solid red; background-color:rgb(235, 201, 206)" autocomplete="off" required>
+                            <label for="area_conhecimento">
+                                <span>Área Conhecimento</span>
+                            </label>
+                        </div>
                     @else
-                        <input type="text" id="autoCompleteAreaConhecimento" name="area_conhecimento" value="{{ $areaConhecimento->nome }}" placeholder="Área de Conhecimento" autocomplete="off" required>
-                        <label for="area_conhecimento">
-                            <span>Área Conhecimento</span>
-                        </label>
+                        <div class="autoComplete_wrapper">  
+                            <input type="text" id="autoCompleteAreaConhecimento" name="area_conhecimento" value="{{ $areaConhecimento->nome }}" placeholder="Área de Conhecimento" autocomplete="off" required>
+                            <label for="area_conhecimento">
+                                <span>Área Conhecimento</span>
+                            </label>
+                        </div>
                     @enderror
                 </div>
                 <div class="caixa-input" style="width: 603px; margin-left: 3px">

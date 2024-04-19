@@ -144,15 +144,19 @@
                 <div class="caixa-input" style="width: 482px; margin-left: 3px;">
                     {{-- CIDADE --}}
                     @error('cidade')
-                        <input title="{{ $message }}" class="cidade alert-danger" type="text" name="nome_cidade" autocomplete="off" style="border: 1px solid red; background-color:rgb(235, 201, 206)" required>
-                        <label for="nome_cidade">
-                            <span>Cidade</span>
-                        </label>
+                        <div class="autoComplete_wrapper">  
+                            <input title="{{ $message }}" class="cidade alert-danger" type="text" name="nome_cidade" autocomplete="off" style="border: 1px solid red; background-color:rgb(235, 201, 206)" required>
+                            <label for="nome_cidade">
+                                <span>Cidade</span>
+                            </label>
+                        </div>
                     @else
-                        <input type="text" id="autoCompleteCidade" name="nome_cidade" autocomplete="off" required>
-                        <label for="nome_cidade">
-                            <span>Cidade</span>
-                        </label>
+                        <div class="autoComplete_wrapper">  
+                            <input type="text" id="autoCompleteCidade" name="nome_cidade" autocomplete="off" required>
+                            <label for="nome_cidade">
+                                <span>Cidade</span>
+                            </label>
+                        </div>
                     @enderror
                 </div>
                 <div class="caixa-input" style="width: 40%;">
@@ -200,31 +204,37 @@
                 <div class="caixa-input" style="width: 35%;">
                     {{-- ESTADO --}}
                     @error('estado')
-                        <input title="{{ $message }}" type="text" id="autoCompleteEstado" class="estado alert-danger" name="nome_estado" autocomplete="off" style="border: 1px solid red; background-color:rgb(235, 201, 206)" required>
-                        <label for="nome_estado">
-                            <span>Estado</span>
-                        </label>
+                        <div class="autoComplete_wrapper">  
+                            <input title="{{ $message }}" type="text" id="autoCompleteEstado" class="estado alert-danger" name="nome_estado" autocomplete="off" style="border: 1px solid red; background-color:rgb(235, 201, 206)" required>
+                            <label for="nome_estado">
+                                <span>Estado</span>
+                            </label>
+                        </div>    
                     @else
-                        <input class="estado" type="text" id="autoCompleteEstado" name="nome_estado" autocomplete="off" required>
-                        <label for="nome_estado">
-                            <span>Estado</span>
-                        </label>
+                        <div class="autoComplete_wrapper">  
+                            <input class="estado" type="text" id="autoCompleteEstado" name="nome_estado" autocomplete="off" required>
+                            <label for="nome_estado">
+                                <span>Estado</span>
+                            </label>
+                        </div>
                     @enderror
                 </div>
                 <div class="caixa-input" style="width: 35%; margin-left: 3px;">
                     {{-- BAIRRO --}}
                     @error('bairro')
-                        <div title="{{ $message }}" class="autoComplete_wrapper">  
-                            <input type="text" id="autoCompleteBairro" class="bairro alert-danger" name="nome_bairro" autocomplete="off" style="border: 1px solid red; background-color:rgb(235, 201, 206)" required>
+                        <div class="autoComplete_wrapper">  
+                            <input title="{{ $message }}" type="text" id="autoCompleteBairro" class="bairro alert-danger" name="nome_bairro" autocomplete="off" style="border: 1px solid red; background-color:rgb(235, 201, 206)" required>
                             <label for="nome_bairro">
                                 <span>Bairro</span>
                             </label>
                         </div>    
                     @else
-                        <input type="text" id="autoCompleteBairro" class="bairro" name="nome_bairro" autocomplete="off" required>
-                        <label for="nome_bairro">
-                            <span>Bairro</span>
-                        </label>
+                        <div class="autoComplete_wrapper">  
+                            <input type="text" id="autoCompleteBairro" class="bairro" name="nome_bairro" autocomplete="off" required>
+                            <label for="nome_bairro">
+                                <span>Bairro</span>
+                            </label>
+                        </div>
                     @enderror
                 </div>
                 <div class="caixa-input" style="width: 285px; margin-left: 3px;">

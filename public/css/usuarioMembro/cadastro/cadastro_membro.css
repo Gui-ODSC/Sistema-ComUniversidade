@@ -76,7 +76,7 @@ h4 {
 
 .section-form {
     background-color: #FFF;
-    margin-top: 30px;
+    margin-top: 60px;
     border-radius: 10px;
     padding: 20px;
     display: flex;
@@ -90,7 +90,6 @@ h4 {
     margin: auto;
     margin-bottom: 30px;
     width: 80%;
-    height: 60%;
     border-radius: 20px;
     font-size: larger;
     color: #FFF;
@@ -98,31 +97,48 @@ h4 {
 }
 
 .cadastro-container .caixa-input{
-    overflow: hidden;
     position: relative;
     width:100%;
     height: 50px;
     margin-bottom: 3px;
-    z-index: 100;
 }
 
 /* AUTOCOMPLETE */
+/* AutoComplete */
 .autoComplete_wrapper {
-    height: 50px;
+    width: 100%;
+    background-color: #212121;
 }
 
-.caixa-input #autoComplete_list {
-    display: block;
-    border: solid 2px black;
-    z-index: 1;
-}
-
-#autoComplete_list ul {
-    list-style-type: none;
+.caixa-input .autoComplete_wrapper ul {
     position: absolute;
+    max-height: 120px;
+    overflow-y: scroll;
+    top: 100%;
+    left: 0;
+    right: 0;
+    padding: 0;
+    margin: .5rem 0 0 0;
+    border-radius: 4px;
+    background-color: #4d6d7f;
+    z-index: 1000;
+    outline: 0;
+    border: none;
+}
 
+.autoComplete_wrapper #autoCompleteCidade,
+#autoCompleteEstado, #autoCompleteBairro
+{
     height: 50px;
-    z-index: 1;
+    width: 100%;
+    color: #FFF;
+    font-size: 20px
+}
+
+.caixa-input #autoComplete_list li {
+    border: solid 1px #212121;
+    background-color: #47565a;
+    color: #FFF;
 }
 
 .caixa-input li {
@@ -135,10 +151,11 @@ h4 {
     font-size: 20px;
     width: 100%;
     height: 50px;
-    padding: 17px 10px 10px 5px;
+    padding: 20px 10px 10px 5px;
     background-color: #4d6d7f;
     border: none;
     border-radius: 5px;
+    outline: none;
 }
 
 .cadastro-container label {
@@ -153,9 +170,8 @@ h4 {
   
 .cadastro-container span {
     position: absolute;
-    bottom: 5px;
     left: 5px;
-    font-size: 20px;
+    font-size: 14px;
     transition: all 0.3s ease;
     border-radius: 10px;
 }
@@ -166,27 +182,26 @@ h4 {
     left: 0;
     bottom: -1px;
     width: 100%;
-    border-bottom: 3px solid #FFF;
-    transform: translateX(-100%);
+    border-bottom: 1px solid #FFF;
     transition: all 0.3s ease;
 }
   
-.cadastro-container input:valid + label span{
+.cadastro-container input:read-only + label span, input:valid + label span {
     height: 40px;
     font-size: 14px;
     bottom: 10px;
     color: #FFF;
 }
 
-.cadastro-container input:invalid + label span{
+.cadastro-container input:focus + label span, input:invalid + label span {
     height: 40px;
     font-size: 14px;
     bottom: 10px;
-    color: #FFF;
+    color: #FFF;;
 }
 
 .cadastro-container input:focus + label::after {
-    transform: translateX(0%);
+    border-bottom: 3px solid #FFF;
 }
 
 .custom-file-upload {
