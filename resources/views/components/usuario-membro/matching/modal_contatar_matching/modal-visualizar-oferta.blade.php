@@ -71,6 +71,11 @@
                                 @endif
                             @endif
                         </div>
+                        <div>
+                            @if ($oferta->tipo == 'ACAO')
+                                <h6>Tipo Ação: {{$oferta->ofertaAcao->tipoAcao->nome}}</h6> 
+                            @endif
+                        </div>
                     </div>
                 </div>
             </div>
