@@ -1,0 +1,57 @@
+/* MODAL DE SUCESSO */
+
+.modal-sucesso-contatar {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    z-index: 1000;
+
+}
+
+.modal-conteudo-sucesso-contatar {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 500px;
+    height: 300px;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(90deg, rgba(9,107,170,1) 0%, rgba(44,39,88,1) 50%, rgba(40,35,69,1) 100%);
+    border: solid 10px #FFF;
+    text-align: center;
+    border-radius: 10px;
+    padding: 10px;
+    color: #FFF;
+}
+
+.titulo-sucesso{
+    font-weight: bold;
+    font-size: 25px;
+    margin-top: 60px;
+}
+
+#mensagem-sucesso {
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    margin-top: 30px;
+    width: 340px;
+    text-align: center;
+    font-size: 17px;
+}
+
+.fechar-modal-sucesso-contatar {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+.fechar-modal-sucesso-contatar img {
+    width: 40px;
+    background-color: #FFF;
+    border-radius: 100px;
+}

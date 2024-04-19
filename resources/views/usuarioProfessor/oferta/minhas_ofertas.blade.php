@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{{ asset('css/menu_navegacao/menu.css') }}">
     <link rel="stylesheet" href="{{ asset('css/usuarioProfessor/oferta/minhas_ofertas.css') }}">
     <script src="{{ asset('js/menu/menu_navegacao.js') }}"></script>
-    <script src="{{ asset('js/usuarioMembro/demanda/modal_deletar_demanda.js') }}"></script>
+    <script src="{{ asset('js/usuarioProfessor/oferta/modal_deletar_oferta.js') }}"></script>
     <title>Minhas Ofertas</title>
 </head>
 <body> 
@@ -67,7 +67,7 @@
                             @endif
                             <td><a onclick="openModalDeletar({{$oferta->id_oferta}})"><img id="icones_oferta" src="{{ asset('img/usuarioMembro/minhas_demandas/delete.png') }}" alt="tres pontos para mais informação"></a></td>
                             <x-usuario-professor.oferta.modal-deletar-oferta :id-oferta="$oferta->id_oferta" />
-                            <td><a href="{{ route('demanda_matching_index', $oferta->id_oferta) }}"><img id="icones_oferta" src="{{ asset('img/usuarioMembro/minhas_demandas/ver.png') }}" alt="tres pontos para mais informação"></a></td>
+                            <td><a href="{{ route('oferta_matching_index', $oferta->id_oferta) }}"><img id="icones_oferta" src="{{ asset('img/usuarioMembro/minhas_demandas/ver.png') }}" alt="tres pontos para mais informação"></a></td>
                         </tr>
                         @php $contador++; @endphp
                     @endforeach

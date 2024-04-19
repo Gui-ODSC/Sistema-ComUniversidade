@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\MembroControllers;
+namespace App\Http\Controllers\ProfessorControllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Demanda;
@@ -9,52 +9,78 @@ use App\Models\MatchingsVisualizados;
 use App\Models\Oferta;
 use App\Models\OfertaAcao;
 use App\Models\OfertaConhecimento;
-use App\Models\Usuario;
-use App\Models\UsuarioProfessor;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class MatchingMembroController extends Controller
+class MatchingProfessorController extends Controller
 {
-
-    public function matchingList($demandaId)
+    public function matchingList($ofertaId)
     {
-        $demanda = Demanda::findOrFail($demandaId);
+        $oferta = Oferta::findOrFail($ofertaId);
+        $ofertaTipo = $oferta->tipo;
 
-        $ofertasEncontradas = $this->algoritmoMatchings(
-            $demanda->id_demanda,
-            $demanda->titulo, 
-            $demanda->descricao, 
-            $demanda->publicoAlvo, 
-            $demanda->areaConhecimento
-        );
+        if ($ofertaTipo === 'ACAO') {
+            
+            $oferta = Oferta::findOrFail($ofertaId);
+            $ofertaAcao = OfertaAcao::where('id_oferta', $oferta->id_oferta)->first();
 
-        return view(
-            'usuarioMembro/matching_demandas/visualizar_matching_demandas',
-            [
-                'demanda' => $demanda,
-                'ofertasEncontradas' => $ofertasEncontradas,
-            ]
-        );
+            $demandasEncontradas = $this->algoritmoMatchings(
+                $oferta->id_oferta,
+                $oferta->titulo,
+                $oferta->descricao,
+                $ofertaAcao->publicoAlvo,
+                $oferta->areaConhecimento
+            );
+
+            return view(
+                'usuarioProfessor/matching_ofertas/visualizar_matching_ofertas',
+                [
+                    'oferta' => $oferta,
+                    'ofertaAcao' => $ofertaAcao,
+                    'demandasEncontradas' => $demandasEncontradas,
+                ]
+            );
+
+        } elseif ($ofertaTipo === 'CONHECIMENTO') {
+
+            $oferta = Oferta::findOrFail($ofertaId);
+            $ofertaConhecimento = OfertaConhecimento::where('id_oferta', $oferta->id_oferta)->first();
+
+            $demandasEncontradas = $this->algoritmoMatchings(
+                $oferta->id_oferta,
+                $oferta->titulo,
+                $oferta->descricao,
+                null,
+                $oferta->areaConhecimento
+            );
+
+            return view(
+                'usuarioProfessor/matching_ofertas/visualizar_matching_ofertas',
+                [
+                    'oferta' => $oferta,
+                    'ofertaConhecimento' => $ofertaConhecimento,
+                    'demandasEncontradas' => $demandasEncontradas,
+                ]
+            );
+
+        }
     }
 
-
-    public function algoritmoMatchings($id_demanda, $titulo_demanda, $descricao_demanda, $publicoAlvo_demanda, $areaConhecimento_demanda)
+    public function algoritmoMatchings($id_oferta, $titulo_oferta, $descricao_oferta, $publicoAlvo_oferta = null, $areaConhecimento_oferta)
     {   
         $id_usuario = Auth::id();
 
-        /* LAÇO PARA PEGAR TODAS AS OFERTAS DISPONÍVEIS */
-        $ofertas = Oferta::with(['ofertaAcao', 'ofertaConhecimento'])->get();
+        /* LAÇO PARA PEGAR TODAS AS DEMANDAS DISPONÍVEIS */
+        $demandas = Demanda::with(['publicoAlvo', 'areaConhecimento'])->get();
 
         $matchingsEncontrados = [];
 
         /* LACO PARA COMPARAR AS OFERTAS COM AS DEMANDAS E ARMAZENAR AS SEMELHANTES */
-        foreach($ofertas as $oferta) {
+        foreach($demandas as $demanda) {
             $resultado = 0;
 
             /* CONTROLE DE EXCLUSAO DE OFERTAS INDESEJADAS NO MATCHING */
-            $busca_ofertas_excluidas = MatchingsExcluidos::where('id_oferta', $oferta->id_oferta)
-                ->where('id_demanda', $id_demanda)
+            $busca_ofertas_excluidas = MatchingsExcluidos::where('id_demanda', $demanda->id_demanda)
+                ->where('id_oferta', $id_oferta)
                 ->where('id_usuario', $id_usuario)
                 ->get(); 
 
@@ -64,16 +90,16 @@ class MatchingMembroController extends Controller
             /* FIM */
 
             /* COMPARAÇÃO DE TITULOS */
-            $resultado_titulo = $this->ratCliff($oferta->titulo, $titulo_demanda);
+            $resultado_titulo = $this->ratCliff($demanda->titulo, $titulo_oferta);
 
             /* COPARAÇÃO DE DESCRIÇÕES */
-            $resultado_descricao = $this->ratCliff($oferta->descricao, $descricao_demanda);
+            $resultado_descricao = $this->ratCliff($demanda->descricao, $descricao_oferta);
 
             $resultado = $resultado_titulo + $resultado_descricao;
 
             /* LOGICA PARA CONTROLAR AS OFERTAS VISUALIZADAS E NÃO VISUALIZADAS */
-            $ofertas_visualizacao = MatchingsVisualizados::where('id_oferta', $oferta->id_oferta)
-            ->where('id_demanda', $id_demanda)
+            $ofertas_visualizacao = MatchingsVisualizados::where('id_demanda', $demanda->id_demanda)
+            ->where('id_oferta', $id_oferta)
             ->where('id_usuario', $id_usuario)
             ->get(); 
 
@@ -81,9 +107,9 @@ class MatchingMembroController extends Controller
                 if ($resultado >= 1.4)
                 {
                     if ($resultado === 2.0) {
-                        $matchingsEncontrados[] = ['status' => 'visualizado', 'oferta' => $oferta];
+                        $matchingsEncontrados[] = ['status' => 'visualizado', 'demanda' => $demanda];
                     } else {
-                        $matchingsEncontrados[] = ['status' => 'visualizado', 'oferta' => $oferta];
+                        $matchingsEncontrados[] = ['status' => 'visualizado', 'demanda' => $demanda];
                     }
                 } else {
                     continue;
@@ -92,9 +118,9 @@ class MatchingMembroController extends Controller
                 if ($resultado >= 1.4)
                 {
                     if ($resultado === 2.0) {
-                        $matchingsEncontrados[] = ['status' => 'nao_visualizado', 'oferta' => $oferta];
+                        $matchingsEncontrados[] = ['status' => 'nao_visualizado', 'demanda' => $demanda];
                     } else {
-                        $matchingsEncontrados[] = ['status' => 'nao_visualizado', 'oferta' => $oferta];
+                        $matchingsEncontrados[] = ['status' => 'nao_visualizado', 'demanda' => $demanda];
                     }
                 } else {
                     continue;
@@ -115,21 +141,11 @@ class MatchingMembroController extends Controller
         return $matchingsEncontrados;
     }
 
-
-    public function matching_remover($demandaId, $ofertaId) {
+    public function matching_remover_demanda($demandaId, $ofertaId) {
 
         $userId = Auth::id();
         $demanda = Demanda::findOrFail($demandaId);
         $oferta = Oferta::findOrFail($ofertaId);
-
-        $matchingExcluido = MatchingsExcluidos::where('id_demanda', $demanda->id_demanda)
-            ->where('id_oferta', $oferta->id_oferta)
-            ->where('id_usuario', $userId)
-            ->exists();
-        
-        if($matchingExcluido) {
-            return redirect()->route('demanda_matching_index', $ofertaId)->with('msg-matching', 'Erro: esta demanda já foi excluída e não deveria aparecer!');
-        }
 
         MatchingsExcluidos::create([
             'id_usuario' => $userId,
@@ -139,24 +155,24 @@ class MatchingMembroController extends Controller
             'created_at' => now()
         ]);
 
-        return redirect()->route('demanda_matching_index', $demandaId)->with('msg-matching', 'Oferta removida com Sucesso!');
+        return redirect()->route('oferta_matching_index', $ofertaId)->with('msg-matching', 'Demanda removida com Sucesso!');
     }
 
+    public function matching_status_visualizar_demanda($demandaId, $ofertaId) {
 
-    public function matching_status_visualizar($demandaId, $ofertaId) {
         $userId = Auth::id();
-        $demanda = Demanda::findOrFail($demandaId);
+        $demanda =  Demanda::findOrFail($demandaId);
         $oferta = Oferta::findOrFail($ofertaId);
-    
+
         $matchingExistente = MatchingsVisualizados::where('id_usuario', $userId)
             ->where('id_demanda', $demanda->id_demanda)
             ->where('id_oferta', $oferta->id_oferta)
             ->exists();
-        
+
         if ($matchingExistente) {
-            return back();/* redirect()->route('demanda_matching_index', $demandaId) */;
+            return back();
         }
-    
+
         MatchingsVisualizados::create([
             'id_usuario' => $userId,
             'id_demanda' => $demanda->id_demanda,
@@ -165,8 +181,9 @@ class MatchingMembroController extends Controller
             'updated_at' => null,
         ]);
     
-        return back();/* redirect()->route('demanda_matching_index', $demandaId) */;
+        return back();
     }
+
 
     /* ALGORITMO DE MATCHINGS */
     private function getLongestCommonSequences(
@@ -211,6 +228,12 @@ class MatchingMembroController extends Controller
 
     private function ratCliff($s1, $s2)
     {
+        /* 
+            O Algoritmo de RatCliff devolve uma porcentagem de que varia de 0.1 até 1.0, 
+            mas como a avaliação atual está averiguando titulo e descrição as porcentagens
+            foram somadas e o valor máximo possível é 2.0, portanto se uma matching atingir
+            1.4 = 70% do valor ele é adicionado a lista de matchings.
+        */
 
         $lcss = [];
         $this->getLongestCommonSequences($s1, $s2, $lcss);
