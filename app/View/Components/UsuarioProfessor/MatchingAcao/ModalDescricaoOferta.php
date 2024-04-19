@@ -22,7 +22,7 @@ class ModalDescricaoOferta extends Component
 
     public function render(): View|Closure|string
     {
-        return view('components.usuario-professor.matching_oferta_acao.modal-descricao-oferta', [
+        return view('components.usuario-professor.matching_oferta.modal-descricao-oferta', [
             'oferta' => $this->oferta
         ]);
     }

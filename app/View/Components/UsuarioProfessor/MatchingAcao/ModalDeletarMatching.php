@@ -22,7 +22,7 @@ class ModalDeletarMatching extends Component
 
     public function render(): View|Closure|string
     {
-        return view('components.usuario-professor.matching_oferta_acao.modal-deletar-matching', [
+        return view('components.usuario-professor.matching_oferta.modal-deletar-matching', [
             'matching' => $this->matching,
             'id_demanda' => $this->idOferta,
         ]);

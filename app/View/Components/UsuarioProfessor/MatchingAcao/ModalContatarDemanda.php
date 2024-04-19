@@ -27,7 +27,7 @@ class ModalContatarDemanda extends Component
     public function render(): View|Closure|string
     {   
 
-        return view('components.usuario-professor.matching_oferta_acao.modal-contatar-demanda', [
+        return view('components.usuario-professor.matching_oferta.modal-contatar-demanda', [
             'demanda' => $this->matching,
             'id_oferta' => $this->idOferta,
             'usuarioMembro' => $this->usuarioMembro,

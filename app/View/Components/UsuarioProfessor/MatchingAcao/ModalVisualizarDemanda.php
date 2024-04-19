@@ -25,7 +25,7 @@ class ModalVisualizarDemanda extends Component
     public function render(): View|Closure|string
     {   
 
-        return view('components.usuario-professor.matching_oferta_acao.modal-visualizar-demanda', [
+        return view('components.usuario-professor.matching_oferta.modal-visualizar-demanda', [
             'demanda' => $this->matching,
             'usuarioMembro' => $this->usuarioMembro,
             'id_oferta' => $this->idOferta
