@@ -41,7 +41,7 @@ Route::prefix('membro')->group(function(){
         })->middleware('auth');
     })->middleware('auth');
 
-    Route::prefix('/contatos-realizados')->controller(ContatoRealizadoMembroController::class)->group(function(){
+    Route::prefix('/contatos_realizados')->controller(ContatoRealizadoMembroController::class)->group(function(){
         Route::get('/', 'list')->name('list_contatos_realizados');
     });
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\MembroControllers;
+namespace App\Http\Controllers\ProfessorControllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Contato;
@@ -8,15 +8,14 @@ use App\Models\ContatoMensagem;
 use App\Models\Demanda;
 use App\Models\MatchingsExcluidos;
 use App\Models\Oferta;
-use App\View\Components\UsuarioMembro\ModalSucessoContatar;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class ContatoRealizadoMembroController extends Controller
+class ContatoRealizadoProfessorController extends Controller
 {
 
-    public function list() {
+    public function listaContatosRealizados() {
+        
         $usuarioId = Auth::id();
 
         $contatosRealizados = Contato::where('id_usuario_origem', $usuarioId)
@@ -44,8 +43,8 @@ class ContatoRealizadoMembroController extends Controller
                     'dados' => $contato, 
                     'usuarioEmissor' => $contato->usuarioOrigem,
                     'usuarioReceptor' => $contato->usuarioDestino,
-                    'demanda' => $contato->demanda,/* possivelmente remover */
-                    'oferta' => $contato->oferta,
+                    'demanda' => $contato->demanda,
+                    'oferta' => $contato->oferta,/* possivelmente remover */
                     'respostaMensagem' => null,
                 ];
             } else {
@@ -53,14 +52,14 @@ class ContatoRealizadoMembroController extends Controller
                     'dados' => $contato, 
                     'usuarioEmissor' => $contato->usuarioOrigem,
                     'usuarioReceptor' => $contato->usuarioDestino,
-                    'demanda' => $contato->demanda,/* possivelmente remover */
-                    'oferta' => $contato->oferta,
+                    'demanda' => $contato->demanda,
+                    'oferta' => $contato->oferta,/* possivelmente remover */
                     'respostaMensagem' => $respostaMensagem,
                 ];
             }
         }
 
-        return view('usuarioMembro/contatos_realizados/todos_contatos_realizados',
+        return view('usuarioProfessor/contatos_realizados/todos_contatos_realizados',
             [
                 'contatosRealizados' => $contatosFormatados,
                 'paginate' => $contatosRealizados
@@ -68,7 +67,7 @@ class ContatoRealizadoMembroController extends Controller
         );
     }
 
-    public function create($demandaId, $ofertaId, Request $request) {
+    public function createContato($demandaId, $ofertaId, Request $request) {
 
         $userId = Auth::id();
         $demanda = Demanda::findOrFail($demandaId);
@@ -76,22 +75,22 @@ class ContatoRealizadoMembroController extends Controller
 
         // Criação do contato
         $contato = new Contato();
-        $contato->id_usuario_origem = $demanda->id_usuario;
-        $contato->id_usuario_destino = $oferta->usuarioProfessor->id_usuario;
+        $contato->id_usuario_origem = $oferta->usuarioProfessor->id_usuario;
+        $contato->id_usuario_destino = $demanda->id_usuario;
         $contato->id_oferta = $oferta->id_oferta;
         $contato->id_demanda = $demanda->id_demanda;
         $contato->tipo_contato = 'MATCHING';
         $contato->created_at = now();
         $contato->updated_at = null;
         $contato->saveOrFail();
-
+        
         // Criação do ContatoMensagem
         $mensagem = $request->input('mensagem-contato');
-
+        
         $contatoMensagem = new ContatoMensagem();
         $contatoMensagem->id_contato = $contato->id_contato;
-        $contatoMensagem->id_usuario_origem = $demanda->id_usuario;
-        $contatoMensagem->id_usuario_destino = $oferta->usuarioProfessor->id_usuario; 
+        $contatoMensagem->id_usuario_origem = $oferta->usuarioProfessor->id_usuario;
+        $contatoMensagem->id_usuario_destino = $demanda->id_usuario; 
         /* VALIDACAO MENSAGEM */
         if (preg_match('/<[^>]*>/', $mensagem)) {
         } else {
@@ -111,6 +110,6 @@ class ContatoRealizadoMembroController extends Controller
             'created_at' => now()
         ]);
 
-        return redirect()->to(route('matching_visualizar', [$demandaId, $ofertaId]));
+        return redirect()->to(route('matching_visualizar_demanda', [$demandaId, $ofertaId]));
     }
 }

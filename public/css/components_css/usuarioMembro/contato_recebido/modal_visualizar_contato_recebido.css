@@ -170,7 +170,7 @@
     text-overflow: ellipsis; /* Adiciona reticências (...) para indicar que o texto foi cortado */
     overflow-y: auto;
     margin-top: 2px;
-    height: 150px;
+    height: 120px;
     background-color: rgba(44,39,88,1);
     border-radius: 10px;
     border: solid 2px black;
@@ -232,7 +232,7 @@
     overflow-y: auto;
     background-color: #FFF;
     width: 100%;
-    height: 100px;
+    height: 75px;
     padding: 10px;
     border-radius: 10px;
     border: solid 1px black;

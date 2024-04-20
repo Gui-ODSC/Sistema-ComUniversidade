@@ -1,7 +1,7 @@
 <?php 
 
-use App\Http\Controllers\OfertaAcaoController;
 use App\Http\Controllers\ProfessorControllers\OfertaAcaoProfessorController;
+use App\Http\Controllers\ProfessorControllers\ContatoRealizadoProfessorController;
 use App\Http\Controllers\ProfessorControllers\OfertaConhecimentoProfessorController;
 use App\Http\Controllers\ProfessorControllers\OfertaProfessorController;
 use App\Http\Controllers\ProfessorControllers\MatchingProfessorController;
@@ -34,16 +34,17 @@ Route::prefix('professor')->group(function(){
                     Route::post('/remove', 'matching_remover_demanda')->name('matching_remover_demanda');
                     Route::get('/visualizar', 'matching_status_visualizar_demanda')->name('matching_visualizar_demanda');
                     /* CONTATO */
-                    
+                    Route::prefix('/contato')->controller(ContatoRealizadoProfessorController::class)->group(function() {
+                        Route::post('/', 'createContato')->name('contato_realizado_store_professor');
+                    });
                 });
-                
-                
-                
-                
             })->middleware('auth');
         })->middleware('auth');
-    })->middleware('auth');
 
+        Route::prefix('/contatos_realizados')->controller(ContatoRealizadoProfessorController::class)->group(function() {
+            Route::get('/', 'listaContatosRealizados')->name('lista_contatos_realizados');
+        });
+    })->middleware('auth');
 });
 
 
