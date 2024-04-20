@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('css/menu_navegacao/menu.css') }}">
     <link rel="stylesheet" href="{{ asset('css/components_css/usuarioProfessor/contato_recebido/modal_visualizar_contato_recebido.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/usuarioMembro/contatos_recebidos/modal_interessado_contato_recebido.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/usuarioMembro/contatos_recebidos/modal_nao_interessado_contato_recebido.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/usuarioMembro/contatos_recebidos/modal_contato_respondido.css') }}">
-    <script src="{{ asset('js/usuarioMembro/contatos_recebidos/validacao_mensagem_resposta.js') }}"></script>
-    <script src="{{ asset('js/usuarioMembro/contatos_recebidos/modal_descricao_demanda.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('css/usuarioProfessor/contatos_recebidos/modal_interessado_contato_recebido.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/usuarioProfessor/contatos_recebidos/modal_nao_interessado_contato_recebido.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/usuarioProfessor/contatos_recebidos/modal_contato_respondido.css') }}">
+    <script src="{{ asset('js/usuarioProfessor/contatos_recebidos/validacao_mensagem_resposta.js') }}"></script>
+    <script src="{{ asset('js/usuarioProfessor/contatos_recebidos/modal_descricao_demanda.js') }}"></script>
     <script src="{{ asset('js/menu/menu_navegacao.js') }}"></script>
     <title>Contatos Recebidos</title>
 </head>

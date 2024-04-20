@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ asset('css/components_css/usuarioMembro/contato_realizado/modal_visualizar_contato_realizado.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/components_css/usuarioProfessor/contato_realizado/modal_visualizar_contato_realizado.css') }}">
     <link rel="stylesheet" href="{{ asset('css/menu_navegacao/menu.css') }}">
     <script src="{{ asset('js/menu/menu_navegacao.js') }}"></script>
-    <script src="{{ asset('js/usuarioMembro/contatos_realizados/modal_descricao_oferta.js') }}"></script>
+    <script src="{{ asset('js/usuarioProfessor/contatos_realizados/modal_descricao_oferta.js') }}"></script>
     <link rel="stylesheet" href="">
     <title>Contatos Realizados</title>
 </head>
@@ -72,6 +72,7 @@
             </div>
             {{-- SE TIVER RESPOSTA --}}
             @if ($respostaMensagem != null)
+            {{-- NESSE TRECHO O PROBLEMA --}}
                 <div class="mensagem-contato-recebido-check">
                     <a id="botao-abrir-mensagem-check" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample-{{$idContato}}">
                         <div id="abrir-fechar-mensagem-check">
@@ -93,6 +94,7 @@
                         Independentemente do conteúdo apresentado acima, o sistema entende que o contato incial já foi realizado entre as partes interessadas, portanto qualquer próxima forma de contato deve seguir por meio de outro sistema de contato (email, telefone ....)</p>
                     </div>
                 </div>
+            {{-- FIM PROBLEMA --}}
             @else
                 <div class='resposta-realizada'>
                     <h6>Mensagem Enviada ({{$usuarioEmissor->nome}})</h6>
