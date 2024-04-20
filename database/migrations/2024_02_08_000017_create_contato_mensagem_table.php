@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_contato');
             $table->unsignedBigInteger('id_usuario_origem');
             $table->unsignedBigInteger('id_usuario_destino');
-            $table->string('mensagem');
+            $table->longText('mensagem');
             $table->enum('tipo_mensagem', ['ENVIADA', 'RESPONDIDA', 'INTERESSADO', 'SEM_DISPONIBILIDADE']);
 
             $table->foreign('id_contato')->references('id_contato')->on('Contato')->onDelete('restrict');
