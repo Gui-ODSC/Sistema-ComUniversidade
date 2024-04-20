@@ -43,7 +43,7 @@
                     <h5>Dados Demanda:</h5>
                     <div id="titulo-data-oferta-contato-respondido">
                         <h2>Título: {{$demanda->titulo}}</h2>
-                        <h6 id="data">Demandada em: {{ \Carbon\Carbon::parse($oferta->created_at)->format('d/m/Y') }}</h6>
+                        <h6 id="data">Demandada em: {{ \Carbon\Carbon::parse($demanda->created_at)->format('d/m/Y') }}</h6>
                     </div>
                     <div style="display: flex; height: 50px; align-items: center">
                         <div class="dados-oferta-descricao">

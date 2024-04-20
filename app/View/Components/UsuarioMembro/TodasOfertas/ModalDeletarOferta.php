@@ -21,7 +21,7 @@ class ModalDeletarOferta extends Component
 
     public function render(): View|Closure|string
     {
-        return view('components.usuario-membro.todas_ofertas.modal_deletar-oferta', [
+        return view('components.usuario-membro.todas_ofertas.modal_deletar_oferta', [
             'oferta' => $this->oferta,
         ]);
     }

@@ -6,6 +6,7 @@ use App\Http\Controllers\ProfessorControllers\ContatoRealizadoProfessorControlle
 use App\Http\Controllers\ProfessorControllers\OfertaConhecimentoProfessorController;
 use App\Http\Controllers\ProfessorControllers\OfertaProfessorController;
 use App\Http\Controllers\ProfessorControllers\MatchingProfessorController;
+use App\Http\Controllers\ProfessorControllers\TodasDemandasController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('professor')->group(function(){
@@ -45,14 +46,23 @@ Route::prefix('professor')->group(function(){
 
     Route::prefix('/contatos_realizados')->controller(ContatoRealizadoProfessorController::class)->group(function() {
         Route::get('/', 'listaContatosRealizados')->name('lista_contatos_realizados_professor');
-    });
+    })->middleware('auth');
 
     Route::prefix('/contatos_recebidos')->controller(ContatoRecebidoProfessorController::class)->group(function() {
         Route::get('/', 'listaContatosRecebidos')->name('lista_contatos_recebidos_professor');
         Route::prefix('/{contatoId}')->group(function() {
             Route::post('/prof', 'repostaContato')->name('contato_recebido_store_professor');
         });
-    });
+    })->middleware('auth');
+
+    Route::prefix('/todas-demandas')->controller(TodasDemandasController::class)->group(function(){
+        Route::get('/', 'listaDemandas')->name('lista_todas_demandas');
+        Route::prefix('/{demandaId}')->group(function (){
+            Route::post('/', 'createContato')->name('contato_direto_store_professor');
+            Route::post('/visualizar', 'contato_direto_status_visualizar')->name('contato_direto_visualizar_professor');
+            Route::post('/remover', 'contatos_diretos_remover')->name('contato_direto_remover_professor');
+        })->middleware('auth');
+    })->middleware('auth');
 
     Route::prefix('extensao/configuracoes_professor')->group(function(){
         Route::get('/configuracao', function(){
@@ -67,7 +77,7 @@ Route::prefix('professor')->group(function(){
         Route::get('/sobre_nos', function(){
             return view('usuarioProfessor/configuracao/sobre_nos');
         })->name('sobre_nos');
-    });
+    })->middleware('auth');
 });
 
 

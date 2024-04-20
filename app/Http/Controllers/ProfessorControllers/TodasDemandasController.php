@@ -1,67 +1,67 @@
 <?php
 
-namespace App\Http\Controllers\MembroControllers;
+namespace App\Http\Controllers\ProfessorControllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Contato;
 use App\Models\ContatosDiretosExcluidos;
 use App\Models\ContatoMensagem;
 use App\Models\ContatosDiretosVisualizados;
+use App\Models\Demanda;
 use App\Models\MatchingsExcluidos;
-use App\Models\Oferta;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class TodasOfertasController extends Controller
+class TodasDemandasController extends Controller
 {
-    public function list() {
+    public function listaDemandas() { 
 
         $usuarioId = Auth::id();
 
         /* DEVOLVER APENAS OS CONTATOS QUE NAO FORAM REALIZADOS AINDA */
-        $ofertasNaoMostrar = $this->list_ofertas_excluidas($usuarioId);
+        $demandasNaoMostrar = $this->list_demandas_excluidas($usuarioId);
 
-        $listOfertas = Oferta::with('usuarioProfessor', 'ofertaConhecimento', 'ofertaAcao', 'areaConhecimento', 'contato')
-        ->whereNotIn('id_oferta', $ofertasNaoMostrar)
-        ->paginate(1);
+        $listDemandas = Demanda::with('usuario', 'publicoAlvo', 'areaConhecimento', 'contato')
+        ->whereNotIn('id_demanda', $demandasNaoMostrar)
+        ->paginate(2);
 
-        $ofertasDisponiveis = [];
+        $demandasDisponiveis = [];
 
         /* LOGICA PARA CONTROLAR AS OFERTAS VISUALIZADAS E NÃO VISUALIZADAS */
-        foreach ($listOfertas as $oferta) {
-            $ofertas_visualizada = ContatosDiretosVisualizados::where('id_oferta', $oferta->id_oferta)
+        foreach ($listDemandas as $demanda) {
+            $demandas_visualizada = ContatosDiretosVisualizados::where('id_demanda', $demanda->id_demanda)
             ->where('id_usuario', $usuarioId)
             ->get();
 
-            if (!$ofertas_visualizada->isEmpty()) {
-                $ofertasDisponiveis[] = ['status' => 'visualizado', 'oferta' => $oferta];
+            if (!$demandas_visualizada->isEmpty()) {
+                $demandasDisponiveis[] = ['status' => 'visualizado', 'demanda' => $demanda];
             } else {
-                $ofertasDisponiveis[] = ['status' => 'nao_visualizado', 'oferta' => $oferta];
+                $demandasDisponiveis[] = ['status' => 'nao_visualizado', 'demanda' => $demanda];
             }
         }
 
-        return view('usuarioMembro.todas_ofertas.todas_ofertas_membro', 
+        return view('usuarioProfessor.todas_demandas.todas_demandas_professor', 
             [
-                'ofertas' => $ofertasDisponiveis,
-                'paginate' => $listOfertas,
+                'demandas' => $demandasDisponiveis,
+                'paginate' => $listDemandas,
             ]
         );
     }
 
-    public function create($ofertaId, Request $request) {
+    public function createContato($demandaId, Request $request) {
         
         $usuarioId = Auth::id();
-        $oferta = Oferta::findOrFail($ofertaId);
+        $demanda = Demanda::findOrFail($demandaId);
 
         $mensagem = $request->input('mensagem-contato');
-        
+
         /* CRIAR O NOVO CONTATO */
         // Criação do contato
         $contato = new Contato();
         $contato->id_usuario_origem = $usuarioId;
-        $contato->id_usuario_destino = $oferta->usuarioProfessor->id_usuario;
-        $contato->id_oferta = $oferta->id_oferta;
-        $contato->id_demanda = null;
+        $contato->id_usuario_destino = $demanda->id_usuario;
+        $contato->id_oferta = null;
+        $contato->id_demanda = $demanda->id_demanda;
         $contato->tipo_contato = 'DIRETO';
         $contato->created_at = now();
         $contato->updated_at = null;
@@ -71,7 +71,8 @@ class TodasOfertasController extends Controller
         $contatoMensagem = new ContatoMensagem();
         $contatoMensagem->id_contato = $contato->id_contato;
         $contatoMensagem->id_usuario_origem = $usuarioId;
-        $contatoMensagem->id_usuario_destino = $oferta->usuarioProfessor->id_usuario; 
+        $contatoMensagem->id_usuario_destino = $demanda->id_usuario; 
+        /* VALIDACAO MENSAGEM */
         if (preg_match('/<[^>]*>/', $mensagem)) {
         } else {
             $contatoMensagem->mensagem = $mensagem;
@@ -84,69 +85,69 @@ class TodasOfertasController extends Controller
         /* CRIAR TABELA DE EXCLUSOES PARA CONTATOS DIRETOS E COLOCAR AS OFERTAS LA */
         ContatosDiretosExcluidos::create([
             'id_usuario' => $usuarioId,
-            'id_demanda' => null,
-            'id_oferta' => $oferta->id_oferta,
+            'id_demanda' => $demanda->id_demanda,
+            'id_oferta' => null,
             'updated_at' => null,
             'created_at' => now()
         ]);
 
-        return redirect()->to(route('list_todas_ofertas'));
+        return redirect()->to(route('lista_todas_demandas'));
         
     }
 
-    public function list_ofertas_excluidas($usuarioId)
+    public function list_demandas_excluidas($usuarioId) 
     {
         // Consulta as ofertas excluídas de Matchings
-        $ofertasExcluidasMatchings = MatchingsExcluidos::where('id_usuario', $usuarioId)
-            ->pluck('id_oferta')
+        $demandasExcluidasMatchings = MatchingsExcluidos::where('id_usuario', $usuarioId)
+            ->pluck('id_demanda')
             ->toArray();
 
         // Consulta as ofertas excluídas de Contatos Diretos
-        $ofertasExcluidasContatos = ContatosDiretosExcluidos::where('id_usuario', $usuarioId)
-            ->pluck('id_oferta')
+        $demandasExcluidasContatos = ContatosDiretosExcluidos::where('id_usuario', $usuarioId)
+            ->pluck('id_demanda')
             ->toArray();
 
         // Mescla as listas de ofertas excluídas
-        $ofertasExcluidas = array_merge($ofertasExcluidasMatchings, $ofertasExcluidasContatos);
+        $demandasExcluidas = array_merge($demandasExcluidasMatchings, $demandasExcluidasContatos);
 
         /* Remove as duplicatas */
-        $ofertasExcluidas = array_unique($ofertasExcluidas);
+        $demandasExcluidas = array_unique($demandasExcluidas);
 
-        return $ofertasExcluidas;
+        return $demandasExcluidas;
     }
 
-    public function contatos_diretos_remover($ofertaId) {
+    public function contatos_diretos_remover($demandaId) { 
 
         $userId = Auth::id();
-        $oferta = Oferta::findOrFail($ofertaId);
+        $demanda = Demanda::findOrFail($demandaId);
 
         ContatosDiretosExcluidos::create([
             'id_usuario' => $userId,
-            'id_demanda' => null,
-            'id_oferta' => $oferta->id_oferta,
+            'id_demanda' => $demanda->id_demanda,
+            'id_oferta' => null,
             'updated_at' => null,
             'created_at' => now()
         ]);
 
-        return redirect()->route('list_todas_ofertas')->with('msg-deletar', 'Oferta removida com Sucesso!');
+        return redirect()->route('lista_todas_demandas')->with('msg-deletar', 'Demanda removida com Sucesso!');
     }
 
-    public function contato_direto_status_visualizar($ofertaId) {
+    public function contato_direto_status_visualizar($demandaId) { 
         $userId = Auth::id();
-        $oferta = Oferta::findOrFail($ofertaId);
+        $demanda = Demanda::findOrFail($demandaId);
     
         $contatoDiretoExistente = ContatosDiretosVisualizados::where('id_usuario', $userId)
-            ->where('id_oferta', $oferta->id_oferta)
+            ->where('id_demanda', $demanda->id_demanda)
             ->exists();
         
         if ($contatoDiretoExistente) {
-            return back();/* redirect()->route('demanda_matching_index', $demandaId) */;
+            return back();
         }
     
         ContatosDiretosVisualizados::create([
             'id_usuario' => $userId,
-            'id_demanda' => null,
-            'id_oferta' => $oferta->id_oferta,
+            'id_demanda' => $demanda->id_demanda,
+            'id_oferta' => null,
             'created_at' => now(),
             'updated_at' => null,
         ]);
