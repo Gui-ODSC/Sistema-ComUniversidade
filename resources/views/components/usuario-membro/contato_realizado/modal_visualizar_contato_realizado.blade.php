@@ -58,6 +58,7 @@
                             @if ($oferta->tipo == 'ACAO')
                                 <h6>Público Alvo: {{$oferta->ofertaAcao->publicoAlvo->nome}}</h6>
                                 <h6>Status da Oferta: {{ucwords(strtolower($oferta->ofertaAcao->status_registro))}}</h6>
+                                <h6>Tipo Ação: {{ucwords(strtolower($oferta->ofertaAcao->tipoAcao->nome))}}</h6>
                             @endif
                             @if ($oferta->tipo == 'CONHECIMENTO')
                                 <h6>Currículo Lattes: <a href="https:\\{{$oferta->ofertaConhecimento->link_lattes}}">{{$oferta->ofertaConhecimento->link_lattes}}</a></h6>
@@ -66,6 +67,11 @@
                             @if ($oferta->tipo == 'ACAO')
                                 <h6>Duração: {{ucwords(strtolower($oferta->ofertaAcao->duracao))}}</h6>
                                 <h6>Regime: {{ucwords(strtolower($oferta->ofertaAcao->regime))}}</h6>
+                                @if ($oferta->ofertaAcao->data_limite != null)
+                                    <h6>Data Limite: {{\Carbon\Carbon::parse($oferta->ofertaAcao->data_limite)->format('d/m/Y')}}</h6>
+                                @else
+                                    <h6>Data Limite: Sem data Limite</h6>
+                                @endif
                             @endif
                             @if ($oferta->tipo == 'CONHECIMENTO')
                                 @if ($oferta->ofertaConhecimento->tempo_atuacao === 'MENOS_1_ANO')
