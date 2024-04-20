@@ -1,6 +1,6 @@
 body {
-    /* background: linear-gradient(90deg, rgba(9,107,170,1) 0%, rgba(16,43,73,1) 100%); */
-    background: linear-gradient(90deg, rgba(9,107,170,1) 0%, rgba(44,39,88,1) 50%, rgba(40,35,69,1) 100%);
+    background: rgb(92,69,252);
+    background: linear-gradient(90deg, rgba(92,69,252,1) 0%, rgba(253,57,29,1) 50%, rgba(92,69,252,1) 100%); 
 }
 
 .titulo {

@@ -159,10 +159,13 @@
 }
 
 #dados-informacao-oferta-contato-respondido img{
-    height: 20px;
-    width: 20px;
+    height: 25px;
+    width: 25px;
     margin-right: 5px;
     margin-top: -5px;
+    background-color: rgb(57, 57, 57);
+    padding: 3px;
+    border-radius: 5px;
 }
 
 #dados-informacao-oferta-contato-respondido a{

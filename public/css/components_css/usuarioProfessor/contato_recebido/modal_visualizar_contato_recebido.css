@@ -158,12 +158,13 @@
 }
 
 #dados-informacao-oferta img{
-    height: 20px;
-    width: 20px;
+    height: 25px;
+    width: 25px;
     margin-right: 5px;
     margin-top: -5px;
-    background-color: #FFF;
-    border-radius: 100px;
+    background-color: white;
+    padding: 3px;
+    border-radius: 5px;
 }
 
 .descricao-oferta {
