@@ -13,7 +13,7 @@ Route::prefix('professor')->group(function(){
     //Rota de cadastro para membros da sociedade 
     /* Route::prefix('/cadastro')->controller(CadastroMembroController::class)->group( function(){
         Route::get('/', 'index')->name('cadastro_membro_index');
-        Route::post('/', 'create')->name('cadastro_create');
+        Route::post('/', 'create')->name('cadastro_create_professor');
     });  AJUSTAR PORQUE É CÓPIA DO MEMBRO*/
 
     Route::prefix('/ofertas')->controller(OfertaProfessorController::class)->group(function (){
@@ -43,11 +43,11 @@ Route::prefix('professor')->group(function(){
         })->middleware('auth');
 
         Route::prefix('/contatos_realizados')->controller(ContatoRealizadoProfessorController::class)->group(function() {
-            Route::get('/', 'listaContatosRealizados')->name('lista_contatos_realizados');
+            Route::get('/', 'listaContatosRealizados')->name('lista_contatos_realizados_professor');
         });
 
         Route::prefix('/contatos_recebidos')->controller(ContatoRecebidoProfessorController::class)->group(function() {
-            Route::get('/', 'listaContatosRecebidos')->name('lista_contatos_recebidos');
+            Route::get('/', 'listaContatosRecebidos')->name('lista_contatos_recebidos_professor');
             Route::prefix('/{contatoId}')->group(function() {
                 Route::post('/prof', 'repostaContato')->name('contato_recebido_store_professor');
             });

@@ -98,6 +98,6 @@ class ContatoRecebidoProfessorController extends Controller
         $mensagemRecebida->tipo_mensagem = request()->input('tipo_mensagem');
         $mensagemRecebida->updateOrFail();
 
-        return redirect()->to(route('lista_contatos_recebidos'))->with('msg-contato-respondido', 'Contato Respondido com Sucesso');
+        return redirect()->to(route('lista_contatos_recebidos_professor'))->with('msg-contato-respondido', 'Contato Respondido com Sucesso');
     }
 }
