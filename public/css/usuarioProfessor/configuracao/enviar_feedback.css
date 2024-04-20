@@ -1,0 +1,82 @@
+body {
+    background: rgb(92,69,252);
+    background: linear-gradient(90deg, rgba(92,69,252,1) 0%, rgba(253,57,29,1) 50%, rgba(92,69,252,1) 100%); 
+}
+
+.enviar-feedback {
+    display: block;
+    border: solid 3px black;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #FFF;
+}
+
+#imagem-perfil {
+    display: flex;
+    width: 100px;
+    height: 100px;
+    border-radius: 180px;
+    margin: 20px;
+}
+
+.enviar-feedback h5 {
+    display: inline-flex;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.session-img {
+    display: flex;
+}
+
+.session-img h5 {
+    margin: auto 20px;
+}
+
+.enviar-feedback form {
+    display: block;
+    padding: 20px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.enviar-feedback label {
+    padding: 10px 20px 20px 20px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.enviar-feedback input {
+    background-color: rgba(125, 134, 143, 0.6);
+    border-radius: 5px;
+    border: none;
+    width: 100%;
+    padding: 5px;
+    padding-left: 5px;
+}
+
+.enviar-feedback textarea {
+    background-color: rgba(125, 134, 143, 0.6);
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    padding-left: 5px;
+}
+
+.enviar-feedback button {
+    display: block;
+    margin: 30px auto 20px auto; 
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    background-color: #191970;
+    border: none;
+    color: #FFF;
+    font-weight: bold;
+    margin-top: 30px;
+    width: 250px;
+    height: 50px;
+}
+
+

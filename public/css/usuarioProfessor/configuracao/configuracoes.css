@@ -1,0 +1,34 @@
+body {
+    background: rgb(92,69,252);
+    background: linear-gradient(90deg, rgba(92,69,252,1) 0%, rgba(253,57,29,1) 50%, rgba(92,69,252,1) 100%); 
+}
+
+.configuracoes h1 {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    color: #FFF;
+}
+
+.configuracoes a{
+    display: block;
+    text-align: center;
+}
+
+.configuracoes button {
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    background-color: #191970;
+    border: none;
+    color: #FFF;
+    box-shadow: -1px 1px 4px 4px #FFF;
+    font-weight: bold;
+    width: 250px;
+    transition: all 0.3s ease;
+}
+
+.configuracoes button:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}

@@ -10,6 +10,6 @@
     <a href="{{-- {{ route('list_todas_ofertas') }} --}}"><i><img src="{{ asset('img/menu/setas.png') }}" id="icones-menu" alt="icone de oferta/demanda"></i>Todas as Demandas</a>
     <a href="{{ route('lista_contatos_realizados_professor') }}"><i><img src="{{ asset('img/menu/contato.png') }}" id="icones-menu" alt="icone de contato"></i>Contatos Realizados</a>
     <a href="{{ route('lista_contatos_recebidos_professor') }}"><i><img src="{{ asset('img/menu/contato.png') }}" id="icones-menu" alt="icone de contato"></i>Contatos Recebidos</a>
-    <a href="{{-- {{ route('configuracoes') }} --}}"><i><img src="{{ asset('img/menu/configuracoes.png') }}" id="icones-menu" alt="icone de contato"></i>Configurações</a>
+    <a href="{{ route('configuracoes_professor') }}"><i><img src="{{ asset('img/menu/configuracoes.png') }}" id="icones-menu" alt="icone de contato"></i>Configurações</a>
     <a href="{{ route('login_professor_destroy') }}"><i><img src="{{ asset('img/menu/sair.png') }}" id="icones-menu" alt="icone de contato"></i>Sair</a>
 </nav>

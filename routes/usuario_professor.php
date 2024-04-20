@@ -41,18 +41,33 @@ Route::prefix('professor')->group(function(){
                 });
             })->middleware('auth');
         })->middleware('auth');
-
-        Route::prefix('/contatos_realizados')->controller(ContatoRealizadoProfessorController::class)->group(function() {
-            Route::get('/', 'listaContatosRealizados')->name('lista_contatos_realizados_professor');
-        });
-
-        Route::prefix('/contatos_recebidos')->controller(ContatoRecebidoProfessorController::class)->group(function() {
-            Route::get('/', 'listaContatosRecebidos')->name('lista_contatos_recebidos_professor');
-            Route::prefix('/{contatoId}')->group(function() {
-                Route::post('/prof', 'repostaContato')->name('contato_recebido_store_professor');
-            });
-        });
     })->middleware('auth');
+
+    Route::prefix('/contatos_realizados')->controller(ContatoRealizadoProfessorController::class)->group(function() {
+        Route::get('/', 'listaContatosRealizados')->name('lista_contatos_realizados_professor');
+    });
+
+    Route::prefix('/contatos_recebidos')->controller(ContatoRecebidoProfessorController::class)->group(function() {
+        Route::get('/', 'listaContatosRecebidos')->name('lista_contatos_recebidos_professor');
+        Route::prefix('/{contatoId}')->group(function() {
+            Route::post('/prof', 'repostaContato')->name('contato_recebido_store_professor');
+        });
+    });
+
+    Route::prefix('extensao/configuracoes_professor')->group(function(){
+        Route::get('/configuracao', function(){
+            return view('usuarioProfessor/configuracao/configuracoes_professor');
+        })->name('configuracoes_professor');
+        Route::get('/ajuda_sistema', function(){
+            return view('usuarioProfessor/configuracao/ajuda_sistema');
+        })->name('ajuda_sistema');
+        Route::get('/enviar_feedback', function(){
+            return view('usuarioProfessor/configuracao/enviar_feedback');
+        })->name('enviar_feedback');
+        Route::get('/sobre_nos', function(){
+            return view('usuarioProfessor/configuracao/sobre_nos');
+        })->name('sobre_nos');
+    });
 });
 
 
