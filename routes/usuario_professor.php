@@ -1,5 +1,6 @@
 <?php 
 
+use App\Http\Controllers\ProfessorControllers\ContatoRecebidoProfessorController;
 use App\Http\Controllers\ProfessorControllers\OfertaAcaoProfessorController;
 use App\Http\Controllers\ProfessorControllers\ContatoRealizadoProfessorController;
 use App\Http\Controllers\ProfessorControllers\OfertaConhecimentoProfessorController;
@@ -43,6 +44,13 @@ Route::prefix('professor')->group(function(){
 
         Route::prefix('/contatos_realizados')->controller(ContatoRealizadoProfessorController::class)->group(function() {
             Route::get('/', 'listaContatosRealizados')->name('lista_contatos_realizados');
+        });
+
+        Route::prefix('/contatos_recebidos')->controller(ContatoRecebidoProfessorController::class)->group(function() {
+            Route::get('/', 'listaContatosRecebidos')->name('lista_contatos_recebidos');
+            Route::prefix('/{contatoId}')->group(function() {
+                Route::post('/prof', 'repostaContato')->name('contato_recebido_store_professor');
+            });
         });
     })->middleware('auth');
 });

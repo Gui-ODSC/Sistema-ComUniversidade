@@ -60,8 +60,8 @@
                                 <h6>Status da Oferta: {{ucwords(strtolower($oferta->ofertaAcao->status_registro))}}</h6>
                             @endif
                             @if ($oferta->tipo == 'CONHECIMENTO')
-                                <h6>Currículo Lattes: <a href="{{$oferta->ofertaConhecimento->link_lattes}}">{{$oferta->ofertaConhecimento->link_lattes}}</a></h6>
-                                <h6>Currículo Linkedin: <a href="{{$oferta->ofertaConhecimento->link_linkedin}}">{{$oferta->ofertaConhecimento->link_linkedin}}</a></h6>
+                                <h6>Currículo Lattes: <a href="https:\\{{$oferta->ofertaConhecimento->link_lattes}}">{{$oferta->ofertaConhecimento->link_lattes}}</a></h6>
+                                <h6>Currículo Linkedin: <a href="https:\\{{$oferta->ofertaConhecimento->link_linkedin}}">{{$oferta->ofertaConhecimento->link_linkedin}}</a></h6>
                             @endif
                             @if ($oferta->tipo == 'ACAO')
                                 <h6>Duração: {{ucwords(strtolower($oferta->ofertaAcao->duracao))}}</h6>

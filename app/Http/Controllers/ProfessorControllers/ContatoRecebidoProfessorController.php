@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\MembroControllers;
+namespace App\Http\Controllers\ProfessorControllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Contato;
@@ -8,9 +8,9 @@ use App\Models\ContatoMensagem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class ContatoRecebidoMembroController extends Controller
+class ContatoRecebidoProfessorController extends Controller
 {
-    public function list() {
+    public function listaContatosRecebidos() {
 
         $usuarioId = Auth::id();
 
@@ -40,8 +40,8 @@ class ContatoRecebidoMembroController extends Controller
                     'dados' => $contato, 
                     'usuarioEmissor' => $contato->usuarioOrigem,
                     'usuarioReceptor' => $contato->usuarioDestino,
-                    'demanda' => $contato->demanda,
-                    'oferta' => $contato->oferta,/* possivelmente remover */
+                    'demanda' => $contato->demanda,/* possivelmente remover */
+                    'oferta' => $contato->oferta,
                     'mensagemRecebida' => $mensagemRecebida,
                     'respostaEnviada' => null
                 ];
@@ -50,8 +50,8 @@ class ContatoRecebidoMembroController extends Controller
                     'dados' => $contato, 
                     'usuarioEmissor' => $contato->usuarioOrigem,
                     'usuarioReceptor' => $contato->usuarioDestino,
-                    'demanda' => $contato->demanda,
-                    'oferta' => $contato->oferta,/* possivelmente remover */
+                    'demanda' => $contato->demanda,/* possivelmente remover */
+                    'oferta' => $contato->oferta,
                     'mensagemRecebida' => $mensagemRecebida,
                     'respostaEnviada' => $respostaEnviada
                 ];
@@ -60,7 +60,7 @@ class ContatoRecebidoMembroController extends Controller
             
         }
 
-        return view('usuarioMembro/contatos_recebidos/todos_contatos_recebidos',
+        return view('usuarioProfessor/contatos_recebidos/todos_contatos_recebidos',
             [
                 'contatosRecebidos' => $contatosFormatados,
                 'paginate' => $contatosRecebidos
@@ -68,7 +68,8 @@ class ContatoRecebidoMembroController extends Controller
         );
     }
 
-    public function resposta($contatoId, Request $request)
+    /* ajustar */
+    public function repostaContato($contatoId, Request $request)
     {
         $usuarioId = Auth::id();
 
@@ -97,6 +98,6 @@ class ContatoRecebidoMembroController extends Controller
         $mensagemRecebida->tipo_mensagem = request()->input('tipo_mensagem');
         $mensagemRecebida->updateOrFail();
 
-        return redirect()->to(route('list_contatos_recebidos'))->with('msg-contato-respondido', 'Contato Respondido com Sucesso');
+        return redirect()->to(route('lista_contatos_recebidos'))->with('msg-contato-respondido', 'Contato Respondido com Sucesso');
     }
 }
