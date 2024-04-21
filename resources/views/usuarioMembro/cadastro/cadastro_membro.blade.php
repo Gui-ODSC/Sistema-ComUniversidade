@@ -45,7 +45,7 @@
                 {{-- NOME --}}
                 <div class="caixa-input" style="width: 40%;">
                     @error('nome')
-                        <input title="{{ $message }}" class="alert-danger" type="text" id="nome" name="nome" autocomplete="off"  style="border: 1px solid red; background-color:rgb(235, 201, 206)" required>
+                        <input title="{{ $message }}" class="alert-danger" type="text" id="nome" name="nome" autocomplete="off"  style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required>
                         <label for="nome">
                             <span>Nome</span>
                         </label>
@@ -59,7 +59,7 @@
                 <div class="caixa-input" style="width: 578px; margin-left: 3px">
                     {{-- SOBRENOME --}}
                     @error('sobrenome')
-                        <input title="{{ $message }}" class="alert-danger" type="text" id="sobrenome" name="sobrenome" autocomplete="off" style="border: 1px solid red; background-color:rgb(235, 201, 206)" required>
+                        <input title="{{ $message }}" class="alert-danger" type="text" id="sobrenome" name="sobrenome" autocomplete="off" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required>
                         <label for="sobrenome">
                             <span>Sobrenome</span>
                         </label>
@@ -87,7 +87,7 @@
                 <div class="caixa-input" style="width: 773px; margin-left: 3px">
                     {{-- EMAIL --}}
                     @error('email')
-                        <input title="{{ $message }}" class="alert-danger" type="email" id="email" name="email" autocomplete="off" style="border: 1px solid red; background-color:rgb(235, 201, 206)" required>
+                        <input title="{{ $message }}" class="alert-danger" type="email" id="email" name="email" autocomplete="off" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required>
                         <label for="email">
                             <span>Email</span>
                         </label>
@@ -101,7 +101,7 @@
                 <div class="caixa-input" style="width: 70%;">
                     {{-- EMAIL_SECUNDARIO --}}
                     @error('email_secundario')
-                        <input title="{{ $message }}" class="alert-danger" type="email" id="email_secundario" name="email_secundario" autocomplete="off" style="border: 1px solid red; background-color:rgb(235, 201, 206)">
+                        <input title="{{ $message }}" class="alert-danger" type="email" id="email_secundario" name="email_secundario" autocomplete="off" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black">
                         <label for="email_secundario">
                             <span>Email Secundário</span>
                         </label>
@@ -116,7 +116,7 @@
                 <div class="caixa-input" style="width: 288px; margin-left: 3px">
                      {{-- TELEFONE --}}
                     @error('telefone')
-                        <input title="{{ $message }}" class="alert-danger" type="text" id="telefone" name="telefone" autocomplete="off" style="border: 1px solid red; background-color:rgb(235, 201, 206)" required>
+                        <input title="{{ $message }}" class="alert-danger" type="text" id="telefone" name="telefone" autocomplete="off" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required>
                         <label for="telefone">
                             <span>Telefone</span>
                         </label>
@@ -130,7 +130,7 @@
                 <div class="caixa-input" style="width: 50%;">
                     {{-- PASSWORD --}}
                     @error('password')
-                        <input title="{{ $message }}" class="alert-danger" type="password" id="password" name="password" style="border: 1px solid red; background-color:rgb(235, 201, 206)" required>
+                        <input title="{{ $message }}" class="alert-danger" type="password" id="password" name="password" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required>
                         <label for="password">
                             <span>Senha</span>
                         </label>
@@ -145,7 +145,7 @@
                     {{-- CIDADE --}}
                     @error('cidade')
                         <div class="autoComplete_wrapper">  
-                            <input title="{{ $message }}" class="cidade alert-danger" type="text" name="nome_cidade" autocomplete="off" style="border: 1px solid red; background-color:rgb(235, 201, 206)" required>
+                            <input title="{{ $message }}" class="cidade alert-danger" type="text" name="nome_cidade" autocomplete="off" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required>
                             <label for="nome_cidade">
                                 <span>Cidade</span>
                             </label>
@@ -162,7 +162,7 @@
                 <div class="caixa-input" style="width: 40%;">
                     {{-- RUA --}}
                     @error('rua')
-                        <input title="{{ $message }}" class="alert-danger" type="text" id="rua" name="rua" autocomplete="off" style="border: 1px solid red; background-color:rgb(235, 201, 206)" required>
+                        <input title="{{ $message }}" class="alert-danger" type="text" id="rua" name="rua" autocomplete="off" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required>
                         <label for="rua">
                             <span>Rua</span>
                         </label>
@@ -176,7 +176,7 @@
                 <div class="caixa-input" style="width: 30%; margin-left: 3px;">
                     {{-- NUMERO --}}
                     @error('numero')
-                        <input title="{{ $message }}" class="alert-danger" type="number" id="numero" name="numero" autocomplete="off" style="border: 1px solid red; background-color:rgb(235, 201, 206)" required>
+                        <input title="{{ $message }}" class="alert-danger" type="number" id="numero" name="numero" autocomplete="off" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required>
                         <label for="numero">
                             <span>Número</span>
                         </label>
@@ -190,7 +190,7 @@
                 <div class="caixa-input" style="width: 285px; margin-left: 3px;">
                     {{-- COMPLEMENTO --}}
                     @error('complemento')
-                        <input title="{{ $message }}" class="alert-danger" type="text" id="complemento" name="complemento" autocomplete="off" style="border: 1px solid red; background-color:rgb(235, 201, 206)">
+                        <input title="{{ $message }}" class="alert-danger" type="text" id="complemento" name="complemento" autocomplete="off" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black">
                         <label for="complemento">
                             <span>Complemento</span>
                         </label>
@@ -205,7 +205,7 @@
                     {{-- ESTADO --}}
                     @error('estado')
                         <div class="autoComplete_wrapper">  
-                            <input title="{{ $message }}" type="text" id="autoCompleteEstado" class="estado alert-danger" name="nome_estado" autocomplete="off" style="border: 1px solid red; background-color:rgb(235, 201, 206)" required>
+                            <input title="{{ $message }}" type="text" id="autoCompleteEstado" class="estado alert-danger" name="nome_estado" autocomplete="off" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required>
                             <label for="nome_estado">
                                 <span>Estado</span>
                             </label>
@@ -223,7 +223,7 @@
                     {{-- BAIRRO --}}
                     @error('bairro')
                         <div class="autoComplete_wrapper">  
-                            <input title="{{ $message }}" type="text" id="autoCompleteBairro" class="bairro alert-danger" name="nome_bairro" autocomplete="off" style="border: 1px solid red; background-color:rgb(235, 201, 206)" required>
+                            <input title="{{ $message }}" type="text" id="autoCompleteBairro" class="bairro alert-danger" name="nome_bairro" autocomplete="off" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required>
                             <label for="nome_bairro">
                                 <span>Bairro</span>
                             </label>
@@ -240,7 +240,7 @@
                 <div class="caixa-input" style="width: 285px; margin-left: 3px;">
                     {{-- FOTO --}}
                     @error('foto')
-                        <label title="{{ $message }}" for="foto" class="custom-file-upload" style="border: 1px solid red; background-color:rgb(235, 201, 206)">
+                        <label title="{{ $message }}" for="foto" class="custom-file-upload" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black">
                             <input type="file" id="foto" name="foto" style="display:none">
                             Adicionar Foto Perfil
                         </label>

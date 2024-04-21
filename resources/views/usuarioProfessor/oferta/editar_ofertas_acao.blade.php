@@ -40,7 +40,7 @@
                 @csrf
                 <div class="caixa-input" style="width: 40%;">
                     @if ($errors->has('titulo') || $errors->has('id_usuario'))
-                        <input title="{{ $errors->first('titulo') ?: $errors->first('id_usuario') }}" type="text" name="titulo" value="{{$oferta->titulo}}" style="border: 1px solid red; background-color: rgb(235, 201, 206)" required>
+                        <input title="{{ $errors->first('titulo') ?: $errors->first('id_usuario') }}" type="text" name="titulo" value="{{$oferta->titulo}}" style="border: 1px solid red; background-color: rgb(235, 201, 206); color: black" required>
                         <label for="titulo">
                             <span>Titulo</span>
                         </label>
@@ -54,7 +54,7 @@
                 <div class="caixa-input" style="width: 30%; margin-left: 3px">
                     @error('areaConhecimento')
                         <div class="autoComplete_wrapper">  
-                            <input title="{{$message}}" type="text" id="autoCompleteAreaConhecimentoAcao" name="area_conhecimento" value="{{$areaConhecimento->nome}}" style="border: 1px solid red; background-color:rgb(235, 201, 206)" autocomplete="off" required>
+                            <input title="{{$message}}" type="text" id="autoCompleteAreaConhecimentoAcao" name="area_conhecimento" value="{{$areaConhecimento->nome}}" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" autocomplete="off" required>
                             <label for="area_conhecimento">
                                 <span>Área Conhecimento</span>
                             </label>
@@ -71,7 +71,7 @@
                 <div class="caixa-input" style="width: 355px; margin-left: 3px">
                     @error('publico_alvo')
                         <div class="autoComplete_wrapper">  
-                            <input title="{{$message}}" type="text" id="autoCompletePublicoAlvo" name="publico_alvo" value="{{$publicoAlvo->nome}}" style="border: 1px solid red; background-color:rgb(235, 201, 206)" autocomplete="off" required>
+                            <input title="{{$message}}" type="text" id="autoCompletePublicoAlvo" name="publico_alvo" value="{{$publicoAlvo->nome}}" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" autocomplete="off" required>
                             <label for="publico_alvo">
                                 <span>Publico alvo</span>
                             </label>
@@ -88,7 +88,7 @@
                 <div class="caixa-input" style="width: 30%;">
                     @error('tipo_acao')
                         <div class="autoComplete_wrapper">  
-                            <input title="{{$message}}" type="text" id="autoCompleteTipoAcao" name="tipo_acao" value="{{$tipoAcao->nome}}" style="border: 1px solid red; background-color:rgb(235, 201, 206)" autocomplete="off" required>
+                            <input title="{{$message}}" type="text" id="autoCompleteTipoAcao" name="tipo_acao" value="{{$tipoAcao->nome}}" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" autocomplete="off" required>
                             <label for="tipo_acao">
                                 <span>Modalidade da Ação de Extensão</span>
                             </label>
@@ -104,7 +104,7 @@
                 </div>
                 <div class="caixa-input" style="width: 35%; margin-left: 3px;">
                     @error('duracao')
-                        <select title="{{$message}}" name="duracao" autocomplete="off" style="border: 1px solid red; background-color:rgb(235, 201, 206)" required>
+                        <select title="{{$message}}" name="duracao" autocomplete="off" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required>
                             <option disabled selected></option>
                             <option value="DIAS" {{ $oferta->ofertaAcao->duracao === 'DIAS'? 'selected' : '' }}>Dias</option>
                             <option value="SEMANAS" {{ $oferta->ofertaAcao->duracao === 'SEMANAS'? 'selected' : '' }}>Semanas</option>
@@ -144,7 +144,7 @@
                 </div>
                 <div class="caixa-input" style="height: 120px; width: 100%;">
                     @error('descricao')
-                        <textarea title="{{$message}}" type="text" name="descricao" placeholder="Texto Livre" style="border: 1px solid red; background-color:rgb(235, 201, 206)" required>{{$oferta->descricao}}</textarea>
+                        <textarea title="{{$message}}" type="text" name="descricao" placeholder="Texto Livre" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required>{{$oferta->descricao}}</textarea>
                         <label id="campo-label" for="descricao">
                             <span id="campo-spam">Descrição</span>
                         </label>
@@ -157,7 +157,7 @@
                 </div>
                 <div class="caixa-input" style="width: 50%;">
                     @error('status_registro')
-                        <select title="{{$message}}" name="status_registro" autocomplete="off" style="border: 1px solid red; background-color:rgb(235, 201, 206)" required>
+                        <select title="{{$message}}" name="status_registro" autocomplete="off" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required>
                             <option disabled selected></option>
                             <option value="NAO_REGISTRADA"{{$oferta->ofertaAcao->status_registro === 'NAO_REGISTRADA'? 'selected': '' }}>Não Registrada</option>
                             <option value="REGISTRADA"{{$oferta->ofertaAcao->status_registro === 'REGISTRADA'? 'selected': '' }}>Registrada</option>
@@ -178,7 +178,7 @@
                 </div>
                 <div class="caixa-input" style="width: 604px; margin-left: 3px">
                     @error('regime')
-                        <select title="{{$message}}" name="regime" autocomplete="off" style="border: 1px solid red; background-color:rgb(235, 201, 206)" required>
+                        <select title="{{$message}}" name="regime" autocomplete="off" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required>
                             <option disabled selected></option>
                             <option value="PRESENCIAL"{{$oferta->ofertaAcao->regime === 'PRESENCIAL'? 'selected': '' }}>Presencial</option>
                             <option value="ONLINE"{{$oferta->ofertaAcao->regime === 'ONLINE'? 'selected': '' }}>Online</option>

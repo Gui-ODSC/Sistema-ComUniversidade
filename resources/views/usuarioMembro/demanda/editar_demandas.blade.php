@@ -36,7 +36,7 @@
                 @csrf
                 <div class="caixa-input" style="width: 60%;">
                     @if ($errors->has('titulo') || $errors->has('id_usuario'))
-                        <input title="{{ $errors->first('titulo') ?: $errors->first('id_usuario') }}" type="text" name="titulo" style="border: 1px solid red; background-color: rgb(235, 201, 206)" required>
+                        <input title="{{ $errors->first('titulo') ?: $errors->first('id_usuario') }}" type="text" name="titulo" style="border: 1px solid red; background-color: rgb(235, 201, 206); color: black" required>
                         <label for="titulo">
                             <span>Titulo</span>
                         </label>
@@ -50,7 +50,7 @@
                 <div class="caixa-input" style="width: 482px; margin-left: 3px">
                     @error('publico_alvo')
                         <div class="autoComplete_wrapper">  
-                            <input title="{{$message}}" type="text" id="autoCompletePublicoAlvo" name="publico_alvo" placeholder="Publico Alvo da Ação" style="border: 1px solid red; background-color:rgb(235, 201, 206)" autocomplete="off" required>
+                            <input title="{{$message}}" type="text" id="autoCompletePublicoAlvo" name="publico_alvo" placeholder="Publico Alvo da Ação" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" autocomplete="off" required>
                             <label for="publico_alvo">
                                 <span>Publico alvo</span>
                             </label>
@@ -67,7 +67,7 @@
                 <div class="caixa-input" style="width: 50%">
                     @error('areaConhecimento')
                         <div class="autoComplete_wrapper">  
-                            <input title="{{$message}}" type="text" id="autoCompleteAreaConhecimento" name="area_conhecimento" placeholder="Área de Conhecimento" style="border: 1px solid red; background-color:rgb(235, 201, 206)" autocomplete="off" required>
+                            <input title="{{$message}}" type="text" id="autoCompleteAreaConhecimento" name="area_conhecimento" placeholder="Área de Conhecimento" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" autocomplete="off" required>
                             <label for="area_conhecimento">
                                 <span>Área Conhecimento</span>
                             </label>
@@ -83,7 +83,7 @@
                 </div>
                 <div class="caixa-input" style="width: 603px; margin-left: 3px">
                     @error('pessoas_afetadas')
-                        <input title="{{$message}}" type="number" name="pessoas_afetadas" onkeypress="return event.charCode >= 48 && event.charCode <= 57" style="border: 1px solid red; background-color:rgb(235, 201, 206)" required>
+                        <input title="{{$message}}" type="number" name="pessoas_afetadas" onkeypress="return event.charCode >= 48 && event.charCode <= 57" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required>
                         <label for="pessoas_afetadas">
                             <span>Pessoas Afetadas</span>
                         </label>
@@ -96,7 +96,7 @@
                 </div>
                 <div class="caixa-input" style="height: 120px; width: 100%;">
                     @error('descricao')
-                        <textarea title="{{$message}}" type="text" name="descricao" style="border: 1px solid red; background-color:rgb(235, 201, 206)" required></textarea>
+                        <textarea title="{{$message}}" type="text" name="descricao" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required></textarea>
                         <label id="campo-label" for="descricao">
                             <span id="campo-spam">Descrição</span>
                         </label>
@@ -109,7 +109,7 @@
                 </div>
                 <div class="caixa-input" style="width: 35%">
                     @error('duracao')
-                        <select title="{{$message}}" name="duracao" style="border: 1px solid red; background-color:rgb(235, 201, 206)" required>
+                        <select title="{{$message}}" name="duracao" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required>
                             <option disabled></option>
                             <option value="DIAS" {{ $demanda->duracao === 'DIAS' ? 'selected' : '' }}>Dias</option>
                             <option value="SEMANAS" {{ $demanda->duracao === 'SEMANAS' ? 'selected' : '' }}>Semanas</option>
@@ -136,7 +136,7 @@
                 </div>
                 <div class="caixa-input" style="width: 35%; margin-left: 3px">
                     @error('nivel_prioridade')
-                        <select title="{{$message}}" name="nivel_prioridade" style="border: 1px solid red; background-color:rgb(235, 201, 206)" required>
+                        <select title="{{$message}}" name="nivel_prioridade" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required>
                             <option disabled selected></option>
                             <option value="BAIXO" {{ $demanda->nivel_prioridade === 'BAIXO'? 'selected' : '' }}>Baixo</option>
                             <option value="MEDIO" {{ $demanda->nivel_prioridade === 'MEDIO'? 'selected' : '' }}>Medio</option>
@@ -159,7 +159,7 @@
                 </div>
                 <div class="caixa-input" style="width: 358px; margin-left: 3px">
                     @error('instituicao_setor')
-                        <input title="{{$message}}" type="text" name="instituicao_setor" style="border: 1px solid red; background-color:rgb(235, 201, 206)">
+                        <input title="{{$message}}" type="text" name="instituicao_setor" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black">
                         <label for="instituicao_setor">
                             <span>Instituicao Prioridade</span>
                         </label>

@@ -49,7 +49,7 @@
                         @csrf
                         <div class="caixa-input" style="width: 40%;">
                             @if ($errors->has('titulo') || $errors->has('id_usuario'))
-                                <input title="{{ $errors->first('titulo') ?: $errors->first('id_usuario') }}" type="text" name="titulo" style="border: 1px solid red; background-color: rgb(235, 201, 206)" required>
+                                <input title="{{ $errors->first('titulo') ?: $errors->first('id_usuario') }}" type="text" name="titulo" style="border: 1px solid red; background-color: rgb(235, 201, 206); color: black" required>
                                 <label for="titulo">
                                     <span>Titulo</span>
                                 </label>
@@ -63,7 +63,7 @@
                         <div class="caixa-input" style="width: 30%; margin-left: 3px">
                             @error('areaConhecimento')
                                 <div class="autoComplete_wrapper">  
-                                    <input title="{{$message}}" type="text" id="autoCompleteAreaConhecimentoAcao" name="area_conhecimento" style="border: 1px solid red; background-color:rgb(235, 201, 206)" autocomplete="off" required>
+                                    <input title="{{$message}}" type="text" id="autoCompleteAreaConhecimentoAcao" name="area_conhecimento" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" autocomplete="off" required>
                                     <label for="area_conhecimento">
                                         <span>Área Conhecimento</span>
                                     </label>
@@ -80,7 +80,7 @@
                         <div class="caixa-input" style="width: 355px; margin-left: 3px">
                             @error('publico_alvo')
                                 <div class="autoComplete_wrapper">  
-                                    <input title="{{$message}}" type="text" id="autoCompletePublicoAlvo" name="publico_alvo" style="border: 1px solid red; background-color:rgb(235, 201, 206)" autocomplete="off" required>
+                                    <input title="{{$message}}" type="text" id="autoCompletePublicoAlvo" name="publico_alvo" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" autocomplete="off" required>
                                     <label for="publico_alvo">
                                         <span>Publico alvo</span>
                                     </label>
@@ -97,7 +97,7 @@
                         <div class="caixa-input" style="width: 30%;">
                             @error('tipo_acao')
                                 <div class="autoComplete_wrapper">  
-                                    <input title="{{$message}}" type="text" id="autoCompleteTipoAcao" name="tipo_acao" style="border: 1px solid red; background-color:rgb(235, 201, 206)" autocomplete="off" required>
+                                    <input title="{{$message}}" type="text" id="autoCompleteTipoAcao" name="tipo_acao" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" autocomplete="off" required>
                                     <label for="tipo_acao">
                                         <span>Modalidade da Ação de Extensão</span>
                                     </label>
@@ -113,7 +113,7 @@
                         </div>
                         <div class="caixa-input" style="width: 35%; margin-left: 3px;">
                             @error('duracao')
-                                <select title="{{$message}}" name="duracao" autocomplete="off" style="border: 1px solid red; background-color:rgb(235, 201, 206)" required>
+                                <select title="{{$message}}" name="duracao" autocomplete="off" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required>
                                     <option disabled selected></option>
                                     <option value="DIAS">Dias</option>
                                     <option value="SEMANAS">Semanas</option>
@@ -153,7 +153,7 @@
                         </div>
                         <div class="caixa-input" style="height: 120px; width: 100%;">
                             @error('descricao')
-                                <textarea title="{{$message}}" type="text" name="descricao" placeholder="Texto Livre" style="border: 1px solid red; background-color:rgb(235, 201, 206)" required></textarea>
+                                <textarea title="{{$message}}" type="text" name="descricao" placeholder="Texto Livre" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required></textarea>
                                 <label id="campo-label" for="descricao">
                                     <span id="campo-spam">Descrição</span>
                                 </label>
@@ -166,7 +166,7 @@
                         </div>
                         <div class="caixa-input" style="width: 50%;">
                             @error('status_registro')
-                                <select title="{{$message}}" name="status_registro" autocomplete="off" style="border: 1px solid red; background-color:rgb(235, 201, 206)" required>
+                                <select title="{{$message}}" name="status_registro" autocomplete="off" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required>
                                     <option disabled selected></option>
                                     <option value="NAO_REGISTRADA">Não Registrada</option>
                                     <option value="REGISTRADA">Registrada</option>
@@ -187,7 +187,7 @@
                         </div>
                         <div class="caixa-input" style="width: 604px; margin-left: 3px">
                             @error('regime')
-                                <select title="{{$message}}" name="regime" autocomplete="off" style="border: 1px solid red; background-color:rgb(235, 201, 206)" required>
+                                <select title="{{$message}}" name="regime" autocomplete="off" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required>
                                     <option disabled selected></option>
                                     <option value="PRESENCIAL">Presencial</option>
                                     <option value="ONLINE">Online</option>
@@ -216,7 +216,7 @@
                         @csrf
                         <div class="caixa-input" style="width: 40%;">
                             @if ($errors->has('titulo') || $errors->has('id_usuario'))
-                                <input title="{{ $errors->first('titulo') ?: $errors->first('id_usuario') }}" type="text" name="titulo" style="border: 1px solid red; background-color: rgb(235, 201, 206)" required>
+                                <input title="{{ $errors->first('titulo') ?: $errors->first('id_usuario') }}" type="text" name="titulo" style="border: 1px solid red; background-color: rgb(235, 201, 206); color: black" required>
                                 <label for="titulo">
                                     <span>Titulo</span>
                                 </label>
@@ -230,7 +230,7 @@
                         <div class="caixa-input" style="width: 30%; margin-left: 3px">
                             @error('areaConhecimento')
                                 <div class="autoComplete_wrapper">  
-                                    <input title="{{$message}}" type="text" id="autoCompleteAreaConhecimento" name="area_conhecimento" style="border: 1px solid red; background-color:rgb(235, 201, 206)" autocomplete="off" required>
+                                    <input title="{{$message}}" type="text" id="autoCompleteAreaConhecimento" name="area_conhecimento" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" autocomplete="off" required>
                                     <label for="area_conhecimento">
                                         <span>Área Conhecimento</span>
                                     </label>
@@ -246,7 +246,7 @@
                         </div>
                         <div class="caixa-input" style="width: 358px; margin-left: 3px">
                             @error('tempo_atuacao')
-                                <select title="{{$message}}" name="tempo_atuacao" autocomplete="off" style="border: 1px solid red; background-color:rgb(235, 201, 206)" required>
+                                <select title="{{$message}}" name="tempo_atuacao" autocomplete="off" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required>
                                     <option disabled selected></option>
                                     <option value="MENOS_1_ANO">Menos de 1 Ano</option>
                                     <option value="MAIS_1_ANO">Mais de 1 Ano</option>
@@ -271,7 +271,7 @@
                         </div>
                         <div class="caixa-input" style="height: 120px; width: 100%;">
                             @error('descricao')
-                                <textarea title="{{$message}}" type="text" name="descricao" placeholder="Texto Livre" style="border: 1px solid red; background-color:rgb(235, 201, 206)" required></textarea>
+                                <textarea title="{{$message}}" type="text" name="descricao" placeholder="Texto Livre" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required></textarea>
                                 <label id="campo-label" for="descricao">
                                     <span id="campo-spam">Descrição</span>
                                 </label>
@@ -284,7 +284,7 @@
                         </div>
                         <div class="caixa-input" style="width: 50%;">
                             @error('link_lattes')
-                                <input title="{{$message}}" type="text" name="link_lattes" style="border: 1px solid red; background-color:rgb(235, 201, 206)" autocomplete="off" required>
+                                <input title="{{$message}}" type="text" name="link_lattes" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" autocomplete="off" required>
                                 <label for="link_lattes">
                                     <span>Link Lattes</span>
                                 </label>
@@ -297,7 +297,7 @@
                         </div>
                         <div class="caixa-input" style="width: 604px; margin-left: 3px">
                             @error('link_linkedin')
-                                <input title="{{$message}}" type="text" name="link_linkedin" style="border: 1px solid red; background-color:rgb(235, 201, 206)" autocomplete="off" required>
+                                <input title="{{$message}}" type="text" name="link_linkedin" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" autocomplete="off" required>
                                 <label for="link_linkedin">
                                     <span>Link Linkedin</span>
                                 </label>
