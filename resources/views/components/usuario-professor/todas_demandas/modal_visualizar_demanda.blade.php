@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('css/menu_navegacao/menu.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/components_css/usuarioMembro/todas_ofertas/modal_visualizar_oferta.css') }}">
-    <script src="{{ asset('js/usuarioMembro/todas_ofertas/modal_contatar_oferta.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('css/components_css/usuarioProfessor/todas_demandas/modal_visualizar_demanda.css') }}">
+    <script src="{{ asset('js/usuarioProfessor/todas_demandas/modal_contatar_demanda.js') }}"></script>
     <script src="{{ asset('js/menu/menu_navegacao.js') }}"></script>
     <title>Todas ofertas</title>
 </head>

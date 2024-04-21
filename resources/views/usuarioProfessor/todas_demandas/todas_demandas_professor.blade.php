@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- JS -->
     <script src="{{ asset('js/menu/menu_navegacao.js') }}"></script>
-    <script src="{{ asset('js/usuarioMembro/todas_ofertas/modal_visualizar_oferta.js') }}"></script>
-    <script src="{{ asset('js/usuarioMembro/todas_ofertas/modal_deletar_oferta.js') }}"></script>
-    <script src="{{ asset('js/usuarioMembro/todas_ofertas/filtros_ofertas.js') }}"></script>
+    <script src="{{ asset('js/usuarioProfessor/todas_demandas/modal_visualizar_demanda.js') }}"></script>
+    <script src="{{ asset('js/usuarioProfessor/todas_demandas/modal_deletar_demanda.js') }}"></script>
+    <script src="{{ asset('js/usuarioProfessor/todas_demandas/filtros_demandas.js') }}"></script>
     <!-- CloudFlare -->
     <link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css' type='text/css'>
     <!-- Bootstrap -->
@@ -16,7 +16,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
     <!-- CSS -->
     <link rel="stylesheet" href="{{ asset('css/menu_navegacao/menu.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/usuarioMembro/todas_ofertas/todas_ofertas_membro.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/usuarioProfessor/todas_demandas/todas_demandas_professor.css') }}">
     <title>Todas as Ofertas</title>
 </head>
 <body> 

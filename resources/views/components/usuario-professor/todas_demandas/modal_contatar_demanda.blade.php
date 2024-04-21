@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('css/menu_navegacao/menu.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/components_css/usuarioMembro/todas_ofertas/modal_contatar_oferta.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/components_css/usuarioMembro/todas_ofertas/modal_sucesso_oferta.css') }}">
-    <script src="{{ asset('js/usuarioMembro/todas_ofertas/mensagem_contatar_oferta.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('css/components_css/usuarioProfessor/todas_demandas/modal_contatar_demanda.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/components_css/usuarioProfessor/todas_demandas/modal_sucesso_demanda.css') }}">
+    <script src="{{ asset('js/usuarioProfessor/todas_demandas/mensagem_contatar_demanda.js') }}"></script>
     <script src="{{ asset('js/menu/menu_navegacao.js') }}"></script>
     <title>Minhas Demandas</title>
 </head>

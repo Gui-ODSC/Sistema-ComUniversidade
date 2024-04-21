@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('css/menu_navegacao/menu.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/components_css/usuarioMembro/matching/modal_deletar_matchings.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/components_css/usuarioProfessor/todas_demandas/modal_deletar_demanda.css') }}">
     <script src="{{ asset('js/menu/menu_navegacao.js') }}"></script>
     <title>Todas as Ofertas</title>
 </head>

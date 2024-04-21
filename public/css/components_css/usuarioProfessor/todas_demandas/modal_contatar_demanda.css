@@ -1,0 +1,175 @@
+.dados-oferta-contatar {
+    width: 100%;
+    height: 250px;
+    background-color: #376985;
+    padding: 5px;
+    border-radius: 10px;
+    border: solid 2px black;
+    color: #fff;
+}
+
+.dados-usuario-professor-contatar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.informacao-professor-contatar {
+    width: 800px;
+    height: 90px;
+    border-bottom: solid 1px #FFF;
+}
+
+.informacao-professor-contatar hr{
+    margin-bottom: 5px;
+    width: 80%;
+}
+
+.informacao-professor-contatar h6{
+    font-size: 15px;
+    display: inline;
+    padding-left: 15px;
+}
+
+.informacao-professor-contatar h2{
+    margin-left: 10px;
+}
+
+.informacao-email-contatar {
+    flex-direction: row;
+    text-align: center;
+    width: 400px;
+    height: 90px;
+    border-left: solid 1px #FFF;
+    border-bottom: solid 1px #FFF;
+}
+
+.informacao-email-contatar h6{
+    color: #FFF;
+}
+
+.informacao-oferta-contatar {
+    display: flex;
+    flex-direction: column;
+}
+
+#titulo-oferta-contatar {
+    width: 100%;
+    height: 40px;
+}
+
+.informacao-oferta-coluna-contatar {
+    display: flex;
+    padding: 10px 10px 0px 10px;
+}
+.informacao-oferta-coluna-contatar div {
+    margin-right: 50px;
+}
+
+.informacao-oferta-coluna-contatar div h6 {
+    margin-top: 10px;
+}
+
+#data-contatar {
+    font-weight: bold;
+}
+
+.informacao-oferta-contatar h6 {
+    font-size: 15px;
+    flex: 0 0 100%;
+    margin: 5px 0;
+    box-sizing: border-box;
+}
+
+.informacao-oferta-contatar h2 {
+    margin-left: 10px;
+    margin-top: 10px;
+    font-weight: bold;
+}
+    
+@media (min-width: 600px) {
+    .informacao-oferta-contatar h6 {
+        flex: 0 0 calc(50% - 10px); /* Em telas maiores, cada h5 ocupará 50% da largura */
+    }
+}
+
+.botoes-oferta-contatar {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3px;
+}
+
+.botoes-oferta-contatar  button{
+    background-color: #3330BE;
+    color: #fff;
+    font-weight: bold;
+    width: 120px;
+    height: 35px;
+    border: solid 2px black;
+    border-radius: 5px;
+}
+
+/* MUDAR */
+.mensagem-contato {
+    overflow: hidden; /* Esconde o texto que ultrapassar o tamanho da div */
+    text-overflow: ellipsis; /* Adiciona reticências (...) para indicar que o texto foi cortado */
+    overflow-y: auto;
+    margin-top: 2px;
+    height: 200px;
+    background-color: #376985;
+    border-radius: 10px;
+    border: solid 2px black;
+    padding: 5px;
+    color: #fff;
+}
+
+.mensagem-contato h6 {
+    padding: 3px;
+    font-weight: bold;
+}
+
+.mensagem-contato textarea {
+    margin: -1px 5px;
+    border-radius: 10px;
+    padding: 7px;
+    resize: none;
+    width: 99%;
+    text-align: justify;
+}
+
+/* MODAL */
+
+.modal-contatar {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1200px;
+    height: 520px;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    border-radius: 20px;
+}
+
+.modal-contatar img {
+    width: 50px; /* Ajuste a largura da imagem conforme necessário */
+}
+
+.clicar-fora-modal-contatar {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 900;
+}
+
+#botao-fechar-modal-contatar button{
+    background-color: red;
+}
