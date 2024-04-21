@@ -10,6 +10,13 @@
     <script src="{{ asset('js/usuarioProfessor/todas_demandas/filtros_demandas.js') }}"></script>
     <!-- CloudFlare -->
     <link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css' type='text/css'>
+    {{-- SELECTPICKER --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.6/js/bootstrap-select.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.6/css/bootstrap-select.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
@@ -25,50 +32,63 @@
         <div class="titulo">
             <h1>Todas as Demandas Disponíveis</h1>
         </div>
-        <div class="caixa-pesquisa-oferta">
-            <input id="campo-pesquisa" type="text" placeholder="Busca de Ofertas">
-            <a href="#"><div id="lupa"></div></a>
+        <div class="caixa-pesquisa-oferta" style="justify-content: space-between">
+            <div class="botao-limpar">
+                <a href="{{route('lista_todas_demandas')}}"><button id="limparFiltro">Limpar Filtros</button></a>
+            </div>
+            <form action="{{ route('lista_todas_demandas') }}" method="GET">
+                @csrf
+                <div class="input-group">
+                    <input type="text" name="pesquisa_titulo" class="form-control" placeholder="Pesquisar título..." value="{{ $pesquisaTitulo ? $pesquisaTitulo: '' }}"">
+                    <button type="submit" class="btn btn-outline-secondary" id="pesquisaTitulo">
+                        <i class="bi bi-search"><img src="{{asset('img/usuarioMembro/todas_ofertas/lupa_pesquisa.png')}}" alt=""></i> <!-- Ícone de busca (exemplo: usando Bootstrap Icons) -->
+                        <!-- Ou você pode adicionar texto, se preferir -->
+                        <!-- Pesquisar -->
+                    </button>
+                </div>
+            </form>
         </div>
         <hr>
-        <div class="secao-filtros">
-            <div class="filtros">
-                <div class="dropdown" id="areaConhecimentoDropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" disabled>
-                        Área Conhecimento
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Engenharia</a></li>
-                        <li><a class="dropdown-item" href="#">Tecnologia</a></li>
-                        <li><a class="dropdown-item" href="#">Ciências Sociais</a></li>
-                        <li><a class="dropdown-item" href="#">Saúde</a></li>
-                        <li><a class="dropdown-item" href="#">Ciências Naturais</a></li>
-                    </ul>
+        <form action="{{ route('lista_todas_demandas') }}" method="GET">
+            @csrf
+            <div class="secao-filtros">
+                <div class="filtros">
+                    <select class="selectpicker mg"data-live-search="true" name="area_conhecimento">
+                        <option value="" selected>Área Conhecimento</option>
+                        @foreach ($listAreaConhecimento as $areaConhecimento)
+                            <option value="{{ $areaConhecimento->id_area_conhecimento }}" {{ $areaConhecimentoSelecionada == $areaConhecimento->id_area_conhecimento ? 'selected' : '' }}>{{ $areaConhecimento->nome }}</option>
+                        @endforeach
+                    </select>
+                    <select class="selectpicker mg"data-live-search="true" name="publico_alvo">
+                        <option selected disabled>Publico Alvo</option>
+                        @foreach ($listPublicoAlvo as $publicoAlvo)
+                            <option value="{{ $publicoAlvo->id_publico_alvo }}" {{ $publicoAlvoSelecionado == $publicoAlvo->id_publico_alvo ? 'selected' : '' }}>{{ $publicoAlvo->nome }}</option>
+                        @endforeach
+                    </select>
+                    <div>
+                        <select class="filtro-select-normal" name="duracao">
+                            <option selected disabled>Duração</option>
+                            <option value="DIAS" {{ $duracaoSelecionada == 'DIAS' ? 'selected' : '' }}>Dias</option>
+                            <option value="SEMANAS" {{ $duracaoSelecionada == 'SEMANAS' ? 'selected' : '' }}>Semanas</option>
+                            <option value="MESES" {{ $duracaoSelecionada == 'MESES' ? 'selected' : '' }}>Meses</option>
+                            <option value="ANOS" {{ $duracaoSelecionada == 'ANOS' ? 'selected' : '' }}>Anos</option>
+                            <option value="INDEFINIDO" {{ $duracaoSelecionada == 'INDEFINIDO' ? 'selected' : '' }}>Indefinido</option>
+                        </select>
+                    </div>
+                    <div>
+                        <select class="filtro-select-normal" name="prioridade">
+                            <option selected disabled>Prioridade</option>
+                            <option value="BAIXO" {{ $prioridadeSelecionada == 'BAIXO' ? 'selected' : '' }}>Baixo</option>
+                            <option value="MEDIO" {{ $prioridadeSelecionada == 'MEDIO' ? 'selected' : '' }}>Médio</option>
+                            <option value="ALTO" {{ $prioridadeSelecionada == 'ALTO' ? 'selected' : '' }}>Alto</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="dropdown" id="tempoAtuacaoDropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" disabled>
-                        Tempo Atuação
-                    </button>
-                    <ul class="dropdown-menu" id="tempoAtuacaoDropdown">
-                        <li><a class="dropdown-item" href="#">Dias</a></li>
-                        <li><a class="dropdown-item" href="#">Meses</a></li>
-                        <li><a class="dropdown-item" href="#">Anos</a></li>
-                        <li><a class="dropdown-item" href="#">Indefinido</a></li>
-                    </ul>
-                </div>
-                <div class="dropdown" id="statusRegistroDropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" disabled>
-                        Status Registro
-                    </button>
-                    <ul class="dropdown-menu" id="tempoAtuacaoDropdown">
-                        <li><a class="dropdown-item" href="#">Registrada</a></li>
-                        <li><a class="dropdown-item" href="#">Não Registrada</a></li>
-                    </ul>
+                <div id="botao-buscar">
+                    <button type="submit">Buscar</button>
                 </div>
             </div>
-            <div id="botao-buscar">
-                <a href="#"><button>Buscar</button></a>
-            </div>
-        </div>
+        </form>
         @if( session()->has('msg-deletar'))
             <div class="alert alert-success" style="text-align: center">
                 <p>{{session('msg-deletar')}}</p>
@@ -123,6 +143,7 @@
             window.onload = function() {
                 campoPesquisa.value = '';
             };
+            
         </script>
         <div class="paginacao-botao">
             <div class="nav-paginator ">

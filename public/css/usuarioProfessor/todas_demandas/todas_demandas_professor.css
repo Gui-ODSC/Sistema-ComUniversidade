@@ -25,6 +25,7 @@ body {
 }
 
 .todas-ofertas hr {
+    margin-top: 3px;
     margin-bottom: 3px;
 }
 
@@ -32,7 +33,10 @@ body {
     margin-top: 15px;
     display: flex;
     justify-content: end;
-    margin-bottom: 10px;
+}
+
+.caixa-pesquisa-oferta .botao-limpar {
+    justify-content: center;
 }
 
 .caixa-pesquisa-oferta input {
@@ -43,16 +47,20 @@ body {
     margin-right: 0px;
 }
 
-#lupa {
-    margin:4px 5px 3px -30px;
-    cursor:pointer;
-    text-decoration: none;
-    color: black;
+.caixa-pesquisa-oferta #pesquisaTitulo {
+    background-color: #111153;
+    border: solid 2px black;
+    height: 38px;
 }
-#lupa:after {
-    font-family:FontAwesome;
-    font-size:14px;
-    content:"\f002"
+
+.caixa-pesquisa-oferta #limparFiltro {
+    background-color: #3b3b7b;
+    border: solid 2px black;
+    color: #FFF;
+    width: 140px;
+    height: 35px;
+    border-radius: 7px;
+    font-weight: bold;
 }
 
 
@@ -80,26 +88,111 @@ body {
     font-weight: bold;
 }
 
-/* ESTILIZAÇÃO DROP MENU (FILTRO) */
-.dropdown button:hover {
+/* SELECT NORMAL */
+.filtro-select-normal {
+    height: 50px;
+    width: 200px;
+    padding: 6px 12px;
+    margin-left: 8px;
+    margin-top: 13px;
+    border-radius: 10px;
+    background-color: #111153;
     border: solid 2px black;
-    background-color: rgba(44,39,88,1);
+    color: #FFF;
+    font-weight: bold;
+    text-align: center;
+}
+/* FIM */
+
+/* ESTILIZAÇÃO SELECTPICKER (FILTRO) */
+.dropdown .bootstrap-select {
+    justify-content: center;
+}
+
+.bootstrap-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn) {
+    width: 210px;
+    border: none;
+    justify-content: center;
+    display: flex;
+}
+
+.bootstrap-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn) button{
+    width: 210px;
+    border: none;
+    color: #FFF;
+    background-color: #111153;
+    border: solid 2px black;
+    margin-top: 38px 0px;
+}
+
+.bootstrap-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn) button:hover{
+    width: 200px;
+    border: none;
+    color: #FFF;
+    background-color: #171762;
+    border: solid 2px black;
+}
+
+.bootstrap-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn) button:focus{
+    border: none;
+}
+
+.bootstrap-select .dropdown-menu {
+    min-width: 0;
+    max-width: 200px;
+    min-height: 100px;
+    max-height: 100px;
+    overflow-y: auto;
+}
+
+.bootstrap-select .dropdown-toggle .filter-option {
+    position: absolute;
+    top: 5px;
+    left: 0;
+    padding-top: inherit;
+    padding-right: inherit;
+    padding-bottom: inherit;
+    padding-left: inherit;
+    height: 100%;
+    width: 100%;
+    text-align: left;
+    justify-content: center;
+    display: flex;
+}
+
+.dropdown-menu {
+    --bs-dropdown-link-active-bg: #171762;
+}
+
+.bootstrap-select {
+    width: 100%;
 }
 
 .dropdown-menu .dropdown-item:hover {
     padding: 0.5rem 0.9rem;
-    background-color: rgba(44,39,88,1);
+    background-color: #343494;
     color: #fff; 
 }
 .btn.show {
     background-color: rgba(44,39,88,1);
     border-color: black;
+    width: 80%;
 }
 
-.btn:first-child:active {
-    background-color: rgba(44,39,88,1);
-    border-color: black;
+.bs-searchbox .form-control {
+    border-color: rgba(13,110,253,.25);
+    
 }
+
+.form-control:focus {
+    color: black;
+    background-color: var(--bs-body-bg);
+    border-color: rgba(13,110,253,.25);
+    outline: 0;
+    box-shadow: 0 0 0 .25rem rgba(13,110,253,.25);
+}
+
+/* FIM */
 
 #botao-buscar button{
     padding: 10px;
@@ -142,6 +235,7 @@ body {
 .table-rounded {
     border-radius: 10px;
     overflow: hidden;
+    border: 2px solid black;
     box-shadow: -1px 1px 4px 4px black;
 }
 
@@ -202,6 +296,7 @@ body {
     border: 2px solid #1f3b4b;
     box-shadow: -1px 1px 4px 4px black;
     border-radius: 5px;
+    background-color: #376985;
 }
 
 .pagination {
@@ -226,4 +321,9 @@ body {
     justify-content: center;
     margin: auto 0;
     align-items: center;
+}
+
+.page-item.active .page-link{
+    background-color: #376985;
+    border: 2px solid black;
 }

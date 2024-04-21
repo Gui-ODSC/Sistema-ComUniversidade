@@ -3,27 +3,46 @@
 namespace App\Http\Controllers\ProfessorControllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\AreaConhecimento;
 use App\Models\Contato;
 use App\Models\ContatosDiretosExcluidos;
 use App\Models\ContatoMensagem;
 use App\Models\ContatosDiretosVisualizados;
 use App\Models\Demanda;
 use App\Models\MatchingsExcluidos;
+use App\Models\PublicoAlvo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class TodasDemandasController extends Controller
 {
-    public function listaDemandas() { 
+    
+    public function listaDemandas(Request $request) { 
 
         $usuarioId = Auth::id();
+
+        $listPublicoAlvo = PublicoAlvo::all();
+        $listAreaConhecimento = AreaConhecimento::all();
+
+        /* Campos de Filtro */
+        $pesquisaTitulo = $request->input('pesquisa_titulo');
+        $publicoAlvoSelecionado = $request->input('publico_alvo');
+        $areaConhecimentoSelecionada = $request->input('area_conhecimento');
+        $duracaoSelecionada = $request->input('duracao');
+        $prioridadeSelecionada = $request->input('prioridade');
 
         /* DEVOLVER APENAS OS CONTATOS QUE NAO FORAM REALIZADOS AINDA */
         $demandasNaoMostrar = $this->list_demandas_excluidas($usuarioId);
 
-        $listDemandas = Demanda::with('usuario', 'publicoAlvo', 'areaConhecimento', 'contato')
-        ->whereNotIn('id_demanda', $demandasNaoMostrar)
-        ->paginate(2);
+        $query = Demanda::with('usuario', 'publicoAlvo', 'areaConhecimento', 'contato')
+            ->whereNotIn('id_demanda', $demandasNaoMostrar);
+
+        /* FILTRAGEM */
+        if (!empty($request->all())){
+            $listDemandas = $this->filtragemDemandas($request, $query);
+        } else {
+            $listDemandas = $query->paginate(2);
+        }
 
         $demandasDisponiveis = [];
 
@@ -44,9 +63,54 @@ class TodasDemandasController extends Controller
             [
                 'demandas' => $demandasDisponiveis,
                 'paginate' => $listDemandas,
+                'listAreaConhecimento' => $listAreaConhecimento,
+                'listPublicoAlvo' => $listPublicoAlvo,
+                'areaConhecimentoSelecionada' => $areaConhecimentoSelecionada,
+                'publicoAlvoSelecionado' => $publicoAlvoSelecionado,
+                'duracaoSelecionada' => $duracaoSelecionada,
+                'prioridadeSelecionada' => $prioridadeSelecionada,
+                'pesquisaTitulo' => $pesquisaTitulo
             ]
-        );
+        )->with($request->query());
     }
+
+    public function filtragemDemandas(Request $request, $query) {
+        
+        $pesquisaTitulo = $request->input('pesquisa_titulo');
+        $inputPublicoAlvo = $request->input('publico_alvo');
+        $inputAreaConhecimento = $request->input('area_conhecimento');
+        $inputDuracao = $request->input('duracao');
+        $inputPrioridade = $request->input('prioridade');
+
+        // Adicione as condições WHERE conforme os parâmetros fornecidos
+        $query->when($inputPublicoAlvo, function ($query, $inputPublicoAlvo) {
+            return $query->where('id_publico_alvo', $inputPublicoAlvo);
+        });
+        
+        $query->when($inputAreaConhecimento, function ($query, $inputAreaConhecimento) {
+            return $query->where('id_area_conhecimento', $inputAreaConhecimento);
+        }); 
+        
+        $query->when($inputDuracao, function ($query, $inputDuracao) {
+            return $query->where('duracao', $inputDuracao);
+        });
+        
+        $query->when($inputPrioridade, function ($query, $inputPrioridade) {
+            return $query->where('nivel_prioridade', $inputPrioridade);
+        });
+
+        $query->when($pesquisaTitulo, function ($query, $pesquisaTitulo) {
+            return $query->where('titulo', 'LIKE', '%' . $pesquisaTitulo . '%');
+        });
+    
+        // Execute a consulta e obtenha os resultados
+        $demandasFiltradas = $query->paginate(2);
+    
+        // Retorne os resultados
+        return $demandasFiltradas;
+    }
+
+
 
     public function createContato($demandaId, Request $request) {
         

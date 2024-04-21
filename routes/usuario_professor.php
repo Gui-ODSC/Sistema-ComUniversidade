@@ -61,6 +61,7 @@ Route::prefix('professor')->group(function(){
             Route::post('/', 'createContato')->name('contato_direto_store_professor');
             Route::post('/visualizar', 'contato_direto_status_visualizar')->name('contato_direto_visualizar_professor');
             Route::post('/remover', 'contatos_diretos_remover')->name('contato_direto_remover_professor');
+            Route::post('/filtrar', 'filtragemDemandas')->name('filtrar_demandas_professor');
         })->middleware('auth');
     })->middleware('auth');
 
