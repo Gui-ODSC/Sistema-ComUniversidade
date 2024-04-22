@@ -3,32 +3,70 @@
 namespace App\Http\Controllers\MembroControllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\AreaConhecimento;
 use App\Models\Contato;
 use App\Models\ContatosDiretosExcluidos;
 use App\Models\ContatoMensagem;
 use App\Models\ContatosDiretosVisualizados;
 use App\Models\MatchingsExcluidos;
 use App\Models\Oferta;
+use App\Models\PublicoAlvo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class TodasOfertasController extends Controller
 {
-    public function list() {
+    public function listaOfertas(Request $request) {
 
         $usuarioId = Auth::id();
+
+        $listPublicoAlvo = PublicoAlvo::all();
+        $listAreaConhecimento = AreaConhecimento::all();
+        $tipoOfertaSelecionada = $request->input('tipo_oferta');
+        $pesquisaTitulo = $request->input('pesquisa_titulo');
+        $regimeSelecionado = $request->input('regime');
+        $statusRegistroSelecionado = $request->input('status_registro');
+        $publicoAlvoSelecionado = $request->input('publico_alvo');
+        $areaConhecimentoSelecionadaAcao = $request->input('area_conhecimento_acao');
+        $areaConhecimentoSelecionadaConhecimento = $request->input('area_conhecimento_conhecimento');
+        $tempoAtuacaoSelecionado = $request->input('tempo_atuacao');
+
 
         /* DEVOLVER APENAS OS CONTATOS QUE NAO FORAM REALIZADOS AINDA */
         $ofertasNaoMostrar = $this->list_ofertas_excluidas($usuarioId);
 
-        $listOfertas = Oferta::with('usuarioProfessor', 'ofertaConhecimento', 'ofertaAcao', 'areaConhecimento', 'contato')
-        ->whereNotIn('id_oferta', $ofertasNaoMostrar)
-        ->paginate(1);
+        $query = Oferta::with('usuarioProfessor', 'ofertaConhecimento', 'ofertaAcao', 'areaConhecimento', 'contato')
+            ->whereNotIn('Oferta.id_oferta', $ofertasNaoMostrar);
+
+
+        /* FILTRAGEM TITULO*/
+        if ($request->input('pesquisa_titulo') && !$tipoOfertaSelecionada) {
+            $query->when($pesquisaTitulo, function ($query, $pesquisaTitulo) {
+                return $query->where('titulo', 'LIKE', '%' . $pesquisaTitulo . '%');
+            });
+            $listaOfertas = $query->paginate(4);
+
+        } else {
+            $listaOfertas = $query->paginate(4);
+        }
+
+        /* FILTRAGEM TIPO */
+        if ($tipoOfertaSelecionada === 'ACAO') {
+            if (!empty($request->all())){
+                $listaOfertas = $this->filtragemOfertasAcao($request, $query);
+            } 
+        } elseif ($tipoOfertaSelecionada === 'CONHECIMENTO') {
+            if (!empty($request->all())){
+                $listaOfertas = $this->filtragemOfertasConhecimento($request, $query);
+            } 
+        } else {
+            $listaOfertas = $query->paginate(4);
+        }
 
         $ofertasDisponiveis = [];
 
         /* LOGICA PARA CONTROLAR AS OFERTAS VISUALIZADAS E NÃO VISUALIZADAS */
-        foreach ($listOfertas as $oferta) {
+        foreach ($listaOfertas as $oferta) {
             $ofertas_visualizada = ContatosDiretosVisualizados::where('id_oferta', $oferta->id_oferta)
             ->where('id_usuario', $usuarioId)
             ->get();
@@ -43,9 +81,93 @@ class TodasOfertasController extends Controller
         return view('usuarioMembro.todas_ofertas.todas_ofertas_membro', 
             [
                 'ofertas' => $ofertasDisponiveis,
-                'paginate' => $listOfertas,
+                'paginate' => $listaOfertas,
+                'tipoOfertaSelecionada' => $tipoOfertaSelecionada,
+                'pesquisaTitulo' => $pesquisaTitulo,
+                'areaConhecimentoSelecionadaAcao' => $areaConhecimentoSelecionadaAcao,
+                'areaConhecimentoSelecionadaConhecimento' => $areaConhecimentoSelecionadaConhecimento,
+                'publicoAlvoSelecionado' => $publicoAlvoSelecionado,
+                'statusRegistroSelecionado' => $statusRegistroSelecionado,
+                'regimeSelecionado' => $regimeSelecionado,
+                'listAreaConhecimento' => $listAreaConhecimento,
+                'listPublicoAlvo' => $listPublicoAlvo,
+                'tempoAtuacaoSelecionado' => $tempoAtuacaoSelecionado
             ]
         );
+    }
+
+    public function filtragemOfertasAcao(Request $request, $query) {
+
+        $pesquisaTitulo = $request->input('pesquisa_titulo');
+        $inputTipoOferta = $request->input('tipo_oferta');
+        $inputAreaConhecimento = $request->input('area_conhecimento_acao');
+        $inputRegime = $request->input('regime');
+        $inputStatusRegistro = $request->input('status_registro');
+        $inputPublicoAlvo = $request->input('publico_alvo');
+    
+        $query->join('OfertaAcao', 'OfertaAcao.id_oferta', '=', 'Oferta.id_oferta');
+    
+        $query->when($inputAreaConhecimento, function ($query, $inputAreaConhecimento) {
+            return $query->where('Oferta.id_area_conhecimento', $inputAreaConhecimento);
+        });
+
+        $query->when($inputRegime, function ($query, $inputRegime) {
+            return $query->where('OfertaAcao.regime', $inputRegime);
+        }); 
+    
+        $query->when($inputStatusRegistro, function ($query, $inputStatusRegistro) {
+            return $query->where('OfertaAcao.status_registro', $inputStatusRegistro);
+        });
+    
+        $query->when($inputPublicoAlvo, function ($query, $inputPublicoAlvo) {
+            return $query->where('OfertaAcao.id_publico_alvo', $inputPublicoAlvo);
+        });
+
+        $query->when($inputTipoOferta, function ($query, $inputTipoOferta) {
+            return $query->where('Oferta.tipo', $inputTipoOferta);
+        });
+
+        $query->when($pesquisaTitulo, function ($query, $pesquisaTitulo) {
+            return $query->where('titulo', 'LIKE', '%' . $pesquisaTitulo . '%');
+        });
+    
+        // Execute a consulta e obtenha os resultados
+        $ofertasAcaoFiltradas = $query->paginate(4);
+    
+        // Retorne os resultados
+        return $ofertasAcaoFiltradas;
+    }
+
+    public function filtragemOfertasConhecimento(Request $request, $query) {
+
+        $pesquisaTitulo = $request->input('pesquisa_titulo');
+        $inputAreaConhecimento = $request->input('area_conhecimento_conhecimento');
+        $inputTempoAtuacao = $request->input('tempo_atuacao');
+        $inputTipoOferta = $request->input('tipo_oferta');
+    
+        $query->join('OfertaConhecimento', 'OfertaConhecimento.id_oferta', '=', 'Oferta.id_oferta');
+    
+        $query->when($inputAreaConhecimento, function ($query, $inputAreaConhecimento) {
+            return $query->where('Oferta.id_area_conhecimento', $inputAreaConhecimento);
+        }); 
+    
+        $query->when($inputTempoAtuacao, function ($query, $inputTempoAtuacao) {
+            return $query->where('OfertaConhecimento.tempo_atuacao', $inputTempoAtuacao);
+        });
+    
+        $query->when($inputTipoOferta, function ($query, $inputTipoOferta) {
+            return $query->where('Oferta.tipo', $inputTipoOferta);
+        });
+    
+        $query->when($pesquisaTitulo, function ($query, $pesquisaTitulo) {
+            return $query->where('titulo', 'LIKE', '%' . $pesquisaTitulo . '%');
+        });
+
+        // Execute a consulta e obtenha os resultados
+        $ofertasConhecimentoFiltradas = $query->paginate(4);
+    
+        // Retorne os resultados
+        return $ofertasConhecimentoFiltradas;
     }
 
     public function create($ofertaId, Request $request) {
