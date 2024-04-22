@@ -54,7 +54,7 @@
             <div class="secao-filtros">
                 <div class="filtros">
                     <select class="selectpicker mg"data-live-search="true" name="area_conhecimento">
-                        <option value="" selected>Área Conhecimento</option>
+                        <option value="" selected disabled>Área Conhecimento</option>
                         @foreach ($listAreaConhecimento as $areaConhecimento)
                             <option value="{{ $areaConhecimento->id_area_conhecimento }}" {{ $areaConhecimentoSelecionada == $areaConhecimento->id_area_conhecimento ? 'selected' : '' }}>{{ $areaConhecimento->nome }}</option>
                         @endforeach
