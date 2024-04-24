@@ -1,0 +1,103 @@
+.modal-descricao {
+    color: black;
+    padding: 10px;
+    max-width: 600px;
+    min-width: 450px;
+    max-height: 200px;
+    overflow-y: scroll;
+    margin-top: 30px;
+}
+
+.modal-descricao h3 {
+    display: flex;
+    margin-top: 10px;
+    align-items: center;
+    justify-content: center;
+    color: #FFF;
+}
+
+.modal-descricao h6 {
+    text-align: center;
+    color: #FFF;
+}
+
+/* TABELA */
+/* Estilos para a tabela */
+.modal-table {
+    width: 100%; /* Largura máxima do modal */
+    border-collapse: collapse;
+    margin-top: 20px; /* Espaço superior */
+}
+
+/* Estilos para as células da tabela */
+.modal-table th, .modal-table td {
+    padding: 8px;
+    text-align: left;
+    border: none; /* Linhas de separação */
+    color: #FFF;
+}
+
+/* Estilo para a primeira célula (Email) */
+.modal-table th:first-child, .modal-table td:first-child {
+    width: 70%; /* Largura da primeira coluna */
+    padding-right: 10px; /* Espaço entre as células */
+    border: none;
+}
+
+/* Estilo para a segunda célula (Tipo) */
+.modal-table th:last-child, .modal-table td:last-child {
+    width: 30%; /* Largura da segunda coluna */
+}
+
+/* Estilos para as células de dados */
+.modal-table td {
+    color: black; /* Cor do texto */
+    background-color: #ffffff; /* Cor de fundo */
+    margin-left: 5px;
+    border-left: 4px solid black;
+    border-radius: 5px;
+}
+
+
+/* MODAL */
+
+.caixa-modal-interessados {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background: linear-gradient(90deg, rgba(9,107,170,1) 0%, rgba(44,39,88,1) 50%, rgba(40,35,69,1) 100%);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    border-radius: 20px;
+    border: solid 10px #FFF;
+    color: #FFF;
+    height: 500px;
+    overflow-y: auto;
+}
+
+.caixa-modal-interessados img {
+    width: 40px;
+    background-color: #FFF;
+    border-radius: 100px;
+}
+
+.clicar-fora-modal-interessados {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 900;
+}
+
+#botao_fechar_modal {
+    position: absolute;
+    top: 5px; /* Ajuste conforme necessário */
+    right: 5px; /* Ajuste conforme necessário */
+    cursor: pointer;
+}

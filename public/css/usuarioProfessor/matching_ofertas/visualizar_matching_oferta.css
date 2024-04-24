@@ -28,6 +28,7 @@ body {
     border-radius: 10px;
     margin-bottom: 5px;
     margin-top: 5px;
+    padding: 5px;
 }
 
 .titulo-descricao a img {

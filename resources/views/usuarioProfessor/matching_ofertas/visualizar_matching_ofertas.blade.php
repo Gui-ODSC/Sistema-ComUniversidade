@@ -10,6 +10,7 @@
     <script src="{{ asset('js/usuarioProfessor/matching_ofertas/modal_deletar_oferta.js') }}"></script>
     <script src="{{ asset('js/usuarioProfessor/matching_ofertas/modal_visualizar_oferta.js') }}"></script>
     <script src="{{ asset('js/usuarioProfessor/matching_ofertas/modal_descricao_demanda.js') }}"></script>
+    <script src="{{ asset('js/usuarioProfessor/matching_ofertas/modal_interessados_oferta.js') }}"></script>
     <title>Matching Demanda</title>
 </head>
 <body> 
@@ -25,11 +26,22 @@
                 <h4>Criada em: {{ \Carbon\Carbon::parse($oferta->created_at)->format('d/m/Y') }}</h4>
             </div>
             <div class="titulo-descricao">
-                <h2>{{$oferta->titulo}}</h2>
-                <div style="display: flex; align-items: center; flex-direction: column; margin-right: 20px;">
-                    <a onclick="openModalDescricao({{$oferta->id_oferta}})"><img src="{{ asset('img/usuarioMembro/visualizar_matching_demandas/modal_contatar/descricao.png') }}" alt="tres pontos para mais informação"></a>
-                    <p style="margin: 0">Descrição</p>
-                    <x-usuario-professor.matching-acao.modal-descricao-oferta :id-oferta="$oferta->id_oferta"/>
+                <div>
+                    <h2>{{$oferta->titulo}}</h2>
+                </div>
+                <div style="display: flex">
+                    <div style="display: flex; align-items: center; flex-direction: column; margin-right: 20px;">
+                        <a onclick="openModalDescricao({{$oferta->id_oferta}})"><img src="{{ asset('img/usuarioMembro/visualizar_matching_demandas/modal_contatar/descricao.png') }}" alt="tres pontos para mais informação"></a>
+                        <p style="margin: 0">Descrição</p>
+                        <x-usuario-professor.matching-acao.modal-descricao-oferta :id-oferta="$oferta->id_oferta"/>
+                    </div>
+                    @if ($oferta->tipo === 'ACAO')
+                        <div style="display: flex; align-items: center; flex-direction: column; margin-right: 20px;">
+                            <a onclick="openModalUsuariosInteressados({{$oferta->id_oferta}})"><img src="{{ asset('img/usuarioMembro/visualizar_matching_demandas/modal_contatar/interessados.png') }}" alt="tres pontos para mais informação"></a>
+                            <p style="margin: 0">Interessados</p>
+                            <x-usuario-professor.matching-acao.modal-interessados-oferta :id-oferta="$oferta->id_oferta"/>
+                        </div>
+                    @endif
                 </div>
             </div>
             <hr>
