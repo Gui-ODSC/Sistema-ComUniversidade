@@ -51,7 +51,7 @@
             <div class="filtros">
                 <form action="{{ route('list_todas_ofertas') }}" method="GET">
                     @csrf
-                    <select class="filtro-select-normal" id="opcao" autocomplete="off" onchange="mostrarFormulario()" name="tipo_oferta">
+                    <select class="filtro-select-normal" id="opcao" autocomplete="off" onchange="ajustarTamanhoSelect()" name="tipo_oferta">
                         <option value="" selected disabled>Tipo Oferta</option>
                         <option value="ACAO" {{ $tipoOfertaSelecionada == 'ACAO' ? 'selected' : '' }}>Ação</option>
                         <option value="CONHECIMENTO" {{ $tipoOfertaSelecionada == 'CONHECIMENTO' ? 'selected' : '' }}>Conhecimento</option>
@@ -70,21 +70,19 @@
                             @endforeach
                         </select>
                         <div>
-                            <select class="filtro-select-normal" name="status_registro">
+                            <select class="filtro-select-normal" name="status_registro" style="width: 154px">
                                 <option selected disabled>Status Registro</option>
                                 <option value="NAO_REGISTRADA" {{ $statusRegistroSelecionado == 'NAO_REGISTRADA' ? 'selected' : '' }}>Não Registrada</option>
                                 <option value="REGISTRADA" {{ $statusRegistroSelecionado == 'REGISTRADA' ? 'selected' : '' }}>Registrada</option>
                             </select>
                         </div>
-                        <select class="filtro-select-normal" name="regime">
+                        <select class="filtro-select-normal" name="regime" style="width: 150px">
                             <option selected disabled>Duração</option>
                             <option value="PRESENCIAL" {{ $regimeSelecionado == 'PRESENCIAL' ? 'selected' : '' }}>Presencial</option>
                             <option value="ONLINE" {{ $regimeSelecionado == 'ONLINE' ? 'selected' : '' }}>Online</option>
                         </select>
                     </div>
                     <div id="formularioFiltroConhecimento" style="display: none; width: 100%;">
-                        {{-- TempoAtuacao tempo_atuacao
-	                    areaConhecimento area_conhecimento --}}
                         <select class="selectpicker mg"data-live-search="true" name="area_conhecimento_conhecimento">
                             <option value="" selected>Área Conhecimento</option>
                             @foreach ($listAreaConhecimento as $areaConhecimento)
@@ -196,6 +194,25 @@
                 } else if (tipoSelecionado === "CONHECIMENTO") {
                     document.getElementById("formularioFiltroConhecimento").style.display = "flex";
                 }
+            });
+
+            function ajustarTamanhoSelect() {
+                var select = document.getElementById('opcao');
+                var opcaoSelecionada = select.value;
+
+                // Define a largura para 100px apenas se a opção selecionada for "ACAO"
+                if (opcaoSelecionada === "ACAO") {
+                    select.style.width = '100px';
+                } else {
+                    select.style.width = 'auto'; // Volta para a largura automática padrão
+                }
+
+                mostrarFormulario(); // Chama a função para exibir o formulário correspondente
+            }
+
+            // Chamando a função ao carregar a página
+            document.addEventListener("DOMContentLoaded", function() {
+                ajustarTamanhoSelect();
             });
         </script>
         <div class="paginacao-botao">

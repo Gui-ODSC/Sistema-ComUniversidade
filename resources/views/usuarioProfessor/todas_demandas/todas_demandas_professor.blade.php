@@ -76,7 +76,7 @@
                         </select>
                     </div>
                     <div>
-                        <select class="filtro-select-normal" name="prioridade">
+                        <select class="filtro-select-normal" name="prioridade" style="width: 170px">
                             <option selected disabled>Prioridade</option>
                             <option value="BAIXO" {{ $prioridadeSelecionada == 'BAIXO' ? 'selected' : '' }}>Baixo</option>
                             <option value="MEDIO" {{ $prioridadeSelecionada == 'MEDIO' ? 'selected' : '' }}>Médio</option>
