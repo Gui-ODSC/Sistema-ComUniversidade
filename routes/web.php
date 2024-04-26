@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EstudanteControllers\LoginEstudanteController;
 use App\Http\Controllers\MembroControllers\LoginMembroController;
 use App\Http\Controllers\ProfessorControllers\LoginProfessorController;
 use App\Http\Controllers\ResetPasswordController;
@@ -33,6 +34,12 @@ Route::prefix('/autenticacao')->group(function(){
         Route::get('/logout', [LoginProfessorController::class, 'logout'])->name('login_professor_destroy');
     });
 
+    Route::prefix('/login_estudantes')->group(function(){
+        Route::get('/login', [LoginEstudanteController::class, 'index'])->name('login_estudante_index');
+        Route::post('/login', [LoginEstudanteController::class, 'login'])->name('login_estudante_store');
+        Route::get('/logout', [LoginEstudanteController::class, 'logout'])->name('login_estudante_destroy');
+    });
+
     Route::prefix('/redefinir_senha')->controller(ResetPasswordController::class)->group( function(){
         Route::get('/', 'showResetPasswordForm')->name('reset_index');
         Route::post('/', 'sendEmailPassword')->name('send_email_password');
@@ -44,19 +51,7 @@ Route::prefix('/autenticacao')->group(function(){
     Route::get('/templateEmail', function(){
         return view('emails.email_forget_password');
     });
-
-
-
-
-
-    /* arrumar depois */
-    Route::get('/login_aluno', function(){
-        return view('autenticacaoUsuario/login_aluno');
-    })->name('login_aluno');
     
-    Route::get('/login_professor', function(){
-        return view('autenticacaoUsuario/login_professor');
-    })->name('login_professor');
 });
 
 

@@ -8,8 +8,6 @@ use App\Models\ContatoMensagem;
 use App\Models\Demanda;
 use App\Models\MatchingsExcluidos;
 use App\Models\Oferta;
-use App\View\Components\UsuarioMembro\ModalSucessoContatar;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 

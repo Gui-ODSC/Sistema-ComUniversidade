@@ -1,0 +1,178 @@
+.dados-oferta {
+    width: 100%;
+    height: 250px;
+    background-color: #376985;
+    padding: 5px;
+    border-radius: 10px;
+    border: solid 2px black;
+    color: #fff;
+}
+
+.dados-usuario-professor {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.informacao-professor {
+    width: 800px;
+    height: 90px;
+    border-bottom: solid 1px #FFF;
+}
+
+.informacao-professor hr{
+    margin-bottom: 5px;
+    width: 80%;
+}
+
+.informacao-professor h6{
+    font-size: 15px;
+    display: inline;
+    padding-left: 15px;
+}
+
+.informacao-professor h2{
+    margin-left: 10px;
+}
+
+.informacao-email {
+    flex-direction: row;
+    text-align: center;
+    width: 400px;
+    height: 90px;
+    border-left: solid 1px #FFF;
+    border-bottom: solid 1px #FFF;
+}
+
+.informacao-email h6{
+    color: #FFF;
+}
+
+.informacao-oferta {
+    display: flex;
+    flex-direction: column;
+}
+
+#titulo-oferta {
+    width: 100%;
+    height: 40px;
+}
+
+.informacao-oferta-coluna {
+    display: flex;
+    padding: 10px 10px 0px 10px;
+}
+.informacao-oferta-coluna div {
+    margin-right: 50px;
+}
+
+.informacao-oferta-coluna div h6 {
+    margin-top: 10px;
+}
+
+#data {
+    font-weight: bold;
+}
+
+.informacao-oferta h6 {
+    font-size: 15px;
+    flex: 0 0 100%;
+    margin-top: 5px;
+    box-sizing: border-box;
+}
+
+.informacao-oferta h2 {
+    margin-left: 10px;
+    margin-top: 10px;
+    font-weight: bold;
+}
+    
+@media (min-width: 600px) {
+    .informacao-oferta h6 {
+        flex: 0 0 calc(50% - 10px); /* Em telas maiores, cada h5 ocupará 50% da largura */
+    }
+}
+
+.descricao-oferta {
+    overflow: hidden; /* Esconde o texto que ultrapassar o tamanho da div */
+    text-overflow: ellipsis; /* Adiciona reticências (...) para indicar que o texto foi cortado */
+    overflow-y: auto;
+    margin-top: 2px;
+    height: 200px;
+    background-color: #376985;
+    border-radius: 10px;
+    border: solid 2px black;
+    padding: 5px;
+    color: #fff;
+}
+
+.descricao-oferta h6 {
+    font-weight: bold;
+}
+
+.descricao-oferta p {
+    margin-left: 5px;
+    margin-right: 10px;
+    text-align: justify;
+}
+
+.botoes-oferta {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3px;
+}
+
+.botoes-oferta  button{
+    background-color: #3330BE;
+    color: #fff;
+    font-weight: bold;
+    width: 120px;
+    height: 35px;
+    border: solid 2px black;
+    border-radius: 5px;
+}
+
+#icone-telefone {
+    width: 25px;
+    margin-left: 3px;
+    height: 25px;
+}
+
+
+/* MODAL */
+
+.modal-visualizar {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1200px;
+    height: 520px;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: -1px 1px 4px 4px black;
+    z-index: 1000;
+    border-radius: 20px;
+}
+
+.modal-visualizar img {
+    width: 50px; /* Ajuste a largura da imagem conforme necessário */
+}
+
+.clicar-fora-modal-visualizar {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 900;
+    pointer-events: none;
+}
+
+#botao-fechar-modal button{
+    background-color: red;
+}

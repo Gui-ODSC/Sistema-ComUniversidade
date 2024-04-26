@@ -49,7 +49,7 @@ class RouteServiceProvider extends ServiceProvider
             //Route de usuarios aluno
             Route::middleware('web')
             ->prefix('web')
-            ->group(base_path('routes/usuario_aluno.php'));
+            ->group(base_path('routes/usuario_estudante.php'));
         });
     }
 }

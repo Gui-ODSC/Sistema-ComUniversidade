@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/autenticacao_usuario/login_professor.css')}}">
-    <title>Login Professor</title>
+    <title>Login Estudante</title>
 </head>
 <header>
     <nav class="navbar">
@@ -16,14 +16,14 @@
 </header>
 <body>
     <div class="login-container">
-        <form method="POST" action="{{ route('login_professor_store') }}">
+        <form method="POST" action="{{ route('login_estudante_store') }}">
             @csrf
             @if (session()->has('success'))
                 <div class="alert alert-success" style="text-align: center">
                     <p>{{session('success')}}</p>
                 </div>
             @endif
-            <h1>Login Professor</h1>
+            <h1>Login Estudante</h1>
             <label for="email">Login</label>
             <input class="is-invalid" type="text" id="email" name="email" placeholder="Login" value={{ old('email')}}>
             @error('email')
@@ -50,7 +50,7 @@
             @enderror
             <span><a href="{{ route('reset_index') }}">Recuperar a Senha</a></span><br>
             <button type="submit" >Entrar</button>
-            {{-- <span><a href="{{ route('cadastro_professor_index') }}">Ainda não possui conta? Cadastre-se</a></span><br> --}}
+            {{-- <span><a href="{{ route('cadastro_etudante_index') }}">Ainda não possui conta? Cadastre-se</a></span><br> --}}
         </form>
         <script src="{{ asset('js/errors/mensagem_erro.js') }}"></script>
     </div>

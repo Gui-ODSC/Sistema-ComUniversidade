@@ -6,7 +6,7 @@ use App\Http\Controllers\MembroControllers\ContatoRecebidoMembroController;
 use App\Http\Controllers\MembroControllers\DemandaMembroController;
 use App\Http\Controllers\MembroControllers\MatchingMembroController;
 use App\Http\Controllers\MembroControllers\PerfilMembroController;
-use App\Http\Controllers\MembroControllers\TodasOfertasController;
+use App\Http\Controllers\MembroControllers\TodasOfertasMembroController;
 use Illuminate\Support\Facades\Route;
 
 //ROTAS REFERENTE A VISUALIZAÇÃO DOS USUÁRIOS MEMBROS DO SISTEMA
@@ -60,7 +60,7 @@ Route::prefix('membro')->group(function(){
         })->middleware('auth');
     })->middleware('auth');
 
-    Route::prefix('/todas-ofertas')->controller(TodasOfertasController::class)->group(function(){
+    Route::prefix('/todas-ofertas')->controller(TodasOfertasMembroController::class)->group(function(){
         Route::get('/', 'listaOfertas')->name('list_todas_ofertas');
         Route::prefix('/{ofertaId}')->group(function (){
             Route::post('/', 'create')->name('contato_direto_store');

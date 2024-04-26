@@ -14,7 +14,7 @@ use App\Models\PublicoAlvo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class TodasOfertasController extends Controller
+class TodasOfertasMembroController extends Controller
 {
     public function listaOfertas(Request $request) {
 
