@@ -26,18 +26,21 @@ Route::prefix('/autenticacao')->group(function(){
         Route::get('/login', [LoginMembroController::class, 'index'])->name('login_membro_index');
         Route::post('/login', [LoginMembroController::class, 'login'])->name('login_membro_store');
         Route::get('/logout', [LoginMembroController::class, 'logout'])->name('login_membro_destroy');
+        Route::get('/', [LoginMembroController::class, 'logout_index'])->name('logout_membro_index');
     });
 
     Route::prefix('/login_professor')->group(function(){
         Route::get('/login', [LoginProfessorController::class, 'index'])->name('login_professor_index');
         Route::post('/login', [LoginProfessorController::class, 'login'])->name('login_professor_store');
         Route::get('/logout', [LoginProfessorController::class, 'logout'])->name('login_professor_destroy');
+        Route::get('/', [LoginProfessorController::class, 'logout_index'])->name('logout_professor_index');
     });
 
     Route::prefix('/login_estudantes')->group(function(){
         Route::get('/login', [LoginEstudanteController::class, 'index'])->name('login_estudante_index');
         Route::post('/login', [LoginEstudanteController::class, 'login'])->name('login_estudante_store');
         Route::get('/logout', [LoginEstudanteController::class, 'logout'])->name('login_estudante_destroy');
+        Route::get('/', [LoginEstudanteController::class, 'logout_index'])->name('logout_estudante_index');
     });
 
     Route::prefix('/redefinir_senha')->controller(ResetPasswordController::class)->group( function(){

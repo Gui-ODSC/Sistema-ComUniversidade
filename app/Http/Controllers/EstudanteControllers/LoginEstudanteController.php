@@ -45,6 +45,10 @@ class LoginEstudanteController extends Controller
 
     }
 
+    public function logout_index() {
+        return view('usuarioEstudante.sair.sair_estudante');
+    }
+
     public function logout(Request $request)
     {
         Auth::logout();

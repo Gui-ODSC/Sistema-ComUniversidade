@@ -45,6 +45,10 @@ class LoginMembroController extends Controller
 
     }
 
+    public function logout_index() {
+        return view('usuarioMembro.sair.sair_membro');
+    }
+
     public function logout(Request $request)
     {
         $request->session()->invalidate();
