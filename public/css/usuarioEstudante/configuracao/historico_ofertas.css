@@ -1,0 +1,32 @@
+.historico-oferta h1 {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+#detalhes {
+    width:40px;
+    height:40px;
+    border-radius: 7px;
+    background-color: #708090;
+    padding: 3px;
+}
+
+#fundo-detalhes {
+    background-color: black;
+}
+
+.table-personalizacao {
+    text-align: center;
+}
+
+.table th:nth-child(2) {
+    width: 400px; /* Largura desejada da célula do título */
+}
+
+.table th:nth-child(5) {
+    width: 80px; /* Largura desejada da célula do título */
+}
+
+
+

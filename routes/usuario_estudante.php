@@ -1,5 +1,6 @@
 <?php 
 
+use App\Http\Controllers\EstudanteControllers\ContatoRealizadoEstudanteController;
 use App\Http\Controllers\EstudanteControllers\TodasOfertasEstudanteController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,22 +21,22 @@ Route::prefix('estudante')->group(function(){
         })->middleware('auth');
     })->middleware('auth');
 
-    /* Route::prefix('/contatos_realizados')->controller(ContatoRealizadoProfessorController::class)->group(function() {
+    Route::prefix('/contatos_realizados')->controller(ContatoRealizadoEstudanteController::class)->group(function() {
         Route::get('/', 'listaContatosRealizados')->name('lista_contatos_realizados_estudante');
-    })->middleware('auth'); */
+    })->middleware('auth');
 
-    Route::prefix('extensao/configuracoes_professor')->group(function(){
+    Route::prefix('extensao/configuracoes_estudante')->group(function(){
         Route::get('/configuracao', function(){
-            return view('usuarioProfessor/configuracao/configuracoes_professor');
-        })->name('configuracoes_professor');
+            return view('usuarioEstudante/configuracao/configuracoes_estudante');
+        })->name('configuracoes_estudante');
         Route::get('/ajuda_sistema', function(){
-            return view('usuarioProfessor/configuracao/ajuda_sistema');
+            return view('usuarioEstudante/configuracao/ajuda_sistema');
         })->name('ajuda_sistema');
         Route::get('/enviar_feedback', function(){
-            return view('usuarioProfessor/configuracao/enviar_feedback');
+            return view('usuarioEstudante/configuracao/enviar_feedback');
         })->name('enviar_feedback');
         Route::get('/sobre_nos', function(){
-            return view('usuarioProfessor/configuracao/sobre_nos');
+            return view('usuarioEstudante/configuracao/sobre_nos');
         })->name('sobre_nos');
     })->middleware('auth');
 });

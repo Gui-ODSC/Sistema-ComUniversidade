@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ asset('css/usuarioMembro/contatos_realizados/todos_contatos_realizados.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/usuarioEstudante/contatos_realizados/todos_contatos_realizados.css') }}">
     <link rel="stylesheet" href="{{ asset('css/menu_navegacao/menu.css') }}">
-    <script src="{{ asset('js/usuarioMembro/contatos_realizados/modal_visualizar_contato_realizado.js') }}"></script>
+    <script src="{{ asset('js/usuarioEstudante/contatos_realizados/modal_visualizar_contato_realizado.js') }}"></script>
     <script src="{{ asset('js/menu/menu_navegacao.js') }}"></script>
     <title>Contatos Realizados</title>
 </head>
@@ -20,7 +20,6 @@
             @if (count($contatosRealizados) < 1)
                 <div class="contato" id="oferta-requisitada" style="text-align: center; justify-content: center; display: flex; flex-direction: column;">
                         <h5 colspan="8" style="opacity: 0.6; margin-top: 5px; margin-bottom: 0px;">-- Nenhum Contato Realizado até o Momento --</h5>
-                        <p style="opacity: 0.6; margin-top: 5px;">Crie demandas e comece a encontrar soluções</p>
                 </div>
             @else
             @foreach ($contatosRealizados as $contato)
@@ -40,11 +39,7 @@
                                 <img src="{{ asset('img/icones/barra_vertical.png') }}" alt="barra separadora" id="imagem">
                             </div>
                             <div id="info-contato-realizado">
-                                @if ($contato['oferta']->tipo === 'CONHECIMENTO')
-                                    <h4>Interesse em Conhecimento</h4>
-                                @else
-                                    <h4>Interesse em Ação</h4>
-                                @endif
+                                <h4>Interesse em Ação</h4>
                                 <h5>Data Contato: {{ \Carbon\Carbon::parse($contato['dados']->created_at)->format('d/m/Y') }}</h5>
                             </div>
                         </div>
@@ -61,7 +56,7 @@
                                 <img title="Mensagem Enviada" id="imagem-contato-status" src="{{ asset('img/usuarioMembro/contatos/status_realizado.png') }}" alt="">
                             @endif
                             <a onclick="openModalVisualizarContatoRealizado({{$contato['dados']->id_contato}})"><img id="icone-visualizar-contato" src="{{ asset('img/usuarioMembro/contatos/visualizar_contato.png') }}" alt="icone mais info"></a>
-                            <x-usuario-membro.contatos-realizados.modal-visualizar-contato-realizado :id-contato="$contato['dados']->id_contato"/>
+                            <x-usuario-estudante.contatos-realizados.modal-visualizar-contato-realizado :id-contato="$contato['dados']->id_contato"/>
                         </div>
                     </div>
                 </div>
