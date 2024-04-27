@@ -73,9 +73,9 @@
                             </label>
                         </div>
                         <div class="caixa-input" style="width: 50%;">
-                            <input type="password" id="password" name="password" value="{{ $usuario->password }}" readonly>
+                            <input type="tipo_pessoa" id="tipo_pessoa" name="tipo_pessoa" value="{{ ucwords(strtolower($usuario->tipo_pessoa)) }}" readonly>
                             <label for="password">
-                                <span>Senha</span>
+                                <span>TipoPessoa</span>
                             </label>
                         </div>
                         <div class="caixa-input" style="width: 472px; margin-left: 3px;">
@@ -103,16 +103,22 @@
                             <span>Complemento</span>
                         </label>
                     </div>
-                    <div class="caixa-input" style="width: 50%;">
+                    <div class="caixa-input" style="width: 30%;">
                         <input class="estado" type="text" id="autoCompleteEstado" name="nome_estado" autocomplete="off" value="{{ $estado->nome }}" readonly>
                         <label for="nome_estado">
                             <span>Estado</span>
                         </label>
                     </div>
-                    <div class="caixa-input" style="width: 580px; margin-left: 3px;">
-                        <input type="text" id="autoCompleteBairro" class="bairro" name="nome_bairro" autocomplete="off" value="{{ $bairro->nome }}" readonly>
+                    <div class="caixa-input" style="width: 433px; margin-left: 3px;">
+                        <input type="text" id="autoCompleteBairro" name="nome_bairro" autocomplete="off" value="{{ $bairro->nome }}" readonly>
                         <label for="nome_bairro">
                             <span>Bairro</span>
+                        </label>
+                    </div>
+                    <div class="caixa-input" style="width: 380px; margin-left: 3px;">
+                        <input type="text" id="instituicao" name="instituicao" autocomplete="off" value="{{ $bairro->instituicao }}" readonly>
+                        <label for="instituicao">
+                            <span>Instituição</span>
                         </label>
                     </div>
                 </div>

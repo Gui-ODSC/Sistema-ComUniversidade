@@ -142,24 +142,24 @@
                                 </label>
                             @enderror
                         </div>
-                        <div class="caixa-input" style="width: 472px; margin-left: 3px;">
-                            {{-- CIDADE --}}
-                            @error('cidade')
-                                <div class="autoComplete_wrapper">  
-                                    <input title="{{ $message }}" class="cidade alert-danger" type="text" name="nome_cidade" autocomplete="off" value="{{ $cidade->nome }}" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required>
-                                    <label for="nome_cidade">
-                                        <span>Cidade</span>
-                                    </label>
-                                </div>
+                        <div class="caixa-input" style="width: 472px; margin-left: 3px">
+                            {{-- TIPO PESSOA --}}
+                            @error('telefone')
+                                <input title="{{ $message }}" class="alert-danger" type="text" id="tipo_pessoa" value="{{ ucwords(strtolower($usuario->tipo_pessoa)) }}" name="tipo_pessoa" autocomplete="off" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required>
+                                <label for="tipo_pessoa">
+                                    <span>Tipo Pessoa</span>
+                                </label>
                             @else
-                                <div class="autoComplete_wrapper">  
-                                    <input type="text" id="autoCompleteCidade" name="nome_cidade" autocomplete="off" value="{{ $cidade->nome }}" required>
-                                    <label for="nome_cidade">
-                                        <span>Cidade</span>
-                                    </label>
-                                </div>
+                                <select name="tipo_pessoa" id="tipo_pessoa" autocomplete="off" required>
+                                    <option value="" {{ ucwords(strtolower($usuario->tipo_pessoa)) ? '' : 'selected' }} disabled></option>
+                                    <option value="FISICA" {{ ucwords(strtolower($usuario->tipo_pessoa)) == 'FISICA' ? 'selected' : '' }}>Física</option>
+                                    <option value="JURIDICA" {{ ucwords(strtolower($usuario->tipo_pessoa)) == 'JURIDICA' ? 'selected' : '' }}>Jurídica</option>
+                                </select>
+                                <label for="tipo_pessoa">
+                                    <span>Tipo Pessoa</span>
+                                </label>
                             @enderror
-                        </div>
+                        </div>      
                     </div>
                     <div class="caixa-input" style="width: 40%;">
                         {{-- RUA --}}
@@ -237,6 +237,38 @@
                                     <span>Bairro</span>
                                 </label>
                             </div>
+                        @enderror
+                    </div>
+                    <div class="caixa-input" style="width: 50%">
+                        {{-- CIDADE --}}
+                        @error('cidade')
+                            <div class="autoComplete_wrapper">  
+                                <input title="{{ $message }}" class="cidade alert-danger" type="text" name="nome_cidade" autocomplete="off" value="{{ $cidade->nome }}" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required>
+                                <label for="nome_cidade">
+                                    <span>Cidade</span>
+                                </label>
+                            </div>
+                        @else
+                            <div class="autoComplete_wrapper">  
+                                <input type="text" id="autoCompleteCidade" name="nome_cidade" autocomplete="off" value="{{ $cidade->nome }}" required>
+                                <label for="nome_cidade">
+                                    <span>Cidade</span>
+                                </label>
+                            </div>
+                        @enderror
+                    </div>
+                    {{-- INSTITUICAO --}}
+                    <div class="caixa-input" style="width: 582px; margin-left: 3px">
+                        @error('instituicao')
+                            <input title="{{ $message }}" class="alert-danger" type="text" id="instituicao" name="instituicao" autocomplete="off" value="{{ $usuario->instituicao }}"  style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black">
+                            <label for="instituicao">
+                                <span>Instituição</span>
+                            </label>
+                        @else
+                            <input type="text" id="instituicao" name="instituicao" autocomplete="off" value="{{ $usuario->instituicao }}">
+                            <label for="nome">
+                                <span>Instituição</span>
+                            </label>
                         @enderror
                     </div>
                 </form>

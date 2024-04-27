@@ -26,7 +26,11 @@
                     <div id="dados-professor">
                         <hr>
                         <h6>Cargo: {{(ucwords(strtolower($usuarioEmissor->tipo)))}}</h6>
-                        <h6>Instituição: </h6>
+                        @if ($usuarioEmissor->instituicao)
+                            <h6>Instituição: {{$usuarioEmissor->instituicao}}</h6>
+                        @else 
+                            <h6>Intituição: Não cadastrada</h6>
+                        @endif
                         @if ($oferta->tipo === 'ACAO')
                             <h6>Tipo Oferta: Ação</h6>
                         @elseif ($oferta->tipo === 'CONHECIMENTO')

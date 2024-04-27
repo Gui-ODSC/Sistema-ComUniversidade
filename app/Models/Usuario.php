@@ -30,7 +30,9 @@ class Usuario extends Authenticatable
         'email_secundario',
         'password',
         'foto',
-        'tipo'
+        'tipo',
+        'tipo_pessoa',
+        'instituicao',
     ];
 
     protected $hidden = [

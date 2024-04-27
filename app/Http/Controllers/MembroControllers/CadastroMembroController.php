@@ -104,7 +104,9 @@ class CadastroMembroController extends Controller
             'email_secundario' => $validatedDataUsuario['email_secundario'] ?? null,
             'password' => Hash::make($validatedDataUsuario['password']),
             'foto' => $validatedDataUsuario['foto'] ?? null,
-            'tipo' => 'MEMBRO'
+            'tipo' => 'MEMBRO',
+            'tipo_pessoa' => $validatedDataUsuario['tipo_pessoa'],
+            'instituicao' => $validatedDataUsuario['instituicao'] ?? null,
         ]);
 
         return redirect()->route('login_membro_index')->with("success", "Usuário Cadastrado com Sucesso.");
@@ -121,6 +123,8 @@ class CadastroMembroController extends Controller
             "email_secundario" => $errors->first('email_secundario'),
             "password" => $errors->first('password'),
             "foto" => $errors->first('foto'),
+            "tipo_pessoa" => $errors->first('tipo_pessoa'),
+            "instituicao" => $errors->first('instituicao'),
         ];
     }
 

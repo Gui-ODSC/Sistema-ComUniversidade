@@ -151,7 +151,7 @@ h1 {
 
 
 /* INPUTS PERSONALIZADOS */
-.cadastro-container input {
+.cadastro-container input, select {
     color: #FFF;
     font-size: 20px;
     width: 100%;
@@ -206,6 +206,24 @@ h1 {
 }
 
 .cadastro-container input:focus + label::after {
+    border-bottom: 3px solid #FFF;
+}
+
+.cadastro-container select:read-only + label span, select:valid + label span {
+    height: 40px;
+    font-size: 14px;
+    bottom: 10px;
+    color: #FFF;
+}
+
+.cadastro-container select:focus + label span, select:invalid + label span {
+    height: 40px;
+    font-size: 14px;
+    bottom: 10px;
+    color: #FFF;;
+}
+
+.cadastro-container select:focus + label::after {
     border-bottom: 3px solid #FFF;
 }
 

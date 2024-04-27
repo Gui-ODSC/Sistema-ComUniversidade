@@ -119,6 +119,8 @@ class PerfilMembroController extends Controller
             'email' => $validatedDataUsuario['email'],
             'email_secundario' => $validatedDataUsuario['email_secundario'] ?? null,
             'foto' => $validatedDataUsuario['foto'] ?? null,
+            'tipo_pessoa' => $validatedDataUsuario['tipo_pessoa'],
+            'instituicao' => $validatedDataUsuario['instituicao'] ?? null,
         ];
 
         if (filled($validatedDataUsuario['password'])) {
@@ -141,6 +143,8 @@ class PerfilMembroController extends Controller
             "email_secundario" => $errors->first('email_secundario'),
             "password" => $errors->first('password'),
             "foto" => $errors->first('foto'),
+            "tipo_pessoa" => $errors->first('tipo_pessoa'),
+            "instituicao" => $errors->first('instituicao'),
         ];
     }
 

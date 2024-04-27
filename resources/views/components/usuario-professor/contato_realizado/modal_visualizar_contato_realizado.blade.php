@@ -25,7 +25,11 @@
                         <div id="dados-professor-contato-respondido">
                             <hr>
                             <h6>Cargo: {{ucwords(strtolower($usuarioReceptor->tipo))}}(a)</h6>
-                            <h6>Instituição: {{-- adicionar --}}</h6>
+                            @if ($usuarioReceptor->instituicao)
+                                <h6>Instituição: {{$usuarioReceptor->instituicao}}</h6>
+                            @else 
+                                <h6>Intituição: Não cadastrada</h6>
+                            @endif
                             <h6>Tipo: Necessidade</h6>
                         </div>
                     </div>

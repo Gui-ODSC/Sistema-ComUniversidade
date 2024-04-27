@@ -25,6 +25,9 @@ return new class extends Migration
             $table->string('remember_token', 100)->nullable();
             $table->string('foto')->nullable();
             $table->enum('tipo', ['MEMBRO', 'ALUNO', 'PROFESSOR']);
+            $table->enum('tipo_pessoa', ['FISICA', 'JURIDICA']);
+            $table->string('instituicao', 100)->nullable();
+
             
             $table->foreign('id_endereco')->references('id_endereco')->on('Endereco')->onDelete('restrict');
             $table->timestamps();

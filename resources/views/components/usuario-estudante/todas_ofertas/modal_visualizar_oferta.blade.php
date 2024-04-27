@@ -19,7 +19,11 @@
                         <h2>{{$professor->nome}}</h2>
                         <hr>
                         <h6>Cargo: {{(ucwords(strtolower($professor->tipo)))}}</h6>
-                        <h6>Instituição: </h6>
+                        @if ($professor->instituicao)
+                            <h6>Instituição: {{$professor->instituicao}}</h6>
+                        @else 
+                            <h6>Intituição: Não cadastrada</h6>
+                        @endif
                         @if ($oferta->tipo === 'ACAO')
                             <h6>Tipo Oferta: Ação</h6>
                         @elseif ($oferta->tipo === 'CONHECIMENTO')

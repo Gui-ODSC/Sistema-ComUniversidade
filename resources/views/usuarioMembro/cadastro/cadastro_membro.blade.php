@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -73,7 +73,7 @@
                 <div class="caixa-input" style="width: 20%;">
                     {{-- NASCIMENTO --}}
                     @error('nascimento')
-                        <input title="{{ $message }}" class="alert-danger" type="text" id="nascimento" name="nascimento" autocomplete="off" required>
+                        <input title="{{ $message }}" class="alert-danger" type="text" id="nascimento" name="nascimento" autocomplete="off" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required>
                         <label for="nascimento">
                             <span>Data Nascimento</span>
                         </label>
@@ -248,6 +248,42 @@
                         <label for="foto" class="custom-file-upload">
                             <input type="file" id="foto" name="foto" style="display:none">
                             Adicionar Foto Perfil
+                        </label>
+                    @enderror
+                </div>
+                <div class="caixa-input" style="width: 50%;">
+                    {{-- TIPO PESSOA --}}
+                    @error('tipo_pessoa')
+                        <select title="{{ $message }}" class="alert-danger" type="text" id="tipo_pessoa" name="tipo_pessoa" autocomplete="off" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required>
+                            <option value="" selected disabled></option>
+                            <option value="FISICA">Física</option>
+                            <option value="JURIDICA">Jurídica</option>
+                        </select>
+                        <label for="tipo_pessoa">
+                            <span>Tipo Pessoa</span>
+                        </label>
+                    @else
+                        <select name="tipo_pessoa" id="tipo_pessoa" autocomplete="off" required>
+                            <option value="" selected disabled></option>
+                            <option value="FISICA">Física</option>
+                            <option value="JURIDICA">Jurídica</option>
+                        </select>
+                        <label for="tipo_pessoa">
+                            <span>Tipo Pessoa</span>
+                        </label>
+                    @enderror
+                </div>
+                <div class="caixa-input" style="width: 481px; margin-left: 3px">
+                    {{-- INSTITUICAO --}}
+                    @error('instituicao')
+                        <input title="{{ $message }}" class="alert-danger" type="text" id="instituicao" name="instituicao" autocomplete="off" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black">
+                        <label for="instituicao">
+                            <span>Instituição</span>
+                        </label>
+                    @else
+                        <input type="text" id="instituicao" name="instituicao" autocomplete="off">
+                        <label for="instituicao">
+                            <span>Instituição</span>
                         </label>
                     @enderror
                 </div>

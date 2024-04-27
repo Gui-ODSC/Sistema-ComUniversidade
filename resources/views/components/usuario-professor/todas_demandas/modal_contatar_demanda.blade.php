@@ -20,7 +20,11 @@
                         <h2>{{$usuarioMembro->nome}}</h2>
                         <hr>
                         <h6>Tipo de Usuário: {{(ucwords(strtolower($usuarioMembro->tipo)))}}</h6>
-                        <h6>Instituição: </h6>
+                        @if ($usuarioMembro->instituicao)
+                            <h6>Instituição: {{$usuarioMembro->instituicao}}</h6>
+                        @else 
+                            <h6>Intituição: Não cadastrada</h6>
+                        @endif
                     </div>
                     <div class="informacao-email-contatar">
                         <h4>Contatos Email</h4>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\TipoPessoaEnum;
 use App\Enums\TipoUsuarioEnum;
 use App\Models\Endereco;
 use App\Models\Usuario;
@@ -43,6 +44,11 @@ class UsuarioController extends Controller
                 'regex:/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/',
             ],
             'foto' => 'nullable|string',
+            'tipo_pessoa' => [
+                'required',
+                new Enum(TipoPessoaEnum::class)
+            ],
+            'instituicao' => 'string|nullable|max:100'
         ];
     }
 
@@ -124,6 +130,8 @@ class UsuarioController extends Controller
             'password.string' => 'Senha: Deve ser um texto.',
             'password.min' => 'Senha: Deve conter no mínimo 8 caracteres.',
             'password.regex' => 'Senha: Deve conter pelo menos uma letra maiúscula, uma letra minúscula, um número e um caractere especial.',
+            'instituicao.string' => 'Instituição: A instituicao deve ser um texto.',
+            'instituicao.max' => 'Instituição: Número de caracteres ultrapassado'
         ];
     }
 }
