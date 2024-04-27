@@ -17,12 +17,12 @@ header {
 
 .btn-abrir {
     color: #FFF;
-    font-size: 25px;
+    font-size: 20px;
 }
 
 .btn-abrir:hover {
     color: #FFF;
-    font-size: 25px;
+    font-size: 20px;
 }
 
 nav {
@@ -39,7 +39,7 @@ nav {
 
 nav a {
     color: #FFF;
-    font-size: 25px;
+    font-size: 20px;
     display: block;
     padding: 12px 10px 12px 15px;
 }

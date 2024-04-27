@@ -14,7 +14,7 @@
         <div class="caixa-modal" id="caixa-modal-{{$idDemanda}}">
             <span onclick="closeModalDeletar({{$idDemanda}})" id="botao_fechar_model"><img src="{{ asset('img/usuarioMembro/minhas_demandas/fechar.png') }}" alt=""></span>
             <div class="modal-excluir">
-            <h2>Deseja mesmo Excluir essa demanda ?</h2>
+            <h3 style="padding-top: 25px">Deseja mesmo Excluir essa necessidade ?</h3>
             <h4><strong>{{$demanda->titulo}}</strong></h4>
             <div class="div-botoes">
                 <form action="{{ route('demanda_delete_store', $idDemanda) }}" method="POST">

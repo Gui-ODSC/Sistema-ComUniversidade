@@ -12,7 +12,7 @@
     <div class="caixa-modal" id="caixa-modal-{{$idDemanda}}">
         <span onclick="closeModalDescricao({{$idDemanda}})" id="botao_fechar_modal"><img src="{{ asset('img/usuarioMembro/minhas_demandas/fechar.png') }}" alt=""></span>
         <div class="modal-descricao">
-            <h3>Descrição da Demanda</h3>
+            <h3>Descrição da Necessidade</h3>
             <h6>{{$demanda->descricao}}</h6>
         </div>
     </div>

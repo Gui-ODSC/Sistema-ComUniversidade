@@ -40,7 +40,7 @@
                                 <img src="{{ asset('img/icones/barra_vertical.png') }}" alt="barra separadora" id="imagem">
                             </div>
                             <div id="info-contato-realizado">
-                                <h4>Interesse em Demanda</h4>
+                                <h4>Interesse em Necessidade</h4>
                                 <h5>Data Contato: {{ \Carbon\Carbon::parse($contato['dados']->created_at)->format('d/m/Y') }}</h5>
                             </div>
                         </div>

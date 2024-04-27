@@ -71,13 +71,13 @@ Route::prefix('professor')->group(function(){
         })->name('configuracoes_professor');
         Route::get('/ajuda_sistema', function(){
             return view('usuarioProfessor/configuracao/ajuda_sistema');
-        })->name('ajuda_sistema');
+        })->name('ajuda_sistema_professor');
         Route::get('/enviar_feedback', function(){
             return view('usuarioProfessor/configuracao/enviar_feedback');
-        })->name('enviar_feedback');
+        })->name('enviar_feedback_professor');
         Route::get('/sobre_nos', function(){
             return view('usuarioProfessor/configuracao/sobre_nos');
-        })->name('sobre_nos');
+        })->name('sobre_nos_professor');
     })->middleware('auth');
 });
 

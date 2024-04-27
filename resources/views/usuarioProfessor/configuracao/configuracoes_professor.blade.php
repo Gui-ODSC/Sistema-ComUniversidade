@@ -13,9 +13,9 @@
     @include('usuarioProfessor.menu')
     <main class="configuracoes" id="conteudo">
         <h1>Configurações</h1>
-        <a href="{{ route('ajuda_sistema') }}"><button>Ajuda do Sistema</button></a>
-        <a href="{{ route('enviar_feedback') }}"><button>Enviar Feedback</button></a>
-        <a href="{{ route('sobre_nos') }}"><button>Sobre nós</button></a>
+        <a href="{{ route('ajuda_sistema_professor') }}"><button>Ajuda do Sistema</button></a>
+        <a href="{{ route('enviar_feedback_professor') }}"><button>Enviar Feedback</button></a>
+        <a href="{{ route('sobre_nos_professor') }}"><button>Sobre nós</button></a>
     </main>
 </body>
 </html>

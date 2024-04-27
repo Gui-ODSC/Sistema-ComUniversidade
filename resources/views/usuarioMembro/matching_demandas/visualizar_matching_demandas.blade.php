@@ -17,7 +17,7 @@
     <main class="matchings" id="conteudo">
         <div class="container-info-demanda">
             <div class="header-demanda">
-                <h4>Dados demanda:</h4>
+                <h4>Dados da necessidade:</h4>
                 <h4>Criada em: {{ \Carbon\Carbon::parse($demanda->created_at)->format('d/m/Y') }}</h4>
             </div>
             <div class="titulo-descricao">
@@ -31,7 +31,7 @@
             <hr>
             <div class="dados-detalhados-demanda">
                 <div>
-                    <h5>Tipo: Demanda</h5>
+                    <h5>Tipo: Necessidade</h5>
                     <h5>Pessoas Afetadas: Aprox. {{$demanda->pessoas_afetadas}}</h5>
                     <h5>Duração: {{ucwords(strtolower($demanda->duracao))}}</h5>
                     <h5>Instituição: {{$demanda->instituicao_setor ?? '' }}</h5>
@@ -43,7 +43,7 @@
                 </div>
             </div>
         </div>
-        <h1>Ofertas encontradas para esta demanda</h1>
+        <h1>Ofertas encontradas para esta necessidade</h1>
         @if( session()->has('msg-matching'))
             <div class="alert alert-success" style="text-align: center">
                 <p>{{session('msg-matching')}}</p>
@@ -66,7 +66,7 @@
                 @php  $contador = 1; @endphp 
                 @if (count($ofertasEncontradas) < 1)
                     <tr>
-                        <td colspan="8"><p style="opacity: 0.6; margin-top: 5px; margin-bottom: 0px">-- Nenhum Matching Encontrado para esta demanda --</p></td>
+                        <td colspan="8"><p style="opacity: 0.6; margin-top: 5px; margin-bottom: 0px">-- Nenhum Matching Encontrado para esta necessidade --</p></td>
                     </tr>
                 @else
                     @foreach ($ofertasEncontradas as $key => $matching)  

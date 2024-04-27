@@ -19,7 +19,7 @@
             </div>
         @endif
         <div class="titulo">
-            <h1>Minhas Demandas</h1>
+            <h1>Minhas Necessidades</h1>
         </div>
         <div style="display: flex; justify-content: space-between; margin-top: 20px">
             <div class="paginacao-botao">
@@ -27,7 +27,7 @@
                     {{ $demandas->links() }}
                 </div>
             </div>
-            <a href="{{ route('demanda_create_index') }}"><button>Cadastrar Novas Demandas</button></a>
+            <a href="{{ route('demanda_create_index') }}"><button>Cadastrar Novas Necessidades</button></a>
         </div>
         <table class="table table-rounded p-5 table-personalizacao">
             <thead>
@@ -35,7 +35,7 @@
                     <th scope="col"></th>
                     <th scope="col">Título</th>
                     <th scope="col">Área de Conhecimento</th>
-                    <th scope="col">Data Criação Demanda</th>
+                    <th scope="col">Data Criação Necessidade</th>
                     <th scope="col">Editar</th>
                     <th scope="col">Deletar</th>
                     <th scope="col">Ver</th>

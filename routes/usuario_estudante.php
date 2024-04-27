@@ -31,13 +31,13 @@ Route::prefix('estudante')->group(function(){
         })->name('configuracoes_estudante');
         Route::get('/ajuda_sistema', function(){
             return view('usuarioEstudante/configuracao/ajuda_sistema');
-        })->name('ajuda_sistema');
+        })->name('ajuda_sistema_estudante');
         Route::get('/enviar_feedback', function(){
             return view('usuarioEstudante/configuracao/enviar_feedback');
-        })->name('enviar_feedback');
+        })->name('enviar_feedback_estudante');
         Route::get('/sobre_nos', function(){
             return view('usuarioEstudante/configuracao/sobre_nos');
-        })->name('sobre_nos');
+        })->name('sobre_nos_estudante');
     })->middleware('auth');
 });
 

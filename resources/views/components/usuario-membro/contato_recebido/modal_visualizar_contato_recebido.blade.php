@@ -29,8 +29,8 @@
                     </div>
                 </div>
                 <div class="info-criador-interessado">
-                    <h6>Criador(a) da Demanda: {{$usuarioReceptor->nome}}</h6>
-                    <h6>Interessado(a) na Demanda: {{$usuarioEmissor->nome}}</h6>
+                    <h6>Criador(a) da Necessidade: {{$usuarioReceptor->nome}}</h6>
+                    <h6>Interessado(a) na Necessidade: {{$usuarioEmissor->nome}}</h6>
                 </div>
                 <div class="informacao-email">
                     <h4>Contatos Email</h4>
@@ -39,10 +39,10 @@
                 </div>
             </div>
             <div class="informacao-oferta">
-                <h5 id="dados-demanda">Dados da demanda: </h5>
+                <h5 id="dados-demanda">Dados da necessidade: </h5>
                 <div id="titulo-data-oferta">
-                    <h2>Título da Demanda: {{$demanda->titulo}}</h2>
-                    <h6 id="data">Demanda Realizada em: {{ \Carbon\Carbon::parse($demanda->created_at)->format('d/m/Y') }}</h6>
+                    <h2>Título da necessidade: {{$demanda->titulo}}</h2>
+                    <h6 id="data">Necessidade Criada em: {{ \Carbon\Carbon::parse($demanda->created_at)->format('d/m/Y') }}</h6>
                 </div>
                 <div style="display: flex; height: 50px; align-items: center">
                     <div class="dados-oferta-descricao">
@@ -95,7 +95,7 @@
                 <form id="form-contato-{{$idContato}}" action="{{ route('contato_recebido_store', [$idContato]) }}" method="POST" onsubmit="return validarEnviarFormulario({{$idContato}})">
                     @csrf
                         <h6>Responder:</h6>
-                        <textarea name="resposta-contato" id="mensagem-contato-{{$idContato}}"  placeholder="Existe alguém interessado em sua demanda, responda aqui (*Obrigatório)" oninput="habilitarBotoes({{$idContato}})"></textarea>
+                        <textarea name="resposta-contato" id="mensagem-contato-{{$idContato}}"  placeholder="Existe alguém interessado em sua necessidade, responda aqui (*Obrigatório)" oninput="habilitarBotoes({{$idContato}})"></textarea>
                     </div>
                     <div class="botoes-oferta">
                         <div>

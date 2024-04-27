@@ -19,9 +19,8 @@
                     <div class="informacao-professor-contatar">
                         <h2>{{$usuarioMembro->nome}}</h2>
                         <hr>
-                        <h6>Cargo: {{(ucwords(strtolower($usuarioMembro->tipo)))}}</h6>
+                        <h6>Tipo de Usuário: {{(ucwords(strtolower($usuarioMembro->tipo)))}}</h6>
                         <h6>Instituição: </h6>
-                        <h6>Tipo Demanda: Demanda</h6>
                     </div>
                     <div class="informacao-email-contatar">
                         <h4>Contatos Email</h4>
@@ -36,7 +35,7 @@
                         </div>
                         <div class="informacao-oferta-coluna-contatar">
                             <div>
-                                <h6>Tipo: Demanda</h6>
+                                <h6>Tipo: Necessidade</h6>
                                 <h6>Pessoas Afetadas: Aprox. {{$demanda->pessoas_afetadas}}</h6>
                                 <h6>Duração: {{ucwords(strtolower($demanda->duracao))}}</h6>
                             </div>
@@ -46,7 +45,7 @@
                                 <h6>Nivel Prioridade: {{ucwords(strtolower($demanda->nivel_prioridade))}}</h6>
                             </div>
                             <div>
-                                <h6 id="data-contatar">Demandada em: {{ \Carbon\Carbon::parse($demanda->created_at)->format('d/m/Y') }}</h6>
+                                <h6 id="data-contatar">Criada em: {{ \Carbon\Carbon::parse($demanda->created_at)->format('d/m/Y') }}</h6>
                                 <h6>Instituição: {{$demanda->instituicao_setor ?? '' }}</h6>
                             </div>
                         </div>

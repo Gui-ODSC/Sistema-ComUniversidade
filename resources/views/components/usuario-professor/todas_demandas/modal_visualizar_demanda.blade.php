@@ -33,7 +33,7 @@
                     </div>
                     <div class="informacao-oferta-coluna">
                         <div>
-                            <h6>Tipo: Demanda</h6>
+                            <h6>Tipo: Necessidade</h6>
                             <h6>Pessoas Afetadas: Aprox. {{$demanda->pessoas_afetadas}}</h6>
                             <h6>Duração: {{ucwords(strtolower($demanda->duracao))}}</h6>
                         </div>
@@ -50,7 +50,7 @@
                 </div>
             </div>
             <div class="descricao-oferta">
-                <h6>Descricao Demanda:</h6>
+                <h6>Descricao Necessidade:</h6>
                 <p>{{$demanda->descricao}}</p>
             </div>
             <div class="botoes-oferta">

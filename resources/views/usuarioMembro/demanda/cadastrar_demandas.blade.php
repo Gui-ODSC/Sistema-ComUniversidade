@@ -20,7 +20,7 @@
             <a title="Voltar" onclick="goBack()" href="{{ route('demanda_index') }}"><img src="{{ asset('img/usuarioMembro/cadastrar_demandas/botao_voltar.png')}}" alt=""></a>
         </div>
         <div class="titulo">
-            <h1>Cadastrar Demanda</h1>
+            <h1>Cadastrar Necessidade</h1>
         </div>
         <form action="{{ route('demanda_create_store') }}" method="POST">
             @if($errors->has('dados'))

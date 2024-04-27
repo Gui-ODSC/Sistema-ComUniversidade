@@ -30,7 +30,7 @@
     @include('usuarioProfessor.menu')
     <main class="todas-ofertas" id="conteudo">
         <div class="titulo">
-            <h1>Todas as Demandas Disponíveis</h1>
+            <h1>Todas as Necessidades Disponíveis</h1>
         </div>
         <div class="caixa-pesquisa-oferta" style="justify-content: space-between">
             <div class="botao-limpar">
@@ -100,7 +100,7 @@
                     <th scope="col"></th>
                     <th scope="col">Título</th>
                     <th scope="col">Área de Conhecimento</th>
-                    <th scope="col">Data Oferta</th>
+                    <th scope="col">Data Necessidade</th>
                     <th scope="col">Status</th>
                     <th scope="col">Deletar</th>
                     <th scope="col">Contato</th>
@@ -110,7 +110,7 @@
                 @php  $contador = 1; @endphp 
                 @if (count($demandas) < 1)
                     <tr>
-                        <td colspan="7"><p style="opacity: 0.6; margin-top: 5px; margin-bottom: 0px">-- Nenhuma Demanda Disponível no Momento --</p></td>
+                        <td colspan="7"><p style="opacity: 0.6; margin-top: 5px; margin-bottom: 0px">-- Nenhuma Necessidade Disponível no Momento --</p></td>
                     </tr>
                 @else
                     @foreach ($demandas as $key => $demanda)

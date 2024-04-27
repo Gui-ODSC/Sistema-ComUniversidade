@@ -21,7 +21,7 @@
             <a title="Voltar" onclick="goBack()"><img src="{{ asset('img/usuarioMembro/cadastrar_demandas/botao_voltar.png')}}" alt=""></a>
         </div>
         <div class="titulo">
-            <h1>Editar Demanda</h1>
+            <h1>Editar Necessidade</h1>
         </div>
         <form action="{{ route('demanda_edit_store', $demanda->id_demanda) }}" method="POST">
             @if($errors->has('dados'))

@@ -26,12 +26,12 @@
                             <hr>
                             <h6>Cargo: {{ucwords(strtolower($usuarioReceptor->tipo))}}(a)</h6>
                             <h6>Instituição: {{-- adicionar --}}</h6>
-                            <h6>Tipo: Demanda</h6>
+                            <h6>Tipo: Necessidade</h6>
                         </div>
                     </div>
                     <div class="info-criador-interessado-contato-respondido">
-                        <h6>Criador(a) da Demanda: {{$usuarioReceptor->nome}}</h6>
-                        <h6>Interessado(a) na Demandas: {{$usuarioEmissor->nome}}</h6>
+                        <h6>Criador(a) da Necessidade: {{$usuarioReceptor->nome}}</h6>
+                        <h6>Interessado(a) na Necessidades: {{$usuarioEmissor->nome}}</h6>
                     </div>
                     <div class="informacao-email-contato-respondido">
                         <h4>Contatos Email</h4>
@@ -40,10 +40,10 @@
                     </div>
                 </div>
                 <div class="informacao-oferta-contato-respondido">
-                    <h5>Dados Demanda:</h5>
+                    <h5>Dados Necessidade:</h5>
                     <div id="titulo-data-oferta-contato-respondido">
                         <h2>Título: {{$demanda->titulo}}</h2>
-                        <h6 id="data">Demandada em: {{ \Carbon\Carbon::parse($demanda->created_at)->format('d/m/Y') }}</h6>
+                        <h6 id="data">Criada em: {{ \Carbon\Carbon::parse($demanda->created_at)->format('d/m/Y') }}</h6>
                     </div>
                     <div style="display: flex; height: 50px; align-items: center">
                         <div class="dados-oferta-descricao">
