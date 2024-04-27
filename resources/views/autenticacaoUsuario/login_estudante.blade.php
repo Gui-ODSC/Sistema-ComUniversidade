@@ -24,29 +24,32 @@
                 </div>
             @endif
             <h1>Login Estudante</h1>
-            <label for="email">Login</label>
-            <input class="is-invalid" type="text" id="email" name="email" placeholder="Login" value={{ old('email')}}>
+                <label for="email">Login</label>
+                <input class="is-invalid" type="text" id="email" name="email" placeholder="Login" value={{ old('email')}}>
             @error('email')
                 <div id="error-message-email" class="msg-erro fade-effect-error">
                     <p>{{ $message }}</p>
                 </div>
             @enderror
             @error('message')
-            <div id="error-message-email" class="msg-erro fade-effect-error">
-                <p>{{ $message }}</p>
-            </div>
+                <div id="error-message-email" class="msg-erro fade-effect-error">
+                    <p>{{ $message }}</p>
+                </div>
             @enderror
-            <label for="password">Senha</label>
-            <input type="password" id="password" name="password" placeholder="Senha">
+                <label for="password">Senha</label>
+                <div style="position: relative;">
+                    <input type="password" id="password" name="password" placeholder="Senha" required oninput="toggleEye()">
+                    <span class="toggle-password" onclick="togglePassword()" style="position: absolute; top: 40%; left: 450px; transform: translateY(-50%); cursor: pointer; display: none"><img src="{{ asset('img/usuarioEstudante/login/olho_desmarcado.png')}}" alt="" style="width: 20px"></span>
+                </div>
             @error('password')
                 <div id="error-message-password" class="msg-erro fade-effect-error">
                     <p>{{ $message }}</p>
                 </div>
             @enderror
             @error('message')
-            <div id="error-message-email" class="msg-erro fade-effect-error">
-                <p>{{ $message }}</p>
-            </div>
+                <div id="error-message-email" class="msg-erro fade-effect-error">
+                    <p>{{ $message }}</p>
+                </div>
             @enderror
             <span><a href="{{ route('reset_index') }}">Recuperar a Senha</a></span><br>
             <button type="submit" >Entrar</button>
@@ -54,5 +57,32 @@
         </form>
         <script src="{{ asset('js/errors/mensagem_erro.js') }}"></script>
     </div>
+    <script>
+        /* OLINHO DA SENHA */
+        function togglePassword() {
+            var passwordField = document.getElementById("password");
+            var toggleButton = document.querySelector(".toggle-password");
+
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+                toggleButton.innerHTML = '<img src="{{ asset('img/usuarioEstudante/login/olho_marcado.png')}}" alt="" style="width: 20px">';
+            } else {
+                passwordField.type = "password";
+                toggleButton.innerHTML = '<img src="{{ asset('img/usuarioEstudante/login/olho_desmarcado.png')}}" alt="" style="width: 20px">';
+            }
+        }
+
+        // Verifica se há dados no campo de senha para exibir o ícone do olho
+        function toggleEye() {
+            var passwordField = document.getElementById("password");
+            var toggleButton = document.querySelector(".toggle-password");
+
+            if (passwordField.value !== "") {
+                toggleButton.style.display = "inline-block";
+            } else {
+                toggleButton.style.display = "none";
+            }
+        }
+    </script>
 </body>
 </html>

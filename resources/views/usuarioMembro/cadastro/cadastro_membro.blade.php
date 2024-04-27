@@ -130,15 +130,21 @@
                 <div class="caixa-input" style="width: 50%;">
                     {{-- PASSWORD --}}
                     @error('password')
-                        <input title="{{ $message }}" class="alert-danger" type="password" id="password" name="password" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required>
-                        <label for="password">
-                            <span>Senha</span>
-                        </label>
+                        <div style="position: relative;">
+                            <input title="{{ $message }}" class="alert-danger" type="password" id="password" name="password" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required oninput="toggleEye()">
+                            <label for="password">
+                                <span>Senha</span>
+                            </label>
+                            <span class="toggle-password" onclick="togglePassword()" style="position: absolute; top: 50%; left: 440px; transform: translateY(-50%); cursor: pointer; display: none"><img src="{{ asset('img/usuarioMembro/cadastrar_demandas/olho_desmarcado.png')}}" alt="" style="width: 25px"></span>
+                        </div>
                     @else
-                        <input type="password" id="password" name="password" required>
-                        <label for="password">
-                            <span>Senha</span>
-                        </label>
+                        <div style="position: relative;">
+                            <input type="password" id="password" name="password" required oninput="toggleEye()">
+                            <label for="password">
+                                <span>Senha</span>
+                            </label>
+                            <span class="toggle-password" onclick="togglePassword()" style="position: absolute; top: 50%; left: 440px; transform: translateY(-50%); cursor: pointer; display: none"><img src="{{ asset('img/usuarioMembro/cadastrar_demandas/olho_desmarcado.png')}}" alt="" style="width: 25px"></span>
+                        </div>
                     @enderror
                 </div>
                 <div class="caixa-input" style="width: 482px; margin-left: 3px;">
@@ -365,6 +371,31 @@
             autoCompleteInput.value = estado.nome;
         });
 
+        /* OLINHO DA SENHA */
+        function togglePassword() {
+            var passwordField = document.getElementById("password");
+            var toggleButton = document.querySelector(".toggle-password");
+
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+                toggleButton.innerHTML = '<img src="{{ asset('img/usuarioMembro/cadastrar_demandas/olho_marcado.png')}}" alt="" style="width: 25px">';
+            } else {
+                passwordField.type = "password";
+                toggleButton.innerHTML = '<img src="{{ asset('img/usuarioMembro/cadastrar_demandas/olho_desmarcado.png')}}" alt="" style="width: 25px">';
+            }
+        }
+
+        // Verifica se há dados no campo de senha para exibir o ícone do olho
+        function toggleEye() {
+            var passwordField = document.getElementById("password");
+            var toggleButton = document.querySelector(".toggle-password");
+
+            if (passwordField.value !== "") {
+                toggleButton.style.display = "inline-block";
+            } else {
+                toggleButton.style.display = "none";
+            }
+        }
     </script>
 </body>
 </html>
