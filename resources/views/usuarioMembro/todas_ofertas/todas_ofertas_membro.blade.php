@@ -8,6 +8,7 @@
     <script src="{{ asset('js/usuarioMembro/todas_ofertas/modal_visualizar_oferta.js') }}"></script>
     <script src="{{ asset('js/usuarioMembro/todas_ofertas/modal_deletar_oferta.js') }}"></script>
     <script src="{{ asset('js/usuarioMembro/todas_ofertas/filtros_ofertas.js') }}"></script>
+    <script src="{{ asset('js/usuarioMembro/todas_ofertas/modal_ajuda_tipo_oferta.js') }}"></script>
     <!-- CloudFlare -->
     <link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css' type='text/css'>
     {{-- SELECTPICKER --}}
@@ -116,7 +117,8 @@
                     <th scope="col"></th>
                     <th scope="col">Título</th>
                     <th scope="col">Área de Conhecimento</th>
-                    <th scope="col">Tipo Oferta</th>
+                    <th scope="col">Tipo Oferta <button onclick="openModalAjudaTipoOferta({{$usuarioMembro}})" style="background: none; border: none; color: #FFF">(?)</button></th>
+                    <x-usuario-membro.todas-ofertas.modal-ajuda-tipo-oferta :id-usuario="$usuarioMembro"/>
                     <th scope="col">Data Oferta</th>
                     <th scope="col">Status</th>
                     <th scope="col">Deletar</th>

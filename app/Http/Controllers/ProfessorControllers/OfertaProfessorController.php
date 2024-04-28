@@ -57,6 +57,7 @@ class OfertaProfessorController extends Controller
 
     public function createIndex()
     {
+        $usuarioId = Auth::id();
         $listPublicoAlvo = $this->publicoAlvoController->list();
         $listAreaConhecimento = $this->areaConhecimentoController->list();
         $listTipoAcao = $this->tipoAcaoController->list();
@@ -64,6 +65,7 @@ class OfertaProfessorController extends Controller
         return view(
             'usuarioProfessor/oferta/cadastrar_ofertas',
             [
+                'usuarioProfessor' => $usuarioId,
                 'listPublicoAlvo' => $listPublicoAlvo,
                 'listAreaConhecimento' => $listAreaConhecimento,
                 'listTipoAcao' => $listTipoAcao,

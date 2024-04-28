@@ -6,7 +6,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/menu_navegacao/menu.css') }}">
     <link rel="stylesheet" href="{{ asset('css/usuarioProfessor/oferta/cadastrar_ofertas.css') }}">
+    <script src="{{ asset('js/usuarioProfessor/oferta/modal_ajuda_oferta.js') }}"></script>
     <script src="{{ asset('js/menu/menu_navegacao.js') }}"></script>
+
     {{-- Autocomplete.JS --}}
     <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js/dist/js/autoComplete.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/css/autoComplete.02.min.css">
@@ -16,8 +18,14 @@
 <body>
     @include('usuarioProfessor.menu')
     <main class="cadastrar-ofertas" id="conteudo">
-        <div class="botao-voltar">
-            <a title="Voltar" onclick="goBack()" href="{{ route('demanda_index') }}"><img src="{{ asset('img/usuarioMembro/cadastrar_demandas/botao_voltar.png')}}" alt=""></a>
+        <div class="container-botoes">
+            <div class="botao-voltar">
+                <a title="Voltar" onclick="goBack()" href="{{ route('demanda_index') }}"><img src="{{ asset('img/usuarioMembro/cadastrar_demandas/botao_voltar.png')}}" alt=""></a>
+            </div>
+            <div class="botao-ajuda-ofertas">
+                <button onclick="openModalAjudaOferta({{$usuarioProfessor}})">(?) Tipo de Ofertas</button>
+                <x-usuario-professor.oferta.modal-ajuda-oferta :id-usuario="$usuarioProfessor"/>
+            </div>
         </div>
         <div class="titulo">
             <h1>Cadastrar Oferta</h1>

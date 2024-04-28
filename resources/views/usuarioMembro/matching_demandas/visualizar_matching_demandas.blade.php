@@ -10,6 +10,7 @@
     <script src="{{ asset('js/usuarioMembro/matching_demandas/modal_deletar_oferta.js') }}"></script>
     <script src="{{ asset('js/usuarioMembro/matching_demandas/modal_visualizar_oferta.js') }}"></script>
     <script src="{{ asset('js/usuarioMembro/matching_demandas/modal_descricao_demanda.js') }}"></script>
+    <script src="{{ asset('js/usuarioMembro/matching_demandas/modal_ajuda_tipo_oferta.js') }}"></script>
     <title>Matching Demanda</title>
 </head>
 <body> 
@@ -55,7 +56,8 @@
                     <th scope="col"></th>
                     <th scope="col">Título</th>
                     <th scope="col">Área de Conhecimento</th>
-                    <th scope="col">Tipo Oferta</th>
+                    <th scope="col">Tipo Oferta <button onclick="openModalAjudaTipoOferta({{$demanda->id_demanda}})" style="background: none; border: none; color: #FFF">(?)</button></th>
+                    <x-usuario-membro.matching.modal-ajuda-tipo-oferta :id-demanda="$demanda->id_demanda"/>
                     <th scope="col">Data Oferta</th>
                     <th scope="col">Status</th>
                     <th scope="col">Deletar</th>

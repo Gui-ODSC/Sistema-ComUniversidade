@@ -274,22 +274,19 @@ body {
 }
 
 .table th:nth-child(4) {
-    width: 100px; /* Largura desejada da célula do título */
-}
-.table th:nth-child(5) {
-    width: 150px; /* Largura desejada da célula do título */
+    width: 170px; /* Largura desejada da célula do título */
 }
 
 .table th:nth-child(6) {
-    width: 50px; /* Largura desejada da célula do título */
+    width: 170px; /* Largura desejada da célula do título */
 }
 
 .table th:nth-child(7) {
-    width: 50px; /* Largura desejada da célula do título */
+    width: 10px; /* Largura desejada da célula do título */
 }
 
 .table th:nth-child(8) {
-    width: 40px; /* Largura desejada da célula do título */
+    width: 10px;
 }
 
 #icones_demanda {

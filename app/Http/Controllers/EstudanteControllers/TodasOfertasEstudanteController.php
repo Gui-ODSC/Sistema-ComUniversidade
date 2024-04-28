@@ -62,6 +62,7 @@ class TodasOfertasEstudanteController extends Controller
 
         return view('usuarioEstudante.todas_ofertas.todas_ofertas_estudante', 
             [
+                'usuarioEstudante' => $usuarioId,
                 'ofertas' => $ofertasDisponiveis,
                 'paginate' => $listaOfertas,
                 'pesquisaTitulo' => $pesquisaTitulo,

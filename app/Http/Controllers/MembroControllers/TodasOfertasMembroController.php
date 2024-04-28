@@ -80,6 +80,7 @@ class TodasOfertasMembroController extends Controller
 
         return view('usuarioMembro.todas_ofertas.todas_ofertas_membro', 
             [
+                'usuarioMembro' => $usuarioId,
                 'ofertas' => $ofertasDisponiveis,
                 'paginate' => $listaOfertas,
                 'tipoOfertaSelecionada' => $tipoOfertaSelecionada,
