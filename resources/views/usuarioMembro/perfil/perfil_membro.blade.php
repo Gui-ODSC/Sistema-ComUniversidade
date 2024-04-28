@@ -32,8 +32,12 @@
             <div class="cadastro-container" style="display: flex">
                 <div class="section-form">
                     <div id="container">
-                        <img src="{{ asset('img/foto_usuario_perfil/perfil_foto.jpeg') }}" alt="foto perfil" id="imagem" style="cursor: auto">
-                        {{-- <input type="file" id="arquivo" accept=".jpg, .jpeg, .png" onchange="mostrarImagem()"> --}}
+                        @if($usuario->foto)
+                            <img class="foto-perfil" src="{{ url('storage/' . Auth::user()->foto) }}" alt="imagem de perfil do usuario">
+                        @else
+                            <img class="foto-padrao" src="{{ asset('img/icones/perfil_escuro.png') }}" alt="imagem de perfil do usuario">
+                            <p>Fazer upload de uma imagem</p>
+                        @endif
                     </div>
                     <div style="width: 81%; display: flex; flex-wrap: wrap">
                         <div class="caixa-input" style="width: 35%;">

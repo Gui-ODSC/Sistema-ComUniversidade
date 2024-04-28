@@ -118,7 +118,7 @@ class PerfilMembroController extends Controller
             'telefone' => $validatedDataUsuario['telefone'],
             'email' => $validatedDataUsuario['email'],
             'email_secundario' => $validatedDataUsuario['email_secundario'] ?? null,
-            'foto' => $validatedDataUsuario['foto'] ?? null,
+            'foto' => $validatedDataUsuario['foto']->store('imagemPerfilMembro') ?? null,
             'tipo_pessoa' => $validatedDataUsuario['tipo_pessoa'],
             'instituicao' => $validatedDataUsuario['instituicao'] ?? null,
         ];

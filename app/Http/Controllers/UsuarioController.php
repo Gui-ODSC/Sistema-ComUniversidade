@@ -43,7 +43,7 @@ class UsuarioController extends Controller
                 'min:8',
                 'regex:/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/',
             ],
-            'foto' => 'nullable|string',
+            'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif',
             'tipo_pessoa' => [
                 'required',
                 new Enum(TipoPessoaEnum::class)
@@ -131,7 +131,7 @@ class UsuarioController extends Controller
             'password.min' => 'Senha: Deve conter no mínimo 8 caracteres.',
             'password.regex' => 'Senha: Deve conter pelo menos uma letra maiúscula, uma letra minúscula, um número e um caractere especial.',
             'instituicao.string' => 'Instituição: A instituicao deve ser um texto.',
-            'instituicao.max' => 'Instituição: Número de caracteres ultrapassado'
+            'instituicao.max' => 'Instituição: Número de caracteres ultrapassado',
         ];
     }
 }

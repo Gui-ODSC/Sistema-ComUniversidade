@@ -35,13 +35,21 @@
                     </ul>
                 </div>
             @endif
-            <form action="{{ route('perfil_edit_store', $usuario->id_usuario) }}" method="POST">
+            <form action="{{ route('perfil_edit_store', $usuario->id_usuario) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="cadastro-container" style="display: flex;">
                     <div class="section-form">
                         <div id="container">
-                            <img src="{{ asset('img/foto_usuario_perfil/perfil_foto.jpeg') }}" alt="foto perfil" id="imagem">
-                            <input type="file" id="arquivo" accept=".jpg, .jpeg, .png" onchange="mostrarImagem()">
+                            @if($usuario->foto)
+                                <img id="current-image" class="foto-perfil" src="{{ url('storage/' . Auth::user()->foto) }}" alt="imagem de perfil do usuario" onclick="openFileSelector()">
+                            @else
+                                <img class="foto-padrao" src="{{ asset('img/icones/perfil_escuro.png') }}" alt="imagem de perfil do usuario">
+                                <p>Fazer upload de uma imagem</p>
+                            @endif
+                            <div id="image-box" style="width: 200px; height: 200px; border: 1px solid #ccc; display: flex; justify-content: center; align-items: center; cursor: pointer;">
+                                <span id="image-placeholder">Clique para selecionar uma imagem</span>
+                                <input type="file" id="image-input" name="foto" style="display: none;" accept="image/*" onchange="previewImage(event)">
+                            </div>
                         </div>
                         <div style="width: 81%; display: flex; flex-wrap: wrap">
                         {{-- NOME --}}
@@ -380,6 +388,30 @@
             } else {
                 toggleButton.style.display = "none";
             }
+        }
+
+        /* imagem de perfil */
+        function previewImage(event) {
+            const input = event.target;
+            const currentImage = document.getElementById('current-image');
+            const imagePlaceholder = document.getElementById('image-placeholder');
+
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+
+                reader.onload = function(e) {
+                    currentImage.src = e.target.result;
+                    currentImage.style.display = 'inline-block';
+                    imagePlaceholder.style.display = 'none';
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        // Função para abrir o seletor de arquivo quando a imagem é clicada
+        function openFileSelector() {
+            document.getElementById('image-input').click();
         }
     </script>
 </body>

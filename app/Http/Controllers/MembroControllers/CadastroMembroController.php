@@ -74,7 +74,7 @@ class CadastroMembroController extends Controller
                 "message" => 'Campos de Endereços Inválidos',
                 "dados" => $validarCamposEndereco->errors()->all(),
                 ...$this->listErrosEndereco($validarCamposEndereco->errors())
-            ]);
+            ])->withInput();
         }
 
         // Verifica se a validação dos campos do usuário falhou
@@ -83,12 +83,18 @@ class CadastroMembroController extends Controller
                 "message" => 'Campo de dados pessoais inválidos',
                 "dados" => $validarCamposUsuario->errors()->all(),
                 ...$this->listErrosUsuario($validarCamposUsuario->errors())
-            ]);
+            ])->withInput();
         }
 
         // Se a validação passou, prosseguimos com a criação do endereço e do usuário
         $validatedDataEndereco = $validarCamposEndereco->validated();
         $validatedDataUsuario = $validarCamposUsuario->validated();
+
+        // Tratamento do upload da imagem
+        if ($request->hasFile('foto') && $request->file('foto')->isValid()) {
+            $fotoPath = $request->file('foto')->store('imagemPerfilMembro');
+            $validatedDataUsuario['foto'] = $fotoPath;
+        }
 
         // Criação do endereço
         $newEndereco = $this->enderecoModel::create($validatedDataEndereco);

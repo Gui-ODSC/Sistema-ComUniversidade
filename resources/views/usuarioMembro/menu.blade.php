@@ -2,7 +2,11 @@
 <header class="barra-navegacao">
     <a href="#" class="btn-abrir" onclick="abrirMenu()">&#9776; Abrir</a>
     <h1>Extensao Universitaria</h1>
-    <a href="{{ route('perfil_index') }}"><img src="{{ asset('img/icones/perfil.png') }}" alt="imagem de perfil do usuario"></a>
+    @if(Auth::user()->foto)
+        <a href="{{ route('perfil_index') }}"><img id="img-personalizada" src="{{ url('storage/' . Auth::user()->foto) }}" alt="imagem de perfil do usuario"></a>
+    @else
+        <a href="{{ route('perfil_index') }}"><img src="{{ asset('img/icones/perfil.png') }}" alt="imagem de perfil do usuario"></a>
+    @endif
 </header>
 <nav class="menu-navegacao" id="menu_navegacao">
     <a href="" onclick="fecharMenu()">&times; Fechar</a>
