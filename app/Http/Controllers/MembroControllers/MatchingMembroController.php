@@ -3,20 +3,24 @@
 namespace App\Http\Controllers\MembroControllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\ProfessorControllers\OfertaAcaoProfessorController;
 use App\Models\Demanda;
 use App\Models\MatchingsExcluidos;
 use App\Models\MatchingsVisualizados;
 use App\Models\Oferta;
-use App\Models\OfertaAcao;
-use App\Models\OfertaConhecimento;
-use App\Models\Usuario;
-use App\Models\UsuarioProfessor;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class MatchingMembroController extends Controller
 {
+    private $ofertaAcaoProfessorController;
 
+    public function __construct(
+        OfertaAcaoProfessorController $ofertaAcaoProfessorController
+    )
+    {
+        $this->ofertaAcaoProfessorController = $ofertaAcaoProfessorController;
+    }
+    
     public function matchingList($demandaId)
     {
         $demanda = Demanda::findOrFail($demandaId);
@@ -51,6 +55,15 @@ class MatchingMembroController extends Controller
         /* LACO PARA COMPARAR AS OFERTAS COM AS DEMANDAS E ARMAZENAR AS SEMELHANTES */
         foreach($ofertas as $oferta) {
             $resultado = 0;
+
+            /* LOGICA PARA CONTROLE DAS OFERTAS ACAO DE ACORDO COM A DATA LIMITE */
+            if ($oferta->tipo == 'ACAO' && $oferta->ofertaAcao && $oferta->ofertaAcao->data_limite !== null) {
+                if ($oferta->ofertaAcao->data_limite <= now()) {
+                    $this->ofertaAcaoProfessorController->deleteStoreAcaoDataLimite($oferta->id_oferta);
+                    continue; 
+                }
+            }
+            /* FIM */
 
             /* CONTROLE DE EXCLUSAO DE OFERTAS INDESEJADAS NO MATCHING */
             $busca_ofertas_excluidas = MatchingsExcluidos::where('id_oferta', $oferta->id_oferta)

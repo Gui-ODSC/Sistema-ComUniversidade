@@ -19,7 +19,7 @@ return new class extends Migration
             $table->longText('mensagem');
             $table->enum('tipo_mensagem', ['ENVIADA', 'RESPONDIDA', 'INTERESSADO', 'SEM_DISPONIBILIDADE']);
 
-            $table->foreign('id_contato')->references('id_contato')->on('Contato')->onDelete('restrict');
+            $table->foreign('id_contato')->references('id_contato')->on('Contato')->onDelete('cascade');
             $table->foreign('id_usuario_origem')->references('id_usuario')->on('Usuario')->onDelete('restrict');
             $table->foreign('id_usuario_destino')->references('id_usuario')->on('Usuario')->onDelete('restrict');
             $table->unique(['id_usuario_origem', 'id_usuario_destino', 'id_contato'], 'unique_contato_mensagem');

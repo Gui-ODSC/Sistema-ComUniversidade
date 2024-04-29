@@ -33,6 +33,7 @@
 
 .informacao-professor h2{
     margin-left: 10px;
+    margin-bottom: 0px;
 }
 
 .informacao-email {
@@ -68,6 +69,10 @@
 
 .informacao-oferta-coluna div h6 {
     margin-top: 10px;
+}
+
+.informacao-oferta-coluna a {
+    color: #FFF;
 }
 
 #data {

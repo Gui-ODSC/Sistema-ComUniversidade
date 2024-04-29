@@ -46,7 +46,11 @@
                             <div>
                                 @if ($oferta->tipo == 'ACAO')
                                     <h6>Público Alvo: {{$oferta->ofertaAcao->publicoAlvo->nome}}</h6>
-                                    <h6>Status da Oferta: {{ucwords(strtolower($oferta->ofertaAcao->status_registro))}}</h6>
+                                    @if ($oferta->ofertaAcao->status_registro === 'REGISTRADA')
+                                        <h6>Status da Oferta: Registrada</h6>
+                                    @elseif ($oferta->ofertaAcao->status_registro === 'NAO_REGISTRADA')
+                                        <h6>Status da Oferta: Não Registrada</h6>
+                                    @endif
                                 @endif
                                 @if ($oferta->tipo == 'CONHECIMENTO')
                                     <h6>Currículo Lattes: <a href="{{$oferta->ofertaConhecimento->link_lattes}}">{{$oferta->ofertaConhecimento->link_lattes}}</a></h6>
@@ -69,6 +73,16 @@
                                         <h6>Tempo de Atuação: Mais de 3 Anos</h6>
                                     @elseif ($oferta->ofertaConhecimento->tempo_atuacao === 'MAIS_5_ANOS')
                                         <h6>Tempo de Atuação: Mais de 5 Anos</h6>
+                                    @endif
+                                @endif
+                            </div>
+                            <div>
+                                @if ($oferta->tipo == 'ACAO')
+                                    <h6>Tipo Ação: {{$oferta->ofertaAcao->tipoAcao->nome}}</h6> 
+                                    @if ($oferta->ofertaAcao->data_limite)
+                                        <h6>Data Limite: {{ \Carbon\Carbon::parse($oferta->ofertaAcao->data_limite)->format('d/m/Y') }}</h6>
+                                    @else
+                                        <h6>Data Limite: Indefinida</h6>
                                     @endif
                                 @endif
                             </div>

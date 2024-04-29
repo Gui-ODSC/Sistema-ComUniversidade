@@ -131,12 +131,12 @@
                 </div>
                 <div class="caixa-input" style="width: 417px; margin-left: 3px">
                     @error('data_limite')
-                        <input type="date" name="data_limite" value="{{$dataLimite}}" autocomplete="off">
+                        <input type="date" name="data_limite" value="{{$dataLimite}}" autocomplete="off" placeholder="Dia/Mes/Ano" min="{{ date('Y-m-d') }}">
                         <label for="data_expiracao">
                             <span>Data Expiração da Demanda</span>
                         </label>
                     @else
-                        <input type="date" name="data_limite" value="{{$dataLimite}}" autocomplete="off">
+                        <input type="date" name="data_limite" value="{{$dataLimite}}" autocomplete="off" placeholder="Dia/Mes/Ano" min="{{ date('Y-m-d') }}">
                         <label for="data_expiracao">
                             <span>Data Expiração da Demanda</span>
                         </label>

@@ -57,6 +57,11 @@
                         <h5>Área Conhecimento: {{$oferta->areaConhecimento->nome}}</h5>
                         <h5>Público Alvo: {{$ofertaAcao->publicoAlvo->nome}}</h5>
                         <h5>Tipo Ação: {{ucwords(strtolower($ofertaAcao->tipoAcao->nome))}}</h5>
+                        @if ($ofertaAcao->data_limite)
+                            <h5>Data Limite: {{ \Carbon\Carbon::parse($ofertaAcao->data_limite)->format('d/m/Y') }}</h5>
+                        @else
+                            <h5>Data Limite: Indefinida</h5>
+                        @endif
                     </div>
                 </div>
             @elseif ($oferta->tipo === 'CONHECIMENTO')

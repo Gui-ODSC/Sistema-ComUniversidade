@@ -33,6 +33,7 @@
 
 .informacao-professor-contatar h2{
     margin-left: 10px;
+    margin-bottom: 0px;
 }
 
 .informacao-email-contatar {
@@ -69,6 +70,12 @@
 .informacao-oferta-coluna-contatar div h6 {
     margin-top: 10px;
 }
+
+.informacao-oferta-coluna-contatar a {
+    color: #FFF;
+}
+
+
 
 #data-contatar {
     font-weight: bold;

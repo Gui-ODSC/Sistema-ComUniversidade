@@ -43,7 +43,7 @@
                             @if($usuario->foto)
                                 <img id="current-image" class="foto-perfil" src="{{ url('storage/' . Auth::user()->foto) }}" alt="imagem de perfil do usuario" onclick="openFileSelector()">
                             @else
-                                <img class="foto-padrao" src="{{ asset('img/icones/perfil_escuro.png') }}" alt="imagem de perfil do usuario">
+                                <img id="current-image" class="foto-padrao" src="{{ asset('img/icones/perfil_escuro.png') }}" alt="imagem de perfil do usuario" onclick="openFileSelector()">
                                 <p>Fazer upload de uma imagem</p>
                             @endif
                             <div id="image-box" style="width: 200px; height: 200px; border: 1px solid #ccc; display: flex; justify-content: center; align-items: center; cursor: pointer;">
@@ -403,9 +403,14 @@
                     currentImage.src = e.target.result;
                     currentImage.style.display = 'inline-block';
                     imagePlaceholder.style.display = 'none';
-                }
+                };
 
                 reader.readAsDataURL(input.files[0]);
+            } else {
+                // Se nenhum arquivo foi selecionado, redefina a imagem para a imagem padrão
+                currentImage.src = "{{ asset('img/icones/perfil_escuro.png') }}";
+                currentImage.style.display = 'inline-block';
+                imagePlaceholder.style.display = 'none';
             }
         }
 
@@ -413,6 +418,7 @@
         function openFileSelector() {
             document.getElementById('image-input').click();
         }
+
     </script>
 </body>
 </html>

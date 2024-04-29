@@ -130,7 +130,7 @@
                                     <option value="INDEFINIDO">Indefinido</option>
                                 </select>
                                 <label for="duracao">
-                                    <span>Selecione a duração da demanda</span>
+                                    <span>Selecione a duração da oferta</span>
                                 </label>
                             @else
                                 <select name="duracao" required autocomplete="off">
@@ -142,20 +142,20 @@
                                     <option value="INDEFINIDO">Indefinido</option>
                                 </select>
                                 <label for="duracao">
-                                    <span>Selecione a duração da demanda</span>
+                                    <span>Selecione a duração da oferta</span>
                                 </label>
                             @enderror
                         </div>
                         <div class="caixa-input" style="width: 417px; margin-left: 3px">
                             @error('data_limite')
-                                <input type="date" name="data_limite" placeholder="Dia/Mes/Ano">
+                                <input type="date" name="data_limite" placeholder="Dia/Mes/Ano" min="{{ date('Y-m-d') }}">
                                 <label for="data_expiracao">
-                                    <span>Data Expiração da Demanda</span>
+                                    <span>Data Expiração da Oferta</span>
                                 </label>
                             @else
-                                <input type="date" name="data_limite" autocomplete="off" placeholder="Dia/Mes/Ano">
+                                <input type="date" name="data_limite" autocomplete="off" placeholder="Dia/Mes/Ano" min="{{ date('Y-m-d') }}">
                                 <label for="data_expiracao">
-                                    <span>Data Expiração da Demanda</span>
+                                    <span>Data Expiração da Oferta</span>
                                 </label>
                             @enderror
                         </div>

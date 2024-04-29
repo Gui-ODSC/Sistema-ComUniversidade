@@ -78,6 +78,11 @@
                         <div>
                             @if ($oferta->tipo == 'ACAO')
                                 <h6>Tipo Ação: {{$oferta->ofertaAcao->tipoAcao->nome}}</h6> 
+                                @if ($oferta->ofertaAcao->data_limite)
+                                    <h6>Data Limite: {{ \Carbon\Carbon::parse($oferta->ofertaAcao->data_limite)->format('d/m/Y') }}</h6>
+                                @else
+                                    <h6>Data Limite: Indefinida</h6>
+                                @endif
                             @endif
                         </div>
                     </div>

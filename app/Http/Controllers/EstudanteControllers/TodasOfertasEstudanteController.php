@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\EstudanteControllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\ProfessorControllers\OfertaAcaoProfessorController;
 use App\Models\AreaConhecimento;
 use App\Models\Contato;
 use App\Models\ContatosDiretosExcluidos;
@@ -15,6 +16,15 @@ use Illuminate\Support\Facades\Auth;
 
 class TodasOfertasEstudanteController extends Controller
 {
+    private $ofertaAcaoProfessorController;
+
+    public function __construct(
+        OfertaAcaoProfessorController $ofertaAcaoProfessorController
+    )
+    {
+        $this->ofertaAcaoProfessorController = $ofertaAcaoProfessorController;
+    }
+
     public function listaOfertas(Request $request) {
 
         $usuarioId = Auth::id();
@@ -49,11 +59,20 @@ class TodasOfertasEstudanteController extends Controller
 
         /* LOGICA PARA CONTROLAR AS OFERTAS VISUALIZADAS E NÃO VISUALIZADAS */
         foreach ($listaOfertas as $oferta) {
+            /* LOGICA PARA CONTROLE DAS OFERTAS ACAO DE ACORDO COM A DATA LIMITE */
+            if ($oferta->tipo == 'ACAO' && $oferta->ofertaAcao && $oferta->ofertaAcao->data_limite !== null) {
+                if ($oferta->ofertaAcao->data_limite <= now()) {
+                    $this->ofertaAcaoProfessorController->deleteStoreAcaoDataLimite($oferta->id_oferta);
+                    continue; 
+                }
+            }
+            /* FIM */
+
             $ofertas_visualizada = ContatosDiretosVisualizados::where('id_oferta', $oferta->id_oferta)
             ->where('id_usuario', $usuarioId)
-            ->get();
+            ->exists();
 
-            if (!$ofertas_visualizada->isEmpty()) {
+            if ($ofertas_visualizada) {
                 $ofertasDisponiveis[] = ['status' => 'visualizado', 'oferta' => $oferta];
             } else {
                 $ofertasDisponiveis[] = ['status' => 'nao_visualizado', 'oferta' => $oferta];

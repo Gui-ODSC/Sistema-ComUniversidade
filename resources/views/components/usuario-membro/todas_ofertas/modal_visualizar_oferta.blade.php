@@ -71,6 +71,15 @@
                                     @endif
                                 @endif
                             </div>
+                            <div>
+                                @if ($oferta->tipo == 'ACAO')
+                                    @if ($oferta->ofertaAcao->data_limite)
+                                        <h6><strong>Data Limite: {{ \Carbon\Carbon::parse($oferta->ofertaAcao->data_limite)->format('d/m/Y') }}</strong></h6>
+                                    @else
+                                        <h6><strong>Data Limite: Indefinida</strong></h6>
+                                    @endif
+                                @endif
+                            </div>
                         </div>
                     </div>
                 </div>

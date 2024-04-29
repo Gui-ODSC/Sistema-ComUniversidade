@@ -230,4 +230,13 @@ class OfertaAcaoProfessorController extends Controller
         return redirect()->route('oferta_index')->with('msg-oferta', 'Oferta Ação excluída com sucesso!');
     }
 
+    public function deleteStoreAcaoDataLimite($ofertaId)
+    {
+        $oferta = Oferta::findOrFail($ofertaId);
+        $ofertaAcao = OfertaAcao::where('id_oferta', $oferta->id_oferta)->first();
+        $ofertaAcao->deleteOrFail();
+        $oferta->deleteOrFail();
+
+    }
+
 }
