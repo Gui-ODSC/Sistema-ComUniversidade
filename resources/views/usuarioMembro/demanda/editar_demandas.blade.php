@@ -170,9 +170,9 @@
                         </label>
                     @enderror
                 </div>
-            </div>
-            <div class="button_send">
-                <button type="submit">Salvar</button>
+                <div class="button_send">
+                    <button type="submit">Salvar</button>
+                </div>
             </div>
         </form>
         <script src="{{ asset('js/errors/mensagem_erro.js') }}"></script>

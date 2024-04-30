@@ -120,7 +120,7 @@ class DemandaMembroController extends Controller
             'created_at' => now(),
         ]);
 
-        return redirect()->route('demanda_index')->with('msg-demanda', 'Nova demanda cadastrada.');
+        return redirect()->route('demanda_index')->with('msg-demanda', 'Nova necessidade cadastrada.');
 
     }
 
@@ -204,14 +204,14 @@ class DemandaMembroController extends Controller
             'updated_at' => date('Y-m-d H:i:s'),
         ]);
 
-        return redirect()->route('demanda_index')->with('msg-demanda', 'Demanda atualizada com Sucesso.');
+        return redirect()->route('demanda_index')->with('msg-demanda', 'Necessidade atualizada com Sucesso.');
     }
 
     public function deleteStore($demandaId)
     {
         $demanda = Demanda::findOrFail($demandaId);
         $demanda->deleteOrFail();
-        return redirect()->route('demanda_index')->with('msg-demanda', 'Demanda excluída com sucesso!');
+        return redirect()->route('demanda_index')->with('msg-demanda', 'Necessidade excluída com sucesso!');
     }
 
     /* TRATAMENTO DE ERROS */

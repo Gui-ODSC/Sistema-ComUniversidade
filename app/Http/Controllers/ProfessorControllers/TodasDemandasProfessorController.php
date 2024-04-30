@@ -193,7 +193,7 @@ class TodasDemandasProfessorController extends Controller
             'created_at' => now()
         ]);
 
-        return redirect()->route('lista_todas_demandas')->with('msg-deletar', 'Demanda removida com Sucesso!');
+        return redirect()->route('lista_todas_demandas')->with('msg-deletar', 'Necessidade removida com Sucesso!');
     }
 
     public function contato_direto_status_visualizar($demandaId) { 
