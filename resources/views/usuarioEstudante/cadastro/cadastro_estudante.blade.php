@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ asset('css/usuarioMembro/cadastro/cadastro_membro.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/usuarioEstudante/cadastro/cadastro_estudante.css') }}">
 
     {{-- InputMask --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -13,7 +13,7 @@
     {{-- Autocomplete.JS --}}
     <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js/dist/js/autoComplete.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/css/autoComplete.02.min.css">
-    <title>Cadastro de Membros</title>
+    <title>Cadastro de Estudantes</title>
 </head>
 <header>
     <nav class="navbar">
@@ -24,14 +24,14 @@
 </header>
 <body>
     <div class="botao-voltar">
-        <a title="Voltar" href="{{ route('login_membro_index') }}"><img src="{{ asset('img/usuarioMembro/cadastrar_demandas/botao_voltar.png')}}" alt=""></a>
+        <a title="Voltar" href="{{ route('login_estudante_index') }}"><img src="{{ asset('img/usuarioMembro/cadastrar_demandas/botao_voltar.png')}}" alt=""></a>
     </div>
     <div class="cadastro-container">
         <div class="titulo">
-            <h1>Cadastro Membro</h1>
+            <h1>Cadastro Estudante</h1>
             <h4>Seja bem vindo(a)</h2>
         </div>
-        <form method="POST" action="{{ route('cadastro_create') }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('cadastro_create_estudante') }}" enctype="multipart/form-data">
             @csrf
             @if($errors->has('dados'))
                 <div class="msg-erro" id="error-message-email" style="margin-top: 30px">
@@ -253,7 +253,7 @@
                         </div>
                     @enderror
                 </div>
-                <div class="caixa-input" style="width: 50%;">
+                <div class="caixa-input" style="width: 20%;">
                     {{-- TIPO PESSOA --}}
                     @error('tipo_pessoa')
                         <select title="{{ $message }}" class="alert-danger" autocompĺete="off" type="text" id="tipo_pessoa" name="tipo_pessoa" value="{{old('tipo_pessoa')}}" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required>
@@ -275,7 +275,7 @@
                         </label>
                     @enderror
                 </div>
-                <div class="caixa-input" style="width: 492px; margin-left: 3px">
+                <div class="caixa-input" style="width: 30%; margin-left: 3px">
                     {{-- INSTITUICAO --}}
                     @error('instituicao')
                         <input title="{{ $message }}" class="alert-danger" autocompĺete="off" type="text" id="instituicao" name="instituicao" value="{{old('instituicao')}}" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black">
@@ -289,7 +289,36 @@
                         </label>
                     @enderror
                 </div>
-                <button type="submit">Cadastrar</button>
+                <div class="caixa-input" style="width: 286px; margin-left: 3px">
+                    {{-- CURSO --}}
+                    @error('curso')
+                        <input title="{{ $message }}" class="alert-danger" autocompĺete="off" type="text" id="curso" name="curso" value="{{old('curso')}}" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required>
+                        <label for="curso">
+                            <span>Curso</span>
+                        </label>
+                    @else
+                        <input type="text" id="curso" name="curso" autocompĺete="off" value="{{old('curso')}}" required>
+                        <label for="curso">
+                            <span>Curso</span>
+                        </label>
+                    @enderror
+                </div>
+                <div class="caixa-input" style="width: 20%; margin-left: 3px">
+                    {{-- INSTITUICAO --}}
+                    @error('ra')
+                        <input title="{{ $message }}" class="alert-danger" autocompĺete="off" type="text" id="ra" name="ra" value="{{ old('ra') }}" style="border: 1px solid red; background-color: rgb(235, 201, 206); color: black" required>
+                        <label for="ra">
+                            <span>RA (somente números)</span>
+                        </label>
+                    @else
+                        <input type="text" id="ra" name="ra" autocompĺete="off" value="{{ old('ra') }}" required>
+                        <label for="ra">
+                            <span>RA (somente números)</span>
+                        </label>
+                    @enderror
+                </div>
+            </div>
+                <button class="botao-envio-form" type="submit">Cadastrar</button>
             </div>
         <form>
     </div>

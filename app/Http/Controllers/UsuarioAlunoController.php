@@ -20,12 +20,8 @@ class UsuarioAlunoController extends Controller
     private function getValidationSchema()
     {
         return [
-            'id_usuario' => [
-                'required',
-                Rule::exists(Usuario::class, 'id_usuario')
-            ],
             'curso' => 'required|string|max:255',
-            'ra' => 'required|integer|min:0|max:9'
+            'ra' => 'required|integer'
         ];
     }
 
@@ -44,35 +40,21 @@ class UsuarioAlunoController extends Controller
         return $this->usuarioAlunoModel::findOrFail($id_usuario_aluno);
     }
 
-    public function create(Request $request)
+    public function validarCamposUsuarioEstudanteCreate(Request $request)
     {
         $validator = Validator::make($request->all(), [
             ...$this->getValidationSchema(),
             'id_usuario_aluno' => [
                 Rule::unique(UsuarioAluno::class, 'id_usuario_aluno')
                     ->where('id_usuario', $request->input('id_usuario'))
-            ] 
-        ]);
+            ]
+        ], $this->messageValidation());
 
-        if ($validator->fails()) {
-			return response($validator->errors())->setStatusCode(400);
-		}
-
-        $validatedData = $validator->validated();
-
-        $usuarioAluno = $this->usuarioAlunoModel::create([
-            'id_usuario' => $validatedData['id_usuario'],
-            'curso' => $validatedData['curso'],
-            'ra' => $validatedData['ra'],
-        ]);
-
-        return response()->json([
-            'message' => 'Usuario Aluno Created successfull',
-            'data' => $usuarioAluno
-        ])->setStatusCode(201); 
+        return $validator;
+        
     }
 
-    public function update($id_usuario_aluno, Request $request)
+    public function validarCamposUsuarioEstudanteUpdate($id_usuario_aluno, Request $request)
     {
         $validator = Validator::make($request->all(), [
             ...$this->getValidationSchema(),
@@ -112,5 +94,17 @@ class UsuarioAlunoController extends Controller
             'message' => 'Usuario Aluno deleted successfully'
         ])->setStatusCode(200);
 
+    }
+
+    protected function messageValidation()
+    {
+        return [
+            'curso.required' => 'Campo curso é obrigatório.',
+            'curso.string' => 'Campo curso deve ser um texto.',
+            'curso.max' => 'Campo curso ultrapassou a quantidade de caracteres',
+            'ra.required' => 'Campo RA é obrigatório.',
+            'ra.string' => 'Campo RA deve ser um texto.',
+            'ra.max' => 'Campo RA ultrapassou a quantidade de caracteres',
+        ];
     }
 }

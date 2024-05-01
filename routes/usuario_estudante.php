@@ -1,5 +1,6 @@
 <?php 
 
+use App\Http\Controllers\EstudanteControllers\CadastroEstudanteController;
 use App\Http\Controllers\EstudanteControllers\ContatoRealizadoEstudanteController;
 use App\Http\Controllers\EstudanteControllers\TodasOfertasEstudanteController;
 use Illuminate\Support\Facades\Route;
@@ -7,10 +8,10 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('estudante')->group(function(){
 
     //Rota de cadastro para membros da sociedade 
-    /* Route::prefix('/cadastro')->controller(CadastroMembroController::class)->group( function(){
-        Route::get('/', 'index')->name('cadastro_membro_index');
-        Route::post('/', 'create')->name('cadastro_create_professor');
-    });  AJUSTAR PORQUE É CÓPIA DO MEMBRO*/
+    Route::prefix('/cadastro_estudante')->controller(CadastroEstudanteController::class)->group( function(){
+        Route::get('/', 'indexCreateEstudante')->name('cadastro_estudante_index');
+        Route::post('/', 'createEstudante')->name('cadastro_create_estudante');
+    });  
 
     Route::prefix('/todas-ofertas-acao')->controller(TodasOfertasEstudanteController::class)->group(function(){
         Route::get('/', 'listaOfertas')->name('lista_todas_ofertas_estudante');
