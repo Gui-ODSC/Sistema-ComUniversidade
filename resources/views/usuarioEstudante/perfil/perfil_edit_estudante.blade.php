@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/menu_navegacao/menu.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/usuarioMembro/perfil/perfil_edit_membro.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/usuarioEstudante/perfil/perfil_edit_estudante.css') }}">
     <script src="{{ asset('js/perfil_imagem.js') }}"></script>
     <script src="{{ asset('js/menu/menu_navegacao.js') }}"></script>
 
@@ -19,7 +19,7 @@
     <title>Perfil</title>
 </head>
 <body> 
-    @include('usuarioMembro.menu')
+    @include('usuarioEstudante.menu')
     <main class="perfil" id="conteudo">
             <div class="botao-voltar">
                 <a title="Voltar" onclick="goBack()"><img src="{{ asset('img/usuarioMembro/cadastrar_demandas/botao_voltar.png')}}" alt=""></a>
@@ -35,7 +35,7 @@
                     </ul>
                 </div>
             @endif
-            <form action="{{ route('perfil_edit_store', $usuario->id_usuario) }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('perfil_edit_store_estudante', $usuario->id_usuario) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="cadastro-container" style="display: flex;">
                     <div class="section-form">
@@ -272,6 +272,34 @@
                             </div>
                         @enderror
                     </div>
+                    {{-- RA --}}
+                    <div class="caixa-input" style="width: 582px; margin-left: 3px">
+                        @error('ra')
+                            <input title="{{ $message }}" class="alert-danger" type="text" id="ra" name="ra" autocomplete="off" value="{{ $usuarioEstudante->ra }}"  style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required>
+                            <label for="ra">
+                                <span>RA (somente números)</span>
+                            </label>
+                        @else
+                            <input type="text" id="ra" name="ra" autocomplete="off" value="{{ $usuarioEstudante->ra }}" required>
+                            <label for="nome">
+                                <span>RA (somente números)</span>
+                            </label>
+                        @enderror
+                    </div>
+                    {{-- CURSO --}}
+                    <div class="caixa-input" style="width: 50%;">
+                        @error('curso')
+                            <input title="{{ $message }}" class="alert-danger" type="text" id="curso" name="curso" autocomplete="off" value="{{ $usuarioEstudante->curso }}"  style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required>
+                            <label for="curso">
+                                <span>Curso</span>
+                            </label>
+                        @else
+                            <input type="text" id="curso" name="curso" autocomplete="off" value="{{ $usuarioEstudante->curso }}" required>
+                            <label for="nome">
+                                <span>Curso</span>
+                            </label>
+                        @enderror
+                    </div>
                     {{-- INSTITUICAO --}}
                     <div class="caixa-input" style="width: 582px; margin-left: 3px">
                         @error('instituicao')
@@ -391,8 +419,8 @@
             }
         }
 
-         /* IMAGEM DE PERFIL */
-         function previewImage(event) {
+        /* IMAGEM DE PERFIL */
+        function previewImage(event) {
             const input = event.target;
             const currentImage = document.getElementById('current-image');
             const imagePlaceholder = document.getElementById('image-placeholder');
@@ -419,6 +447,7 @@
         function openFileSelector() {
             document.getElementById('image-input').click();
         }
+
     </script>
 </body>
 </html>

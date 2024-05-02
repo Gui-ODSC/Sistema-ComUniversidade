@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\EstudanteControllers\CadastroEstudanteController;
 use App\Http\Controllers\EstudanteControllers\ContatoRealizadoEstudanteController;
+use App\Http\Controllers\EstudanteControllers\PerfilEstudanteController;
 use App\Http\Controllers\EstudanteControllers\TodasOfertasEstudanteController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,6 +25,14 @@ Route::prefix('estudante')->group(function(){
 
     Route::prefix('/contatos_realizados')->controller(ContatoRealizadoEstudanteController::class)->group(function() {
         Route::get('/', 'listaContatosRealizados')->name('lista_contatos_realizados_estudante');
+    })->middleware('auth');
+
+    Route::prefix('/perfil')->controller(PerfilEstudanteController::class)->group(function(){
+        Route::get('/', 'index')->name('perfil_index_estudante');
+        Route::prefix('/{usuarioId}')->group(function(){
+            Route::get('/edit', 'editIndex')->name('perfil_edit_index_estudante');
+            Route::post('/', 'editStore')->name('perfil_edit_store_estudante');
+        })->middleware('auth');
     })->middleware('auth');
 
     Route::prefix('extensao/configuracoes_estudante')->group(function(){

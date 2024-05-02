@@ -3,20 +3,25 @@
     justify-content: center;
 }
 
-.div-button {
-    display: flex;
-    padding: 10px;
-    margin: auto;
-}
 
 .perfil button {
-    border-radius: 10px;
+    display: block;
+    position: absolute; /* Posiciona o botão absolutamente dentro do contêiner pai (.perfil) */
+    top: 100px; /* Ajuste a posição conforme necessário */
+    right: 30px; /* Ajuste a posição conforme necessário */
     padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 20px;
     background-color: #191970;
     border: none;
     color: #FFF;
     font-weight: bold;
-    width: 150px;
+    width: 90px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
 }
 
 body {
@@ -47,47 +52,11 @@ h1 {
     width: 40px;
 }
 
-/* foto perfil */
-.img-foto-perfil {
-    background-color: #4d6d7f;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    padding: 0;
-    position: relative; 
-    overflow: hidden; 
-    width: 201px;
-    height: 201px;
-}
-
-.img-foto-perfil button {
-    width: 200px;
-}
-
-#image-placeholder {
-    position: absolute; 
-    top: 0; 
-    left: 0; 
-    z-index: 1; 
-    width: 100%; 
-    text-align: center;
-    padding-top: 30px;
-    margin-bottom: 0;
-}
-
-#current-image {
-    width: 100%;
-    height: 100%; 
-    object-fit: cover;
-}
-
-/* fim */
-
 .section-form {
     background-color: #FFF;
     border-radius: 10px;
     width: 100%;
-    padding: 20px 20px 0px 20px;
+    padding: 20px;
     display: flex;
     flex-wrap: wrap;
     background-color: rgba(44,39,88,1);
@@ -98,7 +67,7 @@ h1 {
     background-color: rgba(44,39,88,1);
     margin: auto;
     margin-top: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     width: 100%;
     height: 60%;
     border-radius: 20px;
@@ -109,56 +78,39 @@ h1 {
 }
 
 .cadastro-container .caixa-input{
+    overflow: hidden;
     position: relative;
     width:100%;
     height: 50px;
     margin-bottom: 3px;
+    z-index: 100;
 }
 
 /* AUTOCOMPLETE */
 .autoComplete_wrapper {
-    width: 100%;
-    background-color: #212121;
-}
-
-.caixa-input .autoComplete_wrapper ul {
-    position: absolute;
-    max-height: 120px;
-    overflow-y: scroll;
-    top: 100%;
-    left: 0;
-    right: 0;
-    padding: 0;
-    margin: .5rem 0 0 0;
-    border-radius: 4px;
-    background-color: #4d6d7f;
-    z-index: 1000;
-    outline: 0;
-    border: none;
-}
-
-.autoComplete_wrapper #autoCompleteCidade,
-#autoCompleteBairro, #autoCompleteEstado
-{
     height: 50px;
-    width: 100%;
-    color: #FFF;
-    font-size: 20px
 }
 
-.caixa-input #autoComplete_list li {
-    border: solid 1px #212121;
-    background-color: #47565a;
-    color: #FFF;
+.caixa-input #autoComplete_list {
+    display: block;
+    border: solid 2px black;
+    z-index: 1;
+}
+
+#autoComplete_list ul {
+    list-style-type: none;
+    position: absolute;
+
+    height: 50px;
+    z-index: 1;
 }
 
 .caixa-input li {
     list-style-type: none;
 }
 
-
 /* INPUTS PERSONALIZADOS */
-.cadastro-container input, select {
+.cadastro-container input {
     color: #FFF;
     font-size: 20px;
     width: 100%;
@@ -167,7 +119,6 @@ h1 {
     background-color: #4d6d7f;
     border: none;
     border-radius: 5px;
-    outline: none;
 }
 
 .cadastro-container label {
@@ -182,10 +133,12 @@ h1 {
   
 .cadastro-container span {
     position: absolute;
+    bottom: 5px;
     left: 5px;
-    font-size: 14px;
+    font-size: 20px;
     transition: all 0.3s ease;
     border-radius: 10px;
+
 }
   
 .cadastro-container label::after{
@@ -194,7 +147,8 @@ h1 {
     left: 0;
     bottom: -1px;
     width: 100%;
-    border-bottom: 1px solid #FFF;
+    border-bottom: 3px solid #FFF;
+    transform: translateX(-100%);
     transition: all 0.3s ease;
 }
   
@@ -210,28 +164,6 @@ h1 {
     font-size: 14px;
     bottom: 10px;
     color: #FFF;
-}
-
-.cadastro-container input:focus + label::after {
-    border-bottom: 3px solid #FFF;
-}
-
-.cadastro-container select:read-only + label span, select:valid + label span {
-    height: 40px;
-    font-size: 14px;
-    bottom: 10px;
-    color: #FFF;
-}
-
-.cadastro-container select:focus + label span, select:invalid + label span {
-    height: 40px;
-    font-size: 14px;
-    bottom: 10px;
-    color: #FFF;;
-}
-
-.cadastro-container select:focus + label::after {
-    border-bottom: 3px solid #FFF;
 }
 
 
@@ -278,6 +210,7 @@ input[type=number]::-webkit-outer-spin-button {
 input[type=number] {
   -moz-appearance: textfield; /* Firefox */
 }
+
 
 /* CSS PARA AS FOTOS DE PERFIL */
 .foto-perfil {

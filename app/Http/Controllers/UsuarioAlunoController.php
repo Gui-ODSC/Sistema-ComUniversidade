@@ -58,27 +58,11 @@ class UsuarioAlunoController extends Controller
             'id_usuario_aluno' => [
                 Rule::unique(UsuarioAluno::class, 'id_usuario_aluno')
                     ->where('id_usuario', $request->input('id_usuario'))
-            ] 
-        ]);
+                    ->ignore($id_usuario_aluno, 'id_usuario_aluno')
+            ]
+        ], $this->messageValidation());
 
-        if ($validator->fails()) {
-			return response($validator->errors())->setStatusCode(400);
-		}
-        
-        $validatedData = $validator->validated();
-
-        $usuarioAluno = $this->usuarioAlunoModel::findOrFail($id_usuario_aluno);
-
-        $usuarioAluno->update([
-            'id_usuario' => $validatedData['id_usuario'],
-            'curso' => $validatedData['curso'],
-            'ra' => $validatedData['ra'],
-        ]);
-
-        return response()->json([
-            'message' => 'Usuario Aluno Updated Successfully',
-            'data' => $usuarioAluno
-        ])->setStatusCode(200);
+        return $validator;
         
     }
 
