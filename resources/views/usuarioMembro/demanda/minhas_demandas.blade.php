@@ -35,7 +35,7 @@
                     <th scope="col"></th>
                     <th scope="col">Título</th>
                     <th scope="col">Área de Conhecimento</th>
-                    <th scope="col">Data Criação Necessidade</th>
+                    <th scope="col">Data criação</th>
                     <th scope="col">Editar</th>
                     <th scope="col">Deletar</th>
                     <th scope="col">Ver</th>

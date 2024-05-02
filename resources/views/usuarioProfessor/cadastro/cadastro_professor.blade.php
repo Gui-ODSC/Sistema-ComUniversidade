@@ -28,7 +28,7 @@
     </div>
     <div class="cadastro-container">
         <div class="titulo">
-            <h1>Cadastro Estudante</h1>
+            <h1>Cadastro Professor(a)</h1>
             <h4>Seja bem vindo(a)</h2>
         </div>
         <form method="POST" action="{{ route('cadastro_create_professor') }}" enctype="multipart/form-data">

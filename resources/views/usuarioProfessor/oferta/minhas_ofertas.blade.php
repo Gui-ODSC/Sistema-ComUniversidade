@@ -36,7 +36,7 @@
                     <th scope="col">Título</th>
                     <th scope="col">Área de Conhecimento</th>
                     <th scope="col">Tipo Oferta</th>
-                    <th scope="col">Data Criação Oferta</th>
+                    <th scope="col">Data criação</th>
                     <th scope="col">Editar</th>
                     <th scope="col">Deletar</th>
                     <th scope="col">Ver</th>
@@ -46,7 +46,7 @@
                     @php  $contador = 1; @endphp 
                     @if (count($ofertas) < 1)
                         <tr>
-                            <td colspan="7"><p style="opacity: 0.6; margin-top: 5px; margin-bottom: 0px">-- Cadastre uma nova Oferta --</p></td>
+                            <td colspan="8"><p style="opacity: 0.6; margin-top: 5px; margin-bottom: 0px">-- Cadastre uma nova Oferta --</p></td>
                         </tr>
                     @else
                     @foreach ($ofertas as $oferta)    

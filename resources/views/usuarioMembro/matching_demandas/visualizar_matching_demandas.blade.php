@@ -68,7 +68,7 @@
                 @php  $contador = 1; @endphp 
                 @if (count($ofertasEncontradas) < 1)
                     <tr>
-                        <td colspan="8"><p style="opacity: 0.6; margin-top: 5px; margin-bottom: 0px">-- Nenhum Matching Encontrado para esta necessidade --</p></td>
+                        <td colspan="8"><p style="opacity: 0.6; margin-top: 5px; margin-bottom: 0px">-- Nenhuma oferta encontrada para esta necessidade --</p></td>
                     </tr>
                 @else
                     @foreach ($ofertasEncontradas as $key => $matching)  

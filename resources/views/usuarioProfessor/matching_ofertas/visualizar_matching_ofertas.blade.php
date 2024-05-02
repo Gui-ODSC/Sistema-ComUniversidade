@@ -98,7 +98,7 @@
                     <th scope="col">Título</th>
                     <th scope="col">Área de Conhecimento</th>
                     <th scope="col">Nº de Pessoas Impactadas</th>
-                    <th scope="col">Data Criação Demanda</th>
+                    <th scope="col">Data criação</th>
                     <th scope="col">Status</th>
                     <th scope="col">Deletar</th>
                     <th scope="col">Ver</th>

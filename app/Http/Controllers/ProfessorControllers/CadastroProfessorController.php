@@ -125,7 +125,7 @@ class CadastroProfessorController extends Controller
             'email_secundario' => $validatedDataUsuario['email_secundario'] ?? null,
             'password' => Hash::make($validatedDataUsuario['password']),
             'foto' => $validatedDataUsuario['foto'] ?? null,
-            'tipo' => 'ALUNO',
+            'tipo' => 'PROFESSOR',
             'tipo_pessoa' => $validatedDataUsuario['tipo_pessoa'],
             'instituicao' => $validatedDataUsuario['instituicao'] ?? null,
             'created_at' => now(),

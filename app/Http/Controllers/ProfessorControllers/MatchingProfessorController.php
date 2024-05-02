@@ -90,10 +90,10 @@ class MatchingProfessorController extends Controller
             /* FIM */
 
             /* COMPARAÇÃO DE TITULOS */
-            $resultado_titulo = $this->ratCliff($demanda->titulo, $titulo_oferta);
+            $resultado_titulo = $this->ratCliff($titulo_oferta, $demanda->titulo);
 
             /* COPARAÇÃO DE DESCRIÇÕES */
-            $resultado_descricao = $this->ratCliff($demanda->descricao, $descricao_oferta);
+            $resultado_descricao = $this->ratCliff($descricao_oferta, $demanda->descricao);
 
             $resultado = $resultado_titulo + $resultado_descricao;
 
