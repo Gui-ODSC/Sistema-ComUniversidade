@@ -7,6 +7,7 @@ use App\Http\Controllers\ProfessorControllers\ContatoRealizadoProfessorControlle
 use App\Http\Controllers\ProfessorControllers\OfertaConhecimentoProfessorController;
 use App\Http\Controllers\ProfessorControllers\OfertaProfessorController;
 use App\Http\Controllers\ProfessorControllers\MatchingProfessorController;
+use App\Http\Controllers\ProfessorControllers\PerfilProfessorController;
 use App\Http\Controllers\ProfessorControllers\TodasDemandasProfessorController;
 use Illuminate\Support\Facades\Route;
 
@@ -63,6 +64,14 @@ Route::prefix('professor')->group(function(){
             Route::post('/visualizar', 'contato_direto_status_visualizar')->name('contato_direto_visualizar_professor');
             Route::post('/remover', 'contatos_diretos_remover')->name('contato_direto_remover_professor');
             Route::post('/filtrar', 'filtragemDemandas')->name('filtrar_demandas_professor');
+        })->middleware('auth');
+    })->middleware('auth');
+
+    Route::prefix('/perfil')->controller(PerfilProfessorController::class)->group(function(){
+        Route::get('/', 'index')->name('perfil_index_professor');
+        Route::prefix('/{usuarioId}')->group(function(){
+            Route::get('/edit', 'editIndex')->name('perfil_edit_index_professor');
+            Route::post('/', 'editStore')->name('perfil_edit_store_professor');
         })->middleware('auth');
     })->middleware('auth');
 

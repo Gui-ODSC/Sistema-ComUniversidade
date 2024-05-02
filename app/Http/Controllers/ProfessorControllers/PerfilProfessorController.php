@@ -1,53 +1,55 @@
 <?php
 
-namespace App\Http\Controllers\EstudanteControllers;
+namespace App\Http\Controllers\ProfessorControllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\EnderecoController;
 use App\Http\Controllers\UsuarioAlunoController;
 use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\UsuarioProfessorController;
 use App\Models\Bairro;
 use App\Models\Cidade;
 use App\Models\Endereco;
 use App\Models\Estado;
 use App\Models\Usuario;
 use App\Models\UsuarioAluno;
+use App\Models\UsuarioProfessor;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
-class PerfilEstudanteController extends Controller
+class PerfilProfessorController extends Controller
 {
 
     private $enderecoController;
     private $usuarioController;
-    private $usuarioAlunoController;
+    private $usuarioProfessorController;
 
     public function __construct(
         UsuarioController $usuarioController,
         EnderecoController $enderecoController,
-        UsuarioAlunoController $usuarioAlunoController
+        UsuarioProfessorController $usuarioProfessorController
     ) {
         $this->enderecoController = $enderecoController;
         $this->usuarioController = $usuarioController;
-        $this->usuarioAlunoController = $usuarioAlunoController;
+        $this->usuarioProfessorController = $usuarioProfessorController;
     }
     public function index()
     {
         $userId = Auth::id();
 
         $usuario = Usuario::where('id_usuario', $userId)->first();
-        $usuarioEstudante = UsuarioAluno::where('id_usuario', $usuario->id_usuario)->first();
+        $usuarioProfessor = UsuarioProfessor::where('id_usuario', $usuario->id_usuario)->first();
         $endereco = Endereco::where('id_endereco', $usuario->id_endereco)->first();
         $cidade = Cidade::where('id_cidade', $endereco->id_cidade)->first();
         $bairro = Bairro::where('id_bairro', $endereco->id_bairro)->first();
         $estado = Estado::where('id_estado', $endereco->id_estado)->first();
 
-        return view('usuarioEstudante/perfil/perfil_estudante',
+        return view('usuarioProfessor/perfil/perfil_professor',
             [
                 'usuario' => $usuario,
-                'usuarioEstudante' => $usuarioEstudante,
+                'usuarioProfessor' => $usuarioProfessor,
                 'nascimentoFormat' => Carbon::parse($usuario->nascimento)->format('d/m/Y'),
                 'endereco' => $endereco,
                 'cidade' => $cidade,
@@ -60,7 +62,7 @@ class PerfilEstudanteController extends Controller
     public function editIndex($usuarioId)
     {
         $usuario = Usuario::where('id_usuario', $usuarioId)->first();
-        $usuarioEstudante = UsuarioAluno::where('id_usuario', $usuario->id_usuario)->first();
+        $usuarioProfessor = UsuarioProfessor::where('id_usuario', $usuario->id_usuario)->first();
         $endereco = Endereco::where('id_endereco', $usuario->id_endereco)->first();
         $cidade = Cidade::where('id_cidade', $endereco->id_cidade)->first();
         $bairro = Bairro::where('id_bairro', $endereco->id_bairro)->first();
@@ -70,10 +72,10 @@ class PerfilEstudanteController extends Controller
         $bairros = Bairro::all();
         $estados = Estado::all();
         
-        return view('usuarioEstudante/perfil/perfil_edit_estudante',
+        return view('usuarioProfessor/perfil/perfil_edit_professor',
             [
                 'usuario' => $usuario,
-                'usuarioEstudante' => $usuarioEstudante,
+                'usuarioProfessor' => $usuarioProfessor,
                 'nascimentoFormat' => Carbon::parse($usuario->nascimento)->format('d/m/Y'),
                 'endereco' => $endereco,
                 'cidade' => $cidade,
@@ -89,19 +91,18 @@ class PerfilEstudanteController extends Controller
     public function editStore(Request $request, $usuarioId)
     {
         $usuario = Usuario::findOrFail($usuarioId);
-        $usuarioEstudante = UsuarioAluno::where('id_usuario', $usuario->id_usuario)->first();
+        $usuarioProfessor = UsuarioProfessor::where('id_usuario', $usuario->id_usuario)->first();
         $endereco = Endereco::findOrFail($usuario->id_endereco);
 
         $validarUpdateEndereco = $this->enderecoController->validarUpdateEndereco($endereco->id_endereco, $request);
         $validarUpdateUsuario = $this->usuarioController->validarUpdateUsuario($usuarioId, $request);
-        $validarUpdateUsuarioEstudante = $this->usuarioAlunoController->validarCamposUsuarioEstudanteUpdate($usuarioEstudante, $request);
+        $validarUpdateUsuarioProfessor = $this->usuarioProfessorController->validarCamposUsuarioProfessorUpdate($usuarioProfessor, $request);
 
         // Verifica se a validação dos campos de endereço falhou
         if ($validarUpdateEndereco->fails()) {
             return back()->withErrors([
                 "message" => 'Campos preenchidos inválidos!',
                 "dados" => $validarUpdateEndereco->errors()->all(),
-                ...$this->listErrosEndereco($validarUpdateEndereco->errors())
             ]);
         }
 
@@ -110,23 +111,21 @@ class PerfilEstudanteController extends Controller
             return back()->withErrors([
                 "message" => 'Campos preenchidos inválidos!',
                 "dados" => $validarUpdateUsuario->errors()->all(),
-                ...$this->listErrosUsuario($validarUpdateUsuario->errors())
             ]);
         }
 
         // Verifica se a validação dos campos do usuário falhou
-        if ($validarUpdateUsuarioEstudante->fails()) {
+        if ($validarUpdateUsuarioProfessor->fails()) {
             return back()->withErrors([
                 "message" => 'Campos preenchidos inválidos!',
-                "dados" => $validarUpdateUsuarioEstudante->errors()->all(),
-                ...$this->listErrosUsuarioEstudante($validarUpdateUsuarioEstudante->errors())
+                "dados" => $validarUpdateUsuarioProfessor->errors()->all(),
             ]);
         }
 
         // Se a validação passou, prosseguimos com a Atualização do endereço e do usuário
         $validatedDataEndereco = $validarUpdateEndereco->validated();
         $validatedDataUsuario = $validarUpdateUsuario->validated();
-        $validatedDataUsuarioEstudante = $validarUpdateUsuarioEstudante->validated();
+        $validatedDataUsuarioProfessor = $validarUpdateUsuarioProfessor->validated();
 
         $endereco->update($validatedDataEndereco);
 
@@ -137,7 +136,7 @@ class PerfilEstudanteController extends Controller
             'telefone' => $validatedDataUsuario['telefone'],
             'email' => $validatedDataUsuario['email'],
             'email_secundario' => $validatedDataUsuario['email_secundario'] ?? null,
-            'foto' => $validatedDataUsuario['foto']->store('imagemPerfilEstudante') ?? null,
+            'foto' => $validatedDataUsuario['foto']->store('imagemPerfilProfessor') ?? null,
             'tipo_pessoa' => $validatedDataUsuario['tipo_pessoa'],
             'instituicao' => $validatedDataUsuario['instituicao'] ?? null,
         ];
@@ -148,9 +147,9 @@ class PerfilEstudanteController extends Controller
 
         $usuario->update($dadosAtualizados);
 
-        $usuarioEstudante->update($validatedDataUsuarioEstudante);
+        $usuarioProfessor->update($validatedDataUsuarioProfessor);
 
-        return redirect()->route('perfil_index_estudante')->with('perfil-update', 'Perfil atualizado com sucesso!');
+        return redirect()->route('perfil_index_professor')->with('perfil-update', 'Perfil atualizado com sucesso!');
     }
 
     private function listErrosUsuario($errors)
@@ -181,12 +180,12 @@ class PerfilEstudanteController extends Controller
         ];
     }
 
-    private function listErrosUsuarioEstudante($errors)
+    private function listErrosUsuarioProfessor($errors)
     {
         return [
             "id_usuario" => $errors->first('id_usuario'),
-            "curso" => $errors->first('curso'),
-            "ra" => $errors->first('ra'),
+            'link_curriculo' => $errors->first('link_curriculo'),
+            'numero_registro' => $errors->first('numero_registro'), 
         ];
     }
 }

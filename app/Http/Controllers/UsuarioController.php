@@ -132,6 +132,7 @@ class UsuarioController extends Controller
             'password.regex' => 'Senha: Deve conter pelo menos uma letra maiúscula, uma letra minúscula, um número e um caractere especial.',
             'instituicao.string' => 'Instituição: A instituicao deve ser um texto.',
             'instituicao.max' => 'Instituição: Número de caracteres ultrapassado',
+            'foto.mimes' => 'Foto: A imagem deve ter um dos seguintes formatos: jpeg, png, jpg ou gif.'
         ];
     }
 }

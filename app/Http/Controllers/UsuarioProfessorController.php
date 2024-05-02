@@ -51,27 +51,18 @@ class UsuarioProfessorController extends Controller
         
     }
 
-    public function update($id_usuario_professor, Request $request)
+    public function validarCamposUsuarioProfessorUpdate($id_usuario_professor, Request $request)
     {
-        $validator = Validator::make($request->all(), $this->getValidationSchema());
+        $validator = Validator::make($request->all(), [
+            ...$this->getValidationSchema(),
+            'id_usuario_professor' => [
+                Rule::unique(UsuarioProfessor::class, 'id_usuario_professor')
+                    ->where('id_usuario', $request->input('id_usuario'))
+                    ->ignore($id_usuario_professor, 'id_usuario_professor')
+            ]
+        ], $this->messageValidation());
 
-        if ($validator->fails()) {
-			return response($validator->errors())->setStatusCode(400);
-		}
-        
-        $validatedData = $validator->validated();
-
-        $usuarioProfessor = $this->usuarioProfessorModel::findOrFail($id_usuario_professor);
-
-        $usuarioProfessor->update([
-            'id_usuario' => $validatedData['id_usuario'],
-            'link_curriculo' => $validatedData['link_curriculo']
-        ]);
-
-        return response()->json([
-            'message' => 'Usuario Professor Updated Successfully',
-            'data' => $usuarioProfessor
-        ])->setStatusCode(200);
+        return $validator;
         
     }
 
