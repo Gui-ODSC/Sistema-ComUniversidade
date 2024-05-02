@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('estudante')->group(function(){
 
-    //Rota de cadastro para membros da sociedade 
+    //Rota de cadastro para estudantes 
     Route::prefix('/cadastro_estudante')->controller(CadastroEstudanteController::class)->group( function(){
         Route::get('/', 'indexCreateEstudante')->name('cadastro_estudante_index');
         Route::post('/', 'createEstudante')->name('cadastro_create_estudante');

@@ -53,7 +53,7 @@
             @enderror
             <span><a href="{{ route('reset_index') }}">Recuperar a Senha</a></span><br>
             <button type="submit" >Entrar</button>
-            {{-- <span><a href="{{ route('cadastro_professor_index') }}">Ainda não possui conta? Cadastre-se</a></span><br> --}}
+            <span><a href="{{ route('cadastro_professor_index') }}">Ainda não possui conta? Cadastre-se</a></span><br>
         </form>
         <script src="{{ asset('js/errors/mensagem_erro.js') }}"></script>
     </div>

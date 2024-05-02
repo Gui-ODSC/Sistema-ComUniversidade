@@ -1,5 +1,6 @@
 <?php 
 
+use App\Http\Controllers\ProfessorControllers\CadastroProfessorController;
 use App\Http\Controllers\ProfessorControllers\ContatoRecebidoProfessorController;
 use App\Http\Controllers\ProfessorControllers\OfertaAcaoProfessorController;
 use App\Http\Controllers\ProfessorControllers\ContatoRealizadoProfessorController;
@@ -11,11 +12,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('professor')->group(function(){
 
-    //Rota de cadastro para membros da sociedade 
-    /* Route::prefix('/cadastro')->controller(CadastroMembroController::class)->group( function(){
-        Route::get('/', 'index')->name('cadastro_membro_index');
-        Route::post('/', 'create')->name('cadastro_create_professor');
-    });  AJUSTAR PORQUE É CÓPIA DO MEMBRO*/
+    //Rota de cadastro para Professor
+    Route::prefix('/cadastro')->controller(CadastroProfessorController::class)->group( function(){
+        Route::get('/', 'indexCreateProfessor')->name('cadastro_professor_index');
+        Route::post('/', 'createProfessor')->name('cadastro_create_professor');
+    });  
 
     Route::prefix('/ofertas')->controller(OfertaProfessorController::class)->group(function (){
         Route::get('/visualizar', 'index')->name('oferta_index');

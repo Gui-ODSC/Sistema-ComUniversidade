@@ -20,11 +20,8 @@ class UsuarioProfessorController extends Controller
     private function getValidationSchema()
     {
         return [
-            'id_usuario' => [
-                'required',
-                Rule::exists(Usuario::class, 'id_usuario')
-            ],
-            'link_curriculo' => 'required|string|max:255'
+            'link_curriculo' => 'nullable|string|max:255',
+            'numero_registro' => 'required|integer'
         ];
     }
 
@@ -32,10 +29,7 @@ class UsuarioProfessorController extends Controller
     {
         $usuarioProfessor = $this->usuarioProfessorModel::all();
         
-        return response()->json([
-            'message' => 'Usuario Professor successfully recovered',
-            'data' => $usuarioProfessor
-        ]);
+        return $usuarioProfessor;
     }
 
     public function get($id_usuario_professor)
@@ -43,31 +37,18 @@ class UsuarioProfessorController extends Controller
         return $this->usuarioProfessorModel::findOrFail($id_usuario_professor);
     }
 
-    public function create(Request $request)
+    public function validarCamposUsuarioProfessorCreate(Request $request)
     {
         $validator = Validator::make($request->all(), [
             ...$this->getValidationSchema(),
             'id_usuario_professor' => [
                 Rule::unique(UsuarioProfessor::class, 'id_usuario_professor')
                     ->where('id_usuario', $request->input('id_usuario'))
-            ] 
-        ]);
+            ]
+        ], $this->messageValidation());
 
-        if ($validator->fails()) {
-			return response($validator->errors())->setStatusCode(400);
-		}
-
-        $validatedData = $validator->validated();
-
-        $usuarioProfessor = $this->usuarioProfessorModel::create([
-            'id_usuario' => $validatedData['id_usuario'],
-            'link_curriculo' => $validatedData['link_curriculo']
-        ]);
-
-        return response()->json([
-            'message' => 'Usuario Professor Created successfull',
-            'data' => $usuarioProfessor
-        ])->setStatusCode(201); 
+        return $validator;
+        
     }
 
     public function update($id_usuario_professor, Request $request)
@@ -103,5 +84,15 @@ class UsuarioProfessorController extends Controller
             'message' => 'Usuario Professor deleted successfully'
         ])->setStatusCode(200);
 
+    }
+
+    protected function messageValidation()
+    {
+        return [
+            'link_curriculo.string' => 'Campo link deve ser um texto.',
+            'link_curriculo.max' => 'Campo link ultrapassou a quantidade de caracteres',
+            'numero_registro.required' => 'Campo Numero de Registro é obrigatório.',
+            'numero_registro.integer' => 'Campo Numero de Registro deve ser um numero inteiro.',
+        ];
     }
 }

@@ -29,10 +29,7 @@ class UsuarioAlunoController extends Controller
     {
         $usuarioAluno = $this->usuarioAlunoModel::all();
         
-        return response()->json([
-            'message' => 'Usuario Aluno successfully recovered',
-            'data' => $usuarioAluno
-        ]);
+        return $usuarioAluno;
     }
 
     public function get($id_usuario_aluno)

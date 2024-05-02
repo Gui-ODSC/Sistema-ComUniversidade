@@ -11,7 +11,7 @@ class UsuarioProfessor extends Model
 {
     use HasFactory;
 
-    public $timestamps = false;
+    public $timestamps = true;
 
     protected $table = 'UsuarioProfessor';
 
@@ -19,7 +19,8 @@ class UsuarioProfessor extends Model
 
     protected $fillable = [
         'id_usuario',
-        'link_curriculo'
+        'link_curriculo',
+        'numero_registro'
     ];
 
     public function usuario(): BelongsTo
