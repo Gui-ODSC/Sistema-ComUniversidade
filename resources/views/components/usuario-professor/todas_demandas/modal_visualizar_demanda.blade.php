@@ -38,7 +38,7 @@
                     <div class="informacao-oferta-coluna">
                         <div>
                             <h6>Tipo: Necessidade</h6>
-                            <h6>Pessoas Afetadas: Aprox. {{$demanda->pessoas_afetadas}}</h6>
+                            <h6>Pessoas Atingidas: Aprox. {{$demanda->pessoas_afetadas}}</h6>
                             <h6>Duração: {{ucwords(strtolower($demanda->duracao))}}</h6>
                         </div>
                         <div>

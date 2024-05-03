@@ -31,14 +31,17 @@
             <h1>Cadastro Membro</h1>
             <h4>Seja bem vindo(a)</h2>
         </div>
-        <form method="POST" action="{{ route('cadastro_create') }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('cadastro_create') }}" enctype="multipart/form-data" onsubmit="return validarEmails()">
             @csrf
-            @if($errors->has('dados'))
-                <div class="msg-erro" id="error-message-email" style="margin-top: 30px">
-                    @foreach ($errors->get('dados') as $dado)
-                        <p style="display: block; align-items: center; width: 100%;">{{ $dado }}</p>
-                        <br>
-                    @endforeach
+            @if($errors->any())
+                <div class="alert alert-danger" style="margin-top: 1px; font-size: 15px">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            @if ($error)
+                                <p style="margin-bottom: 5px">{{ $error }}</p>
+                            @endif
+                        @endforeach
+                    </ul>
                 </div>
             @endif
             <div style="display: flex; margin: 5px 10px;">
@@ -53,28 +56,28 @@
                     {{-- NOME --}}
                     <div class="caixa-input" style="width: 100%;">
                         @error('nome')
-                            <input title="{{ $message }}" class="alert-danger" autocompĺete="off"  type="text" id="nome" name="nome" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" value="{{old('nome')}}" required>
-                            <label for="nome">
-                                <span>Nome</span>
+                            <input title="{{ $message }}" class="alert-danger" autocompĺete="off"  type="text" id="nome" name="nome" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" value="{{old('nome')}}" maxlength="60" required>
+                            <label for="nome" style="color: black">
+                                <span>Nome *</span>
                             </label>
                         @else
-                            <input type="text" id="nome" name="nome" autocompĺete="off" value="{{old('nome')}}" required>
+                            <input type="text" id="nome" name="nome" autocompĺete="off" value="{{old('nome')}}" maxlength="60" required>
                             <label for="nome">
-                                <span>Nome</span>
+                                <span>Nome *</span>
                             </label>
                         @enderror
                     </div>
                     <div class="caixa-input" style="width: 70%;">
                         {{-- SOBRENOME --}}
                         @error('sobrenome')
-                            <input title="{{ $message }}" class="alert-danger" autocompĺete="off" type="text" id="sobrenome" name="sobrenome" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" value="{{old('sobrenome')}}" required>
+                            <input title="{{ $message }}" class="alert-danger" autocompĺete="off" type="text" id="sobrenome" name="sobrenome" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" value="{{old('sobrenome')}}"  maxlength="100" required>
                             <label for="sobrenome">
-                                <span>Sobrenome</span>
+                                <span>Sobrenome *</span>
                             </label>
                         @else
-                            <input type="text" id="sobrenome" name="sobrenome" autocompĺete="off" value="{{old('sobrenome')}}" required>
+                            <input type="text" id="sobrenome" name="sobrenome" autocompĺete="off" value="{{old('sobrenome')}}" maxlength="100" required>
                             <label for="sobrenome">
-                                <span>Sobrenome</span>
+                                <span>Sobrenome *</span>
                             </label>
                         @enderror
                     </div>
@@ -83,26 +86,26 @@
                         @error('nascimento')
                             <input title="{{ $message }}" class="alert-danger" autocompĺete="off" type="text" id="nascimento" name="nascimento" value="{{old('nascimento')}}" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required>
                             <label for="nascimento">
-                                <span>Data Nascimento</span>
+                                <span>Data Nascimento *</span>
                             </label>
                         @else
                             <input type="text" id="nascimento" name="nascimento" autocompĺete="off" value="{{old('nascimento')}}" required>
                             <label for="nascimento">
-                                <span>Data Nascimento</span>
+                                <span>Data Nascimento *</span>
                             </label>
                         @enderror
                     </div>
                     <div class="caixa-input">
                         {{-- EMAIL --}}
                         @error('email')
-                            <input title="{{ $message }}" class="alert-danger" autocompĺete="off" type="email" id="email" name="email" value="{{old('email')}}" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required>
+                            <input title="{{ $message }}" class="alert-danger" autocompĺete="off" type="email" id="email" name="email" value="{{old('email')}}" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black"  maxlength="255" required>
                             <label for="email">
-                                <span>Email</span>
+                                <span>Email *</span>
                             </label>
                         @else
-                            <input type="email" id="email" name="email" autocompĺete="off" value="{{old('email')}}" required>
+                            <input type="email" id="email" name="email" autocompĺete="off" value="{{old('email')}}"  maxlength="255" required>
                             <label for="email">
-                                <span>Email</span>
+                                <span>Email *</span>
                             </label>
                         @enderror
                     </div>
@@ -128,12 +131,12 @@
                     @error('telefone')
                         <input title="{{ $message }}" class="alert-danger" autocompĺete="off" type="text" id="telefone" name="telefone" value="{{old('telefone')}}" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required>
                         <label for="telefone">
-                            <span>Telefone</span>
+                            <span>Telefone *</span>
                         </label>
                     @else
                         <input type="text" id="telefone" name="telefone" autocompĺete="off" value="{{old('telefone')}}" required>
                         <label for="telefone">
-                            <span>Telefone</span>
+                            <span>Telefone *</span>
                         </label>
                     @enderror
                 </div>
@@ -141,19 +144,27 @@
                     {{-- PASSWORD --}}
                     @error('password')
                         <div style="position: relative;">
-                            <input title="{{ $message }}" class="alert-danger" autocompĺete="off" type="password" id="password" name="password" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required oninput="toggleEye()">
+                            <input title="{{ $message }}" class="alert-danger" autocompĺete="off" type="password" id="password" name="password" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required oninput="toggleEye()" maxlength="100" style="padding-right: 75px;" value="{{old('password')}}">
                             <label for="password">
-                                <span>Senha</span>
+                                <span>Senha *</span>
                             </label>
-                            <span class="toggle-password" onclick="togglePassword()" style="position: absolute; top: 50%; left: 460px; transform: translateY(-50%); cursor: pointer; display: none"><img src="{{ asset('img/usuarioMembro/cadastrar_demandas/olho_desmarcado.png')}}" alt="" style="width: 25px"></span>
+                            <!-- Ícone informativo -->
+                            <span class="info-icon" onclick="showPasswordRules()" style="position: absolute; top: 50%; left: 465px;; transform: translateY(-50%); cursor: pointer;">
+                                <img src="{{ asset('img/cadastro_usuarios/icone_info_senha.png') }}" alt="Ícone informativo" style="width: 20px;">
+                            </span>
+                            <span class="toggle-password" onclick="togglePassword()" style="position: absolute; top: 50%; left: 430px; transform: translateY(-50%); cursor: pointer; display: none"><img src="{{ asset('img/usuarioMembro/cadastrar_demandas/olho_desmarcado.png')}}" alt="" style="width: 25px"></span>
                         </div>
                     @else
                         <div style="position: relative;">
-                            <input type="password" id="password" name="password" autocompĺete="off" required oninput="toggleEye()">
+                            <input type="password" id="password" name="password" autocompĺete="off" required oninput="toggleEye()" maxlength="100" style="padding-right: 75px;" value="{{old('password')}}">
                             <label for="password">
-                                <span>Senha</span>
+                                <span>Senha *</span>
                             </label>
-                            <span class="toggle-password" onclick="togglePassword()" style="position: absolute; top: 50%; left: 460px; transform: translateY(-50%); cursor: pointer; display: none"><img src="{{ asset('img/usuarioMembro/cadastrar_demandas/olho_desmarcado.png')}}" alt="" style="width: 25px"></span>
+                            <!-- Ícone informativo -->
+                            <span class="info-icon" onclick="showPasswordRules()" style="position: absolute; top: 50%; left: 465px;; transform: translateY(-50%); cursor: pointer;">
+                                <img src="{{ asset('img/cadastro_usuarios/icone_info_senha.png') }}" alt="Ícone informativo" style="width: 20px;">
+                            </span>
+                            <span class="toggle-password" onclick="togglePassword()" style="position: absolute; top: 50%; left: 430px; transform: translateY(-50%); cursor: pointer; display: none"><img src="{{ asset('img/usuarioMembro/cadastrar_demandas/olho_desmarcado.png')}}" alt="" style="width: 25px"></span>
                         </div>
                     @enderror
                 </div>
@@ -161,16 +172,16 @@
                     {{-- CIDADE --}}
                     @error('cidade')
                         <div class="autoComplete_wrapper">  
-                            <input title="{{ $message }}" class="cidade alert-danger" autocompĺete="off" type="text" name="nome_cidade" value="{{old('nome_cidade')}}" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required>
+                            <input title="{{ $message }}" class="cidade alert-danger" autocompĺete="off" type="text" name="nome_cidade" value="{{old('nome_cidade')}}" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required  maxlength="255">
                             <label for="nome_cidade">
-                                <span>Cidade</span>
+                                <span>Cidade *</span>
                             </label>
                         </div>
                     @else
                         <div class="autoComplete_wrapper">  
-                            <input type="text" id="autoCompleteCidade" name="nome_cidade" autocompĺete="off" value="{{old('nome_cidade')}}" required>
+                            <input type="text" id="autoCompleteCidade" name="nome_cidade" autocompĺete="off" value="{{old('nome_cidade')}}" required  maxlength="255"> 
                             <label for="nome_cidade">
-                                <span>Cidade</span>
+                                <span>Cidade *</span>
                             </label>
                         </div>
                     @enderror
@@ -178,40 +189,40 @@
                 <div class="caixa-input" style="width: 40%; margin-bottom: 6px">
                     {{-- RUA --}}
                     @error('rua')
-                        <input title="{{ $message }}" class="alert-danger" autocompĺete="off" type="text" id="rua" name="rua" value="{{old('rua')}}" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required>
+                        <input title="{{ $message }}" class="alert-danger" autocompĺete="off" type="text" id="rua" name="rua" value="{{old('rua')}}" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required  maxlength="255">
                         <label for="rua">
-                            <span>Rua</span>
+                            <span>Rua *</span>
                         </label>
                     @else
-                        <input type="text" id="rua" name="rua" autocompĺete="off" value="{{old('rua')}}" required>
+                        <input type="text" id="rua" name="rua" autocompĺete="off" value="{{old('rua')}}" required  maxlength="255">
                         <label for="rua">
-                            <span>Rua</span>
+                            <span>Rua *</span>
                         </label>
                     @enderror
                 </div>
                 <div class="caixa-input" style="width: 30%; margin-left: 3px;">
                     {{-- NUMERO --}}
                     @error('numero')
-                        <input title="{{ $message }}" class="alert-danger" autocompĺete="off" type="number" id="numero" name="numero" value="{{old('numero')}}" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required>
+                        <input title="{{ $message }}" class="alert-danger" autocompĺete="off" type="number" id="numero" name="numero" value="{{old('numero')}}" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required  maxlength="20">
                         <label for="numero">
-                            <span>Número (somente números)</span>
+                            <span>Número (somente números) *</span>
                         </label>
                     @else
-                        <input type="number" id="numero" name="numero" autocompĺete="off" value="{{old('numero')}}" required>
+                        <input type="number" id="numero" name="numero" autocompĺete="off" value="{{old('numero')}}" required  maxlength="20">
                         <label for="numero">
-                            <span>Número (somente números)</span>
+                            <span>Número (somente números) *</span>
                         </label>
                     @enderror
                 </div>
                 <div class="caixa-input" style="width: 291px; margin-left: 3px;">
                     {{-- COMPLEMENTO --}}
                     @error('complemento')
-                        <input title="{{ $message }}" class="alert-danger" autocompĺete="off" type="text" id="complemento" name="complemento" value="{{old('complemento')}}" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black">
+                        <input title="{{ $message }}" class="alert-danger" autocompĺete="off" type="text" id="complemento" name="complemento" value="{{old('complemento')}}" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" maxlength="255">
                         <label for="complemento">
                             <span>Complemento</span>
                         </label>
                     @else
-                        <input type="text" id="complemento" name="complemento" autocompĺete="off" value="{{old('complemento')}}">
+                        <input type="text" id="complemento" name="complemento" autocompĺete="off" value="{{old('complemento')}}" maxlength="255">
                         <label for="complemento">
                             <span>Complemento</span>
                         </label>
@@ -221,16 +232,16 @@
                     {{-- ESTADO --}}
                     @error('estado')
                         <div class="autoComplete_wrapper">  
-                            <input title="{{ $message }}" type="text" id="autoCompleteEstado" class="estado alert-danger" autocompĺete="off" name="nome_estado" value="{{old('nome_estado')}}" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required>
+                            <input title="{{ $message }}" type="text" id="autoCompleteEstado" class="estado alert-danger" autocompĺete="off" name="nome_estado" value="{{old('nome_estado')}}" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required  maxlength="255">
                             <label for="nome_estado">
-                                <span>Estado</span>
+                                <span>Estado *</span>
                             </label>
                         </div>    
                     @else
                         <div class="autoComplete_wrapper">  
-                            <input class="estado" type="text" id="autoCompleteEstado" name="nome_estado" autocompĺete="off" value="{{old('nome_estado')}}" required>
+                            <input class="estado" type="text" id="autoCompleteEstado" name="nome_estado" autocompĺete="off" value="{{old('nome_estado')}}" required  maxlength="255">
                             <label for="nome_estado">
-                                <span>Estado</span>
+                                <span>Estado *</span>
                             </label>
                         </div>
                     @enderror
@@ -239,16 +250,16 @@
                     {{-- BAIRRO --}}
                     @error('bairro')
                         <div class="autoComplete_wrapper">  
-                            <input title="{{ $message }}" type="text" id="autoCompleteBairro" class="bairro alert-danger" autocompĺete="off" name="nome_bairro" value="{{old('nome_bairro')}}" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required>
+                            <input title="{{ $message }}" type="text" id="autoCompleteBairro" class="bairro alert-danger" autocompĺete="off" name="nome_bairro" value="{{old('nome_bairro')}}" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required  maxlength="255">
                             <label for="nome_bairro">
-                                <span>Bairro</span>
+                                <span>Bairro *</span>
                             </label>
                         </div>    
                     @else
                         <div class="autoComplete_wrapper">  
-                            <input type="text" id="autoCompleteBairro" class="bairro" name="nome_bairro" autocompĺete="off" value="{{old('nome_bairro')}}" required>
+                            <input type="text" id="autoCompleteBairro" class="bairro" name="nome_bairro" autocompĺete="off" value="{{old('nome_bairro')}}" required  maxlength="255">
                             <label for="nome_bairro">
-                                <span>Bairro</span>
+                                <span>Bairro *</span>
                             </label>
                         </div>
                     @enderror
@@ -262,7 +273,7 @@
                             <option value="JURIDICA">Jurídica</option>
                         </select>
                         <label for="tipo_pessoa">
-                            <span>Tipo Pessoa</span>
+                            <span>Tipo Pessoa *</span>
                         </label>
                     @else
                         <select name="tipo_pessoa" id="tipo_pessoa" autocompĺete="off" value="{{old('tipo_pessoa')}}" required>
@@ -271,25 +282,29 @@
                             <option value="JURIDICA" {{ "JURIDICA" === old('tipo_pessoa') ? 'selected' : '' }}>Jurídica</option>
                         </select>
                         <label for="tipo_pessoa">
-                            <span>Tipo Pessoa</span>
+                            <span>Tipo Pessoa *</span>
                         </label>
                     @enderror
                 </div>
                 <div class="caixa-input" style="width: 492px; margin-left: 3px">
                     {{-- INSTITUICAO --}}
                     @error('instituicao')
-                        <input title="{{ $message }}" class="alert-danger" autocompĺete="off" type="text" id="instituicao" name="instituicao" value="{{old('instituicao')}}" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black">
+                        <input title="{{ $message }}" class="alert-danger" autocompĺete="off" type="text" id="instituicao" name="instituicao" value="{{old('instituicao')}}" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" maxlength="100">
                         <label for="instituicao">
                             <span>Instituição</span>
                         </label>
                     @else
-                        <input type="text" id="instituicao" name="instituicao" autocompĺete="off" value="{{old('instituicao')}}"    >
+                        <input type="text" id="instituicao" name="instituicao" autocompĺete="off" value="{{old('instituicao')}}" maxlength="100">
                         <label for="instituicao">
                             <span>Instituição</span>
                         </label>
                     @enderror
                 </div>
-                <button type="submit">Cadastrar</button>
+            </div>
+                <button class="botao-envio-form" type="submit">Cadastrar</button>
+                <div style="justify-content: end; display: flex">
+                    <h6>* Campos Obrigatórios</h6>
+                </div>
             </div>
         <form>
     </div>
@@ -423,13 +438,58 @@
         }
 
         /* permitir somente numeros */
-        document.getElementById('ra').addEventListener('input', function(event) {
-            this.value = this.value.replace(/[^\d]/g, '');
-        });
 
         document.getElementById('numero').addEventListener('input', function(event) {
             this.value = this.value.replace(/[^\d]/g, '');
         });
+
+
+
+        /* AVISO CASO OS CAMPOS DE EMAIL SEJAM IGUAIS */
+        function validarEmails() {
+            var emailPrincipal = document.getElementById("email").value;
+            var emailSecundario = document.getElementById("email_secundario").value;
+
+            if (emailPrincipal === emailSecundario) {
+                // Se os emails forem iguais, exiba uma mensagem de erro
+                alert("Os campos de email não podem ser iguais.");
+                return false;
+            }
+            return true;
+        }
+
+        /* INFORMATIVO SENHA */
+        function showPasswordRules() {
+            // Caixa de diálogo das regras da senha
+            var passwordRules = document.createElement("div");
+            passwordRules.innerHTML = `
+                <div id="password-rules" style="position: absolute; top: 365px; right: 70px; background-color: #4D6D7F; color: #FFF; border: 1px solid #FFF; padding: 10px; border-radius: 10px;">
+                    <button onclick="closePasswordRules()" style="position: absolute; top: 5px; color: #FFF; right: 7px; cursor: pointer; background: transparent; border: none; outline: none;">Fechar</button>
+                    <p>Regras de criação de senha:</p>
+                    <ul>
+                        <li>Deve conter pelo menos 8 caracteres</li>
+                        <li>Deve conter pelo menos uma letra maiúscula</li>
+                        <li>Deve conter pelo menos uma letra minúscula</li>
+                        <li>Deve conter pelo menos um número</li>
+                    </ul>
+                </div>
+            `;
+
+            // Adiciona a caixa de diálogo ao corpo do documento
+            document.body.appendChild(passwordRules);
+
+            // Remove a caixa de diálogo após 5 segundos
+            setTimeout(function() {
+                passwordRules.remove();
+            }, 5000);
+        }
+
+        function closePasswordRules() {
+            // Remove a caixa de diálogo das regras da senha
+            var passwordRules = document.getElementById('password-rules');
+            passwordRules.remove();
+        }
+
     </script>
 </body>
 </html>

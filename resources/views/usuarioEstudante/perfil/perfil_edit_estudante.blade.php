@@ -42,6 +42,7 @@
                         <div id="container">
                             @if($usuario->foto)
                                 <img id="current-image" class="foto-perfil" src="{{ url('storage/' . Auth::user()->foto) }}" alt="imagem de perfil do usuario" onclick="openFileSelector()">
+                                <input type="file" id="image-input" name="foto" style="position: absolute; heigth: 10px ; opacity: 0; object-fit: cover;" accept="image/*" onchange="previewImage(event)">
                             @else
                                 <div style="width: 50%; display: flex; flex-direction: column;">
                                     <div class="img-foto-perfil" onclick="openFileSelector()">
@@ -149,7 +150,7 @@
                                 </div>
                             @else
                                 <div style="position: relative;">
-                                    <input type="password" id="password" name="password" required oninput="toggleEye()">
+                                    <input type="password" id="password" name="password" oninput="toggleEye()">
                                     <label for="password">
                                         <span>Alterar Senha</span>
                                     </label>

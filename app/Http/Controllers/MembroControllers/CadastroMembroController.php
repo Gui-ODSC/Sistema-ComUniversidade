@@ -73,7 +73,6 @@ class CadastroMembroController extends Controller
             return back()->withErrors([
                 "message" => 'Campos de Endereços Inválidos',
                 "dados" => $validarCamposEndereco->errors()->all(),
-                ...$this->listErrosEndereco($validarCamposEndereco->errors())
             ])->withInput();
         }
 
@@ -82,7 +81,6 @@ class CadastroMembroController extends Controller
             return back()->withErrors([
                 "message" => 'Campo de dados pessoais inválidos',
                 "dados" => $validarCamposUsuario->errors()->all(),
-                ...$this->listErrosUsuario($validarCamposUsuario->errors())
             ])->withInput();
         }
 

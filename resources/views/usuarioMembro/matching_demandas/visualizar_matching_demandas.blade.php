@@ -33,7 +33,7 @@
             <div class="dados-detalhados-demanda">
                 <div>
                     <h5>Tipo: Necessidade</h5>
-                    <h5>Pessoas Afetadas: Aprox. {{$demanda->pessoas_afetadas}}</h5>
+                    <h5>Pessoas Atingidas: Aprox. {{$demanda->pessoas_afetadas}}</h5>
                     <h5>Duração: {{ucwords(strtolower($demanda->duracao))}}</h5>
                     <h5>Instituição: {{$demanda->instituicao_setor ?? '' }}</h5>
                 </div>

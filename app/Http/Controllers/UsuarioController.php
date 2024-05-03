@@ -27,7 +27,19 @@ class UsuarioController extends Controller
         return [
             'nome' => 'required|string|max:255',
             'sobrenome' => 'required|string|max:255',
-            'nascimento' => 'required|date_format:d/m/Y', //(20/01/2020)
+            'nascimento' => [
+                'required',
+                'date_format:d/m/Y', //(20/01/2020)
+                function ($attribute, $value, $fail) {
+                    $parsedDate = \DateTime::createFromFormat('d/m/Y', $value);
+                    $today = new \DateTime();
+                    $minDate = (new \DateTime())->modify('-180 years');
+        
+                    if ($parsedDate > $today || $parsedDate < $minDate) {
+                        $fail('Data Nascimento: A data de nascimento deve ser uma data válida e ser menor que a data atual.');
+                    }
+                },
+            ],
             'telefone' => 'required|string|regex:/^\(\d{2}\) \d{5}-\d{4}$/', //(XX) XXXX-XXXX
             'email' => [
                 'required',
@@ -119,7 +131,8 @@ class UsuarioController extends Controller
             'sobrenome.string' => 'Sobrenome: Deve ser uma texto.',
             'sobrenome.max' => 'Sobrenome: número de caracteres ultrapassado',
             'nascimento.required' => 'Data Nascimento: Campo obrigatório.',
-            'nascimento.date_format' => 'Data Nascimento: Deve seguir o formato dd/mm/aaaa.',
+            'nascimento.date_format' => 'Data Nascimento: Formato Inválido, deve seguir o exemplo: dia/mes/ano.',
+            'nascimento.date' => 'Data Nascimento: Data inválida.',
             'telefone.required' => 'Telefone: Campo obrigatório.',
             'telefone.regex' => 'Telefone: Deve seguir o formato (XX) XXXXX-XXXX.',
             'email.required' => 'Email: Campo obrigatório.',

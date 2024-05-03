@@ -85,12 +85,12 @@
                     @error('pessoas_afetadas')
                         <input title="{{$message}}" type="number" name="pessoas_afetadas" onkeypress="return event.charCode >= 48 && event.charCode <= 57" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required>
                         <label for="pessoas_afetadas">
-                            <span>Pessoas Afetadas</span>
+                            <span>Pessoas Atingidas</span>
                         </label>
                     @else
                         <input type="number" name="pessoas_afetadas" onkeypress="return event.charCode >= 48 && event.charCode <= 57" value="{{ $demanda->pessoas_afetadas }}" required>
                         <label for="pessoas_afetadas">
-                            <span>Pessoas Afetadas</span>
+                            <span>Pessoas Atingidas</span>
                         </label>
                     @enderror
                 </div>
@@ -118,7 +118,7 @@
                             <option value="INDEFINIDO" {{ $demanda->duracao === 'INDEFINIDO' ? 'selected' : '' }}>Indefinido</option>
                         </select>
                         <label for="duracao">
-                            <span>Selecione a duração da demanda</span>
+                            <span>Selecione a duração da necessidade</span>
                         </label>
                     @else
                         <select name="duracao" required>
@@ -130,7 +130,7 @@
                             <option value="INDEFINIDO" {{ $demanda->duracao === 'INDEFINIDO' ? 'selected' : '' }}>Indefinido</option>
                         </select>
                         <label for="duracao">
-                            <span>Selecione a duração da demanda</span>
+                            <span>Selecione a duração da necessidade</span>
                         </label>
                     @enderror
                 </div>
@@ -143,7 +143,7 @@
                             <option value="ALTO" {{ $demanda->nivel_prioridade === 'ALTO'? 'selected' : '' }}>Alto</option>
                         </select>
                         <label for="nivel_prioridade">
-                            <span>Selecione a duração da demanda</span>
+                            <span>Selecione o nível de prioridade da necessidade</span>
                         </label>
                     @else
                         <select name="nivel_prioridade" required>
@@ -153,7 +153,7 @@
                             <option value="ALTO" {{ $demanda->nivel_prioridade === 'ALTO'? 'selected' : '' }}>Alto</option>
                         </select>
                         <label for="nivel_prioridade">
-                            <span>Selecione a duração da demanda</span>
+                            <span>Selecione o nível de prioridade da necessidade</span>
                         </label>
                     @enderror
                 </div>

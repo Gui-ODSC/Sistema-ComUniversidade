@@ -40,7 +40,7 @@
                         <div class="informacao-oferta-coluna-contatar">
                             <div>
                                 <h6>Tipo: Demanda</h6>
-                                <h6>Pessoas Afetadas: Aprox. {{$demanda->pessoas_afetadas}}</h6>
+                                <h6>Pessoas Atingidas: Aprox. {{$demanda->pessoas_afetadas}}</h6>
                                 <h6>Duração: {{ucwords(strtolower($demanda->duracao))}}</h6>
                             </div>
                             <div>

@@ -113,7 +113,7 @@
                             <option value="INDEFINIDO" {{ $oferta->ofertaAcao->duracao === 'INDEFINIDO'? 'selected' : '' }}>Indefinido</option>
                         </select>
                         <label for="duracao">
-                            <span>Selecione a duração da demanda</span>
+                            <span>Selecione a duração da oferta</span>
                         </label>
                     @else
                         <select name="duracao" required autocomplete="off">
@@ -125,7 +125,7 @@
                             <option value="INDEFINIDO" {{ $oferta->ofertaAcao->duracao === 'INDEFINIDO'? 'selected' : '' }}>Indefinido</option>
                         </select>
                         <label for="duracao">
-                            <span>Selecione a duração da demanda</span>
+                            <span>Selecione a duração da oferta</span>
                         </label>
                     @enderror
                 </div>
@@ -133,12 +133,12 @@
                     @error('data_limite')
                         <input type="date" name="data_limite" value="{{$dataLimite}}" autocomplete="off" placeholder="Dia/Mes/Ano" min="{{ date('Y-m-d') }}">
                         <label for="data_expiracao">
-                            <span>Data Expiração da Demanda</span>
+                            <span>Data expiração da oferta</span>
                         </label>
                     @else
                         <input type="date" name="data_limite" value="{{$dataLimite}}" autocomplete="off" placeholder="Dia/Mes/Ano" min="{{ date('Y-m-d') }}">
                         <label for="data_expiracao">
-                            <span>Data Expiração da Demanda</span>
+                            <span>Data expiração da oferta</span>
                         </label>
                     @enderror
                 </div>

@@ -57,7 +57,7 @@
                         <div id="dados-informacao-oferta-contato-respondido">
                             <h6>Público Alvo: {{$demanda->publicoAlvo->nome}}</h6>
                             <h6>Área de Conhecimento: {{$demanda->areaConhecimento->nome}}</h6>
-                            <h6>Pessoas Afetadas: {{$demanda->pessoas_afetadas}}</h6>
+                            <h6>Pessoas Atingidas: {{$demanda->pessoas_afetadas}}</h6>
                             <h6>Duração: {{ucwords(strtolower($demanda->duracao))}}</h6>
                             <h6>Nível Prioridade: {{ucwords(strtolower($demanda->nivel_prioridade))}}</h6>
                             @if ($respostaMensagem != null)
