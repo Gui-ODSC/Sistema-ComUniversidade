@@ -78,7 +78,6 @@ class CadastroProfessorController extends Controller
             return back()->withErrors([
                 "message" => 'Campos de Endereços Inválidos',
                 "dados" => $validarCamposEndereco->errors()->all(),
-                ...$this->listErrosEndereco($validarCamposEndereco->errors())
             ])->withInput();
         }
 
@@ -87,7 +86,6 @@ class CadastroProfessorController extends Controller
             return back()->withErrors([
                 "message" => 'Campo de dados pessoais inválidos',
                 "dados" => $validarCamposUsuario->errors()->all(),
-                ...$this->listErrosUsuario($validarCamposUsuario->errors())
             ])->withInput();
         }
 
@@ -96,7 +94,6 @@ class CadastroProfessorController extends Controller
             return back()->withErrors([
                 "message" => 'Campo de dados pessoais inválidos',
                 "dados" => $validarCamposUsuarioProfessor->errors()->all(),
-                ...$this->listErrosUsuarioProfessor($validarCamposUsuarioProfessor->errors())
             ])->withInput();
         }
 

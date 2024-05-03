@@ -48,6 +48,12 @@ class UsuarioController extends Controller
             'email_secundario' => [
                 'nullable',
                 'email',
+                function ($attribute, $value, $fail) {
+                    $emailPrincipal = request()->input('email');
+                    if ($value && $value === $emailPrincipal) {
+                        $fail('Email: Os emails principal e secundário não podem ser iguais.');
+                    }
+                },
             ],
             'password' => [
                 'required',

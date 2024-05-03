@@ -31,7 +31,7 @@
             <h1>Cadastro Estudante</h1>
             <h4>Seja bem vindo(a)</h2>
         </div>
-        <form method="POST" action="{{ route('cadastro_create_estudante') }}" enctype="multipart/form-data" onsubmit="return validarEmails()">
+        <form method="POST" action="{{ route('cadastro_create_estudante') }}" enctype="multipart/form-data">
             @csrf
             @if($errors->any())
                 <div class="alert alert-danger" style="margin-top: 1px; font-size: 15px">
@@ -317,7 +317,7 @@
                 <div class="caixa-input" style="width: 20%; margin-left: 3px">
                     {{-- RA --}}
                     @error('ra')
-                        <input title="{{ $message }}" class="alert-danger" autocompĺete="off" type="text" id="ra" name="ra" value="{{ old('ra') }}" style="border: 1px solid red; background-color: rgb(235, 201, 206); color: black" required  maxlength="255">
+                        <input title="{{ $message }}" class="alert-danger" autocompĺete="off" type="text" id="ra" name="ra" value="{{ old('ra') }}" style="border: 1px solid red; background-color: rgb(235, 201, 206); color: black" required  maxlength="20">
                         <label for="ra">
                             <span>RA (somente números) *</span>
                         </label>
@@ -473,20 +473,6 @@
         document.getElementById('numero').addEventListener('input', function(event) {
             this.value = this.value.replace(/[^\d]/g, '');
         });
-
-
-        /* AVISO CASO OS CAMPOS DE EMAIL SEJAM IGUAIS */
-        function validarEmails() {
-            var emailPrincipal = document.getElementById("email").value;
-            var emailSecundario = document.getElementById("email_secundario").value;
-
-            if (emailPrincipal === emailSecundario) {
-                // Se os emails forem iguais, exiba uma mensagem de erro
-                alert("Os campos de email não podem ser iguais.");
-                return false;
-            }
-            return true;
-        }
 
         /* INFORMATIVO SENHA */
         function showPasswordRules() {
