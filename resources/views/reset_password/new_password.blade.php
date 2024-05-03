@@ -50,7 +50,7 @@
                     <input title="Confirmar Senha" type="password" id="password_confirmation" name="password_confirmation" style="border: 1px solid red; background-color:rgb(235, 201, 206); margin-bottom: 5px; padding-right: 70px" placeholder="Confirmar Senha" required autocomplete="new-password">
                     <span id="toggle_password_confirmation" onclick="toggleConfirmPassword()" style="position: absolute; top: 50%; left: 420px; transform: translateY(-50%); cursor: pointer;"><img src='{{ asset("img/usuarioMembro/cadastrar_demandas/olho_escuro_desmarcado.png")}}' alt="" style="width: 25px"></span>
                 </div>
-                <span class="info-icon" onclick="showPasswordRules2()" style="position: absolute;top: 60.5%; left: 870px; transform: translateY(-50%); cursor: pointer;">
+                <span class="info-icon" onclick="showPasswordRules2()" style="position: absolute;top: 64.5%; left: 870px; transform: translateY(-50%); cursor: pointer;">
                     <img src="{{ asset('img/cadastro_usuarios/icone_info_senha_escuro.png') }}" alt="Ícone informativo" style="width: 20px;">
                 </span>
             @else
@@ -135,7 +135,7 @@
             // Caixa de diálogo das regras da senha
             var passwordRules = document.createElement("div");
             passwordRules.innerHTML = `
-                <div id="password-rules" style="position: absolute; top: 190px; right: 20px; background-color: #4D6D7F; color: #FFF; border: 1px solid #FFF; padding: 10px; border-radius: 10px;">
+                <div id="password-rules" style="position: relative; top: 190px; right: 20px; background-color: #4D6D7F; color: #FFF; border: 1px solid #FFF; padding: 10px; border-radius: 10px;">
                     <button onclick="closePasswordRules2()" style="position: absolute; top: 5px; color: #FFF; right: 7px; cursor: pointer; background: transparent; border: none; outline: none;">Fechar</button>
                     <p>Regras de criação de senha:</p>
                     <ul>
