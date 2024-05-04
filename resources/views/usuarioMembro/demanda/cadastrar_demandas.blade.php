@@ -47,12 +47,12 @@
                 @csrf
                 <div class="caixa-input" style="width: 60%;">
                     @if ($errors->has('titulo') || $errors->has('id_usuario'))
-                        <input title="{{ $errors->first('titulo') ?: $errors->first('id_usuario') }}" type="text" name="titulo" style="border: 1px solid red; background-color: rgb(235, 201, 206); color: black" required maxlength="100">
+                        <input title="{{ $errors->first('titulo') ?: $errors->first('id_usuario') }}" type="text" name="titulo" style="border: 1px solid red; background-color: rgb(235, 201, 206); color: black" required maxlength="150">
                         <label for="titulo">
                             <span style="color: black">Titulo *</span>
                         </label>
                     @else    
-                        <input type="text" name="titulo" autocomplete="off" required maxlength="100">
+                        <input type="text" name="titulo" autocomplete="off" required maxlength="150">
                         <label for="titulo">
                             <span>Titulo *</span>
                         </label>
