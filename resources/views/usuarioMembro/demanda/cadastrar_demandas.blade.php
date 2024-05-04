@@ -47,12 +47,12 @@
                 @csrf
                 <div class="caixa-input" style="width: 60%;">
                     @if ($errors->has('titulo') || $errors->has('id_usuario'))
-                        <input title="{{ $errors->first('titulo') ?: $errors->first('id_usuario') }}" type="text" name="titulo" style="border: 1px solid red; background-color: rgb(235, 201, 206); color: black" required maxlength="150">
+                        <input title="{{ $errors->first('titulo') ?: $errors->first('id_usuario') }}" type="text" name="titulo" style="border: 1px solid red; background-color: rgb(235, 201, 206); color: black" required maxlength="150" value="{{old('titulo')}}">
                         <label for="titulo">
                             <span style="color: black">Titulo *</span>
                         </label>
                     @else    
-                        <input type="text" name="titulo" autocomplete="off" required maxlength="150">
+                        <input type="text" name="titulo" autocomplete="off" required maxlength="150" value="{{old('titulo')}}">
                         <label for="titulo">
                             <span>Titulo *</span>
                         </label>
@@ -60,51 +60,68 @@
                 </div>
                 <div class="caixa-input" style="width: 482px; margin-left: 3px">
                     @error('publico_alvo')
-                        <div class="autoComplete_wrapper">  
-                            <input title="{{$message}}" type="text" id="autoCompletePublicoAlvo" name="publico_alvo" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" autocomplete="off" required maxlength="70">
-                            <label for="publico_alvo">
-                                <span style="color: black">Publico alvo *</span>
-                            </label>
+                        <label for="publico_alvo" style="z-index: 1">
+                            <span>Publico alvo *</span>
+                        </label>
+                        <div class="publicoAlvo">
+                            <select class="selectpicker" data-live-search="true" title="{{$message}}" name="publico_alvo" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required maxlength="70">
+                                <option value="" selected disabled>Selecione aqui</option>
+                                @foreach ($listPublicoAlvo as $publicoAlvo)
+                                    <option value="{{$publicoAlvo->nome}}" {{ old('publico_alvo') == $publicoAlvo->nome ? 'selected' : '' }}>{{ $publicoAlvo->nome }}</option>
+                                @endforeach
+                            </select>
                         </div>
                     @else
-                        <div class="autoComplete_wrapper">  
-                            <input type="text" id="autoCompletePublicoAlvo" name="publico_alvo" autocomplete="off" required maxlength="70">
-                            <label for="publico_alvo">
-                                <span>Publico alvo *</span>
-                            </label>
+                        <label for="publico_alvo" style="z-index: 1">
+                            <span>Publico alvo *</span>
+                        </label>
+                        <div class="publicoAlvo">
+                            <select class="selectpicker" data-live-search="true" name="publico_alvo" required maxlength="70" value="{{old('publico_alvo')}}">
+                                <option value="" selected disabled>Selecione aqui</option>
+                                @foreach ($listPublicoAlvo as $publicoAlvo)
+                                    <option value="{{$publicoAlvo->nome}}" {{ old('publico_alvo') == $publicoAlvo->nome ? 'selected' : '' }}>{{ $publicoAlvo->nome }}</option>
+                                @endforeach
+                            </select>
                         </div>
                     @enderror
                 </div>
                 {{--  --}}
                 <div class="caixa-input" style="width: 50%;">
-                    @error('areaConhecimento')
-                        <div class="autoComplete_wrapper">  
-                            <input title="{{$message}}" type="text" id="autoCompleteAreaConhecimento" name="area_conhecimento" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" autocomplete="off" required maxlength="70">
-                            <label for="area_conhecimento">
-                                <span style="color: black">Área Conhecimento *</span>
-                            </label>
+                    @error('area_conhecimento')
+                        <label for="area_conhecimento" style="z-index: 1">
+                            <span>Área Conhecimento *</span>
+                        </label>
+                        <div class="areaConhecimento">
+                            <select class="selectpicker" data-live-search="true" title="{{$message}}" name="area_conhecimento" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required maxlength="70">
+                                <option value="" selected disabled>Selecione aqui</option>
+                                @foreach ($listAreaConhecimento as $areaConhecimento)
+                                    <option value="{{$areaConhecimento->nome}}" {{ old('area_conhecimento') == $areaConhecimento->nome ? 'selected' : '' }}>{{ $areaConhecimento->nome }}</option>
+                                @endforeach
+                            </select>
                         </div>
                     @else
                         <label for="area_conhecimento" style="z-index: 1">
                             <span>Área Conhecimento *</span>
                         </label>
-                        <select class="selectpicker" data-live-search="true" name="area_conhecimento" required maxlength="70">
-                            <option value="" selected disabled>Selecione aqui</option>
-                            @foreach ($listAreaConhecimento as $areaConhecimento)
-                                <option>{{ $areaConhecimento->nome }}</option>
-                            @endforeach
-                        </select>
+                        <div class="areaConhecimento">
+                            <select class="selectpicker areaConhecimento" data-live-search="true" name="area_conhecimento" required maxlength="70" value="{{old('area_conhecimento')}}">
+                                <option value="" selected disabled>Selecione aqui</option>
+                                @foreach ($listAreaConhecimento as $areaConhecimento)
+                                    <option value="{{$areaConhecimento->nome}}" {{ old('area_conhecimento') == $areaConhecimento->nome ? 'selected' : '' }}>{{ $areaConhecimento->nome }}</option>
+                                @endforeach
+                            </select>
+                        </div>
                     @enderror
                 </div>
                 {{--  --}}
                 <div class="caixa-input" style="width: 603px; margin-left: 3px">
                     @error('pessoas_afetadas')
-                        <input title="{{$message}}" type="number" name="pessoas_afetadas" min="0" autocomplete="off" onkeypress="return event.charCode >= 48 && event.charCode <= 57" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required maxlength="10">
+                        <input title="{{$message}}" type="number" name="pessoas_afetadas" min="0" autocomplete="off" onkeypress="return event.charCode >= 48 && event.charCode <= 57" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required maxlength="10" value="{{old('pessoas_afetadas')}}">
                         <label for="pessoas_afetadas">
                             <span style="color: black">Pessoas Atingidas (apenas números) *</span>
                         </label>
                     @else
-                        <input type="number" name="pessoas_afetadas" min="0" autocomplete="off" onkeypress="return event.charCode >= 48 && event.charCode <= 57" required maxlength="10">
+                        <input type="number" name="pessoas_afetadas" min="0" autocomplete="off" onkeypress="return event.charCode >= 48 && event.charCode <= 57" required maxlength="10" value="{{old('pessoas_afetadas')}}">
                         <label for="pessoas_afetadas">
                             <span>Pessoas Atingidas (apenas números) *</span>
                         </label>
@@ -112,12 +129,12 @@
                 </div>
                 <div class="caixa-input" style="height: 120px; width: 100%;">
                     @error('descricao')
-                        <textarea title="{{$message}}" type="text" name="descricao" placeholder="Texto Livre" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required maxlength="500"></textarea>
+                        <textarea title="{{$message}}" type="text" name="descricao" placeholder="Texto Livre" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required maxlength="500">{{old('descricao')}}</textarea>
                         <label id="campo-label" for="descricao">
                             <span id="campo-spam" style="color: black">Descrição *</span>
                         </label>
                     @else
-                        <textarea type="text" name="descricao" autocomplete="off" required maxlength="500"></textarea>
+                        <textarea type="text" name="descricao" autocomplete="off" required maxlength="500">{{old('descricao')}}</textarea>
                         <label id="campo-label" for="descricao">
                             <span id="campo-spam">Descrição *</span>
                         </label>
@@ -125,7 +142,7 @@
                 </div>
                 <div class="caixa-input" style="width: 35%">
                     @error('duracao')
-                        <select title="{{$message}}" name="duracao" autocomplete="off" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required>
+                        <select title="{{$message}}" name="duracao" autocomplete="off" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required value="{{old('duracao')}}">
                             <option disabled selected></option>
                             <option value="DIAS">Dias</option>
                             <option value="SEMANAS">Semanas</option>
@@ -137,7 +154,7 @@
                             <span style="color: black">Selecione a duração da necessidade *</span>
                         </label>
                     @else
-                        <select name="duracao" required autocomplete="off">
+                        <select name="duracao" autocomplete="off" required value="{{old('duracao')}}">
                             <option disabled selected></option>
                             <option value="DIAS">Dias</option>
                             <option value="SEMANAS">Semanas</option>
@@ -152,7 +169,7 @@
                 </div>
                 <div class="caixa-input" style="width: 35%; margin-left: 3px">
                     @error('nivel_prioridade')
-                        <select title="{{$message}}" name="nivel_prioridade" autocomplete="off" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required>
+                        <select title="{{$message}}" name="nivel_prioridade" autocomplete="off" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required value="{{old('nivel_prioridade')}}">
                             <option disabled selected></option>
                             <option value="BAIXO">Baixo</option>
                             <option value="MEDIO">Medio</option>
@@ -162,7 +179,7 @@
                             <span style="color: black">Selecione o nível de prioridade da necessidade *</span>
                         </label>
                     @else
-                        <select name="nivel_prioridade" autocomplete="off" required>
+                        <select name="nivel_prioridade" autocomplete="off" required value="{{old('nivel_prioridade')}}">
                             <option disabled selected></option>
                             <option value="BAIXO">Baixo</option>
                             <option value="MEDIO">Medio</option>
@@ -175,12 +192,12 @@
                 </div>
                 <div class="caixa-input" style="width: 358px; margin-left: 3px">
                     @error('instituicao_setor')
-                        <input title="{{$message}}" type="text" name="instituicao_setor" autocomplete="off" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" maxlength="70">
+                        <input title="{{$message}}" type="text" name="instituicao_setor" autocomplete="off" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" maxlength="70" value="{{old('instituicao')}}">
                         <label for="instituicao_setor">
                             <span style="color: black">Instituicao</span>
                         </label>
                     @else
-                        <input type="text" name="instituicao_setor" autocomplete="off" maxlength="70">
+                        <input type="text" name="instituicao_setor" autocomplete="off" maxlength="70" value="{{old('instituicao')}}">
                         <label for="instituicao_setor">
                             <span>Instituicao</span>
                         </label>
@@ -191,7 +208,7 @@
                 </div>
             </div>
         </form>
-        {{-- <script src="{{ asset('js/errors/mensagem_erro.js') }}"></script> --}}
+        <script src="{{ asset('js/errors/mensagem_erro.js') }}"></script>
         <script>
 
             function goBack() {

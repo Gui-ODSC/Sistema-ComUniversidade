@@ -269,8 +269,8 @@
                     @error('tipo_pessoa')
                         <select title="{{ $message }}" class="alert-danger" autocompĺete="off" type="text" id="tipo_pessoa" name="tipo_pessoa" value="{{old('tipo_pessoa')}}" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required>
                             <option value="" selected disabled></option>
-                            <option value="FISICA">Física</option>
-                            <option value="JURIDICA">Jurídica</option>
+                            <option value="FISICA" {{ "FISICA" === old('tipo_pessoa') ? 'selected' : '' }}>Física</option>
+                            <option value="JURIDICA" {{ "JURIDICA" === old('tipo_pessoa') ? 'selected' : '' }}>Jurídica</option>
                         </select>
                         <label for="tipo_pessoa">
                             <span>Tipo Pessoa *</span>

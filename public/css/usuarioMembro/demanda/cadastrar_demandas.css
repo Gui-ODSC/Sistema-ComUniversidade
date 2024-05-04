@@ -288,13 +288,21 @@ input[type="number"] {
 
 
 
-/* ESTILIZAÇÃO SELECTPICKER (FILTRO) */
+/* ESTILIZAÇÃO SELECTPICKER -------------------------------------------------------------------- */
 .dropdown .bootstrap-select {
     justify-content: center;
 }
 
-/* t */
-.bootstrap-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn) {
+
+.publicoAlvo .bootstrap-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn) {
+    width: 482px;
+    border: none;
+    justify-content: center;
+    display: flex;
+    height: 50px;
+}
+
+.areaConhecimento .bootstrap-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn) {
     width: 607px;
     border: none;
     justify-content: center;

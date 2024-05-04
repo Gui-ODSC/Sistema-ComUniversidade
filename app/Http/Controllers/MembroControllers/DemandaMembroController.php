@@ -231,8 +231,8 @@ class DemandaMembroController extends Controller
     {
         return [
             'id_usuario' => $errors->first('id_usuario'),
-            'id_publico_alvo' => $errors->first('id_publico_alvo'),
-            'id_area_conhecimento' => $errors->first('id_area_conhecimento'),
+            'publico_alvo' => $errors->first('id_publico_alvo'),
+            'area_conhecimento' => $errors->first('id_area_conhecimento'),
             'titulo' => $errors->first('titulo'),
             'descricao' => $errors->first('descricao'),
             'pessoas_afetadas' => $errors->first('pessoas_afetadas'),
