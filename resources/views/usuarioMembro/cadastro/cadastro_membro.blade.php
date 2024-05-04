@@ -49,7 +49,7 @@
                     <div class="img-foto-perfil" onclick="openFileSelector()">
                         <img id="current-image">
                         <p id="image-placeholder"><img src="{{asset('img/icones/perfil_claro.png')}}" alt=""><br>Adicionar uma imagem</p> 
-                        <input type="file" id="image-input" name="foto" style="position: absolute; heigth: 10px ; opacity: 0; object-fit: cover;" accept="image/*" onchange="previewImage(event)">
+                        <input type="file" id="image-input" name="foto" style="position: absolute; heigth: 10px ; opacity: 0; object-fit: cover;" accept="image/*" onchange="previewImage(event)" maxlength="255">
                     </div>
                 </div>
                 <div style="display: flex; flex-wrap: wrap; margin-left: 5px;">

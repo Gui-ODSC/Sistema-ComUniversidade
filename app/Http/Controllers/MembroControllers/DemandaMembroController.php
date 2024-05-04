@@ -83,8 +83,7 @@ class DemandaMembroController extends Controller
             return back()->withErrors([
                 "message" => 'Campos de Área de Conhecimento Inválidos',
                 "dados" => $validarCamposAreaConhecimento->errors()->all(),
-                ...$this->listErrosAreaConhecimento($validarCamposAreaConhecimento->errors())
-            ]);
+            ])->withInput();
         }
 
         // Verifica se a validação dos campos de Publico Alvo falhou
@@ -92,8 +91,7 @@ class DemandaMembroController extends Controller
             return back()->withErrors([
                 "message" => 'Campo de publico alvo inválidos',
                 "dados" => $validarCamposPublicoAlvo->errors()->all(),
-                ...$this->listErrosPublicoAlvo($validarCamposPublicoAlvo->errors())
-            ]);
+            ])->withInput();
         }
 
         // Verifica se a validação dos campos de demanda falhou
@@ -101,8 +99,7 @@ class DemandaMembroController extends Controller
             return back()->withErrors([
                 "message" => 'Campo de demanda inválidos',
                 "dados" => $validarCamposDemanda->errors()->all(),
-                ...$this->listErrosDemanda($validarCamposDemanda->errors())
-            ]);
+            ])->withInput();
         }
 
         $validatedDataDemanda = $validarCamposDemanda->validate();

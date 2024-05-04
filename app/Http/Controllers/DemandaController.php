@@ -37,7 +37,7 @@ class DemandaController extends Controller
                 'required',
                 Rule::exists(AreaConhecimento::class, 'id_area_conhecimento')
             ],
-            'titulo' => 'required|string|max:255',
+            'titulo' => 'required|string|max:2',
             'descricao' => 'required|string',
             'pessoas_afetadas' => 'required|integer|min:1',
             'duracao' => [
