@@ -61,11 +61,6 @@ body {
     border-radius: 5px;
 }
 
-
-
-
-
-
 .section-form {
     background-color: #FFF;
     margin-top: 60px;
@@ -309,3 +304,148 @@ input[type="number"]::-webkit-outer-spin-button {
 input[type="number"] {
     -moz-appearance: textfield; /* Firefox */
 }
+
+/* ESTILIZAÇÃO SELECTPICKER -------------------------------------------------------------------- */
+.dropdown .bootstrap-select {
+    justify-content: center;
+}
+
+
+.publicoAlvo .bootstrap-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn) {
+    width: 356px;
+    border: none;
+    justify-content: center;
+    display: flex;
+    height: 50px;
+}
+
+.areaConhecimentoAcao .bootstrap-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn) {
+    width: 364px;
+    border: none;
+    justify-content: center;
+    display: flex;
+    height: 50px;
+}
+
+.bootstrap-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn) button{
+    width: 607px;
+    border: none;
+    color: #FFF;
+    background-color: #4d6d7f;
+    margin-top: 38px 0px;
+}
+
+.bootstrap-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn) button:hover{
+    width: 607px;
+    border: none;
+    color: #FFF;
+    background-color: #4d6d7f;
+}
+
+.bootstrap-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn) button:focus{
+    border: none;
+}
+
+.bootstrap-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn) button:active{
+    border: none;
+}
+
+.bootstrap-select .dropdown-menu {
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 100%;
+    max-height: 100%;
+    overflow-y: auto;
+}
+
+.bootstrap-select .dropdown-toggle .filter-option {
+    position: absolute;
+    top: 13px;
+    left: -4px;
+    padding-top: inherit;
+    padding-right: inherit;
+    padding-bottom: inherit;
+    padding-left: inherit;
+    height: 100%;
+    width: 100%;
+    text-align: left;
+    display: flex;
+    font-size: 20px;
+}
+
+.dropdown-menu {
+    --bs-dropdown-link-active-bg: #274658;
+}
+
+.bootstrap-select {
+    width: 100%;
+}
+
+.dropdown-menu .dropdown-item:hover {
+    padding: 0.5rem;
+    background-color: #4d6d7f;
+    color: #fff; 
+}
+.btn.show {
+    background-color: rgba(44,39,88,1);
+    border-color: black;
+    width: 100%;
+}
+
+.bs-searchbox .form-control {
+    border-color: rgba(13,110,253,.25);
+    
+}
+
+.form-control:focus {
+    color: black;
+    background-color: var(--bs-body-bg);
+    border-color: rgba(13,110,253,.25);
+    outline: 0;
+    box-shadow: 0 0 0 .25rem rgba(13,110,253,.25);
+}
+
+.selectpicker button{
+    height: 20px;
+}
+
+.inner .show {
+    max-height: 150px;
+}
+
+.dropdown-menu .inner .show  a{
+    height: 40px;
+    padding-top: 10px;
+    padding-left: 10px;
+}
+
+.dropdown-menu .inner .show a:hover{
+    height: 40px;
+    padding-top: 10px;
+    padding-left: 0px;
+}
+
+.dropdown-menu .inner .show a:focus{
+    height: 40px;
+    padding-top: 10px;
+    padding-left: 10px;
+}
+
+.dropdown-menu .inner .show a:active{
+    height: 40px;
+    padding-top: 10px;
+    padding-left: 10px;
+}
+
+.bs-searchbox input {
+    height: 35px;
+    padding: 3px;
+    font-size: 15px;
+}
+
+.bs-searchbox input:active {
+    background-color: #FFF;
+}
+
+
+/* FIM */

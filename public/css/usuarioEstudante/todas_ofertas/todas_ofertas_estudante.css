@@ -1,20 +1,20 @@
 body {
     /* background: linear-gradient(90deg, rgba(9,107,170,1) 0%, rgba(16,43,73,1) 100%); */
-    background: linear-gradient(90deg, rgb(9, 170, 130) 0%, rgb(39, 88, 73) 50%, rgb(15, 53, 25) 100%);
+    background-color: #3b6c67;
 }
 
 .titulo {
     display: flex;
     /* background: linear-gradient(90deg, rgba(9,107,170,1) 0%, rgba(44,39,88,1) 50%, rgba(40,35,69,1) 100%); */
     /* background: linear-gradient(360deg, rgba(9,107,170,1) 0%, rgba(44,39,88,1) 50%, rgba(40,35,69,1) 100%); */
-    background-color: rgba(44,39,88,1);
+    background-color: #377b75;
     width: 700px;
     margin: auto;
     align-items: center;
     height: 70px;
     border-radius: 10px;
     align-content: center;
-    box-shadow: -1px 1px 4px 4px #376985;
+    box-shadow: -1px 1px 4px 4px black;
 }
 
 .titulo h1 {
@@ -44,13 +44,13 @@ body {
 }
 
 .caixa-pesquisa-oferta #pesquisaTitulo {
-    background-color: #111153;
+    background-color: #104655;
     border: solid 2px black;
     height: 38px;
 }
 
 .caixa-pesquisa-oferta #limparFiltro {
-    background-color: #3b3b7b;
+    background-color: #377b75;
     border: solid 2px black;
     color: #FFF;
     width: 140px;
@@ -62,7 +62,7 @@ body {
 
 
 .secao-filtros {
-    background-color: #376985;
+    background-color: #377b75;
     justify-content: space-between;
     margin-bottom: 5px;
     height: 80px;
@@ -82,7 +82,7 @@ body {
 }
 
 .filtros button{
-    background-color: #1f3b4b;
+    background-color: #104655;
     border: solid 2px black;
     width: 190px;
     height: 50px;
@@ -99,7 +99,7 @@ body {
     margin-left: 8px;
     margin-top: 13px;
     border-radius: 10px;
-    background-color: #111153;
+    background-color: #104655;
     border: solid 2px black;
     color: #FFF;
     font-weight: bold;
@@ -123,7 +123,7 @@ body {
     width: 195px;
     border: none;
     color: #FFF;
-    background-color: #111153;
+    background-color: #104655;
     border: solid 2px black;
     margin-top: 38px 0px;
 }
@@ -204,7 +204,7 @@ body {
     width: 100px;
     height: 50px;
     border: solid 2px black;
-    background-color: #191970;
+    background-color: #104655;
     color: #FFF;
     font-weight: bold;
     margin: 13px 10px 0px 8px;
@@ -212,7 +212,7 @@ body {
 }
 
 #botao-buscar button:hover{
-    background-color: #111153;
+    background-color: #104655;
 }
 
 
@@ -252,7 +252,7 @@ body {
 }
 
 .table-personalizacao thead th{
-    background-color: #376985;
+    background-color: #104655;
     color: #fff;
     margin-top: 10px;
 }

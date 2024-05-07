@@ -1,20 +1,20 @@
 body {
     /* background: linear-gradient(90deg, rgba(9,107,170,1) 0%, rgba(16,43,73,1) 100%); */
-    background: linear-gradient(90deg, rgba(9,107,170,1) 0%, rgba(44,39,88,1) 50%, rgba(40,35,69,1) 100%);
+    background-color: #005288;
 }
 
 .titulo {
     display: flex;
     /* background: linear-gradient(90deg, rgba(9,107,170,1) 0%, rgba(44,39,88,1) 50%, rgba(40,35,69,1) 100%); */
     /* background: linear-gradient(360deg, rgba(9,107,170,1) 0%, rgba(44,39,88,1) 50%, rgba(40,35,69,1) 100%); */
-    background-color: rgba(44,39,88,1);
+    background-color: #002e61;
     width: 700px;
     margin: auto;
     align-items: center;
     height: 70px;
     border-radius: 10px;
     align-content: center;
-    box-shadow: -1px 1px 4px 4px #376985;
+    box-shadow: -1px 1px 4px 4px #FFF;
 }
 
 .titulo h1 {
@@ -44,13 +44,12 @@ body {
 }
 
 .caixa-pesquisa-oferta #pesquisaTitulo {
-    background-color: #111153;
     border: solid 2px black;
     height: 38px;
 }
 
 .caixa-pesquisa-oferta #limparFiltro {
-    background-color: #3b3b7b;
+    background-color: #002e61;
     border: solid 2px black;
     color: #FFF;
     width: 140px;
@@ -62,7 +61,7 @@ body {
 
 
 .secao-filtros {
-    background-color: #376985;
+    background-color: #002e61;
     justify-content: space-between;
     margin-bottom: 5px;
     height: 80px;
@@ -82,7 +81,7 @@ body {
 }
 
 .filtros button{
-    background-color: #1f3b4b;
+    background-color: #005288;
     border: solid 2px black;
     width: 190px;
     height: 50px;
@@ -99,8 +98,8 @@ body {
     margin-left: 8px;
     margin-top: 13px;
     border-radius: 10px;
-    background-color: #111153;
-    border: solid 2px black;
+    background-color: #005288;
+    border: solid 2px #FFF;
     color: #FFF;
     font-weight: bold;
     text-align: center;
@@ -123,8 +122,8 @@ body {
     width: 195px;
     border: none;
     color: #FFF;
-    background-color: #111153;
-    border: solid 2px black;
+    background-color: #005288;
+    border: solid 2px #FFF;
     margin-top: 38px 0px;
 }
 
@@ -132,8 +131,8 @@ body {
     width: 195px;
     border: none;
     color: #FFF;
-    background-color: #171762;
-    border: solid 2px black;
+    background-color: #005288;
+    border: solid 2px #FFF;
 }
 
 .bootstrap-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn) button:focus{
@@ -164,7 +163,7 @@ body {
 }
 
 .dropdown-menu {
-    --bs-dropdown-link-active-bg: #171762;
+    --bs-dropdown-link-active-bg: #002e61;
 }
 
 .bootstrap-select {
@@ -173,26 +172,26 @@ body {
 
 .dropdown-menu .dropdown-item:hover {
     padding: 0.5rem 0.9rem;
-    background-color: #343494;
+    background-color: #005288;
     color: #fff; 
 }
 .btn.show {
-    background-color: rgba(44,39,88,1);
-    border-color: black;
+    background-color: 002e61;
+    border-color: #FFF;
     width: 80%;
 }
 
 .bs-searchbox .form-control {
-    border-color: rgba(13,110,253,.25);
+    border-color: 002e61;
     
 }
 
 .form-control:focus {
     color: black;
     background-color: var(--bs-body-bg);
-    border-color: rgba(13,110,253,.25);
+    border-color: 002e61;
     outline: 0;
-    box-shadow: 0 0 0 .25rem rgba(13,110,253,.25);
+    box-shadow: 0 0 0 .25rem 002e61;
 }
 
 /* FIM */
@@ -203,8 +202,8 @@ body {
     margin-bottom: 20px;
     width: 100px;
     height: 50px;
-    border: solid 2px black;
-    background-color: #191970;
+    border: solid 2px #FFF;
+    background-color: #005288;
     color: #FFF;
     font-weight: bold;
     margin: 13px 10px 0px 8px;
@@ -212,7 +211,7 @@ body {
 }
 
 #botao-buscar button:hover{
-    background-color: #111153;
+    background-color: #005288;
 }
 
 
@@ -252,7 +251,7 @@ body {
 }
 
 .table-personalizacao thead th{
-    background-color: #376985;
+    background-color: #146482;
     color: #fff;
     margin-top: 10px;
 }

@@ -1,20 +1,19 @@
 body {
-    background: rgb(92,69,252);
-    background: linear-gradient(90deg, rgba(92,69,252,1) 0%, rgba(253,57,29,1) 50%, rgba(92,69,252,1) 100%); 
+    background-color: #4d579c;
 }
 
 .titulo {
     display: flex;
     /* background: linear-gradient(90deg, rgba(9,107,170,1) 0%, rgba(44,39,88,1) 50%, rgba(40,35,69,1) 100%); */
     /* background: linear-gradient(360deg, rgba(9,107,170,1) 0%, rgba(44,39,88,1) 50%, rgba(40,35,69,1) 100%); */
-    background-color: rgba(44,39,88,1);
+    background-color: #1c2c52;
     width: 700px;
     margin: auto;
     align-items: center;
     height: 70px;
     border-radius: 10px;
     align-content: center;
-    box-shadow: -1px 1px 4px 4px #376985;
+    box-shadow: -1px 1px 4px 4px #FFF;
 }
 
 .titulo h1 {
@@ -48,7 +47,7 @@ body {
 }
 
 .caixa-pesquisa-oferta #pesquisaTitulo {
-    background-color: #111153;
+    background-color: #1c2c52;
     border: solid 2px black;
     height: 38px;
 }
@@ -65,7 +64,7 @@ body {
 
 
 .secao-filtros {
-    background-color: #376985;
+    background-color: #3b3b7b;
     display: flex;
     justify-content: space-between;
     margin-bottom: 5px;
@@ -79,7 +78,7 @@ body {
 }
 
 .filtros button{
-    background-color: #1f3b4b;
+    background-color: #1c2c52;
     border: solid 2px black;
     width: 190px;
     height: 50px;
@@ -96,7 +95,7 @@ body {
     margin-left: 8px;
     margin-top: 13px;
     border-radius: 10px;
-    background-color: #111153;
+    background-color: #1c2c52;
     border: solid 2px black;
     color: #FFF;
     font-weight: bold;
@@ -120,7 +119,7 @@ body {
     width: 210px;
     border: none;
     color: #FFF;
-    background-color: #111153;
+    background-color: #1c2c52;
     border: solid 2px black;
     margin-top: 38px 0px;
 }
@@ -129,7 +128,7 @@ body {
     width: 200px;
     border: none;
     color: #FFF;
-    background-color: #171762;
+    background-color: #1c2c52;
     border: solid 2px black;
 }
 
@@ -161,7 +160,7 @@ body {
 }
 
 .dropdown-menu {
-    --bs-dropdown-link-active-bg: #171762;
+    --bs-dropdown-link-active-bg: #1c2c52;
 }
 
 .bootstrap-select {
@@ -170,24 +169,24 @@ body {
 
 .dropdown-menu .dropdown-item:hover {
     padding: 0.5rem 0.9rem;
-    background-color: #343494;
+    background-color: #3b3b7b;
     color: #fff; 
 }
 .btn.show {
-    background-color: rgba(44,39,88,1);
+    background-color: #3b3b7b;
     border-color: black;
     width: 80%;
 }
 
 .bs-searchbox .form-control {
-    border-color: rgba(13,110,253,.25);
+    border-color: #1c2c52;
     
 }
 
 .form-control:focus {
     color: black;
     background-color: var(--bs-body-bg);
-    border-color: rgba(13,110,253,.25);
+    border-color: #1c2c52;
     outline: 0;
     box-shadow: 0 0 0 .25rem rgba(13,110,253,.25);
 }
@@ -201,7 +200,7 @@ body {
     width: 100px;
     height: 50px;
     border: solid 2px black;
-    background-color: #191970;
+    background-color: #1c2c52;
     color: #FFF;
     font-weight: bold;
     margin: 13px 10px 0px 8px;
@@ -249,7 +248,7 @@ body {
 }
 
 .table-personalizacao thead th{
-    background-color: #376985;
+    background-color: #3b3b7b;
     color: #fff;
     margin-top: 10px;
 }
