@@ -20,7 +20,7 @@ class UsuarioProfessorController extends Controller
     private function getValidationSchema()
     {
         return [
-            'link_curriculo' => 'nullable|string|max:255',
+            'link_curriculo' => 'nullable|string|max:255|url:http,https',
             'numero_registro' => 'required|integer'
         ];
     }
@@ -82,6 +82,7 @@ class UsuarioProfessorController extends Controller
         return [
             'link_curriculo.string' => 'Campo link deve ser um texto.',
             'link_curriculo.max' => 'Campo link ultrapassou a quantidade de caracteres',
+            'link_curriculo.url' => 'O campo para o Link do curriculo deve conter https ou http.',
             'numero_registro.required' => 'Campo Numero de Registro é obrigatório.',
             'numero_registro.integer' => 'Campo Numero de Registro deve ser um numero inteiro.',
         ];

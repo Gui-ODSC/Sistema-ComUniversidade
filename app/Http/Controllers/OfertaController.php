@@ -31,7 +31,7 @@ class OfertaController extends Controller
                 'required',
                 Rule::exists(AreaConhecimento::class, 'id_area_conhecimento')
             ],
-            'titulo' => 'required|string|max:255',
+            'titulo' => 'required|string|max:150',
             'descricao' => 'required|string',
             'tipo' => [
                 new Enum(TipoOfertaEnum::class)

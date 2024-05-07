@@ -69,7 +69,7 @@ class OfertaAcaoProfessorController extends Controller
             return back()->withErrors([
                 "message" => 'Campos de Área de Conhecimento Inválidos',
                 "dados" => $validarCamposAreaConhecimento->errors()->all(),
-            ]);
+            ])->withInput();
         }
 
         // Verifica se a validação dos campos de Publico Alvo falhou
@@ -77,14 +77,14 @@ class OfertaAcaoProfessorController extends Controller
             return back()->withErrors([
                 "message" => 'Campo de publico alvo inválidos',
                 "dados" => $validarCamposPublicoAlvo->errors()->all(),
-            ]);
+            ])->withInput();
         }
 
         if ($validarCamposTipoAcao->fails()) {
             return back()->withErrors([
                 "message" => 'Campo de publico alvo inválidos',
                 "dados" => $validarCamposTipoAcao->errors()->all(),
-            ]);
+            ])->withInput();
         }
 
         // Verifica se a validação dos campos de demanda falhou
@@ -92,7 +92,7 @@ class OfertaAcaoProfessorController extends Controller
             return back()->withErrors([
                 "message" => 'Campo de Oferta inválidos',
                 "dados" => $validarCamposOferta->errors()->all(),
-            ]);
+            ])->withInput();
         }
 
         // Verifica se a validação dos campos de demanda falhou
@@ -100,7 +100,7 @@ class OfertaAcaoProfessorController extends Controller
             return back()->withErrors([
                 "message" => 'Campo de Oferta inválidos',
                 "dados" => $validarCamposOfertaAcao->errors()->all(),
-            ]);
+            ])->withInput();
         }
 
         $validatedDataOferta = $validarCamposOferta->validate();
@@ -157,7 +157,7 @@ class OfertaAcaoProfessorController extends Controller
             return back()->withErrors([
                 "message" => 'Campos de Área de Conhecimento Inválidos',
                 "dados" => $validarCamposAreaConhecimento->errors()->all(),
-            ]);
+            ])->withInput();
         }
 
         // Verifica se a validação dos campos de Publico Alvo falhou
@@ -165,14 +165,14 @@ class OfertaAcaoProfessorController extends Controller
             return back()->withErrors([
                 "message" => 'Campo de publico alvo inválidos',
                 "dados" => $validarCamposPublicoAlvo->errors()->all(),
-            ]);
+            ])->withInput();
         }
 
         if ($validarCamposTipoAcao->fails()) {
             return back()->withErrors([
                 "message" => 'Campo de publico alvo inválidos',
                 "dados" => $validarCamposTipoAcao->errors()->all(),
-            ]);
+            ])->withInput();
         }
 
         // Verifica se a validação dos campos de demanda falhou
@@ -180,7 +180,7 @@ class OfertaAcaoProfessorController extends Controller
             return back()->withErrors([
                 "message" => 'Campo de Oferta inválidos',
                 "dados" => $validarCamposOferta->errors()->all(),
-            ]);
+            ])->withInput();
         }
 
         // Verifica se a validação dos campos de demanda falhou
@@ -188,7 +188,7 @@ class OfertaAcaoProfessorController extends Controller
             return back()->withErrors([
                 "message" => 'Campo de Oferta inválidos',
                 "dados" => $validarCamposOfertaAcao->errors()->all(),
-            ]);
+            ])->withInput();
         }
 
         $validatedDataOferta = $validarCamposOferta->validate();

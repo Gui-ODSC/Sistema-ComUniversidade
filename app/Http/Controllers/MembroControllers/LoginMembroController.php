@@ -35,7 +35,7 @@ class LoginMembroController extends Controller
             } else {
                 return back()->withErrors([
                     "message" => 'Email ou Senha Inválidos.',
-                ]);
+                ])->withInput();
             }
         } else {
             return back()->withErrors([
