@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('Usuario', function (Blueprint $table) {
             $table->id('id_usuario');
-            $table->unsignedBigInteger('id_endereco');
+            $table->unsignedBigInteger('id_cep');
             $table->string('nome');
             $table->string('sobrenome');
             $table->date('nascimento');
@@ -27,9 +27,10 @@ return new class extends Migration
             $table->enum('tipo', ['MEMBRO', 'ALUNO', 'PROFESSOR']);
             $table->enum('tipo_pessoa', ['FISICA', 'JURIDICA']);
             $table->string('instituicao', 100)->nullable();
+            $table->string('numero', 20);
 
-            
-            $table->foreign('id_endereco')->references('id_endereco')->on('Endereco')->onDelete('restrict');
+            $table->foreign('id_cep')->references('id_cep')->on('Cep');
+
             $table->timestamps();
         });
     }
