@@ -3,15 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ asset('css/menu_navegacao/menu.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/usuarioMembro/demanda/editar_demandas.css') }}">
-    <script src="{{ asset('js/menu/menu_navegacao.js') }}"></script>
-
+    {{-- CLOUDFLARE --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    {{-- SELECTPICKER --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.6/js/bootstrap-select.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.6/css/bootstrap-select.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />
     {{-- AUTOCOMPLETE --}}
     <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js/dist/js/autoComplete.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/css/autoComplete.02.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="{{ asset('js/menu/menu_navegacao.js') }}"></script>
+    {{-- CSS --}}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ asset('css/menu_navegacao/menu.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/usuarioMembro/demanda/editar_demandas.css') }}">
     <title>Editar Demanda</title>
 </head>
 <body>
@@ -24,86 +32,109 @@
             <h1>Editar Necessidade</h1>
         </div>
         <form action="{{ route('demanda_edit_store', $demanda->id_demanda) }}" method="POST">
-            @if($errors->has('dados'))
-                <div class="msg-erro fade-effect-error" id="error-message-email" style="margin-top: 30px">
-                    @foreach ($errors->get('dados') as $dado)
-                        <p style="display: block; align-items: center; width: 100%;">{{ $dado }}</p>
-                        <br>
-                    @endforeach
+            @if($errors->any())
+                <div class="alert alert-danger" style="margin-top: 10px; font-size: 15px">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            @if ($error)
+                                <p style="margin-bottom: 5px">{{ $error }}</p>
+                            @endif
+                        @endforeach
+                    </ul>
                 </div>
             @endif
             <div class="section-form">
                 @csrf
                 <div class="caixa-input" style="width: 60%;">
                     @if ($errors->has('titulo') || $errors->has('id_usuario'))
-                        <input title="{{ $errors->first('titulo') ?: $errors->first('id_usuario') }}" type="text" name="titulo" style="border: 1px solid red; background-color: rgb(235, 201, 206); color: black" required>
+                        <input title="{{ $errors->first('titulo') ?: $errors->first('id_usuario') }}" type="text" name="titulo" style="border: 1px solid red; background-color: rgb(235, 201, 206); color: black" required maxlength="150">
                         <label for="titulo">
-                            <span>Titulo</span>
+                            <span>Titulo *</span>
                         </label>
                     @else    
-                        <input type="text" name="titulo" value="{{ $demanda->titulo }}" required>
+                        <input type="text" name="titulo" value="{{ $demanda->titulo }}" required maxlength="150">
                         <label for="titulo">
-                            <span>Titulo</span>
+                            <span>Titulo *</span>
                         </label>
                     @endif
                 </div>
                 <div class="caixa-input" style="width: 482px; margin-left: 3px">
                     @error('publico_alvo')
-                        <div class="autoComplete_wrapper">  
-                            <input title="{{$message}}" type="text" id="autoCompletePublicoAlvo" name="publico_alvo" placeholder="Publico Alvo da Ação" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" autocomplete="off" required>
-                            <label for="publico_alvo">
-                                <span>Publico alvo</span>
-                            </label>
+                        <label for="publico_alvo" style="z-index: 1">
+                            <span>Publico alvo *</span>
+                        </label>
+                        <div class="publicoAlvo">
+                            <input class="selectpicker" data-live-search="true" title="{{$message}}" type="text" name="publico_alvo" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required maxlength="70">
+                                <option value="" selected disabled>Selecione aqui</option>
+                                @foreach ($listPublicoAlvo as $publicoAlvoElement)
+                                    <option value="{{$publicoAlvoElement->nome}}" {{ $publicoAlvo->nome === $publicoAlvoElement->nome ? 'selected' : '' }}>{{ $publicoAlvoElement->nome }}</option>
+                                @endforeach
+                            </select>
                         </div>
                     @else
-                        <div class="autoComplete_wrapper">  
-                            <input type="text" id="autoCompletePublicoAlvo" name="publico_alvo" value="{{ $publicoAlvo->nome }}" autocomplete="off" required>
-                            <label for="publico_alvo">
-                                <span>Publico alvo</span>
-                            </label>
+                        <label for="publico_alvo" style="z-index: 1">
+                            <span>Publico alvo *</span>
+                        </label>
+                        <div class="publicoAlvo">
+                            <select class="selectpicker" data-live-search="true" name="publico_alvo" required maxlength="70">
+                                <option value="" selected disabled>Selecione aqui</option>
+                                @foreach ($listPublicoAlvo as $publicoAlvoElement)
+                                    <option value="{{$publicoAlvoElement->nome}}" {{ $publicoAlvo->nome === $publicoAlvoElement->nome ? 'selected' : '' }}>{{ $publicoAlvoElement->nome }}</option>
+                                @endforeach
+                            </select>
                         </div>
                     @enderror
                 </div>
                 <div class="caixa-input" style="width: 50%">
                     @error('areaConhecimento')
-                        <div class="autoComplete_wrapper">  
-                            <input title="{{$message}}" type="text" id="autoCompleteAreaConhecimento" name="area_conhecimento" placeholder="Área de Conhecimento" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" autocomplete="off" required>
-                            <label for="area_conhecimento">
-                                <span>Área Conhecimento</span>
-                            </label>
+                        <label for="area_conhecimento" style="z-index: 1">
+                            <span>Área Conhecimento *</span>
+                        </label>
+                        <div class="areaConhecimento">
+                            <input class="selectpicker" data-live-search="true" title="{{$message}}" type="text" name="area_conhecimento" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required maxlength="70">
+                                <option value="" selected disabled>Selecione aqui</option>
+                                @foreach ($listPublicoAlvo as $areaConhecimentoElement)
+                                    <option value="{{$areaConhecimentoElement->nome}}" {{ $areaConhecimento->nome === $areaConhecimentoElement->nome ? 'selected' : '' }}>{{ $areaConhecimentoElement->nome }}</option>
+                                @endforeach
+                            </select>
                         </div>
                     @else
-                        <div class="autoComplete_wrapper">  
-                            <input type="text" id="autoCompleteAreaConhecimento" name="area_conhecimento" value="{{ $areaConhecimento->nome }}" placeholder="Área de Conhecimento" autocomplete="off" required>
-                            <label for="area_conhecimento">
-                                <span>Área Conhecimento</span>
-                            </label>
+                        <label for="area_conhecimento" style="z-index: 1">
+                            <span>Área Conhecimento *</span>
+                        </label>
+                        <div class="areaConhecimento">
+                            <select class="selectpicker" data-live-search="true" name="area_conhecimento" required maxlength="70">
+                                <option value="" selected disabled>Selecione aqui</option>
+                                @foreach ($listAreaConhecimento as $areaConhecimentoElement)
+                                    <option value="{{$areaConhecimentoElement->nome}}" {{ $areaConhecimento->nome === $areaConhecimentoElement->nome ? 'selected' : '' }}>{{ $areaConhecimentoElement->nome }}</option>
+                                @endforeach
+                            </select>
                         </div>
                     @enderror
                 </div>
                 <div class="caixa-input" style="width: 603px; margin-left: 3px">
                     @error('pessoas_afetadas')
-                        <input title="{{$message}}" type="number" name="pessoas_afetadas" onkeypress="return event.charCode >= 48 && event.charCode <= 57" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required>
+                        <input title="{{$message}}" type="number" name="pessoas_afetadas" onkeypress="return event.charCode >= 48 && event.charCode <= 57" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required maxlength="10">
                         <label for="pessoas_afetadas">
-                            <span>Pessoas Atingidas</span>
+                            <span>Pessoas atingidas (apenas números) *</span>
                         </label>
                     @else
-                        <input type="number" name="pessoas_afetadas" onkeypress="return event.charCode >= 48 && event.charCode <= 57" value="{{ $demanda->pessoas_afetadas }}" required>
+                        <input type="number" name="pessoas_afetadas" onkeypress="return event.charCode >= 48 && event.charCode <= 57" value="{{ $demanda->pessoas_afetadas }}" required maxlength="10">
                         <label for="pessoas_afetadas">
-                            <span>Pessoas Atingidas</span>
+                            <span>Pessoas atingidas (apenas números) *</span>
                         </label>
                     @enderror
                 </div>
                 <div class="caixa-input" style="height: 120px; width: 100%;">
                     @error('descricao')
-                        <textarea title="{{$message}}" type="text" name="descricao" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required></textarea>
+                        <textarea title="{{$message}}" type="text" name="descricao" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required maxlength="500"></textarea>
                         <label id="campo-label" for="descricao">
-                            <span id="campo-spam">Descrição</span>
+                            <span id="campo-spam">Descrição *</span>
                         </label>
                     @else
-                        <textarea type="text" name="descricao" required>{{ $demanda->descricao }}</textarea>
+                        <textarea type="text" name="descricao" required maxlength="500">{{ $demanda->descricao }}</textarea>
                         <label id="campo-label" for="descricao">
-                            <span id="campo-spam">Descrição</span>
+                            <span id="campo-spam">Descrição *</span>
                         </label>
                     @enderror
                 </div>
@@ -118,7 +149,7 @@
                             <option value="INDEFINIDO" {{ $demanda->duracao === 'INDEFINIDO' ? 'selected' : '' }}>Indefinido</option>
                         </select>
                         <label for="duracao">
-                            <span>Selecione a duração da necessidade</span>
+                            <span>Selecione a duração da necessidade *</span>
                         </label>
                     @else
                         <select name="duracao" required>
@@ -130,7 +161,7 @@
                             <option value="INDEFINIDO" {{ $demanda->duracao === 'INDEFINIDO' ? 'selected' : '' }}>Indefinido</option>
                         </select>
                         <label for="duracao">
-                            <span>Selecione a duração da necessidade</span>
+                            <span>Selecione a duração da necessidade *</span>
                         </label>
                     @enderror
                 </div>
@@ -143,7 +174,7 @@
                             <option value="ALTO" {{ $demanda->nivel_prioridade === 'ALTO'? 'selected' : '' }}>Alto</option>
                         </select>
                         <label for="nivel_prioridade">
-                            <span>Selecione o nível de prioridade da necessidade</span>
+                            <span>Selecione o nível de prioridade da necessidade *</span>
                         </label>
                     @else
                         <select name="nivel_prioridade" required>
@@ -153,20 +184,20 @@
                             <option value="ALTO" {{ $demanda->nivel_prioridade === 'ALTO'? 'selected' : '' }}>Alto</option>
                         </select>
                         <label for="nivel_prioridade">
-                            <span>Selecione o nível de prioridade da necessidade</span>
+                            <span>Selecione o nível de prioridade da necessidade *</span>
                         </label>
                     @enderror
                 </div>
                 <div class="caixa-input" style="width: 358px; margin-left: 3px">
                     @error('instituicao_setor')
-                        <input title="{{$message}}" type="text" name="instituicao_setor" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black">
+                        <input title="{{$message}}" type="text" name="instituicao_setor" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" maxlength="70">
                         <label for="instituicao_setor">
-                            <span>Instituicao Prioridade</span>
+                            <span>Instituição</span>
                         </label>
                     @else
-                        <input type="text" name="instituicao_setor" value="{{ $demanda->instituicao_setor ?? '' }}" />
+                        <input type="text" name="instituicao_setor" value="{{ $demanda->instituicao_setor ?? '' }}" maxlength="70">
                         <label for="instituicao_setor">
-                            <span>Instituicao Prioridade</span>
+                            <span>Instituição</span>
                         </label>
                     @enderror
                 </div>

@@ -193,7 +193,7 @@
                                     <span>Data Expiração da Oferta</span>
                                 </label>
                             @else
-                                <input type="date" name="data_limite" autocomplete="off" placeholder="Dia/Mes/Ano" min="{{ date('Y-m-d') }}" value="{{old('data_limite')}}s>
+                                <input type="date" name="data_limite" autocomplete="off" placeholder="Dia/Mes/Ano" min="{{ date('Y-m-d') }}" value="{{old('data_limite')}}">
                                 <label for="data_expiracao">
                                     <span>Data Expiração da Oferta</span>
                                 </label>

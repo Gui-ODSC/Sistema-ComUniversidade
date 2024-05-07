@@ -195,12 +195,12 @@
                     @error('instituicao_setor')
                         <input title="{{$message}}" type="text" name="instituicao_setor" autocomplete="off" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" maxlength="70" value="{{old('instituicao_setor')}}">
                         <label for="instituicao_setor">
-                            <span style="color: black">Instituicao</span>
+                            <span style="color: black">Instituição</span>
                         </label>
                     @else
                         <input type="text" name="instituicao_setor" autocomplete="off" maxlength="70" value="{{old('instituicao_setor')}}">
                         <label for="instituicao_setor">
-                            <span>Instituicao</span>
+                            <span>Instituição</span>
                         </label>
                     @enderror
                 </div>

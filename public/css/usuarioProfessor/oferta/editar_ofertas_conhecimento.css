@@ -8,7 +8,7 @@ body {
     /* background: linear-gradient(90deg, rgba(9,107,170,1) 0%, rgba(44,39,88,1) 50%, rgba(40,35,69,1) 100%); */
     /* background: linear-gradient(360deg, rgba(9,107,170,1) 0%, rgba(44,39,88,1) 50%, rgba(40,35,69,1) 100%); */
     background-color: rgba(44,39,88,1);
-    width: 550px;
+    width: 500px;
     margin: auto;
     align-items: center;
     height: 70px;
@@ -61,7 +61,7 @@ body {
     margin: 20px auto 0px;
 }
 
-.editar-ofertas button {
+.button_send button {
     padding: 10px;
     border-radius: 10px;
     margin-bottom: 10px;
@@ -75,7 +75,7 @@ body {
     transition: all 0.3s ease;
 }
 
-.editar-ofertas button:hover {
+.button_send button:hover {
     transform: scale(1.1);
 }
 
@@ -94,61 +94,13 @@ body {
     height: 50px;
     margin-bottom: 3px;
 }
-
-/* AutoComplete */
-.autoComplete_wrapper {
-    width: 100%;
-    background-color: #212121;
-}
-
-.autoComplete_wrapper input{
-    padding-left: 0;
-}
-
-
-.caixa-input .autoComplete_wrapper ul {
-    position: absolute;
-    max-height: 120px;
-    overflow-y: scroll;
-    top: 100%;
-    left: 0;
-    right: 0;
-    padding: 0;
-    margin: 0 0 0 0;
-    border-radius: 4px;
-    background-color: #4d6d7f;
-    z-index: 1000;
-    outline: 0;
-    border: none;
-}
-
-.autoComplete_wrapper #autoCompleteAreaConhecimento
-{
-    height: 50px;
-    width: 100%;
-    color: #FFF;
-    font-size: 20px
-}
-
-.caixa-input #autoComplete_list li {
-    border: solid 1px #212121;
-    background-color: #47565a;
-    color: #FFF;
-    padding-top: 5px;
-}
-
-.caixa-input li {
-    list-style-type: none;
-}
-
-/* Fim */
   
 .editar-ofertas input {
     color: #FFF;
     font-size: 20px;
     width: 100%;
     height: 50px;
-    padding: 24px 10px 10px 5px;
+    padding: 20px 10px 10px 5px;
     background-color: #4d6d7f;
     border: none;
     border-radius: 5px;
@@ -285,4 +237,139 @@ input[type="number"]::-webkit-outer-spin-button {
 
 input[type="number"] {
     -moz-appearance: textfield; /* Firefox */
+}
+
+/* ESTILIZAÇÃO SELECTPICKER -------------------------------------------------------------------- */
+.dropdown .bootstrap-select {
+    justify-content: center;
+}
+
+
+
+.areaConhecimento .bootstrap-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn) {
+    width: 364px;
+    border: none;
+    justify-content: center;
+    display: flex;
+    height: 50px;
+}
+
+.bootstrap-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn) button{
+    width: 607px;
+    border: none;
+    color: #FFF;
+    background-color: #4d6d7f;
+    margin-top: 38px 0px;
+}
+
+.bootstrap-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn) button:hover{
+    width: 607px;
+    border: none;
+    color: #FFF;
+    background-color: #4d6d7f;
+}
+
+.bootstrap-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn) button:focus{
+    border: none;
+}
+
+.bootstrap-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn) button:active{
+    border: none;
+}
+
+.bootstrap-select .dropdown-menu {
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 100%;
+    max-height: 100%;
+    overflow-y: auto;
+}
+
+.bootstrap-select .dropdown-toggle .filter-option {
+    position: absolute;
+    top: 13px;
+    left: -4px;
+    padding-top: inherit;
+    padding-right: inherit;
+    padding-bottom: inherit;
+    padding-left: inherit;
+    height: 100%;
+    width: 100%;
+    text-align: left;
+    display: flex;
+    font-size: 20px;
+}
+
+.dropdown-menu {
+    --bs-dropdown-link-active-bg: #274658;
+}
+
+.bootstrap-select {
+    width: 100%;
+}
+
+.dropdown-menu .dropdown-item:hover {
+    padding: 0.5rem;
+    background-color: #4d6d7f;
+    color: #fff; 
+}
+.btn.show {
+    background-color: rgba(44,39,88,1);
+    border-color: black;
+    width: 100%;
+}
+
+.bs-searchbox .form-control {
+    border-color: rgba(13,110,253,.25);
+    
+}
+
+.form-control:focus {
+    color: black;
+    background-color: var(--bs-body-bg);
+    border-color: rgba(13,110,253,.25);
+    outline: 0;
+    box-shadow: 0 0 0 .25rem rgba(13,110,253,.25);
+}
+
+.selectpicker button{
+    height: 20px;
+}
+
+.inner .show {
+    max-height: 150px;
+}
+
+.dropdown-menu .inner .show  a{
+    height: 40px;
+    padding-top: 10px;
+    padding-left: 10px;
+}
+
+.dropdown-menu .inner .show a:hover{
+    height: 40px;
+    padding-top: 10px;
+    padding-left: 0px;
+}
+
+.dropdown-menu .inner .show a:focus{
+    height: 40px;
+    padding-top: 10px;
+    padding-left: 10px;
+}
+
+.dropdown-menu .inner .show a:active{
+    height: 40px;
+    padding-top: 10px;
+    padding-left: 10px;
+}
+
+.bs-searchbox input {
+    height: 35px;
+    padding: 3px;
+    font-size: 15px;
+}
+
+.bs-searchbox input:active {
+    background-color: #FFF;
 }

@@ -3,15 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ asset('css/menu_navegacao/menu.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/usuarioProfessor/oferta/editar_ofertas_acao.css') }}">
-    <script src="{{ asset('js/menu/menu_navegacao.js') }}"></script>
+    {{-- CLOUDFLARE --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    {{-- SELECTPICKER --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.6/js/bootstrap-select.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.6/css/bootstrap-select.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />
 
     {{-- AUTOCOMPLETE --}}
     <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js/dist/js/autoComplete.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/css/autoComplete.02.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="{{ asset('js/menu/menu_navegacao.js') }}"></script>
+    {{-- CSS --}}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ asset('css/menu_navegacao/menu.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/usuarioProfessor/oferta/editar_ofertas_acao.css') }}">
     <title>Editar Demanda</title>
 </head>
 <body>
@@ -40,67 +50,95 @@
                 @csrf
                 <div class="caixa-input" style="width: 40%;">
                     @if ($errors->has('titulo') || $errors->has('id_usuario'))
-                        <input title="{{ $errors->first('titulo') ?: $errors->first('id_usuario') }}" type="text" name="titulo" value="{{$oferta->titulo}}" style="border: 1px solid red; background-color: rgb(235, 201, 206); color: black" required>
+                        <input title="{{ $errors->first('titulo') ?: $errors->first('id_usuario') }}" type="text" name="titulo" value="{{$oferta->titulo}}" style="border: 1px solid red; background-color: rgb(235, 201, 206); color: black" required maxlength="150">
                         <label for="titulo">
-                            <span>Titulo</span>
+                            <span>Titulo *</span>
                         </label>
                     @else    
-                        <input type="text" name="titulo" id="titulo" autocomplete="off" value="{{$oferta->titulo}}" required>
+                        <input type="text" name="titulo" id="titulo" autocomplete="off" value="{{$oferta->titulo}}" required maxlength="150">
                         <label for="titulo">
-                            <span>Titulo</span>
+                            <span>Titulo *</span>
                         </label>
                     @endif
                 </div>
                 <div class="caixa-input" style="width: 30%; margin-left: 3px">
-                    @error('areaConhecimento')
-                        <div class="autoComplete_wrapper">  
-                            <input title="{{$message}}" type="text" id="autoCompleteAreaConhecimentoAcao" name="area_conhecimento" value="{{$areaConhecimento->nome}}" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" autocomplete="off" required>
-                            <label for="area_conhecimento">
-                                <span>Área Conhecimento</span>
-                            </label>
+                    @error('area_conhecimento')
+                        <label for="area_conhecimento" style="z-index: 1">
+                            <span>Área Conhecimento *</span>
+                        </label>
+                        <div class="areaConhecimento">
+                            <input class="selectpicker" data-live-search="true" title="{{$message}}" type="text" name="area_conhecimento" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required maxlength="70">
+                                <option value="" selected disabled>Selecione aqui</option>
+                                @foreach ($listPublicoAlvo as $areaConhecimentoElement)
+                                    <option value="{{$areaConhecimentoElement->nome}}" {{ $areaConhecimento->nome === $areaConhecimentoElement->nome ? 'selected' : '' }}>{{ $areaConhecimentoElement->nome }}</option>
+                                @endforeach
+                            </select>
                         </div>
                     @else
-                        <div class="autoComplete_wrapper">  
-                            <input type="text" id="autoCompleteAreaConhecimentoAcao" name="area_conhecimento" value="{{$areaConhecimento->nome}}" autocomplete="off" required>
-                            <label for="area_conhecimento">
-                                <span>Área Conhecimento</span>
-                            </label>
+                        <label for="area_conhecimento" style="z-index: 1">
+                            <span>Área Conhecimento *</span>
+                        </label>
+                        <div class="areaConhecimento">
+                            <select class="selectpicker" data-live-search="true" name="area_conhecimento" required maxlength="70">
+                                <option value="" selected disabled>Selecione aqui</option>
+                                @foreach ($listAreaConhecimento as $areaConhecimentoElement)
+                                    <option value="{{$areaConhecimentoElement->nome}}" {{ $areaConhecimento->nome === $areaConhecimentoElement->nome ? 'selected' : '' }}>{{ $areaConhecimentoElement->nome }}</option>
+                                @endforeach
+                            </select>
                         </div>
                     @enderror
                 </div>
                 <div class="caixa-input" style="width: 355px; margin-left: 3px">
                     @error('publico_alvo')
-                        <div class="autoComplete_wrapper">  
-                            <input title="{{$message}}" type="text" id="autoCompletePublicoAlvo" name="publico_alvo" value="{{$publicoAlvo->nome}}" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" autocomplete="off" required>
-                            <label for="publico_alvo">
-                                <span>Publico alvo</span>
-                            </label>
+                        <label for="publico_alvo" style="z-index: 1">
+                            <span>Publico alvo *</span>
+                        </label>
+                        <div class="publicoAlvo">
+                            <input class="selectpicker" data-live-search="true" title="{{$message}}" type="text" name="publico_alvo" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required maxlength="70">
+                                <option value="" selected disabled>Selecione aqui</option>
+                                @foreach ($listPublicoAlvo as $publicoAlvoElement)
+                                    <option value="{{$publicoAlvoElement->nome}}" {{ $publicoAlvo->nome === $publicoAlvoElement->nome ? 'selected' : '' }}>{{ $publicoAlvoElement->nome }}</option>
+                                @endforeach
+                            </select>
                         </div>
                     @else
-                        <div class="autoComplete_wrapper">  
-                            <input type="text" id="autoCompletePublicoAlvo" name="publico_alvo" value="{{$publicoAlvo->nome}}" autocomplete="off" required>
-                            <label for="publico_alvo">
-                                <span>Publico alvo</span>
-                            </label>
+                        <label for="publico_alvo" style="z-index: 1">
+                            <span>Publico alvo *</span>
+                        </label>
+                        <div class="publicoAlvo">
+                            <select class="selectpicker" data-live-search="true" name="publico_alvo" required maxlength="70">
+                                <option value="" selected disabled>Selecione aqui</option>
+                                @foreach ($listPublicoAlvo as $publicoAlvoElement)
+                                    <option value="{{$publicoAlvoElement->nome}}" {{ $publicoAlvo->nome === $publicoAlvoElement->nome ? 'selected' : '' }}>{{ $publicoAlvoElement->nome }}</option>
+                                @endforeach
+                            </select>
                         </div>
                     @enderror
                 </div>
                 <div class="caixa-input" style="width: 30%;">
                     @error('tipo_acao')
-                        <div class="autoComplete_wrapper">  
-                            <input title="{{$message}}" type="text" id="autoCompleteTipoAcao" name="tipo_acao" value="{{$tipoAcao->nome}}" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" autocomplete="off" required>
-                            <label for="tipo_acao">
-                                <span>Modalidade da Ação de Extensão</span>
-                            </label>
-                        </div>
-                    @else
-                        <div class="autoComplete_wrapper">  
-                            <input type="text" id="autoCompleteTipoAcao" name="tipo_acao" value="{{$tipoAcao->nome}}" autocomplete="off" required>
-                            <label for="tipo_acao">
-                                <span>Modalidade da Ação de Extensão</span>
-                            </label>
-                        </div>
-                    @enderror
+                                <select title="{{$message}}" name="tipo_acao" autocomplete="off" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required>
+                                    <option disabled selected></option>
+                                    <option value="Curso" {{ $oferta->ofertaAcao->tipoAcao->nome == 'Curso' ? 'selected' : '' }}>Curso</option>
+                                    <option value="Projeto" {{ $oferta->ofertaAcao->tipoAcao->nome == 'Projeto' ? 'selected' : '' }}>Projeto</option>
+                                    <option value="Programa" {{ $oferta->ofertaAcao->tipoAcao->nome == 'Programa' ? 'selected' : '' }}>Programa</option>
+                                    <option value="Evento" {{ $oferta->ofertaAcao->tipoAcao->nome == 'Evento' ? 'selected' : '' }}>Evento</option>
+                                </select>
+                                <label for="tipo_acao">
+                                    <span>Selecione a duração da oferta *</span>
+                                </label>
+                            @else
+                                <select name="tipo_acao" required autocomplete="off">
+                                    <option disabled selected></option>
+                                    <option value="Curso" {{ $oferta->ofertaAcao->tipoAcao->nome == 'Curso' ? 'selected' : '' }}>Curso</option>
+                                    <option value="Projeto" {{ $oferta->ofertaAcao->tipoAcao->nome == 'Projeto' ? 'selected' : '' }}>Projeto</option>
+                                    <option value="Programa" {{ $oferta->ofertaAcao->tipoAcao->nome == 'Programa' ? 'selected' : '' }}>Programa</option>
+                                    <option value="Evento" {{ $oferta->ofertaAcao->tipoAcao->nome == 'Evento' ? 'selected' : '' }}>Evento</option>
+                                </select>
+                                <label for="tipo_acao">
+                                    <span>Selecione a duração da oferta *</span>
+                                </label>
+                            @enderror
                 </div>
                 <div class="caixa-input" style="width: 35%; margin-left: 3px;">
                     @error('duracao')
@@ -113,7 +151,7 @@
                             <option value="INDEFINIDO" {{ $oferta->ofertaAcao->duracao === 'INDEFINIDO'? 'selected' : '' }}>Indefinido</option>
                         </select>
                         <label for="duracao">
-                            <span>Selecione a duração da oferta</span>
+                            <span>Selecione a duração da oferta *</span>
                         </label>
                     @else
                         <select name="duracao" required autocomplete="off">
@@ -125,7 +163,7 @@
                             <option value="INDEFINIDO" {{ $oferta->ofertaAcao->duracao === 'INDEFINIDO'? 'selected' : '' }}>Indefinido</option>
                         </select>
                         <label for="duracao">
-                            <span>Selecione a duração da oferta</span>
+                            <span>Selecione a duração da oferta *</span>
                         </label>
                     @enderror
                 </div>
@@ -144,14 +182,14 @@
                 </div>
                 <div class="caixa-input" style="height: 120px; width: 100%;">
                     @error('descricao')
-                        <textarea title="{{$message}}" type="text" name="descricao" placeholder="Texto Livre" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required>{{$oferta->descricao}}</textarea>
+                        <textarea title="{{$message}}" type="text" name="descricao" placeholder="Texto Livre" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required maxlength="500">{{$oferta->descricao}}</textarea>
                         <label id="campo-label" for="descricao">
-                            <span id="campo-spam">Descrição</span>
+                            <span id="campo-spam">Descrição *</span>
                         </label>
                     @else
-                        <textarea type="text" name="descricao" autocomplete="off" required>{{$oferta->descricao}}</textarea>
+                        <textarea type="text" name="descricao" autocomplete="off" required maxlength="500">{{$oferta->descricao}}</textarea>
                         <label id="campo-label" for="descricao">
-                            <span id="campo-spam">Descrição</span>
+                            <span id="campo-spam">Descrição *</span>
                         </label>
                     @enderror
                 </div>
@@ -163,7 +201,7 @@
                             <option value="REGISTRADA"{{$oferta->ofertaAcao->status_registro === 'REGISTRADA'? 'selected': '' }}>Registrada</option>
                         </select>
                         <label for="status_registro">
-                            <span>Selecione o Status de Registro da Oferta:</span>
+                            <span>Selecione o status de registro da oferta *</span>
                         </label>
                     @else
                         <select name="status_registro" autocomplete="off" required>
@@ -172,7 +210,7 @@
                             <option value="REGISTRADA"{{$oferta->ofertaAcao->status_registro === 'REGISTRADA'? 'selected': '' }}>Registrada</option>
                         </select>
                         <label for="status_registro">
-                            <span>Selecione o Status de Registro da Oferta:</span>
+                            <span>Selecione o status de registro da oferta *</span>
                         </label>
                     @enderror
                 </div>
@@ -184,7 +222,7 @@
                             <option value="ONLINE"{{$oferta->ofertaAcao->regime === 'ONLINE'? 'selected': '' }}>Online</option>
                         </select>
                         <label for="status_registro">
-                            <span>Selecione o regime da Oferta:</span>
+                            <span>Selecione o regime da oferta *</span>
                         </label>
                     @else
                         <select name="regime" autocomplete="off" required>
@@ -193,7 +231,7 @@
                             <option value="ONLINE"{{$oferta->ofertaAcao->regime === 'ONLINE'? 'selected': '' }}>Online</option>
                         </select>
                         <label for="status_registro">
-                            <span>Selecione o regime da Oferta:</span>
+                            <span>Selecione o regime da oferta *</span>
                         </label>
                     @enderror
                 </div>

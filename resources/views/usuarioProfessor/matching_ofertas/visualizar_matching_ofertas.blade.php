@@ -77,8 +77,6 @@
                         @elseif ($oferta->ofertaConhecimento->tempo_atuacao === 'MAIS_5_ANOS')
                             <h5>Tempo de Atuação: Mais de 5 Anos</h5>
                         @endif
-                    </div>
-                    <div style="margin-left: 50px">
                         <h5>Link Lattes: {{$ofertaConhecimento->link_lattes}}</h5>
                         <h5>Link Linkedin: {{$ofertaConhecimento->link_linkedin}}</h5>
                     </div>
