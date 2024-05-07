@@ -15,6 +15,7 @@
     </nav>
 </header>
 <body>
+    <div id="emailRules"></div>
     <div class="login-container">
         <form method="POST" action="{{ route('login_membro_store') }}">
             @csrf
@@ -31,15 +32,13 @@
                     <p>{{ $message }}</p>
                 </div>
             @enderror
-            @error('message')
-            <div id="error-message-email" class="msg-erro fade-effect-error">
-                <p>{{ $message }}</p>
-            </div>
-            @enderror
                 <label for="password">Senha</label>
                 <div style="position: relative;">
                     <input type="password" id="password" name="password" placeholder="Senha" required oninput="toggleEye()">
-                    <span class="toggle-password" onclick="togglePassword()" style="position: absolute; top: 40%; left: 450px; transform: translateY(-50%); cursor: pointer; display: none"><img src="{{ asset('img/usuarioEstudante/login/olho_desmarcado.png')}}" alt="" style="width: 20px"></span>
+                    <span class="toggle-password" onclick="togglePassword()" style="position: absolute; top: 40%; left: 420px; transform: translateY(-50%); cursor: pointer; display: none"><img src="{{ asset('img/usuarioEstudante/login/olho_desmarcado.png')}}" alt="" style="width: 20px"></span>
+                    <span class="info-icon" onclick="showPasswordRules()" style="position: absolute; top: 45%; right: 15px; transform: translateY(-50%); cursor: pointer;">
+                        <img src="{{ asset('img/cadastro_usuarios/icone_info_senha_escuro.png') }}" alt="Ícone informativo" style="width: 20px;">
+                    </span>
                 </div>
             @error('password')
                 <div id="error-message-password" class="msg-erro fade-effect-error">
@@ -83,6 +82,39 @@
                 toggleButton.style.display = "none";
             }
         }
+
+        /* INFORMATIVO SENHA */
+         function showPasswordRules() {
+            // Caixa de diálogo das regras da senha
+            var passwordRules = document.createElement("div");
+            passwordRules.innerHTML = `
+                <div id="password-rules" style="position: absolute; top: 185px; right: 20px; background-color: #4D6D7F; color: #FFF; border: 1px solid #FFF; padding: 10px; border-radius: 10px;">
+                    <button onclick="closePasswordRules()" style="position: absolute; top: 5px; color: #FFF; right: 7px; cursor: pointer; background: transparent; border: none; outline: none; width: 80px; padding-left: 15px;">Fechar</button>
+                    <p>Regras de senha:</p>
+                    <ul>
+                        <li>Deve conter pelo menos 8 caracteres</li>
+                        <li>Deve conter pelo menos uma letra maiúscula</li>
+                        <li>Deve conter pelo menos uma letra minúscula</li>
+                        <li>Deve conter pelo menos um número</li>
+                    </ul>
+                </div>
+            `;
+
+            // Adiciona a caixa de diálogo ao corpo do documento
+            document.body.appendChild(passwordRules);
+
+            // Remove a caixa de diálogo após 5 segundos
+            setTimeout(function() {
+                passwordRules.remove();
+            }, 5000);
+        }
+
+        function closePasswordRules() {
+            // Remove a caixa de diálogo das regras da senha
+            var passwordRules = document.getElementById('password-rules');
+            passwordRules.remove();
+        }
+
     </script>
 </body>
 </html>

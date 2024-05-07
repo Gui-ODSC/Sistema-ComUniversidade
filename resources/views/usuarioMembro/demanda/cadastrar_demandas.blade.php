@@ -144,11 +144,11 @@
                     @error('duracao')
                         <select title="{{$message}}" name="duracao" autocomplete="off" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required value="{{old('duracao')}}">
                             <option disabled selected></option>
-                            <option value="DIAS">Dias</option>
-                            <option value="SEMANAS">Semanas</option>
-                            <option value="MESES">Meses</option>
-                            <option value="ANOS">Anos</option>
-                            <option value="INDEFINIDO">Indefinido</option>
+                            <option value="DIAS" {{ old('duracao') == 'DIAS' ? 'selected' : '' }}>Dias</option>
+                            <option value="SEMANAS" {{ old('duracao') == 'SEMANAS' ? 'selected' : '' }}>Semanas</option>
+                            <option value="MESES" {{ old('duracao') == 'MESES' ? 'selected' : '' }}>Meses</option>
+                            <option value="ANOS" {{ old('duracao') == 'ANOS' ? 'selected' : '' }}>Anos</option>
+                            <option value="INDEFINIDO" {{ old('duracao') == 'INDEFINIDO' ? 'selected' : '' }}>Indefinido</option>
                         </select>
                         <label for="duracao">
                             <span style="color: black">Selecione a duração da necessidade *</span>
@@ -156,11 +156,11 @@
                     @else
                         <select name="duracao" autocomplete="off" required value="{{old('duracao')}}">
                             <option disabled selected></option>
-                            <option value="DIAS">Dias</option>
-                            <option value="SEMANAS">Semanas</option>
-                            <option value="MESES">Meses</option>
-                            <option value="ANOS">Anos</option>
-                            <option value="INDEFINIDO">Indefinido</option>
+                            <option value="DIAS" {{ old('duracao') == 'DIAS' ? 'selected' : '' }}>Dias</option>
+                            <option value="SEMANAS" {{ old('duracao') == 'SEMANAS' ? 'selected' : '' }}>Semanas</option>
+                            <option value="MESES" {{ old('duracao') == 'MESES' ? 'selected' : '' }}>Meses</option>
+                            <option value="ANOS" {{ old('duracao') == 'ANOS' ? 'selected' : '' }}>Anos</option>
+                            <option value="INDEFINIDO" {{ old('duracao') == 'INDEFINIDO' ? 'selected' : '' }}>Indefinido</option>
                         </select>
                         <label for="duracao">
                             <span>Selecione a duração da necessidade *</span>
@@ -171,9 +171,9 @@
                     @error('nivel_prioridade')
                         <select title="{{$message}}" name="nivel_prioridade" autocomplete="off" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required value="{{old('nivel_prioridade')}}">
                             <option disabled selected></option>
-                            <option value="BAIXO">Baixo</option>
-                            <option value="MEDIO">Medio</option>
-                            <option value="ALTO">Alto</option>
+                            <option value="BAIXO" {{ old('nivel_prioridade') == 'BAIXO' ? 'selected' : '' }}>Baixo</option>
+                            <option value="MEDIO" {{ old('nivel_prioridade') == 'MEDIO' ? 'selected' : '' }}>Medio</option>
+                            <option value="ALTO" {{ old('nivel_prioridade') == 'ALTO' ? 'selected' : '' }}>Alto</option>
                         </select>
                         <label for="nivel_prioridade">
                             <span style="color: black">Selecione o nível de prioridade da necessidade *</span>
@@ -181,9 +181,10 @@
                     @else
                         <select name="nivel_prioridade" autocomplete="off" required value="{{old('nivel_prioridade')}}">
                             <option disabled selected></option>
-                            <option value="BAIXO">Baixo</option>
-                            <option value="MEDIO">Medio</option>
-                            <option value="ALTO">Alto</option>
+                            <option value="BAIXO" {{ old('nivel_prioridade') == 'BAIXO' ? 'selected' : '' }}>Baixo</option>
+                            <option value="MEDIO" {{ old('nivel_prioridade') == 'MEDIO' ? 'selected' : '' }}>Medio</option>
+                            <option value="ALTO" {{ old('nivel_prioridade') == 'ALTO' ? 'selected' : '' }}>Alto</option>
+
                         </select>
                         <label for="nivel_prioridade">
                             <span>Selecione o nível de prioridade da necessidade *</span>
@@ -192,12 +193,12 @@
                 </div>
                 <div class="caixa-input" style="width: 358px; margin-left: 3px">
                     @error('instituicao_setor')
-                        <input title="{{$message}}" type="text" name="instituicao_setor" autocomplete="off" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" maxlength="70" value="{{old('instituicao')}}">
+                        <input title="{{$message}}" type="text" name="instituicao_setor" autocomplete="off" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" maxlength="70" value="{{old('instituicao_setor')}}">
                         <label for="instituicao_setor">
                             <span style="color: black">Instituicao</span>
                         </label>
                     @else
-                        <input type="text" name="instituicao_setor" autocomplete="off" maxlength="70" value="{{old('instituicao')}}">
+                        <input type="text" name="instituicao_setor" autocomplete="off" maxlength="70" value="{{old('instituicao_setor')}}">
                         <label for="instituicao_setor">
                             <span>Instituicao</span>
                         </label>

@@ -26,7 +26,7 @@
                     <input title="Nova senha" type="password" id="new_password" name="password" style="border: 1px solid red; background-color:rgb(235, 201, 206); margin-bottom: 5px; padding-right: 70px" placeholder="Senha Nova" required autocomplete="new-password">
                     <span id="toggle_new_password" onclick="toggleNewPassword('new_password', 'toggle_new_password')" style="position: absolute; top: 50%; left: 420px; transform: translateY(-50%); cursor: pointer;"><img src='{{ asset("img/usuarioMembro/cadastrar_demandas/olho_escuro_desmarcado.png")}}' alt="" style="width: 25px"></span>
                 </div>
-                <span class="info-icon" onclick="showPasswordRules()" style="position: absolute; top: 46.5%; left: 870px; transform: translateY(-50%); cursor: pointer;">
+                <span class="info-icon" onclick="showPasswordRules()" style="position: absolute; top: 48.5%; left: 870px; transform: translateY(-50%); cursor: pointer;">
                     <img src="{{ asset('img/cadastro_usuarios/icone_info_senha_escuro.png') }}" alt="Ícone informativo" style="width: 20px;">
                 </span>
             @else
@@ -34,7 +34,7 @@
                     <input title="Nova senha" type="password" id="new_password" name="password" style="margin-bottom: 5px; padding-right: 70px" placeholder="Senha Nova" required autocomplete="new-password">
                     <span id="toggle_new_password" onclick="toggleNewPassword('new_password', 'toggle_new_password')" style="position: absolute; top: 50%; left: 420px; transform: translateY(-50%); cursor: pointer;"><img src='{{ asset("img/usuarioMembro/cadastrar_demandas/olho_escuro_desmarcado.png")}}' alt="" style="width: 25px"></span>
                 </div>
-                <span class="info-icon" onclick="showPasswordRules()" style="position: absolute; top: 46.5%; left: 870px; transform: translateY(-50%); cursor: pointer;">
+                <span class="info-icon" onclick="showPasswordRules()" style="position: absolute; top: 48.5%; left: 870px; transform: translateY(-50%); cursor: pointer;">
                     <img src="{{ asset('img/cadastro_usuarios/icone_info_senha_escuro.png') }}" alt="Ícone informativo" style="width: 20px;">
                 </span>
             @enderror
@@ -50,7 +50,7 @@
                     <input title="Confirmar Senha" type="password" id="password_confirmation" name="password_confirmation" style="border: 1px solid red; background-color:rgb(235, 201, 206); margin-bottom: 5px; padding-right: 70px" placeholder="Confirmar Senha" required autocomplete="new-password">
                     <span id="toggle_password_confirmation" onclick="toggleConfirmPassword()" style="position: absolute; top: 50%; left: 420px; transform: translateY(-50%); cursor: pointer;"><img src='{{ asset("img/usuarioMembro/cadastrar_demandas/olho_escuro_desmarcado.png")}}' alt="" style="width: 25px"></span>
                 </div>
-                <span class="info-icon" onclick="showPasswordRules2()" style="position: absolute;top: 64.5%; left: 870px; transform: translateY(-50%); cursor: pointer;">
+                <span class="info-icon" onclick="showPasswordRules2()" style="position: absolute;top: 67.5%; left: 870px; transform: translateY(-50%); cursor: pointer;">
                     <img src="{{ asset('img/cadastro_usuarios/icone_info_senha_escuro.png') }}" alt="Ícone informativo" style="width: 20px;">
                 </span>
             @else
@@ -58,7 +58,7 @@
                     <input title="Confirmar Senha" type="password" id="password_confirmation" name="password_confirmation" style="margin-bottom: 5px; padding-right: 70px" placeholder="Confirmar Senha" required autocomplete="new-password">
                     <span id="toggle_password_confirmation" onclick="toggleConfirmPassword()" style="position: absolute; top: 50%; left: 420px; transform: translateY(-50%); cursor: pointer;"><img src='{{ asset("img/usuarioMembro/cadastrar_demandas/olho_escuro_desmarcado.png")}}' alt="" style="width: 25px"></span>
                 </div>
-                <span class="info-icon" onclick="showPasswordRules2()" style="position: absolute;top: 60.5%; left: 870px; transform: translateY(-50%); cursor: pointer;">
+                <span class="info-icon" onclick="showPasswordRules2()" style="position: absolute;top: 63%; left: 870px; transform: translateY(-50%); cursor: pointer;">
                     <img src="{{ asset('img/cadastro_usuarios/icone_info_senha_escuro.png') }}" alt="Ícone informativo" style="width: 20px;">
                 </span>
             @enderror
