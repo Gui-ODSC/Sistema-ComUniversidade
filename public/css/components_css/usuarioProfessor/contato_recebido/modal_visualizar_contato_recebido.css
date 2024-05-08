@@ -1,7 +1,7 @@
 .dados-oferta {
     width: 100%;
-    height: 220px;
-    background-color: #376985;
+    height: 120px;
+    background-color: #3b3b7b;
     padding: 5px;
     border-radius: 10px;
     border: solid 2px black;
@@ -12,12 +12,15 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    color: #FFF;
 }
 
 .informacao-professor {
     width: 1700px;
     height: 100px;
     border-bottom: solid 1px #FFF;
+    background-color: #1c2c52;
+    border-top-left-radius: 5px;
 }
 
 #foto-nome {
@@ -59,6 +62,7 @@
     flex-direction: column;
     justify-content: right;
     align-items: start;
+    background-color: #1c2c52;
 }
 
 .info-criador-interessado h6{
@@ -74,6 +78,8 @@
     height: 100px;
     border-left: solid 1px #FFF;
     border-bottom: solid 1px #FFF;
+    background-color: #1c2c52;
+    border-top-right-radius: 5px;
 }
 
 .informacao-email h6{
@@ -147,7 +153,6 @@
 
 #dados-informacao-oferta {
     display: flex;
-    flex-wrap: wrap;
     margin-top: 0px;
     margin-left: -10px;
 }
@@ -170,10 +175,9 @@
 .descricao-oferta {
     overflow: hidden; /* Esconde o texto que ultrapassar o tamanho da div */
     text-overflow: ellipsis; /* Adiciona reticências (...) para indicar que o texto foi cortado */
-    overflow-y: auto;
     margin-top: 2px;
-    height: 120px;
-    background-color: rgba(44,39,88,1);
+    height: 220px;
+    background-color: #1c2c52;
     border-radius: 10px;
     border: solid 2px black;
     padding: 5px;
@@ -194,8 +198,8 @@
     text-overflow: ellipsis; /* Adiciona reticências (...) para indicar que o texto foi cortado */
     overflow-y: auto;
     margin-top: 2px;
-    max-height: 170px;
-    background-color: #376985;
+    max-height: 190px;
+    background-color: #3b3b7b;
     border-radius: 10px;
     border: solid 2px black;
     padding: 5px;
@@ -222,14 +226,14 @@
     overflow-y: auto;
     background-color: #FFF;
     width: 100%;
-    height: 130px;
+    height: 110px;
     padding: 10px;
     border-radius: 10px;
     border: solid 1px black;
 }
 
 .mensagem-recebida {
-    overflow: hidden; 
+    overflow: scroll; 
     text-overflow: ellipsis;
     overflow-y: auto;
     background-color: #FFF;
@@ -238,6 +242,7 @@
     padding: 10px;
     border-radius: 10px;
     border: solid 1px black;
+    word-wrap: break-word; /* Adicionado para quebrar palavras */
 }
 
 .botoes-oferta {

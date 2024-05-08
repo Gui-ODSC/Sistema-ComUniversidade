@@ -15,7 +15,7 @@
             <span onclick="closeModalDeletar({{$idOferta}})" id="botao_fechar_model"><img src="{{ asset('img/usuarioMembro/minhas_demandas/fechar.png') }}" alt=""></span>
             <div class="modal-excluir">
             <h2>Deseja mesmo Excluir essa Oferta ?</h2>
-            <h4><strong>{{$oferta->titulo}}</strong></h4>
+            <h4><strong>"{{$oferta->titulo}}"</strong></h4>
             <div class="div-botoes">
                 @if ($oferta->tipo === 'ACAO')
                     <form action="{{ route('oferta_delete_store_acao', $idOferta) }}" method="POST">

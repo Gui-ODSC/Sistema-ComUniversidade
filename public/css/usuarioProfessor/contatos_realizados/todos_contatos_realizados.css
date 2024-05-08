@@ -1,20 +1,19 @@
 body {
-    background: rgb(92,69,252);
-    background: linear-gradient(90deg, rgba(92,69,252,1) 0%, rgba(253,57,29,1) 50%, rgba(92,69,252,1) 100%); 
+    background: linear-gradient(90deg, #4d579c 0%, #4d579c 50%, #4d579c 100%); 
 }
 
 .titulo {
     display: flex;
-    /* background: linear-gradient(90deg, rgba(9,107,170,1) 0%, rgba(44,39,88,1) 50%, rgba(40,35,69,1) 100%); */
-    /* background: linear-gradient(360deg, rgba(9,107,170,1) 0%, rgba(44,39,88,1) 50%, rgba(40,35,69,1) 100%); */
-    background-color: rgba(44,39,88,1);
+    /* background: linear-gradient(90deg, rgba(9,107,170,1) 0%, #1c2c52 50%, rgba(40,35,69,1) 100%); */
+    /* background: linear-gradient(360deg, rgba(9,107,170,1) 0%, #1c2c52 50%, rgba(40,35,69,1) 100%); */
+    background-color: #1c2c52;
     width: 500px;
     margin: auto;
     align-items: center;
     height: 70px;
     border-radius: 10px;
     align-content: center;
-    box-shadow: -1px 1px 4px 4px #19122e;
+    box-shadow: -1px 1px 4px 4px #FFF;
 }
 
 
@@ -126,7 +125,7 @@ body {
     margin: auto;
     margin-top: 20px;
     align-items: center;
-    border: 2px solid #1f3b4b;
+    border: 2px solid #1c2c52;
     box-shadow: -1px 1px 4px 4px black;
     border-radius: 5px;
 }
@@ -136,12 +135,12 @@ body {
 }
 
 .pagination .page-item.active .page-link:hover {
-    background-color: #376985; 
+    background-color: #3b3b7b; 
     border-color: black; 
 }
 
 .pagination .page-item.active .page-link {
-    background-color: #376985; 
+    background-color: #3b3b7b; 
     border-color: black; 
 }
 
@@ -152,7 +151,7 @@ body {
 
 .pagination .page-item .page-link:hover {
     border: solid 2px black;
-    background-color: #6d91be; 
+    background-color: #4d579c; 
 }
 
 .pagination .page-item.disabled .page-link {

@@ -1,20 +1,20 @@
 body {
     /* background: linear-gradient(90deg, rgba(9,107,170,1) 0%, rgba(16,43,73,1) 100%); */
-    background: linear-gradient(90deg, rgb(9, 170, 130) 0%, rgb(39, 88, 73) 50%, rgb(15, 53, 25) 100%);
+    background: linear-gradient(90deg, #3b6c67 0%, #3b6c67 50%, #3b6c67 100%);
 }
 
 .titulo {
     display: flex;
-    /* background: linear-gradient(90deg, rgba(9,107,170,1) 0%, rgba(44,39,88,1) 50%, rgba(40,35,69,1) 100%); */
-    /* background: linear-gradient(360deg, rgba(9,107,170,1) 0%, rgba(44,39,88,1) 50%, rgba(40,35,69,1) 100%); */
-    background-color: rgba(44,39,88,1);
+    /* background: linear-gradient(90deg, rgba(9,107,170,1) 0%, #377b75 50%, rgba(40,35,69,1) 100%); */
+    /* background: linear-gradient(360deg, rgba(9,107,170,1) 0%, #377b75 50%, rgba(40,35,69,1) 100%); */
+    background-color: #104655;
     width: 500px;
     margin: auto;
     align-items: center;
     height: 70px;
     border-radius: 10px;
     align-content: center;
-    box-shadow: -1px 1px 4px 4px #19122e;
+    box-shadow: -1px 1px 4px 4px black;
 }
 
 
@@ -136,12 +136,12 @@ body {
 }
 
 .pagination .page-item.active .page-link:hover {
-    background-color: #376985; 
+    background-color: #377b75; 
     border-color: black; 
 }
 
 .pagination .page-item.active .page-link {
-    background-color: #376985; 
+    background-color: #377b75; 
     border-color: black; 
 }
 
@@ -152,7 +152,7 @@ body {
 
 .pagination .page-item .page-link:hover {
     border: solid 2px black;
-    background-color: #6d91be; 
+    background-color: #3b6c67; 
 }
 
 .pagination .page-item.disabled .page-link {

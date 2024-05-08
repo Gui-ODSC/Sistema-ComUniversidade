@@ -1,5 +1,4 @@
 body {
-    /* background: linear-gradient(90deg, rgba(9,107,170,1) 0%, rgba(16,43,73,1) 100%); */
     background-color: #005288;
 }
 
@@ -176,22 +175,22 @@ body {
     color: #fff; 
 }
 .btn.show {
-    background-color: 002e61;
+    background-color: #002e61;
     border-color: #FFF;
     width: 80%;
 }
 
 .bs-searchbox .form-control {
-    border-color: 002e61;
+    border-color: #002e61;
     
 }
 
 .form-control:focus {
     color: black;
     background-color: var(--bs-body-bg);
-    border-color: 002e61;
+    border-color: #002e61;
     outline: 0;
-    box-shadow: 0 0 0 .25rem 002e61;
+    box-shadow: 0 0 0 .25rem #002e61;
 }
 
 /* FIM */
@@ -304,7 +303,7 @@ body {
     height: auto;
     margin: auto;
     align-items: center;
-    border: 2px solid #1f3b4b;
+    border: 2px solid #002e61;
     box-shadow: -1px 1px 4px 4px black;
     border-radius: 5px;
 }
@@ -314,12 +313,12 @@ body {
 }
 
 .pagination {
-    --bs-pagination-active-bg: #376985;
+    --bs-pagination-active-bg: #005288;
     --bs-pagination-active-border-color: black;
     --bs-pagination-border-color: black;
     --bs-pagination-border-width: 2px;
     --bs-pagination-disabled-border-color: black;
-    --bs-pagination-hover-bg: #6d91be;
+    --bs-pagination-hover-bg: #146482;
     --bs-pagination-hover-border-color: black;
     --bs-pagination-hover-color: #FFF;
     --bs-pagination-color: black;
@@ -331,9 +330,4 @@ body {
     justify-content: center;
     margin: auto 0;
     align-items: center;
-}
-
-.page-item.active .page-link{
-    background-color: #376985;
-    border: 2px solid black;
 }

@@ -12,7 +12,7 @@
 </head>
 <body>
     <!-- MODAL -->
-    <div class="clicar-fora-modal-contatar" id="clicar-fora-modal-contatar-{{$idOferta}}" onclick="closeModalContatarOferta({{$idOferta}})"></div>
+    <div class="clicar-fora-modal-contatar" id="clicar-fora-modal-contatar-{{$idOferta}}" onclick="closeModalContatarOferta({{$idOferta}})">
         <div class="modal-contatar" id="modal-contatar-{{$idOferta}}">
             <div class="dados-oferta-contatar">
                 <div class="dados-usuario-professor-contatar">
@@ -78,7 +78,6 @@
             </form>
         </div>
     </div>
-    <!-- MODAL -->
     <!-- MODAL SUCESSO -->
     <div class="modal-sucesso-contatar" id="modal-sucesso-{{$idOferta}}">
         <div class="sucesso-content">

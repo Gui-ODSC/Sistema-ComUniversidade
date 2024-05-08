@@ -1,7 +1,7 @@
 .dados-oferta-contato-respondido {
     width: 100%;
     max-height: 250px;
-    background-color: #376985;
+    background-color: #3b3b7b;
     padding: 5px;
     border-radius: 10px;
     border: solid 2px black;
@@ -163,7 +163,7 @@
     width: 25px;
     margin-right: 5px;
     margin-top: -5px;
-    background-color: rgb(57, 57, 57);
+    background-color: black;
     padding: 3px;
     border-radius: 5px;
 }
@@ -201,7 +201,7 @@
     overflow-y: auto;
     margin-top: 2px;
     height: 180px;
-    background-color: #376985;
+    background-color: #3b3b7b;
     border-radius: 10px;
     border: solid 2px black;
     padding: 5px;
@@ -310,7 +310,7 @@
     overflow-y: auto;
     margin-top: 2px;
     height: 180px;
-    background-color: #376985;
+    background-color: #3b3b7b;
     border-radius: 10px;
     border: solid 2px black;
     padding: 5px;

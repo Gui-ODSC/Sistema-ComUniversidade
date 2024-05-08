@@ -1,20 +1,19 @@
 body {
-    background: rgb(92,69,252);
-    background: linear-gradient(90deg, rgba(92,69,252,1) 0%, rgba(253,57,29,1) 50%, rgba(92,69,252,1) 100%); 
+    background-color: #4d579c;
 }
 
 .titulo {
     display: flex;
     /* background: linear-gradient(90deg, rgba(9,107,170,1) 0%, rgba(44,39,88,1) 50%, rgba(40,35,69,1) 100%); */
     /* background: linear-gradient(360deg, rgba(9,107,170,1) 0%, rgba(44,39,88,1) 50%, rgba(40,35,69,1) 100%); */
-    background-color: rgba(44,39,88,1);
+    background-color: #1c2c52;
     width: 500px;
     margin: auto;
     align-items: center;
     height: 70px;
     border-radius: 10px;
     align-content: center;
-    box-shadow: -1px 1px 4px 4px #ffffff;
+    box-shadow: -1px 1px 4px 4px #FFF;
 }
 
 
@@ -117,17 +116,16 @@ body {
 /* PAGINACAO */
 .nav-paginator nav {
     position: relative;
-    background-color: transparent;
+    background-color: #1c2c52;
     width: 100%;
     justify-content: center;
     display: flex;
     height: auto;
     margin: auto;
     align-items: center;
-    border: 2px solid #1f3b4b;
+    border: 2px solid #1c2c52;
     box-shadow: -1px 1px 4px 4px black;
     border-radius: 5px;
-    background-color: #1f3b4b;
 }
 
 .pagination {
@@ -135,12 +133,12 @@ body {
 }
 
 .pagination {
-    --bs-pagination-active-bg: #376985;
+    --bs-pagination-active-bg: #3b3b7b;
     --bs-pagination-active-border-color: black;
     --bs-pagination-border-color: black;
     --bs-pagination-border-width: 2px;
     --bs-pagination-disabled-border-color: black;
-    --bs-pagination-hover-bg: #6d91be;
+    --bs-pagination-hover-bg: #4d579c;
     --bs-pagination-hover-border-color: black;
     --bs-pagination-hover-color: #FFF;
     --bs-pagination-color: black;

@@ -1,7 +1,7 @@
 .dados-oferta-contato-respondido {
     width: 100%;
     max-height: 250px;
-    background-color: #376985;
+    background-color: #377b75;
     padding: 5px;
     border-radius: 10px;
     border: solid 2px black;
@@ -163,7 +163,7 @@
     width: 25px;
     margin-right: 5px;
     margin-top: -5px;
-    background-color: rgb(57, 57, 57);
+    background-color: #FFF;
     padding: 3px;
     border-radius: 5px;
 }
@@ -182,7 +182,7 @@
 }
 
 #abrir-fechar-mensagem button {
-    background-color: orange;
+    background-color: #104655;
     border: none;
 }
 
@@ -201,7 +201,7 @@
     overflow-y: auto;
     margin-top: 2px;
     height: 180px;
-    background-color: #376985;
+    background-color: #377b75;
     border-radius: 10px;
     border: solid 2px black;
     padding: 5px;
@@ -287,7 +287,7 @@
     overflow-y: auto;
     margin-top: 2px;
     max-height: 150px;
-    background-color: rgba(44,39,88,1);
+    background-color: #104655;
     border-radius: 10px;
     border: solid 2px black;
     padding: 5px;
@@ -310,7 +310,7 @@
     overflow-y: auto;
     margin-top: 2px;
     height: 180px;
-    background-color: #376985;
+    background-color: #3b6c67;
     border-radius: 10px;
     border: solid 2px black;
     padding: 5px;
@@ -329,7 +329,7 @@
 }
 
 .mensagem-contato-recebido-check a {
-    background-color: rgba(44,39,88,1);
+    background-color: #104655;
     border: none;
     color:#FFF;
     text-decoration: none;

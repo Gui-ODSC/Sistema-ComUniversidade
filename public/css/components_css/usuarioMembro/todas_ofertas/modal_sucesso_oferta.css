@@ -19,7 +19,7 @@
     width: 500px;
     height: 300px;
     transform: translate(-50%, -50%);
-    background: linear-gradient(90deg, rgba(9,107,170,1) 0%, rgba(44,39,88,1) 50%, rgba(40,35,69,1) 100%);
+    background-color: #146482;
     border: solid 10px #FFF;
     text-align: center;
     border-radius: 10px;
@@ -29,7 +29,7 @@
 
 .titulo-sucesso{
     font-weight: bold;
-    margin-top: 50px;
+    font-size: 25px;
     margin-top: 60px;
 }
 
@@ -37,7 +37,7 @@
     display: flex;
     margin: auto;
     justify-content: center;
-    margin-top: 40px;
+    margin-top: 30px;
     width: 340px;
     text-align: center;
     font-size: 17px;

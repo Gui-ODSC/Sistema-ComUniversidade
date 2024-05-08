@@ -1,6 +1,5 @@
 body {
-    background: rgb(92,69,252);
-    background: linear-gradient(90deg, rgba(92,69,252,1) 0%, rgba(253,57,29,1) 50%, rgba(92,69,252,1) 100%); 
+    background-color: #4d579c;
 }
 
 .configuracoes h1 {
@@ -19,7 +18,7 @@ body {
     padding: 10px;
     border-radius: 10px;
     margin-bottom: 20px;
-    background-color: #191970;
+    background-color: #1c2c52;
     border: none;
     color: #FFF;
     box-shadow: -1px 1px 4px 4px #FFF;

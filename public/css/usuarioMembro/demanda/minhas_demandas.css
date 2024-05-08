@@ -1,20 +1,20 @@
 body {
     /* background: linear-gradient(90deg, rgba(9,107,170,1) 0%, rgba(16,43,73,1) 100%); */
-    background: linear-gradient(90deg, rgba(9,107,170,1) 0%, rgba(44,39,88,1) 50%, rgba(40,35,69,1) 100%);
+    background-color: #005288;
 }
 
 .titulo {
     display: flex;
     /* background: linear-gradient(90deg, rgba(9,107,170,1) 0%, rgba(44,39,88,1) 50%, rgba(40,35,69,1) 100%); */
     /* background: linear-gradient(360deg, rgba(9,107,170,1) 0%, rgba(44,39,88,1) 50%, rgba(40,35,69,1) 100%); */
-    background-color: rgba(44,39,88,1);
+    background-color: #002e61;
     width: 500px;
     margin: auto;
     align-items: center;
     height: 70px;
     border-radius: 10px;
     align-content: center;
-    box-shadow: -1px 1px 4px 4px #37769a;
+    box-shadow: -1px 1px 4px 4px #FFF;
 }
 
 .titulo h1 {
@@ -28,7 +28,7 @@ body {
     padding: 10px;
     border-radius: 10px;
     margin-bottom: 10px;
-    background-color: #376985;
+    background-color: #146482;
     box-shadow: -1px 1px 4px 4px black;
     border: none;
     color: #FFF;
@@ -36,7 +36,7 @@ body {
 }
 
 .minhas-demandas button:hover{
-    background-color: #1f3b4b;
+    background-color: #002e61;
 }
 
 #icones_demanda {
@@ -70,7 +70,7 @@ body {
 }
 
 .table-personalizacao thead th{
-    background-color: #376985;
+    background-color: #146482;
     color: #fff;
     margin-top: 10px;
 }
@@ -111,7 +111,7 @@ body {
     height: auto;
     margin: auto;
     align-items: center;
-    border: 2px solid #1f3b4b;
+    border: 2px solid #002e61;
     box-shadow: -1px 1px 4px 4px black;
     border-radius: 5px;
 }
@@ -121,12 +121,12 @@ body {
 }
 
 .pagination {
-    --bs-pagination-active-bg: #376985;
+    --bs-pagination-active-bg: #005288;
     --bs-pagination-active-border-color: black;
     --bs-pagination-border-color: black;
     --bs-pagination-border-width: 2px;
     --bs-pagination-disabled-border-color: black;
-    --bs-pagination-hover-bg: #6d91be;
+    --bs-pagination-hover-bg: #146482;
     --bs-pagination-hover-border-color: black;
     --bs-pagination-hover-color: #FFF;
     --bs-pagination-color: black;

@@ -32,6 +32,11 @@
                     <p>{{ $message }}</p>
                 </div>
             @enderror
+            @error('message')
+                <div id="error-message-email" class="msg-erro fade-effect-error">
+                    <p>{{ $message }}</p>
+                </div>
+            @enderror
                 <label for="password">Senha</label>
                 <div style="position: relative;">
                     <input type="password" id="password" name="password" placeholder="Senha" required oninput="toggleEye()">

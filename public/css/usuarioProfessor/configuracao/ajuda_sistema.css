@@ -1,15 +1,21 @@
+body {
+    background-color: #4d579c;
+}
+
 .ajuda-sistema h1 {
     text-align: center;
     margin-top: 20px;
     margin-bottom: 30px;
+    color: #FFF;
 }
 
 .sessao {
     font-family: 'Times New Roman', Times, serif;
-    background-color: #708090;
+    background-color: #1c2c52;
     border-radius: 10px;
     padding: 20px;
     text-align: justify;
+    color: #FFF;
 }
 
 .sessao h4 {

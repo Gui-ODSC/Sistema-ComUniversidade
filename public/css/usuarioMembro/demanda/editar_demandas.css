@@ -1,13 +1,13 @@
 body {
     /* background: linear-gradient(90deg, rgba(9,107,170,1) 0%, rgba(16,43,73,1) 100%); */
-    background: linear-gradient(90deg, rgba(9,107,170,1) 0%, rgba(44,39,88,1) 50%, rgba(40,35,69,1) 100%);
+    background-color: #005288;
 }
 
 .titulo {
     display: flex;
-    /* background: linear-gradient(90deg, rgba(9,107,170,1) 0%, rgba(44,39,88,1) 50%, rgba(40,35,69,1) 100%); */
-    /* background: linear-gradient(360deg, rgba(9,107,170,1) 0%, rgba(44,39,88,1) 50%, rgba(40,35,69,1) 100%); */
-    background-color: rgba(44,39,88,1);
+    /* background: linear-gradient(90deg, rgba(9,107,170,1) 0%, #002e61 50%, rgba(40,35,69,1) 100%); */
+    /* background: linear-gradient(360deg, rgba(9,107,170,1) 0%, #002e61 50%, rgba(40,35,69,1) 100%); */
+    background-color: #002e61;
     width: 500px;
     margin: auto;
     margin-bottom: 40px;
@@ -15,7 +15,7 @@ body {
     height: 70px;
     border-radius: 10px;
     align-content: center;
-    box-shadow: -1px 1px 4px 4px #37769a;
+    box-shadow: -1px 1px 4px 4px #FFF;
 }
 
 .titulo h1 {
@@ -50,7 +50,7 @@ body {
     padding: 20px;
     display: flex;
     flex-wrap: wrap;
-    background-color: rgba(44,39,88,1);
+    background-color: #002e61;
 }
 
 
@@ -67,7 +67,7 @@ body {
     padding: 10px;
     border-radius: 10px;
     margin-bottom: 10px;
-    background-color: #376985;
+    background-color: #005288;
     box-shadow: -1px 1px 4px 4px black;
     border: none;
     color: #FFF;
@@ -103,7 +103,7 @@ body {
     width: 100%;
     height: 50px;
     padding: 20px 10px 10px 5px;
-    background-color: #4d6d7f;
+    background-color: #146482;
     border: none;
     border-radius: 5px;
     outline: none;
@@ -162,7 +162,7 @@ body {
     width: 100%;
     height: 50px;
     padding: 20px 10px 10px 5px;
-    background-color: #4d6d7f;
+    background-color: #146482;
     border: none;
     border-radius: 5px;
     outline: none;
@@ -203,7 +203,7 @@ textarea:invalid + label span {
     width: 100%;
     height: 50px;
     padding: 20px 10px 10px 5px;
-    background-color: #4d6d7f;
+    background-color: #146482;
     border: none;
     border-radius: 5px;
     outline: none;
@@ -271,7 +271,7 @@ input[type="number"] {
     width: 607px;
     border: none;
     color: #FFF;
-    background-color: #4d6d7f;
+    background-color: #146482;
     margin-top: 38px 0px;
 }
 
@@ -279,7 +279,7 @@ input[type="number"] {
     width: 607px;
     border: none;
     color: #FFF;
-    background-color: #4d6d7f;
+    background-color: #146482;
 }
 
 .bootstrap-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn) button:focus{
@@ -300,8 +300,8 @@ input[type="number"] {
 
 .bootstrap-select .dropdown-toggle .filter-option {
     position: absolute;
-    top: 15px;
-    left: -3px;
+    top: 13px;
+    left: -4px;
     padding-top: inherit;
     padding-right: inherit;
     padding-bottom: inherit;
@@ -314,7 +314,7 @@ input[type="number"] {
 }
 
 .dropdown-menu {
-    --bs-dropdown-link-active-bg: #274658;
+    --bs-dropdown-link-active-bg: #002e61;
 }
 
 .bootstrap-select {
@@ -323,26 +323,26 @@ input[type="number"] {
 
 .dropdown-menu .dropdown-item:hover {
     padding: 0.5rem;
-    background-color: #4d6d7f;
+    background-color: #146482;
     color: #fff; 
 }
 .btn.show {
-    background-color: rgba(44,39,88,1);
+    background-color: #002e61;
     border-color: black;
     width: 100%;
 }
 
 .bs-searchbox .form-control {
-    border-color: rgba(13,110,253,.25);
+    border-color: #005288;
     
 }
 
 .form-control:focus {
     color: black;
     background-color: var(--bs-body-bg);
-    border-color: rgba(13,110,253,.25);
+    border-color: #005288;
     outline: 0;
-    box-shadow: 0 0 0 .25rem rgba(13,110,253,.25);
+    box-shadow: 0 0 0 .25rem #005288;
 }
 
 .selectpicker button{

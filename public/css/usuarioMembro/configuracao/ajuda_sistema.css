@@ -1,12 +1,17 @@
+body {
+    background-color: #005288;
+}
+
 .ajuda-sistema h1 {
     text-align: center;
     margin-top: 20px;
     margin-bottom: 30px;
+    color: #FFF;
 }
 
 .sessao {
     font-family: 'Times New Roman', Times, serif;
-    background-color: #708090;
+    background-color: #002e61;
     border-radius: 10px;
     padding: 20px;
     text-align: justify;
@@ -14,5 +19,9 @@
 
 .sessao h4 {
     font-weight: bold;
+    color: #FFF;
+}
+
+.sessao p {
     color: #FFF;
 }

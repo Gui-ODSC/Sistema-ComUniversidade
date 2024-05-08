@@ -1,6 +1,6 @@
 body {
     /* background: linear-gradient(90deg, rgba(9,107,170,1) 0%, rgba(16,43,73,1) 100%); */
-    background: linear-gradient(90deg, rgba(9,107,170,1) 0%, rgba(44,39,88,1) 50%, rgba(40,35,69,1) 100%);
+    background-color: #005288;
 }
 
 
@@ -49,7 +49,7 @@ body {
 .container-info-demanda {
     width: 100%;
     height: 300px;
-    background-color: #343447;
+    background-color: #002e61;
     border-radius: 10px;
     color: white;
     padding: 10px;
@@ -119,7 +119,7 @@ body {
 }
 
 .table-personalizacao thead th{
-    background-color: #343447;
+    background-color: #146482;
     color: #fff;
     margin-top: 10px;
 }

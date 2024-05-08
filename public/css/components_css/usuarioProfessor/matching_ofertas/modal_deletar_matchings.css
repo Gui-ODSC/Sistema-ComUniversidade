@@ -24,10 +24,12 @@
 
 #botao-sim {
     background-color: #0b401e;
+    border: 2px solid black;
 }
 
 #botao-nao {
     background-color: #4f1111;
+    border: 2px solid black;
 }
 
 /* MODAL */
@@ -39,7 +41,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 20px;
-    background: linear-gradient(90deg, rgba(9,107,170,1) 0%, rgba(44,39,88,1) 50%, rgba(40,35,69,1) 100%);
+    background-color: #4d579c;
     border: 1px solid #ccc;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     z-index: 1000;

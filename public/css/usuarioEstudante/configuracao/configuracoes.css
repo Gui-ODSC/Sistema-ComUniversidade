@@ -1,7 +1,7 @@
 body {
-    /* background: linear-gradient(90deg, rgba(9,107,170,1) 0%, rgba(16,43,73,1) 100%); */
-    background: linear-gradient(90deg, rgb(9, 170, 130) 0%, rgb(39, 88, 73) 50%, rgb(15, 53, 25) 100%);
+    background-color: #3b6c67;
 }
+
 .configuracoes h1 {
     text-align: center;
     margin-top: 20px;
@@ -18,7 +18,7 @@ body {
     padding: 10px;
     border-radius: 10px;
     margin-bottom: 20px;
-    background-color: #191970;
+    background-color: #104655;
     border: none;
     color: #FFF;
     box-shadow: -1px 1px 4px 4px #FFF;

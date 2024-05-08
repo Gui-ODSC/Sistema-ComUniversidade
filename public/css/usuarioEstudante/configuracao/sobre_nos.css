@@ -1,17 +1,24 @@
+body {
+    background-color: #3b6c67;
+}
+
 .sobre-nos h1 {
     text-align: center;
     margin-top: 20px;
     margin-bottom: 30px;
+    color: #FFF;
 }
 
 .sessao {
-    background-color: rgba(125, 134, 143, 0.6);
+    background-color: #104655;
     padding: 20px;
     border-radius: 20px;
+    color: #FFF;
 }
 
 .sessao h4 {
     font-weight: bold;
+    color: #FFF;
 }
 
 .sessao p {

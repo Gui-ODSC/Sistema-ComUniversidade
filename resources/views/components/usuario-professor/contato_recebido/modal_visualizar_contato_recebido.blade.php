@@ -17,37 +17,6 @@
     <!-- MODAL -->
     <div class="modal-visualizar" id="modal-visualizar-{{$idContato}}">
         <div class="dados-oferta">
-            <div class="dados-usuario-professor">
-                <div class="informacao-professor">
-                    <div id="foto-nome">
-                        <img src="{{ asset('img/usuarioMembro/contatos/perfil.png') }}" alt="">
-                        <h2>{{$usuarioEmissor->nome}}</h2>
-                    </div>
-                    <div id="dados-professor">
-                        <hr>
-                        <h6>Cargo: {{(ucwords(strtolower($usuarioEmissor->tipo)))}}</h6>
-                        @if ($usuarioEmissor->instituicao)
-                            <h6>Instituição: {{$usuarioEmissor->instituicao}}</h6>
-                        @else 
-                            <h6>Intituição: Não cadastrada</h6>
-                        @endif
-                        @if ($oferta->tipo === 'ACAO')
-                            <h6>Tipo Oferta: Ação</h6>
-                        @elseif ($oferta->tipo === 'CONHECIMENTO')
-                            <h6>Tipo Oferta: Conhecimento</h6>
-                        @endif
-                    </div>
-                </div>
-                <div class="info-criador-interessado">
-                    <h6>Criador(a) da Oferta: {{$usuarioReceptor->nome}}</h6>
-                    <h6>Interessado(a) na Oferta: {{$usuarioEmissor->nome}}</h6>
-                </div>
-                <div class="informacao-email">
-                    <h4>Contatos Email</h4>
-                    <h6>{{$usuarioEmissor->email}}</h6>
-                    <h6>{{$usuarioEmissor->email_secundario ?? '' }}</h6>
-                </div>
-            </div>
             <div class="informacao-oferta">
                 <h5 id="dados-demanda">Dados da Oferta: </h5>
                 <div id="titulo-data-oferta">
@@ -106,6 +75,37 @@
             </div>
         </div>
         <div class="descricao-oferta">
+            <div class="dados-usuario-professor">
+                <div class="informacao-professor">
+                    <div id="foto-nome">
+                        <img src="{{ asset('img/usuarioMembro/contatos/perfil.png') }}" alt="">
+                        <h2>{{$usuarioEmissor->nome}}</h2>
+                    </div>
+                    <div id="dados-professor">
+                        <hr>
+                        <h6>Cargo: {{(ucwords(strtolower($usuarioEmissor->tipo)))}}</h6>
+                        @if ($usuarioEmissor->instituicao)
+                            <h6>Instituição: {{$usuarioEmissor->instituicao}}</h6>
+                        @else 
+                            <h6>Intituição: Não cadastrada</h6>
+                        @endif
+                        @if ($oferta->tipo === 'ACAO')
+                            <h6>Tipo Oferta: Ação</h6>
+                        @elseif ($oferta->tipo === 'CONHECIMENTO')
+                            <h6>Tipo Oferta: Conhecimento</h6>
+                        @endif
+                    </div>
+                </div>
+                <div class="info-criador-interessado">
+                    <h6>Criador(a) da Oferta: {{$usuarioReceptor->nome}}</h6>
+                    <h6>Interessado(a) na Oferta: {{$usuarioEmissor->nome}}</h6>
+                </div>
+                <div class="informacao-email">
+                    <h4>Contatos Email</h4>
+                    <h6>{{$usuarioEmissor->email}}</h6>
+                    <h6>{{$usuarioEmissor->email_secundario ?? '' }}</h6>
+                </div>
+            </div>
             <h6 style="color: #FFF">Mensagem Recebida ({{$usuarioEmissor->nome}})</h6>
             <div class="mensagem-recebida">
                 <p style="text-align: justify">{{$contatoMensagem->mensagem}}</p>
@@ -209,7 +209,7 @@
         <div class="modal-confirmar-contato-respondido" id="modal-confirmar-contato-respondido-{{$idContato}}">
             <div class="secao-confirma-respondido">
                 <div class="texto-modal-confirma-respondido">
-                    <h4>Confirme o envio da mensagem com a informação de Resposta para o contato!</h4>
+                    <h4>Confirme o envio da mensagem com a informação de "<span id="font-azul">Resposta</span>" para o contato!</h4>
                 </div>
                 <div class="botoes-modal-confirma-respondido">
                     <a id="botao-confirma-envio-resposta-{{$idContato}}">

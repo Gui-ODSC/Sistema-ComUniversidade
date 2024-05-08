@@ -7,10 +7,17 @@
     <title>Sair</title>
 </head>
 <body>
-<div class="sair">
-        <h1>Deseja mesmo Sair?</h1>
-        <a href="{{ route('login_professor_destroy') }}"><button>SIM</button></a>
-        <a href="{{ route('oferta_index') }}"><button>NÃO</button></a>
-    </div>
-</body>
-</html>
+    <body>
+        <div class="sair">
+            <div class="porta-saida">
+                <div class="titulo">
+                    <h1>Deseja mesmo Sair?</h1>
+                </div>
+                <div class="selecao">
+                    <a href="{{ route('login_professor_destroy') }}"><button>SIM</button></a>
+                    <a href="{{ route('oferta_index') }}"><button>NÃO</button></a>
+                </div>
+            </div>
+        </div>
+    </body>
+    </html>

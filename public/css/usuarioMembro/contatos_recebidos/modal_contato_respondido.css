@@ -1,5 +1,5 @@
 .secao-confirma-respondido {
-    background-color: rgb(79, 75, 75);
+    background-color: #146482;
     display: flex;
     width: 100%;
     height: 100%;
@@ -17,11 +17,14 @@
     padding: 10px;
     border-radius: 10px;
     color: #fff;
-    text-align: justify;
+    text-align: center;
 }
 
 .texto-modal-confirma-respondido #font-azul {
     color: rgb(20, 84, 180);
+    background-color: #FFF;
+    border-radius: 5px;
+    padding: 1px;
 }
 
 .botoes-modal-confirma-respondido {
@@ -40,16 +43,17 @@
     padding: 10px;
     border: none;
     cursor: pointer;
-    border: solid 2px black;
-    color: black;
+    box-shadow: -1px 1px 4px 4px black;
+    color: #FFF;
+    font-weight: bold;
 }
 
 .botoes-modal-confirma-respondido button:nth-child(1) {
-    background-color: #4CAF50; 
+    background-color: rgb(27, 93, 27); 
 }
 
 .botoes-modal-confirma-respondido button:nth-child(2) {
-    background-color: #f44336; 
+    background-color: rgb(157, 72, 6); 
 }
 
 
@@ -61,14 +65,15 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 600px;
-    height: 400px;
-    padding: 20px;
+    width: 550px;
+    height: 390px;
+    padding: 5px;
     background-color: #fff;
     border: 1px solid #ccc;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     z-index: 1000;
-    border-radius: 20px;
+    border-radius: 10px;
+    box-shadow: -1px 1px 4px 4px black;
 }
 
 .clicar-fora-confirmar-contato-respondido {
