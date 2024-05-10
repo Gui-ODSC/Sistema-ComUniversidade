@@ -62,8 +62,7 @@ class OfertaConhecimentoProfessorController extends Controller
             return back()->withErrors([
                 "message" => 'Campos de Área de Conhecimento Inválidos',
                 "dados" => $validarCamposAreaConhecimento->errors()->all(),
-                /* ...$this->listErrosAreaConhecimento($validarCamposAreaConhecimento->errors()) */
-            ]);
+            ])->withInput();
         }
 
         // Verifica se a validação dos campos de demanda falhou
@@ -71,8 +70,7 @@ class OfertaConhecimentoProfessorController extends Controller
             return back()->withErrors([
                 "message" => 'Campo de Oferta inválidos',
                 "dados" => $validarCamposOferta->errors()->all(),
-                /* ...$this->listErrosOferta($validarCamposOferta->errors()) */
-            ]);
+            ])->withInput();
         }
 
         // Verifica se a validação dos campos de demanda falhou
@@ -80,8 +78,7 @@ class OfertaConhecimentoProfessorController extends Controller
             return back()->withErrors([
                 "message" => 'Campo de Oferta inválidos',
                 "dados" => $validarCamposOfertaConhecimento->errors()->all(),
-                /* ...$this->listErrosOfertaConhecimento($validarCamposOfertaConhecimento->errors()) */
-            ]);
+            ])->withInput();
         }
 
         $validatedDataOferta = $validarCamposOferta->validate();

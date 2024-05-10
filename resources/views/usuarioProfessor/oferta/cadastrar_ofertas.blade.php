@@ -57,7 +57,7 @@
                     <select id="opcao" name="opcao" autocomplete="off" onchange="mostrarFormulario()" required>
                         <option value=""></option>
                         <option value="acao" {{ old('opcao') == "acao" ? 'selected' : '' }}>Ação</option>
-                        <option value="conhecimento" {{ old('opcao') == "conhecimento" ? 'selected' : '' }}">Conhecimento</option>
+                        <option value="conhecimento" {{ old('opcao') == "conhecimento" ? 'selected' : '' }}>Conhecimento</option>
                     </select>
                     <label for="opcao">
                         <span>Selecione o tipo de Oferta:</span> 
@@ -265,12 +265,12 @@
                         <input type="hidden" id="opcaoSelecionadaConhecimento" name="opcao" value="conhecimento">
                         <div class="caixa-input" style="width: 40%;">
                             @if ($errors->has('titulo') || $errors->has('id_usuario'))
-                                <input title="{{ $errors->first('titulo') ?: $errors->first('id_usuario') }}" type="text" name="titulo" style="border: 1px solid red; background-color: rgb(235, 201, 206); color: black" required maxlength="150" {{old('titulo')}}>
+                                <input title="{{ $errors->first('titulo') ?: $errors->first('id_usuario') }}" type="text" name="titulo" style="border: 1px solid red; background-color: rgb(235, 201, 206); color: black" required maxlength="150" value="{{old('titulo')}}">
                                 <label for="titulo">
                                     <span>Titulo *</span>
                                 </label>
                             @else    
-                                <input type="text" name="titulo" id="titulo" autocomplete="off" required maxlength="150" {{old('titulo')}}>
+                                <input type="text" name="titulo" id="titulo" autocomplete="off" required maxlength="150" value="{{old('titulo')}}">
                                 <label for="titulo">
                                     <span>Titulo *</span>
                                 </label>
@@ -343,12 +343,12 @@
                         </div>
                         <div class="caixa-input" style="width: 50%;">
                             @error('link_lattes')
-                                <input title="{{$message}}" type="text" name="link_lattes" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" autocomplete="off" maxlength="255" {{old('link_lattes')}}>
+                                <input title="{{$message}}" type="text" name="link_lattes" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" autocomplete="off" maxlength="255" value="{{old('link_lattes')}}">
                                 <label for="link_lattes">
                                     <span>Link Lattes</span>
                                 </label>
                             @else
-                                <input type="text" name="link_lattes" autocomplete="off" maxlength="255" {{old('link_lattes')}}>
+                                <input type="text" name="link_lattes" autocomplete="off" maxlength="255" value="{{old('link_lattes')}}">
                                 <label for="link_lattes">
                                     <span>Link Lattes</span>
                                 </label>
@@ -356,12 +356,12 @@
                         </div>
                         <div class="caixa-input" style="width: 604px; margin-left: 3px">
                             @error('link_linkedin')
-                                <input title="{{$message}}" type="text" name="link_linkedin" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" autocomplete="off" maxlength="255" {{old('link_linkedin')}}>
+                                <input title="{{$message}}" type="text" name="link_linkedin" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" autocomplete="off" maxlength="255" value="{{old('link_linkedin')}}">
                                 <label for="link_linkedin">
                                     <span>Link Linkedin</span>
                                 </label>
                             @else
-                                <input type="text" name="link_linkedin" autocomplete="off" maxlength="255" {{old('link_linkedin')}}>
+                                <input type="text" name="link_linkedin" autocomplete="off" maxlength="255" value="{{old('link_linkedin')}}">
                                 <label for="link_linkedin">
                                     <span>Link Linkedin</span>
                                 </label>
