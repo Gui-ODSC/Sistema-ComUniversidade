@@ -5,6 +5,10 @@
 
 body {
     background-color: #708090;
+    font-family: "Manrope", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-size: 15px;
 }
 
 header {
@@ -35,7 +39,7 @@ h1 {
     padding: 40px 20px 10px 20px;
     background-color: #2F4F4F;
     margin: auto;
-    margin-top: 50px;
+    margin-top: 40px;
     width: 40%;
     height: 60%;
     border-radius: 20px;
@@ -59,6 +63,7 @@ h1 {
     text-align: center;
     justify-content: center;
     padding-top: 5px;
+    color: white;
 }
 
 .login-container button {
@@ -70,4 +75,8 @@ h1 {
     width: 150px;
     margin: auto;
     font-size: x-large;
+}
+
+.login-container p {
+    margin: 0;
 }
