@@ -7,6 +7,9 @@ use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvi
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\AuthEstudante;
+use App\Http\Middleware\AuthProfessor;
+use App\Http\Middleware\AuthMembro;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -37,17 +40,17 @@ class RouteServiceProvider extends ServiceProvider
                 ->group(base_path('routes/web.php'));
 
             //Route de usuarios membro 
-            Route::middleware('web')
+            Route::middleware(['web', AuthMembro::class])
                 ->prefix('web')
                 ->group(base_path('routes/usuario_membro.php'));
 
             //Route de usuarios professor
-            Route::middleware('web')
+            Route::middleware(['web', AuthProfessor::class])
             ->prefix('web')
             ->group(base_path('routes/usuario_professor.php'));
 
             //Route de usuarios aluno
-            Route::middleware('web')
+            Route::middleware(['web', AuthEstudante::class])
             ->prefix('web')
             ->group(base_path('routes/usuario_estudante.php'));
         });
