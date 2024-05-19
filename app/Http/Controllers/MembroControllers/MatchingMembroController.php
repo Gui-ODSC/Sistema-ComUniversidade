@@ -76,13 +76,13 @@ class MatchingMembroController extends Controller
             }
             /* FIM */
 
-            /* COMPARAÇÃO DE TITULOS */
-            $resultado_titulo = $this->ratCliff($oferta->titulo, $titulo_demanda);
+            /* Concatenação Titulo + Descrição oferta */
+            $concatenaOferta = $oferta->titulo . $oferta->descricao;
 
-            /* COPARAÇÃO DE DESCRIÇÕES */
-            $resultado_descricao = $this->ratCliff($oferta->descricao, $descricao_demanda);
+            /* Concatenação Titulo + Descrição demanda*/
+            $concatenaDemanda = $titulo_demanda . $descricao_demanda;
 
-            $resultado = $resultado_titulo + $resultado_descricao;
+            $resultado = $this->ratCliff($concatenaOferta, $concatenaDemanda);
 
             /* LOGICA PARA CONTROLAR AS OFERTAS VISUALIZADAS E NÃO VISUALIZADAS */
             $ofertas_visualizacao = MatchingsVisualizados::where('id_oferta', $oferta->id_oferta)
@@ -91,9 +91,9 @@ class MatchingMembroController extends Controller
             ->get(); 
 
             if (!$ofertas_visualizacao->isEmpty()) {
-                if ($resultado >= 1.4)
+                if ($resultado >= 0.67)
                 {
-                    if ($resultado === 2.0) {
+                    if ($resultado === 1.0) {
                         $matchingsEncontrados[] = ['status' => 'visualizado', 'oferta' => $oferta];
                     } else {
                         $matchingsEncontrados[] = ['status' => 'visualizado', 'oferta' => $oferta];
@@ -102,9 +102,9 @@ class MatchingMembroController extends Controller
                     continue;
                 }
             } else {
-                if ($resultado >= 1.4)
+                if ($resultado >= 0.67)
                 {
-                    if ($resultado === 2.0) {
+                    if ($resultado === 1.0) {
                         $matchingsEncontrados[] = ['status' => 'nao_visualizado', 'oferta' => $oferta];
                     } else {
                         $matchingsEncontrados[] = ['status' => 'nao_visualizado', 'oferta' => $oferta];

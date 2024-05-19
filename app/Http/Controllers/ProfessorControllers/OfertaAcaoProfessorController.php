@@ -128,7 +128,7 @@ class OfertaAcaoProfessorController extends Controller
             'created_at' => now(),	
         ]);
 
-        return redirect()->route('oferta_index')->with('msg-oferta', 'Nova Oferta cadastrada.');
+        return redirect()->route('oferta_index')/* ->with('msg-oferta', 'Nova Oferta cadastrada.') */;
 
     }
 
@@ -217,7 +217,7 @@ class OfertaAcaoProfessorController extends Controller
             'updated_at' => now(),	
         ]);
         
-        return redirect()->route('oferta_index')->with('msg-oferta', 'Oferta Ação Atualizada com Sucesso!.');
+        return redirect()->route('oferta_index')->with('msg-oferta', 'Oferta Ação Atualizada com Sucesso!');
     }
 
     public function deleteStoreAcao($ofertaId)

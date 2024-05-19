@@ -89,13 +89,13 @@ class MatchingProfessorController extends Controller
             }
             /* FIM */
 
-            /* COMPARAÇÃO DE TITULOS */
-            $resultado_titulo = $this->ratCliff($titulo_oferta, $demanda->titulo);
+            /* Concatenação Titulo + Descrição oferta */
+            $concatenaOferta = $titulo_oferta . $descricao_oferta;
 
-            /* COPARAÇÃO DE DESCRIÇÕES */
-            $resultado_descricao = $this->ratCliff($descricao_oferta, $demanda->descricao);
+            /* Concatenação Titulo + Descrição demanda*/
+            $concatenaDemanda = $demanda->titulo . $demanda->descricao;
 
-            $resultado = $resultado_titulo + $resultado_descricao;
+            $resultado = $this->ratCliff($concatenaOferta, $concatenaDemanda);
 
             /* LOGICA PARA CONTROLAR AS OFERTAS VISUALIZADAS E NÃO VISUALIZADAS */
             $ofertas_visualizacao = MatchingsVisualizados::where('id_demanda', $demanda->id_demanda)
@@ -104,9 +104,9 @@ class MatchingProfessorController extends Controller
             ->get(); 
 
             if (!$ofertas_visualizacao->isEmpty()) {
-                if ($resultado >= 1.4)
+                if ($resultado >= 0.67)
                 {
-                    if ($resultado === 2.0) {
+                    if ($resultado === 1.0) {
                         $matchingsEncontrados[] = ['status' => 'visualizado', 'demanda' => $demanda];
                     } else {
                         $matchingsEncontrados[] = ['status' => 'visualizado', 'demanda' => $demanda];
@@ -115,9 +115,9 @@ class MatchingProfessorController extends Controller
                     continue;
                 }
             } else {
-                if ($resultado >= 1.4)
+                if ($resultado >= 0.67)
                 {
-                    if ($resultado === 2.0) {
+                    if ($resultado === 1.0) {
                         $matchingsEncontrados[] = ['status' => 'nao_visualizado', 'demanda' => $demanda];
                     } else {
                         $matchingsEncontrados[] = ['status' => 'nao_visualizado', 'demanda' => $demanda];

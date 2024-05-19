@@ -70,7 +70,8 @@ class OfertaProfessorController extends Controller
         /* FIM */
         
         return view('usuarioProfessor/oferta/minhas_ofertas', [
-            'ofertas' => $listOfertas
+            'ofertas' => $listOfertas,
+            'usuarioProfessor' => $userId
         ]);
     }
 

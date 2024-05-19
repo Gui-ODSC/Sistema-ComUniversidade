@@ -51,11 +51,13 @@ class LoginMembroController extends Controller
 
     public function logout(Request $request)
     {
+        Auth::logout();
+
         $request->session()->invalidate();
     
         $request->session()->regenerateToken();
 
-        return redirect()->to(route('login_membro_index'))->with(Auth::logout());
+        return redirect('/autenticacao/login_membro/login');
     }
 
 }

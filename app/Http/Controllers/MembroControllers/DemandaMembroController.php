@@ -117,7 +117,7 @@ class DemandaMembroController extends Controller
             'created_at' => now(),
         ]);
 
-        return redirect()->route('demanda_index')->with('msg-demanda', 'Nova necessidade cadastrada.');
+        return redirect()->route('demanda_index')/* ->with('msg-demanda', 'Nova necessidade cadastrada.') */;
 
     }
 

@@ -103,7 +103,7 @@ class OfertaConhecimentoProfessorController extends Controller
             'created_at' => now(),	
         ]);
 
-        return redirect()->route('oferta_index')->with('msg-demanda', 'Nova Oferta cadastrada.');
+        return redirect()->route('oferta_index')/* ->with('msg-demanda', 'Nova Oferta cadastrada.') */;
 
     }
 
@@ -170,7 +170,7 @@ class OfertaConhecimentoProfessorController extends Controller
             'created_at' => now(),	
         ]);
 
-        return redirect()->route('oferta_index')->with('msg-demanda', 'Nova Oferta cadastrada.');
+        return redirect()->route('oferta_index')->with('msg-oferta', 'Oferta Conhecimento atualizada com sucesso!');
     }
 
     public function deleteStoreConhecimento($ofertaId)

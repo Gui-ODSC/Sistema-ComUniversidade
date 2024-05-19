@@ -80,7 +80,7 @@ class ResetPasswordController extends Controller
 
         DB::table("password_reset_tokens")->where("email", $updatePassword->email)->delete();
 
-        return redirect()->to(route('inicial'))->with("success", "Senha atualizada com sucesso");
+        return redirect()->to(route('selecao_perfil'))->with("success", "Senha atualizada com sucesso");
     }
 
 }
