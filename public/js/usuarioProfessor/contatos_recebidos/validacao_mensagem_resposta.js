@@ -1,3 +1,35 @@
+document.addEventListener('DOMContentLoaded', function() {
+    adicionarOuvintesDeEventos();
+});
+
+function adicionarOuvintesDeEventos() {
+    var botoesInteressado = document.querySelectorAll('[id^="botao-interessado-"]');
+    var botoesSemDisponibilidade = document.querySelectorAll('[id^="botao-sem-disponibilidade-"]');
+    var botoesContatoRespondido = document.querySelectorAll('[id^="botao-contato-respondido-"]');
+    
+    botoesInteressado.forEach(function(botao) {
+        botao.addEventListener('click', function() {
+            var id = botao.id.split('-').pop(); // Extrai o ID do botão
+            openModalConfirmaInteresse(id);
+        });
+    });
+    
+    botoesSemDisponibilidade.forEach(function(botao) {
+        botao.addEventListener('click', function() {
+            var id = botao.id.split('-').pop(); // Extrai o ID do botão
+            openModalConfirmaSemDisponibilidade(id);
+        });
+    });
+
+    botoesContatoRespondido.forEach(function(botao) {
+        botao.addEventListener('click', function() {
+            var id = botao.id.split('-').pop(); // Extrai o ID do botão
+            openModalConfirmaContatoRespondido(id);
+        });
+    });
+}
+
+
 function validarEnviarFormularioConhecimento(id) {
     var mensagemContato = document.getElementById(`mensagem-contato-${id}`).value.trim();
 
@@ -6,7 +38,7 @@ function validarEnviarFormularioConhecimento(id) {
         return false;
     }
 
-    var botaoInteressado = document.getElementById(`botao-interessado-${id}`);
+   /*  var botaoInteressado = document.getElementById(`botao-interessado-${id}`);
     var botaoSemDisponibilidade = document.getElementById(`botao-sem-disponibilidade-${id}`);
 
     botaoInteressado.addEventListener('click', function() {
@@ -15,7 +47,7 @@ function validarEnviarFormularioConhecimento(id) {
     
     botaoSemDisponibilidade.addEventListener('click', function() {
         openModalConfirmaSemDisponibilidade(id);
-    });
+    }); */
 
     return false; // Impede o envio do formulário imediatamente
 }
@@ -28,11 +60,11 @@ function validarEnviarFormularioAcao(id) {
         return false;
     }
 
-    var botaoContatoRespondido = document.getElementById(`botao-contato-respondido-${id}`);
+    /* var botaoContatoRespondido = document.getElementById(`botao-contato-respondido-${id}`);
 
     botaoContatoRespondido.addEventListener('click', function() {
         openModalConfirmaContatoRespondido(id);
-    });
+    }); */
 
     return false;
 }
@@ -41,16 +73,13 @@ function habilitarBotoesConhecimento(id) {
     var mensagemContato = document.getElementById(`mensagem-contato-${id}`).value.trim();
     var botaoInteressado = document.getElementById(`botao-interessado-${id}`);
     var botaoNaoInteressado = document.getElementById(`botao-sem-disponibilidade-${id}`);
-    var botaoContatoRespondido = document.getElementById(`botao-contato-respondido-${id}`);
 
     if (mensagemContato !== '') {
         botaoInteressado.removeAttribute('disabled');
         botaoNaoInteressado.removeAttribute('disabled');
-        botaoContatoRespondido.removeAttribute('disabled');
     } else {
         botaoInteressado.setAttribute('disabled', 'true');
         botaoNaoInteressado.setAttribute('disabled', 'true');
-        botaoContatoRespondido.setAttribute('disabled', 'true');
     }
 }
 
@@ -150,17 +179,3 @@ function closeModalConfirmaContatoRespondido(id) {
 
 /* ___________________________________________________________________________________________________________ */
 
-
-/* MODAL CONTATO RECEBIDO */
-function openModalVisualizarContatoRecebido(id) {
-    // Exibe o modal e a sobreposição
-    document.getElementById(`modal-visualizar-${id}`).style.display = 'block';
-
-    
-}
-
-function closeModalVisualizarContatoRecebido(id) {
-    // Oculta o modal e a sobreposição
-    document.getElementById(`modal-visualizar-${id}`).style.display = 'none';
-
-}

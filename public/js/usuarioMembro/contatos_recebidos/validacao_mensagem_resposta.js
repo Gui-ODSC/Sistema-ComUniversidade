@@ -1,3 +1,35 @@
+document.addEventListener('DOMContentLoaded', function() {
+    adicionarOuvintesDeEventos();
+});
+
+function adicionarOuvintesDeEventos() {
+    var botoesInteressado = document.querySelectorAll('[id^="botao-interessado-"]');
+    var botoesSemDisponibilidade = document.querySelectorAll('[id^="botao-sem-disponibilidade-"]');
+    var botoesContatoRespondido = document.querySelectorAll('[id^="botao-contato-respondido-"]');
+    
+    botoesInteressado.forEach(function(botao) {
+        botao.addEventListener('click', function() {
+            var id = botao.id.split('-').pop(); // Extrai o ID do botão
+            openModalConfirmaInteresse(id);
+        });
+    });
+    
+    botoesSemDisponibilidade.forEach(function(botao) {
+        botao.addEventListener('click', function() {
+            var id = botao.id.split('-').pop(); // Extrai o ID do botão
+            openModalConfirmaSemDisponibilidade(id);
+        });
+    });
+
+    botoesContatoRespondido.forEach(function(botao) {
+        botao.addEventListener('click', function() {
+            var id = botao.id.split('-').pop(); // Extrai o ID do botão
+            openModalConfirmaContatoRespondido(id);
+        });
+    });
+}
+
+
 function validarEnviarFormulario(id) {
     var mensagemContato = document.getElementById(`mensagem-contato-${id}`).value.trim();
 
@@ -6,7 +38,7 @@ function validarEnviarFormulario(id) {
         return false;
     }
 
-    var botaoInteressado = document.getElementById(`botao-interessado-${id}`);
+    /* var botaoInteressado = document.getElementById(`botao-interessado-${id}`);
     var botaoSemDisponibilidade = document.getElementById(`botao-sem-disponibilidade-${id}`);
 
     botaoInteressado.addEventListener('click', function() {
@@ -15,7 +47,7 @@ function validarEnviarFormulario(id) {
     
     botaoSemDisponibilidade.addEventListener('click', function() {
         openModalConfirmaSemDisponibilidade(id);
-    });
+    }); */
 
     return false; // Impede o envio do formulário imediatamente
 }
@@ -90,17 +122,3 @@ function closeModalConfirmaSemDisponibilidade(id) {
 }
 
 /* ___________________________________________________________________________________________________________ */
-
-/* MODAL CONTATO RECEBIDO */
-function openModalVisualizarContatoRecebido(id) {
-    // Exibe o modal e a sobreposição
-    document.getElementById(`modal-visualizar-${id}`).style.display = 'block';
-
-    
-}
-
-function closeModalVisualizarContatoRecebido(id) {
-    // Oculta o modal e a sobreposição
-    document.getElementById(`modal-visualizar-${id}`).style.display = 'none';
-
-}

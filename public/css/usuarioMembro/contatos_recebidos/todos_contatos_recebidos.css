@@ -4,8 +4,6 @@ body {
 
 .titulo {
     display: flex;
-    /* background: linear-gradient(90deg, rgba(9,107,170,1) 0%, #002e61 50%, rgba(40,35,69,1) 100%); */
-    /* background: linear-gradient(360deg, rgba(9,107,170,1) 0%, #002e61 50%, rgba(40,35,69,1) 100%); */
     background-color: #002e61;
     width: 500px;
     margin: auto;
@@ -28,7 +26,162 @@ body {
     margin-top: 50px;
 }
 
-.contato {
+#icone-visualizar-contato {
+    width: 35px;
+    height: 35px;
+    border-radius: 7px;
+    background-color: black;
+    border: solid 2px grey;
+    padding: 3px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#icone-visualizar-contato:hover {
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.status-interessado {
+    width: 160px;
+    height: 35px;
+    background-color: green;
+    border-radius: 5px;
+    padding: 2px;
+    font-size: medium;
+    color: #FFF;
+}
+
+.status-sem-disponibilidade {
+    width: 160px;
+    height: 35px;
+    background-color: red;
+    border-radius: 5px;
+    padding: 2px;
+    font-size: medium;
+    color: #FFF;
+}
+
+.status-respondido {
+    width: 160px;
+    height: 35px;
+    background-color: blue;
+    border-radius: 5px;
+    padding: 2px;
+    font-size: medium;
+    color: #FFF;
+}
+
+.status-recebido {
+    width: 180px;
+    height: 35px;
+    background-color: yellow;
+    border-radius: 5px;
+    padding: 2px;
+    font-size: medium;
+    color: black;
+}
+
+.table-rounded {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: -1px 1px 4px 4px black;
+}
+
+.table-personalizacao {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.table-personalizacao p {
+    margin: auto;
+    height: 100%;
+}
+
+.table-personalizacao .titulo-tabela {
+    overflow: hidden;
+    max-width: 30vw;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    height: 100%;
+    margin: auto;
+}
+
+.table-personalizacao .nome-tabela {
+    overflow: hidden;
+    max-width: 15vw;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    height: 100%;
+    margin: auto;
+}
+
+.table-personalizacao td, th {
+    padding: auto;
+    vertical-align: baseline;
+}
+
+.table-personalizacao thead, tbody {
+    border-radius: 50px;
+    padding: 0;
+    margin: 0;
+}
+
+.table-personalizacao thead th{
+    background-color: #146482;
+    color: #fff;
+    margin-top: 10px;
+}
+
+.table-personalizacao tbody{
+    border-bottom: solid 1px rgb(116, 116, 116);
+    margin-bottom: 30px;
+}
+
+
+
+
+/* PAGINACAO */
+.nav-paginator nav {
+    position: relative;
+    background-color: transparent;
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    height: auto;
+    margin: auto;
+    align-items: center;
+    border: 2px solid #002e61;
+    box-shadow: -1px 1px 4px 4px black;
+    border-radius: 5px;
+}
+
+.pagination {
+    margin: 2px;
+}
+
+.pagination {
+    --bs-pagination-active-bg: #005288;
+    --bs-pagination-active-border-color: black;
+    --bs-pagination-border-color: black;
+    --bs-pagination-border-width: 2px;
+    --bs-pagination-disabled-border-color: black;
+    --bs-pagination-hover-bg: #146482;
+    --bs-pagination-hover-border-color: black;
+    --bs-pagination-hover-color: #FFF;
+    --bs-pagination-color: black;
+}
+
+.paginacao-botao {
+    display: flex;
+    height: auto;
+    justify-content: center;
+    margin: auto 0;
+    align-items: center;
+}
+
+
+/* .contato {
     display: flex;
     margin: auto;
     border-radius: 10px;
@@ -112,9 +265,9 @@ body {
     cursor: pointer;
 }
 
-
+ */
 /* PAGINACAO */
-.nav-paginator nav {
+/* .nav-paginator nav {
     position: relative;
     background-color: transparent;
     width: 100%;
@@ -151,3 +304,4 @@ body {
     margin: auto 0;
     align-items: center;
 }
+ */

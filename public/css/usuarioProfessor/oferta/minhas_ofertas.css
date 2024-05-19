@@ -4,8 +4,6 @@ body {
 
 .titulo {
     display: flex;
-    /* background: linear-gradient(90deg, rgba(9,107,170,1) 0%, rgba(44,39,88,1) 50%, rgba(40,35,69,1) 100%); */
-    /* background: linear-gradient(360deg, rgba(9,107,170,1) 0%, rgba(44,39,88,1) 50%, rgba(40,35,69,1) 100%); */
     background-color: #1c2c52;
     width: 500px;
     margin: auto;
@@ -23,7 +21,7 @@ body {
     color: #fff;
 }
 
-.minhas-ofertas button {
+.botao-cadastrar {
     padding: 10px;
     border-radius: 10px;
     margin-bottom: 10px;
@@ -34,7 +32,7 @@ body {
     font-weight: bold;
 }
 
-.minhas-ofertas button:hover{
+.botao-cadastrar:hover{
     background-color: #1c2c52;
 }
 
@@ -64,51 +62,55 @@ body {
     text-align: center;
 }
 
+.table-personalizacao p {
+    margin: auto;
+    height: 100%;
+}
+
+.table-personalizacao .titulo-tabela {
+    overflow: hidden;
+    max-width: 30vw;
+    width: 20vw;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: auto;
+    margin: auto;
+    height: 100%;
+}
+
+.table-personalizacao .area-conhecimento-tabela {
+    overflow: hidden;
+    max-width: 25vw;
+    width: 20vw;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: auto;
+    margin: auto;
+    height: 100%;
+}
+
+.table-personalizacao td, th {
+    padding: auto;
+    vertical-align: baseline;
+}
+
 .table-personalizacao thead, tbody {
     border-radius: 50px;
+    padding: 0;
+    margin: 0;
 }
 
 .table-personalizacao thead th{
     background-color: #3b3b7b;
     color: #fff;
-    margin-top: 10px;
 }
 
-.table-personalizacao tbody td, th{
+.table-personalizacao tbody{
     border-bottom: solid 1px rgb(116, 116, 116);
     margin-bottom: 30px;
 }
 
-.table th:nth-child(1) {
-    width: 50px; /* Largura desejada da célula do título */
-}
 
-.table th:nth-child(2) {
-    width: 400px; /* Largura desejada da célula do título */
-}
-
-.table th:nth-child(3) {
-    width: 300px; /* Largura desejada da célula do título */
-}
-
-.table th:nth-child(4) {
-    width: 100px; /* Largura desejada da célula do título */
-}
-
-.table th:nth-child(5) {
-    width: 200px; /* Largura desejada da célula do título */
-}
-
-.table th:nth-child(6) {
-    width: 50px; /* Largura desejada da célula do título */
-}
-
-.table th:nth-child(7) {
-    width: 50px; /* Largura desejada da célula do título */
-}
-.table th:nth-child(8) {
-    width: 50px; /* Largura desejada da célula do título */
-}
 
 #icones_oferta {
     cursor: pointer;
@@ -152,4 +154,9 @@ body {
     justify-content: center;
     margin: auto 0;
     align-items: center;
+}
+
+.page-item.active .page-link{
+    background-color: #3b3b7b;
+    border: 2px solid black;
 }

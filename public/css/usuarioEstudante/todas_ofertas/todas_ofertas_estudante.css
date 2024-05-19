@@ -1,3 +1,10 @@
+* {
+    font-family: "Manrope", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-size: 15px;
+}
+
 body {
     background-color: #3b6c67;
 }
@@ -43,7 +50,7 @@ body {
 .caixa-pesquisa-oferta #pesquisaTitulo {
     background-color: #104655;
     border: solid 2px black;
-    height: 38px;
+    height: 36px;
 }
 
 .caixa-pesquisa-oferta #limparFiltro {
@@ -138,11 +145,18 @@ body {
 }
 
 .bootstrap-select .dropdown-menu {
-    min-width: 0;
-    max-width: 200px;
-    min-height: 100px;
+    min-height: 200px;
     max-height: 100px;
     overflow-y: auto;
+}
+
+.bootstrap-select .dropdown-toggle .filter-option-inner {
+    max-width: 100%;
+}
+
+.bootstrap-select .dropdown-toggle .filter-option-inner-inner {
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .bootstrap-select .dropdown-toggle .filter-option {
@@ -171,7 +185,7 @@ body {
 .dropdown-menu .dropdown-item:hover {
     padding: 0.5rem 0.9rem;
     background-color: #377b75;
-    color: #fff; 
+    color: #FFF; 
 }
 .btn.show {
     background-color: #104655;
@@ -220,16 +234,36 @@ body {
     background-color: black;
     border: solid 2px grey;
     padding: 3px;
-    transition: all 0.3s ease; /* Adiciona uma transição suave */
+    transition: all 0.3s ease; 
 }
 
 #icones_demanda:hover {
-    transform: scale(1.2); /* Aumenta o tamanho em 20% quando o mouse passa sobre ele */
+    transform: scale(1.2); 
 }
 
-#icones_status {
+/* #icones_status {
     width: 35px;
     height: 35px;
+} */
+
+.status-visualizado {
+    width: 110px;
+    height: 35px;
+    background-color: green;
+    border-radius: 5px;
+    padding: 2px;
+    font-size: medium;
+    color: #FFF;
+}
+
+.status-nao-visualizado {
+    width: 140px;
+    height: 35px;
+    background-color: red;
+    border-radius: 5px;
+    padding: 2px;
+    font-size: medium;
+    color: #FFF;
 }
 
 .table-rounded {
@@ -239,13 +273,35 @@ body {
     box-shadow: -1px 1px 4px 4px black;
 }
 
+.table tr th {
+    vertical-align: baseline;
+}
+
 .table-personalizacao {
     margin-top: 20px;
     text-align: center;
 }
 
+.table-personalizacao p {
+    overflow: hidden;
+    max-width: 20vw;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: auto;
+    margin: 0px;
+    height: 100%;
+    margin: auto;
+}
+
+.table-personalizacao td, th {
+    padding: auto;
+    vertical-align: baseline;
+}
+
 .table-personalizacao thead, tbody {
     border-radius: 50px;
+    padding: 0;
+    margin: 0;
 }
 
 .table-personalizacao thead th{
@@ -254,37 +310,10 @@ body {
     margin-top: 10px;
 }
 
-.table-personalizacao tbody td, th{
+.table-personalizacao tbody {
     border-bottom: solid 1px rgb(116, 116, 116);
 }
 
-.table th:nth-child(1) {
-    width: 50px; /* Largura desejada da célula do título */
-}
-
-.table th:nth-child(2) {
-    width: 500px; /* Largura desejada da célula do título */
-}
-
-.table th:nth-child(3) {
-    width: 200px; /* Largura desejada da célula do título */
-}
-
-.table th:nth-child(4) {
-    width: 170px; /* Largura desejada da célula do título */
-}
-
-.table th:nth-child(6) {
-    width: 170px; /* Largura desejada da célula do título */
-}
-
-.table th:nth-child(7) {
-    width: 10px; /* Largura desejada da célula do título */
-}
-
-.table th:nth-child(8) {
-    width: 10px;
-}
 
 #icones_demanda {
     cursor: pointer;

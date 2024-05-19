@@ -4,7 +4,7 @@
     display: none;
     position: fixed;
     width: 900px;
-    height: 500px;
+    height: 400px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -45,7 +45,7 @@
 .container-explicao {
     display: flex;
     justify-content: space-between;
-    height: 350px;
+    height: 250px;
 }
 
 .caixa-ajuda {
@@ -57,14 +57,12 @@
 
 .caixa-ajuda h6{
     padding: 20px 10px 0px 10px;
-    text-align: center;
 }
 
 .texto-ajuda {
     text-align: justify;
     height: 300px;
     padding: 15px;
-    overflow-y: scroll;
     overflow-x: hidden; /* Adicionado para ocultar a rolagem horizontal */
 }
 

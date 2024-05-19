@@ -16,14 +16,14 @@
     padding: 10px;
     border-radius: 10px;
     color: #fff;
-    text-align: center;
+    text-align: justify;
 }
 
 .texto-modal-confirma-respondido #font-azul {
     color: rgb(20, 84, 180);
     background-color: #FFF;
     border-radius: 5px;
-    padding: 1px;
+    padding: 3px;
     font-weight: bold;
 }
 
@@ -65,14 +65,13 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 600px;
-    height: 400px;
-    padding: 20px;
+    width: 590px;
+    height: 390px;
+    padding: 5px;
     background-color: #fff;
     border: 1px solid #ccc;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     z-index: 1000;
-    border-radius: 20px;
     border-radius: 10px;
     box-shadow: -1px 1px 4px 4px black;
 }

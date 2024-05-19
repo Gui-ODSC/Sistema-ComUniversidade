@@ -50,3 +50,22 @@ a buttom {
     color:#FFF;
     text-decoration: none;
 } 
+
+.botao-voltar {
+    background-color: black;
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    position: fixed;
+    top: 5%;
+    left: 2%;
+}
+
+.botao-voltar:hover{
+    transform: scale(1.2);
+}
+
+.botao-voltar img {
+    width: 40px;
+}

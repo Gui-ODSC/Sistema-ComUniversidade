@@ -2,13 +2,10 @@ body {
     background-color: #4d579c;
 }
 
-
 .titulo {
     display: flex;
-    /* background: linear-gradient(90deg, rgba(9,107,170,1) 0%, #1c2c52 50%, rgba(40,35,69,1) 100%); */
-    /* background: linear-gradient(360deg, rgba(9,107,170,1) 0%, #1c2c52 50%, rgba(40,35,69,1) 100%); */
     background-color: #1c2c52;
-    width: 550px;
+    width: 600px;
     margin: auto;
     padding: 10px;
     align-items: center;
@@ -98,7 +95,7 @@ body {
   
 .editar-ofertas input {
     color: #FFF;
-    font-size: 20px;
+    font-size: 17px;
     width: 100%;
     height: 50px;
     padding: 20px 10px 10px 5px;
@@ -157,7 +154,7 @@ body {
 /* TextArea */
 .editar-ofertas textarea {
     color: #FFF;
-    font-size: 20px;
+    font-size: 17px;
     width: 100%;
     height: 50px;
     padding: 20px 10px 10px 5px;
@@ -198,7 +195,7 @@ textarea:invalid + label span {
 /* Select */
 .editar-ofertas select {
     color: #FFF;
-    font-size: 20px;
+    font-size: 17px;
     width: 100%;
     height: 50px;
     padding: 20px 10px 10px 5px;
@@ -245,10 +242,8 @@ input[type="number"] {
     justify-content: center;
 }
 
-
-
 .areaConhecimento .bootstrap-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn) {
-    width: 364px;
+    width: 100%;
     border: none;
     justify-content: center;
     display: flex;
@@ -278,6 +273,10 @@ input[type="number"] {
     border: none;
 }
 
+.bootstrap-select .dropdown-toggle .filter-option-inner {
+    width: 100%;
+}
+
 .bootstrap-select .dropdown-menu {
     min-width: 100%;
     max-width: 100%;
@@ -298,7 +297,7 @@ input[type="number"] {
     width: 100%;
     text-align: left;
     display: flex;
-    font-size: 20px;
+    font-size: 17px;
 }
 
 .dropdown-menu {

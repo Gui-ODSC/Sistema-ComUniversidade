@@ -4,13 +4,13 @@
     display: none;
     position: fixed;
     width: 900px;
-    height: 500px;
+    height: 400px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 20px;
     background-color: #146482;
-    border: 5px solid #ccc;
+    border: 3px solid #ccc;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     z-index: 1000;
     border-radius: 20px;
@@ -45,7 +45,7 @@
 .container-explicao {
     display: flex;
     justify-content: space-between;
-    height: 350px;
+    height: 250px;
 }
 
 .caixa-ajuda {
@@ -56,15 +56,13 @@
 
 .caixa-ajuda h6{
     padding: 20px 10px 0px 10px;
-    text-align: center;
 }
 
 .texto-ajuda {
     text-align: justify;
     height: 300px;
     padding: 15px;
-    overflow-y: scroll;
-    overflow-x: hidden; /* Adicionado para ocultar a rolagem horizontal */
+    overflow-x: hidden; 
 }
 
 h2 {

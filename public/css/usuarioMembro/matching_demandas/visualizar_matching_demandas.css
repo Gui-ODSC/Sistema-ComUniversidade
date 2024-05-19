@@ -1,8 +1,13 @@
-body {
-    /* background: linear-gradient(90deg, rgba(9,107,170,1) 0%, rgba(16,43,73,1) 100%); */
-    background-color: #005288;
+* {
+    font-family: "Manrope", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-size: 15px;
 }
 
+body {
+    background-color: #005288;
+}
 
 .matchings h1 {
     text-align: center;
@@ -16,18 +21,34 @@ body {
     justify-content: space-between;
 }
 
+.header-demanda h4 {
+    font-size: 20px;
+}
+
 .titulo-descricao {
     display: flex;
     justify-content: space-between;
-    height: 70px;
     align-items: center;
+    height: 100%;
+}
+
+.titulo-descricao h2 {
+    font-size: 25px;
+    margin-bottom: 0;
+}
+
+.titulo {
+    max-width: 187vh;
+    word-break: break-word;
+    overflow-y: scroll;
+    align-items: center;
+    height: 100%;
 }
 
 .titulo-descricao a {
     background-color: black;
     border-radius: 10px;
-    margin-bottom: 5px;
-    margin-top: 5px;
+    margin: 0px 20px ;
     padding: 5px;
 }
 
@@ -48,7 +69,6 @@ body {
 
 .container-info-demanda {
     width: 100%;
-    height: 300px;
     background-color: #002e61;
     border-radius: 10px;
     color: white;
@@ -65,26 +85,56 @@ body {
     flex-wrap: wrap;
 }
 
-.dados-detalhados-demanda div{
+.dados-detalhados-demanda .dados{
     max-width: 50%;
     min-width: 300px;
 }
 
 .dados-detalhados-demanda h5 {
-  flex: 0 0 100%; /* Cada h5 ocupará 100% da largura até atingir a largura máxima permitida */
-  margin: 5px 0; /* Adiciona um espaçamento entre cada h5 */
-  box-sizing: border-box; /* Garante que a largura inclui a margem e o preenchimento */
+  flex: 0 0 100%; 
+  margin: 5px 0px; 
+  box-sizing: border-box;
+  font-size: 20px;
 }
+
+.botao-ver-mais {
+    width: 200px;
+    background: transparent;
+    border: none;
+    color: #FFF;
+}
+
 
 @media (min-width: 600px) {
   .dados-detalhados-demanda h5 {
-    flex: 0 0 calc(50% - 10px); /* Em telas maiores, cada h5 ocupará 50% da largura */
+    flex: 0 0 calc(50% - 10px); 
   }
 }
 
-#icones_status {
+/* #icones_status {
     width: 35px;
     height: 35px;
+} */
+
+
+.status-visualizado {
+    width: 110px;
+    height: 35px;
+    background-color: green;
+    border-radius: 5px;
+    padding: 2px;
+    font-size: medium;
+    color: #FFF;
+}
+
+.status-nao-visualizado {
+    width: 140px;
+    height: 35px;
+    background-color: red;
+    border-radius: 5px;
+    padding: 2px;
+    font-size: medium;
+    color: #FFF;
 }
 
 #icones_demanda {
@@ -114,8 +164,27 @@ body {
     text-align: center;
 }
 
+.table-personalizacao p {
+    overflow: hidden;
+    max-width: 25vw;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: auto;
+    margin: 0px;
+    height: 100%;
+    margin: auto;
+}
+
+.table-personalizacao td, th {
+    padding: auto;
+    vertical-align: baseline;
+}
+
+
 .table-personalizacao thead, tbody {
     border-radius: 50px;
+    padding: 0;
+    margin: 0;
 }
 
 .table-personalizacao thead th{
@@ -124,7 +193,7 @@ body {
     margin-top: 10px;
 }
 
-.table-personalizacao tbody td, th{
+.table-personalizacao tbody {
     border-bottom: solid 1px rgb(116, 116, 116);
     margin-bottom: 30px;
 }
@@ -134,19 +203,21 @@ body {
 }
 
 .table th:nth-child(2) {
-    width: 500px; /* Largura desejada da célula do título */
+    width: 400px; /* Largura desejada da célula do título */
 }
 
 .table th:nth-child(3) {
-    width: 200px; /* Largura desejada da célula do título */
+    width: 300px; /* Largura desejada da célula do título */
 }
-
 .table th:nth-child(4) {
-    width: 170px; /* Largura desejada da célula do título */
+    width: 250px; /* Largura desejada da célula do título */
+}
+.table th:nth-child(5) {
+    width: 150px; /* Largura desejada da célula do título */
 }
 
 .table th:nth-child(6) {
-    width: 170px; /* Largura desejada da célula do título */
+    width: 150px; /* Largura desejada da célula do título */
 }
 
 .table th:nth-child(7) {

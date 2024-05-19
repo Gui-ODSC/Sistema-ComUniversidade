@@ -1,17 +1,36 @@
-.modal-excluir h2 {
+.modal-excluir h3 {
     text-align: center;
     margin-top: 30px;
     margin-bottom: 5px;
 }
 
-.modal-excluir h4 {
+.titulo-excluir {
+    width: 500px;
+    max-width: 500px;
+    max-height: 100px;
+    overflow: auto;
+    text-overflow: ellipsis;
+    word-break: break-word;
+    margin-bottom: 5px;
+    vertical-align: baseline;
+}
+
+.modal-excluir h6 {
     text-align: center;
-    margin-bottom: 30px;
+    text-align: center;
+    overflow: auto;
+    max-height: 200px;
+    min-height: 40px;
+    color: #FFF;
+    border-radius: 5px;
+    padding: 3px;
+    font-size: 15px;
 }
 
 .div-botoes {
     display: flex;
     justify-content: center;
+    margin-top: 10px;
 }
 
 .div-botoes button {
@@ -22,6 +41,7 @@
     color: #FFF;
     font-weight: bold;
     width: 100px;
+    border: 2px solid black;
 }
 
 #botao-sim {

@@ -1,0 +1,217 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--modal-background-color-medio);
+    font-family: "Manrope", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-size: 15px;
+}
+
+:root {
+    --modal-background-color-white: #FFF;
+    --modal-background-color-escuro: #253d3d;
+    --modal-background-color-medio: #2F4F4F;
+}
+
+/* HEADER */
+
+header {
+    background-color: var(--modal-background-color-medio);
+    margin: 0;
+    padding: 0;
+    position: fixed;
+}
+
+nav {
+    height: 70px;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.nav-data {
+    margin: 0;
+    display: flex;
+    height: 100%;
+    justify-content: space-between;
+}
+
+.nav-data img {
+    width: 40px;
+    height: 50px;
+    margin: auto;
+}
+
+.nav-left {
+    display: flex; 
+    color: var(--modal-background-color-white);
+    margin: auto 0;
+}
+
+.nav-left h4 , .nav-left img{
+    padding-left: 20px;
+}
+.nav-right {
+    display: flex; 
+    color: var(--modal-background-color-white);
+    margin: auto 0;
+}
+
+.nav-right h4 {
+    margin-right: 30px;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.nav-right h4:hover {
+    transform: scale(1.1);
+    transition: all 0.3s ease;
+}
+
+.nav-right #botao-acesso {
+    border: 2px solid var(--modal-background-color-white);
+    margin: auto 20px auto 0px;
+    padding: 5px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.nav-right #botao-acesso:hover {
+    background-color: var(--modal-background-color-escuro);
+    cursor: pointer;
+}
+
+.nav-right a {
+    text-decoration: none;
+    color: var(--modal-background-color-white);
+}
+
+/* MAIN */
+
+main {
+    width: 100vw;
+    height: 80vh;
+}
+
+hr {
+    color: var(--modal-background-color-white);
+    font-weight: bold;
+    width: 95vw;
+}
+
+.secao {
+    height: 100%;
+    padding: 80px 50px 50px 50px;
+    color: var(--modal-background-color-white);
+}
+
+.secao p {
+    line-height: 20px;
+    text-align: justify;
+}
+
+/* PRIMEIRA SECAO */
+
+.prints-sistema {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: space-around;
+    margin-top: 30px;
+}
+
+.ilustracao {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.ilustracao img {
+    margin: 50px 20px 0px 20px;
+    width: 100px;
+}
+
+.ilustracao p {
+    margin: 0px 20px 50px 20px;
+}
+
+/* SEGUNDA SECAO */
+
+.tela-print {
+    padding-right: 10px;
+}
+
+.tela-print img{
+    width: 100%;
+    height: 200px;
+}
+
+.tela-print p {
+    padding: 0px 5px;
+}
+
+/* TERCEIRA SECAO */
+
+.beneficios {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.beneficios-universidade {
+    padding-left: 180px;
+}
+
+.beneficios-comunidade {
+    padding-right: 180px;
+}
+
+.item {
+    display: flex;
+    align-content: center;
+}
+
+.item p {
+    padding-left: 20px;
+}
+
+.item img {
+    width: 40px;
+    height: 40px;
+    margin: auto 0px auto 10px;
+}
+
+/* FOOTER */
+
+.footer {
+    background-color: var(--modal-background-color-white);
+    height: 20vh;
+}
+
+.secao-footer {
+    height: 70%;
+    padding: 80px 50px 50px 50px;
+    color: var(--modal-background-color-white);
+}
+
+.secao-footer p {
+    line-height: 20px;
+    text-align: justify;
+}
+
+.dados-curso {
+    text-align: center;
+    padding-top: 40px;
+}
+
+.dados-curso h5, .dados-curso h6{
+    margin: 0;
+}
+
+
+
+

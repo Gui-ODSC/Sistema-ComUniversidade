@@ -4,8 +4,8 @@
     max-width: 600px;
     min-width: 450px;
     max-height: 200px;
-    overflow-y: scroll;
     margin-top: 30px;
+    word-break: break-word;
 }
 
 .modal-descricao h3 {
@@ -23,7 +23,7 @@
 
 /* MODAL */
 
-.caixa-modal {
+.caixa-modal-descricao {
     display: none;
     position: fixed;
     top: 50%;
@@ -38,13 +38,13 @@
     color: #FFF;
 }
 
-.caixa-modal img {
+.caixa-modal-descricao img {
     width: 40px;
     background-color: #FFF;
     border-radius: 100px;
 }
 
-.clicar-fora-modal {
+.clicar-fora-modal-descricao {
     display: none;
     position: fixed;
     top: 0;

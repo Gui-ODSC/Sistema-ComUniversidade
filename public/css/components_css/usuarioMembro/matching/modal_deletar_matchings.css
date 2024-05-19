@@ -39,6 +39,7 @@
     position: fixed;
     top: 50%;
     left: 50%;
+    width: 55%;
     transform: translate(-50%, -50%);
     background-color: #146482;
     padding: 20px;

@@ -12,11 +12,11 @@ function validarEnviarFormulario(id) {
     mostrarModalSucesso(id);
 
     // Agendar o envio real do formulário após um breve intervalo (para dar tempo ao usuário de ver o modal)
-    setTimeout(function() {
-        if (!envioAutomaticoAgendado) {
+    /* setTimeout(function() { */
+        /* if (!envioAutomaticoAgendado) {
             document.getElementById(`form-contato-${id}`).submit();
-        }
-    }, 10000); // Tempo em milissegundos (aqui definido como 10 segundos para ilustração)
+        } */
+    /* }, 10000); */ // Tempo em milissegundos (aqui definido como 10 segundos para ilustração)
 
     return false; // Impede o envio do formulário imediatamente
 }
