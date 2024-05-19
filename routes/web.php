@@ -17,8 +17,12 @@ use Illuminate\Support\Facades\Route;
 */
 //Rota Inicial de seleção de entrada
 Route::get('/', function(){
+    return view('home');
+})->name('home');
+
+Route::get('/selecao-perfil', function () {
     return view('inicial');
-})->name('inicial');
+})->name('selecao_perfil');
 
 //Rotas de Login específicas para cada tipo de usuário
 Route::prefix('/autenticacao')->group(function(){

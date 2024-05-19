@@ -7,7 +7,7 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class ModalAjudaOferta extends Component
+class ModalAjudaTipoOferta extends Component
 {
 
     /**
@@ -24,7 +24,7 @@ class ModalAjudaOferta extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.usuario-professor.oferta.modal-ajuda-oferta', [
+        return view('components.usuario-professor.oferta.modal-ajuda-tipo-oferta', [
         ]);
     }
 }
