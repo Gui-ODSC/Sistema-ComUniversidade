@@ -13,28 +13,28 @@
 <body> 
     @include('usuarioMembro.menu')
     <main class="minhas-demandas" id="conteudo">
-        @if( session()->has('msg-demanda'))
-            <div class="alert alert-success" style="text-align: center">
-                <p>{{session('msg-demanda')}}</p>
-            </div>
-        @endif
         <div class="titulo">
             <h1>Minhas Necessidades</h1>
         </div>
+        @if( session()->has('msg-demanda'))
+            <div class="alert alert-success" style="text-align: center; margin-top: 20px">
+                <p>{{session('msg-demanda')}}</p>
+            </div>
+        @endif
         <div style="display: flex; justify-content: space-between; margin-top: 20px">
             <div class="paginacao-botao">
                 <div class="nav-paginator ">
                     {{ $demandas->links() }}
                 </div>
             </div>
-            <a href="{{ route('demanda_create_index') }}"><button>Cadastrar Novas Necessidades</button></a>
+            <a href="{{ route('demanda_create_index') }}"><button class="botao-cadastrar">Cadastrar Novas Necessidades</button></a>
         </div>
         <table class="table table-rounded p-5 table-personalizacao">
             <thead>
                 <tr>
                     <th scope="col"></th>
                     <th scope="col">Título</th>
-                    <th scope="col">Área de Conhecimento</th>
+                    <th scope="col">Área de conhecimento</th>
                     <th scope="col">Data criação</th>
                     <th scope="col">Editar</th>
                     <th scope="col">Deletar</th>
@@ -45,14 +45,14 @@
                     @php  $contador = 1; @endphp 
                     @if (count($demandas) < 1)
                         <tr>
-                            <td colspan="7"><p style="opacity: 0.6; margin-top: 5px; margin-bottom: 0px">-- Cadastre uma nova demanda --</p></td>
+                            <td colspan="7"><p style="opacity: 0.6; margin-top: 5px; margin-bottom: 0px; max-width:100vws">-- Cadastre uma nova necessidade --</p></td>
                         </tr>
                     @else
                     @foreach ($demandas as $demanda)    
                         <tr>
                             <th scope="row">{{$contador}}</th>
-                            <td>{{ $demanda->titulo }}</td>
-                            <td>{{ $demanda->areaConhecimento->nome }}</td>
+                            <td><p class="titulo-tabela" title="{{ $demanda->titulo }}">{{ $demanda->titulo }}</p></td>
+                            <td><p class="area-conhecimento-tabela" title="{{ $demanda->areaConhecimento->nome }}">{{ $demanda->areaConhecimento->nome }}</p></td>
                             <td>{{ \Carbon\Carbon::parse($demanda->created_at)->format('d/m/Y') }}</td>
                             <td><a href="{{ route('demanda_edit_index', $demanda->id_demanda) }}"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/minhas_demandas/editar.png') }}" alt="tres pontos para mais informação"></a></td>
                             <td><a onclick="openModalDeletar({{$demanda->id_demanda}})"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/minhas_demandas/delete.png') }}" alt="tres pontos para mais informação"></a></td>

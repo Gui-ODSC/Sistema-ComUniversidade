@@ -20,7 +20,7 @@
                     @csrf
                     <button type="submit" id="botao-sim">Sim</button>
                 </form>
-                <a href="{{ route('list_todas_ofertas') }}"><button id="botao-nao">Não</button></a>
+                <button id="botao-nao" onclick="closeModalDeletar({{$idOferta}})">Não</button>
             </div>
         </div>
     </div>

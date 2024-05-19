@@ -9,25 +9,35 @@
 </head>
 <body>
     <div class="clicar-fora-modal-interessados" id="clicar-fora-modal-interessados-{{$idOferta}}" onclick="closeModalUsuariosInteressados({{$idOferta}})"></div>
-    <div class="caixa-modal-interessados" id="caixa-modal-interessados-{{$idOferta}}">
+    <div class="caixa-modal-interessados" id="caixa-modal-interessados-{{$idOferta}}" style="padding-top: 35px">
         <span onclick="closeModalUsuariosInteressados({{$idOferta}})" id="botao_fechar_modal"><img src="{{ asset('img/usuarioMembro/minhas_demandas/fechar.png') }}" alt=""></span>
-        <div class="modal-descricao">
+        <div class="modal-descricao-interessados">
             <h3>Usuários Interessados</h3>
-            <h6>Lista de Usuários na sua Oferta</h6>
-            <table class="modal-table">
+            <h6>Lista de Usuários interessados(as) na sua Oferta</h6>
+            <table class="table table-rounded p-5 table-personalizacao">
                 <thead>
                     <tr>
                         <th>Email</th>
-                        <th>Tipo Usuário</th>
+                        <th>Tipo interessado(a)</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($usuarios as $usuario)
+                    @if (count($usuarios) < 1)
                         <tr>
-                            <td>{{ $usuario->email }}</td>
-                            <td>{{ ucwords(strtolower($usuario->tipo)) }}</td>
+                            <td colspan="2"><p class="sem-dados">-- Nenhum usuário interessado(a) na sua oferta --</p></td>
                         </tr>
-                    @endforeach
+                    @else
+                        @foreach ($usuarios as $usuario)
+                            <tr>
+                                <td><p class="email" title="{{ $usuario->email }}">{{ $usuario->email }}</p></td>
+                                @if ($usuario->tipo === 'MEMBRO')
+                                    <td>Membro Externo</td>
+                                @elseif ($usuario->tipo === 'ALUNO')
+                                    <td>Estudante</td>
+                                @endif
+                            </tr>
+                        @endforeach
+                    @endif
                 </tbody>
             </table>
         </div>

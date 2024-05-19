@@ -9,7 +9,7 @@
    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.6/js/bootstrap-select.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.8/dist/js/bootstrap-select.min.js"></script>
    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.6/css/bootstrap-select.min.css" rel="stylesheet" />
    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />
     {{-- AUTOCOMPLETE --}}
@@ -24,7 +24,7 @@
     <title>Editar Oferta Conhecimento</title>
 </head>
 <body>
-    @include('usuarioMembro.menu')
+    @include('usuarioProfessor.menu')
     <main class="editar-ofertas" id="conteudo">
         <div class="botao-voltar">
             <a title="Voltar" onclick="goBack()"><img src="{{ asset('img/usuarioMembro/cadastrar_demandas/botao_voltar.png')}}" alt=""></a>
@@ -47,23 +47,23 @@
             @endif
             <div class="section-form">
                 @csrf
-                <div class="caixa-input" style="width: 40%;">
+                <div class="caixa-input" style="width: 60%; padding-right: 3px">
                     @if ($errors->has('titulo') || $errors->has('id_usuario'))
-                        <input title="{{ $errors->first('titulo') ?: $errors->first('id_usuario') }}" type="text" name="titulo" value="{{$oferta->titulo}}" style="border: 1px solid red; background-color: rgb(235, 201, 206); color: black" required maxlength="150">
+                        <input title="{{ $errors->first('titulo') ?: $errors->first('id_usuario') }}" type="text" name="titulo" value="{{$oferta->titulo}}" style="border: 1px solid red; background-color: rgb(235, 201, 206); color: black" required maxlength="80">
                         <label for="titulo">
                             <span>Titulo *</span>
                         </label>
                     @else    
-                        <input type="text" name="titulo" value="{{$oferta->titulo}}" id="titulo" autocomplete="off" required maxlength="150">
+                        <input type="text" name="titulo" value="{{$oferta->titulo}}" id="titulo" autocomplete="off" required maxlength="80">
                         <label for="titulo">
                             <span>Titulo *</span>
                         </label>
                     @endif
                 </div>
-                <div class="caixa-input" style="width: 30%; margin-left: 3px">
+                <div class="caixa-input" style="width: 40%;">
                     @error('area_conhecimento')
                         <label for="area_conhecimento" style="z-index: 1">
-                            <span>Área Conhecimento *</span>
+                            <span>Área conhecimento *</span>
                         </label>
                         <div class="areaConhecimento">
                             <input class="selectpicker" data-live-search="true" title="{{$message}}" type="text" name="area_conhecimento" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required maxlength="70">
@@ -75,7 +75,7 @@
                         </div>
                     @else
                         <label for="area_conhecimento" style="z-index: 1">
-                            <span>Área Conhecimento *</span>
+                            <span>Área conhecimento *</span>
                         </label>
                         <div class="areaConhecimento">
                             <select class="selectpicker" data-live-search="true" name="area_conhecimento" required maxlength="70">
@@ -86,31 +86,6 @@
                             </select>
                         </div>
                 @enderror
-                </div>
-                <div class="caixa-input" style="width: 358px; margin-left: 3px">
-                    @error('tempo_atuacao')
-                        <select title="{{$message}}" name="tempo_atuacao" autocomplete="off" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required>
-                            <option disabled selected></option>
-                            <option value="MENOS_1_ANO"{{$oferta->ofertaConhecimento->tempo_atuacao === 'MENOS_1_ANO' ? 'selected' : ''}}>Menos de 1 Ano</option>
-                            <option value="MAIS_1_ANO"{{$oferta->ofertaConhecimento->tempo_atuacao === 'MAIS_1_ANO' ? 'selected' : ''}}>Mais de 1 Ano</option>
-                            <option value="MAIS_3_ANOS"{{$oferta->ofertaConhecimento->tempo_atuacao === 'MAIS_3_ANOS' ? 'selected' : ''}}>Mais de 3 Anos</option>
-                            <option value="MAIS_5_ANOS"{{$oferta->ofertaConhecimento->tempo_atuacao === 'MAIS_5_ANOS' ? 'selected' : ''}}>Mais de 5 Anos</option>
-                        </select>
-                        <label for="tempo_atuacao">
-                            <span>Selecione o Tempo de Atuação *</span>
-                        </label>
-                    @else
-                        <select name="tempo_atuacao" autocomplete="off" required>
-                            <option disabled selected></option>
-                            <option value="MENOS_1_ANO"{{$oferta->ofertaConhecimento->tempo_atuacao === 'MENOS_1_ANO' ? 'selected' : ''}}>Menos de 1 Ano</option>
-                            <option value="MAIS_1_ANO"{{$oferta->ofertaConhecimento->tempo_atuacao === 'MAIS_1_ANO' ? 'selected' : ''}}>Mais de 1 Ano</option>
-                            <option value="MAIS_3_ANOS"{{$oferta->ofertaConhecimento->tempo_atuacao === 'MAIS_3_ANOS' ? 'selected' : ''}}>Mais de 3 Anos</option>
-                            <option value="MAIS_5_ANOS"{{$oferta->ofertaConhecimento->tempo_atuacao === 'MAIS_5_ANOS' ? 'selected' : ''}}>Mais de 5 Anos</option>
-                        </select>
-                        <label for="tempo_atuacao">
-                            <span>Selecione o Tempo de Atuação *</span>
-                        </label>
-                    @enderror
                 </div>
                 <div class="caixa-input" style="height: 120px; width: 100%;">
                     @error('descricao')
@@ -125,29 +100,54 @@
                         </label>
                     @enderror
                 </div>
-                <div class="caixa-input" style="width: 50%;">
+                <div class="caixa-input" style="width: 25%; padding-right: 3px">
+                    @error('tempo_atuacao')
+                        <select title="{{$message}}" name="tempo_atuacao" autocomplete="off" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required>
+                            <option disabled selected></option>
+                            <option value="MENOS_1_ANO"{{$oferta->ofertaConhecimento->tempo_atuacao === 'MENOS_1_ANO' ? 'selected' : ''}}>Menos de 1 Ano</option>
+                            <option value="MAIS_1_ANO"{{$oferta->ofertaConhecimento->tempo_atuacao === 'MAIS_1_ANO' ? 'selected' : ''}}>Mais de 1 Ano</option>
+                            <option value="MAIS_3_ANOS"{{$oferta->ofertaConhecimento->tempo_atuacao === 'MAIS_3_ANOS' ? 'selected' : ''}}>Mais de 3 Anos</option>
+                            <option value="MAIS_5_ANOS"{{$oferta->ofertaConhecimento->tempo_atuacao === 'MAIS_5_ANOS' ? 'selected' : ''}}>Mais de 5 Anos</option>
+                        </select>
+                        <label for="tempo_atuacao">
+                            <span>Selecione o tempo de experiência: *</span>
+                        </label>
+                    @else
+                        <select name="tempo_atuacao" autocomplete="off" required>
+                            <option disabled selected></option>
+                            <option value="MENOS_1_ANO"{{$oferta->ofertaConhecimento->tempo_atuacao === 'MENOS_1_ANO' ? 'selected' : ''}}>Menos de 1 Ano</option>
+                            <option value="MAIS_1_ANO"{{$oferta->ofertaConhecimento->tempo_atuacao === 'MAIS_1_ANO' ? 'selected' : ''}}>Mais de 1 Ano</option>
+                            <option value="MAIS_3_ANOS"{{$oferta->ofertaConhecimento->tempo_atuacao === 'MAIS_3_ANOS' ? 'selected' : ''}}>Mais de 3 Anos</option>
+                            <option value="MAIS_5_ANOS"{{$oferta->ofertaConhecimento->tempo_atuacao === 'MAIS_5_ANOS' ? 'selected' : ''}}>Mais de 5 Anos</option>
+                        </select>
+                        <label for="tempo_atuacao">
+                            <span>Selecione o tempo de experiência: *</span>
+                        </label>
+                    @enderror
+                </div>
+                <div class="caixa-input" style="width: 35%; padding-right: 3px">
                     @error('link_lattes')
                         <input title="{{$message}}" type="text" name="link_lattes" value="{{$oferta->ofertaConhecimento->link_lattes}}" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" autocomplete="off" maxlength="255">
                         <label for="link_lattes">
-                            <span>Link Lattes</span>
+                            <span>Link lattes</span>
                         </label>
                     @else
                         <input type="text" name="link_lattes" value="{{$oferta->ofertaConhecimento->link_lattes}}" autocomplete="off" maxlength="255">
                         <label for="link_lattes">
-                            <span>Link Lattes</span>
+                            <span>Link lattes</span>
                         </label>
                     @enderror
                 </div>
-                <div class="caixa-input" style="width: 604px; margin-left: 3px">
+                <div class="caixa-input" style="width: 40%;">
                     @error('link_linkedin')
                         <input title="{{$message}}" type="text" name="link_linkedin" value="{{$oferta->ofertaConhecimento->link_linkedin}}" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" autocomplete="off" maxlength="255">
                         <label for="link_linkedin">
-                            <span>Link Linkedin</span>
+                            <span>Link linkedin</span>
                         </label>
                     @else
                         <input type="text" name="link_linkedin" value="{{$oferta->ofertaConhecimento->link_linkedin}}" autocomplete="off" maxlength="255">
                         <label for="link_linkedin">
-                            <span>Link Linkedin</span>
+                            <span>Link linkedin</span>
                         </label>
                     @enderror
                 </div>

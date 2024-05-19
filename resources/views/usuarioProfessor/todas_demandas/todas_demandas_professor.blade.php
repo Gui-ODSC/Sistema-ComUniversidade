@@ -14,7 +14,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.6/js/bootstrap-select.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.8/dist/js/bootstrap-select.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.6/css/bootstrap-select.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />
     <!-- Bootstrap -->
@@ -110,19 +110,19 @@
                 @php  $contador = 1; @endphp 
                 @if (count($demandas) < 1)
                     <tr>
-                        <td colspan="7"><p style="opacity: 0.6; margin-top: 5px; margin-bottom: 0px">-- Nenhuma Necessidade Disponível no Momento --</p></td>
+                        <td colspan="7"><p style="opacity: 0.6; margin-top: 5px; margin-bottom: 0px; max-width: 100vw">-- Nenhuma Necessidade Disponível no Momento --</p></td>
                     </tr>
                 @else
                     @foreach ($demandas as $key => $demanda)
                         <tr>
                             <th scope="row">{{$contador}}</th>
-                            <td>{{$demanda['demanda']->titulo}}</td>
-                            <td>{{$demanda['demanda']->areaConhecimento->nome}}</td>
+                            <td><p title="{{$demanda['demanda']->titulo}}">{{$demanda['demanda']->titulo}}</p></td>
+                            <td><p title="{{$demanda['demanda']->areaConhecimento->nome}}">{{$demanda['demanda']->areaConhecimento->nome}}</p></td>
                             <td>{{ \Carbon\Carbon::parse($demanda['demanda']->created_at)->format('d/m/Y') }}</td>
                             @if ($demanda['status'] == 'nao_visualizado')
-                                <td><img id="icones_status" src="{{ asset('img/usuarioMembro/todas_ofertas/olho_desmarcado.png') }}" alt="tres pontos para mais informação"></td>
+                                <td><p class="status-nao-visualizado" title="Não visualizado">Não visualizado</p>{{-- <img id="icones_status" src="{{ asset('img/usuarioMembro/todas_ofertas/olho_desmarcado.png') }}" alt="tres pontos para mais informação"> --}}</td>
                             @elseif ($demanda['status'] == 'visualizado')
-                                <td><img id="icones_status" src="{{ asset('img/usuarioMembro/todas_ofertas/olho_marcado.png') }}" alt="tres pontos para mais informação"></td>
+                                <td><p class="status-visualizado" title="Visualizado">Visualizado</p>{{-- <img id="icones_status" src="{{ asset('img/usuarioMembro/todas_ofertas/olho_marcado.png') }}" alt="tres pontos para mais informação"> --}}</td>
                             @endif
                             <td><a onclick="openModalDeletar({{$demanda['demanda']->id_demanda}})"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/minhas_demandas/delete.png') }}" alt="tres pontos para mais informação"></a></td>
                             <x-usuario-professor.todas-demandas.modal-deletar-demanda :id-demanda="$demanda['demanda']->id_demanda" />
@@ -134,17 +134,6 @@
                 @endif
             </tbody>
         </table>
-        <!-- ZERA O CAMPO DE PESQUISA DA CAIXINHA -->
-        <script>
-            // Obtém o elemento do campo de pesquisa pelo ID
-            var campoPesquisa = document.getElementById('campo-pesquisa');
-
-            // Define o valor do campo de pesquisa como vazio ao carregar a página
-            window.onload = function() {
-                campoPesquisa.value = '';
-            };
-            
-        </script>
         <div class="paginacao-botao">
             <div class="nav-paginator ">
                 {{ $paginate->links() }}

@@ -22,58 +22,60 @@
                     <p>{{session('msg-contato-respondido')}}</p>
                 </div>
             @endif
-            @if (count($contatosRecebidos) < 1)
-                <div class="contato" id="oferta-requisitada" style="text-align: center; justify-content: center; display: flex; flex-direction: column;">
-                        <h5 colspan="8" style="opacity: 0.6; margin-top: 5px; margin-bottom: 0px;">-- Nenhum Contato Recebido até o Momento --</h5>
-                        <p style="opacity: 0.6; margin-top: 5px;">Crie demandas e comece a encontrar soluções</p>
-                </div>
-            @else
-            @foreach ($contatosRecebidos as $contato)
-                <div class="contato" id="oferta-requisitada">
-                    <div class="info-esquerda">
-                        <div id="img-contato">
-                            <img src="{{ asset('img/usuarioMembro/contatos/perfil.png') }}" alt="foto perfil" id="imagem">
-                        </div>
-                        <div id="info-usuario-contato">
-                            <h4>{{$contato['usuarioEmissor']->nome}}</h4>
-                            <h5>Status: {{ucwords(strtolower($contato['usuarioEmissor']->tipo))}}(a)</h5>
-                        </div>
-                    </div>
-                    <div class="info-direita">
-                        <div class="barra-titulo">
-                            <div id="barra-separadora">
-                                <img src="{{ asset('img/icones/barra_vertical.png') }}" alt="barra separadora" id="imagem">
-                            </div>
-                            <div id="info-contato-recebido">
-                                <h4>Interesse em Demanda</h4>
-                                <h5>Data Contato: {{ \Carbon\Carbon::parse($contato['dados']->created_at)->format('d/m/Y') }}</h5>
-                            </div>
-                        </div>
-                        <div id="icones-contato">
-                            @if ($contato['respostaEnviada'] != null)
-                                @if ($contato['respostaEnviada']->tipo_mensagem === 'INTERESSADO')
-                                    <img title="Interessado(a)" id="imagem-contato-status" src="{{ asset('img/usuarioMembro/contatos/status_check.png') }}" alt="">
-                                @elseif ($contato['respostaEnviada']->tipo_mensagem === 'SEM_DISPONIBILIDADE')
-                                    <img title="Sem Disponibilidade" id="imagem-contato-status" src="{{ asset('img/usuarioMembro/contatos/status_sem_disponibilidade.png') }}" alt="">
-                                @elseif ($contato['respostaEnviada']->tipo_mensagem === 'RESPONDIDA')
-                                    <img title="Mensagem Respondida" id="imagem-contato-status" src="{{ asset('img/usuarioMembro/contatos/status_respondida.png') }}" alt="">
+            <table class="table table-rounded p-5 table-personalizacao">
+                <thead>
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col">Título necessidade</th>
+                        <th scope="col">Nome contato</th>
+                        <th scope="col">Tipo contato</th>
+                        <th scope="col">Data contato</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Ver</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @php  $contador = 1; @endphp 
+                    @if (count($contatosRecebidos) < 1)
+                        <tr>
+                            <td colspan="7"><p style="opacity: 0.6; margin-top: 5px; margin-bottom: 0px; max-width:100vw">-- Nenhum Contato Recebido --</p></td>
+                        </tr>
+                    @else
+                        @foreach ($contatosRecebidos as $contato)    
+                            <tr>
+                                <th scope="row">{{$contador}}</th>
+                                <td><p class="titulo-tabela" title="{{ $contato['demanda']->titulo }}">{{ $contato['demanda']->titulo }}</p></td>
+                                <td><p class="nome-tabela" title="{{ $contato['usuarioEmissor']->nome }}">{{ $contato['usuarioEmissor']->nome }}</p></td>
+                                @if ($contato['usuarioEmissor']->tipo === 'ALUNO') 
+                                    <td>Estudante</td>
+                                @elseif ($contato['usuarioEmissor']->tipo === 'PROFESSOR')
+                                    <td>Professor(a)</td>
                                 @endif
-                            @else
-                                <img title="Mensagem Recebida" id="imagem-contato-status" src="{{ asset('img/usuarioMembro/contatos/status_recebido.png') }}" alt="icone email">
-                            @endif
-                            <a onclick="openModalVisualizarContatoRecebido({{$contato['dados']->id_contato}})"><img id="icone-visualizar-contato" src="{{ asset('img/usuarioMembro/contatos/visualizar_contato.png') }}" alt="icone mais info"></a>
-                            <x-usuario-membro.contatos-recebidos.modal-visualizar-contato-recebido :id-contato="$contato['dados']->id_contato"/>
-                        </div>
-                    </div>
+                                <td>{{ \Carbon\Carbon::parse($contato['dados']->created_at)->format('d/m/Y') }}</td>
+                                @if ($contato['respostaEnviada'] != null)
+                                    @if ($contato['respostaEnviada']->tipo_mensagem === 'INTERESSADO')
+                                        <td><p title="Interessado(a)" class="status-interessado">Interessado(a)</p></td>
+                                    @elseif ($contato['respostaEnviada']->tipo_mensagem === 'SEM_DISPONIBILIDADE')
+                                        <td><p title="Sem disponibilidade" class="status-sem-disponibilidade">Sem disponibilidade</p></td>
+                                    @elseif ($contato['respostaEnviada']->tipo_mensagem === 'RESPONDIDA')
+                                        <td><p title="respondido" class="status-respondido">Respondido</p></td>
+                                    @endif
+                                @else
+                                    <td><p title="Mensagem Recebida" class="status-recebido">Mensagem Recebida</p></td>
+                                @endif
+                                <td><a onclick="openModalVisualizarContatoRecebido({{$contato['dados']->id_contato}})"><img id="icone-visualizar-contato" src="{{ asset('img/usuarioMembro/contatos/visualizar_contato.png') }}" alt="icone mais info"></a></td>
+                                <x-usuario-membro.contatos-recebidos.modal-visualizar-contato-recebido :id-contato="$contato['dados']->id_contato"/>
+                            </tr>
+                            @php $contador++; @endphp
+                        @endforeach
+                    @endif
+                </tbody>
+            </table>
+            <div class="paginacao-botao">
+                <div class="nav-paginator ">
+                    {{ $paginate->links() }}
                 </div>
             </div>
-            @endforeach 
-        @endif
-        <div class="paginacao-botao">
-            <div class="nav-paginator ">
-                {{ $paginate->links() }}
-            </div>
-        </div>
         <script src="{{ asset('js/errors/mensagem_erro.js') }}"></script>  
     </main>
 </body>

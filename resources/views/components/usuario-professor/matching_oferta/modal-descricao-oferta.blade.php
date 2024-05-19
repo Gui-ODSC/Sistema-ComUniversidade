@@ -8,8 +8,8 @@
     <title>Descrição Oferta</title>
 </head>
 <body>
-    <div class="clicar-fora-modal" id="clicar-fora-modal-{{$idOferta}}" onclick="closeModalDescricao({{$idOferta}})"></div>
-    <div class="caixa-modal" id="caixa-modal-{{$idOferta}}">
+    <div class="clicar-fora-modal-descricao" id="clicar-fora-modal-descricao-{{$idOferta}}" onclick="closeModalDescricao({{$idOferta}})"></div>
+    <div class="caixa-modal-descricao" id="caixa-modal-descricao-{{$idOferta}}">
         <span onclick="closeModalDescricao({{$idOferta}})" id="botao_fechar_modal"><img src="{{ asset('img/usuarioMembro/minhas_demandas/fechar.png') }}" alt=""></span>
         <div class="modal-descricao">
             <h3>Descrição da Oferta</h3>

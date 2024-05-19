@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('css/menu_navegacao/menu.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/components_css/usuarioProfessor/oferta/modal_ajuda_oferta.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/components_css/usuarioProfessor/oferta/modal_ajuda_tipo_oferta.css') }}">
     <script src="{{ asset('js/menu/menu_navegacao.js') }}"></script>
     <title>Minhas Demandas</title>
 </head>
 <body>
-    <div class="clicar-fora-modal-ajuda" id="clicar-fora-modal-ajuda-{{$idUsuario}}" onclick="closeModalAjudaOferta({{$idUsuario}})"></div>
+    <div class="clicar-fora-modal-ajuda" id="clicar-fora-modal-ajuda-{{$idUsuario}}" onclick="closeModalAjudaTipoOferta({{$idUsuario}})"></div>
         <div class="caixa-modal-ajuda" id="caixa-modal-ajuda-{{$idUsuario}}">
             <div class="botao_fechar_model">
                 <a href="{{route('ajuda_sistema_professor')}}" style="color: #FFF">Saiba mais em Ajuda</a>
-                <a onclick="closeModalAjudaOferta({{$idUsuario}})"><img src="{{ asset('img/usuarioMembro/minhas_demandas/fechar.png') }}" alt=""></a>
+                <a onclick="closeModalAjudaTipoOferta({{$idUsuario}})"><img src="{{ asset('img/usuarioMembro/minhas_demandas/fechar.png') }}" alt=""></a>
             </div>
             <h2>Ajuda - Tipo de Oferta</h2>
             <div class="container-explicao">

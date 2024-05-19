@@ -15,7 +15,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.6/js/bootstrap-select.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.8/dist/js/bootstrap-select.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.6/css/bootstrap-select.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />
     <!-- Bootstrap -->
@@ -53,26 +53,26 @@
                 <form action="{{ route('list_todas_ofertas') }}" method="GET">
                     @csrf
                     <select class="filtro-select-normal" id="opcao" autocomplete="off" onchange="ajustarTamanhoSelect()" name="tipo_oferta">
-                        <option value="" selected disabled>Tipo Oferta</option>
+                        <option value="" selected disabled>Tipo oferta</option>
                         <option value="ACAO" {{ $tipoOfertaSelecionada == 'ACAO' ? 'selected' : '' }}>Ação</option>
                         <option value="CONHECIMENTO" {{ $tipoOfertaSelecionada == 'CONHECIMENTO' ? 'selected' : '' }}>Conhecimento</option>
                     </select>
                     <div id="formularioFiltroAcao" style="display: none; width: 100%;">
                         <select class="selectpicker mg"data-live-search="true" name="area_conhecimento_acao">
-                            <option value="" selected disabled>Área Conhecimento</option>
+                            <option value="" selected disabled>Área conhecimento</option>
                             @foreach ($listAreaConhecimento as $areaConhecimento)
                                 <option value="{{ $areaConhecimento->id_area_conhecimento }}" {{ $areaConhecimentoSelecionadaAcao == $areaConhecimento->id_area_conhecimento ? 'selected' : '' }}>{{ $areaConhecimento->nome }}</option>
                             @endforeach
                         </select>
                         <select class="selectpicker mg"data-live-search="true" name="publico_alvo">
-                            <option value="" selected disabled>Publico Alvo</option>
+                            <option value="" selected disabled>Publico alvo</option>
                             @foreach ($listPublicoAlvo as $publicoAlvo)
                                 <option value="{{ $publicoAlvo->id_publico_alvo }}" {{ $publicoAlvoSelecionado == $publicoAlvo->id_publico_alvo ? 'selected' : '' }}>{{ $publicoAlvo->nome }}</option>
                             @endforeach
                         </select>
                         <div>
                             <select class="filtro-select-normal" name="status_registro" style="width: 154px">
-                                <option selected disabled>Status Registro</option>
+                                <option selected disabled>Status registro</option>
                                 <option value="NAO_REGISTRADA" {{ $statusRegistroSelecionado == 'NAO_REGISTRADA' ? 'selected' : '' }}>Não Registrada</option>
                                 <option value="REGISTRADA" {{ $statusRegistroSelecionado == 'REGISTRADA' ? 'selected' : '' }}>Registrada</option>
                             </select>
@@ -85,14 +85,14 @@
                     </div>
                     <div id="formularioFiltroConhecimento" style="display: none; width: 100%;">
                         <select class="selectpicker mg"data-live-search="true" name="area_conhecimento_conhecimento">
-                            <option value="" selected>Área Conhecimento</option>
+                            <option value="" selected>Área conhecimento</option>
                             @foreach ($listAreaConhecimento as $areaConhecimento)
                                 <option value="{{ $areaConhecimento->id_area_conhecimento }}" {{ $areaConhecimentoSelecionadaConhecimento == $areaConhecimento->id_area_conhecimento ? 'selected' : '' }}>{{ $areaConhecimento->nome }}</option>
                             @endforeach
                         </select>
                         <div>
                             <select class="filtro-select-normal" name="tempo_atuacao">
-                                <option selected disabled>Tempo Experiência</option>
+                                <option selected disabled>Tempo experiência</option>
                                 <option value="MENOS_1_ANO" {{ $tempoAtuacaoSelecionado == 'MENOS_1_ANO' ? 'selected' : '' }}>Menos de 1 Ano</option>
                                 <option value="MAIS_1_ANO" {{ $tempoAtuacaoSelecionado == 'MAIS_1_ANO' ? 'selected' : '' }}>Mais de 1 Ano</option>
                                 <option value="MAIS_3_ANOS" {{ $tempoAtuacaoSelecionado == 'MAIS_3_ANOS' ? 'selected' : '' }}>Mais de 3 Anos</option>
@@ -116,10 +116,10 @@
                 <tr>
                     <th scope="col"></th>
                     <th scope="col">Título</th>
-                    <th scope="col">Área de Conhecimento</th>
-                    <th scope="col">Tipo Oferta <button onclick="openModalAjudaTipoOferta({{$usuarioMembro}})" style="background: none; border: none; color: #FFF">(?)</button></th>
+                    <th scope="col">Área de conhecimento</th>
+                    <th scope="col">Tipo oferta <button onclick="openModalAjudaTipoOferta({{$usuarioMembro}})" style="background: none; border: none; color: #FFF">(?)</button></th>
                     <x-usuario-membro.todas-ofertas.modal-ajuda-tipo-oferta :id-usuario="$usuarioMembro"/>
-                    <th scope="col">Data Oferta</th>
+                    <th scope="col">Data oferta</th>
                     <th scope="col">Status</th>
                     <th scope="col">Deletar</th>
                     <th scope="col">Contato</th>
@@ -129,14 +129,14 @@
                 @php  $contador = 1; @endphp 
                 @if (count($ofertas) < 1)
                     <tr>
-                        <td colspan="8"><p style="opacity: 0.6; margin-top: 5px; margin-bottom: 0px">-- Nenhuma Oferta Disponível no Momento --</p></td>
+                        <td colspan="8"><p style="opacity: 0.6; margin-top: 5px; margin-bottom: 0px; max-width: 100vw">-- Nenhuma Oferta Disponível no Momento --</p></td>
                     </tr>
                 @else
                     @foreach ($ofertas as $key => $oferta)
                         <tr>
                             <th scope="row">{{$contador}}</th>
-                            <td>{{$oferta['oferta']->titulo}}</td>
-                            <td>{{$oferta['oferta']->areaConhecimento->nome}}</td>
+                            <td><p title="{{$oferta['oferta']->titulo}}">{{$oferta['oferta']->titulo}}</p></td>
+                            <td><p title="{{$oferta['oferta']->areaConhecimento->nome}}">{{$oferta['oferta']->areaConhecimento->nome}}</p></td>
                             @if ($oferta['oferta']->tipo === 'ACAO')
                                 <td>Ação</td>
                             @elseif ($oferta['oferta']->tipo === 'CONHECIMENTO')
@@ -144,9 +144,9 @@
                             @endif
                             <td>{{ \Carbon\Carbon::parse($oferta['oferta']->created_at)->format('d/m/Y') }}</td>
                             @if ($oferta['status'] == 'nao_visualizado')
-                                <td><img id="icones_status" src="{{ asset('img/usuarioMembro/todas_ofertas/olho_desmarcado.png') }}" alt="tres pontos para mais informação"></td>
+                                <td><p class="status-nao-visualizado" title="Não visualizado">Não visualizado</p>{{-- <img id="icones_status" src="{{ asset('img/usuarioMembro/todas_ofertas/olho_desmarcado.png') }}" alt="tres pontos para mais informação"> --}}</td>
                             @elseif ($oferta['status'] == 'visualizado')
-                                <td><img id="icones_status" src="{{ asset('img/usuarioMembro/todas_ofertas/olho_marcado.png') }}" alt="tres pontos para mais informação"></td>
+                                <td><p class="status-visualizado" title="Visualizado">Visualizado</p>{{-- <img id="icones_status" src="{{ asset('img/usuarioMembro/todas_ofertas/olho_marcado.png') }}" alt="tres pontos para mais informação"> --}}</td>
                             @endif
                             <td><a onclick="openModalDeletar({{$oferta['oferta']->id_oferta}})"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/minhas_demandas/delete.png') }}" alt="tres pontos para mais informação"></a></td>
                             <x-usuario-membro.todas-ofertas.modal-deletar-oferta :id-oferta="$oferta['oferta']->id_oferta" />
@@ -158,16 +158,7 @@
                 @endif
             </tbody>
         </table>
-        <!-- ZERA O CAMPO DE PESQUISA DA CAIXINHA -->
         <script>
-            // Obtém o elemento do campo de pesquisa pelo ID
-            var campoPesquisa = document.getElementById('campo-pesquisa');
-
-            // Define o valor do campo de pesquisa como vazio ao carregar a página
-            window.onload = function() {
-                campoPesquisa.value = '';
-            };
-
             /* opcao SELECT */
             function mostrarFormulario() {
                 var opcao = document.getElementById("opcao").value;

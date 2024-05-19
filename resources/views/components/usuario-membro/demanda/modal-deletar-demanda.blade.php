@@ -14,15 +14,18 @@
         <div class="caixa-modal" id="caixa-modal-{{$idDemanda}}">
             <span onclick="closeModalDeletar({{$idDemanda}})" id="botao_fechar_model"><img src="{{ asset('img/usuarioMembro/minhas_demandas/fechar.png') }}" alt=""></span>
             <div class="modal-excluir">
-            <h3 style="padding-top: 25px">Deseja mesmo Excluir essa necessidade ?</h3>
-            <h4><strong>"{{$demanda->titulo}}"</strong></h4>
+                <h3>Deseja mesmo Excluir essa Oferta ?</h3>
+                <div class="titulo-excluir">
+                    <h6><strong>"{{$demanda->titulo}}"</strong></h6>
+                </div>
+            </div>
             <div class="div-botoes">
                 <form action="{{ route('demanda_delete_store', $idDemanda) }}" method="POST">
                     @method('DELETE')
                     @csrf
                     <button type="submit" id="botao-sim">Sim</button>
                 </form>
-                <a href="{{ route('demanda_index') }}"><button id="botao-nao">Não</button></a>
+                <a {{-- href="{{ route('demanda_index') }}" --}} onclick="closeModalDeletar({{$idDemanda}})"><button id="botao-nao">Não</button></a>
             </div>
         </div>
     </div>

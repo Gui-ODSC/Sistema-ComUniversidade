@@ -9,7 +9,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.6/js/bootstrap-select.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.8/dist/js/bootstrap-select.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.6/css/bootstrap-select.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />
     {{-- AUTOCOMPLETE --}}
@@ -45,20 +45,20 @@
             @endif
             <div class="section-form">
                 @csrf
-                <div class="caixa-input" style="width: 60%;">
+                <div class="caixa-input" style="width: 60%; padding-right: 3px">
                     @if ($errors->has('titulo') || $errors->has('id_usuario'))
-                        <input title="{{ $errors->first('titulo') ?: $errors->first('id_usuario') }}" type="text" name="titulo" style="border: 1px solid red; background-color: rgb(235, 201, 206); color: black" required maxlength="150">
+                        <input title="{{ $errors->first('titulo') ?: $errors->first('id_usuario') }}" type="text" name="titulo" style="border: 1px solid red; background-color: rgb(235, 201, 206); color: black" required maxlength="80">
                         <label for="titulo">
                             <span>Titulo *</span>
                         </label>
                     @else    
-                        <input type="text" name="titulo" value="{{ $demanda->titulo }}" required maxlength="150">
+                        <input type="text" name="titulo" value="{{ $demanda->titulo }}" required maxlength="80">
                         <label for="titulo">
                             <span>Titulo *</span>
                         </label>
                     @endif
                 </div>
-                <div class="caixa-input" style="width: 482px; margin-left: 3px">
+                <div class="caixa-input" style="width: 40%">
                     @error('publico_alvo')
                         <label for="publico_alvo" style="z-index: 1">
                             <span>Publico alvo *</span>
@@ -85,7 +85,7 @@
                         </div>
                     @enderror
                 </div>
-                <div class="caixa-input" style="width: 50%">
+                <div class="caixa-input" style="width: 50%; padding-right: 3px">
                     @error('areaConhecimento')
                         <label for="area_conhecimento" style="z-index: 1">
                             <span>Área Conhecimento *</span>
@@ -112,7 +112,7 @@
                         </div>
                     @enderror
                 </div>
-                <div class="caixa-input" style="width: 603px; margin-left: 3px">
+                <div class="caixa-input" style="width: 50%;">
                     @error('pessoas_afetadas')
                         <input title="{{$message}}" type="number" name="pessoas_afetadas" onkeypress="return event.charCode >= 48 && event.charCode <= 57" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required maxlength="10">
                         <label for="pessoas_afetadas">
@@ -138,7 +138,7 @@
                         </label>
                     @enderror
                 </div>
-                <div class="caixa-input" style="width: 35%">
+                <div class="caixa-input" style="width: 35%; padding-right: 3px">
                     @error('duracao')
                         <select title="{{$message}}" name="duracao" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required>
                             <option disabled></option>
@@ -165,7 +165,7 @@
                         </label>
                     @enderror
                 </div>
-                <div class="caixa-input" style="width: 35%; margin-left: 3px">
+                <div class="caixa-input" style="width: 35%; padding-right: 3px">
                     @error('nivel_prioridade')
                         <select title="{{$message}}" name="nivel_prioridade" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required>
                             <option disabled selected></option>
@@ -188,7 +188,7 @@
                         </label>
                     @enderror
                 </div>
-                <div class="caixa-input" style="width: 358px; margin-left: 3px">
+                <div class="caixa-input" style="width: 30%;">
                     @error('instituicao_setor')
                         <input title="{{$message}}" type="text" name="instituicao_setor" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" maxlength="70">
                         <label for="instituicao_setor">

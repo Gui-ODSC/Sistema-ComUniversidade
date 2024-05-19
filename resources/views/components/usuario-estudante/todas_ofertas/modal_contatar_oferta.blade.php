@@ -12,21 +12,18 @@
 </head>
 <body>
     <!-- MODAL -->
-    <div class="clicar-fora-modal-contatar" id="clicar-fora-modal-contatar-{{$idOferta}}" onclick="closeModalContatarOferta({{$idOferta}})">
+    <div class="clicar-fora-modal-contatar" id="clicar-fora-modal-contatar-{{$idOferta}}" >
         <div class="modal-contatar" id="modal-contatar-{{$idOferta}}">
             <div class="dados-oferta-contatar">
                 <div class="dados-usuario-professor-contatar">
                     <div class="informacao-professor-contatar">
                         <h2>{{$professor->nome}}</h2>
                         <hr>
-                        <h6>Cargo: {{(ucwords(strtolower($professor->tipo)))}}</h6>
+                        <h6>Tipo usuário: {{(ucwords(strtolower($professor->tipo)))}}(a)</h6>
                         @if ($professor->instituicao)
                             <h6>Instituição: {{$professor->instituicao}}</h6>
                         @else 
                             <h6>Intituição: Não cadastrada</h6>
-                        @endif
-                        @if ($oferta->tipo === 'ACAO')
-                            <h6>Tipo Oferta: Ação</h6>
                         @endif
                     </div>
                     <div class="informacao-email-contatar">
@@ -36,7 +33,7 @@
                     </div>
                 </div>
                 <div class="informacao-oferta-contatar">
-                    <div id="titulo-oferta-contatar">
+                    <div class="titulo-oferta-contatar">
                         <h2>Título: {{$oferta->titulo}}</h2>
                     </div>
                     <div class="informacao-oferta-coluna-contatar">
@@ -58,13 +55,22 @@
                                 <h6>Regime: {{ucwords(strtolower($oferta->ofertaAcao->regime))}}</h6>
                             @endif
                         </div>
+                        <div>
+                            @if ($oferta->tipo == 'ACAO')
+                                @if ($oferta->ofertaAcao->data_limite)
+                                    <h6><strong>Data Limite: {{ \Carbon\Carbon::parse($oferta->ofertaAcao->data_limite)->format('d/m/Y') }}</strong></h6>
+                                @else
+                                    <h6><strong>Data Limite: Indefinida</strong></h6>
+                                @endif
+                            @endif
+                        </div>
                     </div>
                 </div>
             </div>
             <form id="form-contato-{{$idOferta}}" action="{{ route('contato_direto_store_estudante', $idOferta) }}" method="POST" onsubmit="return validarEnviarFormulario({{$idOferta}})">
                 @csrf
                 <div class="mensagem-contato">
-                    <h6>Mandar Mensagem:</h6>
+                    <h6>Escreva sua mensagem:</h6>
                     <textarea name="mensagem-contato" id="mensagem-contato-{{$idOferta}}" cols="122" rows="5" placeholder="Contate o ofertante através dessa caixa de mensagem (*Obrigatório)"></textarea>
                 </div>
                 <div class="botoes-oferta-contatar">

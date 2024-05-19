@@ -18,12 +18,12 @@
                     <div class="informacao-professor">
                         <h2>{{$usuarioMembro->nome}}</h2>
                         <hr>
-                        <h6>Tipo de Usuário: {{(ucwords(strtolower($usuarioMembro->tipo)))}}</h6>
-                        @if ($usuarioMembro->instituicao)
-                            <h6>Instituição: {{$usuarioMembro->instituicao}}</h6>
-                        @else 
-                            <h6>Intituição: Não cadastrada</h6>
+                        @if ($usuarioMembro->tipo === 'MEMBRO')
+                            <h6>Tipo de usuário: Membro externo</h6>
+                        @elseif ($usuarioMembro->tipo === 'ALUNO')
+                            <h6>Tipo de usuário: Estudante</h6>
                         @endif
+                        <h6>Instituição: {{$usuarioMembro->instituicao ?? 'Não cadastrada'}}</h6>
                     </div>
                     <div class="informacao-email">
                         <h4>Contatos Email</h4>
@@ -32,29 +32,29 @@
                     </div>
                 </div>
                 <div class="informacao-oferta">
-                    <div id="titulo-oferta">
-                        <h2>Título: {{$demanda->titulo}}</h2>
+                    <div class="titulo-oferta">
+                        <h2>{{$demanda->titulo}}</h2>
                     </div>
                     <div class="informacao-oferta-coluna">
                         <div>
                             <h6>Tipo: Necessidade</h6>
-                            <h6>Pessoas Atingidas: Aprox. {{$demanda->pessoas_afetadas}}</h6>
+                            <h6>Pessoas atingidas: aprox. {{$demanda->pessoas_afetadas}}</h6>
                             <h6>Duração: {{ucwords(strtolower($demanda->duracao))}}</h6>
                         </div>
                         <div>
-                            <h6>Área Conhecimento: {{$demanda->areaConhecimento->nome}}</h6>
-                            <h6>Público Alvo: {{$demanda->publicoAlvo->nome}}</h6>
-                            <h6>Nivel Prioridade: {{ucwords(strtolower($demanda->nivel_prioridade))}}</h6>
+                            <h6>Área conhecimento: {{$demanda->areaConhecimento->nome}}</h6>
+                            <h6>Público alvo: {{$demanda->publicoAlvo->nome}}</h6>
+                            <h6>Nivel prioridade: {{ucwords(strtolower($demanda->nivel_prioridade))}}</h6>
                         </div>
                         <div>
-                            <h6>Criada em: {{ \Carbon\Carbon::parse($demanda->created_at)->format('d/m/Y') }}</h6>
-                            <h6>Instituição: {{$demanda->instituicao_setor ?? '' }}</h6>
+                            <h6 style="font-weight: bold">Criada em: {{ \Carbon\Carbon::parse($demanda->created_at)->format('d/m/Y') }}</h6>
+                            <h6>Instituição: {{$demanda->instituicao_setor ?? 'Não cadastrada' }}</h6>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="descricao-oferta">
-                <h6>Descricao Necessidade:</h6>
+                <h6>Descricao necessidade:</h6>
                 <p>{{$demanda->descricao}}</p>
             </div>
             <div class="botoes-oferta">

@@ -19,11 +19,15 @@
                     <div class="informacao-professor-contatar">
                         <h2>{{$usuarioMembro->nome}}</h2>
                         <hr>
-                        <h6>Tipo de Usuário: {{(ucwords(strtolower($usuarioMembro->tipo)))}}</h6>
+                        @if ($usuarioMembro->tipo === 'MEMBRO')
+                            <h6>Tipo de usuário: Membro externo</h6>
+                        @elseif ($usuarioMembro->tipo === 'ALUNO')
+                            <h6>Tipo de usuário: Estudante</h6>
+                        @endif
                         @if ($usuarioMembro->instituicao)
                             <h6>Instituição: {{$usuarioMembro->instituicao}}</h6>
                         @else 
-                            <h6>Intituição: Não cadastrada</h6>
+                            <h6>Instituição: Não cadastrada</h6>
                         @endif
                     </div>
                     <div class="informacao-email-contatar">
@@ -34,8 +38,8 @@
                 </div>
                 <div class="informacao-oferta-contatar">
                     <div class="informacao-oferta-contatar">
-                        <div id="titulo-oferta-contatar">
-                            <h2>Título: {{$demanda->titulo}}</h2>
+                        <div class="titulo-oferta-contatar">
+                            <h2>{{$demanda->titulo}}</h2>
                         </div>
                         <div class="informacao-oferta-coluna-contatar">
                             <div>
@@ -50,7 +54,7 @@
                             </div>
                             <div>
                                 <h6 id="data-contatar">Criada em: {{ \Carbon\Carbon::parse($demanda->created_at)->format('d/m/Y') }}</h6>
-                                <h6>Instituição: {{$demanda->instituicao_setor ?? '' }}</h6>
+                                <h6>Instituição: {{$demanda->instituicao_setor ?? 'Não cadastrada' }}</h6>
                             </div>
                         </div>
                     </div>
@@ -59,7 +63,7 @@
             <form id="form-contato-{{$idDemanda}}" action="{{ route('contato_direto_store_professor', $idDemanda) }}" method="POST" onsubmit="return validarEnviarFormulario({{$idDemanda}})">
                 @csrf
                 <div class="mensagem-contato">
-                    <h6>Mandar Mensagem:</h6>
+                    <h6>Escreva sua mensagem:</h6>
                     <textarea name="mensagem-contato" id="mensagem-contato-{{$idDemanda}}" cols="119" rows="5" placeholder="Contate o ofertante através dessa caixa de mensagem (*Obrigatório)"></textarea>
                 </div>
                 <div class="botoes-oferta-contatar">

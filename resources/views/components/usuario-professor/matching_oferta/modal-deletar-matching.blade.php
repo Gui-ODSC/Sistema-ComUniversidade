@@ -9,8 +9,8 @@
     <title>Minhas Demandas</title>
 </head>
 <body>
-    <div class="clicar-fora-modal" id="clicar-fora-modal-{{$idMatching}}" onclick="closeModalDeletar({{$idMatching}})"></div>
-    <div class="caixa-modal" id="caixa-modal-{{$idMatching}}">
+    <div class="clicar-fora-modal-deletar" id="clicar-fora-modal-deletar-{{$idMatching}}" onclick="closeModalDeletar({{$idMatching}})"></div>
+    <div class="caixa-modal-deletar" id="caixa-modal-deletar-{{$idMatching}}">
         <span onclick="closeModalDeletar({{$idMatching}})" id="botao_fechar_modal"><img src="{{ asset('img/usuarioMembro/minhas_demandas/fechar.png') }}" alt=""></span>
         <div class="modal-excluir">
             <h3 style="font-size: 25px">Deseja mesmo Remover esta Demanda da Lista?</h3>
@@ -20,7 +20,7 @@
                     @csrf
                     <button type="submit" id="botao-sim">Sim</button>
                 </form>
-                <a href="{{ route('demanda_matching_index', $idMatching) }}"><button id="botao-nao">Não</button></a>
+                <a {{-- href="{{ route('demanda_matching_index', $idMatching) }}" --}} onclick="closeModalDeletar({{$idMatching}})"><button id="botao-nao">Não</button></a>
             </div>
         </div>
     </div>

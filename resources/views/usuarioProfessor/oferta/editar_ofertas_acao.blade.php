@@ -9,6 +9,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.8/dist/js/bootstrap-select.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.6/js/bootstrap-select.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.6/css/bootstrap-select.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />
@@ -25,7 +26,7 @@
     <title>Editar Demanda</title>
 </head>
 <body>
-    @include('usuarioMembro.menu')
+    @include('usuarioProfessor.menu')
     <main class="editar-ofertas" id="conteudo">
         <div class="botao-voltar">
             <a title="Voltar" onclick="goBack()"><img src="{{ asset('img/usuarioMembro/cadastrar_demandas/botao_voltar.png')}}" alt=""></a>
@@ -48,23 +49,23 @@
             @endif
             <div class="section-form">
                 @csrf
-                <div class="caixa-input" style="width: 40%;">
+                <div class="caixa-input" style="width: 60%; padding-right: 3px">
                     @if ($errors->has('titulo') || $errors->has('id_usuario'))
-                        <input title="{{ $errors->first('titulo') ?: $errors->first('id_usuario') }}" type="text" name="titulo" value="{{$oferta->titulo}}" style="border: 1px solid red; background-color: rgb(235, 201, 206); color: black" required maxlength="150">
+                        <input title="{{ $errors->first('titulo') ?: $errors->first('id_usuario') }}" type="text" name="titulo" value="{{$oferta->titulo}}" style="border: 1px solid red; background-color: rgb(235, 201, 206); color: black" required maxlength="80">
                         <label for="titulo">
                             <span>Titulo *</span>
                         </label>
                     @else    
-                        <input type="text" name="titulo" id="titulo" autocomplete="off" value="{{$oferta->titulo}}" required maxlength="150">
+                        <input type="text" name="titulo" id="titulo" autocomplete="off" value="{{$oferta->titulo}}" required maxlength="80">
                         <label for="titulo">
                             <span>Titulo *</span>
                         </label>
                     @endif
                 </div>
-                <div class="caixa-input" style="width: 30%; margin-left: 3px">
+                <div class="caixa-input" style="width: 40%">
                     @error('area_conhecimento')
                         <label for="area_conhecimento" style="z-index: 1">
-                            <span>Área Conhecimento *</span>
+                            <span>Área conhecimento *</span>
                         </label>
                         <div class="areaConhecimento">
                             <input class="selectpicker" data-live-search="true" title="{{$message}}" type="text" name="area_conhecimento" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required maxlength="70">
@@ -76,7 +77,7 @@
                         </div>
                     @else
                         <label for="area_conhecimento" style="z-index: 1">
-                            <span>Área Conhecimento *</span>
+                            <span>Área conhecimento *</span>
                         </label>
                         <div class="areaConhecimento">
                             <select class="selectpicker" data-live-search="true" name="area_conhecimento" required maxlength="70">
@@ -88,7 +89,7 @@
                         </div>
                     @enderror
                 </div>
-                <div class="caixa-input" style="width: 355px; margin-left: 3px">
+                <div class="caixa-input" style="width: 40%; padding-right: 3px">
                     @error('publico_alvo')
                         <label for="publico_alvo" style="z-index: 1">
                             <span>Publico alvo *</span>
@@ -115,7 +116,7 @@
                         </div>
                     @enderror
                 </div>
-                <div class="caixa-input" style="width: 30%;">
+                <div class="caixa-input" style="width: 30%; padding-right: 3px">
                     @error('tipo_acao')
                                 <select title="{{$message}}" name="tipo_acao" autocomplete="off" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required>
                                     <option disabled selected></option>
@@ -125,7 +126,7 @@
                                     <option value="Evento" {{ $oferta->ofertaAcao->tipoAcao->nome == 'Evento' ? 'selected' : '' }}>Evento</option>
                                 </select>
                                 <label for="tipo_acao">
-                                    <span>Selecione a duração da oferta *</span>
+                                    <span>Selecione a modalidade da oferta *</span>
                                 </label>
                             @else
                                 <select name="tipo_acao" required autocomplete="off">
@@ -136,11 +137,11 @@
                                     <option value="Evento" {{ $oferta->ofertaAcao->tipoAcao->nome == 'Evento' ? 'selected' : '' }}>Evento</option>
                                 </select>
                                 <label for="tipo_acao">
-                                    <span>Selecione a duração da oferta *</span>
+                                    <span>Selecione a modalidade da oferta *</span>
                                 </label>
                             @enderror
                 </div>
-                <div class="caixa-input" style="width: 35%; margin-left: 3px;">
+                <div class="caixa-input" style="width: 30%;">
                     @error('duracao')
                         <select title="{{$message}}" name="duracao" autocomplete="off" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required>
                             <option disabled selected></option>
@@ -167,19 +168,6 @@
                         </label>
                     @enderror
                 </div>
-                <div class="caixa-input" style="width: 417px; margin-left: 3px">
-                    @error('data_limite')
-                        <input type="date" name="data_limite" value="{{$dataLimite}}" autocomplete="off" placeholder="Dia/Mes/Ano" min="{{ date('Y-m-d') }}">
-                        <label for="data_expiracao">
-                            <span>Data expiração da oferta</span>
-                        </label>
-                    @else
-                        <input type="date" name="data_limite" value="{{$dataLimite}}" autocomplete="off" placeholder="Dia/Mes/Ano" min="{{ date('Y-m-d') }}">
-                        <label for="data_expiracao">
-                            <span>Data expiração da oferta</span>
-                        </label>
-                    @enderror
-                </div>
                 <div class="caixa-input" style="height: 120px; width: 100%;">
                     @error('descricao')
                         <textarea title="{{$message}}" type="text" name="descricao" placeholder="Texto Livre" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required maxlength="500">{{$oferta->descricao}}</textarea>
@@ -193,7 +181,20 @@
                         </label>
                     @enderror
                 </div>
-                <div class="caixa-input" style="width: 50%;">
+                <div class="caixa-input" style="width: 35%; padding-right: 3px; font-size: 17px">
+                    @error('data_limite')
+                        <input type="date" name="data_limite" value="{{$dataLimite}}" autocomplete="off" placeholder="Dia/Mes/Ano" min="{{ date('Y-m-d') }}">
+                        <label for="data_expiracao">
+                            <span>Data de expiração da oferta</span>
+                        </label>
+                    @else
+                        <input type="date" name="data_limite" value="{{$dataLimite}}" autocomplete="off" placeholder="Dia/Mes/Ano" min="{{ date('Y-m-d') }}">
+                        <label for="data_expiracao">
+                            <span>Data de expiração da oferta</span>
+                        </label>
+                    @enderror
+                </div>
+                <div class="caixa-input" style="width: 35%; padding-right: 3px">
                     @error('status_registro')
                         <select title="{{$message}}" name="status_registro" autocomplete="off" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required>
                             <option disabled selected></option>
@@ -214,7 +215,7 @@
                         </label>
                     @enderror
                 </div>
-                <div class="caixa-input" style="width: 604px; margin-left: 3px">
+                <div class="caixa-input" style="width: 30%;">
                     @error('regime')
                         <select title="{{$message}}" name="regime" autocomplete="off" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required>
                             <option disabled selected></option>

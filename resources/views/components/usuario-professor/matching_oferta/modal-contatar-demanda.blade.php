@@ -19,12 +19,12 @@
                     <div class="informacao-professor-contatar">
                         <h2>{{$usuarioMembro->nome}}</h2>
                         <hr>
-                        <h6>Tipo de Usuário: {{(ucwords(strtolower($usuarioMembro->tipo)))}}</h6>
-                        @if ($usuarioMembro->instituicao)
-                            <h6>Instituição: {{$usuarioMembro->instituicao}}</h6>
-                        @else 
-                            <h6>Intituição: Não cadastrada</h6>
+                        @if ($usuarioMembro->tipo === 'MEMBRO')
+                            <h6>Tipo de usuário: Membro externo</h6>
+                        @elseif ($usuarioMembro->tipo === 'ALUNO')
+                            <h6>Tipo de usuário: Estudante</h6>
                         @endif
+                        <h6>Instituição: {{$usuarioMembro->instituicao ?? 'Não cadastrada'}}</h6>
                     </div>
                     <div class="informacao-email-contatar">
                         <h4>Contatos Email</h4>
@@ -34,23 +34,23 @@
                 </div>
                 <div class="informacao-oferta-contatar">
                     <div class="informacao-oferta-contatar">
-                        <div id="titulo-oferta-contatar">
-                            <h2>Título: {{$demanda->titulo}}</h2>
+                        <div class="titulo-oferta-contatar">
+                            <h2>{{$demanda->titulo}}</h2>
                         </div>
                         <div class="informacao-oferta-coluna-contatar">
                             <div>
-                                <h6>Tipo: Demanda</h6>
-                                <h6>Pessoas Atingidas: Aprox. {{$demanda->pessoas_afetadas}}</h6>
+                                <h6>Tipo: Necessidade</h6>
+                                <h6>Pessoas atingidas: aprox. {{$demanda->pessoas_afetadas}}</h6>
                                 <h6>Duração: {{ucwords(strtolower($demanda->duracao))}}</h6>
                             </div>
                             <div>
-                                <h6>Área Conhecimento: {{$demanda->areaConhecimento->nome}}</h6>
-                                <h6>Público Alvo: {{$demanda->publicoAlvo->nome}}</h6>
-                                <h6>Nivel Prioridade: {{ucwords(strtolower($demanda->nivel_prioridade))}}</h6>
+                                <h6>Área conhecimento: {{$demanda->areaConhecimento->nome}}</h6>
+                                <h6>Público alvo: {{$demanda->publicoAlvo->nome}}</h6>
+                                <h6>Nível prioridade: {{ucwords(strtolower($demanda->nivel_prioridade))}}</h6>
                             </div>
                             <div>
-                                <h6 id="data-contatar">Demandada em: {{ \Carbon\Carbon::parse($demanda->created_at)->format('d/m/Y') }}</h6>
-                                <h6>Instituição: {{$demanda->instituicao_setor ?? '' }}</h6>
+                                <h6 id="data-contatar">Criada em: {{ \Carbon\Carbon::parse($demanda->created_at)->format('d/m/Y') }}</h6>
+                                <h6>Instituição: {{$demanda->instituicao_setor ?? 'Não cadastrada' }}</h6>
                             </div>
                         </div>
                     </div>
@@ -59,7 +59,7 @@
             <form id="form-contato-{{$idMatching}}" action="{{ route('contato_realizado_store_professor', [$idMatching, $idOferta]) }}" method="POST" onsubmit="return validarEnviarFormulario({{$idMatching}})">
                 @csrf
                 <div class="mensagem-contato">
-                    <h6>Mandar Mensagem:</h6>
+                    <h6>Escreva sua mensagem:</h6>
                     <textarea name="mensagem-contato" id="mensagem-contato-{{$idMatching}}" cols="119" rows="5" placeholder="Contate o ofertante através dessa caixa de mensagem (*Obrigatório)"></textarea>
                 </div>
                 <div class="botoes-oferta-contatar">

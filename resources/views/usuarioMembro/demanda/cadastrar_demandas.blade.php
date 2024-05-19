@@ -9,7 +9,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.6/js/bootstrap-select.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.8/dist/js/bootstrap-select.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.6/css/bootstrap-select.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />
     {{-- Autocomplete.JS --}}
@@ -45,20 +45,20 @@
             @endif
             <div class="section-form">
                 @csrf
-                <div class="caixa-input" style="width: 60%;">
+                <div class="caixa-input" style="width: 60%; padding-right: 3px">
                     @if ($errors->has('titulo') || $errors->has('id_usuario'))
-                        <input title="{{ $errors->first('titulo') ?: $errors->first('id_usuario') }}" type="text" name="titulo" style="border: 1px solid red; background-color: rgb(235, 201, 206); color: black" required maxlength="150" value="{{old('titulo')}}">
+                        <input title="{{ $errors->first('titulo') ?: $errors->first('id_usuario') }}" type="text" name="titulo" style="border: 1px solid red; background-color: rgb(235, 201, 206); color: black" required maxlength="80" value="{{old('titulo')}}">
                         <label for="titulo">
                             <span style="color: black">Titulo *</span>
                         </label>
                     @else    
-                        <input type="text" name="titulo" autocomplete="off" required maxlength="150" value="{{old('titulo')}}">
+                        <input type="text" name="titulo" autocomplete="off" required maxlength="80" value="{{old('titulo')}}">
                         <label for="titulo">
                             <span>Titulo *</span>
                         </label>
                     @endif
                 </div>
-                <div class="caixa-input" style="width: 482px; margin-left: 3px">
+                <div class="caixa-input" style="width: 40%;">
                     @error('publico_alvo')
                         <label for="publico_alvo" style="z-index: 1">
                             <span>Publico alvo *</span>
@@ -86,10 +86,10 @@
                     @enderror
                 </div>
                 {{--  --}}
-                <div class="caixa-input" style="width: 50%;">
+                <div class="caixa-input" style="width: 50%; padding-right: 3px">
                     @error('area_conhecimento')
                         <label for="area_conhecimento" style="z-index: 1">
-                            <span>Área Conhecimento *</span>
+                            <span>Área conhecimento *</span>
                         </label>
                         <div class="areaConhecimento">
                             <select class="selectpicker" data-live-search="true" title="{{$message}}" name="area_conhecimento" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required maxlength="70">
@@ -101,7 +101,7 @@
                         </div>
                     @else
                         <label for="area_conhecimento" style="z-index: 1">
-                            <span>Área Conhecimento *</span>
+                            <span>Área conhecimento *</span>
                         </label>
                         <div class="areaConhecimento">
                             <select class="selectpicker areaConhecimento" data-live-search="true" name="area_conhecimento" required maxlength="70" value="{{old('area_conhecimento')}}">
@@ -114,16 +114,16 @@
                     @enderror
                 </div>
                 {{--  --}}
-                <div class="caixa-input" style="width: 603px; margin-left: 3px">
+                <div class="caixa-input" style="width: 50%;">
                     @error('pessoas_afetadas')
                         <input title="{{$message}}" type="number" name="pessoas_afetadas" min="0" autocomplete="off" onkeypress="return event.charCode >= 48 && event.charCode <= 57" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required maxlength="10" value="{{old('pessoas_afetadas')}}">
                         <label for="pessoas_afetadas">
-                            <span style="color: black">Pessoas Atingidas (apenas números) *</span>
+                            <span style="color: black">Pessoas atingidas (apenas números) *</span>
                         </label>
                     @else
                         <input type="number" name="pessoas_afetadas" min="0" autocomplete="off" onkeypress="return event.charCode >= 48 && event.charCode <= 57" required maxlength="10" value="{{old('pessoas_afetadas')}}">
                         <label for="pessoas_afetadas">
-                            <span>Pessoas Atingidas (apenas números) *</span>
+                            <span>Pessoas atingidas (apenas números) *</span>
                         </label>
                     @enderror
                 </div>
@@ -140,7 +140,7 @@
                         </label>
                     @enderror
                 </div>
-                <div class="caixa-input" style="width: 35%">
+                <div class="caixa-input" style="width: 35%; padding-right: 3px">
                     @error('duracao')
                         <select title="{{$message}}" name="duracao" autocomplete="off" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required value="{{old('duracao')}}">
                             <option disabled selected></option>
@@ -167,7 +167,7 @@
                         </label>
                     @enderror
                 </div>
-                <div class="caixa-input" style="width: 35%; margin-left: 3px">
+                <div class="caixa-input" style="width: 35%; padding-right: 3px">
                     @error('nivel_prioridade')
                         <select title="{{$message}}" name="nivel_prioridade" autocomplete="off" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required value="{{old('nivel_prioridade')}}">
                             <option disabled selected></option>
@@ -191,7 +191,7 @@
                         </label>
                     @enderror
                 </div>
-                <div class="caixa-input" style="width: 358px; margin-left: 3px">
+                <div class="caixa-input" style="width: 30%;">
                     @error('instituicao_setor')
                         <input title="{{$message}}" type="text" name="instituicao_setor" autocomplete="off" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" maxlength="70" value="{{old('instituicao_setor')}}">
                         <label for="instituicao_setor">

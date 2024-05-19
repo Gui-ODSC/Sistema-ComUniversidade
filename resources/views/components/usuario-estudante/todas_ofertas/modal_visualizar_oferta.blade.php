@@ -18,16 +18,11 @@
                     <div class="informacao-professor">
                         <h2>{{$professor->nome}}</h2>
                         <hr>
-                        <h6>Cargo: {{(ucwords(strtolower($professor->tipo)))}}</h6>
+                        <h6>Tipo usuário: {{(ucwords(strtolower($professor->tipo)))}}(a)</h6>
                         @if ($professor->instituicao)
                             <h6>Instituição: {{$professor->instituicao}}</h6>
                         @else 
                             <h6>Intituição: Não cadastrada</h6>
-                        @endif
-                        @if ($oferta->tipo === 'ACAO')
-                            <h6>Tipo Oferta: Ação</h6>
-                        @elseif ($oferta->tipo === 'CONHECIMENTO')
-                            <h6>Tipo Oferta: Conhecimento</h6>
                         @endif
                     </div>
                     <div class="informacao-email">
@@ -38,7 +33,7 @@
                 </div>
                 <div class="informacao-oferta">
                     <div class="informacao-oferta">
-                        <div id="titulo-oferta">
+                        <div class="titulo-oferta">
                             <h2>Título: {{$oferta->titulo}}</h2>
                         </div>
                         <div class="informacao-oferta-coluna">
@@ -58,6 +53,15 @@
                                 @if ($oferta->tipo == 'ACAO')
                                     <h6>Duração: {{ucwords(strtolower($oferta->ofertaAcao->duracao))}}</h6>
                                     <h6>Regime: {{ucwords(strtolower($oferta->ofertaAcao->regime))}}</h6>
+                                @endif
+                            </div>
+                            <div>
+                                @if ($oferta->tipo == 'ACAO')
+                                    @if ($oferta->ofertaAcao->data_limite)
+                                        <h6><strong>Data Limite: {{ \Carbon\Carbon::parse($oferta->ofertaAcao->data_limite)->format('d/m/Y') }}</strong></h6>
+                                    @else
+                                        <h6><strong>Data Limite: Indefinida</strong></h6>
+                                    @endif
                                 @endif
                             </div>
                         </div>
