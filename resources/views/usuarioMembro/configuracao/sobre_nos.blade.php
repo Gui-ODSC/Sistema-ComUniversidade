@@ -21,7 +21,7 @@
         <hr>
         <div class="sessao">
             <h4>Justificativa</h1>
-            <p>Tendo visto, a diminuição dos prazos e em contrapartida o aumento da preocupação das Universidades, em atender as diretrizes da Extensão Universitária mantendo os PPCs atualizados, sem que os projetos e ações extensivas, sejam realizados de qualquer forma, meramente para cumprir o mínimo percentual exigido pelas resoluções. A criação deste sistema, busca apoiar as IES, auxiliando-as no estabelecimento de relações mais próximas, entre universidade e sociedade, de modo que os projetos de extensão propostos pelas Instituições de Ensino possam apresentar relevância, não apenas para os currículos de curso, mas também para o atendimento das necessidades expressas por aqueles que estão fora dos muros da Universidade, proporcionando oportunidades efetivas de se produzir o verdadeiro conceito do fazer extensionista, o qual pode de fato modificar a realidade dos indivíduos pertencentes à sociedade.</p>
+            <p>A Extensão Universitária, pode ser utilizada como uma prática eficaz, quando se objetiva atuar no âmbito da interseção entre academia e sociedade. Sua evolução, guiada por diretrizes claras e modalidades estruturadas, não apenas fortalece o tecido educacional das IES, mas também se revela como um agente transformador capaz de moldar positivamente a realidade social e profissional de todos os envolvidos. Essa trajetória não apenas evidencia sua significância histórica, mas também aponta para um futuro promissor, onde a Extensão Universitária continua a desempenhar um papel vital na construção de uma sociedade mais engajada.</p>
         </div>
         <hr>
         <div class="sessao">

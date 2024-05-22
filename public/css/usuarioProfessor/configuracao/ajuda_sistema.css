@@ -1,3 +1,10 @@
+* {
+    font-family: "Manrope", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-size: 15px;
+}
+
 body {
     background-color: #4d579c;
 }
@@ -7,18 +14,23 @@ body {
     margin-top: 20px;
     margin-bottom: 30px;
     color: #FFF;
+    font-size: 30px;
 }
 
 .sessao {
-    font-family: 'Times New Roman', Times, serif;
     background-color: #1c2c52;
     border-radius: 10px;
     padding: 20px;
     text-align: justify;
-    color: #FFF;
 }
 
 .sessao h4 {
     font-weight: bold;
     color: #FFF;
+    font-size: 20px;
+}
+
+.sessao p {
+    color: #FFF;
+    font-size: 15px;
 }

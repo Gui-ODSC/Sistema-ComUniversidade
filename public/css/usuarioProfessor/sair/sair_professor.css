@@ -12,7 +12,7 @@ body {
     align-items: center;
     justify-content: center;
     height: 100vh; /* Garante que o conteúdo fique centralizado verticalmente na tela */
-    background-color: #4d579c;
+    background-color: rgba(0, 0, 0, 0.9);
 }
 
 .sair {

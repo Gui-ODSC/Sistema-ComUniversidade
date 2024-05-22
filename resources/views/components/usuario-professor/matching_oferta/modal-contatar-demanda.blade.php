@@ -60,7 +60,7 @@
                 @csrf
                 <div class="mensagem-contato">
                     <h6>Escreva sua mensagem:</h6>
-                    <textarea name="mensagem-contato" id="mensagem-contato-{{$idMatching}}" cols="119" rows="5" placeholder="Contate o ofertante através dessa caixa de mensagem (*Obrigatório)"></textarea>
+                    <textarea name="mensagem-contato" id="mensagem-contato-{{$idMatching}}" cols="119" rows="5" maxlength="900" placeholder="Contate o ofertante através dessa caixa de mensagem (*Obrigatório)"></textarea>
                 </div>
                 <div class="botoes-oferta-contatar">
                     <div>

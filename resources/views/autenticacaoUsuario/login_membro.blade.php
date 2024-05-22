@@ -7,14 +7,17 @@
     <link rel="stylesheet" href="{{ asset('css/autenticacao_usuario/login_membro.css')}}">
     <title>Login-Membro</title>
 </head>
-<header>
+{{-- <header>
     <nav class="navbar">
         <div class="container-fluid">
             <span class="navbar-brand mb-0 h1"><a href="{{route('selecao_perfil')}}">Extensão Universitaria</a></span>
         </div>
     </nav>
-</header>
+</header> --}}
 <body>
+    <div class="botao-voltar">
+        <a title="Voltar" onclick="goBack()" href="{{ route('selecao_perfil') }}"><img src="{{ asset('img/usuarioMembro/cadastrar_demandas/botao_voltar.png')}}" alt=""></a>
+    </div>
     <div class="login-container">
         <form method="POST" action="{{ route('login_membro_store') }}">
             @csrf
@@ -92,7 +95,7 @@
             // Caixa de diálogo das regras da senha
             var passwordRules = document.createElement("div");
             passwordRules.innerHTML = `
-                <div id="password-rules" style="position: absolute; top: 200px; right: 40px; background-color: #4D6D7F; color: #FFF; border: 1px solid #FFF; padding: 10px; border-radius: 10px;">
+                <div id="password-rules" style="position: absolute; top: 180px; right: 40px; background-color: #4D6D7F; color: #FFF; border: 1px solid #FFF; padding: 10px; border-radius: 10px;">
                     <button onclick="closePasswordRules()" style="position: absolute; top: 5px; color: #FFF; right: 7px; cursor: pointer; background: transparent; border: none; outline: none; width: 80px; padding-left: 15px;">Fechar</button>
                     <p>Regras de senha:</p>
                     <ul>

@@ -1,3 +1,10 @@
+* {
+    font-family: "Manrope", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-size: 15px;
+}
+
 body {
     background-color: #005288;
 }
@@ -7,20 +14,23 @@ body {
     margin-top: 20px;
     margin-bottom: 30px;
     color: #FFF;
+    font-size: 30px;
 }
 
 .sessao {
     background-color: #002e61;
+    border-radius: 10px;
     padding: 20px;
-    border-radius: 20px;
-    color: #FFF;
+    text-align: justify;
 }
 
 .sessao h4 {
     font-weight: bold;
+    color: #FFF;
+    font-size: 20px;
 }
 
 .sessao p {
-    padding-top: 10px;
-    text-align: justify;
+    color: #FFF;
+    font-size: 15px;
 }

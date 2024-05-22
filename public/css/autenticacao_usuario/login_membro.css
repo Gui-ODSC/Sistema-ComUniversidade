@@ -39,7 +39,7 @@ h1 {
     padding: 40px 20px 10px 20px;
     background-color: #2F4F4F;
     margin: auto;
-    margin-top: 27px;
+    margin-top: 65px;
     width: 40%;
     height: 60%;
     border-radius: 20px;
@@ -81,4 +81,26 @@ h1 {
     margin: 0;
 }
 
+.botao-voltar {
+    background-color: black;
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    position: fixed;
+    top: 5%;
+    left: 2%;    
+}
+
+.botao-voltar a {
+    padding: 0;
+}
+
+.botao-voltar:hover{
+    transform: scale(1.2);
+}
+
+.botao-voltar img {
+    width: 40px;
+}
 

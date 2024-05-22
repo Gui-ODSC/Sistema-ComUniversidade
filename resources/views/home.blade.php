@@ -62,7 +62,7 @@
             </span>
             <div class="prints-sistema">
                 <div class="tela-print">
-                    <img src="{{asset('img/home/telas_usuario/tela_professor.png')}}" alt="">
+                    <img src="{{asset('img/home/telas_usuario/tela_estudante.png')}}" alt="">
                     <span>
                         <h4>Estudantes</h4>
                         <p>Estudantes universitários podem criar um perfil que enfatiza seus interesses acadêmicos facilitando sua participação em projetos de extensão. </p>
@@ -76,7 +76,7 @@
                     </span>
                 </div>
                 <div class="tela-print">
-                    <img src="{{asset('img/home/telas_usuario/tela_professor.png')}}" alt="">
+                    <img src="{{asset('img/home/telas_usuario/tela_membro_externo.png')}}" alt="">
                     <span>
                         <h4>Membros Externos</h4>
                         <p>As organizações, empresas e indivíduos da comunidade podem criar um perfil detalhado que descreve suas necessidades, objetivos e áreas de interesse.</p>

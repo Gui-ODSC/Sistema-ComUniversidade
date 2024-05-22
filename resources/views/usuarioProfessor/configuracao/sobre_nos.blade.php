@@ -26,7 +26,8 @@
         <hr>
         <div class="sessao">
             <h4>A importância da Extensão Universitária</h1>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laudantium amet, consequuntur explicabo ipsa sapiente optio dolorem molestiae, cupiditate corrupti suscipit sit voluptatibus laboriosam quod, vel consequatur porro quis vero nostrum.Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laudantium amet, consequuntur explicabo ipsa sapiente optio dolorem molestiae, cupiditate corrupti suscipit sit voluptatibus laboriosam quod, vel consequatur porro quis vero nostrum.Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laudantium amet, consequuntur explicabo ipsa sapiente optio dolorem molestiae, cupiditate corrupti suscipit sit voluptatibus laboriosam quod, vel consequatur porro quis vero nostrum.Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laudantium amet, consequuntur explicabo ipsa sapiente optio dolorem molestiae, cupiditate corrupti suscipit sit voluptatibus laboriosam quod, vel consequatur porro quis vero nostrum.</p>
+            <p>A Extensão Universitária, pode ser utilizada como uma prática eficaz, quando se objetiva atuar no âmbito da interseção entre academia e sociedade. Sua evolução, guiada por diretrizes claras e modalidades estruturadas, não apenas fortalece o tecido educacional das IES, mas também se revela como um agente transformador capaz de moldar positivamente a realidade social e profissional de todos os envolvidos. Essa trajetória não apenas evidencia sua significância histórica, mas também aponta para um futuro promissor, onde a Extensão Universitária continua a desempenhar um papel vital na construção de uma sociedade mais engajada.
+            </p>
         </div>
     </main>
 </body>
