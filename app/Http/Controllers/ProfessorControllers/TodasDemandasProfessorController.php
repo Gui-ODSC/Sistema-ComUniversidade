@@ -41,7 +41,7 @@ class TodasDemandasProfessorController extends Controller
         if (!empty($request->all())){
             $listDemandas = $this->filtragemDemandas($request, $query);
         } else {
-            $listDemandas = $query->paginate(2);
+            $listDemandas = $query->paginate(10);
         }
 
         $demandasDisponiveis = [];
@@ -104,7 +104,7 @@ class TodasDemandasProfessorController extends Controller
         });
     
         // Execute a consulta e obtenha os resultados
-        $demandasFiltradas = $query->paginate(2);
+        $demandasFiltradas = $query->paginate(10);
     
         // Retorne os resultados
         return $demandasFiltradas;

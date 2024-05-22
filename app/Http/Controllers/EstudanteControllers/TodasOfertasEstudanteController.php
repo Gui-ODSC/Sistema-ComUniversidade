@@ -52,7 +52,7 @@ class TodasOfertasEstudanteController extends Controller
         if (!empty($request->all())){
             $listaOfertas = $this->filtragemOfertas($request, $query);
         } else {
-            $listaOfertas = $query->paginate(4);
+            $listaOfertas = $query->paginate(10);
         }
 
         $ofertasDisponiveis = [];
@@ -130,7 +130,7 @@ class TodasOfertasEstudanteController extends Controller
         });
     
         // Execute a consulta e obtenha os resultados
-        $ofertasAcaoFiltradas = $query->paginate(4);
+        $ofertasAcaoFiltradas = $query->paginate(10);
     
         // Retorne os resultados
         return $ofertasAcaoFiltradas;

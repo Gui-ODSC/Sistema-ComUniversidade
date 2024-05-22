@@ -48,7 +48,7 @@ class OfertaProfessorController extends Controller
         $listOfertas = Oferta::where('id_usuario_professor', $professor->id_usuario_professor)
             ->with(['areaConhecimento'])
             ->orderby('created_at', 'ASC')
-            ->paginate(5);
+            ->paginate(10);
 
         /* PEDACO PARA TRATAR DA DATA LIMITE SE DER PROBLEMA ARRANCAR*/
         foreach ($listOfertas as $oferta) {
@@ -65,7 +65,7 @@ class OfertaProfessorController extends Controller
         $listOfertas = Oferta::where('id_usuario_professor', $professor->id_usuario_professor)
             ->with(['areaConhecimento'])
             ->orderby('created_at', 'ASC')
-            ->paginate(5);
+            ->paginate(10);
 
         /* FIM */
         

@@ -54,10 +54,10 @@ class TodasOfertasMembroController extends Controller
             $query->when($pesquisaTitulo, function ($query, $pesquisaTitulo) {
                 return $query->where('titulo', 'LIKE', '%' . $pesquisaTitulo . '%');
             });
-            $listaOfertas = $query->paginate(2);
+            $listaOfertas = $query->paginate(10);
 
         } else {
-            $listaOfertas = $query->paginate(2);
+            $listaOfertas = $query->paginate(10);
         }
 
         /* FILTRAGEM TIPO */
@@ -70,7 +70,7 @@ class TodasOfertasMembroController extends Controller
                 $listaOfertas = $this->filtragemOfertasConhecimento($request, $query);
             } 
         } else {
-            $listaOfertas = $query->paginate(2);
+            $listaOfertas = $query->paginate(10);
         }
 
         $ofertasDisponiveis = [];
@@ -151,7 +151,7 @@ class TodasOfertasMembroController extends Controller
         });
     
         // Execute a consulta e obtenha os resultados
-        $ofertasAcaoFiltradas = $query->paginate(2);
+        $ofertasAcaoFiltradas = $query->paginate(10);
     
         // Retorne os resultados
         return $ofertasAcaoFiltradas;
@@ -183,7 +183,7 @@ class TodasOfertasMembroController extends Controller
         });
 
         // Execute a consulta e obtenha os resultados
-        $ofertasConhecimentoFiltradas = $query->paginate(2);
+        $ofertasConhecimentoFiltradas = $query->paginate(10);
     
         // Retorne os resultados
         return $ofertasConhecimentoFiltradas;

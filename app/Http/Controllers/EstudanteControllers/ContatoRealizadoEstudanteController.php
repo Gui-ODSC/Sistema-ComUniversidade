@@ -20,7 +20,7 @@ class ContatoRealizadoEstudanteController extends Controller
         $contatosRealizados = Contato::where('id_usuario_origem', $usuarioId)
             ->with('oferta', 'demanda', 'usuarioOrigem', 'usuarioDestino', 'contatoMensagem')
             ->orderBy('created_at', 'asc')
-            ->paginate(3);
+            ->paginate(10);
 
         // Criar arrays vazios para armazenar os resultados
         $contatosFormatados = [];

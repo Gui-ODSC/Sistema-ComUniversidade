@@ -38,7 +38,7 @@ class DemandaMembroController extends Controller
         $userId = Auth::id();
 
         $listDemandas = Demanda::where('id_usuario', $userId)
-            ->with(['areaConhecimento', 'publicoAlvo'])->orderby('created_at', 'ASC')->paginate(2);
+            ->with(['areaConhecimento', 'publicoAlvo'])->orderby('created_at', 'ASC')->paginate(10);
 
         return view(
             'usuarioMembro/demanda/minhas_demandas', 
