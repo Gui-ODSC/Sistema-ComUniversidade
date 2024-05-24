@@ -14,7 +14,7 @@
         <div class="caixa-modal" id="caixa-modal-{{$idDemanda}}">
             <span onclick="closeModalDeletar({{$idDemanda}})" id="botao_fechar_model"><img src="{{ asset('img/usuarioMembro/minhas_demandas/fechar.png') }}" alt=""></span>
             <div class="modal-excluir">
-                <h3>Deseja mesmo Excluir essa Oferta ?</h3>
+                <h3>Deseja mesmo excluir essa oferta ?</h3>
                 <div class="titulo-excluir">
                     <h6><strong>"{{$demanda->titulo}}"</strong></h6>
                 </div>

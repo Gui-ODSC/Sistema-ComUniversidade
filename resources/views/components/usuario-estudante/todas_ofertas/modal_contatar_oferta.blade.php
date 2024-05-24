@@ -19,7 +19,9 @@
                     <div class="informacao-professor-contatar">
                         <h2>{{$professor->nome}}</h2>
                         <hr>
-                        <h6>Tipo usuário: {{(ucwords(strtolower($professor->tipo)))}}(a)</h6>
+                        @if ($professor->tipo === 'PROFESSOR')
+                            <h6>Tipo de usuário: Servidor(a)</h6>
+                        @endif
                         @if ($professor->instituicao)
                             <h6>Instituição: {{$professor->instituicao}}</h6>
                         @else 

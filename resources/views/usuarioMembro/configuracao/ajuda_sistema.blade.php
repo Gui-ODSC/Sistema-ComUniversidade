@@ -32,7 +32,7 @@
         <hr>
         <div class="sessao">
             <h4>Como posso realizar um contato?</h4>
-            <p>Os contatos do sistema sempre estão relacionados a uma necessidade e uma oferta. Portanto, para que você, usuário, consiga fazer um contato, existem duas opções: ou através da seção de "Minhas Necessidades", onde é possível acessar as ofertas encontradas para uma necessidade, ou através da seção "Todas as Ofertas", que contém todas as ofertas cadastradas pelos professores das universidades. Ao acessar uma dessas seções, você poderá selecionar a oferta que melhor atende às suas necessidades, escrever sua mensagem e depois enviar. Após isso, seus contatos estarão disponíveis na seção de "Contatos Realizados". Lá, você verá o status do seu contato, que inicialmente será "Contato Enviado", e assim que for respondido, será atualizado. 
+            <p>Os contatos do sistema sempre estão relacionados a uma necessidade e uma oferta. Portanto, para que você, usuário, consiga fazer um contato, existem duas opções: ou através da seção de "Minhas Necessidades", onde é possível acessar as ofertas encontradas para uma necessidade, ou através da seção "Todas as Ofertas", que contém todas as ofertas cadastradas pelos servidores das universidades. Ao acessar uma dessas seções, você poderá selecionar a oferta que melhor atende às suas necessidades, escrever sua mensagem e depois enviar. Após isso, seus contatos estarão disponíveis na seção de "Contatos Realizados". Lá, você verá o status do seu contato, que inicialmente será "Contato Enviado", e assim que for respondido, será atualizado. 
             Uma explicação mais detalhada de cada status referente a um contato está disponível no card abaixo.</p>
         </div>
         <hr>
@@ -42,7 +42,7 @@
             <div style="line-height: 30px">
                 <p>
                     <span style="color: black; background-color: yellow">"Contato Enviado"</span> (Cor Amarela), indica que o contato foi enviado e que aguarda resposta da pessoa que foi contatada.<br>
-                    <span style="color: #FFF; background-color: blue">"Contato Respondido"</span> (Cor Azul), indica que o contato foi respondido pelo professor(a) e que o contato está relacionado a uma Oferta do tipo Ação.<br>
+                    <span style="color: #FFF; background-color: blue">"Contato Respondido"</span> (Cor Azul), indica que o contato foi respondido pelo servidor(a) e que o contato está relacionado a uma Oferta do tipo Ação.<br>
                     <span style="color: #FFF; background-color: red">"Sem Disponibilidade"</span> (Cor Vermelho), indica que o contato foi respondido demonstrando que no momento não está disponível para ajudar com a necessidade ou não está interessado na oferta.<br>
                     <span style="color: #FFF; background-color: green">"Interesse"</span> (Cor Verde), indica que o contato foi respondido demostrando interesse em ajudar com a necessidade. 
                 </p>
@@ -61,7 +61,7 @@
         <hr>
         <div class="sessao">
             <h4>Qual a diferença de uma oferta do tipo Ação e do tipo Conhecimento?</h4>
-            <p>A principal diferença está relacionada ao tipo de proposta que essas ofertas irão oferecer. Por exeplo, quando um professor(a) decide criar um oferta do tipo ação, isso quer dizer que ele tem algum projeto, programa, curso... que deseja oferecer e que possa solucionar algumas necessidades. Já quando um professor(a) decide criar uma oferta do tipo conhecimento, o objetivo é oferecer o conhecimento em si, e não um curso específico. Portanto, essa diferença acaba afetando bastante nos status de resposta para os contatos. Já que para as ofertas do tipo conhecimento os professores(as) podem demonstrar o status sendo de (Interesse/Sem disponibilidade), enquanto que nas ofertas do tipo Ação os mesmos só podem responder o contato (Contato Respondido), já que esse segundo tipo de oferta não está ligado ao conhecimento pessoal dele(a).</p>
+            <p>A principal diferença está relacionada ao tipo de proposta que essas ofertas irão oferecer. Por exeplo, quando um servidor(a) decide criar um oferta do tipo ação, isso quer dizer que ele tem algum projeto, programa, curso... que deseja oferecer e que possa solucionar algumas necessidades. Já quando um servidor(a) decide criar uma oferta do tipo conhecimento, o objetivo é oferecer o conhecimento em si, e não um curso específico. Portanto, essa diferença acaba afetando bastante nos status de resposta para os contatos. Já que para as ofertas do tipo conhecimento os servidores(as) podem demonstrar o status sendo de (Interesse/Sem disponibilidade), enquanto que nas ofertas do tipo Ação os mesmos só podem responder o contato (Contato Respondido), já que esse segundo tipo de oferta não está ligado ao conhecimento pessoal dele(a).</p>
         </div>
         <hr>
         <div class="sessao">

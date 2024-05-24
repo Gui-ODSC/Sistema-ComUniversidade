@@ -55,7 +55,7 @@
                                 @if ($contato['usuarioReceptor']->tipo === 'ALUNO') 
                                     <td>Estudante</td>
                                 @elseif ($contato['usuarioReceptor']->tipo === 'PROFESSOR')
-                                    <td>Professor(a)</td>
+                                    <td>Servidor(a)</td>
                                 @endif
                                 <td>{{ \Carbon\Carbon::parse($contato['dados']->created_at)->format('d/m/Y') }}</td>
                                 @if ($contato['respostaMensagem'] != null)
@@ -69,7 +69,7 @@
                                 @else
                                     <td><p title="Mensagem Enviada" class="status-realizado">Mensagem Enviada</p></td>
                                 @endif
-                                <td><a onclick="openModalVisualizarContatoRealizado({{$contato['dados']->id_contato}})"><img id="icone-visualizar-contato" src="{{ asset('img/usuarioMembro/contatos/visualizar_contato.png') }}" alt="icone mais info"></a></td>
+                                <td title="Ver"><a onclick="openModalVisualizarContatoRealizado({{$contato['dados']->id_contato}})"><img id="icone-visualizar-contato" src="{{ asset('img/usuarioMembro/contatos/visualizar_contato.png') }}" alt="icone mais info"></a></td>
                                 <x-usuario-membro.contatos-realizados.modal-visualizar-contato-realizado :id-contato="$contato['dados']->id_contato"/>
                             </tr>
                             @php $contador++; @endphp

@@ -124,9 +124,9 @@
                             @elseif ($demanda['status'] == 'visualizado')
                                 <td><p class="status-visualizado" title="Visualizado">Visualizado</p>{{-- <img id="icones_status" src="{{ asset('img/usuarioMembro/todas_ofertas/olho_marcado.png') }}" alt="tres pontos para mais informação"> --}}</td>
                             @endif
-                            <td><a onclick="openModalDeletar({{$demanda['demanda']->id_demanda}})"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/minhas_demandas/delete.png') }}" alt="tres pontos para mais informação"></a></td>
+                            <td title="Deletar"><a onclick="openModalDeletar({{$demanda['demanda']->id_demanda}})"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/minhas_demandas/delete.png') }}" alt="tres pontos para mais informação"></a></td>
                             <x-usuario-professor.todas-demandas.modal-deletar-demanda :id-demanda="$demanda['demanda']->id_demanda" />
-                            <td><a onclick="openModalVisualizarOferta({{$demanda['demanda']->id_demanda}})" ><img id="icones_demanda" src="{{ asset('img/usuarioMembro/todas_ofertas/pesquisa_contatos.png') }}" alt="tres pontos para mais informação"></a></td>
+                            <td title="Contatar"><a onclick="openModalVisualizarOferta({{$demanda['demanda']->id_demanda}})" ><img id="icones_demanda" src="{{ asset('img/usuarioMembro/todas_ofertas/pesquisa_contatos.png') }}" alt="tres pontos para mais informação"></a></td>
                             <x-usuario-professor.todas-demandas.modal-visualizar-demanda :id-demanda="$demanda['demanda']->id_demanda" />
                         </tr>
                         @php $contador++; @endphp

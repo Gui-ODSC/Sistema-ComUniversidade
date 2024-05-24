@@ -170,7 +170,7 @@
                         <select title="{{$message}}" name="nivel_prioridade" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required>
                             <option disabled selected></option>
                             <option value="BAIXO" {{ $demanda->nivel_prioridade === 'BAIXO'? 'selected' : '' }}>Baixo</option>
-                            <option value="MEDIO" {{ $demanda->nivel_prioridade === 'MEDIO'? 'selected' : '' }}>Medio</option>
+                            <option value="MEDIO" {{ $demanda->nivel_prioridade === 'MEDIO'? 'selected' : '' }}>Médio</option>
                             <option value="ALTO" {{ $demanda->nivel_prioridade === 'ALTO'? 'selected' : '' }}>Alto</option>
                         </select>
                         <label for="nivel_prioridade">
@@ -180,7 +180,7 @@
                         <select name="nivel_prioridade" required>
                             <option disabled selected></option>
                             <option value="BAIXO" {{ $demanda->nivel_prioridade === 'BAIXO'? 'selected' : '' }}>Baixo</option>
-                            <option value="MEDIO" {{ $demanda->nivel_prioridade === 'MEDIO'? 'selected' : '' }}>Medio</option>
+                            <option value="MEDIO" {{ $demanda->nivel_prioridade === 'MEDIO'? 'selected' : '' }}>Médio</option>
                             <option value="ALTO" {{ $demanda->nivel_prioridade === 'ALTO'? 'selected' : '' }}>Alto</option>
                         </select>
                         <label for="nivel_prioridade">

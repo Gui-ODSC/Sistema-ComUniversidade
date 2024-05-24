@@ -69,7 +69,7 @@
                                 @else
                                     <td><p title="Mensagem Recebida" class="status-recebido">Mensagem Recebida</p></td>
                                 @endif
-                                <td><a onclick="openModalVisualizarContatoRecebido({{$contato['dados']->id_contato}})"><img id="icone-visualizar-contato" src="{{ asset('img/usuarioMembro/contatos/visualizar_contato.png') }}" alt="icone mais info"></a></td>
+                                <td title="Ver"><a onclick="openModalVisualizarContatoRecebido({{$contato['dados']->id_contato}})"><img id="icone-visualizar-contato" src="{{ asset('img/usuarioMembro/contatos/visualizar_contato.png') }}" alt="icone mais info"></a></td>
                                 <x-usuario-professor.contatos-recebidos.modal-visualizar-contato-recebido :id-contato="$contato['dados']->id_contato"/>
                             </tr>
                             @php $contador++; @endphp

@@ -24,7 +24,7 @@
                 <tbody>
                     @if (count($usuarios) < 1)
                         <tr>
-                            <td colspan="2"><p class="sem-dados">-- Nenhum usuário interessado(a) na sua oferta --</p></td>
+                            <td colspan="2"><p class="sem-dados" style="max-width: none">-- Nenhum usuário interessado(a) na sua oferta --</p></td>
                         </tr>
                     @else
                         @foreach ($usuarios as $usuario)

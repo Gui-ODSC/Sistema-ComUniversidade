@@ -112,6 +112,7 @@ body {
     height: 50px;
     pointer-events: none;
     border-bottom: 1px solid #ffffff;
+    font-weight: bold;
 }
   
 .editar-ofertas span {

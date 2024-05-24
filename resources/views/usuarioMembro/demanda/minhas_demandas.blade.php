@@ -54,10 +54,10 @@
                             <td><p class="titulo-tabela" title="{{ $demanda->titulo }}">{{ $demanda->titulo }}</p></td>
                             <td><p class="area-conhecimento-tabela" title="{{ $demanda->areaConhecimento->nome }}">{{ $demanda->areaConhecimento->nome }}</p></td>
                             <td>{{ \Carbon\Carbon::parse($demanda->created_at)->format('d/m/Y') }}</td>
-                            <td><a href="{{ route('demanda_edit_index', $demanda->id_demanda) }}"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/minhas_demandas/editar.png') }}" alt="tres pontos para mais informação"></a></td>
-                            <td><a onclick="openModalDeletar({{$demanda->id_demanda}})"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/minhas_demandas/delete.png') }}" alt="tres pontos para mais informação"></a></td>
+                            <td title="Editar"><a href="{{ route('demanda_edit_index', $demanda->id_demanda) }}"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/minhas_demandas/editar.png') }}" alt="tres pontos para mais informação"></a></td>
+                            <td title="Deletar"><a onclick="openModalDeletar({{$demanda->id_demanda}})"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/minhas_demandas/delete.png') }}" alt="tres pontos para mais informação"></a></td>
                             <x-usuario-membro.demanda.modal-deletar-demanda :id-demanda="$demanda->id_demanda" />
-                            <td><a href="{{ route('demanda_matching_index', $demanda->id_demanda) }}"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/minhas_demandas/ver.png') }}" alt="tres pontos para mais informação"></a></td>
+                            <td title="Ver"><a href="{{ route('demanda_matching_index', $demanda->id_demanda) }}"><img id="icones_demanda" src="{{ asset('img/usuarioMembro/minhas_demandas/ver.png') }}" alt="tres pontos para mais informação"></a></td>
                         </tr>
                         @php $contador++; @endphp
                     @endforeach

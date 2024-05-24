@@ -24,7 +24,7 @@
 </header>
 <body>
     <div class="botao-voltar">
-        <a title="Voltar" href="{{ route('login_professor_index') }}"><img src="{{ asset('img/usuarioMembro/cadastrar_demandas/botao_voltar.png')}}" alt=""></a>
+        <a title="Voltar" href="{{ route('oferta_index') }}"><img src="{{ asset('img/usuarioMembro/cadastrar_demandas/botao_voltar.png')}}" alt=""></a>
     </div>
     <div class="cadastro-container">
         <div class="titulo">

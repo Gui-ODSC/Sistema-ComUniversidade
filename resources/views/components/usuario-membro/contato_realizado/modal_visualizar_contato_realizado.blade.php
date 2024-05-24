@@ -47,7 +47,7 @@
                             Tipo de perfil
                         </label>
                         @if ($usuarioReceptor->tipo === 'PROFESSOR')
-                            <input type="text" readonly value="Professor">
+                            <input type="text" readonly value="Servidor(a)">
                         @elseif ($usuarioReceptor->tipo === 'ALUNO')
                             <input type="text" readonly value="Estudante">
                         @endif
@@ -70,7 +70,7 @@
                     </div>
                     <div class="caixa-input-space" style="width: 50%">
                         <label>
-                            Email Secundário
+                            Email secundário
                         </label>
                         @if ($usuarioReceptor->email_secundario != null)
                             <input type="text" readonly value="{{$usuarioReceptor->email_secundario}}">

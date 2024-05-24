@@ -7,13 +7,13 @@
     <link rel="stylesheet" href="{{ asset('css/reset_password/send_email_password.css')}}">
     <title>Redefinir Senha</title>
 </head>
-<header>
+{{-- <header>
     <nav class="navbar">
         <div class="container-fluid">
             <span class="navbar-brand mb-0 h1"><a href="/">Extensão Universitaria</a></span>
         </div>
     </nav>
-</header>
+</header> --}}
 <body>
     <div class="login-container">
         <form method="POST" action="{{ route('send_email_password') }}">

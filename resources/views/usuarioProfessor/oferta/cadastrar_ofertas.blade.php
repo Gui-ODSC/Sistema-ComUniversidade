@@ -42,7 +42,7 @@
             <h1>Cadastrar Oferta</h1>
         </div>
         @if($errors->any())
-            <div class="alert alert-danger" style="margin-top: 10px; font-size: 15px">
+            <div class="alert alert-danger" style="margin-top: 20px; font-size: 15px">
                 <ul>
                     @foreach ($errors->all() as $error)
                         @if ($error)

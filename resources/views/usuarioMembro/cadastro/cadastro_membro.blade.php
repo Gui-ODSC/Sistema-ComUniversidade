@@ -169,21 +169,17 @@
                     @enderror
                 </div>
                 <div class="caixa-input" style="width: 299px; margin-left: 3px;">
-                    {{-- CIDADE --}}
-                    @error('cidade')
-                        <div class="autoComplete_wrapper">  
-                            <input title="{{ $message }}" class="cidade alert-danger" autocompĺete="off" type="text" name="nome_cidade" value="{{old('nome_cidade')}}" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required  maxlength="255">
-                            <label for="nome_cidade">
-                                <span>Cidade *</span>
-                            </label>
-                        </div>
+                    {{-- CEP --}}
+                    @error('cep')
+                        <input title="{{ $message }}" class="cidade alert-danger" id="cep" autocompĺete="off" type="text" name="nome_cep" value="{{old('nome_cep')}}" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required  maxlength="8">
+                        <label for="nome_cep">
+                            <span>CEP *</span>
+                        </label>
                     @else
-                        <div class="autoComplete_wrapper">  
-                            <input type="text" id="autoCompleteCidade" name="nome_cidade" autocompĺete="off" value="{{old('nome_cidade')}}" required  maxlength="255"> 
-                            <label for="nome_cidade">
-                                <span>Cidade *</span>
-                            </label>
-                        </div>
+                        <input type="text" name="nome_cep" id="cep" autocompĺete="off" value="{{old('nome_cep')}}" required  maxlength="8"> 
+                        <label for="nome_cep">
+                            <span>CEP *</span>
+                        </label>
                     @enderror
                 </div>
                 <div class="caixa-input" style="width: 40%; margin-bottom: 6px">
@@ -323,17 +319,24 @@
                 $(this).inputmask('99/99/9999');
             }
         });
-        
+
+        // Aplica a máscara de Cep usando o InputMask
+        $('#cep').on('input', function() {
+            if ($(this).val().trim().length > 0) {
+                $(this).inputmask('99999-999'); 
+            }
+        });
+            
         // Variável PHP contendo os bairros
-        const bairros = {!! json_encode($bairros) !!};
+        /* const bairros = {!! json_encode($bairros) !!}; */
 
         // Variável PHP contendo os bairros
-        const cidades = {!! json_encode($cidades) !!};
+        /* const cidades = {!! json_encode($cidades) !!}; */
 
         // Variável PHP contendo os bairros
-        const estados = {!! json_encode($estados) !!};
+        /* const estados = {!! json_encode($estados) !!}; */
 
-        function inicializarAutoComplete(data, selector, onSelectionCallback) {
+        /* function inicializarAutoComplete(data, selector, onSelectionCallback) {
             const autoCompleteJS = new autoComplete({
                 data: {
                     src: data,
@@ -359,28 +362,28 @@
                     this.value = '';
                 }
             });
-        }
+        } */
         // Inicializar o autocomplete para as cidades
-        inicializarAutoComplete(cidades, "#autoCompleteCidade", feedback => {
+       /*  inicializarAutoComplete(cidades, "#autoCompleteCidade", feedback => {
             const cidade = feedback.selection.value;
             const autoCompleteInput = document.getElementById('autoCompleteCidade');
             autoCompleteInput.value = cidade.nome;
-        });
+        }); */
 
         // Inicializar o autocomplete para os bairros
-        inicializarAutoComplete(bairros, "#autoCompleteBairro", feedback => {
+        /* inicializarAutoComplete(bairros, "#autoCompleteBairro", feedback => {
             const bairro = feedback.selection.value;
             const autoCompleteInput = document.getElementById('autoCompleteBairro');
             autoCompleteInput.value = bairro.nome;
-        });
+        }); */
 
 
         // Inicializar o autocomplete para os estados
-        inicializarAutoComplete(estados, "#autoCompleteEstado", feedback => {
+        /* inicializarAutoComplete(estados, "#autoCompleteEstado", feedback => {
             const estado = feedback.selection.value;
             const autoCompleteInput = document.getElementById('autoCompleteEstado');
             autoCompleteInput.value = estado.nome;
-        });
+        }); */
 
         /* OLINHO DA SENHA */
         function togglePassword() {

@@ -13,7 +13,7 @@
     <div class="caixa-modal" id="caixa-modal-{{$idMatching}}">
         <span onclick="closeModalDeletar({{$idMatching}})" id="botao_fechar_modal"><img src="{{ asset('img/usuarioMembro/minhas_demandas/fechar.png') }}" alt=""></span>
         <div class="modal-excluir">
-            <h3>Deseja mesmo Remover esta Oferta da Lista?</h3>
+            <h3>Deseja mesmo remover esta oferta da lista?</h3>
             <h6>Após removida, ela não será mostrada novamente.</h6>
             <div class="div-botoes">
                 <form action="{{ route('matching_remover', [$idDemanda, $idMatching]) }}" method="POST">
@@ -21,7 +21,7 @@
                     @csrf
                     <button type="submit" id="botao-sim">Sim</button>
                 </form>
-                <a href="{{ route('demanda_matching_index', $idDemanda) }}"><button id="botao-nao">Não</button></a>
+                {{-- <a href="{{ route('demanda_matching_index', $idDemanda) }}"> --}}<button onclick="closeModalDeletar({{$idMatching}})" id="botao-nao">Não</button></a>
             </div>
         </div>
     </div>

@@ -16,7 +16,10 @@
     padding: 10px;
     border-radius: 10px;
     color: #fff;
-    text-align: justify;
+}
+
+.texto-modal-confirma-respondido h4 {
+    font-size: 18px;
 }
 
 .texto-modal-confirma-respondido #font-azul {
@@ -36,7 +39,6 @@
 }
 
 .botoes-modal-confirma-respondido button {
-    width: 150px;
     height: 50px;
     margin: 5px 30px; 
     border-radius: 10px;
@@ -65,8 +67,8 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 590px;
-    height: 390px;
+    width: 50%;
+    height: 40%;
     padding: 5px;
     background-color: #fff;
     border: 1px solid #ccc;

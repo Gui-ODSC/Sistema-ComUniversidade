@@ -20,6 +20,10 @@
     text-align: justify;
 }
 
+.texto-modal-confirma-interesse h4 {
+    font-size: 17px;
+}
+
 .texto-modal-confirma-interesse #font-verde {
     color: rgb(27, 93, 27);
     background-color: #FFF;
@@ -66,8 +70,8 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 590px;
-    height: 390px;
+    width: 65%;
+    height: 40%;
     padding: 5px;
     background-color: #fff;
     border: 1px solid #ccc;

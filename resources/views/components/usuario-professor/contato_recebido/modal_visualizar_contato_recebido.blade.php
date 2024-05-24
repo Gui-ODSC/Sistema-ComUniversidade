@@ -166,7 +166,7 @@
                 <div class="modal-confirmar-interesse" id="modal-confirmar-interesse-{{$idContato}}">
                     <div class="secao-confirma-interesse">
                         <div class="texto-modal-confirma-interesse">
-                            <h4>"Você está prestes a enviar a mensagem com a informação demonstrando <span id="font-verde">INTERESSE</span> no contato. Confirma o envio da mensagem?"</h4>
+                            <h4>Você está prestes a enviar a mensagem com a informação demonstrando <span id="font-verde">INTERESSE</span> no contato. Confirma o envio da mensagem?</h4>
                         </div>
                         <div class="botoes-modal-confirma-interesse">
                             <a id="botao-confirma-envio-interesse-{{$idContato}}">
@@ -184,7 +184,7 @@
                 <div class="modal-confirmar-sem-disponibilidade" id="modal-confirmar-sem-disponibilidade-{{$idContato}}">
                     <div class="secao-confirma-sem-disponibilidade">
                         <div class="texto-modal-confirma-sem-disponibilidade">
-                            <h4>"Você está prestes a enviar a mensagem com a informação demonstrando <span id="font-vermelha">Sem Disponibilidade</span>no contato. Confirma o envio da mensagem?"</h4>
+                            <h4>Você está prestes a enviar a mensagem com a informação demonstrando <span id="font-vermelha">Sem disponibilidade</span> no contato. Confirma o envio da mensagem?</h4>
                         </div>
                         <div class="botoes-modal-confirma-sem-disponibilidade">
                             <a id="botao-confirma-envio-sem-disponibilidade-{{$idContato}}">
@@ -202,7 +202,7 @@
                 <div class="modal-confirmar-contato-respondido" id="modal-confirmar-contato-respondido-{{$idContato}}">
                     <div class="secao-confirma-respondido">
                         <div class="texto-modal-confirma-respondido">
-                            <h4>"Confirma o envio da mensagem?"</h4>
+                            <h4>Confirma o envio da mensagem?</h4>
                         </div>
                         <div class="botoes-modal-confirma-respondido">
                             <a id="botao-confirma-envio-resposta-{{$idContato}}">

@@ -26,7 +26,7 @@
                     <p>{{session('success')}}</p>
                 </div>
             @endif
-            <h1>Login Membro</h1>
+            <h1>Login Membro Externo</h1>
             <label for="email">Login</label>
             <input class="is-invalid" type="text" id="email" name="email" placeholder="Login" value={{ old('email')}}>
             @error('email')

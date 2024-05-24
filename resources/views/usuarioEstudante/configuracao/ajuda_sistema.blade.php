@@ -22,7 +22,7 @@
         <hr>
         <div class="sessao">
             <h4>Como posso realizar um contato?</h4>
-            <p>Os contatos do sistema sempre estão relacionados a uma oferta. Portanto, para que você, usuário, consiga fazer um contato, basta você acessar a seção de "Todas as Ofertas", onde estão listadas as ofertas cadastradas pelos professores das universidades. Ao acessar uma essa seção, você poderá selecionar a oferta que melhor atende às seus interesses, escrever sua mensagem e depois enviar. Após isso, seus contatos estarão disponíveis na seção de "Contatos Realizados". Lá, você verá o status do seu contato, que inicialmente será "Contato Enviado", e assim que for respondido, será atualizado. 
+            <p>Os contatos do sistema sempre estão relacionados a uma oferta. Portanto, para que você, usuário, consiga fazer um contato, basta você acessar a seção de "Todas as Ofertas", onde estão listadas as ofertas cadastradas pelos servidores das universidades. Ao acessar uma essa seção, você poderá selecionar a oferta que melhor atende às seus interesses, escrever sua mensagem e depois enviar. Após isso, seus contatos estarão disponíveis na seção de "Contatos Realizados". Lá, você verá o status do seu contato, que inicialmente será "Contato Enviado", e assim que for respondido, será atualizado. 
             Uma explicação mais detalhada de cada status referente a um contato está disponível no card abaixo.</p>
         </div>
         <hr>
@@ -32,7 +32,7 @@
             <div style="line-height: 30px">
                 <p>
                     <span style="color: black; background-color: yellow">"Contato Enviado"</span> (Cor Amarela), indica que o contato foi enviado e que aguarda resposta da pessoa que foi contatada.<br>
-                    <span style="color: #FFF; background-color: blue">"Contato Respondido"</span> (Cor Azul), indica que o contato foi respondido por um professor(a) de uma determinada universidade.<br>
+                    <span style="color: #FFF; background-color: blue">"Contato Respondido"</span> (Cor Azul), indica que o contato foi respondido por um servidor(a) de uma determinada universidade.<br>
                 </p>
             </div>
         </div>

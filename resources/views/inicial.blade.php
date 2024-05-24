@@ -12,7 +12,7 @@
     </div>
     <h1>Bem vindo ao Sistema</h1>
     <div class="selecao">
-        <h2>Selecione como deseja acessar o sistema</h2>
+        <h2>Selecione como deseja acessar</h2>
         <a href="{{ route('login_membro_index') }}" class="botao">
             <button>Membro Externo</button>
         </a>
@@ -20,7 +20,7 @@
             <button>Estudantes</button>
         </a>
         <a href="{{ route('login_professor_index') }}" class="botao">
-            <button>Professores</button>
+            <button>Servidores</button>
         </a>
     </div>
 </body>

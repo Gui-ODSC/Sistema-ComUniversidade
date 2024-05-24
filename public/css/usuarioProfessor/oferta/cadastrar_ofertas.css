@@ -10,7 +10,7 @@ body {
     color: #FFF;
     position: absolute;
     top: 79px;
-    left: 17%;
+    left: 18.7%;
     z-index: 1;
     font-size: 14px;
     padding: 0;
@@ -193,6 +193,7 @@ body {
     height: 50px;
     pointer-events: none;
     border-bottom: 1px solid #ffffff;
+    font-weight: bold;
 }
   
 .cadastrar-ofertas span {

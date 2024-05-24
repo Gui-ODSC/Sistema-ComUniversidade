@@ -13,7 +13,7 @@
     <div class="caixa-modal" id="caixa-modal-{{$idDemanda}}">
         <span onclick="closeModalDeletar({{$idDemanda}})" id="botao_fechar_modal"><img src="{{ asset('img/usuarioMembro/minhas_demandas/fechar.png') }}" alt=""></span>
         <div class="modal-excluir">
-            <h3>Deseja mesmo Remover esta Necessidade da Lista?</h3>
+            <h3>Deseja mesmo remover esta necessidade da lista?</h3>
             <h6>Após removida, ela não será mostrada novamente.</h6>
             <div class="div-botoes">
                 <form action="{{ route('contato_direto_remover_professor', $idDemanda) }}" method="POST">

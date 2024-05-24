@@ -47,7 +47,7 @@
                             Tipo de perfil
                         </label>
                         @if ($usuarioReceptor->tipo === 'PROFESSOR')
-                            <input type="text" readonly value="Professor">
+                            <input type="text" readonly value="Servidor(a)">
                         @elseif ($usuarioReceptor->tipo === 'ALUNO')
                             <input type="text" readonly value="Estudante">
                         @endif

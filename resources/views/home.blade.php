@@ -50,7 +50,7 @@
             </div>
             <span>
                 <p>
-                    O sistema também oferece uma interface amigável e intuitiva que permite tanto às comunidades quanto às universidades identificarem oportunidades de parceria de forma rápida e eficiente. Com o <strong>Comuniversidade</strong>, cada usuário pode criar um perfil personalizado que se adapta às suas necessidades e interesses específicos. O sistema está dividido em três tipos de perfil.
+                    O sistema oferece uma interface amigável e intuitiva que permite tanto às comunidades quanto às universidades identificarem oportunidades de parceria de forma rápida e eficiente. Com o <strong>Comuniversidade</strong>, cada usuário pode criar um perfil personalizado que se adapta às suas necessidades e interesses específicos. O sistema pode ser usado por três tipos de perfil.
                 </p>
             </span>
         </div>
@@ -65,14 +65,14 @@
                     <img src="{{asset('img/home/telas_usuario/tela_estudante.png')}}" alt="">
                     <span>
                         <h4>Estudantes</h4>
-                        <p>Estudantes universitários podem criar um perfil que enfatiza seus interesses acadêmicos facilitando sua participação em projetos de extensão. </p>
+                        <p>Estudantes universitários podem criar um perfil que enfatiza seus interesses acadêmicos facilitando sua participação em ações de extensão. </p>
                     </span>
                 </div>
                 <div class="tela-print">
                     <img src="{{asset('img/home/telas_usuario/tela_professor.png')}}" alt="">
                     <span>
-                        <h4>Professores</h4>
-                        <p>Professores e pesquisadores universitários podem criar um perfil que destaca suas competências, áreas de pesquisa e projetos de extensão. </p>
+                        <h4>Servidores (Professores e TAES)</h4>
+                        <p>Professores, pesquisadores universitários e técnicos podem criar um perfil que destaca suas competências, áreas de pesquisa e ações de extensão. </p>
                     </span>
                 </div>
                 <div class="tela-print">
@@ -89,7 +89,7 @@
             <h1>Benefícios</h1>
             <span>
                 <p>
-                    Alguns dos benefícios produzidos através da aplicação desse sistema.
+                    Alguns benefícios da utilização deste sistema.
                 </p>
             </span>
             <div class="beneficios">
