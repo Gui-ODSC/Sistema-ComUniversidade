@@ -9,14 +9,15 @@ use App\Http\Controllers\ProfessorControllers\OfertaProfessorController;
 use App\Http\Controllers\ProfessorControllers\MatchingProfessorController;
 use App\Http\Controllers\ProfessorControllers\PerfilProfessorController;
 use App\Http\Controllers\ProfessorControllers\TodasDemandasProfessorController;
+use App\Http\Middleware\AuthProfessor;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('professor')->group(function(){
 
     //Rota de cadastro para Professor
     Route::prefix('/cadastro')->controller(CadastroProfessorController::class)->group( function(){
-        Route::get('/', 'indexCreateProfessor')->name('cadastro_professor_index');
-        Route::post('/', 'createProfessor')->name('cadastro_create_professor');
+        Route::get('/', 'indexCreateProfessor')->name('cadastro_professor_index')->withoutMiddleware(AuthProfessor::class);
+        Route::post('/', 'createProfessor')->name('cadastro_create_professor')->withoutMiddleware(AuthProfessor::class);
     });  
 
     Route::prefix('/ofertas')->controller(OfertaProfessorController::class)->group(function (){

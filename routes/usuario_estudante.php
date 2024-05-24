@@ -4,14 +4,15 @@ use App\Http\Controllers\EstudanteControllers\CadastroEstudanteController;
 use App\Http\Controllers\EstudanteControllers\ContatoRealizadoEstudanteController;
 use App\Http\Controllers\EstudanteControllers\PerfilEstudanteController;
 use App\Http\Controllers\EstudanteControllers\TodasOfertasEstudanteController;
+use App\Http\Middleware\AuthEstudante;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('estudante')->group(function(){
 
     //Rota de cadastro para estudantes 
     Route::prefix('/cadastro_estudante')->controller(CadastroEstudanteController::class)->group( function(){
-        Route::get('/', 'indexCreateEstudante')->name('cadastro_estudante_index');
-        Route::post('/', 'createEstudante')->name('cadastro_create_estudante');
+        Route::get('/', 'indexCreateEstudante')->name('cadastro_estudante_index')->withoutMiddleware(AuthEstudante::class);
+        Route::post('/', 'createEstudante')->name('cadastro_create_estudante')->withoutMiddleware(AuthEstudante::class);
     });  
 
     Route::prefix('/todas-ofertas-acao')->controller(TodasOfertasEstudanteController::class)->group(function(){

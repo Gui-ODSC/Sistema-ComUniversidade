@@ -7,6 +7,7 @@ use App\Http\Controllers\MembroControllers\DemandaMembroController;
 use App\Http\Controllers\MembroControllers\MatchingMembroController;
 use App\Http\Controllers\MembroControllers\PerfilMembroController;
 use App\Http\Controllers\MembroControllers\TodasOfertasMembroController;
+use App\Http\Middleware\AuthMembro;
 use Illuminate\Support\Facades\Route;
 
 //ROTAS REFERENTE A VISUALIZAÇÃO DOS USUÁRIOS MEMBROS DO SISTEMA
@@ -14,9 +15,9 @@ Route::prefix('membro')->group(function(){
 
     //Rota de cadastro para membros da sociedade 
     Route::prefix('/cadastro')->controller(CadastroMembroController::class)->group( function(){
-        Route::get('/', 'index')->name('cadastro_membro_index');
-        Route::post('/', 'create')->name('cadastro_create');
-    }); 
+        Route::get('/', 'index')->name('cadastro_membro_index')->withoutMiddleware(AuthMembro::class);
+        Route::post('/', 'create')->name('cadastro_create')->withoutMiddleware(AuthMembro::class);
+    });
 
     Route::prefix('/demandas')->controller(DemandaMembroController::class)->group(function(){
         Route::get('/visualizar', 'index')->name('demanda_index');
