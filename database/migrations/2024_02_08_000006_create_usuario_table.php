@@ -29,7 +29,6 @@ return new class extends Migration
             $table->enum('tipo', ['MEMBRO', 'ALUNO', 'PROFESSOR']);
             $table->enum('tipo_pessoa', ['FISICA', 'JURIDICA']);
             $table->string('instituicao', 100)->nullable();
-            $table->string('numero', 255);
 
             $table->foreign('id_cep')->references('id_cep')->on('Cep');
 
