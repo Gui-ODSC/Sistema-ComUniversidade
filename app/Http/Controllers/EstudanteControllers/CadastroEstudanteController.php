@@ -3,13 +3,13 @@
 namespace App\Http\Controllers\EstudanteControllers;
 
 use App\Http\Controllers\BairroController;
+use App\Http\Controllers\CepController;
 use App\Http\Controllers\CidadeController;
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\EnderecoController;
 use App\Http\Controllers\EstadoController;
 use App\Http\Controllers\UsuarioAlunoController;
 use App\Http\Controllers\UsuarioController;
-use App\Models\Endereco;
+use App\Models\Cep;
 use App\Models\Usuario;
 use App\Models\UsuarioAluno;
 use Illuminate\Http\Request;
@@ -20,62 +20,53 @@ class CadastroEstudanteController extends Controller
 {
     private $usuarioController;
     private $usuarioModel;
-    private $enderecoModel;
-    private $enderecoController;
+    private $cepModel;
+    private $cepController;
     private $cidadeController;
     private $estadoController;
-    private $bairroController;
     private $usuarioAlunoController;
     private $usuarioAlunoModel;
 
     public function __construct(
         UsuarioController $usuarioController,
         UsuarioAlunoController $usuarioAlunoController,
-        EnderecoController $enderecoController,
+        CepController $cepController,
         CidadeController $cidadeController,
         EstadoController $estadoController,
-        BairroController $bairroController,
         Usuario $usuarioModel,
         UsuarioAluno $usuarioAlunoModel,
-        Endereco $enderecoModel,
+        Cep $cepModel,
 
     ) {
         $this->usuarioController = $usuarioController;
         $this->usuarioModel = $usuarioModel;
-        $this->enderecoModel = $enderecoModel;
-        $this->enderecoController = $enderecoController;
+        $this->cepModel = $cepModel;
+        $this->cepController = $cepController;
         $this->cidadeController = $cidadeController;
         $this->estadoController = $estadoController;
-        $this->bairroController = $bairroController;
         $this->usuarioAlunoController = $usuarioAlunoController;
         $this->usuarioAlunoModel = $usuarioAlunoModel;
     }
 
     public function indexCreateEstudante()
     {
-        $listBairro = $this->bairroController->list();
-        $listCidade = $this->cidadeController->list();
-        $listEstado = $this->estadoController->list();
-        return view('usuarioEstudante/cadastro/cadastro_estudante', 
-            [
-                'bairros' => $listBairro,
-                'cidades' => $listCidade,
-                'estados' => $listEstado,
-            ]
-        );
+        return view('usuarioEstudante/cadastro/cadastro_estudante');
     }
 
     public function createEstudante(Request $request)
     {
-        $validarCamposEndereco = $this->enderecoController->validarCamposEndereco($request);
+
+        $request->merge(['tipo_pessoa' => 'FISICA']);
+
+        $validarCamposCep = $this->cepController->validarCamposCep($request);
         $validarCamposUsuario = $this->usuarioController->validarCamposUsuario($request);
         $validarCamposUsuarioAluno = $this->usuarioAlunoController->validarCamposUsuarioEstudanteCreate($request);
 
         // Verifica se a validação dos campos de endereço falhou
-        if ($validarCamposEndereco->fails()) {
+        if ($validarCamposCep->fails()) {
             return back()->withErrors([
-                "message" => 'Campos de Endereços Inválidos',
-                "dados" => $validarCamposEndereco->errors()->all(),
+                "message" => 'Campos de Cep Inválidos',
+                "dados" => $validarCamposCep->errors()->all(),
             ])->withInput();
         }
 
@@ -96,22 +87,20 @@ class CadastroEstudanteController extends Controller
         }
 
         // Se a validação passou, prosseguimos com a criação do endereço e do usuário
-        $validatedDataEndereco = $validarCamposEndereco->validated();
+        $validatedDataCep = $validarCamposCep->validated();
         $validatedDataUsuario = $validarCamposUsuario->validated();
         $validatedDataUsuarioAluno = $validarCamposUsuarioAluno->validated();
 
         // Tratamento do upload da imagem
         if ($request->hasFile('foto') && $request->file('foto')->isValid()) {
-            $fotoPath = $request->file('foto')->store('imagemPerfilEstudante');
+            $fotoPath = $request->file('foto')->store('imagemPerfilAluno');
             $validatedDataUsuario['foto'] = $fotoPath;
+        }else {
+            $validatedDataUsuario['foto'] = null;
         }
-
-        // Criação do endereço
-        $newEndereco = $this->enderecoModel::create($validatedDataEndereco);
-
         // Criação do usuário com o ID do endereço recém-criado
         $newUsuario = $this->usuarioModel::create([
-            'id_endereco' => $newEndereco->id_endereco,
+            'id_cep' => $validatedDataCep['id_cep'],
             'nome' => $validatedDataUsuario['nome'],
             'sobrenome' => $validatedDataUsuario['sobrenome'],
             'nascimento' => Carbon::createFromFormat('d/m/Y', $validatedDataUsuario['nascimento'])->format('Y-m-d'),
@@ -119,7 +108,9 @@ class CadastroEstudanteController extends Controller
             'email' => $validatedDataUsuario['email'],
             'email_secundario' => $validatedDataUsuario['email_secundario'] ?? null,
             'password' => Hash::make($validatedDataUsuario['password']),
-            'foto' => $validatedDataUsuario['foto'] ?? null,
+            'foto' => $validatedDataUsuario['foto'],
+            'numero' => $validatedDataUsuario['numero'],
+            'complemento' => $validatedDataUsuario['complemento'] ?? null,
             'tipo' => 'ALUNO',
             'tipo_pessoa' => $validatedDataUsuario['tipo_pessoa'],
             'instituicao' => $validatedDataUsuario['instituicao'] ?? null,
@@ -154,15 +145,15 @@ class CadastroEstudanteController extends Controller
         ];
     }
 
-    private function listErrosEndereco($errors)
+    private function listErrosCep($errors)
     {
         return [
-            "rua" => $errors->first('rua'),
-            "numero" => $errors->first('numero'),
-            "complemento" => $errors->first('complemento'),
-            "id_bairro" => $errors->first('id_bairro'),
-            "id_cidade" => $errors->first('id_cidade'),
-            "id_estado" => $errors->first('id_estado'),
+            'cep' => $errors->first('cep'),
+            'logradouro' => $errors->first('logradouro'),
+            'bairro' => $errors->first('bairro'),
+            'complemento' => $errors->first('complemento'),
+            'id_cidade' => $errors->first('id_cidade'),
+            'id_estado' => $errors->first('id_estado'),
         ];
     }
 

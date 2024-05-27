@@ -62,6 +62,8 @@ class UsuarioController extends Controller
                 'regex:/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/',
             ],
             'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'numero' => 'required|string|max:10',
+            'complemento' => 'nullable|string|max:255',
             'tipo_pessoa' => [
                 'required',
                 new Enum(TipoPessoaEnum::class)
@@ -152,7 +154,10 @@ class UsuarioController extends Controller
             'instituicao.string' => 'Instituição: A instituicao deve ser um texto.',
             'instituicao.max' => 'Instituição: Número de caracteres ultrapassado',
             'foto.mimes' => 'Foto: A imagem deve ter um dos seguintes formatos: jpeg, png, jpg ou gif.',
-            'foto.max' => 'Foto: A imagem deve ter até no máximo 2MB.'
+            'foto.max' => 'Foto: A imagem deve ter até no máximo 2MB.',
+            'numero.required' => 'Número: Campo obrigatório',
+            'numero.max' => 'Número: Deve conter no máximo 10 digitos.',
+            'complemento.max' => 'Complemento: Numero de caracteres ultrapassado'
         ];
     }
 }

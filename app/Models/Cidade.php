@@ -21,8 +21,8 @@ class Cidade extends Model
         'nome',
     ];
 
-    public function endereco():BelongsTo
+    public function cep():HasMany
     {
-        return $this->belongsTo(Endereco::class, 'id_cidade', 'id_cidade');
+        return $this->hasMany(Cep::class, 'id_cidade', 'id_cidade');
     }
 }

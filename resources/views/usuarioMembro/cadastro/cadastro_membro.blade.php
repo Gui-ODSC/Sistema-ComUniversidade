@@ -13,14 +13,15 @@
     {{-- Autocomplete.JS --}}
     <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js/dist/js/autoComplete.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/css/autoComplete.02.min.css">
-    <title>Cadastro de Membros</title>
+
+    <title>Cadastro de membros</title>
 </head>
 <header>
-    <nav class="navbar">
+    {{-- <nav class="navbar">
         <div class="container-fluid">
             <span class="navbar-brand mb-0 h1"><a href="/">Extensão Universitaria</a></span>
         </div>
-    </nav>
+    </nav> --}}
 </header>
 <body>
     <div class="botao-voltar">
@@ -28,7 +29,7 @@
     </div>
     <div class="cadastro-container">
         <div class="titulo">
-            <h1>Cadastro Membro</h1>
+            <h1>Cadastro membro externo</h1>
             <h4>Seja bem vindo(a)</h2>
         </div>
         <form method="POST" action="{{ route('cadastro_create') }}" enctype="multipart/form-data">
@@ -45,12 +46,13 @@
                 </div>
             @endif
             <div style="display: flex; margin: 5px 10px;">
-                <div style="width: 50%; display: flex; flex-direction: column;">
+                <div style="display: flex; flex-direction: column; position: relative;">
                     <div class="img-foto-perfil" onclick="openFileSelector()">
-                        <img id="current-image">
-                        <p id="image-placeholder"><img src="{{asset('img/icones/perfil_claro.png')}}" alt=""><br>Adicionar uma imagem</p> 
-                        <input type="file" id="image-input" name="foto" style="position: absolute; heigth: 10px ; opacity: 0; object-fit: cover;" accept="image/*" onchange="previewImage(event)" maxlength="255">
+                        <img id="current-image" style="display: none;">
+                        <p id="image-placeholder"><img src="{{asset('img/icones/perfil_claro.png')}}" alt=""><br>Adicionar uma imagem</p>
+                        <input type="file" id="image-input" name="foto" style="position: absolute; height: 10px; opacity: 0; object-fit: cover;" accept="image/*" onchange="previewImage(event)" maxlength="255">
                     </div>
+                    <button id="remove-image" onclick="removeImage()" style="display: none; position: absolute; top: 0px; right: 10px; color: black; border: 1px solid black; border-radius: 5px; width: 30px; font-size: 10px">X</button>
                 </div>
                 <div style="display: flex; flex-wrap: wrap; margin-left: 5px;">
                     {{-- NOME --}}
@@ -81,7 +83,7 @@
                             </label>
                         @enderror
                     </div>
-                    <div class="caixa-input" style="width: 213px; margin-left: 3px; margin-bottom: 4px">
+                    <div class="caixa-input" style="width: 30%; padding-left: 3px; margin-bottom: 4px">
                         {{-- NASCIMENTO --}}
                         @error('nascimento')
                             <input title="{{ $message }}" class="alert-danger" autocompĺete="off" type="text" id="nascimento" name="nascimento" value="{{old('nascimento')}}" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required>
@@ -126,7 +128,7 @@
                 </div>
             </div>
             <div style="margin: 3px 10px; display: flex; flex-wrap: wrap">
-                <div class="caixa-input" style="width: 190px; margin-bottom: 6px">
+                <div class="caixa-input" style="width: 20%; margin-bottom: 6px">
                         {{-- TELEFONE --}}
                     @error('telefone')
                         <input title="{{ $message }}" class="alert-danger" autocompĺete="off" type="text" id="telefone" name="telefone" value="{{old('telefone')}}" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required>
@@ -140,7 +142,7 @@
                         </label>
                     @enderror
                 </div>
-                <div class="caixa-input" style="width: 50%; margin-left: 3px">
+                <div class="caixa-input" style="width: 50%; padding-left: 3px">
                     {{-- PASSWORD --}}
                     @error('password')
                         <div style="position: relative;">
@@ -168,35 +170,35 @@
                         </div>
                     @enderror
                 </div>
-                <div class="caixa-input" style="width: 299px; margin-left: 3px;">
+                <div class="caixa-input" style="width: 30%; padding-left: 3px;">
                     {{-- CEP --}}
                     @error('cep')
-                        <input title="{{ $message }}" class="cidade alert-danger" id="cep" autocompĺete="off" type="text" name="nome_cep" value="{{old('nome_cep')}}" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required  maxlength="8">
-                        <label for="nome_cep">
+                        <input title="{{ $message }}" class="cidade alert-danger" id="cep" autocompĺete="off" type="text" name="cep" value="{{old('cep')}}" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required>
+                        <label for="cep">
                             <span>CEP *</span>
                         </label>
                     @else
-                        <input type="text" name="nome_cep" id="cep" autocompĺete="off" value="{{old('nome_cep')}}" required  maxlength="8"> 
-                        <label for="nome_cep">
+                        <input type="text" name="cep" id="cep" autocompĺete="off" value="{{old('cep')}}" required> 
+                        <label for="cep">
                             <span>CEP *</span>
                         </label>
                     @enderror
                 </div>
-                <div class="caixa-input" style="width: 40%; margin-bottom: 6px">
+                <div class="caixa-input readonly" style="width: 40%; margin-bottom: 6px; opacity: 0.7;">
                     {{-- RUA --}}
-                    @error('rua')
-                        <input title="{{ $message }}" class="alert-danger" autocompĺete="off" type="text" id="rua" name="rua" value="{{old('rua')}}" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required  maxlength="255">
-                        <label for="rua">
-                            <span>Rua *</span>
+                    @error('logradouro')
+                        <input title="{{ $message }}" class="alert-danger" autocompĺete="off" type="text" id="logradouro" name="logradouro" value="{{old('logradouro')}}" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required readonly>
+                        <label for="logradouro">
+                            <span>Rua</span>
                         </label>
                     @else
-                        <input type="text" id="rua" name="rua" autocompĺete="off" value="{{old('rua')}}" required  maxlength="255">
-                        <label for="rua">
-                            <span>Rua *</span>
+                        <input type="text" id="logradouro" name="logradouro" autocompĺete="off" value="{{old('logradouro')}}" required readonly>
+                        <label for="logradouro">
+                            <span>Rua</span>
                         </label>
                     @enderror
                 </div>
-                <div class="caixa-input" style="width: 30%; margin-left: 3px;">
+                <div class="caixa-input" style="width: 30%; padding-left: 3px;">
                     {{-- NUMERO --}}
                     @error('numero')
                         <input title="{{ $message }}" class="alert-danger" autocompĺete="off" type="number" id="numero" name="numero" value="{{old('numero')}}" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required  maxlength="20">
@@ -210,7 +212,7 @@
                         </label>
                     @enderror
                 </div>
-                <div class="caixa-input" style="width: 291px; margin-left: 3px;">
+                <div class="caixa-input" style="width: 30%; padding-left: 3px;">
                     {{-- COMPLEMENTO --}}
                     @error('complemento')
                         <input title="{{ $message }}" class="alert-danger" autocompĺete="off" type="text" id="complemento" name="complemento" value="{{old('complemento')}}" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" maxlength="255">
@@ -224,43 +226,49 @@
                         </label>
                     @enderror
                 </div>
-                <div class="caixa-input" style="width: 50%; margin-bottom: 6px">
+                <div class="caixa-input readonly" style="width: 50%; margin-bottom: 6px; padding-right: 3px; opacity: 0.7;">
                     {{-- ESTADO --}}
                     @error('estado')
-                        <div class="autoComplete_wrapper">  
-                            <input title="{{ $message }}" type="text" id="autoCompleteEstado" class="estado alert-danger" autocompĺete="off" name="nome_estado" value="{{old('nome_estado')}}" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required  maxlength="255">
-                            <label for="nome_estado">
-                                <span>Estado *</span>
-                            </label>
-                        </div>    
+                        <input title="{{ $message }}" type="text" id="estado" class="estado alert-danger" autocompĺete="off" name="estado" value="{{old('estado')}}" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required readonly>
+                        <label for="estado">
+                            <span>Estado</span>
+                        </label>
                     @else
-                        <div class="autoComplete_wrapper">  
-                            <input class="estado" type="text" id="autoCompleteEstado" name="nome_estado" autocompĺete="off" value="{{old('nome_estado')}}" required  maxlength="255">
-                            <label for="nome_estado">
-                                <span>Estado *</span>
-                            </label>
-                        </div>
+                        <input class="estado" type="text" id="estado" name="estado" autocompĺete="off" value="{{old('estado')}}" readonly required>
+                        <label for="estado">
+                            <span>Estado</span>
+                        </label>
                     @enderror
                 </div>
-                <div class="caixa-input" style="width: 492px; margin-left: 3px;">
+                <div class="caixa-input readonly" style="width: 50%; padding-right: 3px; opacity: 0.7;">
                     {{-- BAIRRO --}}
                     @error('bairro')
-                        <div class="autoComplete_wrapper">  
-                            <input title="{{ $message }}" type="text" id="autoCompleteBairro" class="bairro alert-danger" autocompĺete="off" name="nome_bairro" value="{{old('nome_bairro')}}" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required  maxlength="255">
-                            <label for="nome_bairro">
-                                <span>Bairro *</span>
-                            </label>
-                        </div>    
+                        <input title="{{ $message }}" type="text" id="bairro" class="bairro alert-danger" autocompĺete="off" name="bairro" value="{{old('bairro')}}" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required  readonly>
+                        <label for="bairro">
+                            <span>Bairro</span>
+                        </label>
                     @else
-                        <div class="autoComplete_wrapper">  
-                            <input type="text" id="autoCompleteBairro" class="bairro" name="nome_bairro" autocompĺete="off" value="{{old('nome_bairro')}}" required  maxlength="255">
-                            <label for="nome_bairro">
-                                <span>Bairro *</span>
-                            </label>
-                        </div>
+                        <input type="text" id="bairro" class="bairro" name="bairro" autocompĺete="off" value="{{old('bairro')}}" readonly required>
+                        <label for="bairro">
+                            <span>Bairro</span>
+                        </label>
                     @enderror
                 </div>
-                <div class="caixa-input" style="width: 50%;">
+                <div class="caixa-input readonly" style="width: 40%; padding-right: 3px; opacity: 0.7;">
+                    {{-- CIDADE --}}
+                    @error('cidade')
+                        <input title="{{ $message }}" type="text" id="cidade" class="cidade alert-danger" autocompĺete="off" name="cidade" value="{{old('cidade')}}" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required readonly">
+                        <label for="cidade">
+                            <span>Cidade</span>
+                        </label>
+                    @else
+                        <input type="text" id="cidade" class="cidade" name="cidade" autocompĺete="off" value="{{old('cidade')}}" required readonly>
+                        <label for="cidade">
+                            <span>Cidade</span>
+                        </label>
+                    @enderror
+                </div>
+                <div class="caixa-input" style="width: 20%;">
                     {{-- TIPO PESSOA --}}
                     @error('tipo_pessoa')
                         <select title="{{ $message }}" class="alert-danger" autocompĺete="off" type="text" id="tipo_pessoa" name="tipo_pessoa" value="{{old('tipo_pessoa')}}" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required>
@@ -282,7 +290,7 @@
                         </label>
                     @enderror
                 </div>
-                <div class="caixa-input" style="width: 492px; margin-left: 3px">
+                <div class="caixa-input" style="width: 40%; padding-left: 3px">
                     {{-- INSTITUICAO --}}
                     @error('instituicao')
                         <input title="{{ $message }}" class="alert-danger" autocompĺete="off" type="text" id="instituicao" name="instituicao" value="{{old('instituicao')}}" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" maxlength="100">
@@ -305,6 +313,7 @@
         <form>
     </div>
     <script src="{{ asset('js/usuarioMembro/login_membro/mensagem_erro.js') }}"></script>
+    <script src="{{ asset('js/usuarioMembro/cadastro/cep.js') }}"></script>
     <script>
         // Aplica a máscara de telefone usando Inputmask
         $('#telefone').on('input', function() {
@@ -326,64 +335,6 @@
                 $(this).inputmask('99999-999'); 
             }
         });
-            
-        // Variável PHP contendo os bairros
-        /* const bairros = {!! json_encode($bairros) !!}; */
-
-        // Variável PHP contendo os bairros
-        /* const cidades = {!! json_encode($cidades) !!}; */
-
-        // Variável PHP contendo os bairros
-        /* const estados = {!! json_encode($estados) !!}; */
-
-        /* function inicializarAutoComplete(data, selector, onSelectionCallback) {
-            const autoCompleteJS = new autoComplete({
-                data: {
-                    src: data,
-                    key: ["nome"],
-                },
-                name: "autoComplete",
-                selector: selector,
-                threshold: 0,
-                debounce: 300,
-                searchEngine: "strict",
-                highlight: true,
-                maxResults: 5,
-                onSelection: onSelectionCallback,
-            });
-
-            const autoCompleteInput = document.querySelector(selector);
-            autoCompleteInput.addEventListener('focusout', function() {
-                const inputText = this.value;
-
-                const encontrado = data.find(item => item.nome === inputText);
-
-                if (!encontrado) {
-                    this.value = '';
-                }
-            });
-        } */
-        // Inicializar o autocomplete para as cidades
-       /*  inicializarAutoComplete(cidades, "#autoCompleteCidade", feedback => {
-            const cidade = feedback.selection.value;
-            const autoCompleteInput = document.getElementById('autoCompleteCidade');
-            autoCompleteInput.value = cidade.nome;
-        }); */
-
-        // Inicializar o autocomplete para os bairros
-        /* inicializarAutoComplete(bairros, "#autoCompleteBairro", feedback => {
-            const bairro = feedback.selection.value;
-            const autoCompleteInput = document.getElementById('autoCompleteBairro');
-            autoCompleteInput.value = bairro.nome;
-        }); */
-
-
-        // Inicializar o autocomplete para os estados
-        /* inicializarAutoComplete(estados, "#autoCompleteEstado", feedback => {
-            const estado = feedback.selection.value;
-            const autoCompleteInput = document.getElementById('autoCompleteEstado');
-            autoCompleteInput.value = estado.nome;
-        }); */
 
         /* OLINHO DA SENHA */
         function togglePassword() {
@@ -411,11 +362,11 @@
             }
         }
 
-        /* IMAGEM DE PERFIL */
         function previewImage(event) {
             const input = event.target;
             const currentImage = document.getElementById('current-image');
             const imagePlaceholder = document.getElementById('image-placeholder');
+            const removeButton = document.getElementById('remove-image');
 
             if (input.files && input.files[0]) {
                 const reader = new FileReader();
@@ -424,6 +375,7 @@
                     currentImage.src = e.target.result;
                     currentImage.style.display = 'inline-block';
                     imagePlaceholder.style.display = 'none'; // Oculta a mensagem "Adicionar uma imagem"
+                    removeButton.style.display = 'block'; // Mostra o botão de remoção
                 };
 
                 reader.readAsDataURL(input.files[0]);
@@ -432,12 +384,27 @@
                 currentImage.src = "{{ asset('img/icones/perfil_claro.png') }}";
                 currentImage.style.display = 'inline-block';
                 imagePlaceholder.style.display = 'block'; // Mostra novamente a mensagem "Adicionar uma imagem"
+                removeButton.style.display = 'none'; // Oculta o botão de remoção
             }
         }
 
         // Função para abrir o seletor de arquivo quando a imagem é clicada
         function openFileSelector() {
             document.getElementById('image-input').click();
+        }
+
+        // Função para remover a imagem
+        function removeImage() {
+            const currentImage = document.getElementById('current-image');
+            const imagePlaceholder = document.getElementById('image-placeholder');
+            const removeButton = document.getElementById('remove-image');
+            const imageInput = document.getElementById('image-input');
+
+            currentImage.style.display = 'none';
+            currentImage.src = '';
+            imagePlaceholder.style.display = 'block'; // Mostra novamente a mensagem "Adicionar uma imagem"
+            removeButton.style.display = 'none'; // Oculta o botão de remoção
+            imageInput.value = ''; // Limpa o valor do input de arquivo
         }
 
         /* permitir somente numeros */
@@ -451,7 +418,7 @@
             // Caixa de diálogo das regras da senha
             var passwordRules = document.createElement("div");
             passwordRules.innerHTML = `
-                <div id="password-rules" style="position: absolute; top: 365px; right: 70px; background-color: #4D6D7F; color: #FFF; border: 1px solid #FFF; padding: 10px; border-radius: 10px;">
+                <div id="password-rules" style="position: absolute; top: 310px; right: 60px; background-color: #4D6D7F; color: #FFF; border: 1px solid #FFF; padding: 10px; border-radius: 10px;">
                     <button onclick="closePasswordRules()" style="position: absolute; top: 5px; color: #FFF; right: 7px; cursor: pointer; background: transparent; border: none; outline: none;">Fechar</button>
                     <p>Regras de criação de senha:</p>
                     <ul>

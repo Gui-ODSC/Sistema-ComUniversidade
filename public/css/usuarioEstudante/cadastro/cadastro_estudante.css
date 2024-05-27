@@ -4,7 +4,7 @@
 }
 
 body {
-    background: linear-gradient(90deg, rgba(9,107,170,1) 0%, rgba(44,39,88,1) 50%, rgba(40,35,69,1) 100%);
+    background: #3b6c67;
     font-family: "Manrope", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
@@ -30,15 +30,15 @@ header {
 
 .titulo {
     display: flex;
-    background-color: rgba(44,39,88,1);
+    background-color: #104655;
     width: 500px;
-    margin: auto;
+    margin: auto auto;
     margin-bottom: 40px;
     align-items: center;
     height: 100px;
     border-radius: 10px;
     align-content: center;
-    box-shadow: -1px 1px 4px 4px #37769a;
+    box-shadow: -1px 1px 4px 4px black;
     flex-direction: column;
 }
 
@@ -48,11 +48,14 @@ header {
     margin: auto;
     padding-top: 10px;
     color: #fff;
+    font-size: 30px;
+    margin-bottom: 2px;
 }
 
 h4 {
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 15px;
+    font-size: 20px;
 }
 
 .botao-voltar {
@@ -76,7 +79,7 @@ h4 {
 
 /* foto perfil */
 .img-foto-perfil {
-    background-color: #4d6d7f;
+    background-color: #3b6c67;
     border-radius: 10px;
     align-items: center;
     display: flex;
@@ -91,8 +94,6 @@ h4 {
 .img-foto-perfil button {
     width: 200px;
 }
-
-
 
 #image-placeholder {
     position: absolute; 
@@ -122,19 +123,20 @@ h4 {
     padding: 20px;
     display: flex;
     flex-wrap: wrap;
-    background-color: rgba(44,39,88,1);
+    background-color: #104655;
 }
 
 .cadastro-container {
     padding: 40px 20px 10px 20px;
-    background-color: rgba(44,39,88,1);
+    background-color: #104655;
     margin: auto;
     margin-bottom: 30px;
     width: 80%;
     border-radius: 20px;
     font-size: larger;
     color: #FFF;
-    box-shadow: -1px 1px 4px 4px #37769a;
+    box-shadow: -1px 1px 4px 4px black;
+
 }
 
 .cadastro-container .caixa-input{
@@ -189,11 +191,11 @@ h4 {
 /* INPUTS PERSONALIZADOS */
 .cadastro-container input, select {
     color: #FFF;
-    font-size: 20px;
+    font-size: 17px;
     width: 100%;
     height: 50px;
     padding: 20px 10px 10px 5px;
-    background-color: #4d6d7f;
+    background-color: #3b6c67;
     border: none;
     border-radius: 5px;
     outline: none;
@@ -207,6 +209,8 @@ h4 {
     height: 50px;
     pointer-events: none;
     border-bottom: 1px solid #ffffff;
+    font-size: 14px;
+    font-weight: bold;
 }
   
 .cadastro-container span {
@@ -245,6 +249,23 @@ h4 {
     border-bottom: 3px solid #FFF;
 }
 
+/* remover */
+.readonly input:read-only + label span, input:valid + label span {
+    height: 40px;
+    font-size: 14px;
+    color: #FFF;
+}
+
+.readonly input:focus + label span, input:invalid + label span {
+    height: 40px;
+    font-size: 14px;
+    color: #FFF;;
+}
+
+.readonly input:focus + label::after {
+    border-bottom: 0px solid #FFF;
+}
+
 .cadastro-container select:read-only + label span, select:valid + label span {
     height: 40px;
     font-size: 14px;
@@ -277,15 +298,20 @@ h4 {
 
 .botao-envio-form {
     display: flex;
-    padding: 5px;
     text-align: center;
     justify-content: center;
     border-radius: 10px;
     width: 150px;
     margin: auto;
-    font-size: x-large;
-    margin-top: 10px;
-    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #104655;
+    box-shadow: -1px 1px 4px 4px black;
+    border: none;
+    color: #FFF;
+    font-weight: bold;
+    font-size: 17px;
+    margin-top: 20px;
 }
 
 .fade-out {

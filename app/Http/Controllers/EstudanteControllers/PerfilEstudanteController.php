@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers\EstudanteControllers;
 
+use App\Http\Controllers\CepController;
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\EnderecoController;
 use App\Http\Controllers\UsuarioAlunoController;
 use App\Http\Controllers\UsuarioController;
-use App\Models\Bairro;
+use App\Models\Cep;
 use App\Models\Cidade;
-use App\Models\Endereco;
 use App\Models\Estado;
 use App\Models\Usuario;
 use App\Models\UsuarioAluno;
@@ -20,16 +19,16 @@ use Illuminate\Support\Facades\Hash;
 class PerfilEstudanteController extends Controller
 {
 
-    private $enderecoController;
+    private $cepController;
     private $usuarioController;
     private $usuarioAlunoController;
 
     public function __construct(
         UsuarioController $usuarioController,
-        EnderecoController $enderecoController,
+        CepController $cepController,
         UsuarioAlunoController $usuarioAlunoController
     ) {
-        $this->enderecoController = $enderecoController;
+        $this->cepController = $cepController;
         $this->usuarioController = $usuarioController;
         $this->usuarioAlunoController = $usuarioAlunoController;
     }
@@ -39,20 +38,21 @@ class PerfilEstudanteController extends Controller
 
         $usuario = Usuario::where('id_usuario', $userId)->first();
         $usuarioEstudante = UsuarioAluno::where('id_usuario', $usuario->id_usuario)->first();
-        $endereco = Endereco::where('id_endereco', $usuario->id_endereco)->first();
-        $cidade = Cidade::where('id_cidade', $endereco->id_cidade)->first();
-        $bairro = Bairro::where('id_bairro', $endereco->id_bairro)->first();
-        $estado = Estado::where('id_estado', $endereco->id_estado)->first();
+        $cep = Cep::where('id_cep', $usuario->id_cep)->first();
+        $cidade = Cidade::where('id_cidade', $cep->id_cidade)->first();
+        $estado = Estado::where('id_estado', $cep->id_estado)->first();
+
+        $formattedCep = $this->formatCep($cep->cep);
 
         return view('usuarioEstudante/perfil/perfil_estudante',
             [
                 'usuario' => $usuario,
                 'usuarioEstudante' => $usuarioEstudante,
                 'nascimentoFormat' => Carbon::parse($usuario->nascimento)->format('d/m/Y'),
-                'endereco' => $endereco,
+                'cep' => $cep,
                 'cidade' => $cidade,
-                'bairro' => $bairro,
                 'estado' => $estado,
+                'cepFormat' => $formattedCep
             ]
         );
     }
@@ -61,47 +61,44 @@ class PerfilEstudanteController extends Controller
     {
         $usuario = Usuario::where('id_usuario', $usuarioId)->first();
         $usuarioEstudante = UsuarioAluno::where('id_usuario', $usuario->id_usuario)->first();
-        $endereco = Endereco::where('id_endereco', $usuario->id_endereco)->first();
-        $cidade = Cidade::where('id_cidade', $endereco->id_cidade)->first();
-        $bairro = Bairro::where('id_bairro', $endereco->id_bairro)->first();
-        $estado = Estado::where('id_estado', $endereco->id_estado)->first();
+        $cep = Cep::where('id_cep', $usuario->id_cep)->first();
+        $cidade = Cidade::where('id_cidade', $cep->id_cidade)->first();
+        $estado = Estado::where('id_estado', $cep->id_estado)->first();
 
-        $cidades = Cidade::all();
-        $bairros = Bairro::all();
-        $estados = Estado::all();
-        
+        $formattedCep = $this->formatCep($cep->cep);
+
         return view('usuarioEstudante/perfil/perfil_edit_estudante',
             [
                 'usuario' => $usuario,
                 'usuarioEstudante' => $usuarioEstudante,
                 'nascimentoFormat' => Carbon::parse($usuario->nascimento)->format('d/m/Y'),
-                'endereco' => $endereco,
+                'cep' => $cep,
                 'cidade' => $cidade,
-                'bairro' => $bairro,
                 'estado' => $estado,
-                'listCidades' => $cidades,
-                'listBairros' => $bairros,
-                'listEstados' => $estados,
+                'cepFormat' => $formattedCep
             ]
         );
     }
 
     public function editStore(Request $request, $usuarioId)
     {
+
+        $request->merge(['tipo_pessoa' => 'FISICA']);
+
         $usuario = Usuario::findOrFail($usuarioId);
         $usuarioEstudante = UsuarioAluno::where('id_usuario', $usuario->id_usuario)->first();
-        $endereco = Endereco::findOrFail($usuario->id_endereco);
+        $cep = Cep::findOrFail($usuario->id_cep);
 
-        $validarUpdateEndereco = $this->enderecoController->validarUpdateEndereco($endereco->id_endereco, $request);
+        $validarUpdateCep = $this->cepController->validarUpdateCep($cep->id_cep, $request);
         $validarUpdateUsuario = $this->usuarioController->validarUpdateUsuario($usuarioId, $request);
         $validarUpdateUsuarioEstudante = $this->usuarioAlunoController->validarCamposUsuarioEstudanteUpdate($usuarioEstudante, $request);
 
         // Verifica se a validação dos campos de endereço falhou
-        if ($validarUpdateEndereco->fails()) {
+        if ($validarUpdateCep->fails()) {
             return back()->withErrors([
                 "message" => 'Campos preenchidos inválidos!',
-                "dados" => $validarUpdateEndereco->errors()->all(),
-                ...$this->listErrosEndereco($validarUpdateEndereco->errors())
+                "dados" => $validarUpdateCep->errors()->all(),
+                ...$this->listErrosEndereco($validarUpdateCep->errors())
             ]);
         }
 
@@ -124,20 +121,29 @@ class PerfilEstudanteController extends Controller
         }
 
         // Se a validação passou, prosseguimos com a Atualização do endereço e do usuário
-        $validatedDataEndereco = $validarUpdateEndereco->validated();
+        $validatedDataCep = $validarUpdateCep->validated();
         $validatedDataUsuario = $validarUpdateUsuario->validated();
         $validatedDataUsuarioEstudante = $validarUpdateUsuarioEstudante->validated();
 
-        $endereco->update($validatedDataEndereco);
-
+        // Tratamento do upload da imagem
+        if ($request->hasFile('foto') && $request->file('foto')->isValid()) {
+            $fotoPath = $request->file('foto')->store('imagemPerfilAluno');
+            $validatedDataUsuario['foto'] = $fotoPath;
+        }else {
+            $validatedDataUsuario['foto'] = null;
+        }
+        
         $dadosAtualizados = [
+            'id_cep' => $validatedDataCep['id_cep'],
             'nome' => $validatedDataUsuario['nome'],
             'sobrenome' => $validatedDataUsuario['sobrenome'],
             'nascimento' => Carbon::createFromFormat('d/m/Y', $validatedDataUsuario['nascimento'])->format('Y-m-d'),
             'telefone' => $validatedDataUsuario['telefone'],
             'email' => $validatedDataUsuario['email'],
             'email_secundario' => $validatedDataUsuario['email_secundario'] ?? null,
-            'foto' => $validatedDataUsuario['foto']->store('imagemPerfilEstudante') ?? null,
+            'foto' => $validatedDataUsuario['foto'],
+            'numero' => $validatedDataUsuario['numero'],
+            'complemento' => $validatedDataUsuario['complemento'] ?? null,
             'tipo_pessoa' => $validatedDataUsuario['tipo_pessoa'],
             'instituicao' => $validatedDataUsuario['instituicao'] ?? null,
         ];
@@ -169,17 +175,18 @@ class PerfilEstudanteController extends Controller
         ];
     }
 
-    private function listErrosEndereco($errors)
+    private function listErrosCep($errors)
     {
         return [
-            "rua" => $errors->first('rua'),
-            "numero" => $errors->first('numero'),
-            "complemento" => $errors->first('complemento'),
-            "id_bairro" => $errors->first('id_bairro'),
-            "id_cidade" => $errors->first('id_cidade'),
-            "id_estado" => $errors->first('id_estado'),
+            'cep' => $errors->first('cep'),
+            'logradouro' => $errors->first('logradouro'),
+            'bairro' => $errors->first('bairro'),
+            'complemento' => $errors->first('complemento'),
+            'id_cidade' => $errors->first('id_cidade'),
+            'id_estado' => $errors->first('id_estado'),
         ];
     }
+
 
     private function listErrosUsuarioEstudante($errors)
     {
@@ -188,5 +195,13 @@ class PerfilEstudanteController extends Controller
             "curso" => $errors->first('curso'),
             "ra" => $errors->first('ra'),
         ];
+    }
+
+    private function formatCep($cep) {
+        $cep = preg_replace('/[^0-9]/', '', $cep);
+        if (strlen($cep) === 8) {
+            return substr($cep, 0, 5) . '-' . substr($cep, 5);
+        }
+        return $cep;
     }
 }

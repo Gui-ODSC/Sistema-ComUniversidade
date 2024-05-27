@@ -21,7 +21,7 @@ class Usuario extends Authenticatable
     protected $primaryKey = 'id_usuario'; 
 
     protected $fillable = [
-        'id_endereco',
+        'id_cep',
         'nome',
         'sobrenome',
         'nascimento',
@@ -31,6 +31,8 @@ class Usuario extends Authenticatable
         'password',
         'foto',
         'tipo',
+        'numero',
+        'complemento',
         'tipo_pessoa',
         'instituicao',
     ];
@@ -47,7 +49,7 @@ class Usuario extends Authenticatable
 
     public function endereco():HasOne
     {
-        return $this->HasOne(Endereco::class, 'id_endereco', 'id_endereco');
+        return $this->HasOne(Cep::class, 'id_cep', 'id_cep');
     }
 
     public function usuarioAluno():HasOne

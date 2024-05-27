@@ -24,6 +24,8 @@ return new class extends Migration
             $table->string('password');
             $table->string('remember_token', 100)->nullable();
             $table->string('foto')->nullable();
+            $table->string('numero');
+            $table->string('complemento')->nullable();
             $table->enum('tipo', ['MEMBRO', 'ALUNO', 'PROFESSOR']);
             $table->enum('tipo_pessoa', ['FISICA', 'JURIDICA']);
             $table->string('instituicao', 100)->nullable();

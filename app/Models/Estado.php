@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Estado extends Model
 {
@@ -20,8 +21,8 @@ class Estado extends Model
         'nome'
     ];
 
-    public function endereco(): BelongsTo
+    public function cep(): HasMany
     {
-        return $this->belongsTo(Endereco::class, 'id_estado', 'id_estado');
+        return $this->hasMany(Cep::class, 'id_estado', 'id_estado');
     }
 }

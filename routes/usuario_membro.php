@@ -1,5 +1,6 @@
 <?php 
 
+use App\Http\Controllers\CepController;
 use App\Http\Controllers\MembroControllers\CadastroMembroController;
 use App\Http\Controllers\MembroControllers\ContatoRealizadoMembroController;
 use App\Http\Controllers\MembroControllers\ContatoRecebidoMembroController;
@@ -13,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 //ROTAS REFERENTE A VISUALIZAÇÃO DOS USUÁRIOS MEMBROS DO SISTEMA
 Route::prefix('membro')->group(function(){
 
+    Route::get('/api/cep/{cep}', [CepController::class, 'getCepData'])->withoutMiddleware(AuthMembro::class);
+    
     //Rota de cadastro para membros da sociedade 
     Route::prefix('/cadastro')->controller(CadastroMembroController::class)->group( function(){
         Route::get('/', 'index')->name('cadastro_membro_index')->withoutMiddleware(AuthMembro::class);

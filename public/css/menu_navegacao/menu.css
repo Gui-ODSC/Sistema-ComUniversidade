@@ -76,6 +76,7 @@ main {
 
 .menu-navegacao a {
     text-decoration: none;
+    z-index: 10;
 }
 
 .menu-navegacao i {

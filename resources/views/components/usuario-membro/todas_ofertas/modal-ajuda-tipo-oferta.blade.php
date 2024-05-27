@@ -20,13 +20,13 @@
                 <div class="caixa-ajuda">
                     <h6>Ofertas Conhecimento</h6>
                     <div class="texto-ajuda">
-                        <p>Uma oferta do tipo conhecimento é aquela que o Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo eius ut magnam repellendus reiciendis id, ipsam ab. Accusantium autem inventore explicabo vero. A</p>
+                        <p>As Ofertas do Tipo Conhecimento são aquelas que envolvem a disponibilização do saber acumulado pelos servidores de uma instituição. Essas ofertas não estão necessariamente ligadas a uma ação específica ou prática, mas focam na disseminação do conhecimento teórico e prático que os profissionais podem compartilhar.</p>
                     </div>
                 </div>
                 <div class="caixa-ajuda" style="margin-left: 3px">
                     <h6>Ofertas Ação</h6>
                     <div class="texto-ajuda">
-                        <p>Uma oferta do tipo conhecimento é aquela que o Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo eius ut magnam repellendus reiciendis id, ipsam ab. Accusantium autem inventore explicabo vero. A</p>
+                        <p>As Ofertas do Tipo Ação são iniciativas práticas voltadas para o desenvolvimento de atividades específicas que envolvem cursos, projetos, programas e eventos de extensão. Essas ações são direcionadas tanto para a comunidade interna de uma instituição quanto para o público externo, com o objetivo de promover a interação, a troca de conhecimentos e o engajamento social.</p>
                     </div>
                 </div>
             </div>
