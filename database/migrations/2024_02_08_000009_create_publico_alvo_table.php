@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('PublicoAlvo', function (Blueprint $table) {
             $table->id('id_publico_alvo');
-            $table->string('nome');
+            $table->string('nome', 255);
 
             $table->unique('nome');
             $table->timestamps();

@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('Estado', function (Blueprint $table) {
             $table->id('id_estado');
-            $table->string('nome');
-            $table->string('uf');
+            $table->string('nome', 255)->nullable();
+            $table->string('uf', 255)->nullable();
 
             $table->timestamps();
             $table->unique('nome');

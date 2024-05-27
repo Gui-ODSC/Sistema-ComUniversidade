@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('UsuarioAluno', function (Blueprint $table) {
             $table->id('id_usuario_aluno');
             $table->unsignedBigInteger('id_usuario');
-            $table->string('curso');
+            $table->string('curso', 255);
             $table->integer('ra');
             
             $table->foreign('id_usuario')->references('id_usuario')->on('Usuario')->onDelete('restrict');

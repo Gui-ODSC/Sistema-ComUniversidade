@@ -14,22 +14,22 @@ return new class extends Migration
         Schema::create('Usuario', function (Blueprint $table) {
             $table->id('id_usuario');
             $table->unsignedBigInteger('id_cep');
-            $table->string('nome');
-            $table->string('sobrenome');
+            $table->string('nome', 255);
+            $table->string('sobrenome', 255);
             $table->date('nascimento');
             $table->string('telefone', 16);
-            $table->string('email')->unique();
-            $table->string('email_secundario')->nullable()->default(null);
+            $table->string('email', 255)->unique();
+            $table->string('email_secundario', 255)->nullable()->default(null);
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->string('password', 255);
             $table->string('remember_token', 100)->nullable();
-            $table->string('foto')->nullable();
-            $table->string('numero');
-            $table->string('complemento')->nullable();
+            $table->string('foto', 255)->nullable();
+            $table->string('numero', 255);
+            $table->string('complemento', 255)->nullable();
             $table->enum('tipo', ['MEMBRO', 'ALUNO', 'PROFESSOR']);
             $table->enum('tipo_pessoa', ['FISICA', 'JURIDICA']);
             $table->string('instituicao', 100)->nullable();
-            $table->string('numero', 20);
+            $table->string('numero', 255);
 
             $table->foreign('id_cep')->references('id_cep')->on('Cep');
 

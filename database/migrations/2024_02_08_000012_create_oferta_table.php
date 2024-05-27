@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id('id_oferta');
             $table->unsignedBigInteger('id_usuario_professor');
             $table->unsignedBigInteger('id_area_conhecimento');
-            $table->string('titulo');
+            $table->string('titulo', 255);
             $table->longText('descricao');
             $table->enum('tipo', ['ACAO', 'CONHECIMENTO']);
 

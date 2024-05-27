@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('Cep', function (Blueprint $table) {
             $table->id('id_cep');
-            $table->string('cep');
-            $table->string('logradouro')->nullable();
-            $table->string('bairro')->nullable();
-            $table->string('complemento')->nullable();
+            $table->string('cep', 8);
+            $table->string('logradouro', 255)->nullable();
+            $table->string('bairro', 255)->nullable();
+            $table->string('complemento', 255)->nullable();
             $table->unsignedBigInteger('id_cidade');
             $table->unsignedBigInteger('id_estado');
 
