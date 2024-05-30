@@ -127,7 +127,7 @@ class PerfilEstudanteController extends Controller
 
         // Tratamento do upload da imagem
         if ($request->hasFile('foto') && $request->file('foto')->isValid()) {
-            $fotoPath = $request->file('foto')->store('imagemPerfilAluno');
+            $fotoPath = $request->file('foto')->store("imagemPerfilEstudante/$usuarioId", 's3-public');
             $validatedDataUsuario['foto'] = $fotoPath;
         }else {
             $validatedDataUsuario['foto'] = null;

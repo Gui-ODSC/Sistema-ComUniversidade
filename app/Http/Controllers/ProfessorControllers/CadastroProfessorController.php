@@ -95,14 +95,6 @@ class CadastroProfessorController extends Controller
         $validatedDataUsuario = $validarCamposUsuario->validated();
         $validatedDataUsuarioProfessor = $validarCamposUsuarioProfessor->validated();
 
-        // Tratamento do upload da imagem
-        if ($request->hasFile('foto') && $request->file('foto')->isValid()) {
-            $fotoPath = $request->file('foto')->store('imagemPerfilProfessor');
-            $validatedDataUsuario['foto'] = $fotoPath;
-        }else {
-            $validatedDataUsuario['foto'] = null;
-        }
-
         // Criação do usuário com o ID do endereço recém-criado
         $newUsuario = $this->usuarioModel::create([
             'id_cep' => $validatedDataCep['id_cep'],
@@ -113,7 +105,7 @@ class CadastroProfessorController extends Controller
             'email' => $validatedDataUsuario['email'],
             'email_secundario' => $validatedDataUsuario['email_secundario'] ?? null,
             'password' => Hash::make($validatedDataUsuario['password']),
-            'foto' => $validatedDataUsuario['foto'],
+            'foto' => null,
             'numero' => $validatedDataUsuario['numero'],
             'complemento' => $validatedDataUsuario['complemento'] ?? null,
             'tipo' => 'PROFESSOR',
@@ -130,6 +122,12 @@ class CadastroProfessorController extends Controller
             'created_at' => now(),
             'updated_at' => null
         ]);
+
+        // Tratamento do upload da imagem
+        if ($request->hasFile('foto') && $request->file('foto')->isValid()) {
+            $fotoPath = $request->file('foto')->store("imagemPerfilProfessor/$newUsuario->id_usuario", 's3-public');
+            $newUsuario->update(['foto' => $fotoPath]);
+        }
 
         return redirect()->route('login_professor_index')->with("success", "Professor Cadastrado com Sucesso.");
     }

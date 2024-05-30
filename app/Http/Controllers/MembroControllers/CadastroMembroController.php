@@ -68,18 +68,9 @@ class CadastroMembroController extends Controller
         // Se a validação passou, prosseguimos com a criação do endereço e do usuário
         $validatedDataCep = $validarCamposCep->validated();
         $validatedDataUsuario = $validarCamposUsuario->validated();
-
-    
-        // Tratamento do upload da imagem
-        if ($request->hasFile('foto') && $request->file('foto')->isValid()) {
-            $fotoPath = $request->file('foto')->store('imagemPerfilMembro');
-            $validatedDataUsuario['foto'] = $fotoPath;
-        }else {
-            $validatedDataUsuario['foto'] = null;
-        }
     
         // Criação do usuário com o ID do endereço recém-criado
-        $this->usuarioModel::create([
+        $usuario = $this->usuarioModel::create([
             'id_cep' => $validatedDataCep['id_cep'],
             'nome' => $validatedDataUsuario['nome'],
             'sobrenome' => $validatedDataUsuario['sobrenome'],
@@ -88,14 +79,20 @@ class CadastroMembroController extends Controller
             'email' => $validatedDataUsuario['email'],
             'email_secundario' => $validatedDataUsuario['email_secundario'] ?? null,
             'password' => Hash::make($validatedDataUsuario['password']),
-            'foto' => $validatedDataUsuario['foto'],
+            'foto' => null,
             'numero' => $validatedDataUsuario['numero'],
             'complemento' => $validatedDataUsuario['complemento'] ?? null,
             'tipo' => 'MEMBRO',
             'tipo_pessoa' => $validatedDataUsuario['tipo_pessoa'],
             'instituicao' => $validatedDataUsuario['instituicao'] ?? null,
         ]);
-    
+
+        // Tratamento do upload da imagem
+        if ($request->hasFile('foto') && $request->file('foto')->isValid()) {
+            $fotoPath = $request->file('foto')->store("imagemPerfilMembro/$usuario->id_usuario", 's3-public');
+            $usuario->update(['foto' => $fotoPath]);
+        }
+
         return redirect()->route('login_membro_index')->with("success", "Usuário Cadastrado com Sucesso.");
     }
 
