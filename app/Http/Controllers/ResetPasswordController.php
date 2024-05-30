@@ -81,7 +81,7 @@ class ResetPasswordController extends Controller
     
         DB::table('password_reset_tokens')->where('email', $updatePassword->email)->delete();
     
-        $usuario = Usuario::where('email', $updatePassword->email)->first(); // Aqui recupera o objeto Usuario
+        $usuario = Usuario::where('email', $updatePassword->email)->first(); 
     
         if ($usuario->tipo === 'ALUNO') {
             return redirect()->to(route('login_estudante_index'))->with('success', 'Senha atualizada com sucesso');

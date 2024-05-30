@@ -7,14 +7,12 @@
     <link rel="stylesheet" href="{{ asset('css/reset_password/new_password.css')}}">
     <title>Recuperacao Senha</title>
 </head>
-{{-- <header>
-    <nav class="navbar">
-        <div class="container-fluid">
-            <span class="navbar-brand mb-0 h1"><a href="/">Extensão Universitaria</a></span>
-        </div>
-    </nav>
-</header> --}}
 <body>
+    @if (session()->has('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
     <div class="password-container">
         <form action="{{ route('new_password') }}" method="POST">
             @csrf
