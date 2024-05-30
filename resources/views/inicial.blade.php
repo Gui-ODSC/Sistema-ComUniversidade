@@ -10,7 +10,7 @@
     <div class="botao-voltar">
         <a title="Voltar" onclick="goBack()" href="{{ route('home') }}"><img src="{{ asset('img/usuarioMembro/cadastrar_demandas/botao_voltar.png')}}" alt=""></a>
     </div>
-    <h1>Bem vindo ao Sistema</h1>
+    <h1>Bem vindo(a) ao Sistema</h1>
     <div class="selecao">
         <h2>Selecione como deseja acessar</h2>
         <a href="{{ route('login_membro_index') }}" class="botao">
