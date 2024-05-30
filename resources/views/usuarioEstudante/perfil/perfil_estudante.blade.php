@@ -33,7 +33,7 @@
                 <div class="section-form">
                     <div id="container">
                         @if($usuario->foto)
-                            <img class="foto-perfil" src="{{ url('storage/' . Auth::user()->foto) }}" alt="imagem de perfil do usuario">
+                            <img class="foto-perfil" src="{{ Storage::disk('s3-public')->url(Auth::user()->foto) }}" alt="imagem de perfil do usuario">
                         @else
                             <img class="foto-padrao" src="{{ asset('img/icones/perfil_claro.png') }}" alt="imagem de perfil do usuario">
                             <p style="color: #FFF">Adicionar uma imagem</p>

@@ -3,7 +3,7 @@
     <a href="#" class="btn-abrir" onclick="abrirMenu()">&#9776; Abrir</a>
     <h1>Sistema Comuniversidade</h1>
     @if(Auth::user()->foto)
-        <a title="Perfil" href="{{ route('perfil_index') }}"><img id="img-personalizada" src="{{ url('storage/' . Auth::user()->foto) }}" alt="imagem de perfil do usuario"></a>
+        <a title="Perfil" href="{{ route('perfil_index') }}"><img id="img-personalizada" src="{{ Storage::disk('s3-public')->url(Auth::user()->foto) }}" alt="imagem de perfil do usuario"></a>
     @else
         <a title="Perfil" href="{{ route('perfil_index') }}"><img src="{{ asset('img/icones/perfil.png') }}" alt="imagem de perfil do usuario"></a>
     @endif
