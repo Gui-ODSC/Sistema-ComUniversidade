@@ -10,5 +10,7 @@ ADD --chown=application:application . /app
 
 RUN composer install --no-dev
 
+ADD docker/start.sh /entrypoint.d/init.prd.sh
+
 ENV WEB_DOCUMENT_ROOT=/app/public \
     php.variables_order="EGPCS"
