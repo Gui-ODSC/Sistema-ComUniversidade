@@ -39,7 +39,7 @@
                             <p style="color: #FFF">Adicionar uma imagem</p>
                         @endif
                     </div>
-                    <div style="width: 81%; display: flex; flex-wrap: wrap">
+                    <div id="browserSpecificContainer" style="display: flex; flex-wrap: wrap">
                         <div class="caixa-input readonly" style="width: 40%;">
                             <input type="text" id="nome" name="nome" autocomplete="off" value="{{ $usuario->nome }}" readonly>
                             <label for="nome">
@@ -148,6 +148,21 @@
         // Aplica a máscara de data usando Inputmask
         $(document).ready(function(){
             $('#nascimento').inputmask('99/99/9999');
+        });
+
+        document.addEventListener("DOMContentLoaded", function() {
+            var container = document.getElementById('browserSpecificContainer');
+
+            var isFirefox = typeof InstallTrigger !== 'undefined';
+            var isOpera = !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
+
+            if (isFirefox) {
+                container.style.width = '81%';
+            } else if (isOpera) {
+                container.style.width = '80.9%';
+            } else {
+                container.style.width = '79.5%';
+            }
         });
     </script>
 </body>
