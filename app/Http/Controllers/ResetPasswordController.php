@@ -72,15 +72,23 @@ class ResetPasswordController extends Controller
             ->where("token", $request->token)->first();
 
         if (!$updatePassword) {
-            return redirect()->to(route('reset_password', $request->token))->with("error", 'Solicitação de Redefinição Inválida');
+            return redirect()->to(route('reset_password', ['token' => $request->token]))
+                                ->with('error', 'Solicitação de Redefinição Inválida');
         }
-
-        Usuario::where("email", $updatePassword->email)
-            ->update(["password" => Hash::make($request->password)]);
-
-        DB::table("password_reset_tokens")->where("email", $updatePassword->email)->delete();
-
-        return redirect()->to(route('selecao_perfil'))->with("success", "Senha atualizada com sucesso");
+    
+        Usuario::where('email', $updatePassword->email)
+            ->update(['password' => Hash::make($request->password)]);
+    
+        DB::table('password_reset_tokens')->where('email', $updatePassword->email)->delete();
+    
+        $usuario = Usuario::where('email', $updatePassword->email)->first(); // Aqui recupera o objeto Usuario
+    
+        if ($usuario->tipo === 'ALUNO') {
+            return redirect()->to(route('login_estudante_index'))->with('success', 'Senha atualizada com sucesso');
+        } else if ($usuario->tipo === 'PROFESSOR') {
+            return redirect()->to(route('login_professor_index'))->with('success', 'Senha atualizada com sucesso');
+        } else {
+            return redirect()->to(route('login_membro_index'))->with('success', 'Senha atualizada com sucesso');
+        }
     }
-
 }
