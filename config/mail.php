@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'default' => env('MAIL_MAILER', 'smtp'),
+    'default' => env('MAIL_MAILER', 'SES'),
 
     /*
     |--------------------------------------------------------------------------
@@ -100,8 +100,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
+        'address' => env('MAIL_FROM_ADDRESS', 'comuniversidade@oliveira.systems'),
+        'name' => env('MAIL_FROM_NAME', 'Comuniversidade'),
     ],
 
     /*
