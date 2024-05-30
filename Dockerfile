@@ -10,4 +10,5 @@ ADD --chown=application:application . /app
 
 RUN composer install --no-dev
 
-ENV WEB_DOCUMENT_ROOT=/app/public
+ENV WEB_DOCUMENT_ROOT=/app/public \
+    php.variables_order="EGPCS"
