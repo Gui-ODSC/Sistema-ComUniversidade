@@ -72,7 +72,7 @@ class ResetPasswordController extends Controller
             ->where("token", $request->token)->first();
 
         if (!$updatePassword) {
-            return redirect()->to(route('reset_password'))->with("error", 'Solicitação de Redefinição Inválida');
+            return redirect()->to(route('reset_password', $request->token))->with("error", 'Solicitação de Redefinição Inválida');
         }
 
         Usuario::where("email", $updatePassword->email)
