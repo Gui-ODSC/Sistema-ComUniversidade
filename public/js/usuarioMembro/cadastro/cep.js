@@ -1,4 +1,4 @@
-const baseUrl = `http://localhost:8000/web/membro/api/cep/`;
+const baseUrl = `${window.location.origin}/web/membro/api/cep/`;
 
 function buscaCep() {
     let cep = document.getElementById('cep').value;
