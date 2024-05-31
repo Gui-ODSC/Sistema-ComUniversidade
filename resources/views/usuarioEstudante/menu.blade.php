@@ -1,6 +1,6 @@
 <!-- Menu do Sistema -->
 <header class="barra-navegacao">
-    <a href="#" class="btn-abrir" onclick="abrirMenu()">&#9776; Abrir</a>
+    <a href="#" class="btn-abrir" onclick="abrirMenu()">&#9776; Menu</a>
     <h1>Sistema Comuniversidade</h1>
     @if(Auth::user()->foto)
         <a title="Perfil" href="{{ route('perfil_index_estudante') }}"><img id="img-personalizada" src="{{ Storage::disk('s3-public')->url(Auth::user()->foto) }}" alt="imagem de perfil do usuario"></a>
