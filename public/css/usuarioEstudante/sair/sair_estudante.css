@@ -52,17 +52,15 @@ body {
     box-shadow: -1px 1px 4px 4px #FFF;
 }
 
-.titulo {
-    margin-bottom: 40px; 
-}
-
 .porta-saida {
-    display: block; 
-    background-color: #3b6c67;
+    display: flex;
+    background-color: #002e61;
     width: 100%;
     height: 100%;
+    justify-content: space-between;
+    flex-direction: column;
 }
 
 .porta-saida .selecao {
-    margin-top: 90px;
+    margin-bottom: 20px;
 }
