@@ -29,7 +29,7 @@ jobs:
       - uses: mr-smithers-excellent/docker-build-push@v6
         name: Build & push Docker image
         with:
-          image: app
+          image: Tcc_ExtensaoUniversitaria/app
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
