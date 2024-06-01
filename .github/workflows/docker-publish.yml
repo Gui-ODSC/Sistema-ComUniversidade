@@ -19,7 +19,7 @@ jobs:
       - uses: mr-smithers-excellent/docker-build-push@v6
         name: Build & push Docker image to GH registry
         with:
-          image: tcc_extensao/app
+          image: guiodsc/tcc_extensao/app
           registry: docker.io
           username: ${{ secrets.DOCKER_USER }}
           password: ${{ secrets.DOCKER_PASS }}
