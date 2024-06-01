@@ -34,7 +34,7 @@ class UsuarioController extends Controller
                     $parsedDate = \DateTime::createFromFormat('d/m/Y', $value);
                     $today = new \DateTime();
                     $minDate = (new \DateTime())->modify('-180 years');
-        
+
                     if ($parsedDate > $today || $parsedDate < $minDate) {
                         $fail('Data Nascimento: A data de nascimento deve ser uma data válida e ser menor que a data atual.');
                     }
@@ -62,6 +62,7 @@ class UsuarioController extends Controller
                 'regex:/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/',
             ],
             'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'foto_atual' => 'nullable|string',
             'numero' => 'required|string|max:10',
             'complemento' => 'nullable|string|max:255',
             'tipo_pessoa' => [
@@ -75,7 +76,7 @@ class UsuarioController extends Controller
     public function list()
     {
         $usuario = $this->usuarioModel::all();
-        
+
         return $usuario;
     }
 
@@ -86,16 +87,16 @@ class UsuarioController extends Controller
 
     public function validarCamposUsuario(Request $request)
     {
-        
+
         $validator = Validator::make($request->all(), [
             ...$this->getValidationSchema(),
             'email' => [
                 Rule::unique(Usuario::class, 'email')
-            ] 
+            ]
         ], $this->messageValidation());
 
         return $validator;
-        
+
     }
 
     public function validarUpdateUsuario($id_usuario, Request $request)
@@ -111,14 +112,14 @@ class UsuarioController extends Controller
             'email' => [
                 Rule::unique(Usuario::class, 'email')
                     ->ignore($id_usuario, 'id_usuario')
-            ] 
+            ]
         ], $this->messageValidation());
-        
+
         return $validator;
-        
+
     }
 
-    public function delete($id_usuario) 
+    public function delete($id_usuario)
     {
         $usuario = $this->usuarioModel->findOrFail($id_usuario);
         $usuario->delete();

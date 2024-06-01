@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/css/autoComplete.02.min.css">
     <title>Perfil</title>
 </head>
-<body> 
+<body>
     @include('usuarioMembro.menu')
     <main class="perfil" id="conteudo">
             <div class="botao-voltar">
@@ -40,6 +40,7 @@
                 <div class="cadastro-container" style="display: flex;">
                     <div class="section-form">
                         <div id="container">
+                            <input type="hidden" name="foto_atual" value="{{ Auth::user()->foto ?? 'null' }}">
                             @if($usuario->foto)
                                 <div style="width: 50%; display: flex; flex-direction: column;">
                                     <div class="img-foto-perfil">
@@ -53,7 +54,7 @@
                                 <div style="width: 50%; display: flex; flex-direction: column;">
                                     <div class="img-foto-perfil" onclick="openFileSelector()">
                                         <img id="current-image">
-                                        <p id="image-placeholder" style="color: #FFF"><img src="{{ asset('img/icones/perfil_claro.png') }}" alt=""><br>Adicionar uma imagem</p> 
+                                        <p id="image-placeholder" style="color: #FFF"><img src="{{ asset('img/icones/perfil_claro.png') }}" alt=""><br>Adicionar uma imagem</p>
                                         <input type="file" id="image-input" name="foto" style="position: absolute; height: 10px; opacity: 0; object-fit: cover;" accept="image/*" onchange="previewImage(event)">
                                     </div>
                                 </div>
@@ -181,7 +182,7 @@
                                     <span>Tipo pessoa</span>
                                 </label>
                             @enderror
-                        </div>      
+                        </div>
                     </div>
                     <div class="caixa-input" style="width: 20%;">
                         {{-- NUMERO --}}
@@ -219,7 +220,7 @@
                                 <span>CEP *</span>
                             </label>
                         @else
-                            <input type="text" name="cep" id="cep" autocompĺete="off" value="{{$cepFormat}}" required> 
+                            <input type="text" name="cep" id="cep" autocompĺete="off" value="{{$cepFormat}}" required>
                             <label for="cep">
                                 <span>CEP *</span>
                             </label>
@@ -300,19 +301,19 @@
                 <button type="submit">Salvar</button>
             </div>
     </main>
-    <script src="{{ asset('js/errors/mensagem_erro.js') }}"></script> 
+    <script src="{{ asset('js/errors/mensagem_erro.js') }}"></script>
     <script src="{{ asset('js/usuarioMembro/cadastro/cep.js') }}"></script>
 
     <script>
 
         function goBack() {
             window.history.back();
-        }   
+        }
         // Aplica a máscara de telefone usando Inputmask
         $(document).ready(function(){
             $('#telefone').inputmask('(99) 99999-9999');
         });
-    
+
         // Aplica a máscara de data usando Inputmask
         $(document).ready(function(){
             $('#nascimento').inputmask('99/99/9999');
@@ -321,7 +322,7 @@
         // Aplica a máscara de Cep usando o InputMask
         $('#cep').on('input', function() {
             if ($(this).val().trim().length > 0) {
-                $(this).inputmask('99999-999'); 
+                $(this).inputmask('99999-999');
             }
         });
 
@@ -402,11 +403,14 @@
 
             if (addImageText) {
                 addImageText.style.display = 'block'; // Mostra o texto "Adicionar imagem"
-                addImageText.style = 'margin: 0; padding-bottom: 60px; color: #FFF'; 
+                addImageText.style = 'margin: 0; padding-bottom: 60px; color: #FFF';
             }
 
             // Remove o arquivo de imagem do campo de entrada de arquivo (input)
             imageInput.value = ''; // Limpa o input file
+
+            const fotoAtualHiddenInput = document.querySelector('input[name="foto_atual"]');
+            fotoAtualHiddenInput.value = 'null';
         }
     </script>
 </body>
