@@ -28,9 +28,13 @@ jobs:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-
+      
+      - name: Get SHORT SHA
+        id: shortsha
+        run: echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+        
       - uses: fjogeleit/http-request-action@v1
         name: Deploy
         with:
-          url: ${{ secrets.WEBHOOK_URL }}?tag=main-${GITHUB_SHA::7}
+          url: ${{ secrets.WEBHOOK_URL }}?tag=main-${{ steps.shortsha.outputs.sha_short }}
           method: 'POST'
