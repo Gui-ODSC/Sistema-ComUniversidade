@@ -14,7 +14,7 @@
     <div class="selecao">
         <h2>Selecione como deseja acessar</h2>
         <a href="{{ route('login_membro_index') }}" class="botao">
-            <button>Membro Externoooo</button>
+            <button>Membro Externo</button>
         </a>
         <a href="{{ route('login_estudante_index') }}" class="botao">
             <button>Estudantes</button>
