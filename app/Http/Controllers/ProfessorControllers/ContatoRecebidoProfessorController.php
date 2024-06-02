@@ -16,7 +16,7 @@ class ContatoRecebidoProfessorController extends Controller
 
         $contatosRecebidos = Contato::where('id_usuario_destino', $usuarioId)
             ->with('oferta', 'demanda', 'usuarioOrigem', 'usuarioDestino', 'contatoMensagem')
-            ->orderBy('created_at', 'asc')
+            ->orderBy('created_at', 'desc')
             ->paginate(10);
         
         $contatosFormatados = [];
