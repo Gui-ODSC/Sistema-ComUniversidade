@@ -157,7 +157,7 @@
             var isOpera = !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
 
             if (isFirefox) {
-                container.style.width = '81%';
+                container.style.width = '81.1%';
             } else if (isOpera) {
                 container.style.width = '80.9%';
             } else {
