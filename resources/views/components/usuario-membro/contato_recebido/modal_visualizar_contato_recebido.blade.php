@@ -114,7 +114,7 @@
                             <label style="background-color: #FFF; color: black">
                                 Escreva sua resposta
                             </label>
-                            <textarea name="resposta-contato" id="mensagem-contato-{{$idContato}}"  placeholder="Existe alguém interessado em sua oferta, responda aqui (*Obrigatório)" oninput="habilitarBotoes({{$idContato}})" style="flex: 1; background-color: #FFF; color: black; border: 2px solid black"></textarea>
+                            <textarea name="resposta-contato" id="mensagem-contato-{{$idContato}}"  placeholder="Existe alguém interessado em sua necessidade, responda aqui (*Obrigatório)" oninput="habilitarBotoes({{$idContato}})" style="flex: 1; background-color: #FFF; color: black; border: 2px solid black"></textarea>
                         </div>
                     </div>
                     <div class="texto-status-botao">
