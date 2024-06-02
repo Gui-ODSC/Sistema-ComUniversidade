@@ -23,18 +23,18 @@
                 <div style="position: relative;">
                     <input title="Nova senha" type="password" id="new_password" name="password" style="border: 1px solid red; background-color:rgb(235, 201, 206); margin-bottom: 5px; padding-right: 70px" placeholder="Senha Nova" required autocomplete="new-password">
                     <span id="toggle_new_password" onclick="toggleNewPassword('new_password', 'toggle_new_password')" style="position: absolute; top: 50%; left: 420px; transform: translateY(-50%); cursor: pointer;"><img src='{{ asset("img/usuarioMembro/cadastrar_demandas/olho_escuro_desmarcado.png")}}' alt="" style="width: 25px"></span>
+                    <span class="info-icon" onclick="showPasswordRules()" style="position: absolute; top: 48.5%; right: 10px;; transform: translateY(-50%); cursor: pointer;">
+                        <img src="{{ asset('img/cadastro_usuarios/icone_info_senha_escuro.png') }}" alt="Ícone informativo" style="width: 20px;">
+                    </span>
                 </div>
-                <span class="info-icon" onclick="showPasswordRules()" style="position: absolute; top: 48.5%; left: 870px; transform: translateY(-50%); cursor: pointer;">
-                    <img src="{{ asset('img/cadastro_usuarios/icone_info_senha_escuro.png') }}" alt="Ícone informativo" style="width: 20px;">
-                </span>
             @else
                 <div style="position: relative;">
                     <input title="Nova senha" type="password" id="new_password" name="password" style="margin-bottom: 5px; padding-right: 70px" placeholder="Senha Nova" required autocomplete="new-password">
                     <span id="toggle_new_password" onclick="toggleNewPassword('new_password', 'toggle_new_password')" style="position: absolute; top: 50%; left: 420px; transform: translateY(-50%); cursor: pointer;"><img src='{{ asset("img/usuarioMembro/cadastrar_demandas/olho_escuro_desmarcado.png")}}' alt="" style="width: 25px"></span>
+                    <span class="info-icon" onclick="showPasswordRules()" style="position: absolute; top: 48.5%; right: 10px; transform: translateY(-50%); cursor: pointer;">
+                        <img src="{{ asset('img/cadastro_usuarios/icone_info_senha_escuro.png') }}" alt="Ícone informativo" style="width: 20px;">
+                    </span>
                 </div>
-                <span class="info-icon" onclick="showPasswordRules()" style="position: absolute; top: 48.5%; left: 870px; transform: translateY(-50%); cursor: pointer;">
-                    <img src="{{ asset('img/cadastro_usuarios/icone_info_senha_escuro.png') }}" alt="Ícone informativo" style="width: 20px;">
-                </span>
             @enderror
             @error('password')
                 <div class="msg-erro fade-effect-error">
@@ -47,18 +47,18 @@
                 <div style="position: relative;">
                     <input title="Confirmar Senha" type="password" id="password_confirmation" name="password_confirmation" style="border: 1px solid red; background-color:rgb(235, 201, 206); margin-bottom: 5px; padding-right: 70px" placeholder="Confirmar Senha" required autocomplete="new-password">
                     <span id="toggle_password_confirmation" onclick="toggleConfirmPassword()" style="position: absolute; top: 50%; left: 420px; transform: translateY(-50%); cursor: pointer;"><img src='{{ asset("img/usuarioMembro/cadastrar_demandas/olho_escuro_desmarcado.png")}}' alt="" style="width: 25px"></span>
+                    <span class="info-icon" onclick="showPasswordRules2()" style="position: absolute;top: 45%; right: 10px;; transform: translateY(-50%); cursor: pointer;">
+                        <img src="{{ asset('img/cadastro_usuarios/icone_info_senha_escuro.png') }}" alt="Ícone informativo" style="width: 20px;">
+                    </span>
                 </div>
-                <span class="info-icon" onclick="showPasswordRules2()" style="position: absolute;top: 67.5%; left: 870px; transform: translateY(-50%); cursor: pointer;">
-                    <img src="{{ asset('img/cadastro_usuarios/icone_info_senha_escuro.png') }}" alt="Ícone informativo" style="width: 20px;">
-                </span>
             @else
                 <div style="position: relative;">
                     <input title="Confirmar Senha" type="password" id="password_confirmation" name="password_confirmation" style="margin-bottom: 5px; padding-right: 70px" placeholder="Confirmar Senha" required autocomplete="new-password">
                     <span id="toggle_password_confirmation" onclick="toggleConfirmPassword()" style="position: absolute; top: 50%; left: 420px; transform: translateY(-50%); cursor: pointer;"><img src='{{ asset("img/usuarioMembro/cadastrar_demandas/olho_escuro_desmarcado.png")}}' alt="" style="width: 25px"></span>
+                    <span class="info-icon" onclick="showPasswordRules2()" style="position: absolute;top: 45%; right: 10px; transform: translateY(-50%); cursor: pointer;">
+                        <img src="{{ asset('img/cadastro_usuarios/icone_info_senha_escuro.png') }}" alt="Ícone informativo" style="width: 20px;">
+                    </span>
                 </div>
-                <span class="info-icon" onclick="showPasswordRules2()" style="position: absolute;top: 63%; left: 870px; transform: translateY(-50%); cursor: pointer;">
-                    <img src="{{ asset('img/cadastro_usuarios/icone_info_senha_escuro.png') }}" alt="Ícone informativo" style="width: 20px;">
-                </span>
             @enderror
             @error('password')
                 <div class="msg-erro fade-effect-error">
@@ -101,7 +101,7 @@
             // Caixa de diálogo das regras da senha
             var passwordRules = document.createElement("div");
             passwordRules.innerHTML = `
-                <div id="password-rules" style="position: absolute; top: 100px; right: 20px; background-color: #4D6D7F; color: #FFF; border: 1px solid #FFF; padding: 10px; border-radius: 10px;">
+                <div id="password-rules" style="position: absolute; top: 50px; right: 20px; background-color: #4D6D7F; color: #FFF; border: 1px solid #FFF; padding: 10px; border-radius: 10px;">
                     <button onclick="closePasswordRules()" style="position: absolute; top: 5px; color: #FFF; right: 7px; cursor: pointer; background: transparent; border: none; outline: none;">Fechar</button>
                     <p>Regras de criação de senha:</p>
                     <ul>
@@ -133,7 +133,7 @@
             // Caixa de diálogo das regras da senha
             var passwordRules = document.createElement("div");
             passwordRules.innerHTML = `
-                <div id="password-rules" style="position: relative; top: 190px; right: 20px; background-color: #4D6D7F; color: #FFF; border: 1px solid #FFF; padding: 10px; border-radius: 10px;">
+                <div id="password-rules2" style="position: absolute; top: 140px; right: 10px; background-color: #4D6D7F; color: #FFF; border: 1px solid #FFF; padding: 10px; border-radius: 10px;">
                     <button onclick="closePasswordRules2()" style="position: absolute; top: 5px; color: #FFF; right: 7px; cursor: pointer; background: transparent; border: none; outline: none;">Fechar</button>
                     <p>Regras de criação de senha:</p>
                     <ul>
@@ -156,7 +156,7 @@
 
         function closePasswordRules2() {
             // Remove a caixa de diálogo das regras da senha
-            var passwordRules = document.getElementById('password-rules');
+            var passwordRules = document.getElementById('password-rules2');
             passwordRules.remove();
         }
     </script>
