@@ -161,7 +161,7 @@
             } else if (isOpera) {
                 container.style.width = '80.9%';
             } else {
-                container.style.width = '81.1%';
+                container.style.width = '80.9%';
             }
         });
     </script>
