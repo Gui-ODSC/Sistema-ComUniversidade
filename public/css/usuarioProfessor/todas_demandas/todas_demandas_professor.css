@@ -44,7 +44,7 @@ body {
 }
 
 .caixa-pesquisa-oferta input {
-    border: solid 2px black;
+    border: solid 3px black;
     border-radius: 10px;
     padding: 5px;
     width: 300px;
@@ -53,13 +53,13 @@ body {
 
 .caixa-pesquisa-oferta #pesquisaTitulo {
     background-color: #1c2c52;
-    border: solid 2px black;
+    border: solid 3px black;
     height: 36px;
 }
 
 .caixa-pesquisa-oferta #limparFiltro {
     background-color: #3b3b7b;
-    border: solid 2px black;
+    border: solid 3px black;
     color: #FFF;
     width: 140px;
     height: 35px;
@@ -75,7 +75,7 @@ body {
     margin-bottom: 5px;
     height: 80px;
     border-radius: 10px;
-    border: solid 2px black;
+    border: solid 4px black;
 }
 
 .filtros {
@@ -84,7 +84,7 @@ body {
 
 .filtros button{
     background-color: #1c2c52;
-    border: solid 2px black;
+    border: solid 3px black;
     width: 190px;
     height: 50px;
     border-radius: 10px;
@@ -101,7 +101,7 @@ body {
     margin-top: 13px;
     border-radius: 10px;
     background-color: #1c2c52;
-    border: solid 2px black;
+    border: solid 3px black;
     color: #FFF;
     font-weight: bold;
     text-align: center;
@@ -125,7 +125,7 @@ body {
     border: none;
     color: #FFF;
     background-color: #1c2c52;
-    border: solid 2px black;
+    border: solid 3px black;
     margin-top: 38px 0px;
 }
 
@@ -134,7 +134,7 @@ body {
     border: none;
     color: #FFF;
     background-color: #1c2c52;
-    border: solid 2px black;
+    border: solid 3px black;
 }
 
 .bootstrap-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn) button:focus{
@@ -307,6 +307,7 @@ body {
     background-color: #3b3b7b;
     color: #fff;
     margin-top: 10px;
+    border-top: none;
 }
 
 .table-personalizacao tbody {

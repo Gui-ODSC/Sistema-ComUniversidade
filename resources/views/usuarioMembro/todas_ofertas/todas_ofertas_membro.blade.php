@@ -117,9 +117,9 @@
                     <th scope="col"></th>
                     <th scope="col">Título</th>
                     <th scope="col">Área de conhecimento</th>
-                    <th scope="col">Tipo oferta <button onclick="openModalAjudaTipoOferta({{$usuarioMembro}})" style="background: none; border: none; color: #FFF">(?)</button></th>
+                    <th scope="col">Tipo de oferta <button onclick="openModalAjudaTipoOferta({{$usuarioMembro}})" style="background: none; border: none; color: #FFF">(?)</button></th>
                     <x-usuario-membro.todas-ofertas.modal-ajuda-tipo-oferta :id-usuario="$usuarioMembro"/>
-                    <th scope="col">Data oferta</th>
+                    <th scope="col">Data da oferta</th>
                     <th scope="col">Status</th>
                     <th scope="col">Deletar</th>
                     <th scope="col">Contato</th>

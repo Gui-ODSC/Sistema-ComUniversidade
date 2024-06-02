@@ -36,9 +36,9 @@
                     <th scope="col"></th>
                     <th scope="col">Título</th>
                     <th scope="col">Área de conhecimento</th>
-                    <th scope="col">Tipo oferta <button onclick="openModalAjudaTipoOferta({{$usuarioProfessor}})" style="background: none; border: none; color: #FFF">(?)</button></th>
+                    <th scope="col">Tipo de oferta <button onclick="openModalAjudaTipoOferta({{$usuarioProfessor}})" style="background: none; border: none; color: #FFF">(?)</button></th>
                     <x-usuario-professor.oferta.modal-ajuda-tipo-oferta :id-usuario="$usuarioProfessor"/>
-                    <th scope="col">Data criação</th>
+                    <th scope="col">Data de criação</th>
                     <th scope="col">Editar</th>
                     <th scope="col">Deletar</th>
                     <th scope="col">Ver</th>

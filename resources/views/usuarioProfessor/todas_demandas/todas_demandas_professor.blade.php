@@ -99,8 +99,8 @@
                 <tr>
                     <th scope="col"></th>
                     <th scope="col">Título</th>
-                    <th scope="col">Área de Conhecimento</th>
-                    <th scope="col">Data Necessidade</th>
+                    <th scope="col">Área de conhecimento</th>
+                    <th scope="col">Data da necessidade</th>
                     <th scope="col">Status</th>
                     <th scope="col">Deletar</th>
                     <th scope="col">Contato</th>

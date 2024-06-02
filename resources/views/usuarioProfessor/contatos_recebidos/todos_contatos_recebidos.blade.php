@@ -26,11 +26,11 @@
                     <thead>
                         <tr>
                             <th scope="col"></th>
-                            <th scope="col">Título oferta</th>
-                            <th scope="col">Tipo oferta</th>
-                            <th scope="col">Nome contato</th>
-                            <th scope="col">Tipo contato</th>
-                            <th scope="col">Data contato</th>
+                            <th scope="col">Título da oferta</th>
+                            <th scope="col">Tipo de oferta</th>
+                            <th scope="col">Nome do contato</th>
+                            <th scope="col">Tipo de contato</th>
+                            <th scope="col">Data do contato</th>
                             <th scope="col">Status</th>
                             <th scope="col">Ver</th>
                         </tr>

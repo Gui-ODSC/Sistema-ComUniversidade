@@ -40,7 +40,7 @@ body {
 }
 
 .caixa-pesquisa-oferta input {
-    border: solid 2px black;
+    border: solid 4px black;
     border-radius: 10px;
     padding: 5px;
     width: 300px;
@@ -48,13 +48,13 @@ body {
 }
 
 .caixa-pesquisa-oferta #pesquisaTitulo {
-    border: solid 2px black;
+    border: solid 4px black;
     height: 36px;
 }
 
 .caixa-pesquisa-oferta #limparFiltro {
     background-color: #002e61;
-    border: solid 2px black;
+    border: solid 4px black;
     color: #FFF;
     width: 140px;
     height: 35px;
@@ -70,7 +70,7 @@ body {
     margin-bottom: 5px;
     height: 80px;
     border-radius: 10px;
-    border: solid 2px black;
+    border: solid 4px black;
 }
 
 .filtros {
@@ -103,7 +103,7 @@ body {
     margin-top: 13px;
     border-radius: 10px;
     background-color: #005288;
-    border: solid 2px #FFF;
+    border: solid 3px #FFF;
     color: #FFF;
     font-weight: bold;
     text-align: center;
@@ -127,7 +127,7 @@ body {
     border: none;
     color: #FFF;
     background-color: #005288;
-    border: solid 2px #FFF;
+    border: solid 3px #FFF;
     margin-top: 38px 0px;
 }
 
@@ -136,7 +136,7 @@ body {
     border: none;
     color: #FFF;
     background-color: #005288;
-    border: solid 2px #FFF;
+    border: solid 3px #FFF;
 }
 
 .bootstrap-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn) button:focus{
@@ -309,6 +309,7 @@ body {
     background-color: #146482;
     color: #fff;
     margin-top: 10px;
+    border-top: none;
 }
 
 .table-personalizacao tbody td, th{

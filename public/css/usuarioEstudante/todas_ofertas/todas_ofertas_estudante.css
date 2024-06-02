@@ -40,7 +40,7 @@ body {
 }
 
 .caixa-pesquisa-oferta input {
-    border: solid 2px black;
+    border: solid 4px black;
     border-radius: 10px;
     padding: 5px;
     width: 300px;
@@ -49,13 +49,13 @@ body {
 
 .caixa-pesquisa-oferta #pesquisaTitulo {
     background-color: #104655;
-    border: solid 2px black;
+    border: solid 3px black;
     height: 36px;
 }
 
 .caixa-pesquisa-oferta #limparFiltro {
     background-color: #377b75;
-    border: solid 2px black;
+    border: solid 4px black;
     color: #FFF;
     width: 140px;
     height: 35px;
@@ -71,7 +71,7 @@ body {
     margin-bottom: 5px;
     height: 80px;
     border-radius: 10px;
-    border: solid 2px black;
+    border: solid 4px black;
 }
 
 .filtros {
@@ -104,7 +104,7 @@ body {
     margin-top: 13px;
     border-radius: 10px;
     background-color: #104655;
-    border: solid 2px black;
+    border: solid 3px black;
     color: #FFF;
     font-weight: bold;
     text-align: center;
@@ -128,7 +128,7 @@ body {
     border: none;
     color: #FFF;
     background-color: #104655;
-    border: solid 2px black;
+    border: solid 3px black;
     margin-top: 38px 0px;
 }
 
@@ -214,7 +214,7 @@ body {
     margin-bottom: 20px;
     width: 100px;
     height: 50px;
-    border: solid 2px black;
+    border: solid 3px black;
     background-color: #104655;
     color: #FFF;
     font-weight: bold;
@@ -308,6 +308,7 @@ body {
     background-color: #104655;
     color: #fff;
     margin-top: 10px;
+    border-top: none;
 }
 
 .table-personalizacao tbody {

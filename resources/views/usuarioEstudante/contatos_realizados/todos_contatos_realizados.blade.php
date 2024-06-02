@@ -26,7 +26,7 @@
                 <thead>
                     <tr>
                         <th scope="col"></th>
-                        <th scope="col">Título oferta</th>
+                        <th scope="col">Título da oferta</th>
                         <th scope="col">Nome de contato</th>
                         <th scope="col">Tipo de contato</th>
                         <th scope="col">Data do contato</th>
