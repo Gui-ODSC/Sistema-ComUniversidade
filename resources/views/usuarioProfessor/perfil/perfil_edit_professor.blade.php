@@ -42,7 +42,7 @@
                         <div id="container" style="width: 20%">
                             <input type="hidden" name="foto_atual" value="{{ Auth::user()->foto ?? 'null' }}">
                             @if($usuario->foto)
-                                <div style="width: 50%; display: flex; flex-direction: column;">
+                                <div style="width: 100%; display: flex; flex-direction: column;">
                                     <div class="img-foto-perfil">
                                         <img id="current-image" onclick="openFileSelector()" class="foto-perfil" src="{{ Storage::disk('s3-public')->url(Auth::user()->foto) }}" alt="imagem de perfil do usuario">
                                         <input type="file" id="image-input" name="foto" style="position: absolute; height: 10px; opacity: 0; object-fit: cover;" accept="image/*" onchange="previewImage(event)">
@@ -51,7 +51,7 @@
                                     </div>
                                 </div>
                             @else
-                                <div style="width: 50%; display: flex; flex-direction: column;">
+                                <div style="width: 100%; display: flex; flex-direction: column;">
                                     <div class="img-foto-perfil" onclick="openFileSelector()">
                                         <img id="current-image">
                                         <p id="image-placeholder" style="color: #FFF"><img src="{{ asset('img/icones/perfil_claro.png') }}" alt=""><br>Adicionar uma imagem</p> 
