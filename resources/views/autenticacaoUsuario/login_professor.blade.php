@@ -42,7 +42,7 @@
             <label for="password">Senha</label>
             <div style="position: relative;">
                 <input type="password" id="password" name="password" placeholder="Senha" required oninput="toggleEye()">
-                <span class="toggle-password" onclick="togglePassword()" style="position: absolute; top: 40%; left: 420px; transform: translateY(-50%); cursor: pointer; display: none"><img src="{{ asset('img/usuarioEstudante/login/olho_desmarcado.png')}}" alt="" style="width: 20px"></span>
+                <span class="toggle-password" onclick="togglePassword()" style="position: absolute; top: 40%; right: 43px; transform: translateY(-50%); cursor: pointer; display: none"><img src="{{ asset('img/usuarioEstudante/login/olho_desmarcado.png')}}" alt="" style="width: 20px"></span>
                 <span class="info-icon" onclick="showPasswordRules()" style="position: absolute; top: 45%; right: 15px; transform: translateY(-50%); cursor: pointer;">
                     <img src="{{ asset('img/cadastro_usuarios/icone_info_senha_escuro.png') }}" alt="Ícone informativo" style="width: 20px;">
                 </span>
