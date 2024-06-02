@@ -60,7 +60,7 @@
                                 </div>
                             @endif
                         </div>
-                        <div style="display: flex; flex-wrap: wrap; width: 80%; padding-left: 10px">
+                        <div style="width: 80%; display: flex; flex-wrap: wrap; padding-left: 10px">
                             {{-- NOME --}}
                             <div class="caixa-input" style="width: 50%;">
                                 @error('nome')
