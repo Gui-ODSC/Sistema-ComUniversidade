@@ -96,7 +96,7 @@
                                 <div style="height: 0px; padding: 5px">
                                     <p style="text-align: justify">{{$respostaMensagem->mensagem}}</p>
                                     <hr>
-                                    <p style="text-align: justify; font-size: 14px">Independentemente do conteúdo apresentado acima, o sistema entende que o contato incial já foi realizado entre as partes interessadas, portanto qualquer próxima forma de contato deve seguir por outro meio de contato (email, telefone ....)</p>
+                                    <p style="text-align: justify; font-size: 14px">Atenção: o sistema entende que o contato incial já foi realizado entre as partes interessadas, portanto qualquer próxima forma de contato deve seguir por outro meio de comunicação (email, telefone ....)</p>
                                 </div>
                             </div>
                         </div>
