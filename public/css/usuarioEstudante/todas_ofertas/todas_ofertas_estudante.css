@@ -40,7 +40,7 @@ body {
 }
 
 .caixa-pesquisa-oferta input {
-    border: solid 3px black;
+    border: solid 2px black;
     border-radius: 10px;
     padding: 5px;
     width: 300px;
@@ -49,13 +49,13 @@ body {
 
 .caixa-pesquisa-oferta #pesquisaTitulo {
     background-color: #104655;
-    border: solid 3px black;
+    border: solid 2px black;
     height: 36px;
 }
 
 .caixa-pesquisa-oferta #limparFiltro {
     background-color: #377b75;
-    border: solid 4px black;
+    border: solid 2px black;
     color: #FFF;
     width: 140px;
     height: 35px;

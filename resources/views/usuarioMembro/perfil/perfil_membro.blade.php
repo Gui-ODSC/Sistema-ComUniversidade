@@ -31,7 +31,7 @@
             @endif
             <div class="cadastro-container" style="display: flex">
                 <div class="section-form">
-                    <div id="container">
+                    <div id="container" style="width: 20%;">
                         @if($usuario->foto)
                             <img class="foto-perfil" src="{{ Storage::disk('s3-public')->url(Auth::user()->foto) }}" alt="imagem de perfil do usuario">
                         @else
@@ -39,7 +39,7 @@
                             <p style="color: #FFF">Adicionar uma imagem</p>
                         @endif
                     </div>
-                    <div id="browserSpecificContainer" style="display: flex; flex-wrap: wrap">
+                    <div style="display: flex; flex-wrap: wrap; width: 80%">
                         <div class="caixa-input readonly" style="width: 40%;">
                             <input type="text" id="nome" name="nome" autocomplete="off" value="{{ $usuario->nome }}" readonly>
                             <label for="nome">
@@ -89,6 +89,7 @@
                             </label>
                         </div>
                     </div>
+                </div>
                     <div class="caixa-input readonly" style="width: 20%;">
                         <input type="number" id="numero" name="numero" autocomplete="off" value="{{ $usuario->numero}}" readonly>
                         <label for="numero">
@@ -150,7 +151,7 @@
             $('#nascimento').inputmask('99/99/9999');
         });
 
-        document.addEventListener("DOMContentLoaded", function() {
+        /* document.addEventListener("DOMContentLoaded", function() {
             var container = document.getElementById('browserSpecificContainer');
 
             var isFirefox = typeof InstallTrigger !== 'undefined';
@@ -163,7 +164,7 @@
             } else {
                 container.style.width = '80.9%';
             }
-        });
+        }); */
     </script>
 </body>
 </html>

@@ -39,7 +39,7 @@
                 @csrf
                 <div class="cadastro-container" style="display: flex;">
                     <div class="section-form">
-                        <div id="container">
+                        <div id="container" style="width: 20%;">
                             <input type="hidden" name="foto_atual" value="{{ Auth::user()->foto ?? 'null' }}">
                             @if($usuario->foto)
                                 <div style="width: 50%; display: flex; flex-direction: column;">
@@ -60,7 +60,7 @@
                                 </div>
                             @endif
                         </div>
-                        <div style="width: 81%; display: flex; flex-wrap: wrap">
+                        <div style="width: 80%; display: flex; flex-wrap: wrap; padding-left: 10px">
                         {{-- NOME --}}
                         <div class="caixa-input" style="width: 50%;">
                             @error('nome')
@@ -180,6 +180,7 @@
                             @enderror
                         </div>  
                     </div>
+                </div>
                     <div class="caixa-input" style="width: 18.5%;">
                         {{-- NUMERO --}}
                         @error('numero')
