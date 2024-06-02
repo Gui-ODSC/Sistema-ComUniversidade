@@ -40,7 +40,7 @@ body {
 }
 
 .caixa-pesquisa-oferta input {
-    border: solid 4px black;
+    border: solid 3px black;
     border-radius: 10px;
     padding: 5px;
     width: 300px;
