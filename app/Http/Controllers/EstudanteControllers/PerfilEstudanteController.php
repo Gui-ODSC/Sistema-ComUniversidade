@@ -126,11 +126,14 @@ class PerfilEstudanteController extends Controller
         $validatedDataUsuarioEstudante = $validarUpdateUsuarioEstudante->validated();
 
         // Tratamento do upload da imagem
+        $fotoPerfil = null;
         if ($request->hasFile('foto') && $request->file('foto')->isValid()) {
             $fotoPath = $request->file('foto')->store("imagemPerfilEstudante/$usuarioId", 's3-public');
-            $validatedDataUsuario['foto'] = $fotoPath;
-        }else {
-            $validatedDataUsuario['foto'] = null;
+            $fotoPerfil = $fotoPath;
+        } else if ($validatedDataUsuario['foto_atual'] === 'null') {
+            $fotoPerfil = null;
+        } else {
+            $fotoPerfil = $validatedDataUsuario['foto_atual'];
         }
         
         $dadosAtualizados = [
@@ -141,7 +144,7 @@ class PerfilEstudanteController extends Controller
             'telefone' => $validatedDataUsuario['telefone'],
             'email' => $validatedDataUsuario['email'],
             'email_secundario' => $validatedDataUsuario['email_secundario'] ?? null,
-            'foto' => $validatedDataUsuario['foto'],
+            'foto' => $fotoPerfil,
             'numero' => $validatedDataUsuario['numero'],
             'complemento' => $validatedDataUsuario['complemento'] ?? null,
             'tipo_pessoa' => $validatedDataUsuario['tipo_pessoa'],

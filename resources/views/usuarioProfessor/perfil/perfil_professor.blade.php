@@ -25,7 +25,7 @@
             <a href="{{ route('perfil_edit_index_professor', $usuario->id_usuario) }}"><button type="submit">Editar</button></a>
         </div>
             @if( session()->has('perfil-update'))
-                <div class="alert alert-success" style="text-align: center; margin-top: 10px">
+                <div class="alert alert-success" style="text-align: center; margin-top: 15px">
                     <p>{{session('perfil-update')}}</p>
                 </div>
             @endif

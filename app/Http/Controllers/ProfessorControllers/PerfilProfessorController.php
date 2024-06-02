@@ -4,13 +4,10 @@ namespace App\Http\Controllers\ProfessorControllers;
 
 use App\Http\Controllers\CepController;
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\EnderecoController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\UsuarioProfessorController;
-use App\Models\Bairro;
 use App\Models\Cep;
 use App\Models\Cidade;
-use App\Models\Endereco;
 use App\Models\Estado;
 use App\Models\Usuario;
 use App\Models\UsuarioProfessor;
@@ -91,8 +88,6 @@ class PerfilProfessorController extends Controller
         $usuario = Usuario::findOrFail($usuarioId);
         $usuarioProfessor = UsuarioProfessor::where('id_usuario', $usuario->id_usuario)->first();
         $cep = Cep::findOrFail($usuario->id_cep);
-        $cidade = Cidade::where('id_cidade', $cep->id_cidade)->first();
-        $estado = Estado::where('id_estado', $cep->id_estado)->first();
 
         $validarUpdateCep = $this->cepController->validarUpdateCep($cep->id_cep, $request);
         $validarUpdateUsuario = $this->usuarioController->validarUpdateUsuario($usuarioId, $request);
@@ -128,11 +123,14 @@ class PerfilProfessorController extends Controller
         $validatedDataUsuarioProfessor = $validarUpdateUsuarioProfessor->validated();
 
         // Tratamento do upload da imagem
+        $fotoPerfil = null;
         if ($request->hasFile('foto') && $request->file('foto')->isValid()) {
             $fotoPath = $request->file('foto')->store("imagemPerfilProfessor/$usuarioId", 's3-public');
-            $validatedDataUsuario['foto'] = $fotoPath;
-        }else {
-            $validatedDataUsuario['foto'] = null;
+            $fotoPerfil = $fotoPath;
+        } else if ($validatedDataUsuario['foto_atual'] === 'null') {
+            $fotoPerfil = null;
+        } else {
+            $fotoPerfil = $validatedDataUsuario['foto_atual'];
         }
 
         $dadosAtualizados = [
@@ -143,7 +141,7 @@ class PerfilProfessorController extends Controller
             'telefone' => $validatedDataUsuario['telefone'],
             'email' => $validatedDataUsuario['email'],
             'email_secundario' => $validatedDataUsuario['email_secundario'] ?? null,
-            'foto' => $validatedDataUsuario['foto'],
+            'foto' => $fotoPerfil,
             'numero' => $validatedDataUsuario['numero'],
             'complemento' => $validatedDataUsuario['complemento'] ?? null,
             'tipo_pessoa' => $validatedDataUsuario['tipo_pessoa'],

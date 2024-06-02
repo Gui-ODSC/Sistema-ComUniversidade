@@ -40,6 +40,7 @@
                 <div class="cadastro-container" style="display: flex;">
                     <div class="section-form">
                         <div id="container">
+                            <input type="hidden" name="foto_atual" value="{{ Auth::user()->foto ?? 'null' }}">
                             @if($usuario->foto)
                                 <div style="width: 50%; display: flex; flex-direction: column;">
                                     <div class="img-foto-perfil">
@@ -412,6 +413,9 @@
 
             // Remove o arquivo de imagem do campo de entrada de arquivo (input)
             imageInput.value = ''; // Limpa o input file
+
+            const fotoAtualHiddenInput = document.querySelector('input[name="foto_atual"]');
+            fotoAtualHiddenInput.value = 'null';
         }
     </script>
 </body>
