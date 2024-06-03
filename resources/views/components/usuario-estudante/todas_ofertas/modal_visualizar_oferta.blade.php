@@ -64,6 +64,7 @@
                                     @else
                                         <h6><strong>Data Limite: Indefinida</strong></h6>
                                     @endif
+                                    <h6>Tipo ação: {{$oferta->ofertaAcao->tipoAcao->nome}}</h6>
                                 @endif
                             </div>
                         </div>

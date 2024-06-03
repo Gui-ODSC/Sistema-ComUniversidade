@@ -44,13 +44,13 @@
                         <div class="informacao-oferta-coluna-contatar">
                             <div>
                                 <h6>Tipo: Necessidade</h6>
-                                <h6>Pessoas Atingidas: Aprox. {{$demanda->pessoas_afetadas}}</h6>
+                                <h6>Pessoas atingidas: Aprox. {{$demanda->pessoas_afetadas}}</h6>
                                 <h6>Duração: {{ucwords(strtolower($demanda->duracao))}}</h6>
                             </div>
                             <div>
-                                <h6>Área Conhecimento: {{$demanda->areaConhecimento->nome}}</h6>
-                                <h6>Público Alvo: {{$demanda->publicoAlvo->nome}}</h6>
-                                <h6>Nivel Prioridade: {{ucwords(strtolower($demanda->nivel_prioridade))}}</h6>
+                                <h6>Área conhecimento: {{$demanda->areaConhecimento->nome}}</h6>
+                                <h6>Público alvo: {{$demanda->publicoAlvo->nome}}</h6>
+                                <h6>Nivel prioridade: {{ucwords(strtolower($demanda->nivel_prioridade))}}</h6>
                             </div>
                             <div>
                                 <h6 id="data-contatar">Criada em: {{ \Carbon\Carbon::parse($demanda->created_at)->format('d/m/Y') }}</h6>
