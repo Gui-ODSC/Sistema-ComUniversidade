@@ -9,8 +9,8 @@
 </head>
 <body>
     @if (session()->has('error'))
-        <div class="alert alert-danger">
-            {{ session('error') }}
+         <div class="alert alert-danger" style="text-align: center">
+            <p>{{session('error')}}</p>
         </div>
     @endif
     <div class="password-container">
@@ -37,7 +37,7 @@
                 </div>
             @enderror
             @error('password')
-                <div class="msg-erro fade-effect-error">
+                <div class="alert alert-danger mt-2" style="padding: 0px; text-align: center; height: 30px;">
                     <p>{{$message}}</p>
                 </div>
             @enderror
@@ -61,10 +61,10 @@
                 </div>
             @enderror
             @error('password')
-                <div class="msg-erro fade-effect-error">
+                <div class="alert alert-danger mt-2" style="padding: 0px; text-align: center; height: 30px;">
                     <p>{{$message}}</p>
                 </div>
-            @enderror
+                @enderror
             <button type="submit">Login</button>
         </form>
     </div>
