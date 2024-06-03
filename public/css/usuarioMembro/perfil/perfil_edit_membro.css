@@ -57,7 +57,7 @@ h1 {
     padding: 0;
     position: relative; 
     overflow: hidden; 
-    width: 245px;
+    width: 100%;
     height: 211px;
 }
 
@@ -316,6 +316,7 @@ input[type=number] {
     position: relative;
     height: 210px;
     overflow: hidden;
+    /* margin: 0px 20px 20px 0px; */
     background-color: #FFF;
     border-radius: 5px;
 }

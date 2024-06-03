@@ -42,8 +42,8 @@
                         <div id="container" style="width: 20%;">
                             <input type="hidden" name="foto_atual" value="{{ Auth::user()->foto ?? 'null' }}">
                             @if($usuario->foto)
-                                <div style="width: 50%; display: flex; flex-direction: column;">
-                                    <div class="img-foto-perfil">
+                                <div style="width: 100%; display: flex; flex-direction: column;">
+                                    <div class="img-foto-perfil" style="object-fit: contain;">
                                         <img id="current-image" onclick="openFileSelector()" class="foto-perfil" src="{{ Storage::disk('s3-public')->url(Auth::user()->foto) }}" alt="imagem de perfil do usuario">
                                         <input type="file" id="image-input" name="foto" style="position: absolute; height: 10px; opacity: 0; object-fit: cover;" accept="image/*" onchange="previewImage(event)">
                                         <button type="button" onclick="removeImage()" style="font-size: 10px; position: absolute; margin: 5px; width: 120px; bottom: 5px;">Remover imagem</button>
@@ -51,7 +51,7 @@
                                     </div>
                                 </div>
                             @else
-                                <div style="width: 50%; display: flex; flex-direction: column;">
+                                <div style="width: 100%; display: flex; flex-direction: column;">
                                     <div class="img-foto-perfil" onclick="openFileSelector()">
                                         <img id="current-image">
                                         <p id="image-placeholder" style="color: #FFF"><img src="{{ asset('img/icones/perfil_claro.png') }}" alt=""><br>Adicionar uma imagem</p>
@@ -153,15 +153,15 @@
                                     <label for="password">
                                         <span>Alterar senha</span>
                                     </label>
-                                    <span class="toggle-password" onclick="togglePassword()" style="position: absolute; top: 50%; left: 440px; transform: translateY(-50%); cursor: pointer; display: none"><img src="{{ asset('img/usuarioMembro/cadastrar_demandas/olho_desmarcado.png')}}" alt="" style="width: 25px"></span>
+                                    <span class="toggle-password" onclick="togglePassword()" style="position: absolute; top: 50%; right: 20px; transform: translateY(-50%); cursor: pointer; display: none"><img src="{{ asset('img/usuarioMembro/cadastrar_demandas/olho_desmarcado.png')}}" alt="" style="width: 25px"></span>
                                 </div>
                             @else
                                 <div style="position: relative;">
-                                    <input type="password" id="password" name="password" required oninput="toggleEye()">
+                                    <input type="password" id="password" name="password" oninput="toggleEye()">
                                     <label for="password">
                                         <span>Alterar senha</span>
                                     </label>
-                                    <span class="toggle-password" onclick="togglePassword()" style="position: absolute; top: 50%; left: 440px; transform: translateY(-50%); cursor: pointer; display: none"><img src="{{ asset('img/usuarioMembro/cadastrar_demandas/olho_desmarcado.png')}}" alt="" style="width: 25px"></span>
+                                    <span class="toggle-password" onclick="togglePassword()" style="position: absolute; top: 50%; right: 20px; transform: translateY(-50%); cursor: pointer; display: none"><img src="{{ asset('img/usuarioMembro/cadastrar_demandas/olho_desmarcado.png')}}" alt="" style="width: 25px"></span>
                                 </div>
                             @enderror
                         </div>
@@ -362,6 +362,7 @@
             const input = event.target;
             const currentImage = document.getElementById('current-image');
             const imagePlaceholder = document.getElementById('image-placeholder');
+            const addImageText = document.getElementById('add-image-text');
 
             if (input.files && input.files[0]) {
                 const reader = new FileReader();
@@ -371,6 +372,10 @@
                     currentImage.style.display = 'inline-block';
                     if (imagePlaceholder) {
                         imagePlaceholder.style.display = 'none'; // Oculta a mensagem "Adicionar uma imagem"
+                    }
+
+                    if (addImageText) {
+                        addImageText.style.display = 'none';
                     }
                 };
 
@@ -383,7 +388,9 @@
                     imagePlaceholder.style.display = 'block'; // Mostra novamente a mensagem "Adicionar uma imagem"
                 }
             }
-            }
+
+            currentImage.style['object-fit'] = 'cover';
+        }
 
         function openFileSelector() {
             document.getElementById('image-input').click();

@@ -162,11 +162,11 @@
                             <label for="password">
                                 <span>Senha *</span>
                             </label>
+                            <span class="toggle-password" onclick="togglePassword()" style="position: absolute; top: 50%; left: 90%; transform: translateY(-50%); cursor: pointer; display: none"><img src="{{ asset('img/usuarioMembro/cadastrar_demandas/olho_desmarcado.png')}}" alt="" style="width: 25px"></span>
                             <!-- Ícone informativo -->
-                            <span class="info-icon" onclick="showPasswordRules()" style="position: absolute; top: 50%; left: 465px;; transform: translateY(-50%); cursor: pointer;">
+                            <span class="info-icon" onclick="showPasswordRules()" style="position: absolute; top: 50%; left: 95%; transform: translateY(-50%); cursor: pointer;">
                                 <img src="{{ asset('img/cadastro_usuarios/icone_info_senha.png') }}" alt="Ícone informativo" style="width: 20px;">
                             </span>
-                            <span class="toggle-password" onclick="togglePassword()" style="position: absolute; top: 50%; left: 430px; transform: translateY(-50%); cursor: pointer; display: none"><img src="{{ asset('img/usuarioMembro/cadastrar_demandas/olho_desmarcado.png')}}" alt="" style="width: 25px"></span>
                         </div>
                     @enderror
                 </div>
@@ -418,7 +418,7 @@
             // Caixa de diálogo das regras da senha
             var passwordRules = document.createElement("div");
             passwordRules.innerHTML = `
-                <div id="password-rules" style="position: absolute; top: 310px; right: 60px; background-color: #4D6D7F; color: #FFF; border: 1px solid #FFF; padding: 10px; border-radius: 10px;">
+                <div id="password-rules" style="position: absolute; top: 310px; right: 215px; background-color: #4D6D7F; color: #FFF; border: 1px solid #FFF; padding: 10px; border-radius: 10px;">
                     <button onclick="closePasswordRules()" style="position: absolute; top: 5px; color: #FFF; right: 7px; cursor: pointer; background: transparent; border: none; outline: none;">Fechar</button>
                     <p>Regras de criação de senha:</p>
                     <ul>
