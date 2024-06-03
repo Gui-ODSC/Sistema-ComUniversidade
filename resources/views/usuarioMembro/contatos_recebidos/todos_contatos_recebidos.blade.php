@@ -56,7 +56,7 @@
                                     @if ($contato['respostaEnviada']->tipo_mensagem === 'INTERESSADO')
                                         <td><p title="Interessado(a)" class="status-interessado">Interessado(a)</p></td>
                                     @elseif ($contato['respostaEnviada']->tipo_mensagem === 'SEM_DISPONIBILIDADE')
-                                        <td><p class="status-sem-disponibilidade" title="Sem disponibilidade" class="status-sem-disponibilidade">Sem disponibilidade</p></td>
+                                        <td><p class="status-sem-disponibilidade" title="Sem disponibilidade">Sem disponibilidade</p></td>
                                     @elseif ($contato['respostaEnviada']->tipo_mensagem === 'RESPONDIDA')
                                         <td><p title="respondido" class="status-respondido">Respondido</p></td>
                                     @endif

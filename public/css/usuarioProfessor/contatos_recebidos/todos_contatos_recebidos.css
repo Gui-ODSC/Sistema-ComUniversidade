@@ -116,6 +116,12 @@ body {
     margin: auto;
 }
 
+.table-personalizacao .status-sem-disponibilidade {
+    width: 14vw;
+    height: 100%;
+    margin: auto;
+}
+
 .table-personalizacao td, th {
     padding: auto;
     vertical-align: baseline;
