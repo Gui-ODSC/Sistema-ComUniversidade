@@ -153,7 +153,7 @@
                                         <label for="password">
                                             <span>Alterar senha</span>
                                         </label>
-                                        <span class="toggle-password" onclick="togglePassword()" style="position: absolute; top: 50%; left: 95%;; transform: translateY(-50%); cursor: pointer; display: none"><img src="{{ asset('img/usuarioMembro/cadastrar_demandas/olho_desmarcado.png')}}" alt="" style="width: 25px"></span>
+                                        <span class="toggle-password" onclick="togglePassword()" style="position: absolute; top: 50%; left: 93%;; transform: translateY(-50%); cursor: pointer; display: none"><img src="{{ asset('img/usuarioMembro/cadastrar_demandas/olho_desmarcado.png')}}" alt="" style="width: 25px"></span>
                                     </div>
                                 @else
                                     <div style="position: relative;">
@@ -161,7 +161,7 @@
                                         <label for="password">
                                             <span>Alterar senha</span>
                                         </label>
-                                        <span class="toggle-password" onclick="togglePassword()" style="position: absolute; top: 50%; left: 95%; transform: translateY(-50%); cursor: pointer; display: none"><img src="{{ asset('img/usuarioMembro/cadastrar_demandas/olho_desmarcado.png')}}" alt="" style="width: 25px"></span>
+                                        <span class="toggle-password" onclick="togglePassword()" style="position: absolute; top: 50%; left: 93%; transform: translateY(-50%); cursor: pointer; display: none"><img src="{{ asset('img/usuarioMembro/cadastrar_demandas/olho_desmarcado.png')}}" alt="" style="width: 25px"></span>
                                     </div>
                                 @enderror
                             </div>  
