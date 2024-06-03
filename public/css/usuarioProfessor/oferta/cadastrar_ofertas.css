@@ -341,7 +341,7 @@ input[type="number"] {
 }
 
 .bootstrap-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn) button{
-    width: 607px;
+    width: 100%;
     border: none;
     color: #FFF;
     background-color: #4d579c;
@@ -349,7 +349,7 @@ input[type="number"] {
 }
 
 .bootstrap-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn) button:hover{
-    width: 607px;
+    width: 100%;
     border: none;
     color: #FFF;
     background-color: #4d579c;
