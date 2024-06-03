@@ -105,6 +105,10 @@ body {
     border-radius: 5px;
     outline: none;
 }
+
+.cadastrar-demandas input::placeholder {
+    color: #FFF;
+}
   
 .cadastrar-demandas label {
     color: #fff;

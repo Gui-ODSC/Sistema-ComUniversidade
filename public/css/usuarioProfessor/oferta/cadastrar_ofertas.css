@@ -184,6 +184,10 @@ body {
     border-radius: 5px;
     outline: none;
 }
+
+.cadastrar-ofertas input::placeholder {
+    color: #FFF;
+}
   
 .cadastrar-ofertas label {
     color: #fff;
