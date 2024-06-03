@@ -152,6 +152,13 @@
     text-align: justify;
 }
 
+.truncar-texto {
+    max-width: 40vw;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 /* MODAL */
 
 .modal-contatar {

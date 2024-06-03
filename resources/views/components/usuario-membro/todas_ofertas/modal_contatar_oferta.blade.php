@@ -50,14 +50,14 @@
                             @endif
                             @if ($oferta->tipo == 'CONHECIMENTO')
                                 @if ($oferta->ofertaConhecimento->link_lattes != null)
-                                    <h6>Currículo lattes: <a href="{{$oferta->ofertaConhecimento->link_lattes}}">{{$oferta->ofertaConhecimento->link_lattes}}</a></h6>
+                                    <h6 class="truncar-texto">Currículo lattes: <a href="{{$oferta->ofertaConhecimento->link_lattes}}">{{$oferta->ofertaConhecimento->link_lattes}}</a></h6>
                                 @else
-                                    <h6>Currículo lattes: Link não adicionado</h6>
+                                    <h6 class="truncar-texto">Currículo lattes: Link não adicionado</h6>
                                 @endif
                                 @if ($oferta->ofertaConhecimento->link_linkedin != null)
-                                    <h6>Currículo linkedin: <a href="{{$oferta->ofertaConhecimento->link_linkedin}}">{{$oferta->ofertaConhecimento->link_linkedin}}</a></h6>
+                                    <h6 class="truncar-texto">Currículo linkedin: <a href="{{$oferta->ofertaConhecimento->link_linkedin}}">{{$oferta->ofertaConhecimento->link_linkedin}}</a></h6>
                                 @else
-                                    <h6>Currículo linkedin: Link não adicionado</h6>
+                                    <h6 class="truncar-texto">Currículo linkedin: Link não adicionado</h6>
                                 @endif
                             @endif
                             <h6>Área de conhecimento: {{$oferta->areaConhecimento->nome}}</h6>
@@ -82,6 +82,7 @@
                         </div>
                         <div>
                             @if ($oferta->tipo == 'ACAO')
+                                <h6>Tipo ação: {{$oferta->ofertaAcao->tipoAcao->nome}}</h6>
                                 @if ($oferta->ofertaAcao->data_limite)
                                     <h6><strong>Data limite: {{ \Carbon\Carbon::parse($oferta->ofertaAcao->data_limite)->format('d/m/Y') }}</strong></h6>
                                 @else

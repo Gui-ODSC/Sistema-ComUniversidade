@@ -153,6 +153,13 @@
     height: 25px;
 }
 
+.truncar-texto {
+    max-width: 40vw;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 
 /* MODAL */
 
