@@ -51,8 +51,7 @@
                         <p style="margin-bottom: 0;">Dados oferta</p>
                     </div> --}}
                     <div class="dados">
-                        <h5>Tipo: {{$ofertaAcao->tipoAcao->nome}}</h5>
-                        <h5>Regime {{ucwords(strtolower($ofertaAcao->regime))}}</h5>
+                        <h5>Regime: {{ucwords(strtolower($ofertaAcao->regime))}}</h5>
                         <h5>Duração: {{ucwords(strtolower($ofertaAcao->duracao))}}</h5>
                         @if ($ofertaAcao->status_registro === 'REGISTRADA')
                             <h5>Status registro: Registrada</h5>
@@ -68,7 +67,7 @@
                     <div class="dados" style="margin-left: 20px">
                         <h5>Área conhecimento: {{$oferta->areaConhecimento->nome}}</h5>
                         <h5>Público alvo: {{$ofertaAcao->publicoAlvo->nome}}</h5>
-                        <h5>Tipo ação: {{ucwords(strtolower($ofertaAcao->tipoAcao->nome))}}</h5>
+                        <h5>Tipo da ação: {{ucwords(strtolower($ofertaAcao->tipoAcao->nome))}}</h5>
                     </div>
                 </div>
                 <div style="display: flex; justify-content: center; width: 100%;">

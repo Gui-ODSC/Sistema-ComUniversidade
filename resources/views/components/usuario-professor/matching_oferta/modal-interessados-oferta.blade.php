@@ -17,6 +17,7 @@
             <table class="table table-rounded p-5 table-personalizacao">
                 <thead>
                     <tr>
+                        <th>#</th>
                         <th>Email</th>
                         <th>Tipo interessado(a)</th>
                     </tr>
@@ -24,11 +25,13 @@
                 <tbody>
                     @if (count($usuarios) < 1)
                         <tr>
-                            <td colspan="2"><p class="sem-dados" style="max-width: none">-- Nenhum usuário interessado(a) na sua oferta --</p></td>
+                            <td colspan="3"><p class="sem-dados" style="max-width: none">-- Nenhum usuário interessado(a) na sua oferta --</p></td>
                         </tr>
                     @else
-                        @foreach ($usuarios as $usuario)
+                        <!-- Loop pelos usuários com contador -->
+                        @foreach ($usuarios as $index => $usuario)
                             <tr>
+                                <td>{{ $index + 1 }}</td>
                                 <td><p class="email" title="{{ $usuario->email }}">{{ $usuario->email }}</p></td>
                                 @if ($usuario->tipo === 'MEMBRO')
                                     <td>Membro Externo</td>
