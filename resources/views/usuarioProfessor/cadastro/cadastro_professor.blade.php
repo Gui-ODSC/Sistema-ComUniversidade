@@ -295,7 +295,7 @@
                         </label>
                     @enderror
                 </div>
-                <div class="caixa-input" style="width: 490px; padding-left: 3px">
+                <div class="caixa-input" style="width: 50%; padding-left: 3px">
                     {{-- NUMERO REGISTRO --}}
                     @error('numero_registro')
                         <input title="{{ $message }}" class="alert-danger" autocompĺete="off" type="number" id="numero_registro" name="numero_registro" value="{{old('numero_registro')}}" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required maxlength="30">
