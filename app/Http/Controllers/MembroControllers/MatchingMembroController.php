@@ -141,7 +141,7 @@ class MatchingMembroController extends Controller
             ->exists();
         
         if($matchingExcluido) {
-            return redirect()->route('demanda_matching_index', $ofertaId)->with('msg-matching', 'Erro: esta demanda já foi excluída e não deveria aparecer!');
+            return redirect()->route('demanda_matching_index', $ofertaId)->with('msg-matching', 'Erro: esta necessidade já foi excluída e não deveria aparecer!');
         }
 
         MatchingsExcluidos::create([

@@ -129,7 +129,7 @@ class CadastroProfessorController extends Controller
             $newUsuario->update(['foto' => $fotoPath]);
         }
 
-        return redirect()->route('login_professor_index')->with("success", "Professor Cadastrado com Sucesso.");
+        return redirect()->route('login_professor_index')->with("success", "Servidor(a) cadastrado com sucesso.");
     }
 
     private function listErrosUsuario($errors)

@@ -93,7 +93,7 @@ class CadastroMembroController extends Controller
             $usuario->update(['foto' => $fotoPath]);
         }
 
-        return redirect()->route('login_membro_index')->with("success", "Usuário Cadastrado com Sucesso.");
+        return redirect()->route('login_membro_index')->with("success", "Usuário Externo Cadastrado com Sucesso.");
     }
 
     private function listErrosUsuario($errors)

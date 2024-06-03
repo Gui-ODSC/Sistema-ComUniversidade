@@ -155,7 +155,7 @@ class MatchingProfessorController extends Controller
             'created_at' => now()
         ]);
 
-        return redirect()->route('oferta_matching_index', $ofertaId)->with('msg-matching', 'Demanda removida com Sucesso!');
+        return redirect()->route('oferta_matching_index', $ofertaId)->with('msg-matching', 'Necessidade removida com Sucesso!');
     }
 
     public function matching_status_visualizar_demanda($demandaId, $ofertaId) {
