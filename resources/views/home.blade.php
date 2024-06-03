@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{asset('css/home.css')}}">
-    <title>Comuniversidade</title>
+    <title>ComUniversidade</title>
 </head>
 <body>
     <header>
@@ -13,7 +13,7 @@
             <div class="nav-data">
                 <div class="nav-left">
                     <img src="{{asset('img/home/logo-ufsc.png')}}">
-                    <h4>Comuniversidade</h4>
+                    <h4>ComUniversidade</h4>
                 </div>
                 <div class="nav-right">
                     <h4><a href="#home">Home</a></h4>
@@ -26,9 +26,9 @@
     </header>
     <main>
         <div class="secao" id="home" style="padding-top: 110px">
-            <h1>Sistema Comuniversidade</h1>
+            <h1>Sistema ComUniversidade</h1>
             <span>
-                <p>Acreditando no poder transformador da extensão universitária para promover o desenvolvimento comunitário e enriquecer a educação superior. O sistema <strong>Comuniversidade</strong> foi desenvolvido com o intuito de conectar as comunidades locais com as universidades através de uma plataforma de ofertas e demandas, facilitando a colaboração e o intercâmbio de conhecimentos e recursos.</p>
+                <p>Acreditando no poder transformador da extensão universitária para promover o desenvolvimento comunitário e enriquecer a educação superior. O sistema <strong>ComUniversidade</strong> foi desenvolvido com o intuito de conectar as comunidades locais com as universidades através de uma plataforma de ofertas e demandas, facilitando a colaboração e o intercâmbio de conhecimentos e recursos.</p>
             </span>
             <div class="ilustracao">
                 <div>
@@ -50,7 +50,7 @@
             </div>
             <span>
                 <p>
-                    O sistema oferece uma interface amigável e intuitiva que permite tanto às comunidades quanto às universidades identificarem oportunidades de parceria de forma rápida e eficiente. Com o <strong>Comuniversidade</strong>, cada usuário pode criar um perfil personalizado que se adapta às suas necessidades e interesses específicos. O sistema pode ser usado por três tipos de perfil.
+                    O sistema oferece uma interface amigável e intuitiva que permite tanto às comunidades quanto às universidades identificarem oportunidades de parceria de forma rápida e eficiente. Com o <strong>ComUniversidade</strong>, cada usuário pode criar um perfil personalizado que se adapta às suas necessidades e interesses específicos. O sistema pode ser usado por três tipos de perfil.
                 </p>
             </span>
         </div>
@@ -58,7 +58,7 @@
         <div class="secao" id="perfis">
             <h1>Tipos de Perfis</h1>
             <span>
-                <p>A segmentação de perfis permite uma experiência personalizada para cada tipo de usuário, facilitando a identificação e a conexão entre as partes interessadas. Seja você uma comunidade em busca de soluções práticas ou uma universidade em busca de oportunidades de engajamento social, o <strong>Comuniversidade</strong> oferece as ferramentas necessárias para transformar ideias em ações concretas e impactar positivamente o mundo ao seu redor.</p>
+                <p>A segmentação de perfis permite uma experiência personalizada para cada tipo de usuário, facilitando a identificação e a conexão entre as partes interessadas. Seja você uma comunidade em busca de soluções práticas ou uma universidade em busca de oportunidades de engajamento social, o <strong>ComUniversidade</strong> oferece as ferramentas necessárias para transformar ideias em ações concretas e impactar positivamente o mundo ao seu redor.</p>
             </span>
             <div class="prints-sistema">
                 <div class="tela-print">

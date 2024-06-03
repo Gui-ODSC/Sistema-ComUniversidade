@@ -162,9 +162,9 @@
                             <label for="password">
                                 <span>Senha *</span>
                             </label>
-                            <span class="toggle-password" onclick="togglePassword()" style="position: absolute; top: 50%; left: 95%; transform: translateY(-50%); cursor: pointer; display: none"><img src="{{ asset('img/usuarioMembro/cadastrar_demandas/olho_desmarcado.png')}}" alt="" style="width: 25px"></span>
+                            <span class="toggle-password" onclick="togglePassword()" style="position: absolute; top: 50%; left: 89%; transform: translateY(-50%); cursor: pointer; display: none"><img src="{{ asset('img/usuarioMembro/cadastrar_demandas/olho_desmarcado.png')}}" alt="" style="width: 25px"></span>
                             <!-- Ícone informativo -->
-                            <span class="info-icon" onclick="showPasswordRules()" style="position: absolute; top: 50%; left: 89%; transform: translateY(-50%); cursor: pointer;">
+                            <span class="info-icon" onclick="showPasswordRules()" style="position: absolute; top: 50%; left: 95%; transform: translateY(-50%); cursor: pointer;">
                                 <img src="{{ asset('img/cadastro_usuarios/icone_info_senha.png') }}" alt="Ícone informativo" style="width: 20px;">
                             </span>
                         </div>
