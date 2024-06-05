@@ -89,12 +89,12 @@
                 </div>
                 <div class="caixa-input" style="height: 120px; width: 100%;">
                     @error('descricao')
-                        <textarea title="{{$message}}" type="text" name="descricao" placeholder="Texto Livre" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required maxlength="500">{{$oferta->descricao}}</textarea>
+                        <textarea title="{{$message}}" type="text" name="descricao" placeholder="Texto Livre" style="border: 1px solid red; background-color:rgb(235, 201, 206); color: black" required maxlength="700">{{$oferta->descricao}}</textarea>
                         <label id="campo-label" for="descricao">
                             <span id="campo-spam">Descrição *</span>
                         </label>
                     @else
-                        <textarea type="text" name="descricao" autocomplete="off" required maxlength="500">{{$oferta->descricao}}</textarea>
+                        <textarea type="text" name="descricao" autocomplete="off" required maxlength="700">{{$oferta->descricao}}</textarea>
                         <label id="campo-label" for="descricao">
                             <span id="campo-spam">Descrição *</span>
                         </label>

@@ -64,7 +64,7 @@ class OfertaProfessorController extends Controller
         // Recarrega a lista de ofertas após a exclusão das ofertas vencidas
         $listOfertas = Oferta::where('id_usuario_professor', $professor->id_usuario_professor)
             ->with(['areaConhecimento'])
-            ->orderby('created_at', 'ASC')
+            ->orderby('created_at', 'desc')
             ->paginate(10);
 
         /* FIM */
