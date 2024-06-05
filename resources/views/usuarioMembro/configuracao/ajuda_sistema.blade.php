@@ -22,7 +22,8 @@
         <hr>
         <div class="sessao">
             <h4>Quero cadastrar uma necessidade como faço?</h4>
-            <p>Para cadastrar uma necessidade é bem fácil, primeiramente acesse o menu localizado no canto superior esquerdo da tela, em seguida encontre a sessão de "Minhas Necessidades", clique nela, e você será redirecionado para uma a tela de minhas necessidades, busque por um botão chamado de "Cadastrar Novas Necessidades", agora basta você clicar nele, preencher os dados solicitados e pronto. Você terá criado sua primeira necessidade.</p>
+            <p>Para cadastrar uma necessidade é bem fácil, acesse primeiramente o menu localizado no canto superior esquerdo da tela, em seguida encontre a sessão de "Minhas Necessidades", clique nela, e você será redirecionado para uma a tela de minhas necessidades, busque por um botão chamado de "Cadastrar Novas Necessidades", agora basta você clicar nele, preencher os dados solicitados e pronto. Você terá criado sua primeira necessidade.
+            </p>
         </div>
         <hr>
         <div class="sessao">
@@ -51,22 +52,24 @@
         <hr>
         <div class="sessao">
             <h4>Como posso responder um contato?</h4>
-            <p>Os contatos do sistema sempre estão relacionados a uma necessidade e uma oferta. Portanto, para que você, usuário, consiga responder um contato, basta ir através do menu até a seção de "Contatos Recebidos" onde estarão listados todos os contatos realizados por outros usuários com destino para você. A partir daí você poderá responder com sua mensagem e enviar selecionando o status, podendo ser INTERESSE (positivo) ou SEM DISPONIBILIDADE (negativo).</p>
+            <p>Os contatos do sistema sempre estão relacionados a uma necessidade e uma oferta. Portanto, para que você, usuário, consiga responder um contato, basta ir através do menu até a seção de "Contatos Recebidos" onde estarão listados todos os contatos realizados por outros usuários com destino para você. A partir daí, você poderá responder com sua mensagem e enviar selecionando o status, podendo ser INTERESSE (positivo) ou SEM DISPONIBILIDADE (negativo).</p>
         </div>
         <hr>
         <div class="sessao">
             <h4>Posso trocar mensagens de maneira ilimitadas sobre uma mesma necessidade/oferta ?</h4>
-            <p>Não, o intuito do sistema é conectar usuários que possuem necessidade e ofertas condizentes, para que problemas possam ser resolvidos de maneira rápida e eficiente. Dito isso, nosso objetivo é apenas gerar um primeiro contato entre as partes de modo que elas consigam se interconectar e posteriormente por outras formas de contato elas venha a desenvolver propriamente suas soluções. Por isso, nós permitimos que os usuários façam uma troca de mensagens para cada contato criado. Ou seja cada vez que algumas dos usuários inicia o contato o outro que recebe tem o direito de resposta, e então o contato é finalizado não havendo possibilidade de uma terceira mensagem. Apesar disso, é possível fazer quantos contatos quiser, desde que seja sobre ofertas/necessidades diferentes.</p>
+            <p>Não, o intuito do sistema é conectar usuários que possuem necessidade e ofertas condizentes, para que problemas possam ser resolvidos de maneira rápida e eficiente. Dito isso, nosso objetivo é apenas gerar um primeiro contato entre as partes de modo que elas consigam se interconectar e, posteriormente, por outras formas de contato, elas desenvolvam propriamente suas soluções. Por isso, nós permitimos que os usuários façam uma troca de mensagens para cada contato criado. Ou seja, cada vez que alguns dos usuários iniciam o contato, o outro que recebe tem o direito de resposta, e então o contato é finalizado, não havendo possibilidade de uma terceira mensagem. Apesar disso, é possível fazer quantos contatos quiser, desde que seja sobre ofertas/necessidades diferentes.
+            </p>
         </div>
         <hr>
         <div class="sessao">
             <h4>Qual a diferença de uma oferta do tipo Ação e do tipo Conhecimento?</h4>
-            <p>A principal diferença está relacionada ao tipo de proposta que essas ofertas irão oferecer. Por exeplo, quando um servidor(a) decide criar um oferta do tipo ação, isso quer dizer que ele tem algum projeto, programa, curso... que deseja oferecer e que possa solucionar algumas necessidades. Já quando um servidor(a) decide criar uma oferta do tipo conhecimento, o objetivo é oferecer o conhecimento em si, e não um curso específico. Portanto, essa diferença acaba afetando bastante nos status de resposta para os contatos. Já que para as ofertas do tipo conhecimento os servidores(as) podem demonstrar o status sendo de (Interesse/Sem disponibilidade), enquanto que nas ofertas do tipo Ação os mesmos só podem responder o contato (Contato Respondido), já que esse segundo tipo de oferta não está ligado ao conhecimento pessoal dele(a).</p>
+            <p>A principal diferença está relacionada ao tipo de proposta que essas ofertas irão oferecer. Por exemplo, quando um servidor(a) decide criar uma oferta do tipo ação, isso quer dizer que ele tem algum projeto, programa, curso... que deseja oferecer e que possa solucionar algumas necessidades. Já quando um servidor(a) decide criar uma oferta do tipo conhecimento, o objetivo é oferecer o conhecimento em si, e não um curso específico. Portanto, essa diferença acaba afetando bastante nos status de resposta para os contatos. Já que para as ofertas do tipo conhecimento os servidores(as) podem demonstrar o status sendo de (Interesse/Sem disponibilidade), enquanto nas ofertas do tipo Ação os mesmos só podem responder o contato (Contato Respondido), já que esse segundo tipo de oferta não está ligado ao conhecimento pessoal dele(a).</p>
         </div>
         <hr>
         <div class="sessao">
             <h4>Caso eu exclua uma necessidade ou oferta da lista de matchings, é possível recuperar?</h4>
-            <p>Não, o sistema não possui uma seção destinada a listagem das ofertas e necessidades excluidas, portanto caso uma necessidade ou oferta seja excluida, ela não poderá ser recuperada. Mas para evitar exclusões acidentais o sistema foi estruturado com avisos de confirmação para todas as ações de excluir, desse modo, caso você clique sem querer no botão de excluir, será necessário realizar a confirmação de SIM ou NÃO antes que a ação seja executada.</p>
+            <p>Não, o sistema não possui uma seção destinada à listagem das ofertas e necessidades excluídas, portanto, caso uma necessidade ou oferta seja excluída, ela não poderá ser recuperada. Mas para evitar exclusões acidentais, o sistema foi estruturado com avisos de confirmação para todas as ações de excluir. Desse modo, caso você clique sem querer no botão de excluir, será necessário realizar a confirmação de SIM ou NÃO antes que a ação seja executada.
+            </p>
         </div>
     </main>
 </body>
