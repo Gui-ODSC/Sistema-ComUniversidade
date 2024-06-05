@@ -52,6 +52,7 @@
 
 .resposta-contato-recebido {
     flex: 1;
+    height: 0;
     display: flex;
     padding-bottom: 5px;
 }
