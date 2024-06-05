@@ -73,7 +73,7 @@
                             </select>
                         </div>
                         <select class="filtro-select-normal" name="regime" style="width: 150px">
-                            <option selected disabled>Duração</option>
+                            <option selected disabled>Modalidade</option>
                             <option value="PRESENCIAL" {{ $regimeSelecionado == 'PRESENCIAL' ? 'selected' : '' }}>Presencial</option>
                             <option value="ONLINE" {{ $regimeSelecionado == 'ONLINE' ? 'selected' : '' }}>Online</option>
                         </select>
