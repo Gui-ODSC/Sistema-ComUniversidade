@@ -94,10 +94,10 @@
                             Sua resposta
                         </label>
                         <div class="div-resposta-contato-recebido" readonly>
-                            <div style="height: 0px; padding: 5px">
-                                <p style="text-align: justify">{{$respostaMensagem->mensagem}}</p>
+                            <div style="height: auto; padding: 5px">
+                                <p style="text-align: justify; white-space: pre-wrap;">{{$respostaMensagem->mensagem}}</p>
                                 <hr>
-                                <p style="text-align: justify; font-size: 14px">Atenção: o sistema entende que o contato incial já foi realizado entre as partes interessadas, portanto qualquer próxima forma de contato deve seguir por outro meio de comunicação (email, telefone ....)</p>
+                                <p style="text-align: justify; font-size: 14px">Atenção: o sistema entende que o contato inicial já foi realizado entre as partes interessadas, portanto qualquer próxima forma de contato deve seguir por outro meio de comunicação (email, telefone, etc.).</p>
                             </div>
                         </div>
                     </div>
