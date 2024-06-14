@@ -45,13 +45,13 @@
                         @foreach ($contatosRealizados as $contato)    
                             <tr>
                                 <th scope="row">{{$contador}}</th>
-                                <td><p title="{{ $contato['oferta']->titulo }}">{{ $contato['oferta']->titulo }}</p></td>
+                                <td><p class="titulo-tabela" title="{{ $contato['oferta']->titulo }}">{{ $contato['oferta']->titulo }}</p></td>
                                 @if ($contato['oferta']->tipo === 'ACAO')
                                     <td>Ação</td>
                                 @elseif (($contato['oferta']->tipo === 'CONHECIMENTO'))
                                     <td>Conhecimento</td>
                                 @endif
-                                <td>{{ $contato['usuarioReceptor']->nome }}</td>
+                                <td><p class="nome-tabela" title="{{ $contato['usuarioReceptor']->nome }}">{{ $contato['usuarioReceptor']->nome }}</p></td>
                                 @if ($contato['usuarioReceptor']->tipo === 'ALUNO') 
                                     <td>Estudante</td>
                                 @elseif ($contato['usuarioReceptor']->tipo === 'PROFESSOR')

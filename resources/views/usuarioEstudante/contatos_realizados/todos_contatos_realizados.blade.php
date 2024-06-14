@@ -44,8 +44,8 @@
                         @foreach ($contatosRealizados as $contato) 
                             <tr>
                                 <th scope="row">{{$contador}}</th>
-                                <td><p title="{{ $contato['oferta']->titulo }}">{{ $contato['oferta']->titulo }}</p></td>
-                                <td>{{ $contato['usuarioReceptor']->nome }}</td>
+                                <td><p class="titulo-tabela" title="{{ $contato['oferta']->titulo }}">{{ $contato['oferta']->titulo }}</p></td>
+                                <td><p class="nome-tabela" title="{{ $contato['usuarioReceptor']->nome }}">{{ $contato['usuarioReceptor']->nome }}</p></td>
                                 @if ($contato['usuarioReceptor']->tipo === 'PROFESSOR') 
                                     <td>Servidor(a)</td>
                                 @elseif ($contato['usuarioReceptor']->tipo === 'MEMBRO')
