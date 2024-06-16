@@ -71,6 +71,15 @@
             <p>Não, o sistema não possui uma seção destinada à listagem das ofertas e necessidades excluídas, portanto, caso uma necessidade ou oferta seja excluída, ela não poderá ser recuperada. Mas para evitar exclusões acidentais, o sistema foi estruturado com avisos de confirmação para todas as ações de excluir. Desse modo, caso você clique sem querer no botão de excluir, será necessário realizar a confirmação de SIM ou NÃO antes que a ação seja executada.
             </p>
         </div>
+        <hr>
+        <div class="sessao">
+            <h4>Precisa de suporte ou gostaria de fazer sugestões?</h4>
+            <p>
+                Se você encontrar algum problema ou tiver dúvidas sobre o uso do nosso sistema, estamos aqui para ajudar! Por favor, entre em contato com a nossa equipe de suporte.
+                <br><br>    
+                Envie um e-mail para: comuniversidade.contato@oliveira.systems
+            </p>
+        </div>
     </main>
 </body>
 </html>

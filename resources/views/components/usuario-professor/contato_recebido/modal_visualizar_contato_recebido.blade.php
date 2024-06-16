@@ -84,7 +84,7 @@
                     <label style="background-color: #FFF; color: black">
                         Mensagem de {{$usuarioEmissor->nome}}
                     </label>
-                    <textarea readonly style="background-color: #FFF; color: black">{{$contatoMensagem->mensagem}}</textarea>
+                    <textarea readonly style="background-color: #FFF; color: black; padding:10px">{{$contatoMensagem->mensagem}}</textarea>
                 </div>
             </div>
             @if ($respostaMensagem != null)

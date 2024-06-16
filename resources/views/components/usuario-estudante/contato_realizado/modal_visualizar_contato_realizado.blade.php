@@ -84,7 +84,7 @@
                         <label style="background-color: #FFF; color: black">
                             Sua mensagem
                         </label>
-                        <textarea readonly style="background-color: #FFF; color: black; border: 2px solid black">{{$contatoMensagem->mensagem}}</textarea>
+                        <textarea readonly style="background-color: #FFF; color: black; border: 2px solid black; padding: 10px">{{$contatoMensagem->mensagem}}</textarea>
                     </div>
                     <div class="resposta-contato-recebido">
                         <div class="caixa-textarea-space" style="width: 100%; display: flex; flex-direction: column;">
