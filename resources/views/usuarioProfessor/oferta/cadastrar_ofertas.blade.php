@@ -53,7 +53,7 @@
             </div>
         @endif
         <div style="position: relative">
-            {{-- <button class="botao-ajuda-select" onclick="openModalAjudaTipoOferta({{$usuarioProfessor}})">(?) *</button> --}}
+            <button class="botao-ajuda-select" onclick="openModalAjudaTipoOferta({{$usuarioProfessor}})">(?) *</button>
             <x-usuario-professor.oferta.modal-ajuda-tipo-oferta :id-usuario="$usuarioProfessor"/>
                 <div class="section-form">
                     <div class="caixa-input" style="width: 100%; margin-bottom: 20px;">
