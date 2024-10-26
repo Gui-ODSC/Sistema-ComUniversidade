@@ -32,7 +32,7 @@
 - #### $~ php artisan migrate
 - Adicionar dump de ceps no banco de dados [Dump_Ceps](https://acesse.one/ccq7K) 
 - #### $~ php artisan serve
-- Acessar a URL [Sistema](http://localhost:8000/)
+- Acessar a URL [http://localhost:8000/](http://localhost:8000/)
 - FIM
 
 ###### Obs: tudo que tiver com o símbolo ($~) são comandos que devem ser realizados no terminal 
