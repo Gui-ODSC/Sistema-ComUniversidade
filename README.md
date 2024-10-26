@@ -19,6 +19,24 @@
 - #### MySQL v.8.0.36
 - #### Adminer v.4.8.1
 
+# Passo a passo para clonar o repo
+- #### Ter o php e mysql instalados (versões disponíveis acima)
+- #### Abrir um terminal de comando (cmd)
+- #### $~ git clone git@github.com:Gui-ODSC/Sistema-ComUniversidade.git
+- #### $~ cd Sistema-ComUniversidade/
+- #### $~ composer install - (baixar composer caso não tenha)
+- #### $~ cp .env.example .env
+- #### $~ php artisan key:generate
+- #### Criar um database no banco de dados 
+- #### Configurar as variáveis de ambiente do .env com as configs de acesso do Database que criou
+- #### $~ php artisan migrate
+- Adicionar dump de ceps no banco de dados [Dump_Ceps](https://acesse.one/ccq7K) 
+- #### $~ php artisan serve
+- Acessar a URL [Sistema](http://localhost:8000/)
+- FIM
+
+###### Obs: tudo que tiver com o símbolo ($~) são comandos que devem ser realizados no terminal 
+
 ### Desenvolvido por
 - #### *Guilherme Oliveira de Sá Cabrera*
 ### Orientado por
